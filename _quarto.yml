@@ -1,59 +1,44 @@
+title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"
 
-title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio 
-"
 project:
   type: website
   output-dir: docs
 
 website:
-  title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio 
-"
+  title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"
 
   sidebar:
     style: docked
     search: true
-
     contents:
       - href: index.qmd
         text: Inicio
 
-      - section: "Introducción"
+      - section: "SEMANA 0"
         contents:
-          - href: introduccion/index.qmd
-            text: Presentación
-          - href: introduccion/introduccion.qmd
-            text: introduccion
-          - href: tp1/ejercicio2.1.qmd
-            text: Ejercicio 2.1
+          - href: semana0/teoria.qmd
+            text: "Teoría"
+          - href: semana0/practica-guiada.qmd
+            text: "Práctica guiada"
+          - href: semana0/practica-estudiantes.qmd
+            text: "Práctica para estudiantes"
 
-      - section: "TRABAJO PRÁCTICO 3"
+      - section: "SEMANA 1"
         contents:
-          - href: tp3/index.qmd
-            text: Presentación
-          - href: tp3/ejercicio1.qmd
-            text: Ejercicio 3.1
-          - href: tp3/ejercicio2.qmd
-            text: Ejercicio 3.2
-
-      - section: "TRABAJO PRÁCTICO 7"
-        contents:
-          - href: tp7/ejercicio1.qmd
-            text: Ejercicio 7.1
-
-      - section: "TRABAJO PRÁCTICO 8"
-        contents:
-          - href: tp8/ejercicio1.qmd
-            text: Ejercicio 8.1
-
-      - section: "TRABAJO PRÁCTICO 9"
-        contents:
-          - href: tp9/ejercicio1.qmd
-            text: Ejercicio 9.1
+          - href: semana1/teoria.qmd
+            text: "Teoría"
+          - href: semana1/practica-guiada.qmd
+            text: "Práctica guiada"
+          - href: semana1/practica-estudiantes.qmd
+            text: "Práctica para estudiantes"
 
 format:
   html:
     theme: cosmo
     toc: true
-    css: styles.css
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-tools: true
 
-
+editor: visual
