@@ -4,6 +4,9 @@ project:
   type: website
   output-dir: docs
 
+bibliography: referencias.bib
+csl: apa.csl
+
 website:
   title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"
 
@@ -35,10 +38,11 @@ website:
 format:
   html:
     theme: cosmo
+    css: estilos.css
     toc: true
     toc-depth: 3
     number-sections: true
     code-fold: true
-    code-tools: true
-
+    code-tools: true  
+    
 editor: visual

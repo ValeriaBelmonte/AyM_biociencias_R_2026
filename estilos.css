@@ -1,0 +1,23 @@
+/* Tipografía general del documento */
+body {
+  font-family: "Georgia", serif;
+  font-size: 16px;
+}
+
+/* Títulos principales */
+h1 {
+  color:#5AA354;
+  font-family: "Verdana", sans-serif;
+}
+
+/* Subtítulos */
+h2 {
+  color: #5AA354;
+  font-family: "Verdana", sans-serif;
+}
+
+/* Sub-subtítulos */
+h3 {
+  color: #5AA354;
+  font-family: "Verdana", sans-serif;
+}
