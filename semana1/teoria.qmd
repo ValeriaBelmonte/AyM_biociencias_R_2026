@@ -38,7 +38,7 @@ Para entender el rol del análisis de datos, utilizamos un marco conceptual clá
 
 -   **Sabiduría (Wisdom)**
 
-![](imagenes/Captura%20de%20pantalla%202026-02-24%20133559.png)
+![](../imagenes/piramide.png)
 
 ### Datos
 
@@ -102,7 +102,7 @@ R es un lenguaje de programación y un entorno de software diseñado para el an�
 
 RStudio es un **entorno de desarrollo integrado (IDE)** que facilita el trabajo con R. Proporciona una interfaz organizada para escribir código, ejecutarlo, visualizar resultados y gestionar proyectos.
 
-![Distribución de la pantalla de RStudio](imagenes/consola.png){fig-align="center"}
+![Distribución de la pantalla de RStudio](../imagenes/consola.png){fig-align="center"}
 
 ### ¿Qué son los paquetes?
 
@@ -116,7 +116,7 @@ Los paquetes son extensiones que agregan funciones específicas a R. Permiten re
 
 -   **Los paquetes** son colecciones de libros especializados.
 
-\-![Analogía con una biblioteca](imagenes/Biblioteca%20R_%20Conceptos%20y%20Paquetes.png){fig-align="center"}
+![Analogía con una biblioteca](../imagenes/Biblioteca R_ Conceptos y Paquetes.png){fig-align="center"}
 
 ### Instalar y cargar paquetes
 
