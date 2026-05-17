@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Teoria – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Clase 1 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -235,29 +235,31 @@ div.csl-indent {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#clase-1-introducción-al-análisis-de-datos-reproducible" id="toc-clase-1-introducción-al-análisis-de-datos-reproducible" class="nav-link active" data-scroll-target="#clase-1-introducción-al-análisis-de-datos-reproducible"><span class="header-section-number">1</span> Clase 1 – Introducción al análisis de datos reproducible</a></li>
-  <li><a href="#objetivo-de-la-clase" id="toc-objetivo-de-la-clase" class="nav-link" data-scroll-target="#objetivo-de-la-clase"><span class="header-section-number">2</span> Objetivo de la clase</a></li>
-  <li><a href="#tomar-decisiones-con-datos" id="toc-tomar-decisiones-con-datos" class="nav-link" data-scroll-target="#tomar-decisiones-con-datos"><span class="header-section-number">3</span> 1. Tomar decisiones con datos</a></li>
-  <li><a href="#de-los-datos-a-la-sabiduría-la-pirámide-dikw" id="toc-de-los-datos-a-la-sabiduría-la-pirámide-dikw" class="nav-link" data-scroll-target="#de-los-datos-a-la-sabiduría-la-pirámide-dikw"><span class="header-section-number">4</span> 2. De los datos a la sabiduría: la pirámide DIKW</a>
+  <li><a href="#introducción-al-análisis-de-datos-reproducible" id="toc-introducción-al-análisis-de-datos-reproducible" class="nav-link active" data-scroll-target="#introducción-al-análisis-de-datos-reproducible"><span class="header-section-number">1</span> Introducción al análisis de datos reproducible</a>
   <ul class="collapse">
-  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">4.1</span> Datos</a></li>
-  <li><a href="#información" id="toc-información" class="nav-link" data-scroll-target="#información"><span class="header-section-number">4.2</span> Información</a></li>
-  <li><a href="#conocimiento" id="toc-conocimiento" class="nav-link" data-scroll-target="#conocimiento"><span class="header-section-number">4.3</span> Conocimiento</a></li>
-  <li><a href="#sabiduría" id="toc-sabiduría" class="nav-link" data-scroll-target="#sabiduría"><span class="header-section-number">4.4</span> Sabiduría</a></li>
-  </ul></li>
-  <li><a href="#el-dato-como-materia-prima" id="toc-el-dato-como-materia-prima" class="nav-link" data-scroll-target="#el-dato-como-materia-prima"><span class="header-section-number">5</span> 3. El dato como materia prima</a></li>
-  <li><a href="#calidad-del-dato-ideas-clave" id="toc-calidad-del-dato-ideas-clave" class="nav-link" data-scroll-target="#calidad-del-dato-ideas-clave"><span class="header-section-number">6</span> 4. Calidad del dato: ideas clave</a></li>
-  <li><a href="#herramientas-del-curso-r-rstudio-y-paquetes" id="toc-herramientas-del-curso-r-rstudio-y-paquetes" class="nav-link" data-scroll-target="#herramientas-del-curso-r-rstudio-y-paquetes"><span class="header-section-number">7</span> 5. Herramientas del curso: R, RStudio y paquetes</a>
+  <li><a href="#objetivo-de-la-clase" id="toc-objetivo-de-la-clase" class="nav-link" data-scroll-target="#objetivo-de-la-clase"><span class="header-section-number">1.1</span> Objetivo de la clase</a></li>
+  <li><a href="#tomar-decisiones-con-datos" id="toc-tomar-decisiones-con-datos" class="nav-link" data-scroll-target="#tomar-decisiones-con-datos"><span class="header-section-number">1.2</span> 1. Tomar decisiones con datos</a></li>
+  <li><a href="#de-los-datos-a-la-sabiduría-la-pirámide-dikw" id="toc-de-los-datos-a-la-sabiduría-la-pirámide-dikw" class="nav-link" data-scroll-target="#de-los-datos-a-la-sabiduría-la-pirámide-dikw"><span class="header-section-number">1.3</span> 2. De los datos a la sabiduría: la pirámide DIKW</a>
   <ul class="collapse">
-  <li><a href="#qué-es-r" id="toc-qué-es-r" class="nav-link" data-scroll-target="#qué-es-r"><span class="header-section-number">7.1</span> ¿Qué es R?</a></li>
-  <li><a href="#qué-es-rstudio" id="toc-qué-es-rstudio" class="nav-link" data-scroll-target="#qué-es-rstudio"><span class="header-section-number">7.2</span> ¿Qué es RStudio?</a></li>
-  <li><a href="#qué-son-los-paquetes" id="toc-qué-son-los-paquetes" class="nav-link" data-scroll-target="#qué-son-los-paquetes"><span class="header-section-number">7.3</span> ¿Qué son los paquetes?</a></li>
-  <li><a href="#analogía-con-una-biblioteca" id="toc-analogía-con-una-biblioteca" class="nav-link" data-scroll-target="#analogía-con-una-biblioteca"><span class="header-section-number">7.4</span> Analogía con una biblioteca</a></li>
-  <li><a href="#instalar-y-cargar-paquetes" id="toc-instalar-y-cargar-paquetes" class="nav-link" data-scroll-target="#instalar-y-cargar-paquetes"><span class="header-section-number">7.5</span> Instalar y cargar paquetes</a></li>
+  <li><a href="#datos" id="toc-datos" class="nav-link" data-scroll-target="#datos"><span class="header-section-number">1.3.1</span> Datos</a></li>
+  <li><a href="#información" id="toc-información" class="nav-link" data-scroll-target="#información"><span class="header-section-number">1.3.2</span> Información</a></li>
+  <li><a href="#conocimiento" id="toc-conocimiento" class="nav-link" data-scroll-target="#conocimiento"><span class="header-section-number">1.3.3</span> Conocimiento</a></li>
+  <li><a href="#sabiduría" id="toc-sabiduría" class="nav-link" data-scroll-target="#sabiduría"><span class="header-section-number">1.3.4</span> Sabiduría</a></li>
   </ul></li>
-  <li><a href="#ciencia-reproducible-y-quarto" id="toc-ciencia-reproducible-y-quarto" class="nav-link" data-scroll-target="#ciencia-reproducible-y-quarto"><span class="header-section-number">8</span> 6. Ciencia reproducible y Quarto</a></li>
-  <li><a href="#cierre-de-la-clase" id="toc-cierre-de-la-clase" class="nav-link" data-scroll-target="#cierre-de-la-clase"><span class="header-section-number">9</span> 7. Cierre de la clase</a></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">10</span> Referencias</a></li>
+  <li><a href="#el-dato-como-materia-prima" id="toc-el-dato-como-materia-prima" class="nav-link" data-scroll-target="#el-dato-como-materia-prima"><span class="header-section-number">1.4</span> 3. El dato como materia prima</a></li>
+  <li><a href="#calidad-del-dato-ideas-clave" id="toc-calidad-del-dato-ideas-clave" class="nav-link" data-scroll-target="#calidad-del-dato-ideas-clave"><span class="header-section-number">1.5</span> 4. Calidad del dato: ideas clave</a></li>
+  <li><a href="#herramientas-del-curso-r-rstudio-y-paquetes" id="toc-herramientas-del-curso-r-rstudio-y-paquetes" class="nav-link" data-scroll-target="#herramientas-del-curso-r-rstudio-y-paquetes"><span class="header-section-number">1.6</span> 5. Herramientas del curso: R, RStudio y paquetes</a>
+  <ul class="collapse">
+  <li><a href="#qué-es-r" id="toc-qué-es-r" class="nav-link" data-scroll-target="#qué-es-r"><span class="header-section-number">1.6.1</span> ¿Qué es R?</a></li>
+  <li><a href="#qué-es-rstudio" id="toc-qué-es-rstudio" class="nav-link" data-scroll-target="#qué-es-rstudio"><span class="header-section-number">1.6.2</span> ¿Qué es RStudio?</a></li>
+  <li><a href="#qué-son-los-paquetes" id="toc-qué-son-los-paquetes" class="nav-link" data-scroll-target="#qué-son-los-paquetes"><span class="header-section-number">1.6.3</span> ¿Qué son los paquetes?</a></li>
+  <li><a href="#analogía-con-una-biblioteca" id="toc-analogía-con-una-biblioteca" class="nav-link" data-scroll-target="#analogía-con-una-biblioteca"><span class="header-section-number">1.6.4</span> Analogía con una biblioteca</a></li>
+  <li><a href="#instalar-y-cargar-paquetes" id="toc-instalar-y-cargar-paquetes" class="nav-link" data-scroll-target="#instalar-y-cargar-paquetes"><span class="header-section-number">1.6.5</span> Instalar y cargar paquetes</a></li>
+  </ul></li>
+  <li><a href="#ciencia-reproducible-y-quarto" id="toc-ciencia-reproducible-y-quarto" class="nav-link" data-scroll-target="#ciencia-reproducible-y-quarto"><span class="header-section-number">1.7</span> 6. Ciencia reproducible y Quarto</a></li>
+  <li><a href="#cierre-de-la-clase" id="toc-cierre-de-la-clase" class="nav-link" data-scroll-target="#cierre-de-la-clase"><span class="header-section-number">1.8</span> 7. Cierre de la clase</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">1.9</span> Referencias</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -266,7 +268,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../semana1/teoria.html">SEMANA 1</a></li><li class="breadcrumb-item"><a href="../semana1/teoria.html">Teoría</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Teoria</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Clase 1</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -283,11 +285,10 @@ div.csl-indent {
 </header>
 
 
-<section id="clase-1-introducción-al-análisis-de-datos-reproducible" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="clase-1-introducción-al-análisis-de-datos-reproducible"><span class="header-section-number">1</span> Clase 1 – Introducción al análisis de datos reproducible</h2>
-</section>
-<section id="objetivo-de-la-clase" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="objetivo-de-la-clase"><span class="header-section-number">2</span> Objetivo de la clase</h2>
+<section id="introducción-al-análisis-de-datos-reproducible" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introducción al análisis de datos reproducible</h1>
+<section id="objetivo-de-la-clase" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="objetivo-de-la-clase"><span class="header-section-number">1.1</span> Objetivo de la clase</h2>
 <p>Al finalizar esta clase, el/la estudiante deberá ser capaz de:</p>
 <ul>
 <li><p>Comprender qué significa trabajar con datos y por qué es central en la toma de decisiones.</p></li>
@@ -296,14 +297,14 @@ div.csl-indent {
 <li><p>Identificar las herramientas principales que se utilizarán durante el curso (R, RStudio y paquetes).</p></li>
 </ul>
 </section>
-<section id="tomar-decisiones-con-datos" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="tomar-decisiones-con-datos"><span class="header-section-number">3</span> 1. Tomar decisiones con datos</h2>
+<section id="tomar-decisiones-con-datos" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="tomar-decisiones-con-datos"><span class="header-section-number">1.2</span> 1. Tomar decisiones con datos</h2>
 <p>De manera consciente o inconsciente, las personas toman decisiones todo el tiempo: personales, profesionales, organizacionales. Algunas decisiones tienen bajo impacto, otras pueden tener consecuencias importantes y duraderas.</p>
 <p>En contextos académicos, científicos, productivos u organizacionales, <strong>las decisiones no deberían basarse solo en intuición</strong>, sino en información confiable obtenida a partir de datos.</p>
 <p>Aquí es donde entra el análisis de datos: como una herramienta para <strong>reducir la incertidumbre</strong> y mejorar la calidad de las decisiones.</p>
 </section>
-<section id="de-los-datos-a-la-sabiduría-la-pirámide-dikw" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="de-los-datos-a-la-sabiduría-la-pirámide-dikw"><span class="header-section-number">4</span> 2. De los datos a la sabiduría: la pirámide DIKW</h2>
+<section id="de-los-datos-a-la-sabiduría-la-pirámide-dikw" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="de-los-datos-a-la-sabiduría-la-pirámide-dikw"><span class="header-section-number">1.3</span> 2. De los datos a la sabiduría: la pirámide DIKW</h2>
 <p>Este enfoque se basa en el modelo conceptual conocido como <strong>DIKW</strong> (Data–Information–Knowledge–Wisdom), ampliamente utilizado en gestión del conocimiento y análisis de sistemas <span class="citation" data-cites="ackoff1989">(<a href="#ref-ackoff1989" role="doc-biblioref">Ackoff, 1989</a>)</span>.</p>
 <p>Para entender el rol del análisis de datos, utilizamos un marco conceptual clásico: la <strong>pirámide DIKW</strong>, que describe la relación entre:</p>
 <ul>
@@ -313,26 +314,26 @@ div.csl-indent {
 <li><p><strong>Sabiduría (Wisdom)</strong></p></li>
 </ul>
 <p><img src="imagenes/Captura de pantalla 2026-02-24 133559.png" class="img-fluid"></p>
-<section id="datos" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="datos"><span class="header-section-number">4.1</span> Datos</h3>
+<section id="datos" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="datos"><span class="header-section-number">1.3.1</span> Datos</h3>
 <p>Los datos son hechos crudos: números, símbolos o registros sin contexto. Por sí solos no explican nada ni responden preguntas. Un listado de valores, una planilla llena de números o una base de datos sin analizar son solo datos.</p>
 </section>
-<section id="información" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="información"><span class="header-section-number">4.2</span> Información</h3>
+<section id="información" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="información"><span class="header-section-number">1.3.2</span> Información</h3>
 <p>La información surge cuando los datos se <strong>organizan, ordenan y contextualizan</strong>. La información responde preguntas como: qué ocurrió, cuándo, dónde o cuánto.</p>
 </section>
-<section id="conocimiento" class="level3" data-number="4.3">
-<h3 data-number="4.3" class="anchored" data-anchor-id="conocimiento"><span class="header-section-number">4.3</span> Conocimiento</h3>
+<section id="conocimiento" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="conocimiento"><span class="header-section-number">1.3.3</span> Conocimiento</h3>
 <p>El conocimiento aparece cuando la información se interpreta, se relaciona con experiencias previas y permite <strong>comprender patrones, variabilidad y relaciones</strong>. El conocimiento responde al “cómo”.</p>
 </section>
-<section id="sabiduría" class="level3" data-number="4.4">
-<h3 data-number="4.4" class="anchored" data-anchor-id="sabiduría"><span class="header-section-number">4.4</span> Sabiduría</h3>
+<section id="sabiduría" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="sabiduría"><span class="header-section-number">1.3.4</span> Sabiduría</h3>
 <p>La sabiduría implica usar el conocimiento con criterio, prudencia y visión de largo plazo. Permite decidir qué acciones valen la pena. Es el nivel más alto y se construye con el tiempo y la experiencia.</p>
 <p>Este curso se enfoca principalmente en <strong>transformar datos en información y conocimiento</strong>, sentando las bases para una mejor toma de decisiones.</p>
 </section>
 </section>
-<section id="el-dato-como-materia-prima" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="el-dato-como-materia-prima"><span class="header-section-number">5</span> 3. El dato como materia prima</h2>
+<section id="el-dato-como-materia-prima" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="el-dato-como-materia-prima"><span class="header-section-number">1.4</span> 3. El dato como materia prima</h2>
 <p>Los datos son la materia prima del análisis. Sin datos adecuados, no hay información confiable ni conocimiento útil.</p>
 <p>Sin embargo, <strong>obtener datos no es gratis</strong>: requiere tiempo, recursos, tecnología y decisiones metodológicas. Por eso es importante aplicar el <strong>principio de parsimonia</strong>:</p>
 <p>No recolectar más datos de los necesarios, pero sí los datos correctos.</p>
@@ -343,8 +344,8 @@ div.csl-indent {
 <li><p>¿Qué limitaciones tienen?</p></li>
 </ul>
 </section>
-<section id="calidad-del-dato-ideas-clave" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="calidad-del-dato-ideas-clave"><span class="header-section-number">6</span> 4. Calidad del dato: ideas clave</h2>
+<section id="calidad-del-dato-ideas-clave" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="calidad-del-dato-ideas-clave"><span class="header-section-number">1.5</span> 4. Calidad del dato: ideas clave</h2>
 <p>Para que los datos puedan transformarse en información y conocimiento, deben tener <strong>calidad</strong>. Sin entrar aún en definiciones técnicas complejas, en esta etapa nos quedamos con algunas ideas fundamentales:</p>
 <ul>
 <li><p><strong>Exactitud</strong>: que el dato represente correctamente la realidad.</p></li>
@@ -357,15 +358,15 @@ div.csl-indent {
 <p><em>Si los datos son de mala calidad, el resultado del análisis también lo será.</em></p>
 </blockquote>
 </section>
-<section id="herramientas-del-curso-r-rstudio-y-paquetes" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="herramientas-del-curso-r-rstudio-y-paquetes"><span class="header-section-number">7</span> 5. Herramientas del curso: R, RStudio y paquetes</h2>
+<section id="herramientas-del-curso-r-rstudio-y-paquetes" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="herramientas-del-curso-r-rstudio-y-paquetes"><span class="header-section-number">1.6</span> 5. Herramientas del curso: R, RStudio y paquetes</h2>
 <p>Para trabajar con datos utilizaremos el lenguaje <strong>R</strong> y el entorno <strong>RStudio</strong>.</p>
-<section id="qué-es-r" class="level3" data-number="7.1">
-<h3 data-number="7.1" class="anchored" data-anchor-id="qué-es-r"><span class="header-section-number">7.1</span> ¿Qué es R?</h3>
+<section id="qué-es-r" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="qué-es-r"><span class="header-section-number">1.6.1</span> ¿Qué es R?</h3>
 <p>R es un lenguaje de programación y un entorno de software diseñado para el análisis estadístico, la visualización de datos y la ciencia de datos. Permite realizar cálculos, generar gráficos y construir modelos.</p>
 </section>
-<section id="qué-es-rstudio" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="qué-es-rstudio"><span class="header-section-number">7.2</span> ¿Qué es RStudio?</h3>
+<section id="qué-es-rstudio" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="qué-es-rstudio"><span class="header-section-number">1.6.2</span> ¿Qué es RStudio?</h3>
 <p>RStudio es un <strong>entorno de desarrollo integrado (IDE)</strong> que facilita el trabajo con R. Proporciona una interfaz organizada para escribir código, ejecutarlo, visualizar resultados y gestionar proyectos.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -374,12 +375,12 @@ div.csl-indent {
 </figure>
 </div>
 </section>
-<section id="qué-son-los-paquetes" class="level3" data-number="7.3">
-<h3 data-number="7.3" class="anchored" data-anchor-id="qué-son-los-paquetes"><span class="header-section-number">7.3</span> ¿Qué son los paquetes?</h3>
+<section id="qué-son-los-paquetes" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="qué-son-los-paquetes"><span class="header-section-number">1.6.3</span> ¿Qué son los paquetes?</h3>
 <p>Los paquetes son extensiones que agregan funciones específicas a R. Permiten realizar tareas de forma más rápida, clara y eficiente.</p>
 </section>
-<section id="analogía-con-una-biblioteca" class="level3" data-number="7.4">
-<h3 data-number="7.4" class="anchored" data-anchor-id="analogía-con-una-biblioteca"><span class="header-section-number">7.4</span> Analogía con una biblioteca</h3>
+<section id="analogía-con-una-biblioteca" class="level3" data-number="1.6.4">
+<h3 data-number="1.6.4" class="anchored" data-anchor-id="analogía-con-una-biblioteca"><span class="header-section-number">1.6.4</span> Analogía con una biblioteca</h3>
 <ul>
 <li><p><strong>R</strong> es el idioma.</p></li>
 <li><p><strong>RStudio</strong> es la biblioteca donde trabajamos.</p></li>
@@ -387,16 +388,16 @@ div.csl-indent {
 </ul>
 <p>-<img src="imagenes/Biblioteca R_ Conceptos y Paquetes.png" class="img-fluid quarto-figure quarto-figure-center" alt="Analogía con una biblioteca"></p>
 </section>
-<section id="instalar-y-cargar-paquetes" class="level3" data-number="7.5">
-<h3 data-number="7.5" class="anchored" data-anchor-id="instalar-y-cargar-paquetes"><span class="header-section-number">7.5</span> Instalar y cargar paquetes</h3>
+<section id="instalar-y-cargar-paquetes" class="level3" data-number="1.6.5">
+<h3 data-number="1.6.5" class="anchored" data-anchor-id="instalar-y-cargar-paquetes"><span class="header-section-number">1.6.5</span> Instalar y cargar paquetes</h3>
 <ul>
 <li><p><strong>Instalar</strong> un paquete es descargarlo en la computadora (se hace una sola vez).</p></li>
 <li><p><strong>Cargar</strong> un paquete es activarlo para usarlo en una sesión de trabajo (se hace cada vez que se necesita).</p></li>
 </ul>
 </section>
 </section>
-<section id="ciencia-reproducible-y-quarto" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="ciencia-reproducible-y-quarto"><span class="header-section-number">8</span> 6. Ciencia reproducible y Quarto</h2>
+<section id="ciencia-reproducible-y-quarto" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="ciencia-reproducible-y-quarto"><span class="header-section-number">1.7</span> 6. Ciencia reproducible y Quarto</h2>
 <p>El enfoque de ciencia reproducible adoptado en este curso se apoya en la definición propuesta por <span class="citation" data-cites="peng2011">(<a href="#ref-peng2011" role="doc-biblioref">Peng, 2011</a>)</span>, quien sostiene que un análisis es reproducible cuando terceros pueden obtener los mismos resultados utilizando los mismos datos y el mismo código.</p>
 <p>Este curso adopta el enfoque de la <strong>ciencia reproducible</strong>. Esto significa que cualquier persona debería poder repetir un análisis y obtener los mismos resultados utilizando los mismos datos y el mismo código.</p>
 <p>Trabajaremos con <strong>Quarto</strong>, una herramienta que permite crear documentos que integran:</p>
@@ -408,8 +409,8 @@ div.csl-indent {
 <p>En un único archivo reproducible.</p>
 <p>El objetivo no es solo analizar datos, sino <strong>documentar el proceso completo</strong>, favoreciendo la transparencia y el aprendizaje.</p>
 </section>
-<section id="cierre-de-la-clase" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="cierre-de-la-clase"><span class="header-section-number">9</span> 7. Cierre de la clase</h2>
+<section id="cierre-de-la-clase" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="cierre-de-la-clase"><span class="header-section-number">1.8</span> 7. Cierre de la clase</h2>
 <p>En esta primera clase vimos:</p>
 <ul>
 <li><p>Por qué los datos son centrales en la toma de decisiones.</p></li>
@@ -420,8 +421,8 @@ div.csl-indent {
 </ul>
 <p>En las próximas clases comenzaremos a trabajar de manera más práctica con datos reales, aprendiendo a importarlos, organizarlos y explorarlos paso a paso.</p>
 </section>
-<section id="referencias" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="referencias"><span class="header-section-number">10</span> Referencias</h2>
+<section id="referencias" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="referencias"><span class="header-section-number">1.9</span> Referencias</h2>
 <p>Ackoff, R. L. (1989). <em>From data to wisdom</em>. Journal of Applied Systems Analysis, 16, 3–9.</p>
 <p>Peng, R. D. (2011). Reproducible research in computational science. <em>Science</em>, 334(6060), 1226–1227. https://doi.org/10.1126/science.1213847</p>
 <p>Posit PBC. (2025). <em>Quarto: Sistema de publicación científica y técnica</em>. https://quarto.org</p>
@@ -430,6 +431,7 @@ div.csl-indent {
 <!-- -->
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
