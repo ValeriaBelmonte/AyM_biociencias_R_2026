@@ -1,0 +1,87 @@
+---
+title: Práctica guiada
+---
+
+# Práctica guiada: creación del primer documento en Quarto
+
+En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.
+
+Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.
+
+## Paso 1. Crear una carpeta para el proyecto
+
+En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:
+
+Mi_primer_trabajo
+
+Esta carpeta contendrá todos los archivos relacionados con el proyecto:
+
+-   scripts
+
+-   documentos Quarto
+
+-    gráficos
+
+-    bases de datos
+
+-    resultados
+
+Trabajar dentro de una carpeta específica ayuda a mantener el análisis ordenado y facilita la reproducibilidad.
+
+## Paso 2. Crear un proyecto en RStudio
+
+Abrir RStudio y seleccionar:
+
+File → New Project
+
+Luego:
+
+Existing Directory o New Directory seleccionar la carpeta Mi_primer_trabajo
+
+RStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.
+
+## Paso 3. Crear el primer documento Quarto
+
+En RStudio:
+
+File → New File → Quarto Document
+
+Seleccionar:
+
+formato HTML agregar un título
+
+Por ejemplo:
+
+Mi primer documento en Quarto
+
+## Paso 4. Diferenciar texto y código
+
+En Quarto podemos combinar:
+
+Texto \# Introducción
+
+Este es mi primer documento reproducible en R. Código
+
+```{r}
+2 + 2
+```
+
+## Paso 5. Renderizar el documento
+
+Presionar el botón:
+
+Render
+
+Quarto generará automáticamente un documento donde aparecerán:
+
+el texto escrito el código y los resultados obtenidos en R Idea central
+
+Quarto permite integrar en un mismo documento:
+
+-   explicación
+
+-   código
+
+-   resultados
+
+favoreciendo un trabajo ordenado, reproducible y fácil de compartir.

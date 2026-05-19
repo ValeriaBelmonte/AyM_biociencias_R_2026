@@ -116,7 +116,7 @@ Los paquetes son extensiones que agregan funciones específicas a R. Permiten re
 
 -   **Los paquetes** son colecciones de libros especializados.
 
-![Analogía con una biblioteca](../imagenes/Biblioteca R_ Conceptos y Paquetes.png){fig-align="center"}
+![Analogía con una biblioteca](../imagenes/Biblioteca%20R_%20Conceptos%20y%20Paquetes.png){fig-align="center"}
 
 ### Instalar y cargar paquetes
 
@@ -124,25 +124,101 @@ Los paquetes son extensiones que agregan funciones específicas a R. Permiten re
 
 -   **Cargar** un paquete es activarlo para usarlo en una sesión de trabajo (se hace cada vez que se necesita).
 
-## 6. Ciencia reproducible y Quarto
+## 6. R como calculadora y uso de scripts
 
-El enfoque de ciencia reproducible adoptado en este curso se apoya en la definición propuesta por [@peng2011], quien sostiene que un análisis es reproducible cuando terceros pueden obtener los mismos resultados utilizando los mismos datos y el mismo código.
+R puede utilizarse como una calculadora avanzada, permitiendo realizar operaciones matemáticas, trabajar con funciones y almacenar resultados en objetos.
 
-Este curso adopta el enfoque de la **ciencia reproducible**. Esto significa que cualquier persona debería poder repetir un análisis y obtener los mismos resultados utilizando los mismos datos y el mismo código.
+Por ejemplo en la consola escribir:
 
-Trabajaremos con **Quarto**, una herramienta que permite crear documentos que integran:
+```{r}
+2+2
+```
 
--   Texto explicativo
+```{r}
+log(20)
+```
 
--   Código
+```{r}
+sqrt(89)
+```
 
--   Resultados (tablas, gráficos, modelos)
+También es posible guardar resultados en objetos:
+
+```{r}
+x <- 10
+y <- 5
+
+x + y
+```
+
+En R, el símbolo \<- se utiliza para asignar valores a objetos.
+
+Hasta aquí, las instrucciones pueden escribirse directamente en la consola. Sin embargo, trabajar únicamente en la consola tiene una limitación importante: el código no queda guardado de manera organizada.
+
+Por esta razón, habitualmente se trabaja utilizando **scripts**.
+
+Un script es un archivo de texto con extensión .R que contiene instrucciones escritas en el lenguaje R. Los scripts permiten:
+
+-   Guardar el trabajo realizado
+
+-   Reutilizar código Corregir errores fácilmente Compartir análisis con otras personas
+
+-   Mantener un registro ordenado del análisis
+
+    Los scripts también permiten agregar comentarios para documentar el código:
+
+    ```{r}
+    # Cálculo del índice de masa corporal
+
+    peso <- 78
+    altura <- 1.72
+
+    imc <- peso/(altura^2)
+
+    imc
+    ```
+
+    En RStudio, un script puede crearse desde:
+
+    **File → New File → R Script**
+
+    Las líneas de código pueden ejecutarse individualmente utilizando:
+
+    -   
+
+    -    **Ctrl + Enter** (Windows/Linux)
+
+    -   
+
+    -    **Cmd + Enter** (Mac)
+
+    -   
+
+    El uso de scripts constituye el primer paso hacia un trabajo más organizado y reproducible en análisis de datos.
+
+    ## 7. Ciencia reproducible y Quarto
+
+    A medida que los análisis se vuelven más complejos, surge la necesidad de integrar no solo código, sino también explicaciones, resultados y gráficos en un único documento.
+
+    En este contexto aparece el enfoque de la **ciencia reproducible**.
+
+    Según \[\@peng2011\], un análisis es reproducible cuando otras personas pueden obtener los mismos resultados utilizando los mismos datos y el mismo código.
+
+    Para trabajar bajo este enfoque utilizaremos **Quarto**, una herramienta que permite crear documentos reproducibles integrando:
+
+    -    Texto explicativo
+
+    -    Código en R
+
+    -    Tablas y gráficos
+
+    -    Resultados de modelos y análisis
 
 En un único archivo reproducible.
 
-El objetivo no es solo analizar datos, sino **documentar el proceso completo**, favoreciendo la transparencia y el aprendizaje.
+El objetivo no es solo analizar datos, sino **documentar y comunicar el proceso completo del ana´lsis de datos de una manera clara, ordenada y reproducbiel** favoreciendo la transparencia y el aprendizaje.
 
-## 7. Cierre de la clase
+## 8. Cierre de la clase
 
 En esta primera clase vimos:
 

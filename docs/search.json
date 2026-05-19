@@ -128,5 +128,85 @@
     "crumbs": [
       "Inicio"
     ]
+  },
+  {
+    "objectID": "semana1/Praáctica Guiada.html",
+    "href": "semana1/Praáctica Guiada.html",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.\nAntes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.\n\n\nEn el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:"
+  },
+  {
+    "objectID": "semana1/Praáctica Guiada.html#paso-1.-crear-una-carpeta-para-el-proyecto",
+    "href": "semana1/Praáctica Guiada.html#paso-1.-crear-una-carpeta-para-el-proyecto",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:"
+  },
+  {
+    "objectID": "semana1/practica-guiada.html",
+    "href": "semana1/practica-guiada.html",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.\nAntes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.\n\n\nEn el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:\nMi_primer_trabajo\nEsta carpeta contendrá todos los archivos relacionados con el proyecto:\n\nscripts\ndocumentos Quarto\ngráficos\nbases de datos\nresultados\n\nTrabajar dentro de una carpeta específica ayuda a mantener el análisis ordenado y facilita la reproducibilidad.\n\n\n\nAbrir RStudio y seleccionar:\nFile → New Project\nLuego:\nExisting Directory o New Directory seleccionar la carpeta Mi_primer_trabajo\nRStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.\n\n\n\nEn RStudio:\nFile → New File → Quarto Document\nSeleccionar:\nformato HTML agregar un título\nPor ejemplo:\nMi primer documento en Quarto\n\n\n\nEn Quarto podemos combinar:\nTexto # Introducción\nEste es mi primer documento reproducible en R. Código\n\n\nCode\n2 + 2\n\n\n[1] 4\n\n\n\n\n\nPresionar el botón:\nRender\nQuarto generará automáticamente un documento donde aparecerán:\nel texto escrito el código y los resultados obtenidos en R Idea central\nQuarto permite integrar en un mismo documento:\n\nexplicación\ncódigo\nresultados\n\nfavoreciendo un trabajo ordenado, reproducible y fácil de compartir.",
+    "crumbs": [
+      "SEMANA 1",
+      "Práctica guiada"
+    ]
+  },
+  {
+    "objectID": "semana1/practica-guiada.html#paso-1.-crear-una-carpeta-para-el-proyecto",
+    "href": "semana1/practica-guiada.html#paso-1.-crear-una-carpeta-para-el-proyecto",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:\nMi_primer_trabajo\nEsta carpeta contendrá todos los archivos relacionados con el proyecto:\n\nscripts\ndocumentos Quarto\ngráficos\nbases de datos\nresultados\n\nTrabajar dentro de una carpeta específica ayuda a mantener el análisis ordenado y facilita la reproducibilidad.",
+    "crumbs": [
+      "SEMANA 1",
+      "Práctica guiada"
+    ]
+  },
+  {
+    "objectID": "semana1/practica-guiada.html#paso-2.-crear-un-proyecto-en-rstudio",
+    "href": "semana1/practica-guiada.html#paso-2.-crear-un-proyecto-en-rstudio",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "Abrir RStudio y seleccionar:\nFile → New Project\nLuego:\nExisting Directory o New Directory seleccionar la carpeta Mi_primer_trabajo\nRStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.",
+    "crumbs": [
+      "SEMANA 1",
+      "Práctica guiada"
+    ]
+  },
+  {
+    "objectID": "semana1/practica-guiada.html#paso-3.-crear-el-primer-documento-quarto",
+    "href": "semana1/practica-guiada.html#paso-3.-crear-el-primer-documento-quarto",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "En RStudio:\nFile → New File → Quarto Document\nSeleccionar:\nformato HTML agregar un título\nPor ejemplo:\nMi primer documento en Quarto",
+    "crumbs": [
+      "SEMANA 1",
+      "Práctica guiada"
+    ]
+  },
+  {
+    "objectID": "semana1/practica-guiada.html#paso-4.-diferenciar-texto-y-código",
+    "href": "semana1/practica-guiada.html#paso-4.-diferenciar-texto-y-código",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "En Quarto podemos combinar:\nTexto # Introducción\nEste es mi primer documento reproducible en R. Código\n\n\nCode\n2 + 2\n\n\n[1] 4",
+    "crumbs": [
+      "SEMANA 1",
+      "Práctica guiada"
+    ]
+  },
+  {
+    "objectID": "semana1/practica-guiada.html#paso-5.-renderizar-el-documento",
+    "href": "semana1/practica-guiada.html#paso-5.-renderizar-el-documento",
+    "title": "Práctica guiada",
+    "section": "",
+    "text": "Presionar el botón:\nRender\nQuarto generará automáticamente un documento donde aparecerán:\nel texto escrito el código y los resultados obtenidos en R Idea central\nQuarto permite integrar en un mismo documento:\n\nexplicación\ncódigo\nresultados\n\nfavoreciendo un trabajo ordenado, reproducible y fácil de compartir.",
+    "crumbs": [
+      "SEMANA 1",
+      "Práctica guiada"
+    ]
   }
 ]
