@@ -1,6 +1,5 @@
 ---
-title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio 
-"
+title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"
 ---
 
 # Bienvendidos 

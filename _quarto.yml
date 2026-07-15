@@ -20,11 +20,11 @@ website:
       - section: "SEMANA 0"
         contents:
           - href: semana0/teoria.qmd
-            text: "Teoría"
+            text: "Teoría 0"
           - href: semana0/practica-guiada.qmd
-            text: "Práctica guiada"
+            text: "Práctica guiada 0"
           - href: semana0/practica-estudiantes.qmd
-            text: "Práctica para estudiantes"
+            text: "Práctica para estudiantes 0"
 
       - section: "SEMANA 1"
         contents:
@@ -34,6 +34,15 @@ website:
             text: "Práctica guiada"
           - href: semana1/practica-estudiantes.qmd
             text: "Práctica para estudiantes"
+      - section: "SEMANA 2"
+        contents:
+          - href: semana1/teoria.qmd
+            text: "Teoría 2"
+          - href: semana1/practica-guiada.qmd
+            text: "Práctica guiada 2"
+          - href: semana1/practica-estudiantes.qmd
+            text: "Práctica para estudiantes 2"
+
 
 format:
   html:

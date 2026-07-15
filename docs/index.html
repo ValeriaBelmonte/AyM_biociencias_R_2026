@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Análisis y modelado de datos para investigaciones en biociencias con R y RStudio – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -159,19 +159,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./semana0/teoria.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Teoría</span></a>
+ <span class="menu-text">Teoría 0</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./semana0/practica-guiada.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Práctica guiada</span></a>
+ <span class="menu-text">Práctica guiada 0</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./semana0/practica-estudiantes.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Práctica para estudiantes</span></a>
+ <span class="menu-text">Práctica para estudiantes 0</span></a>
   </div>
 </li>
       </ul>
@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./semana1/practica-guiada.qmd" class="sidebar-item-text sidebar-link">
+  <a href="./semana1/practica-guiada.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica guiada</span></a>
   </div>
 </li>
@@ -201,6 +201,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="./semana1/practica-estudiantes.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">SEMANA 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./semana1/teoria.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./semana1/practica-guiada.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./semana1/practica-estudiantes.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 2</span></a>
   </div>
 </li>
       </ul>
@@ -708,16 +737,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio </span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Bienvendidos </span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introducción  </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>El análisis de datos mediante software libre se ha convertido en una competencia esencial en la investigación vinculada con las biociencias. como la  y gestión agroambiental. R y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>En particular, se enfatiza el uso de los Modelos Lineales Generales (MLG) como una herramienta estadística fundamental para el análisis de datos, ya que permiten modelar y comprender relaciones entre variables cuantitativas y categóricas, realizar comparaciones entre tratamientos y analizar efectos múltiples.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Estas competencias constituyen el punto de partida para abordar en profundidad métodos más avanzados en cursos específicos posteriores. El curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración de datos, la descripción estadística y la aplicación de modelos lineales generales (MLG), con énfasis en la interpretación de resultados y su comunicación efectiva.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Bienvendidos </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introducción  </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>El análisis de datos mediante software libre se ha convertido en una competencia esencial en la investigación vinculada con las biociencias. como la  y gestión agroambiental. R y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>En particular, se enfatiza el uso de los Modelos Lineales Generales (MLG) como una herramienta estadística fundamental para el análisis de datos, ya que permiten modelar y comprender relaciones entre variables cuantitativas y categóricas, realizar comparaciones entre tratamientos y analizar efectos múltiples.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Estas competencias constituyen el punto de partida para abordar en profundidad métodos más avanzados en cursos específicos posteriores. El curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración de datos, la descripción estadística y la aplicación de modelos lineales generales (MLG), con énfasis en la interpretación de resultados y su comunicación efectiva.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

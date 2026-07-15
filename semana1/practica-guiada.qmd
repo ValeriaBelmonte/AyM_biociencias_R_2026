@@ -20,11 +20,11 @@ Esta carpeta contendrá todos los archivos relacionados con el proyecto:
 
 -   documentos Quarto
 
--    gráficos
+-   gráficos
 
--    bases de datos
+-   bases de datos
 
--    resultados
+-   resultados
 
 Trabajar dentro de una carpeta específica ayuda a mantener el análisis ordenado y facilita la reproducibilidad.
 

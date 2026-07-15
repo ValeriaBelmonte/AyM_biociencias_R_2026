@@ -186,11 +186,11 @@ Un script es un archivo de texto con extensión .R que contiene instrucciones es
 
     -   
 
-    -    **Ctrl + Enter** (Windows/Linux)
+    -   **Ctrl + Enter** (Windows/Linux)
 
     -   
 
-    -    **Cmd + Enter** (Mac)
+    -   **Cmd + Enter** (Mac)
 
     -   
 
@@ -206,13 +206,13 @@ Un script es un archivo de texto con extensión .R que contiene instrucciones es
 
     Para trabajar bajo este enfoque utilizaremos **Quarto**, una herramienta que permite crear documentos reproducibles integrando:
 
-    -    Texto explicativo
+    -   Texto explicativo
 
-    -    Código en R
+    -   Código en R
 
-    -    Tablas y gráficos
+    -   Tablas y gráficos
 
-    -    Resultados de modelos y análisis
+    -   Resultados de modelos y análisis
 
 En un único archivo reproducible.
 
