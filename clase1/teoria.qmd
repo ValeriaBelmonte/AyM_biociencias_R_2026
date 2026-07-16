@@ -124,6 +124,145 @@ Los paquetes son extensiones que agregan funciones específicas a R. Permiten re
 
 -   **Cargar** un paquete es activarlo para usarlo en una sesión de trabajo (se hace cada vez que se necesita).
 
+### ¿Qué es un objeto en R?
+
+Un **objeto** es cualquier elemento que almacena información en la memoria de R. Puede contener un único valor, una colección de valores, una tabla de datos o incluso una función.
+
+En otras palabras, un objeto es el lugar donde R guarda los datos con los que trabajaremos.
+
+#### Crear un objeto
+
+La asignación se realiza mediante el operador `<-`.
+
+```{r}
+edad <- 35
+```
+
+Aquí:
+
+-    `edad` es el nombre del objeto.
+
+-    `35` es el valor almacenado.
+
+#### Reglas para nombrar objetos 
+
+-    Deben comenzar con una letra.
+
+-    Pueden contener números.
+
+-    Pueden contener guiones bajos (`_`).
+
+-    No deben contener espacios.
+
+-    Conviene utilizar nombres descriptivos.
+
+Correctos:
+
+```{r}
+#| eval: false
+#| include: false
+    edad
+```
+
+```{r}
+#| eval: false
+#| include: false
+total_emision
+```
+
+Incorrectos
+
+```{r}
+#| eval: false
+#| include: false
+2edad
+```
+
+```{r}
+#| eval: false
+#| include: false
+total emisión
+```
+
+Podemos visualizar su contenido escribiendo el nombre del objeto.
+
+#### ¿Qué tipos de objetos utilizaremos?
+
+No hace falta presentar todos los objetos de R. Para este curso bastan cuatro.
+
+#### a) Vectores
+
+Un vector es una colección de elementos del mismo tipo.
+
+```{r}
+paises <- c(   "Argentina",   "Brasil",   "Chile" )
+```
+
+```{r}
+temperaturas <- c(
+  0.4,
+  0.6,
+  0.8
+)
+```
+
+#### b) Data Frame
+
+Es una tabla donde
+
+-    cada fila representa una observación;
+
+-    cada columna representa una variable.
+
+Es el objeto más utilizado en análisis de datos.
+
+```{r}
+datos <- data.frame(
+  pais = c("Argentina", "Brasil"),
+  emision = c(120,350)
+)
+```
+
+#### c) Tibble
+
+Es la versión moderna del **data frame**.
+
+Cuando usamos **Tidyverse**
+
+#### d) Factores
+
+Los factores representan variables categóricas.
+
+```{r}
+continente <- factor(
+  c(
+    "América",
+    "Europa",
+    "Asia"
+  )
+)
+```
+
+####  ¿Cómo saber qué tipo de objeto tenemos?
+
+```{r}
+class(datos)
+```
+
+### El entorno de trabajo (Environment)
+
+Cada vez que se crea un objeto, éste aparece en el panel **Environment** de RStudio.
+
+Por ejemplo,
+
+```{r} 
+pais <- "Argentina"  
+anio <- 2020  
+temperatura <- 0.56
+```
+
+ 
+
 ## 6. R como calculadora y uso de scripts
 
 R puede utilizarse como una calculadora avanzada, permitiendo realizar operaciones matemáticas, trabajar con funciones y almacenar resultados en objetos.
