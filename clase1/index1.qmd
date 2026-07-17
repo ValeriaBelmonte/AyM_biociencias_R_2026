@@ -1,0 +1,15 @@
+---
+title: "Introducción"
+---
+
+## Objetivo de la clase
+
+-   Al finalizar esta clase, el/la estudiante deberá ser capaz de:
+
+-   Comprender qué significa trabajar con datos y por qué es central en la toma de decisiones.
+
+-   Diferenciar datos, información, conocimiento y sabiduría.
+
+-   Reconocer la importancia de la calidad del dato.
+
+-   Identificar las herramientas principales que se utilizarán durante el curso (R, RStudio y paquetes).

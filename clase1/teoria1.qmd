@@ -4,19 +4,7 @@ title: Clase 1
 
 # Introducción al análisis de datos reproducible
 
-## Objetivo de la clase
-
-Al finalizar esta clase, el/la estudiante deberá ser capaz de:
-
--   Comprender qué significa trabajar con datos y por qué es central en la toma de decisiones.
-
--   Diferenciar datos, información, conocimiento y sabiduría.
-
--   Reconocer la importancia de la calidad del dato.
-
--   Identificar las herramientas principales que se utilizarán durante el curso (R, RStudio y paquetes).
-
-## 1. Tomar decisiones con datos
+##  Tomar decisiones con datos
 
 De manera consciente o inconsciente, las personas toman decisiones todo el tiempo: personales, profesionales, organizacionales. Algunas decisiones tienen bajo impacto, otras pueden tener consecuencias importantes y duraderas.
 
@@ -24,7 +12,7 @@ En contextos académicos, científicos, productivos u organizacionales, **las de
 
 Aquí es donde entra el análisis de datos: como una herramienta para **reducir la incertidumbre** y mejorar la calidad de las decisiones.
 
-## 2. De los datos a la sabiduría: la pirámide DIKW
+## De los datos a la sabiduría: la pirámide DIKW
 
 Este enfoque se basa en el modelo conceptual conocido como **DIKW** (Data–Information–Knowledge–Wisdom), ampliamente utilizado en gestión del conocimiento y análisis de sistemas [@ackoff1989].
 
@@ -58,7 +46,7 @@ La sabiduría implica usar el conocimiento con criterio, prudencia y visión de 
 
 Este curso se enfoca principalmente en **transformar datos en información y conocimiento**, sentando las bases para una mejor toma de decisiones.
 
-## 3. El dato como materia prima
+## El dato como materia prima
 
 Los datos son la materia prima del análisis. Sin datos adecuados, no hay información confiable ni conocimiento útil.
 
@@ -74,7 +62,7 @@ Antes de analizar, siempre debemos preguntarnos:
 
 -   ¿Qué limitaciones tienen?
 
-## 4. Calidad del dato: ideas clave
+### Calidad del dato: ideas clave
 
 Para que los datos puedan transformarse en información y conocimiento, deben tener **calidad**. Sin entrar aún en definiciones técnicas complejas, en esta etapa nos quedamos con algunas ideas fundamentales:
 
@@ -90,7 +78,7 @@ Un principio básico del análisis de datos es:
 
 > *Si los datos son de mala calidad, el resultado del análisis también lo será.*
 
-## 5. Herramientas del curso: R, RStudio y paquetes
+## Herramientas del curso: R, RStudio y paquetes
 
 Para trabajar con datos utilizaremos el lenguaje **R** y el entorno **RStudio**.
 
@@ -140,21 +128,21 @@ edad <- 35
 
 Aquí:
 
--    `edad` es el nombre del objeto.
+-   `edad` es el nombre del objeto.
 
--    `35` es el valor almacenado.
+-   `35` es el valor almacenado.
 
-#### Reglas para nombrar objetos 
+#### Reglas para nombrar objetos
 
--    Deben comenzar con una letra.
+-   Deben comenzar con una letra.
 
--    Pueden contener números.
+-   Pueden contener números.
 
--    Pueden contener guiones bajos (`_`).
+-   Pueden contener guiones bajos (`_`).
 
--    No deben contener espacios.
+-   No deben contener espacios.
 
--    Conviene utilizar nombres descriptivos.
+-   Conviene utilizar nombres descriptivos.
 
 Correctos:
 
@@ -190,7 +178,7 @@ Podemos visualizar su contenido escribiendo el nombre del objeto.
 
 No hace falta presentar todos los objetos de R. Para este curso bastan cuatro.
 
-#### a) Vectores
+-   Vectores
 
 Un vector es una colección de elementos del mismo tipo.
 
@@ -206,15 +194,16 @@ temperaturas <- c(
 )
 ```
 
-#### b) Data Frame
+-   Data Frame
 
 Es una tabla donde
 
--    cada fila representa una observación;
-
--    cada columna representa una variable.
+i.  cada fila representa una observación;
+ii. cada columna representa una variable.
 
 Es el objeto más utilizado en análisis de datos.
+
+Ejemplo: Creación del dataframe \*datos\*
 
 ```{r}
 datos <- data.frame(
@@ -223,13 +212,13 @@ datos <- data.frame(
 )
 ```
 
-#### c) Tibble
+-   Tibble
 
 Es la versión moderna del **data frame**.
 
 Cuando usamos **Tidyverse**
 
-#### d) Factores
+-   Factores
 
 Los factores representan variables categóricas.
 
@@ -243,7 +232,7 @@ continente <- factor(
 )
 ```
 
-####  ¿Cómo saber qué tipo de objeto tenemos?
+#### ¿Cómo saber qué tipo de objeto tenemos?
 
 ```{r}
 class(datos)
@@ -255,13 +244,11 @@ Cada vez que se crea un objeto, éste aparece en el panel **Environment** de RSt
 
 Por ejemplo,
 
-```{r} 
+```{r}
 pais <- "Argentina"  
 anio <- 2020  
 temperatura <- 0.56
 ```
-
- 
 
 ## 6. R como calculadora y uso de scripts
 

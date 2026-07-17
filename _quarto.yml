@@ -21,79 +21,79 @@ website:
         contents:
           - href: clase0/index.qmd
             text: Presentación
-          - href: clase0/teoria.qmd
-            text: "Teoría 0"
-          - href: clase0/practica-guiada.qmd
-            text: "Práctica guiada 0"
-          - href: clase0/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 0"
+          - href: clase0/teoria0.qmd
+            text: "Teoría"
+          - href: clase0/practica-guiada0.qmd
+            text: "Práctica guiada"
+          - href: clase0/practica-estudiantes0.qmd
+            text: "Práctica para estudiantes"
 
       - section: "Clase 1"
         contents:
-          - href: clase1/index.qmd
+          - href: clase1/index1.qmd
             text: Presentación
-          - href: clase1/teoria.qmd
+          - href: clase1/teoria1.qmd
             text: "Teoría"
-          - href: clase1/practica-guiada.qmd
-            text: "Práctica guiada 1"
-          - href: clase1/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 1"
+          - href: clase1/practica-guiada1.qmd
+            text: "Práctica guiada"
+          - href: clase1/practica-estudiantes1.qmd
+            text: "Práctica para estudiantes"
             
       - section: "Clase 2"
         contents:
-          - href: clase2/index.qmd
+          - href: clase2/index2.qmd
             text: Presentación
-          - href: clase2/teoria.qmd
-            text: "Teoría 2"
-          - href: clase2/practica-guiada.qmd
-            text: "Práctica guiada 2"
-          - href: clase2/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 2"
+          - href: clase2/teoria2.qmd
+            text: "Teoría"
+          - href: clase2/practica-guiada2.qmd
+            text: "Práctica guiada"
+          - href: clase2/practica-estudiantes2.qmd
+            text: "Práctica para estudiantes"
 
 
       - section: "Clase 3"
         contents:
-          - href: clase3/index.qmd
+          - href: clase3/index3.qmd
             text: Presentación
-          - href: clase3/teoria.qmd
-            text: "Teoría 3"
-          - href: clase3/practica-guiada.qmd
-            text: "Práctica guiada 3"
-          - href: clase3/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 3"
+          - href: clase3/teoria3.qmd
+            text: "Teoría"
+          - href: clase3/practica-guiada3.qmd
+            text: "Práctica guiada"
+          - href: clase3/practica-estudiantes3.qmd
+            text: "Práctica para estudiantes"
 
       - section: "Clase 4"
         contents:
-          - href: clase4/index.qmd
+          - href: clase4/index4.qmd
             text: Presentación
-          - href: clase4/teoria.qmd
-            text: "Teoría 4"
-          - href: clase4/practica-guiada.qmd
-            text: "Práctica guiada 4"
-          - href: clase4/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 4"
+          - href: clase4/teoria4.qmd
+            text: "Teoría"
+          - href: clase4/practica-guiada4.qmd
+            text: "Práctica guiada"
+          - href: clase4/practica-estudiantes4.qmd
+            text: "Práctica para estudiantes"
             
       - section: "Clase 5"
         contents:
-          - href: clase5/index.qmd
+          - href: clase5/index5.qmd
             text: Presentación
-          - href: clase5/teoria.qmd
-            text: "Teoría 5"
-          - href: clase5/practica-guiada.qmd
-            text: "Práctica guiada 5"
-          - href: clase5/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 5"
+          - href: clase5/teoria5.qmd
+            text: "Teoría"
+          - href: clase5/practica-guiada5.qmd
+            text: "Práctica guiada"
+          - href: clase5/practica-estudiantes5.qmd
+            text: "Práctica para estudiantes"
                         
       - section: "Clase 6"
         contents:
-          - href: clase6/index.qmd
+          - href: clase6/index6.qmd
             text: Presentación
-          - href: clase6/teoria.qmd
-            text: "Teoría 6"
-          - href: clase6/practica-guiada.qmd
-            text: "Práctica guiada 6"
-          - href: clase6/practica-estudiantes.qmd
-            text: "Práctica para estudiantes 6"
+          - href: clase6/teoria6.qmd
+            text: "Teoría"
+          - href: clase6/practica-guiada6.qmd
+            text: "Práctica guiada"
+          - href: clase6/practica-estudiantes6.qmd
+            text: "Práctica para estudiantes"
 format:
   html:
     theme: cosmo
