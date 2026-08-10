@@ -1,5 +1,181 @@
 ---
-title: "Introducción"
+title: "Teoría"
 ---
 
-## Objetivo de la clase
+# Preparación del entorno de trabajo
+
+## Fundamento teórico
+
+Un análisis reproducible debe desarrollarse dentro de un proyecto. El proyecto permite mantener organizados los datos, scripts, gráficos e informes, y evita depender de rutas absolutas asociadas a una computadora particular.
+
+Una posible estructura es:
+
+analisis_agrofood/ 
+├── datos/ 
+   │\
+   └── Agrofood_co2_emission.csv 
+├── scripts/ 
+├── resultados/ 
+├── figuras/ 
+└── informes
+       |
+       └── informe.qmd
+
+En RStudio creamos el nuevo proyecto y lo guardamos en la carpeta principal analisis_agrofood:
+
+```         
+File → New Project → New Directory → New Project
+```
+
+![Imagen de la cracación del proyecto](images/creacion%20proyecto%20analisis..-01.png)
+
+##  Insalación de Paquetes 
+
+Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R Para ello buscaremos en el icono o con el teclado *contrl+ alt+ i* y copiamos los paquetes que debemos isntalar
+
+```{r}
+
+```
+
+Dentro de los Chunck se pueden escribir aclaraciones o indicaciones, siempre  anteponiendo el **#** de esta manera el programa ignora lo escrito. 
+
+
+```{r}
+#correr esta sentencia una sola vez
+# si no lo tiene
+#install.packages("tidyverse") 
+#install.packages("janitor") 
+#install.packages("skimr")
+```
+Los paquetes se instalan una sola vez
+
+Además, se les puede asignar  un nombres a los Chunk
+
+```{r carga de paquetes }
+#correr esta sentencia una sola vez
+# si no lo tiene
+#install.packages("tidyverse") 
+#install.packages("janitor") 
+#install.packages("skimr")
+```
+
+
+Los paquetes se instalan una sola vez.
+
+En cada sesión deben cargarse:
+
+```{r}
+library(tidyverse) 
+library(janitor) 
+library(skimr)
+```
+
+```         
+library(tidyverse) library(janitor) library(skimr)
+```
+
+El paquete `tidyverse` incluye, entre otros:
+
+-   `readr`, para importar archivos;
+
+-   `dplyr`, para manipular datos;
+
+-   `tidyr`, para reorganizar datos;
+
+-   `ggplot2`, para realizar gráficos;
+
+-   `forcats`, para trabajar con factores.
+
+# 3. Importación de la base de datos
+
+## Fundamento teórico
+
+Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.
+
+Para archivos CSV puede emplearse `read_csv()`. Esta función genera un objeto de tipo `tibble`, una versión moderna de un data frame.
+
+## Código en R
+
+Suponiendo que el archivo está dentro de la carpeta `datos`:
+
+```{r}
+agro <- read_csv("../datos originales/Agrofood_co2_emission.csv")
+```
+
+Para comprobar que el objeto fue creado:
+
+```{r}
+view(agro) 
+```
+
+También puede observarse en el panel Environment de RStudio.
+
+![Objeto agro en Entorno del RStudio](images/agro%20en%20entorno.png){width="300"}
+
+## Diferencia entre objeto y archivo
+
+El archivo original permanece almacenado en la computadora como Agrofood_co2_emission.csv
+
+El objeto creado dentro de R se denomina:
+
+```         
+agro
+```
+
+Modificar el objeto `agro` no altera automáticamente el archivo CSV original.
+
+# 4. Primera inspección de la base
+
+## Fundamento teórico
+
+Antes de modificar una base, se debe conocer:
+
+-   cuántas filas tiene;
+
+-   cuántas columnas contiene;
+
+-   cómo se llaman las variables;
+
+-   qué tipo de información almacena cada variable;
+
+-   si existen valores faltantes;
+
+-   si se observan errores evidentes.
+
+Cada fila de esta base representa una combinación de país o área y año. Cada columna representa una variable.
+
+## Dimensiones de la base
+
+```{r}
+dim(agro)
+```
+
+```{r}
+dim(agro)
+```
+
+Resultado esperado:
+
+```         
+6965 filas y 31 columnas
+```
+
+También pueden consultarse por separado:
+
+número de filas y número de columnas
+
+```{r}
+nrow(agro) 
+ncol(agro)
+```
+
+## Nombres de las variables
+
+```{r}
+names(agro)
+```
+
+
+Otras maneras de cargar bases de datos estructurados 
+
+Intalar el paquete 

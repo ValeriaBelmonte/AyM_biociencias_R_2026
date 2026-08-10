@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducción – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Teoría – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase2/index2.qmd">Clase 2</a></li><li class="breadcrumb-item"><a href="../clase2/teoria2.html">Teoría</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase2/index2.html">Clase 2</a></li><li class="breadcrumb-item"><a href="../clase2/teoria2.html">Teoría</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,13 +199,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../clase1/teoria1.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../clase1/teoria1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teoría</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../clase1/practica-guiada1.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../clase1/practica-guiada1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica guiada</span></a>
   </div>
 </li>
@@ -228,7 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../clase2/index2.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../clase2/index2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -240,13 +240,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../clase2/practica-guiada2.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../clase2/practica-guiada2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica guiada</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../clase2/practica-estudiantes2.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../clase2/practica-estudiantes2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica para estudiantes</span></a>
   </div>
 </li>
@@ -402,16 +402,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objetivo-de-la-clase" id="toc-objetivo-de-la-clase" class="nav-link active" data-scroll-target="#objetivo-de-la-clase"><span class="header-section-number">1</span> Objetivo de la clase</a></li>
+  <li><a href="#preparación-del-entorno-de-trabajo" id="toc-preparación-del-entorno-de-trabajo" class="nav-link active" data-scroll-target="#preparación-del-entorno-de-trabajo"><span class="header-section-number">1</span> Preparación del entorno de trabajo</a>
+  <ul class="collapse">
+  <li><a href="#fundamento-teórico" id="toc-fundamento-teórico" class="nav-link" data-scroll-target="#fundamento-teórico"><span class="header-section-number">1.1</span> Fundamento teórico</a></li>
+  <li><a href="#insalación-de-paquetes" id="toc-insalación-de-paquetes" class="nav-link" data-scroll-target="#insalación-de-paquetes"><span class="header-section-number">1.2</span> Insalación de Paquetes</a></li>
+  </ul></li>
+  <li><a href="#importación-de-la-base-de-datos" id="toc-importación-de-la-base-de-datos" class="nav-link" data-scroll-target="#importación-de-la-base-de-datos"><span class="header-section-number">2</span> 3. Importación de la base de datos</a>
+  <ul class="collapse">
+  <li><a href="#fundamento-teórico-1" id="toc-fundamento-teórico-1" class="nav-link" data-scroll-target="#fundamento-teórico-1"><span class="header-section-number">2.1</span> Fundamento teórico</a></li>
+  <li><a href="#código-en-r" id="toc-código-en-r" class="nav-link" data-scroll-target="#código-en-r"><span class="header-section-number">2.2</span> Código en R</a></li>
+  <li><a href="#diferencia-entre-objeto-y-archivo" id="toc-diferencia-entre-objeto-y-archivo" class="nav-link" data-scroll-target="#diferencia-entre-objeto-y-archivo"><span class="header-section-number">2.3</span> Diferencia entre objeto y archivo</a></li>
+  </ul></li>
+  <li><a href="#primera-inspección-de-la-base" id="toc-primera-inspección-de-la-base" class="nav-link" data-scroll-target="#primera-inspección-de-la-base"><span class="header-section-number">3</span> 4. Primera inspección de la base</a>
+  <ul class="collapse">
+  <li><a href="#fundamento-teórico-2" id="toc-fundamento-teórico-2" class="nav-link" data-scroll-target="#fundamento-teórico-2"><span class="header-section-number">3.1</span> Fundamento teórico</a></li>
+  <li><a href="#dimensiones-de-la-base" id="toc-dimensiones-de-la-base" class="nav-link" data-scroll-target="#dimensiones-de-la-base"><span class="header-section-number">3.2</span> Dimensiones de la base</a></li>
+  <li><a href="#nombres-de-las-variables" id="toc-nombres-de-las-variables" class="nav-link" data-scroll-target="#nombres-de-las-variables"><span class="header-section-number">3.3</span> Nombres de las variables</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase2/index2.qmd">Clase 2</a></li><li class="breadcrumb-item"><a href="../clase2/teoria2.html">Teoría</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase2/index2.html">Clase 2</a></li><li class="breadcrumb-item"><a href="../clase2/teoria2.html">Teoría</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Introducción</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Teoría</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -428,12 +444,234 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="objetivo-de-la-clase" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="objetivo-de-la-clase"><span class="header-section-number">1</span> Objetivo de la clase</h2>
+<section id="preparación-del-entorno-de-trabajo" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Preparación del entorno de trabajo</h1>
+<section id="fundamento-teórico" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="fundamento-teórico"><span class="header-section-number">1.1</span> Fundamento teórico</h2>
+<p>Un análisis reproducible debe desarrollarse dentro de un proyecto. El proyecto permite mantener organizados los datos, scripts, gráficos e informes, y evita depender de rutas absolutas asociadas a una computadora particular.</p>
+<p>Una posible estructura es:</p>
+<p>analisis_agrofood/ ├── datos/ │<br>
+└── Agrofood_co2_emission.csv ├── scripts/ ├── resultados/ ├── figuras/ └── informes | └── informe.qmd</p>
+<p>En RStudio creamos el nuevo proyecto y lo guardamos en la carpeta principal analisis_agrofood:</p>
+<pre><code>File → New Project → New Directory → New Project</code></pre>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/creacion proyecto analisis..-01.png" class="img-fluid figure-img"></p>
+<figcaption>Imagen de la cracación del proyecto</figcaption>
+</figure>
+</div>
+</section>
+<section id="insalación-de-paquetes" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="insalación-de-paquetes"><span class="header-section-number">1.2</span> Insalación de Paquetes</h2>
+<p>Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R Para ello buscaremos en el icono o con el teclado <em>contrl+ alt+ i</em> y copiamos los paquetes que debemos isntalar</p>
+<p>Dentro de los Chunck se pueden escribir aclaraciones o indicaciones, siempre anteponiendo el <strong>#</strong> de esta manera el programa ignora lo escrito.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Los paquetes se instalan una sola vez</p>
+<p>Además, se les puede asignar un nombres a los Chunk</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Los paquetes se instalan una sola vez.</p>
+<p>En cada sesión deben cargarse:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'janitor'
+
+The following objects are masked from 'package:stats':
+
+    chisq.test, fisher.test</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<pre><code>library(tidyverse) library(janitor) library(skimr)</code></pre>
+<p>El paquete <code>tidyverse</code> incluye, entre otros:</p>
+<ul>
+<li><p><code>readr</code>, para importar archivos;</p></li>
+<li><p><code>dplyr</code>, para manipular datos;</p></li>
+<li><p><code>tidyr</code>, para reorganizar datos;</p></li>
+<li><p><code>ggplot2</code>, para realizar gráficos;</p></li>
+<li><p><code>forcats</code>, para trabajar con factores.</p></li>
+</ul>
+</section>
+</section>
+<section id="importación-de-la-base-de-datos" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 3. Importación de la base de datos</h1>
+<section id="fundamento-teórico-1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="fundamento-teórico-1"><span class="header-section-number">2.1</span> Fundamento teórico</h2>
+<p>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.</p>
+<p>Para archivos CSV puede emplearse <code>read_csv()</code>. Esta función genera un objeto de tipo <code>tibble</code>, una versión moderna de un data frame.</p>
+</section>
+<section id="código-en-r" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="código-en-r"><span class="header-section-number">2.2</span> Código en R</h2>
+<p>Suponiendo que el archivo está dentro de la carpeta <code>datos</code>:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/Agrofood_co2_emission.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 6965 Columns: 31
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (1): Area
+dbl (30): Year, Savanna fires, Forest fires, Crop Residues, Rice Cultivation...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Para comprobar que el objeto fue creado:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(agro) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>También puede observarse en el panel Environment de RStudio.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/agro en entorno.png" class="img-fluid figure-img" width="300"></p>
+<figcaption>Objeto agro en Entorno del RStudio</figcaption>
+</figure>
+</div>
+</section>
+<section id="diferencia-entre-objeto-y-archivo" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="diferencia-entre-objeto-y-archivo"><span class="header-section-number">2.3</span> Diferencia entre objeto y archivo</h2>
+<p>El archivo original permanece almacenado en la computadora como Agrofood_co2_emission.csv</p>
+<p>El objeto creado dentro de R se denomina:</p>
+<pre><code>agro</code></pre>
+<p>Modificar el objeto <code>agro</code> no altera automáticamente el archivo CSV original.</p>
+</section>
+</section>
+<section id="primera-inspección-de-la-base" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 4. Primera inspección de la base</h1>
+<section id="fundamento-teórico-2" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="fundamento-teórico-2"><span class="header-section-number">3.1</span> Fundamento teórico</h2>
+<p>Antes de modificar una base, se debe conocer:</p>
+<ul>
+<li><p>cuántas filas tiene;</p></li>
+<li><p>cuántas columnas contiene;</p></li>
+<li><p>cómo se llaman las variables;</p></li>
+<li><p>qué tipo de información almacena cada variable;</p></li>
+<li><p>si existen valores faltantes;</p></li>
+<li><p>si se observan errores evidentes.</p></li>
+</ul>
+<p>Cada fila de esta base representa una combinación de país o área y año. Cada columna representa una variable.</p>
+</section>
+<section id="dimensiones-de-la-base" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="dimensiones-de-la-base"><span class="header-section-number">3.2</span> Dimensiones de la base</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6965   31</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6965   31</code></pre>
+</div>
+</div>
+<p>Resultado esperado:</p>
+<pre><code>6965 filas y 31 columnas</code></pre>
+<p>También pueden consultarse por separado:</p>
+<p>número de filas y número de columnas</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6965</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31</code></pre>
+</div>
+</div>
+</section>
+<section id="nombres-de-las-variables" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="nombres-de-las-variables"><span class="header-section-number">3.3</span> Nombres de las variables</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Area"                            "Year"                           
+ [3] "Savanna fires"                   "Forest fires"                   
+ [5] "Crop Residues"                   "Rice Cultivation"               
+ [7] "Drained organic soils (CO2)"     "Pesticides Manufacturing"       
+ [9] "Food Transport"                  "Forestland"                     
+[11] "Net Forest conversion"           "Food Household Consumption"     
+[13] "Food Retail"                     "On-farm Electricity Use"        
+[15] "Food Packaging"                  "Agrifood Systems Waste Disposal"
+[17] "Food Processing"                 "Fertilizers Manufacturing"      
+[19] "IPPU"                            "Manure applied to Soils"        
+[21] "Manure left on Pasture"          "Manure Management"              
+[23] "Fires in organic soils"          "Fires in humid tropical forests"
+[25] "On-farm energy use"              "Rural population"               
+[27] "Urban population"                "Total Population - Male"        
+[29] "Total Population - Female"       "total_emission"                 
+[31] "Average Temperature °C"         </code></pre>
+</div>
+</div>
+<p>Otras maneras de cargar bases de datos estructurados</p>
+<p>Intalar el paquete</p>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -887,11 +1125,187 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introducción"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la clase</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación del entorno de trabajo</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>Un análisis reproducible debe desarrollarse dentro de un proyecto. El proyecto permite mantener organizados los datos, scripts, gráficos e informes, y evita depender de rutas absolutas asociadas a una computadora particular.</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>Una posible estructura es:</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>analisis_agrofood/ </span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>├── datos/ </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>   │\</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>   └── Agrofood_co2_emission.csv </span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>├── scripts/ </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>├── resultados/ </span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>├── figuras/ </span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>└── informes</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>       <span class="pp">|</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>       └── informe.qmd</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>En RStudio creamos el nuevo proyecto y lo guardamos en la carpeta principal analisis_agrofood:</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="in">File → New Project → New Directory → New Project</span></span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="al">![Imagen de la cracación del proyecto](images/creacion%20proyecto%20analisis..-01.png)</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Insalación de Paquetes </span></span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R Para ello buscaremos en el icono o con el teclado *contrl+ alt+ i* y copiamos los paquetes que debemos isntalar</span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>Dentro de los Chunck se pueden escribir aclaraciones o indicaciones, siempre  anteponiendo el **#** de esta manera el programa ignora lo escrito. </span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>Además, se les puede asignar  un nombres a los Chunk</span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r carga de paquetes }</span></span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
+<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span>
+<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez.</span>
+<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>En cada sesión deben cargarse:</span>
+<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
+<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) </span>
+<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) library(janitor) library(skimr)</span></span>
+<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a>El paquete <span class="in">`tidyverse`</span> incluye, entre otros:</span>
+<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`readr`</span>, para importar archivos;</span>
+<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dplyr`</span>, para manipular datos;</span>
+<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tidyr`</span>, para reorganizar datos;</span>
+<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ggplot2`</span>, para realizar gráficos;</span>
+<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`forcats`</span>, para trabajar con factores.</span>
+<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3. Importación de la base de datos</span></span>
+<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
+<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.</span>
+<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>Para archivos CSV puede emplearse <span class="in">`read_csv()`</span>. Esta función genera un objeto de tipo <span class="in">`tibble`</span>, una versión moderna de un data frame.</span>
+<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Código en R</span></span>
+<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a>Suponiendo que el archivo está dentro de la carpeta <span class="in">`datos`</span>:</span>
+<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/Agrofood_co2_emission.csv"</span>)</span>
+<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>Para comprobar que el objeto fue creado:</span>
+<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(agro) </span>
+<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a>También puede observarse en el panel Environment de RStudio.</span>
+<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a><span class="al">![Objeto agro en Entorno del RStudio](images/agro%20en%20entorno.png)</span>{width="300"}</span>
+<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diferencia entre objeto y archivo</span></span>
+<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a>El archivo original permanece almacenado en la computadora como Agrofood_co2_emission.csv</span>
+<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a>El objeto creado dentro de R se denomina:</span>
+<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="in">agro</span></span>
+<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a>Modificar el objeto <span class="in">`agro`</span> no altera automáticamente el archivo CSV original.</span>
+<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="fu"># 4. Primera inspección de la base</span></span>
+<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
+<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a>Antes de modificar una base, se debe conocer:</span>
+<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>cuántas filas tiene;</span>
+<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>cuántas columnas contiene;</span>
+<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>cómo se llaman las variables;</span>
+<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>qué tipo de información almacena cada variable;</span>
+<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>si existen valores faltantes;</span>
+<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>si se observan errores evidentes.</span>
+<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a>Cada fila de esta base representa una combinación de país o área y año. Cada columna representa una variable.</span>
+<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dimensiones de la base</span></span>
+<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
+<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
+<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a>Resultado esperado:</span>
+<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a><span class="in">6965 filas y 31 columnas</span></span>
+<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a>También pueden consultarse por separado:</span>
+<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a>número de filas y número de columnas</span>
+<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro) </span>
+<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)</span>
+<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nombres de las variables</span></span>
+<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span>
+<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a>Otras maneras de cargar bases de datos estructurados </span>
+<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a>Intalar el paquete </span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

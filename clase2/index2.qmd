@@ -3,3 +3,26 @@ title: "Introducción"
 ---
 
 ## Objetivo de la clase
+
+
+Al finalizar la clase, como estudiante podrás:
+
+1.  Crear un proyecto de RStudio.
+
+2.  Importar un archivo CSV.
+
+3.  Reconocer filas, columnas, variables y observaciones.
+
+4.  Identificar los tipos de variables.
+
+5.  Seleccionar y ordenar variables.
+
+6.  Filtrar observaciones.
+
+7.  Crear y recodificar variables.
+
+8.  Detectar valores faltantes y duplicados.
+
+9.  Generar resúmenes agrupados.
+
+10. Guardar una nueva base de datos limpia.

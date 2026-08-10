@@ -4,7 +4,7 @@ title: Clase 1
 
 # Introducción al análisis de datos reproducible
 
-##  Tomar decisiones con datos
+## 1.Tomar decisiones con datos
 
 De manera consciente o inconsciente, las personas toman decisiones todo el tiempo: personales, profesionales, organizacionales. Algunas decisiones tienen bajo impacto, otras pueden tener consecuencias importantes y duraderas.
 
@@ -12,41 +12,41 @@ En contextos académicos, científicos, productivos u organizacionales, **las de
 
 Aquí es donde entra el análisis de datos: como una herramienta para **reducir la incertidumbre** y mejorar la calidad de las decisiones.
 
-## De los datos a la sabiduría: la pirámide DIKW
+### De los datos a la sabiduría: la pirámide DIKW
 
 Este enfoque se basa en el modelo conceptual conocido como **DIKW** (Data–Information–Knowledge–Wisdom), ampliamente utilizado en gestión del conocimiento y análisis de sistemas [@ackoff1989].
 
 Para entender el rol del análisis de datos, utilizamos un marco conceptual clásico: la **pirámide DIKW**, que describe la relación entre:
 
--   **Datos (Data)**
+- **Datos (Data)**
 
--   **Información (Information)**
+- **Información (Information)**
 
--   **Conocimiento (Knowledge)**
+- **Conocimiento (Knowledge)**
 
--   **Sabiduría (Wisdom)**
+- **Sabiduría (Wisdom)**
 
 ![](../imagenes/piramide.png)
 
-### Datos
+#### Datos
 
 Los datos son hechos crudos: números, símbolos o registros sin contexto. Por sí solos no explican nada ni responden preguntas. Un listado de valores, una planilla llena de números o una base de datos sin analizar son solo datos.
 
-### Información
+#### Información
 
 La información surge cuando los datos se **organizan, ordenan y contextualizan**. La información responde preguntas como: qué ocurrió, cuándo, dónde o cuánto.
 
-### Conocimiento
+#### Conocimiento
 
 El conocimiento aparece cuando la información se interpreta, se relaciona con experiencias previas y permite **comprender patrones, variabilidad y relaciones**. El conocimiento responde al “cómo”.
 
-### Sabiduría
+#### Sabiduría
 
 La sabiduría implica usar el conocimiento con criterio, prudencia y visión de largo plazo. Permite decidir qué acciones valen la pena. Es el nivel más alto y se construye con el tiempo y la experiencia.
 
 Este curso se enfoca principalmente en **transformar datos en información y conocimiento**, sentando las bases para una mejor toma de decisiones.
 
-## El dato como materia prima
+## 2. El dato como materia prima
 
 Los datos son la materia prima del análisis. Sin datos adecuados, no hay información confiable ni conocimiento útil.
 
@@ -56,63 +56,197 @@ No recolectar más datos de los necesarios, pero sí los datos correctos.
 
 Antes de analizar, siempre debemos preguntarnos:
 
--   ¿Para qué se recolectaron estos datos?
+- ¿Para qué se recolectaron estos datos?
 
--   ¿Son relevantes para el problema que queremos estudiar?
+- ¿Son relevantes para el problema que queremos estudiar?
 
--   ¿Qué limitaciones tienen?
+- ¿Qué limitaciones tienen?
 
 ### Calidad del dato: ideas clave
 
 Para que los datos puedan transformarse en información y conocimiento, deben tener **calidad**. Sin entrar aún en definiciones técnicas complejas, en esta etapa nos quedamos con algunas ideas fundamentales:
 
--   **Exactitud**: que el dato represente correctamente la realidad.
+- **Exactitud**: que el dato represente correctamente la realidad.
 
--   **Completitud**: que no falten valores relevantes.
+- **Completitud**: que no falten valores relevantes.
 
--   **Consistencia**: que no haya contradicciones internas.
+- **Consistencia**: que no haya contradicciones internas.
 
--   **Actualización**: que el dato sea pertinente en el tiempo.
+- **Actualización**: que el dato sea pertinente en el tiempo.
 
 Un principio básico del análisis de datos es:
 
 > *Si los datos son de mala calidad, el resultado del análisis también lo será.*
 
-## Herramientas del curso: R, RStudio y paquetes
+## 3. Herramientas del curso: R, RStudio y paquetes
 
 Para trabajar con datos utilizaremos el lenguaje **R** y el entorno **RStudio**.
 
-### ¿Qué es R?
+### 3.1. ¿Qué es R?
 
 R es un lenguaje de programación y un entorno de software diseñado para el análisis estadístico, la visualización de datos y la ciencia de datos. Permite realizar cálculos, generar gráficos y construir modelos.
 
-### ¿Qué es RStudio?
+### 3.2. ¿Qué es RStudio?
 
 RStudio es un **entorno de desarrollo integrado (IDE)** que facilita el trabajo con R. Proporciona una interfaz organizada para escribir código, ejecutarlo, visualizar resultados y gestionar proyectos.
 
-![Distribución de la pantalla de RStudio](../imagenes/consola.png){fig-align="center"}
+### ¿Cómo es la interfaz de RStudio?
 
-### ¿Qué son los paquetes?
+RStudio divide su pantalla en cuatro áreas principales:
+
+![Figura 1: Distribución de la pantalla de RStudio](../imagenes/R%20Studio%201%202%203%204.png){alt="Figura 1: Distribución de la pantalla de RStudio" fig-align="center"}
+
+#### 1. Editor de código o panel *Source*
+
+En este panel se escriben y editan los programas o **scripts de R**.
+
+Permite:
+
+- guardar el código;
+
+- modificarlo;
+
+- agregar comentarios;
+
+- ejecutar una línea o varias líneas;
+
+- reutilizar el análisis en otro momento.
+
+Los archivos de código de R suelen guardarse con la extensión:
+
+```         
+.R 
+```
+
+Para ejecutar una línea de código desde este panel se puede utilizar:
+
+```         
+Ctrl + Enter 
+```
+
+Es recomendable trabajar principalmente en un script, porque permite conservar un registro ordenado del análisis realizado.
+
+#### 2. Consola
+
+La consola es el lugar donde R ejecuta las instrucciones.
+
+El símbolo:
+
+```         
+> 
+```
+
+indica que R está listo para recibir una orden.
+
+Por ejemplo:
+
+```         
+2 + 3 
+```
+
+La consola mostrará el resultado:
+
+```         
+[1] 5 
+```
+
+También aparecen en este panel los resultados, mensajes, advertencias y errores. El código escrito directamente en la consola se ejecuta inmediatamente, pero no queda guardado automáticamente.
+
+#### 3. Entorno de trabajo
+
+El panel **Environment** muestra los objetos que se encuentran cargados en la sesión de R, por ejemplo:
+
+- bases de datos;
+
+- vectores;
+
+- tablas;
+
+- modelos estadísticos;
+
+- funciones creadas por el usuario.
+
+También incluye otras pestañas, como **History**, donde se pueden consultar las instrucciones ejecutadas anteriormente.
+
+#### 4. Archivos, gráficos, paquetes y ayuda
+
+Este panel reúne varias herramientas:
+
+- **Files:** permite explorar carpetas y archivos.
+
+- **Plots:** muestra los gráficos generados.
+
+- **Packages:** permite consultar, cargar o instalar paquetes.
+
+- **Help:** presenta la ayuda y documentación de las funciones de R.
+
+- **Viewer:** muestra determinados contenidos, como páginas web o documentos HTML.
+
+#### Síntesis
+
+La forma habitual de trabajo consiste en:
+
+1.  escribir el código en el panel **Source**;
+
+2.  enviarlo a la **Console** para ejecutarlo;
+
+3.  observar los objetos creados en **Environment**;
+
+4.  consultar gráficos, archivos, paquetes o ayuda en el panel inferior derecho.
+
+### 3.3. ¿Qué son los paquetes?
 
 Los paquetes son extensiones que agregan funciones específicas a R. Permiten realizar tareas de forma más rápida, clara y eficiente.
 
-### Analogía con una biblioteca
+#### Analogía con una biblioteca
 
--   **R** es el idioma.
+- **R** es el idioma.
 
--   **RStudio** es la biblioteca donde trabajamos.
+- **RStudio** es la biblioteca donde trabajamos.
 
--   **Los paquetes** son colecciones de libros especializados.
+- **Los paquetes** son colecciones de libros especializados.
 
-![Analogía con una biblioteca](../imagenes/Biblioteca%20R_%20Conceptos%20y%20Paquetes.png){fig-align="center"}
+![Analogía con una biblioteca](../imagenes/Biblioteca%20R_%20Conceptos%20y%20Paquetes.png){alt="Analogía con una biblioteca" fig-align="center"}
 
-### Instalar y cargar paquetes
+#### Instalar y cargar paquetes
 
--   **Instalar** un paquete es descargarlo en la computadora (se hace una sola vez).
+Los **paquetes** amplían las funciones disponibles en R.
 
--   **Cargar** un paquete es activarlo para usarlo en una sesión de trabajo (se hace cada vez que se necesita).
+##### Instalar un paquete
 
-### ¿Qué es un objeto en R?
+Instalar significa **descargar el paquete y guardarlo en la computadora**. Generalmente, se realiza una sola vez:
+
+```         
+install.packages("nombre_del_paquete") 
+```
+
+Por ejemplo:
+
+```         
+install.packages("ggplot2") 
+```
+
+El nombre del paquete debe escribirse **entre comillas**.
+
+##### Cargar un paquete
+
+Cargar significa **activar el paquete para utilizar sus funciones durante la sesión de trabajo**. Debe hacerse cada vez que se inicia una nueva sesión de R:
+
+```         
+library(nombre_del_paquete) 
+```
+
+Por ejemplo:
+
+```         
+library(ggplot2) 
+```
+
+En este caso, el nombre del paquete se escribe habitualmente **sin comillas**.
+
+> **En síntesis:** un paquete se instala una vez y se carga cada vez que se necesita utilizarlo.
+
+### 3.4. ¿Qué es un objeto en R?
 
 Un **objeto** es cualquier elemento que almacena información en la memoria de R. Puede contener un único valor, una colección de valores, una tabla de datos o incluso una función.
 
@@ -122,79 +256,90 @@ En otras palabras, un objeto es el lugar donde R guarda los datos con los que tr
 
 La asignación se realiza mediante el operador `<-`.
 
-```{r}
-edad <- 35
+```{r} edad <- 35}
 ```
 
 Aquí:
 
--   `edad` es el nombre del objeto.
+- `edad` es el nombre del objeto.
 
--   `35` es el valor almacenado.
+- `35` es el valor almacenado.
 
 #### Reglas para nombrar objetos
 
--   Deben comenzar con una letra.
+- Deben comenzar con una letra.
 
--   Pueden contener números.
+- Pueden contener números.
 
--   Pueden contener guiones bajos (`_`).
+- Pueden contener guiones bajos (`_`).
 
--   No deben contener espacios.
+- No deben contener espacios.
 
--   Conviene utilizar nombres descriptivos.
+- Conviene utilizar nombres descriptivos.
 
 Correctos:
 
-```{r}
-#| eval: false
-#| include: false
-    edad
+```{r} #| eval: false #| include: false     edad}
 ```
 
-```{r}
-#| eval: false
-#| include: false
-total_emision
+```{r} #| eval: false #| include: false total_emision}
 ```
 
 Incorrectos
 
-```{r}
-#| eval: false
-#| include: false
-2edad
+```{r} #| eval: false #| include: false 2edad}
 ```
 
-```{r}
-#| eval: false
-#| include: false
-total emisión
+```{r} #| eval: false #| include: false total emisión}
 ```
 
 Podemos visualizar su contenido escribiendo el nombre del objeto.
 
 #### ¿Qué tipos de objetos utilizaremos?
 
-No hace falta presentar todos los objetos de R. Para este curso bastan cuatro.
+Para este curso trabajaremos principalmente con cinco tipos de objetos: vectores, listas, data frames, tibbles y factores.
 
--   Vectores
+##### Vectores
 
 Un vector es una colección de elementos del mismo tipo.
 
-```{r}
-paises <- c(   "Argentina",   "Brasil",   "Chile" )
+```{r} paises <- c(   "Argentina",   "Brasil",   "Chile" )}
 ```
 
-```{r}
-temperaturas <- c(
-  0.4,
-  0.6,
-  0.8
-)
+```{r} temperaturas <- c(   0.4,   0.6,   0.8 )}
 ```
 
--   Data Frame
+##### Listas
+
+Una lista es una colección de elementos que pueden ser de diferentes tipos.
+
+Por ejemplo, una lista puede contener un texto, un número, un vector o incluso una tabla de datos.
+
+```         
+estudiante <- list(   nombre = "Ana",   edad = 22,   notas = c(8, 7, 9),   regular = TRUE )
+```
+
+En este ejemplo, el objeto `estudiante` contiene:
+
+-  un texto: `"Ana"`;
+
+-  un número: `22`;
+
+-  un vector de notas;
+
+-  un valor lógico: `TRUE`.
+
+Para acceder a un elemento de la lista se utiliza el operador `$`:
+
+```         
+estudiante$nombre
+```
+
+```         
+estudiante$notas
+```
+
+##### Data Frame
 
 Es una tabla donde
 
@@ -205,76 +350,54 @@ Es el objeto más utilizado en análisis de datos.
 
 Ejemplo: Creación del dataframe \*datos\*
 
-```{r}
-datos <- data.frame(
-  pais = c("Argentina", "Brasil"),
-  emision = c(120,350)
-)
+```{r} datos <- data.frame(   pais = c("Argentina", "Brasil"),   emision = c(120,350) )}
 ```
 
--   Tibble
+##### Tibble
 
 Es la versión moderna del **data frame**.
 
 Cuando usamos **Tidyverse**
 
--   Factores
+##### Factores
 
 Los factores representan variables categóricas.
 
-```{r}
-continente <- factor(
-  c(
-    "América",
-    "Europa",
-    "Asia"
-  )
-)
+```{r} continente <- factor(   c(     "América",     "Europa",     "Asia"   ) )}
 ```
 
 #### ¿Cómo saber qué tipo de objeto tenemos?
 
-```{r}
-class(datos)
+```{r} class(datos)}
 ```
 
-### El entorno de trabajo (Environment)
+### 3.5. El entorno de trabajo (Environment)
 
 Cada vez que se crea un objeto, éste aparece en el panel **Environment** de RStudio.
 
 Por ejemplo,
 
-```{r}
-pais <- "Argentina"  
-anio <- 2020  
-temperatura <- 0.56
+```{r} pais <- "Argentina"   anio <- 2020   temperatura <- 0.56}
 ```
 
-## 6. R como calculadora y uso de scripts
+### 3.6. R como calculadora y uso de scripts
 
 R puede utilizarse como una calculadora avanzada, permitiendo realizar operaciones matemáticas, trabajar con funciones y almacenar resultados en objetos.
 
-Por ejemplo en la consola escribir:
+Por ejemplo en la **consola** escribir:
 
-```{r}
-2+2
+```{r} 2+2}
 ```
 
-```{r}
-log(20)
+```{r} log(20)}
 ```
 
-```{r}
-sqrt(89)
+```{r} sqrt(89)}
 ```
 
 También es posible guardar resultados en objetos:
 
-```{r}
-x <- 10
-y <- 5
-
-x + y
+```{r} x <- 10 y <- 5  x + y}
 ```
 
 En R, el símbolo \<- se utiliza para asignar valores a objetos.
@@ -285,78 +408,70 @@ Por esta razón, habitualmente se trabaja utilizando **scripts**.
 
 Un script es un archivo de texto con extensión .R que contiene instrucciones escritas en el lenguaje R. Los scripts permiten:
 
--   Guardar el trabajo realizado
+- Guardar el trabajo realizado
 
--   Reutilizar código Corregir errores fácilmente Compartir análisis con otras personas
+- Reutilizar código Corregir errores fácilmente Compartir análisis con otras personas
 
--   Mantener un registro ordenado del análisis
+- Mantener un registro ordenado del análisis
 
-    Los scripts también permiten agregar comentarios para documentar el código:
+  Los scripts también permiten agregar comentarios para documentar el código:
 
-    ```{r}
-    # Cálculo del índice de masa corporal
+  ```{r} # Cálculo del índice de masa corporal  peso <- 78 altura <- 1.72  imc <- peso/(altura^2)  imc}
+  ```
 
-    peso <- 78
-    altura <- 1.72
+  En RStudio, un script puede crearse desde:
 
-    imc <- peso/(altura^2)
+  **File → New File → R Script**
 
-    imc
-    ```
+  Las líneas de código pueden ejecutarse individualmente utilizando:
 
-    En RStudio, un script puede crearse desde:
+  - 
 
-    **File → New File → R Script**
+  - **Ctrl + Enter** (Windows/Linux)
 
-    Las líneas de código pueden ejecutarse individualmente utilizando:
+  - 
 
-    -   
+  - **Cmd + Enter** (Mac)
 
-    -   **Ctrl + Enter** (Windows/Linux)
+  - 
 
-    -   
+  El uso de scripts constituye el primer paso hacia un trabajo más organizado y reproducible en análisis de datos.
 
-    -   **Cmd + Enter** (Mac)
+  ### 3.7. Ciencia reproducible y Quarto
 
-    -   
+  A medida que los análisis se vuelven más complejos, surge la necesidad de integrar no solo código, sino también explicaciones, resultados y gráficos en un único documento.
 
-    El uso de scripts constituye el primer paso hacia un trabajo más organizado y reproducible en análisis de datos.
+  En este contexto aparece el enfoque de la **ciencia reproducible**.
 
-    ## 7. Ciencia reproducible y Quarto
+  Según \[\@peng2011\], un análisis es reproducible cuando otras personas pueden obtener los mismos resultados utilizando los mismos datos y el mismo código.
 
-    A medida que los análisis se vuelven más complejos, surge la necesidad de integrar no solo código, sino también explicaciones, resultados y gráficos en un único documento.
+  Para trabajar bajo este enfoque utilizaremos **Quarto**, una herramienta que permite crear documentos reproducibles integrando:
 
-    En este contexto aparece el enfoque de la **ciencia reproducible**.
+  - Texto explicativo
 
-    Según \[\@peng2011\], un análisis es reproducible cuando otras personas pueden obtener los mismos resultados utilizando los mismos datos y el mismo código.
+  - Código en R
 
-    Para trabajar bajo este enfoque utilizaremos **Quarto**, una herramienta que permite crear documentos reproducibles integrando:
+  - Tablas y gráficos
 
-    -   Texto explicativo
-
-    -   Código en R
-
-    -   Tablas y gráficos
-
-    -   Resultados de modelos y análisis
+  - Resultados de modelos y análisis
 
 En un único archivo reproducible.
 
 El objetivo no es solo analizar datos, sino **documentar y comunicar el proceso completo del ana´lsis de datos de una manera clara, ordenada y reproducbiel** favoreciendo la transparencia y el aprendizaje.
 
-## 8. Cierre de la clase
+## 4. Cierre de la clase
 
 En esta primera clase vimos:
 
--   Por qué los datos son centrales en la toma de decisiones.
+- Por qué los datos son centrales en la toma de decisiones.
 
--   Cómo se relacionan datos, información, conocimiento y sabiduría.
+- Cómo se relacionan datos, información, conocimiento y sabiduría.
 
--   La importancia de la calidad del dato.
+- La importancia de la calidad del dato.
 
--   Las herramientas que utilizaremos durante el curso.
+- Las herramientas que utilizaremos durante el curso.
 
--   La filosofía de la ciencia reproducible.
+- La filosofía de la ciencia reproducible.
 
 En las próximas clases comenzaremos a trabajar de manera más práctica con datos reales, aprendiendo a importarlos, organizarlos y explorarlos paso a paso.
 
