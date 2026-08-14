@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Teoría – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Teoría 2 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -402,23 +402,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#preparación-del-entorno-de-trabajo" id="toc-preparación-del-entorno-de-trabajo" class="nav-link active" data-scroll-target="#preparación-del-entorno-de-trabajo"><span class="header-section-number">1</span> Preparación del entorno de trabajo</a>
+  <li><a href="#análisis-exploratorio-de-datos" id="toc-análisis-exploratorio-de-datos" class="nav-link active" data-scroll-target="#análisis-exploratorio-de-datos"><span class="header-section-number">1</span> Análisis exploratorio de datos</a>
   <ul class="collapse">
-  <li><a href="#fundamento-teórico" id="toc-fundamento-teórico" class="nav-link" data-scroll-target="#fundamento-teórico"><span class="header-section-number">1.1</span> Fundamento teórico</a></li>
-  <li><a href="#insalación-de-paquetes" id="toc-insalación-de-paquetes" class="nav-link" data-scroll-target="#insalación-de-paquetes"><span class="header-section-number">1.2</span> Insalación de Paquetes</a></li>
+  <li><a href="#objetivos-principales-del-eda" id="toc-objetivos-principales-del-eda" class="nav-link" data-scroll-target="#objetivos-principales-del-eda"><span class="header-section-number">1.1</span> Objetivos principales del EDA</a></li>
+  <li><a href="#paquetes-las-herramientas-que-vamos-a-usar" id="toc-paquetes-las-herramientas-que-vamos-a-usar" class="nav-link" data-scroll-target="#paquetes-las-herramientas-que-vamos-a-usar"><span class="header-section-number">1.2</span> Paquetes: las herramientas que vamos a usar</a></li>
+  <li><a href="#insalación-de-paquetes" id="toc-insalación-de-paquetes" class="nav-link" data-scroll-target="#insalación-de-paquetes"><span class="header-section-number">1.3</span> Insalación de Paquetes</a></li>
   </ul></li>
-  <li><a href="#importación-de-la-base-de-datos" id="toc-importación-de-la-base-de-datos" class="nav-link" data-scroll-target="#importación-de-la-base-de-datos"><span class="header-section-number">2</span> 3. Importación de la base de datos</a>
+  <li><a href="#importación-de-la-base-de-datos" id="toc-importación-de-la-base-de-datos" class="nav-link" data-scroll-target="#importación-de-la-base-de-datos"><span class="header-section-number">2</span> Importación de la base de datos</a>
   <ul class="collapse">
-  <li><a href="#fundamento-teórico-1" id="toc-fundamento-teórico-1" class="nav-link" data-scroll-target="#fundamento-teórico-1"><span class="header-section-number">2.1</span> Fundamento teórico</a></li>
+  <li><a href="#fundamento-teórico" id="toc-fundamento-teórico" class="nav-link" data-scroll-target="#fundamento-teórico"><span class="header-section-number">2.1</span> Fundamento teórico</a></li>
   <li><a href="#código-en-r" id="toc-código-en-r" class="nav-link" data-scroll-target="#código-en-r"><span class="header-section-number">2.2</span> Código en R</a></li>
   <li><a href="#diferencia-entre-objeto-y-archivo" id="toc-diferencia-entre-objeto-y-archivo" class="nav-link" data-scroll-target="#diferencia-entre-objeto-y-archivo"><span class="header-section-number">2.3</span> Diferencia entre objeto y archivo</a></li>
   </ul></li>
-  <li><a href="#primera-inspección-de-la-base" id="toc-primera-inspección-de-la-base" class="nav-link" data-scroll-target="#primera-inspección-de-la-base"><span class="header-section-number">3</span> 4. Primera inspección de la base</a>
+  <li><a href="#primera-inspección-de-la-base" id="toc-primera-inspección-de-la-base" class="nav-link" data-scroll-target="#primera-inspección-de-la-base"><span class="header-section-number">3</span> Primera inspección de la base</a>
   <ul class="collapse">
-  <li><a href="#fundamento-teórico-2" id="toc-fundamento-teórico-2" class="nav-link" data-scroll-target="#fundamento-teórico-2"><span class="header-section-number">3.1</span> Fundamento teórico</a></li>
-  <li><a href="#dimensiones-de-la-base" id="toc-dimensiones-de-la-base" class="nav-link" data-scroll-target="#dimensiones-de-la-base"><span class="header-section-number">3.2</span> Dimensiones de la base</a></li>
-  <li><a href="#nombres-de-las-variables" id="toc-nombres-de-las-variables" class="nav-link" data-scroll-target="#nombres-de-las-variables"><span class="header-section-number">3.3</span> Nombres de las variables</a></li>
+  <li><a href="#conozcamos-los-datos" id="toc-conozcamos-los-datos" class="nav-link" data-scroll-target="#conozcamos-los-datos"><span class="header-section-number">3.0.1</span> Conozcamos los datos</a></li>
   </ul></li>
+  <li><a href="#qué-significa-limpiar-y-ordenar-los-datos" id="toc-qué-significa-limpiar-y-ordenar-los-datos" class="nav-link" data-scroll-target="#qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">4</span> ¿Qué significa limpiar y ordenar los datos?</a></li>
   </ul>
 </nav>
     </div>
@@ -427,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase2/index2.html">Clase 2</a></li><li class="breadcrumb-item"><a href="../clase2/teoria2.html">Teoría</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Teoría</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Teoría 2</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -444,100 +444,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preparación-del-entorno-de-trabajo" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Preparación del entorno de trabajo</h1>
-<section id="fundamento-teórico" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="fundamento-teórico"><span class="header-section-number">1.1</span> Fundamento teórico</h2>
-<p>Un análisis reproducible debe desarrollarse dentro de un proyecto. El proyecto permite mantener organizados los datos, scripts, gráficos e informes, y evita depender de rutas absolutas asociadas a una computadora particular.</p>
-<p>Una posible estructura es:</p>
-<p>analisis_agrofood/ ├── datos/ │<br>
-└── Agrofood_co2_emission.csv ├── scripts/ ├── resultados/ ├── figuras/ └── informes | └── informe.qmd</p>
-<p>En RStudio creamos el nuevo proyecto y lo guardamos en la carpeta principal analisis_agrofood:</p>
-<pre><code>File → New Project → New Directory → New Project</code></pre>
+<section id="análisis-exploratorio-de-datos" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Análisis exploratorio de datos</h1>
+<p>El <strong>Análisis Exploratorio de Datos</strong> —o <strong>EDA</strong>, por sus siglas en inglés <em>Exploratory Data Analysis</em>— es la primera aproximación sistemática a una base de datos.</p>
+<p>Su propósito no es obtener conclusiones definitivas, sino conocer los datos, detectar posibles problemas y formular preguntas que orienten el análisis posterior.</p>
+<p>Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:</p>
+<ul>
+<li>¿Qué representa cada fila de la base?</li>
+<li>¿Qué información contiene cada columna?</li>
+<li>¿Qué tipos de variables tenemos?</li>
+<li>¿Hay datos faltantes, errores o valores inusuales?</li>
+<li>¿Qué patrones o relaciones comienzan a aparecer?</li>
+</ul>
+<section id="objetivos-principales-del-eda" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="objetivos-principales-del-eda"><span class="header-section-number">1.1</span> Objetivos principales del EDA</h2>
+<ol type="1">
+<li><p><strong>Entender la estructura de la base</strong></p>
+<p>Permite identificar la cantidad de observaciones y variables, conocer qué representa cada una y reconocer su tipo: numérica, categórica, fecha, texto, entre otros.</p></li>
+<li><p><strong>Detectar anomalías o problemas de calidad</strong></p>
+<p>Permite reconocer datos faltantes, valores atípicos, errores de carga, registros duplicados o categorías escritas de maneras diferentes.</p></li>
+<li><p><strong>Encontrar patrones y relaciones</strong></p>
+<p>A través de resúmenes y gráficos, permite observar distribuciones, diferencias entre grupos, tendencias y posibles relaciones entre variables.</p></li>
+<li><p><strong>Formular preguntas e hipótesis iniciales</strong></p>
+<p>La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.</p></li>
+</ol>
+</section>
+<section id="paquetes-las-herramientas-que-vamos-a-usar" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="paquetes-las-herramientas-que-vamos-a-usar"><span class="header-section-number">1.2</span> Paquetes: las herramientas que vamos a usar</h2>
+<p>R tiene muchas funciones incorporadas, pero los paquetes amplían sus posibilidades.</p>
+<p>Podés usar la analogía de una biblioteca:</p>
+<p>R es la biblioteca. Un paquete es una colección de libros con herramientas para una tarea. Una función es una herramienta específica dentro de ese paquete.</p>
+<p>En este curso trabajaremos principalmente con el ecosistema tidyverse, que reúne paquetes para trabajar de manera ordenada y coherente con datos. | Paquete | ¿Para qué lo usaremos?</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Paquete</th>
+<th>¿Para qué lo usaremos?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>readr</code></td>
+<td>Importar archivos <code>.csv</code>.</td>
+</tr>
+<tr class="even">
+<td><code>readxl</code></td>
+<td>Importar archivos de Excel.</td>
+</tr>
+<tr class="odd">
+<td><code>dplyr</code></td>
+<td>Seleccionar, filtrar, crear y resumir variables.</td>
+</tr>
+<tr class="even">
+<td><code>tidyr</code></td>
+<td>Ordenar la estructura de una base.</td>
+</tr>
+<tr class="odd">
+<td><code>ggplot2</code></td>
+<td>Crear gráficos.</td>
+</tr>
+<tr class="even">
+<td><code>janitor</code></td>
+<td>Limpiar nombres de variables y tablas.</td>
+</tr>
+<tr class="odd">
+<td><code>forcat</code></td>
+<td>para trabajar con factores</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="insalación-de-paquetes" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="insalación-de-paquetes"><span class="header-section-number">1.3</span> Insalación de Paquetes</h2>
+<p>Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R</p>
+<p>¿cómo?</p>
+<p>buscaremos en la barra superior en el icono:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/creacion proyecto analisis..-01.png" class="img-fluid figure-img"></p>
-<figcaption>Imagen de la cracación del proyecto</figcaption>
+<p><img src="images/iccono para intesertar código.png" class="img-fluid figure-img" width="185"></p>
+<figcaption>Figura : Icono para insertar códigos -Elegir R</figcaption>
 </figure>
 </div>
-</section>
-<section id="insalación-de-paquetes" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="insalación-de-paquetes"><span class="header-section-number">1.2</span> Insalación de Paquetes</h2>
-<p>Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R Para ello buscaremos en el icono o con el teclado <em>contrl+ alt+ i</em> y copiamos los paquetes que debemos isntalar</p>
-<p>Dentro de los Chunck se pueden escribir aclaraciones o indicaciones, siempre anteponiendo el <strong>#</strong> de esta manera el programa ignora lo escrito.</p>
+<p>o con el teclado simultaneamente: <em>contrl+ alt+ i</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/chunk vacío.png" class="img-fluid figure-img" width="452"></p>
+<figcaption>Figura: Espacio para escribir Código en R (Chunk)</figcaption>
+</figure>
+</div>
+<p>y Indicamos dentro del código, el paquete que a instalar</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Los paquetes se instalan una sola vez</p>
-<p>Además, se les puede asignar un nombres a los Chunk</p>
+<p>Los paquetes se instalan una sola vez, salvo que sea necesario actualizar el paquete.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Los paquetes se instalan una sola vez.</p>
-<p>En cada sesión deben cargarse:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.1.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Adjuntando el paquete: 'janitor'
-
-The following objects are masked from 'package:stats':
-
-    chisq.test, fisher.test</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<pre><code>library(tidyverse) library(janitor) library(skimr)</code></pre>
-<p>El paquete <code>tidyverse</code> incluye, entre otros:</p>
-<ul>
-<li><p><code>readr</code>, para importar archivos;</p></li>
-<li><p><code>dplyr</code>, para manipular datos;</p></li>
-<li><p><code>tidyr</code>, para reorganizar datos;</p></li>
-<li><p><code>ggplot2</code>, para realizar gráficos;</p></li>
-<li><p><code>forcats</code>, para trabajar con factores.</p></li>
-</ul>
 </section>
 </section>
 <section id="importación-de-la-base-de-datos" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 3. Importación de la base de datos</h1>
-<section id="fundamento-teórico-1" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="fundamento-teórico-1"><span class="header-section-number">2.1</span> Fundamento teórico</h2>
+<h1 data-number="2"><span class="header-section-number">2</span> Importación de la base de datos</h1>
+<section id="fundamento-teórico" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="fundamento-teórico"><span class="header-section-number">2.1</span> Fundamento teórico</h2>
 <p>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.</p>
 <p>Para archivos CSV puede emplearse <code>read_csv()</code>. Esta función genera un objeto de tipo <code>tibble</code>, una versión moderna de un data frame.</p>
 </section>
@@ -547,131 +561,101 @@ The following objects are masked from 'package:stats':
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/Agrofood_co2_emission.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 6965 Columns: 31
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (1): Area
-dbl (30): Year, Savanna fires, Forest fires, Crop Residues, Rice Cultivation...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 </div>
 <p>Para comprobar que el objeto fue creado:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(agro) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(datos) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>También puede observarse en el panel Environment de RStudio.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/agro en entorno.png" class="img-fluid figure-img" width="300"></p>
-<figcaption>Objeto agro en Entorno del RStudio</figcaption>
+<p><img src="images/datos en entorno.png" class="img-fluid figure-img" width="465"></p>
+<figcaption>Objeto datos en Entorno del RStudio</figcaption>
 </figure>
+</div>
+<p>Para importar archivos de Excel, necesitaremos además:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>) <span class="co"># solo la primera vez</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 <section id="diferencia-entre-objeto-y-archivo" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="diferencia-entre-objeto-y-archivo"><span class="header-section-number">2.3</span> Diferencia entre objeto y archivo</h2>
-<p>El archivo original permanece almacenado en la computadora como Agrofood_co2_emission.csv</p>
+<p>El archivo original permanece almacenado en la computadora como base_datos.csv</p>
 <p>El objeto creado dentro de R se denomina:</p>
-<pre><code>agro</code></pre>
-<p>Modificar el objeto <code>agro</code> no altera automáticamente el archivo CSV original.</p>
+<p>datos</p>
+<p>Modificar el objeto datos no altera automáticamente el archivo CSV original.</p>
 </section>
 </section>
 <section id="primera-inspección-de-la-base" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 4. Primera inspección de la base</h1>
-<section id="fundamento-teórico-2" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="fundamento-teórico-2"><span class="header-section-number">3.1</span> Fundamento teórico</h2>
-<p>Antes de modificar una base, se debe conocer:</p>
-<ul>
-<li><p>cuántas filas tiene;</p></li>
-<li><p>cuántas columnas contiene;</p></li>
-<li><p>cómo se llaman las variables;</p></li>
-<li><p>qué tipo de información almacena cada variable;</p></li>
-<li><p>si existen valores faltantes;</p></li>
-<li><p>si se observan errores evidentes.</p></li>
-</ul>
-<p>Cada fila de esta base representa una combinación de país o área y año. Cada columna representa una variable.</p>
-</section>
-<section id="dimensiones-de-la-base" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="dimensiones-de-la-base"><span class="header-section-number">3.2</span> Dimensiones de la base</h2>
+<h1 data-number="3"><span class="header-section-number">3</span> Primera inspección de la base</h1>
+<section id="conozcamos-los-datos" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="conozcamos-los-datos"><span class="header-section-number">3.0.1</span> Conozcamos los datos</h3>
+<p>Antes de limpiar, transformar, graficar o calcular, necesitamos responder estas preguntas:</p>
+<p>¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables hay? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Hay datos faltantes o valores extraños?</p>
+<p>Funciones iniciales:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6965   31</code></pre>
 </div>
-</div>
+<p>Permite observar rápidamente:</p>
+<p>cantidad de filas y columnas; nombres de las variables; tipo de cada variable; algunos valores de ejemplo</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6965   31</code></pre>
 </div>
+<p>Muestra los nombres de las variables.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<p>Resultado esperado:</p>
-<pre><code>6965 filas y 31 columnas</code></pre>
+<p>Indica la candiad de filas y columnas</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Presenta un resumen general de las variables.</p>
 <p>También pueden consultarse por separado:</p>
 <p>número de filas y número de columnas</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6965</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 31</code></pre>
-</div>
 </div>
 </section>
-<section id="nombres-de-las-variables" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="nombres-de-las-variables"><span class="header-section-number">3.3</span> Nombres de las variables</h2>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "Area"                            "Year"                           
- [3] "Savanna fires"                   "Forest fires"                   
- [5] "Crop Residues"                   "Rice Cultivation"               
- [7] "Drained organic soils (CO2)"     "Pesticides Manufacturing"       
- [9] "Food Transport"                  "Forestland"                     
-[11] "Net Forest conversion"           "Food Household Consumption"     
-[13] "Food Retail"                     "On-farm Electricity Use"        
-[15] "Food Packaging"                  "Agrifood Systems Waste Disposal"
-[17] "Food Processing"                 "Fertilizers Manufacturing"      
-[19] "IPPU"                            "Manure applied to Soils"        
-[21] "Manure left on Pasture"          "Manure Management"              
-[23] "Fires in organic soils"          "Fires in humid tropical forests"
-[25] "On-farm energy use"              "Rural population"               
-[27] "Urban population"                "Total Population - Male"        
-[29] "Total Population - Female"       "total_emission"                 
-[31] "Average Temperature °C"         </code></pre>
-</div>
-</div>
-<p>Otras maneras de cargar bases de datos estructurados</p>
-<p>Intalar el paquete</p>
+</section>
+<section id="qué-significa-limpiar-y-ordenar-los-datos" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> ¿Qué significa limpiar y ordenar los datos?</h1>
+<p>Una base puede estar completa y, sin embargo, no estar lista para analizar.</p>
+<p>La limpieza consiste en detectar y corregir problemas, por ejemplo:</p>
+<p>nombres de variables poco claros; valores faltantes; categorías escritas de diferentes maneras; números leídos como texto; filas duplicadas; valores imposibles o inconsistentes.</p>
+<p>Ordenar los datos significa que cada elemento tenga un lugar claro:</p>
+<p>cada fila representa una observación; cada columna representa una variable; cada celda contiene un único valor.</p>
+<p>Esta organización permite filtrar, resumir, graficar y analizar sin ambigüedades.</p>
+<p>No empezamos por calcular; empezamos por comprender qué datos tenemos, cómo fueron organizados y qué calidad tienen.</p>
+<p>EDA → importación → paquetes → conocer estructura → limpieza inicial → preguntas sobre la base.</p>
 
 
 <!-- -->
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1125,186 +1109,215 @@ dbl (30): Year, Savanna fires, Forest fires, Crop Residues, Rice Cultivation...
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb25" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría"</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Preparación del entorno de trabajo</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>Un análisis reproducible debe desarrollarse dentro de un proyecto. El proyecto permite mantener organizados los datos, scripts, gráficos e informes, y evita depender de rutas absolutas asociadas a una computadora particular.</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>Una posible estructura es:</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>analisis_agrofood/ </span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>├── datos/ </span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>   │\</span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>   └── Agrofood_co2_emission.csv </span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>├── scripts/ </span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>├── resultados/ </span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>├── figuras/ </span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>└── informes</span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>       <span class="pp">|</span></span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>       └── informe.qmd</span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>En RStudio creamos el nuevo proyecto y lo guardamos en la carpeta principal analisis_agrofood:</span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="in">File → New Project → New Directory → New Project</span></span>
-<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a><span class="al">![Imagen de la cracación del proyecto](images/creacion%20proyecto%20analisis..-01.png)</span></span>
-<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Insalación de Paquetes </span></span>
-<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a>Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R Para ello buscaremos en el icono o con el teclado *contrl+ alt+ i* y copiamos los paquetes que debemos isntalar</span>
-<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>Dentro de los Chunck se pueden escribir aclaraciones o indicaciones, siempre  anteponiendo el **#** de esta manera el programa ignora lo escrito. </span>
-<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
-<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
-<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
-<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
-<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span>
-<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez</span>
-<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>Además, se les puede asignar  un nombres a los Chunk</span>
-<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{r carga de paquetes }</span></span>
-<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a><span class="co">#correr esta sentencia una sola vez</span></span>
-<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a><span class="co"># si no lo tiene</span></span>
-<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("tidyverse") </span></span>
-<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("janitor") </span></span>
-<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("skimr")</span></span>
-<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez.</span>
-<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>En cada sesión deben cargarse:</span>
-<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) </span>
-<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor) </span>
-<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
-<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse) library(janitor) library(skimr)</span></span>
-<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a>El paquete <span class="in">`tidyverse`</span> incluye, entre otros:</span>
-<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`readr`</span>, para importar archivos;</span>
-<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`dplyr`</span>, para manipular datos;</span>
-<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`tidyr`</span>, para reorganizar datos;</span>
-<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`ggplot2`</span>, para realizar gráficos;</span>
-<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`forcats`</span>, para trabajar con factores.</span>
-<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a><span class="fu"># 3. Importación de la base de datos</span></span>
-<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
-<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.</span>
-<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a>Para archivos CSV puede emplearse <span class="in">`read_csv()`</span>. Esta función genera un objeto de tipo <span class="in">`tibble`</span>, una versión moderna de un data frame.</span>
-<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Código en R</span></span>
-<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-104"><a href="#cb25-104" aria-hidden="true" tabindex="-1"></a>Suponiendo que el archivo está dentro de la carpeta <span class="in">`datos`</span>:</span>
-<span id="cb25-105"><a href="#cb25-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-108"><a href="#cb25-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-109"><a href="#cb25-109" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/Agrofood_co2_emission.csv"</span>)</span>
-<span id="cb25-110"><a href="#cb25-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-111"><a href="#cb25-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-112"><a href="#cb25-112" aria-hidden="true" tabindex="-1"></a>Para comprobar que el objeto fue creado:</span>
-<span id="cb25-113"><a href="#cb25-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-116"><a href="#cb25-116" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-117"><a href="#cb25-117" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(agro) </span>
-<span id="cb25-118"><a href="#cb25-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-119"><a href="#cb25-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-120"><a href="#cb25-120" aria-hidden="true" tabindex="-1"></a>También puede observarse en el panel Environment de RStudio.</span>
-<span id="cb25-121"><a href="#cb25-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-122"><a href="#cb25-122" aria-hidden="true" tabindex="-1"></a><span class="al">![Objeto agro en Entorno del RStudio](images/agro%20en%20entorno.png)</span>{width="300"}</span>
-<span id="cb25-123"><a href="#cb25-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-124"><a href="#cb25-124" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diferencia entre objeto y archivo</span></span>
-<span id="cb25-125"><a href="#cb25-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-126"><a href="#cb25-126" aria-hidden="true" tabindex="-1"></a>El archivo original permanece almacenado en la computadora como Agrofood_co2_emission.csv</span>
-<span id="cb25-127"><a href="#cb25-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-128"><a href="#cb25-128" aria-hidden="true" tabindex="-1"></a>El objeto creado dentro de R se denomina:</span>
-<span id="cb25-129"><a href="#cb25-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-130"><a href="#cb25-130" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb25-131"><a href="#cb25-131" aria-hidden="true" tabindex="-1"></a><span class="in">agro</span></span>
-<span id="cb25-132"><a href="#cb25-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-133"><a href="#cb25-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-134"><a href="#cb25-134" aria-hidden="true" tabindex="-1"></a>Modificar el objeto <span class="in">`agro`</span> no altera automáticamente el archivo CSV original.</span>
-<span id="cb25-135"><a href="#cb25-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-136"><a href="#cb25-136" aria-hidden="true" tabindex="-1"></a><span class="fu"># 4. Primera inspección de la base</span></span>
-<span id="cb25-137"><a href="#cb25-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-138"><a href="#cb25-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
-<span id="cb25-139"><a href="#cb25-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-140"><a href="#cb25-140" aria-hidden="true" tabindex="-1"></a>Antes de modificar una base, se debe conocer:</span>
-<span id="cb25-141"><a href="#cb25-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-142"><a href="#cb25-142" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>cuántas filas tiene;</span>
-<span id="cb25-143"><a href="#cb25-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-144"><a href="#cb25-144" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>cuántas columnas contiene;</span>
-<span id="cb25-145"><a href="#cb25-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-146"><a href="#cb25-146" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>cómo se llaman las variables;</span>
-<span id="cb25-147"><a href="#cb25-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-148"><a href="#cb25-148" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>qué tipo de información almacena cada variable;</span>
-<span id="cb25-149"><a href="#cb25-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-150"><a href="#cb25-150" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>si existen valores faltantes;</span>
-<span id="cb25-151"><a href="#cb25-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-152"><a href="#cb25-152" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>si se observan errores evidentes.</span>
-<span id="cb25-153"><a href="#cb25-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-154"><a href="#cb25-154" aria-hidden="true" tabindex="-1"></a>Cada fila de esta base representa una combinación de país o área y año. Cada columna representa una variable.</span>
-<span id="cb25-155"><a href="#cb25-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-156"><a href="#cb25-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Dimensiones de la base</span></span>
-<span id="cb25-157"><a href="#cb25-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-160"><a href="#cb25-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-161"><a href="#cb25-161" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
-<span id="cb25-162"><a href="#cb25-162" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-163"><a href="#cb25-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-166"><a href="#cb25-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-167"><a href="#cb25-167" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
-<span id="cb25-168"><a href="#cb25-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-169"><a href="#cb25-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-170"><a href="#cb25-170" aria-hidden="true" tabindex="-1"></a>Resultado esperado:</span>
-<span id="cb25-171"><a href="#cb25-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-172"><a href="#cb25-172" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb25-173"><a href="#cb25-173" aria-hidden="true" tabindex="-1"></a><span class="in">6965 filas y 31 columnas</span></span>
-<span id="cb25-174"><a href="#cb25-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-175"><a href="#cb25-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-176"><a href="#cb25-176" aria-hidden="true" tabindex="-1"></a>También pueden consultarse por separado:</span>
-<span id="cb25-177"><a href="#cb25-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-178"><a href="#cb25-178" aria-hidden="true" tabindex="-1"></a>número de filas y número de columnas</span>
-<span id="cb25-179"><a href="#cb25-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-182"><a href="#cb25-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-183"><a href="#cb25-183" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro) </span>
-<span id="cb25-184"><a href="#cb25-184" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)</span>
-<span id="cb25-185"><a href="#cb25-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-186"><a href="#cb25-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-187"><a href="#cb25-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## Nombres de las variables</span></span>
-<span id="cb25-188"><a href="#cb25-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-191"><a href="#cb25-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb25-192"><a href="#cb25-192" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span>
-<span id="cb25-193"><a href="#cb25-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb25-194"><a href="#cb25-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-195"><a href="#cb25-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-196"><a href="#cb25-196" aria-hidden="true" tabindex="-1"></a>Otras maneras de cargar bases de datos estructurados </span>
-<span id="cb25-197"><a href="#cb25-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-198"><a href="#cb25-198" aria-hidden="true" tabindex="-1"></a>Intalar el paquete </span>
+<div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría 2"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis exploratorio de datos</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>El **Análisis Exploratorio de Datos** —o **EDA**, por sus siglas en inglés *Exploratory Data Analysis*— es la primera aproximación sistemática a una base de datos.</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>Su propósito no es obtener conclusiones definitivas, sino conocer los datos, detectar posibles problemas y formular preguntas que orienten el análisis posterior.</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué representa cada fila de la base?</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué información contiene cada columna?</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué tipos de variables tenemos?</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Hay datos faltantes, errores o valores inusuales?</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué patrones o relaciones comienzan a aparecer?</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivos principales del EDA</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Entender la estructura de la base**</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    Permite identificar la cantidad de observaciones y variables, conocer qué representa cada una y reconocer su tipo: numérica, categórica, fecha, texto, entre otros.</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Detectar anomalías o problemas de calidad**</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    Permite reconocer datos faltantes, valores atípicos, errores de carga, registros duplicados o categorías escritas de maneras diferentes.</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Encontrar patrones y relaciones**</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    A través de resúmenes y gráficos, permite observar distribuciones, diferencias entre grupos, tendencias y posibles relaciones entre variables.</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Formular preguntas e hipótesis iniciales**</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes: las herramientas que vamos a usar</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>R tiene muchas funciones incorporadas, pero los paquetes amplían sus posibilidades.</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>Podés usar la analogía de una biblioteca:</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>R es la biblioteca. Un paquete es una colección de libros con herramientas para una tarea. Una función es una herramienta específica dentro de ese paquete.</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>En este curso trabajaremos principalmente con el ecosistema tidyverse, que reúne paquetes para trabajar de manera ordenada y coherente con datos. <span class="sc">\|</span> Paquete <span class="sc">\|</span> ¿Para qué lo usaremos?</span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Paquete   <span class="pp">|</span> ¿Para qué lo usaremos?                           <span class="pp">|</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|--------------------------------------------------|</span></span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`readr`</span>   <span class="pp">|</span> Importar archivos <span class="in">`.csv`</span>.                        <span class="pp">|</span></span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`readxl`</span>  <span class="pp">|</span> Importar archivos de Excel.                      <span class="pp">|</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`dplyr`</span>   <span class="pp">|</span> Seleccionar, filtrar, crear y resumir variables. <span class="pp">|</span></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`tidyr`</span>   <span class="pp">|</span> Ordenar la estructura de una base.               <span class="pp">|</span></span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ggplot2`</span> <span class="pp">|</span> Crear gráficos.                                  <span class="pp">|</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`janitor`</span> <span class="pp">|</span> Limpiar nombres de variables y tablas.           <span class="pp">|</span></span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`forcat`</span>  <span class="pp">|</span> para trabajar con factores                       <span class="pp">|</span></span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Insalación de Paquetes</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R</span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>¿cómo?</span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>buscaremos en la barra superior en el icono:</span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura : Icono para insertar códigos -Elegir R](images/iccono%20para%20intesertar%20código.png)</span>{width="185"}</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>o con el teclado simultaneamente: *contrl+ alt+ i*</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png)</span>{width="452"}</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>y Indicamos dentro del código, el paquete que a instalar</span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez, salvo que sea necesario actualizar el paquete.</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="fu"># Importación de la base de datos</span></span>
+<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fundamento teórico</span></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.</span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>Para archivos CSV puede emplearse <span class="in">`read_csv()`</span>. Esta función genera un objeto de tipo <span class="in">`tibble`</span>, una versión moderna de un data frame.</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="fu">## Código en R</span></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>Suponiendo que el archivo está dentro de la carpeta <span class="in">`datos`</span>:</span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a>Para comprobar que el objeto fue creado:</span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(datos) </span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>También puede observarse en el panel Environment de RStudio.</span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="al">![Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png)</span>{width="465"}</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>Para importar archivos de Excel, necesitaremos además:</span>
+<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>) <span class="co"># solo la primera vez</span></span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diferencia entre objeto y archivo</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a>El archivo original permanece almacenado en la computadora como base_datos.csv</span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a>El objeto creado dentro de R se denomina:</span>
+<span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>datos</span>
+<span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>Modificar el objeto datos no altera automáticamente el archivo CSV original.</span>
+<span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="fu"># Primera inspección de la base</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conozcamos los datos</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>Antes de limpiar, transformar, graficar o calcular, necesitamos responder estas preguntas:</span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables hay? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Hay datos faltantes o valores extraños?</span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>Funciones iniciales:</span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(datos)</span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>Permite observar rápidamente:</span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a>cantidad de filas y columnas; nombres de las variables; tipo de cada variable; algunos valores de ejemplo</span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos)</span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a>Muestra los nombres de las variables.</span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
+<span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a>Indica la candiad de filas y columnas</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span>
+<span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a>Presenta un resumen general de las variables.</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a>También pueden consultarse por separado:</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a>número de filas y número de columnas</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) </span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos)</span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a><span class="fu"># ¿Qué significa limpiar y ordenar los datos?</span></span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a>Una base puede estar completa y, sin embargo, no estar lista para analizar.</span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a>La limpieza consiste en detectar y corregir problemas, por ejemplo:</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>nombres de variables poco claros; valores faltantes; categorías escritas de diferentes maneras; números leídos como texto; filas duplicadas; valores imposibles o inconsistentes.</span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>Ordenar los datos significa que cada elemento tenga un lugar claro:</span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a>cada fila representa una observación; cada columna representa una variable; cada celda contiene un único valor.</span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>Esta organización permite filtrar, resumir, graficar y analizar sin ambigüedades.</span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-227"><a href="#cb11-227" aria-hidden="true" tabindex="-1"></a>No empezamos por calcular; empezamos por comprender qué datos tenemos, cómo fueron organizados y qué calidad tienen.</span>
+<span id="cb11-228"><a href="#cb11-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-229"><a href="#cb11-229" aria-hidden="true" tabindex="-1"></a>EDA → importación → paquetes → conocer estructura → limpieza inicial → preguntas sobre la base.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
