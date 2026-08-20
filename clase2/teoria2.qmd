@@ -40,9 +40,7 @@ R tiene muchas funciones incorporadas, pero los paquetes amplían sus posibilida
 
 Podés usar la analogía de una biblioteca:
 
-R es la biblioteca. Un paquete es una colección de libros con herramientas para una tarea. Una función es una herramienta específica dentro de ese paquete.
-
-En este curso trabajaremos principalmente con el ecosistema tidyverse, que reúne paquetes para trabajar de manera ordenada y coherente con datos. \| Paquete \| ¿Para qué lo usaremos?
+En este curso trabajaremos principalmente con el ecosistema tidyverse, que reúne paquetes para trabajar de manera ordenada y coherente con datos.
 
 | Paquete   | ¿Para qué lo usaremos?                           |
 |-----------|--------------------------------------------------|
@@ -54,21 +52,53 @@ En este curso trabajaremos principalmente con el ecosistema tidyverse, que reún
 | `janitor` | Limpiar nombres de variables y tablas.           |
 | `forcat`  | para trabajar con factores                       |
 
-## Insalación de Paquetes
+Para mayor información no dudes en visitar la [Página oficial de Tidyverse](https://tidyverse.tidyverse.org/)
 
-Instalaremos algunos paquetes por primera vez, para ello abriremos el chunk en en R
+## Activación de bloque de código (Chunk)
 
-¿cómo?
+Los **bloques de código** permiten escribir y ejecutar instrucciones en R dentro de un documento Quarto. Cada bloque puede contener una o varias líneas de código y mostrar, si se desea, los resultados obtenidos.
 
-buscaremos en la barra superior en el icono:
+**Para insertar un bloque de código en R, podemos hacerlo de dos maneras:**
 
-![Figura : Icono para insertar códigos -Elegir R](images/iccono%20para%20intesertar%20código.png){width="185"}
+1.  En la barra superior, buscaremos el ícono verde **+C**. Al hacer clic sobre él, seleccionaremos **R**.
 
-o con el teclado simultaneamente: *contrl+ alt+ i*
+![Figura : Icono para insertar códigos. Seleccionar R](images/iccono%20para%20intesertar%20código.png){width="185"}
 
-![Figura: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png){width="452"}
+2.  También podemos utilizar el teclado, presionando simultáneamente **Ctrl + Alt + I**.\
+    En ambos casos un bloque como el siguiente, donde podremos ejecutar código en **R**:
 
-y Indicamos dentro del código, el paquete que a instalar
+![Figu![Figura: Activación con library del paquete tidyverse](images/tidyverse.png)ra: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png){width="452"}
+
+### Opciones de los bloques de código
+
+Los bloques de código pueden incluir opciones que permiten controlar cómo se ejecuta el código y qué se muestra en el documento final.
+
+Estas opciones se escriben al comienzo del bloque, precedidas por #\|.
+
+```         
+#| echo: false
+#| warning: false
+```
+
+Algunas opciones frecuentes son:
+
+#\| echo: true → muestra el código en el documento.
+
+#\| echo: false → ejecuta el código, pero no lo muestra.
+
+#\| eval: false → muestra el código, pero no lo ejecuta.
+
+#\| include: false → ejecuta el código, pero no muestra ni el código ni los resultados.
+
+#\| warning: false → oculta los mensajes de advertencia.
+
+#\| message: false → oculta los mensajes generados por R.
+
+## Instalación de Paquetes
+
+los **paquetes** amplían las funcionalidades de R, incorporando nuevas funciones y herramientas. Para instalar un paquete, escribimos dentro de un bloque de código la función `install.packages()`, indicando entre comillas el nombre del paquete que queremos instalar.
+
+Por ejemplo:
 
 ```{r}
 #| eval: false
@@ -78,15 +108,17 @@ install.packages("tidyverse")
 
 Los paquetes se instalan una sola vez, salvo que sea necesario actualizar el paquete.
 
+Una vez instalado, el paquete debe **cargarse para su uso** mediante la función `library()`.
+
+Por ejemplo:
+
 ```{r}
 #| eval: false
 
 library(tidyverse)
 ```
 
-# Importación de la base de datos
-
-## Fundamento teórico
+## Importación de la base de datos
 
 Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.
 
@@ -114,7 +146,7 @@ También puede observarse en el panel Environment de RStudio.
 
 ![Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png){width="465"}
 
-Para importar archivos de Excel, necesitaremos además:
+Para importar archivos de Excel, con extención xlsx, necesitaremos además tener instalado el paquete *readxl:*
 
 ```{r}
 #| eval: false
@@ -138,9 +170,9 @@ Modificar el objeto datos no altera automáticamente el archivo CSV original.
 
 ### Conozcamos los datos
 
-Antes de limpiar, transformar, graficar o calcular, necesitamos responder estas preguntas:
+Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: **¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?**
 
-¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables hay? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Hay datos faltantes o valores extraños?
+A continuación, se presentan algunas funciones iniciales de R que nos ayudarán a responder estas preguntas y a realizar una primera exploración de la base de datos**.**
 
 Funciones iniciales:
 
@@ -152,7 +184,13 @@ glimpse(datos)
 
 Permite observar rápidamente:
 
-cantidad de filas y columnas; nombres de las variables; tipo de cada variable; algunos valores de ejemplo
+-  la cantidad de filas y columnas;
+
+-  los nombres de las variables;
+
+-  el tipo de cada variable;
+
+-  algunos valores de ejemplo.
 
 ```{r}
 #| eval: false
@@ -168,7 +206,7 @@ Muestra los nombres de las variables.
 dim(agro)
 ```
 
-Indica la candiad de filas y columnas
+Indica la cantdiad de filas y columnas de la base.
 
 ```{r}
 #| eval: false
@@ -176,34 +214,55 @@ Indica la candiad de filas y columnas
 summary(datos)
 ```
 
-Presenta un resumen general de las variables.
+Presenta un **resumen general de las variables**. La información que muestra depende del tipo de variable.
 
-También pueden consultarse por separado:
-
-número de filas y número de columnas
+También pueden consultarse por separado el número de filas y de columnas con las siguentes funciones:
 
 ```{r}
 #| eval: false
 
 
-nrow(datos) 
-ncol(datos)
+nrow(datos) # númeo de filas 
+ncol(datos) # númeo de columnas
 ```
 
-# ¿Qué significa limpiar y ordenar los datos?
+### ¿Qué significa limpiar y ordenar los datos?
 
-Una base puede estar completa y, sin embargo, no estar lista para analizar.
+Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.
 
-La limpieza consiste en detectar y corregir problemas, por ejemplo:
+### Paquetes `dplyr` y `tidyr`
 
-nombres de variables poco claros; valores faltantes; categorías escritas de diferentes maneras; números leídos como texto; filas duplicadas; valores imposibles o inconsistentes.
+`dplyr` y `tidyr` forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.
 
-Ordenar los datos significa que cada elemento tenga un lugar claro:
+-  **`dplyr`** permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.
 
-cada fila representa una observación; cada columna representa una variable; cada celda contiene un único valor.
+-  **`tidyr`** permite organizar y reestructurar los datos, además de trabajar con valores faltantes.
 
-Esta organización permite filtrar, resumir, graficar y analizar sin ambigüedades.
+Ambos paquetes facilitan la **limpieza y preparación de los datos** para su posterior análisis.
 
-No empezamos por calcular; empezamos por comprender qué datos tenemos, cómo fueron organizados y qué calidad tienen.
+Entre las funciones más intersantes poemos mencionar:
 
-EDA → importación → paquetes → conocer estructura → limpieza inicial → preguntas sobre la base.
+-  `select()` → seleccionar las variables que queremos conservar.
+
+-  `filter()` → seleccionar filas según una condición.
+
+-  `arrange()` → ordenar las filas según una o más variables.
+
+-  `rename()` → cambiar el nombre de una variable.
+
+-  `mutate()` → crear nuevas variables o modificar las existentes.
+
+-  `distinct()` → eliminar registros duplicados.
+
+-  `drop_na()` → eliminar filas con datos faltantes.
+
+-  `replace_na()` → reemplazar valores faltantes.
+
+-  `recode()` → unificar o cambiar categorías.
+
+-  `clean_names()` de `janitor` → estandarizar los nombres de las variables.
+
+| paquetes | sitio oficial |
+|:--------------------------------:|:------------------------------------:|
+| ![](images/dplyr.png){width="82"} | [sitio oficial de dplyr](https://dplyr.tidyverse.org/) |
+| ![](images/tidyr.png){width="78"} | [Sitio oficial de tidyr](https://tidyr.tidyverse.org/) |

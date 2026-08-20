@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Teoría 4 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2e30ad26079c1dae90a1fd11eba2b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../estilos.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase4/index4.qmd">Clase 4</a></li><li class="breadcrumb-item"><a href="../clase4/teoria4.html">Teoría</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 0</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase0/index.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase0/teoria0.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase0/practica-guiada0.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase0/practica-estudiantes0.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase1/index1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase1/teoria1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase1/practica-guiada1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase1/practica-estudiantes1.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase2/index2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase2/teoria2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase2/practica-guiada2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase2/practica-estudiantes2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase3/index3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase3/teoria3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase3/practica-guiada3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase3/practica-estudiantes3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase4/index4.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase4/teoria4.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase4/practica-guiada4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase4/practica-estudiantes4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 5</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase5/index5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase5/teoria5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase5/practica-guiada5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase5/practica-estudiantes5.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Clase 6</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase6/index6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase6/practica-guiada6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../clase6/practica-estudiantes6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#moldelo-lineal-general" id="toc-moldelo-lineal-general" class="nav-link active" data-scroll-target="#moldelo-lineal-general"><span class="header-section-number">1</span> Moldelo lineal general</a>
+  <ul class="collapse">
+  <li><a href="#protocolo-para-realizar-un-análisis-estadístico-completo" id="toc-protocolo-para-realizar-un-análisis-estadístico-completo" class="nav-link" data-scroll-target="#protocolo-para-realizar-un-análisis-estadístico-completo"><span class="header-section-number">1.1</span> Protocolo para realizar un análisis estadístico completo</a></li>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">1.2</span> Regresión lineal simple</a></li>
+  <li><a href="#estimación-de-los-parámetros" id="toc-estimación-de-los-parámetros" class="nav-link" data-scroll-target="#estimación-de-los-parámetros"><span class="header-section-number">1.3</span> Estimación de los parámetros</a></li>
+  <li><a href="#modelo-probabilístico-de-la-regresión-lineal-simple" id="toc-modelo-probabilístico-de-la-regresión-lineal-simple" class="nav-link" data-scroll-target="#modelo-probabilístico-de-la-regresión-lineal-simple"><span class="header-section-number">1.4</span> Modelo probabilístico de la regresión lineal simple</a></li>
+  <li><a href="#aplicación-practica-de-rls-rendimiento-de-trigo-y-densidad-de-siembra" id="toc-aplicación-practica-de-rls-rendimiento-de-trigo-y-densidad-de-siembra" class="nav-link" data-scroll-target="#aplicación-practica-de-rls-rendimiento-de-trigo-y-densidad-de-siembra"><span class="header-section-number">1.5</span> Aplicación practica de RLS: rendimiento de trigo y densidad de siembra</a>
+  <ul class="collapse">
+  <li><a href="#el-modelo-probabilístico-y-sus-supuestos" id="toc-el-modelo-probabilístico-y-sus-supuestos" class="nav-link" data-scroll-target="#el-modelo-probabilístico-y-sus-supuestos"><span class="header-section-number">1.5.1</span> El modelo probabilístico y sus supuestos</a></li>
+  <li><a href="#inferencia-sobre-los-parámetros-de-regresión" id="toc-inferencia-sobre-los-parámetros-de-regresión" class="nav-link" data-scroll-target="#inferencia-sobre-los-parámetros-de-regresión"><span class="header-section-number">1.5.2</span> Inferencia sobre los parámetros de regresión</a></li>
+  <li><a href="#prueba-de-hipótesis-para-la-pendiente" id="toc-prueba-de-hipótesis-para-la-pendiente" class="nav-link" data-scroll-target="#prueba-de-hipótesis-para-la-pendiente"><span class="header-section-number">1.5.3</span> Prueba de hipótesis para la pendiente</a></li>
+  <li><a href="#intervalo-de-confianza-para-la-pendiente" id="toc-intervalo-de-confianza-para-la-pendiente" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-pendiente"><span class="header-section-number">1.5.4</span> Intervalo de confianza para la pendiente</a></li>
+  <li><a href="#validación-del-modelo" id="toc-validación-del-modelo" class="nav-link" data-scroll-target="#validación-del-modelo"><span class="header-section-number">1.5.5</span> Validación del modelo</a></li>
+  <li><a href="#residuos-versus-valores-ajustados-residual-vs-fitted" id="toc-residuos-versus-valores-ajustados-residual-vs-fitted" class="nav-link" data-scroll-target="#residuos-versus-valores-ajustados-residual-vs-fitted"><span class="header-section-number">1.5.6</span> Residuos versus valores ajustados (Residual vs Fitted)</a></li>
+  <li><a href="#gráfico-q-q-de-los-residuos-qq-residuals" id="toc-gráfico-q-q-de-los-residuos-qq-residuals" class="nav-link" data-scroll-target="#gráfico-q-q-de-los-residuos-qq-residuals"><span class="header-section-number">1.5.7</span> Gráfico Q-Q de los residuos (QQ Residuals)</a></li>
+  <li><a href="#scale-location" id="toc-scale-location" class="nav-link" data-scroll-target="#scale-location"><span class="header-section-number">1.5.8</span> Scale-Location</a></li>
+  <li><a href="#residuos-versus-leverage" id="toc-residuos-versus-leverage" class="nav-link" data-scroll-target="#residuos-versus-leverage"><span class="header-section-number">1.5.9</span> Residuos versus leverage</a></li>
+  <li><a href="#interpretación-de-la-salida-del-modelo" id="toc-interpretación-de-la-salida-del-modelo" class="nav-link" data-scroll-target="#interpretación-de-la-salida-del-modelo"><span class="header-section-number">1.5.10</span> Interpretación de la salida del modelo</a></li>
+  </ul></li>
+  <li><a href="#comunicar-los-resultados" id="toc-comunicar-los-resultados" class="nav-link" data-scroll-target="#comunicar-los-resultados"><span class="header-section-number">1.6</span> Comunicar los resultados</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase4/index4.qmd">Clase 4</a></li><li class="breadcrumb-item"><a href="../clase4/teoria4.html">Teoría</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Teoría 4</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="moldelo-lineal-general" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Moldelo lineal general</h1>
+<p>¿Qué es el Modelo Lineal General?</p>
+<p>El Modelo Lineal General describe la relación entre una variable de respuesta aleatoria, <span class="math inline">\(Y\)</span>, y una o más variables explicativas, que pueden ser numéricas y/o categóricas.</p>
+<p>En este modelo se asume que:</p>
+<ul>
+<li><p>La variable respuesta es cuantitativa y sigue una distribución Normal: <span class="math inline">\(Y∼N(μ_Y,σ^2_Y)\)</span></p></li>
+<li><p>Su media, <span class="math inline">\(\mu_Y\)</span>, se expresa como una combinación lineal de las variables explicativas:</p></li>
+</ul>
+<p><span class="math display">\[μ_Y=β_0+β_1X_1+β_2X_2+⋯+β_kX_K\]</span></p>
+<ul>
+<li>La variabilidad alrededor de esa media se representa mediante un error aleatorio:</li>
+</ul>
+<p><span class="math display">\[Y=β_0+β_1X_1+β_2X_2+⋯+β_kX_K+\varepsilon_1 \ con \ \varepsilon_i∼N(0,σ^2)\]</span></p>
+<p>Los parámetros <span class="math inline">\(\beta_i\)</span> y <span class="math inline">\(\sigma^2\)</span> se estiman a partir de los datos.</p>
+<p>Así, la prueba t de medias, los distintos ANOVA, la regresión lineal simple y la regresión lineal múltiple pueden entenderse como casos particulares del Modelo Lineal General.</p>
+<section id="protocolo-para-realizar-un-análisis-estadístico-completo" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="protocolo-para-realizar-un-análisis-estadístico-completo"><span class="header-section-number">1.1</span> Protocolo para realizar un análisis estadístico completo</h2>
+<p>Antes de trabajar con cualquier programa estadístico, es importante reconocer que un análisis estadístico no consiste solamente en ajustar un modelo y observar un valor <em>p</em>. Es un proceso que parte de una pregunta de investigación y finaliza con la interpretación de los resultados en su contexto.</p>
+<p>Para organizar ese proceso, seguiremos el siguiente protocolo:</p>
+<ol type="1">
+<li><strong>Plantear la pregunta de investigación y las hipótesis</strong></li>
+</ol>
+<p>Se parte de una pregunta o hipótesis científica y se la traduce en hipótesis estadísticas sobre los parámetros del modelo.</p>
+<ol start="2" type="1">
+<li><strong>Explicitar el modelo estadístico</strong></li>
+</ol>
+<p>Se define cuál es la variable respuesta, cuáles son las variables explicativas y qué supuestos se realizan sobre los datos.</p>
+<ol start="3" type="1">
+<li><strong>Realizar un análisis exploratorio de los datos</strong></li>
+</ol>
+<p>Se estudia la distribución de las variables, se calculan estadísticas descriptivas y se elaboran gráficos para explorar la relación entre la respuesta y las variables explicativas.</p>
+<ol start="4" type="1">
+<li><strong>Estimar los parámetros del modelo</strong></li>
+</ol>
+<p>Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.</p>
+<ol start="5" type="1">
+<li><strong>Validar el modelo ajustado</strong></li>
+</ol>
+<p>Se evalúa si los supuestos del modelo son razonables. En regresión lineal, una herramienta fundamental es el análisis de los residuos.</p>
+<ol start="6" type="1">
+<li><strong>Interpretar y comunicar los resultados</strong></li>
+</ol>
+<p>Los resultados se interpretan en relación con la pregunta inicial. La comunicación debe incluir tablas, gráficos y conclusiones expresadas en el contexto del problema, no solo resultados numéricos.</p>
+<p>Vemaos como se aplica todo el protocolo a un ejemplo de regresión lineal linal simple para ello consideremos de la base de datos</p>
+</section>
+<section id="regresión-lineal-simple" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="regresión-lineal-simple"><span class="header-section-number">1.2</span> Regresión lineal simple</h2>
+<p>Para comprender cómo se estiman los parámetros del Modelo Lineal General, consideremos el caso más simple: la <strong>regresión lineal simple</strong> (RLS).</p>
+<p>En este caso se estudia la relación entre una variable respuesta cuantitativa <span class="math inline">\(Y\)</span> y una única variable explicativa numérica <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[Y_i=\beta_0+\beta_1X_i+\varepsilon_i\]</span></p>
+<p>donde:</p>
+<ul>
+<li><span class="math inline">\(\beta_0\)</span> es el parámetro que caracterziza la ordenada al origen.</li>
+<li><span class="math inline">\(\beta_1\)</span> es el parámetro que caracterziza a la pendiente.</li>
+<li><span class="math inline">\(\varepsilon_i\)</span> es el error aleatorio asociado a cada observación. Con <span class="math inline">\(\epsilon_  i∼N(0,σ^2)\)</span></li>
+</ul>
+</section>
+<section id="estimación-de-los-parámetros" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="estimación-de-los-parámetros"><span class="header-section-number">1.3</span> Estimación de los parámetros</h2>
+<p>Los parámetros <span class="math inline">\(\beta_0\)</span> y <span class="math inline">\(\beta_1\)</span> son desconocidos y se estiman a partir de los datos. Sus estimaciones se denominan <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span>.</p>
+<p>La recta de regresión estimada es:</p>
+<p><span class="math display">\[\widehat{y}_i = b_0 + b_1 x_i\]</span></p>
+<p>El método de <strong>mínimos cuadrados</strong> busca los valores de <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> que minimizan la suma de los cuadrados de las diferencias entre los valores observados y los estimados:</p>
+<p><span class="math display">\[\sum_{i=1}^{n}(y_i-\widehat{y}_i)^2\]</span></p>
+<p>Estas diferencias se denominan <strong>residuos</strong>:</p>
+<p><span class="math display">\[e_i = y_i - \widehat{y}_i\]</span> Cada residuo indica la discrepancia entre el verdadero valor de la variable respuesta (<span class="math inline">\(y_i\)</span>) y el estimado por el modelo (<span class="math inline">\(\widehat{e}_i\)</span>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="..\imagenes/g_regresion_residuos.png" class="img-fluid figure-img"></p>
+<figcaption>Figura: Representación gráfica de la recta de regresión estimada, valores observados, valor predicho y un residuo.</figcaption>
+</figure>
+</div>
+<p>El <strong>Método de Mínimos Cuadrados</strong>, consiste en encontrar <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> que minimicen la ecuación:<br>
+</p>
+<p><span class="math display">\[\sum_{i=1}^{n} \left[y_i - (b_0+ b_1x_i)\right]^2\]</span><br>
+Esta expresión se denomina <strong>suma de cuadrados de los residuos</strong>. Los valores <span class="math inline">\(x_i\)</span> e <span class="math inline">\(y_i\)</span> son conocidos porque provienen de la muestra, mientras que los parámetros <span class="math inline">\(b_0\)</span>y <span class="math inline">\(b_1\)</span> son desconocidos.</p>
+<p>Si la recta estimada representa adecuadamente la relación entre las variables, esperamos que los residuos sean, en general, pequeños. Por ello, se buscan los valores de <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> que hacen mínima la suma de sus cuadrados.</p>
+<p>Recordando lo estudiado en Análisis Matemático, se deriva la expresión anterior con respecto <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span>. Luego, se igualan ambas derivadas a cero y se resuelve el sistema resultante. De este modo se obtienen las estimaciones de los parámetros de la recta de regresión.</p>
+</section>
+<section id="modelo-probabilístico-de-la-regresión-lineal-simple" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="modelo-probabilístico-de-la-regresión-lineal-simple"><span class="header-section-number">1.4</span> Modelo probabilístico de la regresión lineal simple</h2>
+<p>Para un mismo valor de la variable explicativa <span class="math inline">\(x_i\)</span>, es posible observar distintos valores de la variable respuesta. Por ello, para cada valor de <span class="math inline">\(x_i\)</span>, la variable respuesta (Y_i) se considera una variable aleatoria, caracterizada por una media <span class="math inline">\(\mu\_i\)</span> y una varianza <span class="math inline">\(\sigma\^2\)</span>.</p>
+<p>La recta de regresión teórica pasa por los valores medios de la variable respuesta para cada valor de la variable explicativa. En regresión lineal simple, esta media se expresa mediante una función lineal:</p>
+<p><span class="math display">\[E(Y_i \mid X_i = x_i) = \mu_i = \beta_0 + \beta_1x_i
+\]</span></p>
+<p>La diferencia entre el valor de la variable respuesta y su media esperada se denomina error aleatorio:</p>
+<p><span class="math display">\[\varepsilon_i = Y_i - E(Y_i \mid X_i = x_i)\]</span></p>
+<p>Por lo tanto, el modelo de regresión lineal simple puede escribirse como:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1x_i + \varepsilon_i\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="..\imagenes/g_teorico.png" width="555" height="310" class="figure-img"></p>
+<figcaption>Figura: Representación del modelo de regresión lineal simple. Los puntos azules representan valores observados de la variable respuesta para cada valor de <span class="math inline">\(x_i\)</span> ; los puntos rojos representan las medias esperadas <span class="math inline">\(E(Y_i∣X_i=x_i)\)</span> .</figcaption>
+</figure>
+</div>
+<p>Para realizar inferencias sobre los parámetros del modelo, se asume que los errores aleatorios cumplen los siguientes supuestos:</p>
+<ol type="1">
+<li><p><strong>Linealidad:</strong> la media de la variable respuesta se relaciona linealmente con la variable explicativa.</p></li>
+<li><p><strong>Normalidad:</strong> para cada valor de <span class="math inline">\(x_i\)</span>, la variable respuesta se distribuye normalmente alrededor de su media.</p></li>
+<li><p><strong>Varianza constante u homocedasticidad:</strong> la variabilidad de los rendimientos es aproximadamente la misma para todos los valores de densidad.</p></li>
+<li><p><strong>Independencia:</strong> los valores observados se obtienen de manera independiente; el rendimiento de una parcela no debe influir sobre el de otra.</p></li>
+</ol>
+<p>Estos supuestos pueden resumirse expresando que los errores son independientes, tienen media cero, varianza constante y distribución Normal:</p>
+<p><span class="math display">\[\varepsilon_i \sim N(0, \sigma^2)\]</span></p>
+<p>Bajo estos supuestos, las estimaciones de la ordenada al origen y de la pendiente permiten realizar inferencias sobre los parámetros poblacionales.</p>
+<p>Para cada parámetro debemos encontrar:</p>
+<ul>
+<li><strong>Una Estimación:</strong> valor estimado del parámetro.</li>
+<li><strong>Un Error estándar:</strong> medida de la precisión de la estimación.</li>
+</ul>
+</section>
+<section id="aplicación-practica-de-rls-rendimiento-de-trigo-y-densidad-de-siembra" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="aplicación-practica-de-rls-rendimiento-de-trigo-y-densidad-de-siembra"><span class="header-section-number">1.5</span> Aplicación practica de RLS: rendimiento de trigo y densidad de siembra</h2>
+<p>Para comprender mejor el RLS, centremos nuestro interés en un ejemplo práctico que consiste en encontrar, si existe, una relación funcional que explique el rinde de trigo en función de la densidad de plantación. En este caso el investigador ha fijado seis densidades de siembras diferentes (200-220 -240-260-280-300) semillas por m2. Para cada densidad de siembra destinó seis parcelas. La Tabla 1.1 presenta los datos de rinde de trigo cada parcela según su densidad de siembra.</p>
+<p>En función de protocolo</p>
+<ol type="1">
+<li><strong>Plantear la pregunta de investigación y las hipótesis</strong></li>
+</ol>
+<p>¿Existe un modelo que explicar el rendimiento de trigo en función de la densidad de siembra?</p>
+<ol start="2" type="1">
+<li><strong>Explicitar el modelo estadístico</strong></li>
+</ol>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Componente del MLG</th>
+<th>En regresión lineal simple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Variable respuesta</td>
+<td><span class="math inline">\(Y_i\)</span>: rendimiento de trigo</td>
+</tr>
+<tr class="even">
+<td>Parte sistemática</td>
+<td><span class="math inline">\(\beta_0 + \beta_1x_i\)</span>)</td>
+</tr>
+<tr class="odd">
+<td>Variable explicativa</td>
+<td><span class="math inline">\(x_i\)</span>: densidad de siembra</td>
+</tr>
+<tr class="even">
+<td>Error aleatorio</td>
+<td><span class="math inline">\(\epsilon_i\sim N(0, \sigma^2)\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li><strong>Realizar un análisis exploratorio de los datos</strong></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base de datos: densidad de siembra y rendimiento</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>densidad <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">220</span>, <span class="dv">240</span>, <span class="dv">260</span>, <span class="dv">280</span>, <span class="dv">300</span>), <span class="at">each =</span> <span class="dv">6</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rinde <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 200</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.6</span>, <span class="fl">1.9</span>, <span class="fl">1.85</span>, <span class="fl">2.05</span>, <span class="fl">2.15</span>, <span class="fl">2.35</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 220</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.7</span>, <span class="fl">2.6</span>, <span class="fl">2.25</span>, <span class="fl">2.5</span>, <span class="fl">2.9</span>, <span class="fl">2.4</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 240</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="fl">3.1</span>, <span class="fl">3.25</span>, <span class="fl">2.75</span>, <span class="fl">3.5</span>, <span class="fl">3.1</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 260</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.2</span>, <span class="fl">4.15</span>, <span class="fl">3.55</span>, <span class="fl">3.4</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 280</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fl">3.6</span>, <span class="fl">3.9</span>, <span class="fl">4.55</span>, <span class="fl">4.2</span>, <span class="fl">4.4</span>, <span class="dv">4</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 300</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.5</span>, <span class="fl">4.6</span>, <span class="fl">4.85</span>, <span class="fl">4.2</span>, <span class="fl">4.35</span>, <span class="fl">3.95</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>trigo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(densidad, rinde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Graficamos la inforamción</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g_densidad<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trigo, <span class="fu">aes</span>(<span class="at">x =</span> densidad, <span class="at">y =</span> rinde)) <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rendimiento en funcion de densidad de siembra"</span>, <span class="at">x =</span> <span class="st">"Densidad (plantas por m2) "</span>, <span class="at">y =</span> <span class="st">"Rendimiento(tn/ha)"</span>)<span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>g_densidad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="..\imagenes/g_densidad.png" class="img-fluid figure-img" width="622"></p>
+<figcaption>Figura: Gráfico de dispersión Rendimiento vs densidad de siembra</figcaption>
+</figure>
+</div>
+<ol start="4" type="1">
+<li><strong>Estimar los parámetros del modelo</strong></li>
+</ol>
+<p>Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo de regresión</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rinde <span class="sc">~</span> densidad, <span class="at">data =</span> trigo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rinde ~ densidad, data = trigo)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.56270 -0.18472 -0.01651  0.16718  0.57968 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.555159   0.360007  -7.098 3.36e-08 ***
+densidad     0.023560   0.001427  16.512  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2924 on 34 degrees of freedom
+Multiple R-squared:  0.8891,    Adjusted R-squared:  0.8859 
+F-statistic: 272.7 on 1 and 34 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<pre><code>Call:
+lm(formula = rinde ~ densidad, data = trigo)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.56270 -0.18472 -0.01651  0.16718  0.57968 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.555159   0.360007  -7.098 3.36e-08 ***
+densidad     0.023560   0.001427  16.512  &lt; 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2924 on 34 degrees of freedom
+Multiple R-squared:  0.8891,    Adjusted R-squared:  0.8859 
+F-statistic: 272.7 on 1 and 34 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>La recta estimada es …..</p>
+<section id="el-modelo-probabilístico-y-sus-supuestos" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="el-modelo-probabilístico-y-sus-supuestos"><span class="header-section-number">1.5.1</span> El modelo probabilístico y sus supuestos</h3>
+<p>La recta estimada en el ejemplo permite describir el rendimiento medio esperado para cada densidad de siembra. Sin embargo, dos parcelas con la misma densidad no necesariamente tendrán el mismo rendimiento.</p>
+<p>Por ejemplo, para una densidad de <span class="math inline">\(260\)</span> plantas por m² se observaron distintos valores de rendimiento. Esto ocurre porque el rendimiento es una variable aleatoria: además de la densidad, intervienen otros factores no incluidos en el modelo.</p>
+<p>En regresión lineal simple se supone que, para cada valor de la variable explicativa <span class="math inline">\(x_i\)</span>, la variable respuesta <span class="math inline">\(Y_i\)</span> tiene una media:</p>
+<p><span class="math display">\[E(Y_i \mid X_i = x_i) = \mu_i = \beta_0 + \beta_1x_i\]</span></p>
+<p>Es decir, la recta de regresión representa el <strong>rendimiento medio esperado para cada densidad de siembra</strong>.</p>
+<p>El modelo también considera una variabilidad aleatoria alrededor de esa media:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1x_i + \varepsilon_i\]</span></p>
+<p>donde (_i) representa la diferencia entre el rendimiento observado y el rendimiento medio esperado.</p>
+</section>
+<section id="inferencia-sobre-los-parámetros-de-regresión" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="inferencia-sobre-los-parámetros-de-regresión"><span class="header-section-number">1.5.2</span> Inferencia sobre los parámetros de regresión</h3>
+<p>La recta estimada se obtuvo a partir de una muestra de 36 parcelas. Si se tomara otra muestra, las estimaciones de la ordenada al origen y de la pendiente podrían ser diferentes.</p>
+<p>Por esta razón, <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span> son estimaciones de los parámetros poblacionales <span class="math inline">\(beta_0\)</span> y <span class="math inline">\(beta_1\)</span>.<br>
+Bajo los supuestos del Modelo Lineal General, podemos evaluar la precisión de estas estimaciones y realizar pruebas de hipótesis sobre los parámetros.</p>
+<p>La salida de <code>summary(modelo)</code> presenta, para cada coeficiente:</p>
+<ul>
+<li><strong>Estimate:</strong> estimación del parámetro.</li>
+<li><strong>Std. Error:</strong> error estándar de la estimación.</li>
+<li><strong>t value:</strong> estadístico utilizado para realizar la prueba de hipótesis.</li>
+<li><strong>Pr(&gt;|t|):</strong> valor <em>p</em> asociado a la prueba.</li>
+</ul>
+</section>
+<section id="prueba-de-hipótesis-para-la-pendiente" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="prueba-de-hipótesis-para-la-pendiente"><span class="header-section-number">1.5.3</span> Prueba de hipótesis para la pendiente</h3>
+<p>La pendiente (_1) indica si existe una relación lineal entre la densidad de siembra y el rendimiento medio.</p>
+<p>Se plantea la siguiente prueba de hipótesis:</p>
+<p><span class="math inline">\(H_0: \beta_1 = 0\)</span> vs <span class="math inline">\(H_1: \beta_1 \neq0\)</span></p>
+<p>Si <span class="math inline">\(\beta_1 = 0\)</span>, la recta es horizontal y la densidad no se asocia linealmente con el rendimiento medio.</p>
+<p>En el modelo ajustado, la estimación de la pendiente es: <span class="math inline">\(b = 0.0235\)</span></p>
+<p>El valor <em>p</em> asociado a la pendiente es menor que 0.001 (<em>Pr(&gt;|t|)&lt; 2e-16</em>). Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</p>
+</section>
+<section id="intervalo-de-confianza-para-la-pendiente" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-pendiente"><span class="header-section-number">1.5.4</span> Intervalo de confianza para la pendiente</h3>
+<p>El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional <span class="math inline">\(\beta_1\)</span>.</p>
+<p>Para estos datos, el intervalo de confianza es aproximadamente:</p>
+<p><span class="math display">\[IC(\beta_1, 95\%)=(0.0206;\ 0.0264)\]</span> Este intervalo puede obtenerse de la salida del modelo (<code>summary(modelo)</code>) o usando la función <code>confint(modelo)</code></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5 %      97.5 %
+(Intercept) -3.28678042 -1.82353704
+densidad     0.02065997  0.02645907</code></pre>
+</div>
+</div>
+<p>La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.</p>
+</section>
+<section id="validación-del-modelo" class="level3" data-number="1.5.5">
+<h3 data-number="1.5.5" class="anchored" data-anchor-id="validación-del-modelo"><span class="header-section-number">1.5.5</span> Validación del modelo</h3>
+<p>Una vez ajustado el modelo, es necesario evaluar si los supuestos del Modelo Lineal General son razonables.</p>
+<p>Los errores aleatorios no son observables. Por este motivo, utilizamos los residuos, que representan la diferencia entre los valores observados y los valores estimados por el modelo:</p>
+<p><span class="math inline">\(e_i = y_i - \widehat{y}_i\)</span></p>
+<p>El análisis de los residuos permite evaluar principalmente los supuestos de linealidad, varianza constante y normalidad.La forma más sencilla y tradicional es por medio gráficos que se obtiene a partir de la siguiente sentencia que producirá cuatro gráficos.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="teoria4_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="residuos-versus-valores-ajustados-residual-vs-fitted" class="level3" data-number="1.5.6">
+<h3 data-number="1.5.6" class="anchored" data-anchor-id="residuos-versus-valores-ajustados-residual-vs-fitted"><span class="header-section-number">1.5.6</span> Residuos versus valores ajustados (Residual vs Fitted)</h3>
+<p>Este gráfico permite evaluar los supuestos de linealidad y varianza constante.</p>
+<p>Esperamos observar una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias, curvaturas ni cambios notorios en su dispersión.</p>
+</section>
+<section id="gráfico-q-q-de-los-residuos-qq-residuals" class="level3" data-number="1.5.7">
+<h3 data-number="1.5.7" class="anchored" data-anchor-id="gráfico-q-q-de-los-residuos-qq-residuals"><span class="header-section-number">1.5.7</span> Gráfico Q-Q de los residuos (QQ Residuals)</h3>
+<p>Este gráfico permite evaluar si la distribución de los residuos es aproximadamente Normal.</p>
+<p>Esperamos que los puntos se encuentren cercanos a la recta de referencia.</p>
+</section>
+<section id="scale-location" class="level3" data-number="1.5.8">
+<h3 data-number="1.5.8" class="anchored" data-anchor-id="scale-location"><span class="header-section-number">1.5.8</span> Scale-Location</h3>
+<p>Este gráfico también permite evaluar la homocedasticidad. Esperamos una dispersión aproximadamente constante de los residuos a lo largo de los valores ajustados.</p>
+</section>
+<section id="residuos-versus-leverage" class="level3" data-number="1.5.9">
+<h3 data-number="1.5.9" class="anchored" data-anchor-id="residuos-versus-leverage"><span class="header-section-number">1.5.9</span> Residuos versus leverage</h3>
+<p>Este gráfico permite identificar observaciones que podrían tener una influencia importante sobre el ajuste de la recta.</p>
+<p>Una observación influyente es aquella cuya presencia o ausencia puede modificar de manera considerable los coeficientes estimados del modelo. Por ejemplo, podría cambiar la pendiente de la recta y, en consecuencia, la intensidad o incluso el sentido de la relación estimada entre las variables.</p>
+<p>La independencia de los errores no se verifica principalmente con estos gráficos. Depende, sobre todo, del diseño del estudio y de la forma en que se obtuvieron los datos. En este ejemplo, la independencia se sostiene si las parcelas fueron seleccionadas o asignadas de manera independiente.</p>
+</section>
+<section id="interpretación-de-la-salida-del-modelo" class="level3" data-number="1.5.10">
+<h3 data-number="1.5.10" class="anchored" data-anchor-id="interpretación-de-la-salida-del-modelo"><span class="header-section-number">1.5.10</span> Interpretación de la salida del modelo</h3>
+<p>Una vez verificados los supuestos, podemos interpretar los coeficientes, las pruebas de hipótesis, los intervalos de confianza y el coeficiente de determinación <span class="math inline">\(R^2\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rinde ~ densidad, data = trigo)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.56270 -0.18472 -0.01651  0.16718  0.57968 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.555159   0.360007  -7.098 3.36e-08 ***
+densidad     0.023560   0.001427  16.512  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2924 on 34 degrees of freedom
+Multiple R-squared:  0.8891,    Adjusted R-squared:  0.8859 
+F-statistic: 272.7 on 1 and 34 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>####La recta estimada</p>
+<p>A partir de las estimaciones de los coeficientes, la recta de regresión estimada es:</p>
+<p><span class="math display">\[\widehat{rinde}=−2.55+0.0235×densidad\]</span></p>
+<p>Esta recta permite estimar el rendimiento medio esperado para cada valor de densidad dentro del rango estudiado.</p>
+<section id="interpretación-de-los-coeficientes" class="level4" data-number="1.5.10.1">
+<h4 data-number="1.5.10.1" class="anchored" data-anchor-id="interpretación-de-los-coeficientes"><span class="header-section-number">1.5.10.1</span> Interpretación de los coeficientes</h4>
+<p>La pendiente estimada es:</p>
+<p><span class="math display">\[b=0.0235\]</span> Esto indica que, en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.</p>
+<p>Como las densidades evaluadas difieren en 20 plantas por m², también podemos expresar la interpretación de la siguiente manera:</p>
+<p>20×0.0235=0.47</p>
+<p>Por cada aumento de <span class="math inline">\(20 \ plantas\ por\ m^2\)</span>, se espera que el rendimiento medio aumente aproximadamente <span class="math inline">\(0.47  \ tn/ha\)</span>.</p>
+<p>La ordenada al origen estimada es <span class="math inline">\(−2.55\)</span>. Representa el rendimiento esperado cuando la densidad es igual a cero. Sin embargo, esta interpretación no tiene sentido práctico, ya que una densidad de <span class="math inline">\(cero\)</span> plantas por <span class="math inline">\(m^2\)</span> se encuentra fuera del rango estudiado.</p>
+<p>####Prueba de hipótesis para la pendiente</p>
+<p><span class="math inline">\(H_0: \beta_1 = 0\)</span> vs <span class="math inline">\(H_1: \beta_1 \neq0\)</span></p>
+<p>El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</p>
+<p>####Intervalo de confianza para la pendiente</p>
+<p>Para estos datos, el intervalo de confianza es aproximadamente:</p>
+<p><span class="math display">\[IC(\beta_1, 95\%)=(0.0206;\ 0.0264)\]</span></p>
+<p>Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre <span class="math inline">\(0.0206\)</span> y <span class="math inline">\(0.0264 \ tn/ha\)</span>.</p>
+<p>Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.</p>
+<p>###Variabilidad no explicada por el modelo</p>
+<p>El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente <span class="math inline">\(0.29\ tn/ha\)</span>.</p>
+<p>Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de <span class="math inline">\(0.29\ tn/ha\)</span>..</p>
+<p>###Coeficiente de determinación</p>
+<p>El coeficiente de determinación obtenido es:<span class="math inline">\(R^2=0.889\)</span></p>
+<p>Esto indica que el <span class="math inline">\(88.9 \%\)</span> de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.</p>
+<p>El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.</p>
+<p>####Prueba global del modelo</p>
+<p>Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p.&nbsp;Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.</p>
+<p>En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</p>
+</section>
+</section>
+</section>
+<section id="comunicar-los-resultados" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="comunicar-los-resultados"><span class="header-section-number">1.6</span> Comunicar los resultados</h2>
+<p>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables (<span class="math inline">\(\beta=0.0235\ tn/ha \ por\ planta/m^2\)</span>²; <span class="math inline">\(IC95%: 0.0206–0.0264; p&lt;0.001)\)</span>. El modelo explicó el <span class="math inline">\(88.9  \ %\)</span> de la variabilidad del rendimiento (<span class="math inline">\(R^2=0.889\)</span>).</p>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría 4"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Moldelo lineal general</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>¿Qué es el Modelo Lineal General?</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>El Modelo Lineal General describe la relación entre una variable de respuesta aleatoria, $Y$, y una o más variables explicativas, que pueden ser numéricas y/o categóricas.</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>En este modelo se asume que:</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La variable respuesta es cuantitativa y sigue una distribución Normal: $Y∼N(μ_Y,σ^2_Y)$</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Su media, $\mu_Y$, se expresa como una combinación lineal de las variables explicativas:</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>$$μ_Y=β_0+β_1X_1+β_2X_2+⋯+β_kX_K$$</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La variabilidad alrededor de esa media se representa mediante un error aleatorio:</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>$$Y=β_0+β_1X_1+β_2X_2+⋯+β_kX_K+\varepsilon_1 \ con \ \varepsilon_i∼N(0,σ^2)$$</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>Los parámetros $\beta_i$ y $\sigma^2$ se estiman a partir de los datos.</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>Así, la prueba t de medias, los distintos ANOVA, la regresión lineal simple y la regresión lineal múltiple pueden entenderse como casos particulares del Modelo Lineal General.</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Protocolo para realizar un análisis estadístico completo</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>Antes de trabajar con cualquier programa estadístico, es importante reconocer que un análisis estadístico no consiste solamente en ajustar un modelo y observar un valor *p*. Es un proceso que parte de una pregunta de investigación y finaliza con la interpretación de los resultados en su contexto.</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>Para organizar ese proceso, seguiremos el siguiente protocolo:</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Plantear la pregunta de investigación y las hipótesis**</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>Se parte de una pregunta o hipótesis científica y se la traduce en hipótesis estadísticas sobre los parámetros del modelo.</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Explicitar el modelo estadístico**</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>Se define cuál es la variable respuesta, cuáles son las variables explicativas y qué supuestos se realizan sobre los datos.</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Realizar un análisis exploratorio de los datos**</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>Se estudia la distribución de las variables, se calculan estadísticas descriptivas y se elaboran gráficos para explorar la relación entre la respuesta y las variables explicativas.</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Estimar los parámetros del modelo**</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Validar el modelo ajustado**</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>Se evalúa si los supuestos del modelo son razonables. En regresión lineal, una herramienta fundamental es el análisis de los residuos.</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Interpretar y comunicar los resultados**</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>Los resultados se interpretan en relación con la pregunta inicial. La comunicación debe incluir tablas, gráficos y conclusiones expresadas en el contexto del problema, no solo resultados numéricos.</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>Vemaos como se aplica todo el protocolo a un ejemplo de regresión lineal linal simple para ello consideremos de la base de datos</span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Regresión lineal simple</span></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>Para comprender cómo se estiman los parámetros del Modelo Lineal General, consideremos el caso más simple: la **regresión lineal simple** (RLS).</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>En este caso se estudia la relación entre una variable respuesta cuantitativa $Y$ y una única variable explicativa numérica $X$:</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>$$Y_i=\beta_0+\beta_1X_i+\varepsilon_i$$</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>donde:</span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_0$ es el parámetro que caracterziza la ordenada al origen.</span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_1$ es el parámetro que caracterziza a la pendiente.</span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\varepsilon_i$ es el error aleatorio asociado a cada observación. Con $\epsilon_  i∼N(0,σ^2)$</span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estimación de los parámetros</span></span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a>Los parámetros $\beta_0$ y $\beta_1$ son desconocidos y se estiman a partir de los datos. Sus estimaciones se denominan $b_0$ y $b_1$.</span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a>La recta de regresión estimada es:</span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>$$\widehat{y}_i = b_0 + b_1 x_i$$</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>El método de **mínimos cuadrados** busca los valores de $b_0$ y $b_1$ que minimizan la suma de los cuadrados de las diferencias entre los valores observados y los estimados:</span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>$$\sum_{i=1}^{n}(y_i-\widehat{y}_i)^2$$</span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>Estas diferencias se denominan **residuos**:</span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>$$e_i = y_i - \widehat{y}_i$$ Cada residuo indica la discrepancia entre el verdadero valor de la variable respuesta ($y_i$) y el estimado por el modelo ($\widehat{e}_i$).</span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Representación gráfica de la recta de regresión estimada, valores observados, valor predicho y un residuo.](/imagenes/g_regresion_residuos.png)</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>El **Método de Mínimos Cuadrados**, consiste en encontrar $b_0$ y $b_1$ que minimicen la ecuación:\</span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a>$$\sum_{i=1}^{n} \left<span class="co">[</span><span class="ot">y_i - (b_0+ b_1x_i)\right</span><span class="co">]</span>^2$$\</span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a>Esta expresión se denomina **suma de cuadrados de los residuos**. Los valores $x_i$ e $y_i$ son conocidos porque provienen de la muestra, mientras que los parámetros $b_0$y $b_1$ son desconocidos.</span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>Si la recta estimada representa adecuadamente la relación entre las variables, esperamos que los residuos sean, en general, pequeños. Por ello, se buscan los valores de $b_0$ y $b_1$ que hacen mínima la suma de sus cuadrados.</span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a>Recordando lo estudiado en Análisis Matemático, se deriva la expresión anterior con respecto $b_0$ y $b_1$. Luego, se igualan ambas derivadas a cero y se resuelve el sistema resultante. De este modo se obtienen las estimaciones de los parámetros de la recta de regresión.</span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelo probabilístico de la regresión lineal simple</span></span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a>Para un mismo valor de la variable explicativa $x_i$, es posible observar distintos valores de la variable respuesta. </span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a>Por ello, para cada valor de $x_i$, la variable respuesta (Y_i) se considera una variable aleatoria, caracterizada por una media $\mu<span class="sc">\_</span>i$ y una varianza $\sigma\^2$.</span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a>La recta de regresión teórica pasa por los valores medios de la variable respuesta para cada valor de la variable explicativa. En regresión lineal simple, esta media se expresa mediante una función lineal:</span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a>$$E(Y_i \mid X_i = x_i) = \mu_i = \beta_0 + \beta_1x_i</span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a>La diferencia entre el valor de la variable respuesta y su media esperada se denomina error aleatorio:</span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a>$$\varepsilon_i = Y_i - E(Y_i \mid X_i = x_i)$$</span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a>Por lo tanto, el modelo de regresión lineal simple puede escribirse como:</span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a>$$Y_i = \beta_0 + \beta_1x_i + \varepsilon_i$$</span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Representación del modelo de regresión lineal simple. Los puntos azules representan valores observados de la variable respuesta para cada valor de $x_i$ ; los puntos rojos representan las medias esperadas $E(Y_i∣X_i=x_i)$ .](/imagenes/g_teorico.png)</span>{width="555" height="310"}</span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a>Para realizar inferencias sobre los parámetros del modelo, se asume que los errores aleatorios cumplen los siguientes supuestos:</span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Linealidad:** la media de la variable respuesta se relaciona linealmente con la variable explicativa.</span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Normalidad:** para cada valor de $x_i$, la variable respuesta se distribuye normalmente alrededor de su media.</span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Varianza constante u homocedasticidad:** la variabilidad de los rendimientos es aproximadamente la misma para todos los valores de densidad.</span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Independencia:** los valores observados se obtienen de manera independiente; el rendimiento de una parcela no debe influir sobre el de otra.</span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>Estos supuestos pueden resumirse expresando que los errores son independientes, tienen media cero, varianza constante y distribución Normal:</span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a>$$\varepsilon_i \sim N(0, \sigma^2)$$</span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a>Bajo estos supuestos, las estimaciones de la ordenada al origen y de la pendiente permiten realizar inferencias sobre los parámetros poblacionales.</span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a>Para cada parámetro debemos encontrar:</span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Una Estimación:** valor estimado del parámetro.</span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Un Error estándar:** medida de la precisión de la estimación.</span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## Aplicación practica de RLS: rendimiento de trigo y densidad de siembra</span></span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a>Para comprender mejor el RLS, centremos nuestro interés en un ejemplo práctico que consiste en encontrar, si existe, una relación funcional que explique el rinde de trigo en función de la densidad de plantación. En este caso el investigador ha fijado seis densidades de siembras diferentes (200-220 -240-260-280-300) semillas por m2. Para cada densidad de siembra destinó seis parcelas. La Tabla 1.1 presenta los datos de rinde de trigo cada parcela según su densidad de siembra.</span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a>En función de protocolo</span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Plantear la pregunta de investigación y las hipótesis**</span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>¿Existe un modelo que explicar el rendimiento de trigo en función de la densidad de siembra?</span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Explicitar el modelo estadístico**</span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Componente del MLG   <span class="pp">|</span> En regresión lineal simple      <span class="pp">|</span></span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------------|---------------------------------|</span></span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable respuesta   <span class="pp">|</span> $Y_i$: rendimiento de trigo     <span class="pp">|</span></span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parte sistemática    <span class="pp">|</span> $\beta_0 + \beta_1x_i$)         <span class="pp">|</span></span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable explicativa <span class="pp">|</span> $x_i$: densidad de siembra      <span class="pp">|</span></span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error aleatorio      <span class="pp">|</span> $\epsilon_i\sim N(0, \sigma^2)$ <span class="pp">|</span></span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                      <span class="pp">|</span>                                 <span class="pp">|</span></span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Realizar un análisis exploratorio de los datos**</span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Base de datos: densidad de siembra y rendimiento</span></span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>densidad <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">220</span>, <span class="dv">240</span>, <span class="dv">260</span>, <span class="dv">280</span>, <span class="dv">300</span>), <span class="at">each =</span> <span class="dv">6</span>)</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>rinde <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 200</span></span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.6</span>, <span class="fl">1.9</span>, <span class="fl">1.85</span>, <span class="fl">2.05</span>, <span class="fl">2.15</span>, <span class="fl">2.35</span>,</span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 220</span></span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.7</span>, <span class="fl">2.6</span>, <span class="fl">2.25</span>, <span class="fl">2.5</span>, <span class="fl">2.9</span>, <span class="fl">2.4</span>,</span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 240</span></span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="fl">3.1</span>, <span class="fl">3.25</span>, <span class="fl">2.75</span>, <span class="fl">3.5</span>, <span class="fl">3.1</span>,</span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 260</span></span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.2</span>, <span class="fl">4.15</span>, <span class="fl">3.55</span>, <span class="fl">3.4</span>,</span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 280</span></span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a>  <span class="fl">3.6</span>, <span class="fl">3.9</span>, <span class="fl">4.55</span>, <span class="fl">4.2</span>, <span class="fl">4.4</span>, <span class="dv">4</span>,</span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 300</span></span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.5</span>, <span class="fl">4.6</span>, <span class="fl">4.85</span>, <span class="fl">4.2</span>, <span class="fl">4.35</span>, <span class="fl">3.95</span></span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>trigo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(densidad, rinde)</span>
+<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a>Graficamos la inforamción</span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a>g_densidad<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trigo, <span class="fu">aes</span>(<span class="at">x =</span> densidad, <span class="at">y =</span> rinde)) <span class="sc">+</span> </span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rendimiento en funcion de densidad de siembra"</span>, <span class="at">x =</span> <span class="st">"Densidad (plantas por m2) "</span>, <span class="at">y =</span> <span class="st">"Rendimiento(tn/ha)"</span>)<span class="sc">+</span></span>
+<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>))</span>
+<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a>g_densidad</span>
+<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Gráfico de dispersión Rendimiento vs densidad de siembra](/imagenes/g_densidad.png)</span>{width="622"}</span>
+<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Estimar los parámetros del modelo**</span>
+<span id="cb13-213"><a href="#cb13-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-214"><a href="#cb13-214" aria-hidden="true" tabindex="-1"></a>Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.</span>
+<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-218"><a href="#cb13-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-219"><a href="#cb13-219" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelo de regresión</span></span>
+<span id="cb13-220"><a href="#cb13-220" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rinde <span class="sc">~</span> densidad, <span class="at">data =</span> trigo)</span>
+<span id="cb13-221"><a href="#cb13-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-222"><a href="#cb13-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-225"><a href="#cb13-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-226"><a href="#cb13-226" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span>
+<span id="cb13-227"><a href="#cb13-227" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-228"><a href="#cb13-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-229"><a href="#cb13-229" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-230"><a href="#cb13-230" aria-hidden="true" tabindex="-1"></a><span class="in">Call:</span></span>
+<span id="cb13-231"><a href="#cb13-231" aria-hidden="true" tabindex="-1"></a><span class="in">lm(formula = rinde ~ densidad, data = trigo)</span></span>
+<span id="cb13-232"><a href="#cb13-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-233"><a href="#cb13-233" aria-hidden="true" tabindex="-1"></a><span class="in">Residuals:</span></span>
+<span id="cb13-234"><a href="#cb13-234" aria-hidden="true" tabindex="-1"></a><span class="in">     Min       1Q   Median       3Q      Max </span></span>
+<span id="cb13-235"><a href="#cb13-235" aria-hidden="true" tabindex="-1"></a><span class="in">-0.56270 -0.18472 -0.01651  0.16718  0.57968 </span></span>
+<span id="cb13-236"><a href="#cb13-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-237"><a href="#cb13-237" aria-hidden="true" tabindex="-1"></a><span class="in">Coefficients:</span></span>
+<span id="cb13-238"><a href="#cb13-238" aria-hidden="true" tabindex="-1"></a><span class="in">             Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb13-239"><a href="#cb13-239" aria-hidden="true" tabindex="-1"></a><span class="in">(Intercept) -2.555159   0.360007  -7.098 3.36e-08 ***</span></span>
+<span id="cb13-240"><a href="#cb13-240" aria-hidden="true" tabindex="-1"></a><span class="in">densidad     0.023560   0.001427  16.512  &lt; 2e-16 ***</span></span>
+<span id="cb13-241"><a href="#cb13-241" aria-hidden="true" tabindex="-1"></a><span class="in">---</span></span>
+<span id="cb13-242"><a href="#cb13-242" aria-hidden="true" tabindex="-1"></a><span class="in">Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span></span>
+<span id="cb13-243"><a href="#cb13-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-244"><a href="#cb13-244" aria-hidden="true" tabindex="-1"></a><span class="in">Residual standard error: 0.2924 on 34 degrees of freedom</span></span>
+<span id="cb13-245"><a href="#cb13-245" aria-hidden="true" tabindex="-1"></a><span class="in">Multiple R-squared:  0.8891,    Adjusted R-squared:  0.8859 </span></span>
+<span id="cb13-246"><a href="#cb13-246" aria-hidden="true" tabindex="-1"></a><span class="in">F-statistic: 272.7 on 1 and 34 DF,  p-value: &lt; 2.2e-16</span></span>
+<span id="cb13-247"><a href="#cb13-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-248"><a href="#cb13-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-249"><a href="#cb13-249" aria-hidden="true" tabindex="-1"></a>La recta estimada es .....</span>
+<span id="cb13-250"><a href="#cb13-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-251"><a href="#cb13-251" aria-hidden="true" tabindex="-1"></a><span class="fu">### El modelo probabilístico y sus supuestos</span></span>
+<span id="cb13-252"><a href="#cb13-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-253"><a href="#cb13-253" aria-hidden="true" tabindex="-1"></a>La recta estimada en el ejemplo permite describir el rendimiento medio esperado para cada densidad de siembra. Sin embargo, dos parcelas con la misma densidad no necesariamente tendrán el mismo rendimiento.</span>
+<span id="cb13-254"><a href="#cb13-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-255"><a href="#cb13-255" aria-hidden="true" tabindex="-1"></a>Por ejemplo, para una densidad de $260$ plantas por m² se observaron distintos valores de rendimiento. Esto ocurre porque el rendimiento es una variable aleatoria: además de la densidad, intervienen otros factores no incluidos en el modelo.</span>
+<span id="cb13-256"><a href="#cb13-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-257"><a href="#cb13-257" aria-hidden="true" tabindex="-1"></a>En regresión lineal simple se supone que, para cada valor de la variable explicativa $x_i$, la variable respuesta $Y_i$ tiene una media:</span>
+<span id="cb13-258"><a href="#cb13-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-259"><a href="#cb13-259" aria-hidden="true" tabindex="-1"></a>$$E(Y_i \mid X_i = x_i) = \mu_i = \beta_0 + \beta_1x_i$$</span>
+<span id="cb13-260"><a href="#cb13-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-261"><a href="#cb13-261" aria-hidden="true" tabindex="-1"></a>Es decir, la recta de regresión representa el **rendimiento medio esperado para cada densidad de siembra**.</span>
+<span id="cb13-262"><a href="#cb13-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-263"><a href="#cb13-263" aria-hidden="true" tabindex="-1"></a>El modelo también considera una variabilidad aleatoria alrededor de esa media:</span>
+<span id="cb13-264"><a href="#cb13-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-265"><a href="#cb13-265" aria-hidden="true" tabindex="-1"></a>$$Y_i = \beta_0 + \beta_1x_i + \varepsilon_i$$</span>
+<span id="cb13-266"><a href="#cb13-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-267"><a href="#cb13-267" aria-hidden="true" tabindex="-1"></a>donde (\varepsilon<span class="sc">\_</span>i) representa la diferencia entre el rendimiento observado y el rendimiento medio esperado.</span>
+<span id="cb13-268"><a href="#cb13-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-269"><a href="#cb13-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-270"><a href="#cb13-270" aria-hidden="true" tabindex="-1"></a><span class="fu">###  Inferencia sobre los parámetros de regresión</span></span>
+<span id="cb13-271"><a href="#cb13-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-272"><a href="#cb13-272" aria-hidden="true" tabindex="-1"></a>La recta estimada se obtuvo a partir de una muestra de 36 parcelas. Si se tomara otra muestra, las estimaciones de la ordenada al origen y de la pendiente podrían ser diferentes.</span>
+<span id="cb13-273"><a href="#cb13-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-274"><a href="#cb13-274" aria-hidden="true" tabindex="-1"></a>Por esta razón, $a$ y $b$ son estimaciones de los parámetros poblacionales $beta_0$ y $beta_1$.\</span>
+<span id="cb13-275"><a href="#cb13-275" aria-hidden="true" tabindex="-1"></a>Bajo los supuestos del Modelo Lineal General, podemos evaluar la precisión de estas estimaciones y realizar pruebas de hipótesis sobre los parámetros.</span>
+<span id="cb13-276"><a href="#cb13-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-277"><a href="#cb13-277" aria-hidden="true" tabindex="-1"></a>La salida de <span class="in">`summary(modelo)`</span> presenta, para cada coeficiente:</span>
+<span id="cb13-278"><a href="#cb13-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-279"><a href="#cb13-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Estimate:** estimación del parámetro.</span>
+<span id="cb13-280"><a href="#cb13-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Std. Error:** error estándar de la estimación.</span>
+<span id="cb13-281"><a href="#cb13-281" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**t value:** estadístico utilizado para realizar la prueba de hipótesis.</span>
+<span id="cb13-282"><a href="#cb13-282" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pr(\&gt;\|t\|):** valor *p* asociado a la prueba.</span>
+<span id="cb13-283"><a href="#cb13-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-284"><a href="#cb13-284" aria-hidden="true" tabindex="-1"></a><span class="fu">### Prueba de hipótesis para la pendiente</span></span>
+<span id="cb13-285"><a href="#cb13-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-286"><a href="#cb13-286" aria-hidden="true" tabindex="-1"></a>La pendiente (\beta<span class="sc">\_</span>1) indica si existe una relación lineal entre la densidad de siembra y el rendimiento medio.</span>
+<span id="cb13-287"><a href="#cb13-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-288"><a href="#cb13-288" aria-hidden="true" tabindex="-1"></a>Se plantea la siguiente prueba de hipótesis:</span>
+<span id="cb13-289"><a href="#cb13-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-290"><a href="#cb13-290" aria-hidden="true" tabindex="-1"></a>$H_0: \beta_1 = 0$ vs $H_1: \beta_1 \neq0$</span>
+<span id="cb13-291"><a href="#cb13-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-292"><a href="#cb13-292" aria-hidden="true" tabindex="-1"></a>Si $\beta_1 = 0$, la recta es horizontal y la densidad no se asocia linealmente con el rendimiento medio.</span>
+<span id="cb13-293"><a href="#cb13-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-294"><a href="#cb13-294" aria-hidden="true" tabindex="-1"></a>En el modelo ajustado, la estimación de la pendiente es: $b = 0.0235$</span>
+<span id="cb13-295"><a href="#cb13-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-296"><a href="#cb13-296" aria-hidden="true" tabindex="-1"></a>El valor *p* asociado a la pendiente es menor que 0.001 (*Pr(\&gt;\|t\|)\&lt; 2e-16*). Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
+<span id="cb13-297"><a href="#cb13-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-298"><a href="#cb13-298" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intervalo de confianza para la pendiente</span></span>
+<span id="cb13-299"><a href="#cb13-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-300"><a href="#cb13-300" aria-hidden="true" tabindex="-1"></a>El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional $\beta_1$.</span>
+<span id="cb13-301"><a href="#cb13-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-302"><a href="#cb13-302" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
+<span id="cb13-303"><a href="#cb13-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-304"><a href="#cb13-304" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$ Este intervalo puede obtenerse de la salida del modelo (<span class="in">`summary(modelo)`</span>) o usando la función <span class="in">`confint(modelo)`</span></span>
+<span id="cb13-305"><a href="#cb13-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-308"><a href="#cb13-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-309"><a href="#cb13-309" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span>
+<span id="cb13-310"><a href="#cb13-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-311"><a href="#cb13-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-312"><a href="#cb13-312" aria-hidden="true" tabindex="-1"></a>La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.</span>
+<span id="cb13-313"><a href="#cb13-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-314"><a href="#cb13-314" aria-hidden="true" tabindex="-1"></a><span class="fu">### Validación del modelo</span></span>
+<span id="cb13-315"><a href="#cb13-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-316"><a href="#cb13-316" aria-hidden="true" tabindex="-1"></a>Una vez ajustado el modelo, es necesario evaluar si los supuestos del Modelo Lineal General son razonables.</span>
+<span id="cb13-317"><a href="#cb13-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-318"><a href="#cb13-318" aria-hidden="true" tabindex="-1"></a>Los errores aleatorios no son observables. Por este motivo, utilizamos los residuos, que representan la diferencia entre los valores observados y los valores estimados por el modelo:</span>
+<span id="cb13-319"><a href="#cb13-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-320"><a href="#cb13-320" aria-hidden="true" tabindex="-1"></a>$e_i = y_i - \widehat{y}_i$</span>
+<span id="cb13-321"><a href="#cb13-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-322"><a href="#cb13-322" aria-hidden="true" tabindex="-1"></a>El análisis de los residuos permite evaluar principalmente los supuestos de linealidad, varianza constante y normalidad.La forma más sencilla y tradicional es por medio gráficos que se obtiene a partir de la siguiente sentencia que producirá cuatro gráficos.</span>
+<span id="cb13-323"><a href="#cb13-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-326"><a href="#cb13-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-327"><a href="#cb13-327" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb13-328"><a href="#cb13-328" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span>
+<span id="cb13-329"><a href="#cb13-329" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb13-330"><a href="#cb13-330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-331"><a href="#cb13-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-332"><a href="#cb13-332" aria-hidden="true" tabindex="-1"></a><span class="fu">### Residuos versus valores ajustados (Residual vs Fitted)</span></span>
+<span id="cb13-333"><a href="#cb13-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-334"><a href="#cb13-334" aria-hidden="true" tabindex="-1"></a>Este gráfico permite evaluar los supuestos de linealidad y varianza constante.</span>
+<span id="cb13-335"><a href="#cb13-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-336"><a href="#cb13-336" aria-hidden="true" tabindex="-1"></a>Esperamos observar una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias, curvaturas ni cambios notorios en su dispersión.</span>
+<span id="cb13-337"><a href="#cb13-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-338"><a href="#cb13-338" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gráfico Q-Q de los residuos (QQ Residuals)</span></span>
+<span id="cb13-339"><a href="#cb13-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-340"><a href="#cb13-340" aria-hidden="true" tabindex="-1"></a>Este gráfico permite evaluar si la distribución de los residuos es aproximadamente Normal.</span>
+<span id="cb13-341"><a href="#cb13-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-342"><a href="#cb13-342" aria-hidden="true" tabindex="-1"></a>Esperamos que los puntos se encuentren cercanos a la recta de referencia.</span>
+<span id="cb13-343"><a href="#cb13-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-344"><a href="#cb13-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### Scale-Location</span></span>
+<span id="cb13-345"><a href="#cb13-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-346"><a href="#cb13-346" aria-hidden="true" tabindex="-1"></a>Este gráfico también permite evaluar la homocedasticidad. Esperamos una dispersión aproximadamente constante de los residuos a lo largo de los valores ajustados.</span>
+<span id="cb13-347"><a href="#cb13-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-348"><a href="#cb13-348" aria-hidden="true" tabindex="-1"></a><span class="fu">### Residuos versus leverage</span></span>
+<span id="cb13-349"><a href="#cb13-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-350"><a href="#cb13-350" aria-hidden="true" tabindex="-1"></a>Este gráfico permite identificar observaciones que podrían tener una influencia importante sobre el ajuste de la recta.</span>
+<span id="cb13-351"><a href="#cb13-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-352"><a href="#cb13-352" aria-hidden="true" tabindex="-1"></a>Una observación influyente es aquella cuya presencia o ausencia puede modificar de manera considerable los coeficientes estimados del modelo. Por ejemplo, podría cambiar la pendiente de la recta y, en consecuencia, la intensidad o incluso el sentido de la relación estimada entre las variables.</span>
+<span id="cb13-353"><a href="#cb13-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-354"><a href="#cb13-354" aria-hidden="true" tabindex="-1"></a>La independencia de los errores no se verifica principalmente con estos gráficos. Depende, sobre todo, del diseño del estudio y de la forma en que se obtuvieron los datos. En este ejemplo, la independencia se sostiene si las parcelas fueron seleccionadas o asignadas de manera independiente.</span>
+<span id="cb13-355"><a href="#cb13-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-356"><a href="#cb13-356" aria-hidden="true" tabindex="-1"></a><span class="fu">###  Interpretación de la salida del modelo</span></span>
+<span id="cb13-357"><a href="#cb13-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-358"><a href="#cb13-358" aria-hidden="true" tabindex="-1"></a>Una vez verificados los supuestos, podemos interpretar los coeficientes, las pruebas de hipótesis, los intervalos de confianza y el coeficiente de determinación $R^2$.</span>
+<span id="cb13-359"><a href="#cb13-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-360"><a href="#cb13-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-361"><a href="#cb13-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-364"><a href="#cb13-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-365"><a href="#cb13-365" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span>
+<span id="cb13-366"><a href="#cb13-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-367"><a href="#cb13-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-368"><a href="#cb13-368" aria-hidden="true" tabindex="-1"></a>####La recta estimada</span>
+<span id="cb13-369"><a href="#cb13-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-370"><a href="#cb13-370" aria-hidden="true" tabindex="-1"></a>A partir de las estimaciones de los coeficientes, la recta de regresión estimada es:</span>
+<span id="cb13-371"><a href="#cb13-371" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-372"><a href="#cb13-372" aria-hidden="true" tabindex="-1"></a>$$\widehat{rinde}=−2.55+0.0235×densidad$$</span>
+<span id="cb13-373"><a href="#cb13-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-374"><a href="#cb13-374" aria-hidden="true" tabindex="-1"></a>Esta recta permite estimar el rendimiento medio esperado para cada valor de densidad dentro del rango estudiado.</span>
+<span id="cb13-375"><a href="#cb13-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-376"><a href="#cb13-376" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Interpretación de los coeficientes</span></span>
+<span id="cb13-377"><a href="#cb13-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-378"><a href="#cb13-378" aria-hidden="true" tabindex="-1"></a>La pendiente estimada es:</span>
+<span id="cb13-379"><a href="#cb13-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-380"><a href="#cb13-380" aria-hidden="true" tabindex="-1"></a>$$b=0.0235$$ Esto indica que, en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.</span>
+<span id="cb13-381"><a href="#cb13-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-382"><a href="#cb13-382" aria-hidden="true" tabindex="-1"></a>Como las densidades evaluadas difieren en 20 plantas por m², también podemos expresar la interpretación de la siguiente manera:</span>
+<span id="cb13-383"><a href="#cb13-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-384"><a href="#cb13-384" aria-hidden="true" tabindex="-1"></a>20×0.0235=0.47</span>
+<span id="cb13-385"><a href="#cb13-385" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-386"><a href="#cb13-386" aria-hidden="true" tabindex="-1"></a>Por cada aumento de $20 \ plantas\ por\ m^2$, se espera que el rendimiento medio aumente aproximadamente $0.47  \ tn/ha$.</span>
+<span id="cb13-387"><a href="#cb13-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-388"><a href="#cb13-388" aria-hidden="true" tabindex="-1"></a>La ordenada al origen estimada es $−2.55$. Representa el rendimiento esperado cuando la densidad es igual a cero. Sin embargo, esta interpretación no tiene sentido práctico, ya que una densidad de $cero$ plantas por $m^2$ se encuentra fuera del rango estudiado.</span>
+<span id="cb13-389"><a href="#cb13-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-390"><a href="#cb13-390" aria-hidden="true" tabindex="-1"></a>####Prueba de hipótesis para la pendiente</span>
+<span id="cb13-391"><a href="#cb13-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-392"><a href="#cb13-392" aria-hidden="true" tabindex="-1"></a>$H_0: \beta_1 = 0$ vs $H_1: \beta_1 \neq0$</span>
+<span id="cb13-393"><a href="#cb13-393" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-394"><a href="#cb13-394" aria-hidden="true" tabindex="-1"></a>El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
+<span id="cb13-395"><a href="#cb13-395" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-396"><a href="#cb13-396" aria-hidden="true" tabindex="-1"></a>####Intervalo de confianza para la pendiente</span>
+<span id="cb13-397"><a href="#cb13-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-398"><a href="#cb13-398" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
+<span id="cb13-399"><a href="#cb13-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-400"><a href="#cb13-400" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
+<span id="cb13-401"><a href="#cb13-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-402"><a href="#cb13-402" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre $0.0206$ y $0.0264 \ tn/ha$.</span>
+<span id="cb13-403"><a href="#cb13-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-404"><a href="#cb13-404" aria-hidden="true" tabindex="-1"></a>Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.</span>
+<span id="cb13-405"><a href="#cb13-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-406"><a href="#cb13-406" aria-hidden="true" tabindex="-1"></a>###Variabilidad no explicada por el modelo</span>
+<span id="cb13-407"><a href="#cb13-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-408"><a href="#cb13-408" aria-hidden="true" tabindex="-1"></a>El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente $0.29\ tn/ha$.</span>
+<span id="cb13-409"><a href="#cb13-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-410"><a href="#cb13-410" aria-hidden="true" tabindex="-1"></a>Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29\ tn/ha$..</span>
+<span id="cb13-411"><a href="#cb13-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-412"><a href="#cb13-412" aria-hidden="true" tabindex="-1"></a>###Coeficiente de determinación</span>
+<span id="cb13-413"><a href="#cb13-413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-414"><a href="#cb13-414" aria-hidden="true" tabindex="-1"></a>El coeficiente de determinación obtenido es:$R^2=0.889$</span>
+<span id="cb13-415"><a href="#cb13-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-416"><a href="#cb13-416" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \%$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.</span>
+<span id="cb13-417"><a href="#cb13-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-418"><a href="#cb13-418" aria-hidden="true" tabindex="-1"></a>El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.</span>
+<span id="cb13-419"><a href="#cb13-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-420"><a href="#cb13-420" aria-hidden="true" tabindex="-1"></a>####Prueba global del modelo</span>
+<span id="cb13-421"><a href="#cb13-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-422"><a href="#cb13-422" aria-hidden="true" tabindex="-1"></a>Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p. Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.</span>
+<span id="cb13-423"><a href="#cb13-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-424"><a href="#cb13-424" aria-hidden="true" tabindex="-1"></a>En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
+<span id="cb13-425"><a href="#cb13-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-426"><a href="#cb13-426" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comunicar los resultados</span></span>
+<span id="cb13-427"><a href="#cb13-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-428"><a href="#cb13-428" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables ($\beta=0.0235\ tn/ha \ por\ planta/m^2$²; $IC95%: 0.0206–0.0264; p&lt;0.001)$. El modelo explicó el $88.9  \ %$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

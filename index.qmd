@@ -2,9 +2,12 @@
 title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"
 ---
 
-# Bienvendidos 
- 
-## Introducción  
-El análisis de datos mediante software libre se ha convertido en una competencia esencial en la investigación vinculada con las biociencias. como la  y gestión agroambiental. R y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental.
-En particular, se enfatiza el uso de los Modelos Lineales Generales (MLG) como una herramienta estadística fundamental para el análisis de datos, ya que permiten modelar y comprender relaciones entre variables cuantitativas y categóricas, realizar comparaciones entre tratamientos y analizar efectos múltiples.
-Estas competencias constituyen el punto de partida para abordar en profundidad métodos más avanzados en cursos específicos posteriores. El curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración de datos, la descripción estadística y la aplicación de modelos lineales generales (MLG), con énfasis en la interpretación de resultados y su comunicación efectiva.
+# Bienvendidos
+
+## Introducción
+
+El análisis de datos mediante software libre se ha convertido en una competencia esencial para la investigación en el campo de las biociencias.
+
+R y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental. En particular, se enfatiza el uso de los Modelos Lineales Generales (MLG) como herramienta estadística fundamental para el análisis de datos, ya que permiten modelar una variable de respuesta con distribución normal en función de una o más variables explicativas, sean estas cuantitativas, categóricas o de ambos tipos. Las competencias que los participantes adquirirán constituyen el punto de partida para abordar, con mayor profundidad, métodos más avanzados en cursos posteriores.
+
+En resumen, el curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración y descripción estadística de datos con la aplicación de Modelos Lineales Generales (MLG), y poniendo énfasis en la interpretación de los resultados y su comunicación efectiva.
