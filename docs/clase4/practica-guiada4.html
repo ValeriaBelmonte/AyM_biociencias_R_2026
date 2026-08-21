@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Untitled – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Práctica guiada – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -397,15 +426,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link active" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">1</span> Regresión lineal simple</a>
+  <ul class="collapse">
+  <li><a href="#paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis" id="toc-paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis" class="nav-link" data-scroll-target="#paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis"><span class="header-section-number">1.1</span> Paso 1 <strong>Plantear la pregunta de investigación y las hipótesis</strong></a></li>
+  <li><a href="#paso-2-explicitar-el-modelo-estadístico" id="toc-paso-2-explicitar-el-modelo-estadístico" class="nav-link" data-scroll-target="#paso-2-explicitar-el-modelo-estadístico"><span class="header-section-number">1.2</span> Paso 2 — Explicitar el modelo estadístico</a></li>
+  <li><a href="#paso-3-análsis-exploratorio-de-los-datos" id="toc-paso-3-análsis-exploratorio-de-los-datos" class="nav-link" data-scroll-target="#paso-3-análsis-exploratorio-de-los-datos"><span class="header-section-number">1.3</span> Paso 3 Análsis exploratorio de los datos</a></li>
+  <li><a href="#estimar-los-parámetros-del-modelo" id="toc-estimar-los-parámetros-del-modelo" class="nav-link" data-scroll-target="#estimar-los-parámetros-del-modelo"><span class="header-section-number">1.4</span> Estimar los parámetros del modelo</a></li>
+  <li><a href="#paso-5-validar-el-modelo-ajustado" id="toc-paso-5-validar-el-modelo-ajustado" class="nav-link" data-scroll-target="#paso-5-validar-el-modelo-ajustado"><span class="header-section-number">1.5</span> Paso 5 — Validar el modelo ajustado</a></li>
+  <li><a href="#paso-6-interpretar-y-comunicar-los-resultados" id="toc-paso-6-interpretar-y-comunicar-los-resultados" class="nav-link" data-scroll-target="#paso-6-interpretar-y-comunicar-los-resultados"><span class="header-section-number">1.6</span> Paso 6 — Interpretar y comunicar los resultados</a>
+  <ul class="collapse">
+  <li><a href="#intervalo-de-confianza-para-la-pendiente" id="toc-intervalo-de-confianza-para-la-pendiente" class="nav-link" data-scroll-target="#intervalo-de-confianza-para-la-pendiente"><span class="header-section-number">1.6.1</span> Intervalo de confianza para la pendiente</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">2</span> </a>
+  <ul class="collapse">
+  <li><a href="#comunicar-los-resultados" id="toc-comunicar-los-resultados" class="nav-link" data-scroll-target="#comunicar-los-resultados"><span class="header-section-number">2.1</span> Comunicar los resultados</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase4/index4.qmd">Clase 4</a></li><li class="breadcrumb-item"><a href="../clase4/practica-guiada4.html">Práctica guiada</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Untitled</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Práctica guiada</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -422,10 +472,260 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="regresión-lineal-simple" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Regresión lineal simple</h1>
+<p>Un investigador desea estudiar si la <strong>densidad de siembra</strong> (medida en plantas por m²) tiene un efecto sobre el <strong>rendimiento del cultivo de trigo</strong> (medido en tn/ha). Para ello, fijó seis densidades de siembra distintas —200, 220, 240, 260, 280 y 300 plantas por m²— y destinó seis parcelas a cada densidad, obteniendo un total de 36 parcelas. La Tabla 1.1 presenta el rendimiento de trigo registrado en cada parcela, según su densidad de siembra.</p>
+<section id="paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis"><span class="header-section-number">1.1</span> Paso 1 <strong>Plantear la pregunta de investigación y las hipótesis</strong></h2>
+<p>A partir de esta situación, la pregunta de investigación es:</p>
+<p>¿Existe una relación entre la densidad de siembra y el rendimiento de trigo?</p>
+<p>Esta pregunta se traduce en una hipótesis estadística sobre el parámetro que mide esa relación en el modelo: la pendiente <span class="math inline">\(\beta_1\)</span> (que definiremos formalmente en el Paso 2).</p>
+</section>
+<section id="paso-2-explicitar-el-modelo-estadístico" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="paso-2-explicitar-el-modelo-estadístico"><span class="header-section-number">1.2</span> Paso 2 — Explicitar el modelo estadístico</h2>
+<p>Antes de ajustar cualquier modelo, definimos sus componentes:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Componente del MLG</th>
+<th>En regresión lineal simple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Variable respuesta</td>
+<td><span class="math inline">\(Y_i\)</span>: rendimiento de trigo</td>
+</tr>
+<tr class="even">
+<td>Parte sistemática</td>
+<td><span class="math inline">\(\beta_0 + \beta_1x_i\)</span>)</td>
+</tr>
+<tr class="odd">
+<td>Variable explicativa</td>
+<td><span class="math inline">\(x_i\)</span>: densidad de siembra</td>
+</tr>
+<tr class="even">
+<td>Error aleatorio</td>
+<td><span class="math inline">\(\varepsilon_i\sim N(0, \sigma^2)\)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>El modelo estadístico queda formalmente expresado como: <span class="math display">\[Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\]</span></p>
+<p>donde <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> son los parámetros poblacionales desconocidos que se estimarán a partir de los datos, y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:</p>
+<p><span class="math display">\[H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}\]</span> <span class="math display">\[H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}\]</span></p>
+<p>Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.</p>
+</section>
+<section id="paso-3-análsis-exploratorio-de-los-datos" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="paso-3-análsis-exploratorio-de-los-datos"><span class="header-section-number">1.3</span> Paso 3 Análsis exploratorio de los datos</h2>
+<p>Antes de ajustar en modelo, exploramos los datos para concer su distribución y vizualizar la realción entre las variables</p>
+<p>Cargamos los datos</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base de datos: densidad de siembra y rendimiento</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>densidad <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">220</span>, <span class="dv">240</span>, <span class="dv">260</span>, <span class="dv">280</span>, <span class="dv">300</span>), <span class="at">each =</span> <span class="dv">6</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>rinde <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 200</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.6</span>, <span class="fl">1.9</span>, <span class="fl">1.85</span>, <span class="fl">2.05</span>, <span class="fl">2.15</span>, <span class="fl">2.35</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 220</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.7</span>, <span class="fl">2.6</span>, <span class="fl">2.25</span>, <span class="fl">2.5</span>, <span class="fl">2.9</span>, <span class="fl">2.4</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 240</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="fl">3.1</span>, <span class="fl">3.25</span>, <span class="fl">2.75</span>, <span class="fl">3.5</span>, <span class="fl">3.1</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 260</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.2</span>, <span class="fl">4.15</span>, <span class="fl">3.55</span>, <span class="fl">3.4</span>,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 280</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fl">3.6</span>, <span class="fl">3.9</span>, <span class="fl">4.55</span>, <span class="fl">4.2</span>, <span class="fl">4.4</span>, <span class="dv">4</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 300</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.5</span>, <span class="fl">4.6</span>, <span class="fl">4.85</span>, <span class="fl">4.2</span>, <span class="fl">4.35</span>, <span class="fl">3.95</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>trigo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(densidad, rinde)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Graficamos la inforamción</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>g_densidad<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trigo, <span class="fu">aes</span>(<span class="at">x =</span> densidad, <span class="at">y =</span> rinde)) <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rendimiento en función de densidad de siembra"</span>, <span class="at">x =</span> <span class="st">"Densidad (plantas por m²) "</span>, <span class="at">y =</span> <span class="st">"Rendimiento(tn/ha)"</span>)<span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>g_densidad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica-guiada4_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Figura: Gráfico de dispersión Rendimiento vs densidad de siembra</p>
+<p>El gráfico de dispersión muestra una tendencia clara: a medida que aumenta la densidad de siembra, el rendimiento tiende a aumentar también. La relación se observa aproximadamente <strong>lineal</strong>, sin curvaturas evidentes, lo cual es un primer indicio a favor de ajustar un modelo de regresión lineal simple.</p>
+<p>También se observa que, para una misma densidad, existe cierta variabilidad en el rendimiento entre las seis parcelas —por ejemplo, en la densidad de 260 plantas/m² los valores van de aproximadamente 3.2 a 4.2 tn/ha—. Esta dispersión alrededor de la tendencia central es precisamente la que el modelo va a intentar capturar mediante el término de error aleatorio εᵢ.</p>
+<p><strong>¿Qué buscamos en este gráfico, en general?</strong> Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:</p>
+<p><strong>La forma de la relación</strong>: ¿es lineal, o se insinúa una curva? (si hay curvatura marcada, un modelo lineal no sería adecuado).</p>
+<p><strong>La dirección de la relación</strong>: ¿positiva (ambas variables aumentan juntas) o negativa?</p>
+<p><strong>La dispersión de los puntos alrededor de la tendencia</strong>: ¿es similar en todo el rango de X, o cambia (por ejemplo, se abre como un abanico)? Esto es un primer indicio visual de homocedasticidad, que se confirmará más formalmente en el Paso 5 con el análisis de residuos.</p>
+<p><strong>Valores atípicos</strong>: puntos que se alejan notoriamente del patrón general del resto de los datos.</p>
+<p>En este ejemplo, el gráfico sugiere una relación lineal, positiva, sin atípicos evidentes ni cambios marcados en la dispersión — todo lo cual es coherente con los supuestos que vamos a validar formalmente más adelante.</p>
+</section>
+<section id="estimar-los-parámetros-del-modelo" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="estimar-los-parámetros-del-modelo"><span class="header-section-number">1.4</span> Estimar los parámetros del modelo</h2>
+<p>Ajustamos el modelo de regresión lineal simple en R con la función <code>lm()</code>:</p>
+<p>Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rinde <span class="sc">~</span> densidad, <span class="at">data =</span> trigo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = rinde ~ densidad, data = trigo)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.56270 -0.18472 -0.01651  0.16718  0.57968 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -2.555159   0.360007  -7.098 3.36e-08 ***
+densidad     0.023560   0.001427  16.512  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2924 on 34 degrees of freedom
+Multiple R-squared:  0.8891,    Adjusted R-squared:  0.8859 
+F-statistic: 272.7 on 1 and 34 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:</p>
+<p><span class="math inline">\(b_o = −2.555\)</span> (ordenada al origen) <span class="math inline">\(b_1 = 0.0236\)</span> (pendiente)</p>
+<p>Con estos valores, la recta de regresión estimada es: <span class="math display">\[\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}\]</span></p>
+<p>Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida <code>—Std. Error</code>, <code>t value</code> y <code>Pr(&gt;|t|)</code>— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.</p>
+</section>
+<section id="paso-5-validar-el-modelo-ajustado" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="paso-5-validar-el-modelo-ajustado"><span class="header-section-number">1.5</span> Paso 5 — Validar el modelo ajustado</h2>
+<p>Antes de interpretar los resultados, es necesario evaluar si los supuestos del modelo son razonables. Los errores aleatorios εᵢ no son observables directamente; por eso utilizamos los residuos como su aproximación empírica: <span class="math display">\[e_i = y_i - \hat{y}_i\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="practica-guiada4_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Figura: los cuatro gráficos diagnósticos — Residuals vs Fitted, Q-Q Residuals, Scale-Location, Residuals vs Leverage</p>
+<p><strong>Residuos vs.&nbsp;valores ajustados.</strong> Permite evaluar linealidad y homocedasticidad. Esperamos una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias ni curvaturas. En este ejemplo, los residuos no muestran un patrón sistemático, lo que apoya el supuesto de linealidad.</p>
+<p><strong>Gráfico Q-Q de los residuos.</strong> Permite evaluar si los residuos se distribuyen aproximadamente Normal. Esperamos que los puntos se ubiquen cercanos a la recta de referencia. En este caso, la mayoría de los puntos se ajustan bien a la recta, con leves desvíos en los extremos (observaciones 22 y 27), que no resultan preocupantes.</p>
+<p><strong>Scale-Location.</strong> También permite evaluar homocedasticidad, observando si la dispersión de los residuos es aproximadamente constante a lo largo de los valores ajustados. No se observan cambios marcados en la dispersión.</p>
+<p><strong>Residuos vs.&nbsp;leverage.</strong> Permite identificar observaciones influyentes: aquellas cuya presencia o ausencia podría modificar de manera considerable los coeficientes estimados. Ninguna observación se destaca con una distancia de Cook preocupante.</p>
+<p><strong>Sobre la independencia.</strong> A diferencia de los otros tres supuestos, la independencia de las observaciones no se evalúa con estos gráficos: como señalamos en el Paso 2, depende del diseño del estudio. En este caso, dado que las parcelas fueron trabajadas de manera independiente, el supuesto se considera razonable.</p>
+<p>En conjunto, el análisis de residuos no evidencia incumplimientos relevantes de los supuestos del modelo, por lo que podemos avanzar con confianza a la interpretación de los resultados.</p>
+</section>
+<section id="paso-6-interpretar-y-comunicar-los-resultados" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="paso-6-interpretar-y-comunicar-los-resultados"><span class="header-section-number">1.6</span> Paso 6 — Interpretar y comunicar los resultados</h2>
+<section id="intervalo-de-confianza-para-la-pendiente" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-pendiente"><span class="header-section-number">1.6.1</span> Intervalo de confianza para la pendiente</h3>
+<p>Como planteamos en el Paso 2: H₀: β₁ = 0 vs.&nbsp;H₁: β₁ ≠ 0. Siguiendo la lógica presentada en la sección 1.2.3, el valor <em>p</em> asociado a la pendiente es menor a 0.001 (<code>Pr(&gt;|t|) &lt; 2e-16</code>). Se rechaza H₀ y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</p>
+<p><strong>Intervalo de confianza para la pendiente</strong></p>
+<p>El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional <span class="math inline">\(\beta_1\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  2.5 %      97.5 %
+(Intercept) -3.28678042 -1.82353704
+densidad     0.02065997  0.02645907</code></pre>
+</div>
+</div>
+<p>Con una confianza del 95 %, se estima que por cada aumento de una planta por m² en la densidad de siembra, el rendimiento medio aumenta entre 0.0206 y 0.0264 tn/ha. Como el intervalo no contiene al cero, este resultado es coherente con la prueba de hipótesis anterior.</p>
+<p>Para estos datos, el intervalo de confianza es aproximadamente:</p>
+<p><span class="math display">\[IC(\beta_1, 95\%)=(0.0206;\ 0.0264)\]</span></p>
+<p><em>Observación</em>:este intervalo puede obtenerse de la salida del modelo (<code>summary(modelo)</code>) o usando la función <code>confint(modelo)</code></p>
+<p>La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.</p>
+<section id="interpretación-de-los-coeficientes" class="level4" data-number="1.6.1.1">
+<h4 data-number="1.6.1.1" class="anchored" data-anchor-id="interpretación-de-los-coeficientes"><span class="header-section-number">1.6.1.1</span> Interpretación de los coeficientes</h4>
+<p>La pendiente estimada es b₁ = 0.0235: en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.</p>
+<p>Como las densidades evaluadas difieren en 20 plantas/m², resulta más intuitivo expresar el efecto reescalado a ese incremento (esto es una re-expresión del mismo parámetro, no un valor nuevo a estimar): <span class="math display">\[20 \times 0.0235 = 0.47 \text{ tn/ha}\]</span></p>
+<p>Es decir, por cada aumento de 20 plantas/m², se espera que el rendimiento medio aumente aproximadamente <span class="math inline">\(0.47 \text { tn/ha}\)</span>.</p>
+<p>La ordenada al origen estimada es <span class="math inline">\(b_o = −2.555\)</span> (ordenada al origen), y representa el rendimiento esperado cuando la densidad es igual a cero. Esta interpretación no tiene sentido práctico, ya que una densidad de cero plantas/m² se encuentra fuera del rango estudiado; por eso tampoco se interpreta su intervalo de confianza.</p>
+<p>Variabilidad no explicada por el modelo</p>
+<p>El error estándar residual es <span class="math inline">\(0.2924\)</span>, lo que indica que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de <span class="math inline">\(0.29 \text { tn/ha}\)</span>.</p>
+</section>
+<section id="coeficiente-de-determinación" class="level4" data-number="1.6.1.2">
+<h4 data-number="1.6.1.2" class="anchored" data-anchor-id="coeficiente-de-determinación"><span class="header-section-number">1.6.1.2</span> Coeficiente de determinación</h4>
+<p><span class="math display">\[R^2=0.889\]</span></p>
+<p>Esto indica que el <span class="math inline">\(88.9 \text{ \%}\)</span> de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa. El porcentaje restante corresponde a otros factores no incluidos en el modelo y a la variabilidad aleatoria.</p>
+</section>
+<section id="prueba-global-del-modelo" class="level4" data-number="1.6.1.3">
+<h4 data-number="1.6.1.3" class="anchored" data-anchor-id="prueba-global-del-modelo"><span class="header-section-number">1.6.1.3</span> Prueba global del modelo</h4>
+<p>El estadístico F (<span class="math inline">\(272.7\)</span>, <span class="math inline">\(p &lt; 2.2e-16\)</span>) evalúa si el modelo en conjunto explica una parte significativa de la variabilidad de la respuesta. En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</p>
+</section>
+<section id="comunicación-de-los-resultados" class="level4" data-number="1.6.1.4">
+<h4 data-number="1.6.1.4" class="anchored" data-anchor-id="comunicación-de-los-resultados"><span class="header-section-number">1.6.1.4</span> Comunicación de los resultados</h4>
+<p>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables ($b_1 = 0.0235 $; <span class="math inline">\(IC 95 \% = [0.0206; 0.0264]; p &lt; 0.001\)</span>). El modelo explicó el <span class="math inline">\(88.9 \text{ \%}\)</span> de la variabilidad del rendimiento (<span class="math inline">\(R^2=0.889\)</span>).</p>
+</section>
+</section>
+</section>
+</section>
+<section id="section" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> </h1>
+<p>El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</p>
+<p>####Intervalo de confianza para la pendiente</p>
+<p>Para estos datos, el intervalo de confianza es aproximadamente:</p>
+<p><span class="math display">\[IC(\beta_1, 95\%)=(0.0206;\ 0.0264)\]</span></p>
+<p>Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre <span class="math inline">\(0.0206\)</span> y <span class="math inline">\(0.0264 \ tn/ha\)</span>.</p>
+<p>Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.</p>
+<p>###Variabilidad no explicada por el modelo</p>
+<p>El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente <span class="math inline">\(0.29\ tn/ha\)</span>.</p>
+<p>Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de <span class="math inline">\(0.29\ tn/ha\)</span>..</p>
+<p>###Coeficiente de determinación</p>
+<p>El coeficiente de determinación obtenido es:<span class="math inline">\(R^2=0.889\)</span></p>
+<p>Esto indica que el <span class="math inline">\(88.9 \%\)</span> de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.</p>
+<p>El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.</p>
+<p>####Prueba global del modelo</p>
+<p>Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p.&nbsp;Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.</p>
+<p>En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</p>
+<section id="comunicar-los-resultados" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="comunicar-los-resultados"><span class="header-section-number">2.1</span> Comunicar los resultados</h2>
+<p>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables (<span class="math inline">\(\beta=0.0235\ tn/ha \ por\ planta/m^2\)</span>²; <span class="math inline">\(IC95%: 0.0206–0.0264; p&lt;0.001)\)</span>. El modelo explicó el <span class="math inline">\(88.9  \ %\)</span> de la variabilidad del rendimiento (<span class="math inline">\(R^2=0.889\)</span>).</p>
 
 
 <!-- -->
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -878,9 +1178,249 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Untitled"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctica guiada"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Regresión lineal simple</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Un investigador desea estudiar si la **densidad de siembra** (medida en plantas por m²) tiene un efecto sobre el **rendimiento del cultivo de trigo** (medido en tn/ha). Para ello, fijó seis densidades de siembra distintas —200, 220, 240, 260, 280 y 300 plantas por m²— y destinó seis parcelas a cada densidad, obteniendo un total de 36 parcelas. La Tabla 1.1 presenta el rendimiento de trigo registrado en cada parcela, según su densidad de siembra.</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1 **Plantear la pregunta de investigación y las hipótesis**</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>A partir de esta situación, la pregunta de investigación es:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>¿Existe una relación entre la densidad de siembra y el rendimiento de trigo?</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>Esta pregunta se traduce en una hipótesis estadística sobre el parámetro que mide esa relación en el modelo: la pendiente $\beta_1$ (que definiremos formalmente en el Paso 2).</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2 — Explicitar el modelo estadístico</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>Antes de ajustar cualquier modelo, definimos sus componentes:</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Componente del MLG   <span class="pp">|</span> En regresión lineal simple      <span class="pp">|</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------------|---------------------------------|</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable respuesta   <span class="pp">|</span> $Y_i$: rendimiento de trigo     <span class="pp">|</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parte sistemática    <span class="pp">|</span> $\beta_0 + \beta_1x_i$)         <span class="pp">|</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable explicativa <span class="pp">|</span> $x_i$: densidad de siembra      <span class="pp">|</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error aleatorio      <span class="pp">|</span> $\varepsilon_i\sim N(0, \sigma^2)$ <span class="pp">|</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                      <span class="pp">|</span>                                 <span class="pp">|</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>El modelo estadístico queda formalmente expresado como: $$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>donde $b_0$ y $b_1$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos, y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>$$H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}$$ $$H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}$$</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3 Análsis exploratorio de los datos</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>Antes de ajustar en modelo, exploramos los datos para concer su distribución y vizualizar la realción entre las variables</span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>Cargamos los datos</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Base de datos: densidad de siembra y rendimiento</span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>densidad <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">200</span>, <span class="dv">220</span>, <span class="dv">240</span>, <span class="dv">260</span>, <span class="dv">280</span>, <span class="dv">300</span>), <span class="at">each =</span> <span class="dv">6</span>)</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>rinde <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 200</span></span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.6</span>, <span class="fl">1.9</span>, <span class="fl">1.85</span>, <span class="fl">2.05</span>, <span class="fl">2.15</span>, <span class="fl">2.35</span>,</span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 220</span></span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a>  <span class="fl">2.7</span>, <span class="fl">2.6</span>, <span class="fl">2.25</span>, <span class="fl">2.5</span>, <span class="fl">2.9</span>, <span class="fl">2.4</span>,</span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 240</span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a>  <span class="dv">3</span>, <span class="fl">3.1</span>, <span class="fl">3.25</span>, <span class="fl">2.75</span>, <span class="fl">3.5</span>, <span class="fl">3.1</span>,</span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 260</span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>  <span class="dv">4</span>, <span class="fl">3.7</span>, <span class="fl">3.2</span>, <span class="fl">4.15</span>, <span class="fl">3.55</span>, <span class="fl">3.4</span>,</span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 280</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a>  <span class="fl">3.6</span>, <span class="fl">3.9</span>, <span class="fl">4.55</span>, <span class="fl">4.2</span>, <span class="fl">4.4</span>, <span class="dv">4</span>,</span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Densidad 300</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>  <span class="fl">4.5</span>, <span class="fl">4.6</span>, <span class="fl">4.85</span>, <span class="fl">4.2</span>, <span class="fl">4.35</span>, <span class="fl">3.95</span></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>trigo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(densidad, rinde)</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a>Graficamos la inforamción</span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>g_densidad<span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trigo, <span class="fu">aes</span>(<span class="at">x =</span> densidad, <span class="at">y =</span> rinde)) <span class="sc">+</span> </span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"blue"</span>, <span class="at">size=</span><span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Rendimiento en función de densidad de siembra"</span>, <span class="at">x =</span> <span class="st">"Densidad (plantas por m²) "</span>, <span class="at">y =</span> <span class="st">"Rendimiento(tn/ha)"</span>)<span class="sc">+</span></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a>        <span class="at">title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>))</span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a>g_densidad</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a>Figura: Gráfico de dispersión Rendimiento vs densidad de siembra</span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a>El gráfico de dispersión muestra una tendencia clara: a medida que aumenta la densidad de siembra, el rendimiento tiende a aumentar también. La relación se observa aproximadamente **lineal**, sin curvaturas evidentes, lo cual es un primer indicio a favor de ajustar un modelo de regresión lineal simple.</span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>También se observa que, para una misma densidad, existe cierta variabilidad en el rendimiento entre las seis parcelas —por ejemplo, en la densidad de 260 plantas/m² los valores van de aproximadamente 3.2 a 4.2 tn/ha—. Esta dispersión alrededor de la tendencia central es precisamente la que el modelo va a intentar capturar mediante el término de error aleatorio εᵢ.</span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>**¿Qué buscamos en este gráfico, en general?**  Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:</span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>**La forma de la relación**: ¿es lineal, o se insinúa una curva? (si hay curvatura marcada, un modelo lineal no sería adecuado).</span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>**La dirección de la relación**: ¿positiva (ambas variables aumentan juntas) o negativa?</span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>**La dispersión de los puntos alrededor de la tendencia**: ¿es similar en todo el rango de X, o cambia (por ejemplo, se abre como un abanico)? Esto es un primer indicio visual de homocedasticidad, que se confirmará más formalmente en el Paso 5 con el análisis de residuos.</span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>**Valores atípicos**: puntos que se alejan notoriamente del patrón general del resto de los datos.</span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a>En este ejemplo, el gráfico sugiere una relación lineal, positiva, sin atípicos evidentes ni cambios marcados en la dispersión — todo lo cual es coherente con los supuestos que vamos a validar formalmente más adelante.</span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estimar los parámetros del modelo</span></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a>Ajustamos el modelo de regresión lineal simple en R con la función <span class="in">`lm()`</span>:</span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a>Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.</span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rinde <span class="sc">~</span> densidad, <span class="at">data =</span> trigo)</span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:</span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>$b_o = −2.555$ (ordenada al origen) $b_1 = 0.0236$ (pendiente)</span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>Con estos valores, la recta de regresión estimada es: </span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>$$\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}$$</span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida <span class="in">`—Std. Error`</span>, <span class="in">`t value`</span> y <span class="in">`Pr(&gt;|t|)`</span>— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.</span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5 — Validar el modelo ajustado</span></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>Antes de interpretar los resultados, es necesario evaluar si los supuestos del modelo son razonables. Los errores aleatorios εᵢ no son observables directamente; por eso utilizamos los residuos como su aproximación empírica: $$e_i = y_i - \hat{y}_i$$</span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>Figura: los cuatro gráficos diagnósticos — Residuals vs Fitted, Q-Q Residuals, Scale-Location, Residuals vs Leverage</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>**Residuos vs. valores ajustados.** Permite evaluar linealidad y homocedasticidad. Esperamos una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias ni curvaturas. En este ejemplo, los residuos no muestran un patrón sistemático, lo que apoya el supuesto de linealidad.</span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>**Gráfico Q-Q de los residuos.** Permite evaluar si los residuos se distribuyen aproximadamente Normal. Esperamos que los puntos se ubiquen cercanos a la recta de referencia. En este caso, la mayoría de los puntos se ajustan bien a la recta, con leves desvíos en los extremos (observaciones 22 y 27), que no resultan preocupantes.</span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a>**Scale-Location.** También permite evaluar homocedasticidad, observando si la dispersión de los residuos es aproximadamente constante a lo largo de los valores ajustados. No se observan cambios marcados en la dispersión.</span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a>**Residuos vs. leverage.** Permite identificar observaciones influyentes: aquellas cuya presencia o ausencia podría modificar de manera considerable los coeficientes estimados. Ninguna observación se destaca con una distancia de Cook preocupante.</span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>**Sobre la independencia.** A diferencia de los otros tres supuestos, la independencia de las observaciones no se evalúa con estos gráficos: como señalamos en el Paso 2, depende del diseño del estudio. En este caso, dado que las parcelas fueron trabajadas de manera independiente, el supuesto se considera razonable.</span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>En conjunto, el análisis de residuos no evidencia incumplimientos relevantes de los supuestos del modelo, por lo que podemos avanzar con confianza a la interpretación de los resultados.</span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6 — Interpretar y comunicar los resultados</span></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intervalo de confianza para la pendiente</span></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>Como planteamos en el Paso 2: H₀: β₁ = 0 vs. H₁: β₁ ≠ 0. Siguiendo la lógica presentada en la sección 1.2.3, el valor *p* asociado a la pendiente es menor a 0.001 (<span class="in">`Pr(&gt;|t|) &lt; 2e-16`</span>). Se rechaza H₀ y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>**Intervalo de confianza para la pendiente**</span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a>El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional $\beta_1$.</span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una planta por m² en la densidad de siembra, el rendimiento medio aumenta entre 0.0206 y 0.0264 tn/ha. Como el intervalo no contiene al cero, este resultado es coherente con la prueba de hipótesis anterior.</span>
+<span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
+<span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>*Observación*:este intervalo puede obtenerse de la salida del modelo (<span class="in">`summary(modelo)`</span>) o usando la función <span class="in">`confint(modelo)`</span></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.</span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Interpretación de los coeficientes</span></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a>La pendiente estimada es b₁ = 0.0235: en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.</span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a>Como las densidades evaluadas difieren en 20 plantas/m², resulta más intuitivo expresar el efecto reescalado a ese incremento (esto es una re-expresión del mismo parámetro, no un valor nuevo a estimar): $$20 \times 0.0235 = 0.47 \text{ tn/ha}$$</span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a>Es decir, por cada aumento de 20 plantas/m², se espera que el rendimiento medio aumente aproximadamente $0.47 \text { tn/ha}$.</span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a>La ordenada al origen estimada es $b_o = −2.555$ (ordenada al origen), y representa el rendimiento esperado cuando la densidad es igual a cero. Esta interpretación no tiene sentido práctico, ya que una densidad de cero plantas/m² se encuentra fuera del rango estudiado; por eso tampoco se interpreta su intervalo de confianza.</span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>Variabilidad no explicada por el modelo</span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a>El error estándar residual es $0.2924$, lo que indica que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29 \text { tn/ha}$.</span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Coeficiente de determinación</span></span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>$$R^2=0.889$$</span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \text{ \%}$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa. El porcentaje restante corresponde a otros factores no incluidos en el modelo y a la variabilidad aleatoria.</span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prueba global del modelo</span></span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a>El estadístico F ($272.7$, $p &lt; 2.2e-16$) evalúa si el modelo en conjunto explica una parte significativa de la variabilidad de la respuesta. En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Comunicación de los resultados</span></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables (\$b_1 = 0.0235 \text{ tn/ha por planta/m²} \$; $IC 95 \% = <span class="co">[</span><span class="ot">0.0206; 0.0264</span><span class="co">]</span>; p &lt; 0.001$). El modelo explicó el $88.9 \text{ \%}$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a><span class="fu"># </span></span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a>El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>####Intervalo de confianza para la pendiente</span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
+<span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre $0.0206$ y $0.0264 \ tn/ha$.</span>
+<span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a>Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.</span>
+<span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>###Variabilidad no explicada por el modelo</span>
+<span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a>El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente $0.29\ tn/ha$.</span>
+<span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29\ tn/ha$..</span>
+<span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a>###Coeficiente de determinación</span>
+<span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>El coeficiente de determinación obtenido es:$R^2=0.889$</span>
+<span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \%$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.</span>
+<span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a>El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.</span>
+<span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a>####Prueba global del modelo</span>
+<span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a>Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p. Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.</span>
+<span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a>En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
+<span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comunicar los resultados</span></span>
+<span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables ($\beta=0.0235\ tn/ha \ por\ planta/m^2$²; $IC95%: 0.0206–0.0264; p&lt;0.001)$. El modelo explicó el $88.9  \ %$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
