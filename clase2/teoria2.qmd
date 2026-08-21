@@ -2,43 +2,17 @@
 title: "Teoría 2"
 ---
 
-# Análisis exploratorio de datos
+# Carga y manipulación de datos
 
-El **Análisis Exploratorio de Datos** —o **EDA**, por sus siglas en inglés *Exploratory Data Analysis*— es la primera aproximación sistemática a una base de datos.
+Antes de poder analizar cualquier conjunto de datos, es necesario saber cómo llevarlos al entorno de trabajo y dejarlos en condiciones adecuadas para su análisis. Esta etapa, conocida habitualmente como *data wrangling*, constituye un prerrequisito técnico-metodológico para cualquier análisis estadístico posterior: sin datos correctamente importados, estructurados y depurados, ningún modelo ni ninguna exploración pueden considerarse confiables.
 
-Su propósito no es obtener conclusiones definitivas, sino conocer los datos, detectar posibles problemas y formular preguntas que orienten el análisis posterior.
+En esta clase abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas. Además, introduciremos las herramientas básicas para la manipulación de datos —filtrado, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis exploratorio.
 
-Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:
-
-- ¿Qué representa cada fila de la base?
-- ¿Qué información contiene cada columna?
-- ¿Qué tipos de variables tenemos?
-- ¿Hay datos faltantes, errores o valores inusuales?
-- ¿Qué patrones o relaciones comienzan a aparecer?
-
-## Objetivos principales del EDA
-
-1.  **Entender la estructura de la base**
-
-    Permite identificar la cantidad de observaciones y variables, conocer qué representa cada una y reconocer su tipo: numérica, categórica, fecha, texto, entre otros.
-
-2.  **Detectar anomalías o problemas de calidad**
-
-    Permite reconocer datos faltantes, valores atípicos, errores de carga, registros duplicados o categorías escritas de maneras diferentes.
-
-3.  **Encontrar patrones y relaciones**
-
-    A través de resúmenes y gráficos, permite observar distribuciones, diferencias entre grupos, tendencias y posibles relaciones entre variables.
-
-4.  **Formular preguntas e hipótesis iniciales**
-
-    La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.
+Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Clase 3) como en el ajuste de los Modelos Lineales (Clase 4 y Clase ), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.
 
 ## Paquetes: las herramientas que vamos a usar
 
 R tiene muchas funciones incorporadas, pero los paquetes amplían sus posibilidades.
-
-Podés usar la analogía de una biblioteca:
 
 En este curso trabajaremos principalmente con el ecosistema tidyverse, que reúne paquetes para trabajar de manera ordenada y coherente con datos.
 
@@ -184,13 +158,13 @@ glimpse(datos)
 
 Permite observar rápidamente:
 
--  la cantidad de filas y columnas;
+- la cantidad de filas y columnas;
 
--  los nombres de las variables;
+- los nombres de las variables;
 
--  el tipo de cada variable;
+- el tipo de cada variable;
 
--  algunos valores de ejemplo.
+- algunos valores de ejemplo.
 
 ```{r}
 #| eval: false
@@ -234,33 +208,33 @@ Una base de datos puede estar completa y, sin embargo, no estar lista para ser a
 
 `dplyr` y `tidyr` forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.
 
--  **`dplyr`** permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.
+- **`dplyr`** permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.
 
--  **`tidyr`** permite organizar y reestructurar los datos, además de trabajar con valores faltantes.
+- **`tidyr`** permite organizar y reestructurar los datos, además de trabajar con valores faltantes.
 
 Ambos paquetes facilitan la **limpieza y preparación de los datos** para su posterior análisis.
 
 Entre las funciones más intersantes poemos mencionar:
 
--  `select()` → seleccionar las variables que queremos conservar.
+- `select()` → seleccionar las variables que queremos conservar.
 
--  `filter()` → seleccionar filas según una condición.
+- `filter()` → seleccionar filas según una condición.
 
--  `arrange()` → ordenar las filas según una o más variables.
+- `arrange()` → ordenar las filas según una o más variables.
 
--  `rename()` → cambiar el nombre de una variable.
+- `rename()` → cambiar el nombre de una variable.
 
--  `mutate()` → crear nuevas variables o modificar las existentes.
+- `mutate()` → crear nuevas variables o modificar las existentes.
 
--  `distinct()` → eliminar registros duplicados.
+- `distinct()` → eliminar registros duplicados.
 
--  `drop_na()` → eliminar filas con datos faltantes.
+- `drop_na()` → eliminar filas con datos faltantes.
 
--  `replace_na()` → reemplazar valores faltantes.
+- `replace_na()` → reemplazar valores faltantes.
 
--  `recode()` → unificar o cambiar categorías.
+- `recode()` → unificar o cambiar categorías.
 
--  `clean_names()` de `janitor` → estandarizar los nombres de las variables.
+- `clean_names()` de `janitor` → estandarizar los nombres de las variables.
 
 | paquetes | sitio oficial |
 |:--------------------------------:|:------------------------------------:|

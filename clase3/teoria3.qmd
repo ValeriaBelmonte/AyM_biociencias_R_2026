@@ -2,3 +2,34 @@
 title: "teoria 3"
 ---
 
+# Análisis exploratorio de datos
+
+El **Análisis Exploratorio de Datos** —o **EDA**, por sus siglas en inglés *Exploratory Data Analysis*— es la primera aproximación sistemática a una base de datos.
+
+Su propósito no es obtener conclusiones definitivas, sino conocer los datos, detectar posibles problemas y formular preguntas que orienten el análisis posterior.
+
+Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:
+
+- ¿Qué representa cada fila de la base?
+- ¿Qué información contiene cada columna?
+- ¿Qué tipos de variables tenemos?
+- ¿Hay datos faltantes, errores o valores inusuales?
+- ¿Qué patrones o relaciones comienzan a aparecer?
+
+## Objetivos principales del EDA
+
+1.  **Entender la estructura de la base**
+
+    Permite identificar la cantidad de observaciones y variables, conocer qué representa cada una y reconocer su tipo: numérica, categórica, fecha, texto, entre otros.
+
+2.  **Detectar anomalías o problemas de calidad**
+
+    Permite reconocer datos faltantes, valores atípicos, errores de carga, registros duplicados o categorías escritas de maneras diferentes.
+
+3.  **Encontrar patrones y relaciones**
+
+    A través de resúmenes y gráficos, permite observar distribuciones, diferencias entre grupos, tendencias y posibles relaciones entre variables.
+
+4.  **Formular preguntas e hipótesis iniciales**
+
+    La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.
