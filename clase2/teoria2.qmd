@@ -1,5 +1,5 @@
 ---
-title: "Teoría 2"
+title: "Teoría"
 ---
 
 # Carga y manipulación de datos
@@ -8,13 +8,13 @@ Antes de poder analizar cualquier conjunto de datos, es necesario saber cómo ll
 
 En esta clase abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas. Además, introduciremos las herramientas básicas para la manipulación de datos —filtrado, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis exploratorio.
 
-Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Clase 3) como en el ajuste de los Modelos Lineales (Clase 4 y Clase ), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.
+Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Clase 3) como en el ajuste de los Modelos Lineales (Clase 4 y Clase 5 ), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.
 
 ## Paquetes: las herramientas que vamos a usar
 
-R tiene muchas funciones incorporadas, pero los paquetes amplían sus posibilidades.
+R incorpora, por defecto, un conjunto amplio de funciones para el manejo de datos y el cálculo estadístico —lo que se conoce como **R base**—. Sin embargo, gran parte de su potencia proviene de los **paquetes**: colecciones de funciones adicionales, desarrolladas por la comunidad, que amplían las posibilidades de R para tareas específicas.
 
-En este curso trabajaremos principalmente con el ecosistema tidyverse, que reúne paquetes para trabajar de manera ordenada y coherente con datos.
+En este curso trabajaremos principalmente con el ecosistema **tidyverse**, un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:
 
 | Paquete   | ¿Para qué lo usaremos?                           |
 |-----------|--------------------------------------------------|
@@ -23,10 +23,13 @@ En este curso trabajaremos principalmente con el ecosistema tidyverse, que reún
 | `dplyr`   | Seleccionar, filtrar, crear y resumir variables. |
 | `tidyr`   | Ordenar la estructura de una base.               |
 | `ggplot2` | Crear gráficos.                                  |
-| `janitor` | Limpiar nombres de variables y tablas.           |
 | `forcat`  | para trabajar con factores                       |
 
+Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el *data frame* o, más específicamente, el *tibble*), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.
+
 Para mayor información no dudes en visitar la [Página oficial de Tidyverse](https://tidyverse.tidyverse.org/)
+
+Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.
 
 ## Activación de bloque de código (Chunk)
 
@@ -38,21 +41,16 @@ Los **bloques de código** permiten escribir y ejecutar instrucciones en R dentr
 
 ![Figura : Icono para insertar códigos. Seleccionar R](images/iccono%20para%20intesertar%20código.png){width="185"}
 
-2.  También podemos utilizar el teclado, presionando simultáneamente **Ctrl + Alt + I**.\
+2.  También podemos utilizar el teclado, presionando simultáneamente **Ctrl + Alt + i**.\
     En ambos casos un bloque como el siguiente, donde podremos ejecutar código en **R**:
 
-![Figu![Figura: Activación con library del paquete tidyverse](images/tidyverse.png)ra: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png){width="452"}
+![![Figura: Activación con library del paquete tidyverse](images/tidyverse.png)Figura: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png){width="452"}
 
 ### Opciones de los bloques de código
 
 Los bloques de código pueden incluir opciones que permiten controlar cómo se ejecuta el código y qué se muestra en el documento final.
 
 Estas opciones se escriben al comienzo del bloque, precedidas por #\|.
-
-```         
-#| echo: false
-#| warning: false
-```
 
 Algunas opciones frecuentes son:
 
@@ -70,65 +68,65 @@ Algunas opciones frecuentes son:
 
 ## Instalación de Paquetes
 
-los **paquetes** amplían las funcionalidades de R, incorporando nuevas funciones y herramientas. Para instalar un paquete, escribimos dentro de un bloque de código la función `install.packages()`, indicando entre comillas el nombre del paquete que queremos instalar.
+Para instalar un paquete, escribimos dentro de un bloque de código la función `install.packages()`, indicando entre comillas el nombre del paquete que queremos instalar.
 
 Por ejemplo:
 
-```{r}
-#| eval: false
-
+```r
 install.packages("tidyverse")
 ```
 
-Los paquetes se instalan una sola vez, salvo que sea necesario actualizar el paquete.
+
+
+Los paquetes se instalan una sola vez, salvo que sea necesario actualizarlo
 
 Una vez instalado, el paquete debe **cargarse para su uso** mediante la función `library()`.
 
 Por ejemplo:
 
-```{r}
-#| eval: false
 
+```r
 library(tidyverse)
 ```
 
+
+
 ## Importación de la base de datos
 
-Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.
-
-Para archivos CSV puede emplearse `read_csv()`. Esta función genera un objeto de tipo `tibble`, una versión moderna de un data frame.
+Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. POr ejemplo, para archivos con extensión CSV puede emplearse `read_csv()`. Esta función genera un objeto de tipo `tibble`, una versión moderna de un data frame.
 
 ## Código en R
 
 Suponiendo que el archivo está dentro de la carpeta `datos`:
 
-```{r}
-#| eval: false
 
+```r
 datos <- read_csv("../datos originales/base_datos.csv")
 ```
 
+
+El nombre del archivo a importar debe estar entre comillas y si no se encuentra en la carpeta del entorno de trabajo se puede indicar antecediendo ../ como se muestra. El archivo se guardó en el objeto datos
+
 Para comprobar que el objeto fue creado:
 
-```{r}
-#| eval: false
-
-view(datos) 
+```r
+view(datos)
 ```
+
 
 También puede observarse en el panel Environment de RStudio.
 
-![Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png){width="465"}
+![Figura:Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png){width="465"}
 
-Para importar archivos de Excel, con extención xlsx, necesitaremos además tener instalado el paquete *readxl:*
+Para importar archivos de Excel, con extención xlsx, necesitaremos además tener instalado el paquete *readxl* ( que no es parte del ecosistema tidyverse)
 
-```{r}
-#| eval: false
 
-install.packages("readxl") # solo la primera vez
+```r
 library(readxl)            # en cada sesión
-
 ```
+
+
+
 
 ## Diferencia entre objeto y archivo
 
@@ -150,11 +148,11 @@ A continuación, se presentan algunas funciones iniciales de R que nos ayudarán
 
 Funciones iniciales:
 
-```{r}
-#| eval: false
-
-glimpse(datos)
+```r
+library(readxl)            # en cada sesión
 ```
+
+
 
 Permite observar rápidamente:
 
@@ -166,37 +164,34 @@ Permite observar rápidamente:
 
 - algunos valores de ejemplo.
 
-```{r}
-#| eval: false
 
+```r
 names(datos)
 ```
 
+
+
 Muestra los nombres de las variables.
 
-```{r}
-#| eval: false
-
-dim(agro)
+```r
+dim(datos)
 ```
 
-Indica la cantdiad de filas y columnas de la base.
 
-```{r}
-#| eval: false
+Indica la cantidad de filas y columnas de la base.
 
+```r
 summary(datos)
 ```
+
+
 
 Presenta un **resumen general de las variables**. La información que muestra depende del tipo de variable.
 
 También pueden consultarse por separado el número de filas y de columnas con las siguentes funciones:
 
-```{r}
-#| eval: false
-
-
-nrow(datos) # númeo de filas 
+```r
+nrow(datos) # númeo de filas
 ncol(datos) # númeo de columnas
 ```
 
