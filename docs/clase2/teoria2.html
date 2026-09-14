@@ -416,9 +416,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#primera-inspección-de-la-base" id="toc-primera-inspección-de-la-base" class="nav-link" data-scroll-target="#primera-inspección-de-la-base"><span class="header-section-number">2</span> Primera inspección de la base</a>
   <ul class="collapse">
-  <li><a href="#conozcamos-los-datos" id="toc-conozcamos-los-datos" class="nav-link" data-scroll-target="#conozcamos-los-datos"><span class="header-section-number">2.0.1</span> Conozcamos los datos</a></li>
-  <li><a href="#qué-significa-limpiar-y-ordenar-los-datos" id="toc-qué-significa-limpiar-y-ordenar-los-datos" class="nav-link" data-scroll-target="#qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">2.0.2</span> ¿Qué significa limpiar y ordenar los datos?</a></li>
-  <li><a href="#paquetes-dplyr-y-tidyr" id="toc-paquetes-dplyr-y-tidyr" class="nav-link" data-scroll-target="#paquetes-dplyr-y-tidyr"><span class="header-section-number">2.0.3</span> Paquetes <code>dplyr</code> y <code>tidyr</code></a></li>
+  <li><a href="#conozcamos-los-datos" id="toc-conozcamos-los-datos" class="nav-link" data-scroll-target="#conozcamos-los-datos"><span class="header-section-number">2.1</span> Conozcamos los datos</a></li>
+  <li><a href="#qué-significa-limpiar-y-ordenar-los-datos" id="toc-qué-significa-limpiar-y-ordenar-los-datos" class="nav-link" data-scroll-target="#qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">2.2</span> ¿Qué significa limpiar y ordenar los datos?</a></li>
+  <li><a href="#paquetes-dplyr-y-tidyr" id="toc-paquetes-dplyr-y-tidyr" class="nav-link" data-scroll-target="#paquetes-dplyr-y-tidyr"><span class="header-section-number">2.3</span> Paquetes <code>dplyr</code> y <code>tidyr</code></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -569,8 +569,8 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 </section>
 <section id="primera-inspección-de-la-base" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Primera inspección de la base</h1>
-<section id="conozcamos-los-datos" class="level3" data-number="2.0.1">
-<h3 data-number="2.0.1" class="anchored" data-anchor-id="conozcamos-los-datos"><span class="header-section-number">2.0.1</span> Conozcamos los datos</h3>
+<section id="conozcamos-los-datos" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="conozcamos-los-datos"><span class="header-section-number">2.1</span> Conozcamos los datos</h2>
 <p>Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: <strong>¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?</strong></p>
 <p>A continuación, se presentan algunas funciones iniciales de R que nos ayudarán a responder estas preguntas y a realizar una primera exploración de la base de datos<strong>.</strong></p>
 <p>Funciones iniciales:</p>
@@ -592,12 +592,12 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) <span class="co"># númeo de filas</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos) <span class="co"># númeo de columnas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="qué-significa-limpiar-y-ordenar-los-datos" class="level3" data-number="2.0.2">
-<h3 data-number="2.0.2" class="anchored" data-anchor-id="qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">2.0.2</span> ¿Qué significa limpiar y ordenar los datos?</h3>
+<section id="qué-significa-limpiar-y-ordenar-los-datos" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">2.2</span> ¿Qué significa limpiar y ordenar los datos?</h2>
 <p>Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.</p>
 </section>
-<section id="paquetes-dplyr-y-tidyr" class="level3" data-number="2.0.3">
-<h3 data-number="2.0.3" class="anchored" data-anchor-id="paquetes-dplyr-y-tidyr"><span class="header-section-number">2.0.3</span> Paquetes <code>dplyr</code> y <code>tidyr</code></h3>
+<section id="paquetes-dplyr-y-tidyr" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="paquetes-dplyr-y-tidyr"><span class="header-section-number">2.3</span> Paquetes <code>dplyr</code> y <code>tidyr</code></h2>
 <p><code>dplyr</code> y <code>tidyr</code> forman parte del conjunto de paquetes <strong>tidyverse</strong> y se utilizan para preparar y organizar bases de datos antes del análisis.</p>
 <ul>
 <li><p><strong><code>dplyr</code></strong> permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.</p></li>
@@ -1235,7 +1235,7 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="fu"># Primera inspección de la base</span></span>
 <span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="fu">### Conozcamos los datos</span></span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conozcamos los datos</span></span>
 <span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: **¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?**</span>
 <span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
@@ -1290,11 +1290,11 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos) <span class="co"># númeo de columnas</span></span>
 <span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### ¿Qué significa limpiar y ordenar los datos?</span></span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Qué significa limpiar y ordenar los datos?</span></span>
 <span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a>Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.</span>
 <span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="fu">### Paquetes `dplyr` y `tidyr`</span></span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes `dplyr` y `tidyr`</span></span>
 <span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="in">`dplyr`</span> y <span class="in">`tidyr`</span> forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.</span>
 <span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a></span>

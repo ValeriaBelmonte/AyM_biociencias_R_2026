@@ -2,4 +2,48 @@
 title: "Practica estudiantes"
 ---
 
+## Primeras observaciones
 
+```  
+
+```
+
+```  
+head(agro)
+```
+
+primeras diez filas:
+
+```  
+head(agro, 10)
+```
+
+## Últimas observaciones
+
+```  
+tail(agro)
+```
+
+## Estructura de la base
+
+```  
+str(agro)
+```
+
+compara con gimpse
+
+# 
+
+Para una inspección más completa:
+
+```  
+skim(agro)
+```
+
+compara con summary
+
+## Verificar el tipo de todas las columnas
+
+```  
+map_chr(agro, class)
+```

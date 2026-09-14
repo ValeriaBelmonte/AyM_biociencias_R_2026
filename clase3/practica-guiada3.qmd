@@ -1,3 +1,76 @@
 ---
-title: "Untitled"
+title: "Práctica guiada 3"
 ---
+
+## Práctica guiada
+
+En esta práctica aplicaremos algunas de las herramientas del análisis exploratorio de datos a la base `agro`. El propósito no será obtener conclusiones definitivas ni ajustar modelos estadísticos, sino conocer mejor la información disponible y formular preguntas a partir de ella.
+
+Nos concentraremos en las emisiones generadas por el transporte de alimentos (`total_emission`). A lo largo de la práctica construiremos tablas y gráficos para observar cómo se distribuye esta variable, comparar áreas, analizar su evolución en el tiempo y explorar su posible relación con la población urbana.
+
+En cada actividad será importante no solo ejecutar el código, sino también interpretar los resultados: ¿qué muestra la tabla?, ¿qué patrón se observa en el gráfico?, ¿qué dudas o nuevas preguntas surgen?
+
+## Paquetes a utlizar
+
+```{# Cargamos los paquetes que utilizaremos}
+library(tidyverse)
+```
+
+```{rm(list=ls())}
+```
+
+```{#Cargamos el data.frame agro}
+agro <- read_csv("../datos transformados/agro_reducida.csv") 
+```
+
+```{# Recordamos la estructura general de la base}
+glimpse(agro)
+```
+
+Para pensar
+
+1.  ¿Entre qué años se extiende la información?
+
+2.  ¿Todos los años tienen la misma cantidad de registros?
+
+3.  ¿Qué podría significar que un año tenga menos registros que los demás?
+
+```{tabla_anio |>}
+  slice_max(n, n = 1)  #código muestra el año con la mayor cantidad de registros.
+```
+
+```{tabla_anio |>}
+  slice_min(n, n = 1)  #código muestra el año con la mayor cantidad de registros.
+```
+
+```{arrange(tabla_anio,desc(n))}
+arrange(tabla_anio,n)
+```
+
+```{# probamos si todos los años tienen registro}
+# si da cero todos tienen registro
+todos_los_anios <- tibble(
+  year = 1990:2020
+)
+
+todos_los_anios |>
+  anti_join(tabla_anio, by = "year")
+```
+
+```{hist(agro$total_emission, fig=FALSE)}
+```
+
+```{agro$year_f<-factor(agro$year)}
+```
+
+```{resumen<-agro |>group_by(year) |> summarise(}
+  n=n(),
+  media=mean(total_emission,na.rm=TRUE),
+  sd=sd(total_emission,na.rm=TRUE),
+  "CV%"=100*sd(total_emission,na.rm=TRUE)/mean(total_emission,na.rm=TRUE),
+  mediana=median(total_emission,na.rm=TRUE),
+  mad=mad(total_emission,na.rm=TRUE)
+ 
+)
+ resumen
+```

@@ -1,5 +1,5 @@
 ---
-title: "teoria 3"
+title: "Clase 3"
 ---
 
 # Análisis exploratorio de datos
@@ -33,3 +33,106 @@ Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:
 4.  **Formular preguntas e hipótesis iniciales**
 
     La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.
+
+## Tablas y gráficos como herramientas de exploración
+
+Las tablas y los gráficos permiten organizar y comunicar la información contenida en una base de datos. Mientras las tablas presentan los valores de manera ordenada y precisa, los gráficos ayudan a reconocer rápidamente distribuciones, diferencias, tendencias y relaciones.
+
+En el EDA no se construyen gráficos “por rutina”: cada elección depende del tipo de variable y de la pregunta que se desea explorar.
+
+### Tablas
+
+Las tablas son una forma ordenada de presentar la información contenida en una base de datos. Permiten resumir los valores de una o más variables y facilitan una primera lectura de los datos antes de realizar gráficos o cálculos más específicos.
+
+Según el tipo de variable, las tablas pueden utilizarse con distintos propósitos. En las variables categóricas, permiten conocer cuántas observaciones pertenecen a cada categoría; por ejemplo, cuántos registros corresponden a cada país o área. En las variables numéricas, permiten resumir sus valores mediante medidas como el mínimo, el máximo, la media o la mediana.
+
+| Tipo de variable o pregunta | Tabla adecuada | Ejemplo en la base |
+|:---|:---|:---|
+| Una variable categórica | Tabla de frecuencias absolutas | Cantidad de registros por `area` |
+| Una variable categórica | Tabla de frecuencias relativas o porcentajes | Porcentaje de registros para cada `area` |
+| Una variable numérica | Tabla ordenada de valores | Valores de `food_transport` ordenados de menor a mayor |
+| Una variable numérica agrupada en intervalos | Tabla de distribución de frecuencias | Cantidad de observaciones en intervalos de `food_transport` |
+| Dos variables categóricas | Tabla de doble entrada o contingencia | Cantidad de registros por `area` y año seleccionado |
+| Una variable y una condición | Tabla filtrada | Registros de Argentina entre 1990 y 2020 |
+
+### Gráficos
+
+Los gráficos nos ayudan a mirar los datos de otra manera. A diferencia de las tablas, permiten encontrar patrones: comprender como se distribuye una variable; compararla en uno o más grupos; observar si cambia en el tiempo o exploarar si dos variables podrían estar relacionadas.
+
+Antes de construir un gráfico, es importante pensar la inforamción se quiere mostrar. No hay un único gráfico que sirva par todas las situaciones pero la siguiente tabla nos guiará en una elección inicial:
+
+| Tipo de variable o pregunta | Gráfico adecuado | Ejemplo en la base |
+|:---|:---|:---|
+| Una variable categórica | Gráfico de barras | Cantidad de registros por `area` |
+| Una variable numérica | Histograma | Distribución de `food_transport` |
+| Una variable numérica según grupos | Diagrama de caja y bigotes | Emisiones por continente o grupo de países |
+| Dos variables numéricas | Gráfico de dispersión | Relación entre `urban_population` y `food_transport` |
+| Evolución de una variable en el tiempo | Gráfico de líneas | Emisiones de Argentina entre 1990 y 2020 |
+
+### El Paquete `ggplot2`
+
+### 
+
+El paquete **`ggplot2`** forma parte de `tidyverse` y se utiliza para construir gráficos en R. Su funcionamiento se basa en la **gramática de los gráficos**, es decir, en la idea de que un gráfico se construye agregando distintas **capas**.
+
+La estructura básica es:
+
+```         
+ggplot(datos, aes(x = variable_x, y = variable_y)) +   geom_...()+labs()+theme()
+```
+
+Cada parte cumple una función:
+
+| Capa | Función |
+|----|----|
+| `ggplot()` | Indica el conjunto de datos que se utilizará. |
+| `aes()` | Define qué variables se representarán y cómo se vinculan con elementos visuales como los ejes, colores o tamaños. |
+| `geom_...()` | Define el tipo de representación gráfica: puntos, barras, líneas, histogramas, cajas, etc. |
+| `labs()` | Permite agregar títulos y nombres a los ejes. |
+| `theme_...()` | Permite modificar la apariencia general del gráfico. |
+
+Por ejemplo:
+
+```         
+ggplot(agro, aes(x = year, y = total_emission)) +   geom_point() +   labs(     x = "Año",     y = "Emisiones totales",     title = "Emisiones totales según año"   ) +   theme_minimal()
+```
+
+Podemos pensar entonces un gráfico como una construcción por capas:
+
+**datos + variables + tipo de gráfico + etiquetas + apariencia**
+
+El operador `+` permite ir agregando cada una de estas capas al gráfico.
+
+#### El paquete `esquisse`
+
+El paquete **`esquisse`** permite crear gráficos de manera interactiva utilizando `ggplot2`. A través de una interfaz gráfica podemos **arrastrar y soltar variables** para definir los ejes, colores, agrupamientos y otros elementos del gráfico.
+
+Una de sus principales ventajas es que, además de construir el gráfico visualmente, permite **obtener el código de `ggplot2` utilizado para generarlo**. Esto lo convierte en una herramienta útil para comenzar a familiarizarse con la estructura de los gráficos en R.
+
+Para instalarlo:
+
+```         
+install.packages("esquisse") 
+```
+
+Para utilizarlo:
+
+```         
+library(esquisse)  esquisser() 
+```
+
+Después de instalarlo, puede aparecer en el menú:
+
+**Addins → Browse Addins → esquisse**
+
+Desde allí podés abrir su interfaz para construir gráficos, sin usar la opción `library( )`
+
+También podemos abrir directamente una base de datos:
+
+```         
+esquisser(datos) 
+```
+
+A partir de allí podemos seleccionar las variables y explorar diferentes representaciones gráficas. Una vez obtenido el gráfico deseado, podemos copiar el código generado y utilizarlo en nuestro script o documento Quarto.
+
+> **Importante:** `esquisse` no reemplaza el aprendizaje de `ggplot2`. Lo utilizaremos como una herramienta para explorar gráficos y comprender cómo se construye su código.

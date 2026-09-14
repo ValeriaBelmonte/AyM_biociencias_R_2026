@@ -140,7 +140,7 @@ Modificar el objeto datos no altera automáticamente el archivo CSV original.
 
 # Primera inspección de la base
 
-### Conozcamos los datos
+## Conozcamos los datos
 
 Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: **¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?**
 
@@ -195,11 +195,11 @@ nrow(datos) # númeo de filas
 ncol(datos) # númeo de columnas
 ```
 
-### ¿Qué significa limpiar y ordenar los datos?
+## ¿Qué significa limpiar y ordenar los datos?
 
 Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.
 
-### Paquetes `dplyr` y `tidyr`
+## Paquetes `dplyr` y `tidyr`
 
 `dplyr` y `tidyr` forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.
 
