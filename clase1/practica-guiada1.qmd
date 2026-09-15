@@ -8,37 +8,58 @@ En esta práctica realizaremos nuestro primer trabajo organizado y reproducible 
 
 Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.
 
-## Paso 1. Crear una carpeta para el proyecto
+## Paso 1. Crear una carpeta para el proyecto, en la computadora
 
 En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:
 
-Mi_primer_trabajo
+Análisis_agrofood
 
-Esta carpeta contendrá todos los archivos relacionados con el proyecto:
+Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:
 
--   scripts
+- datos_originales: contiene la base de datos tal como fue recibida. No debe modificarse, para conservar siempre una copia original.\
+- datos_transformados: contiene las bases de datos que se generen luego de limpiar, seleccionar o crear variables.
+- scripts: contiene los archivos de código utilizados en el análisis, por ejemplo, documentos .qmd o scripts .R.
+- resultados: contiene tablas, resúmenes u otros resultados obtenidos durante el análisis.
+- figuras: contiene los gráficos e imágenes generados en el proyecto.
+- informes: contiene los documentos finales elaborados para comunicar los resultados.
+- prompts (opcional): permite guardar un registro de los prompts utilizados al trabajar con herramientas de inteligencia artificial.
 
--   documentos Quarto
+La estructura inicial del proyecto será:
 
--   gráficos
-
--   bases de datos
-
--   resultados
-
-Trabajar dentro de una carpeta específica ayuda a mantener el análisis ordenado y facilita la reproducibilidad.
+``` text
+Analisis_agrofood/  
+├── datos_originales/  
+├── datos_transformados/  
+├── figuras/  
+├── informes/  
+├── prompts/
+├── resultados/  
+└── scripts/  
+```
 
 ## Paso 2. Crear un proyecto en RStudio
 
 Abrir RStudio y seleccionar:
 
-File → New Project
+```         
+File → New Project → New Directory → New Project
+```
 
-Luego:
+![](/imagenes/nuevo%20proecto%20(1).png)
 
-Existing Directory o New Directory seleccionar la carpeta Mi_primer_trabajo
+Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood, como se muestra en las siguientes figuras`
+
+![](/imagenes/crear%20proyecto%202.png){width="300"}
+
+![](/imagenes/crear%20proyecto%203.png){width="300"}
+
+![](/imagenes/crear%20proyecto%204.png){width="300"}
+
+![](/imagenes/crear%20proyecto%205.png){width="300"}Luego:
 
 RStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.
+
+![Imagen de la crecación del proyecto](/imagenes/creacion%20proyecto%20analisis...png){width="500"}
 
 ## Paso 3. Crear el primer documento Quarto
 
@@ -48,25 +69,31 @@ File → New File → Quarto Document
 
 Seleccionar:
 
-formato HTML agregar un título
+- Agregar un título
 
-Por ejemplo:
+<!-- -->
 
-Mi primer documento en Quarto
+- Seleccionar word
 
-## Paso 4. Diferenciar texto y código
+- Aceptar
+
+![](/imagenes/crear%20script%202.png){width="500"}
+
+![](/imagenes/crear%20script%201%20(1).png){width="500"}
+
+Para la escritura, y programación trabajaremos desde `Source`
+
+## Paso 4. Escribir en el script dentro de quarto
+
+## Diferenciar texto y código
 
 En Quarto podemos combinar:
 
 Texto \# Introducción
 
-Este es mi primer documento reproducible en R. Código
+Este es mi primer documento reproducible en R. Código.
 
-```{r}
-2 + 2
-```
-
-## Paso 5. Renderizar el documento
+![](/imagenes/chunks.png){width="500"}
 
 Presionar el botón:
 
@@ -74,14 +101,49 @@ Render
 
 Quarto generará automáticamente un documento donde aparecerán:
 
-el texto escrito el código y los resultados obtenidos en R Idea central
+el texto escrito, el código y los resultados obtenidos en R.
+
+# Idea central
 
 Quarto permite integrar en un mismo documento:
 
--   explicación
+- explicaciones, comentarios,
 
--   código
+- código,
 
--   resultados
+- esultados y gráficos
 
-favoreciendo un trabajo ordenado, reproducible y fácil de compartir.
+Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código
+
+**Bonus de la clase**
+
+Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
+
+```
+
+# Instalación tidyverse
+install.packages("tidyverse")
+
+```
+
+```
+library(tidyverse)
+```
+
+La instalación se realiza una única vez. En cambio, `library(tidyverse)` debe ejecutarse cada vez que se inicia una nueva sesión de R.
+
+Si la instalación mediante código no funciona o R informa que el paquete no se encuentra, también puede instalarlo desde el menú de RStudio:
+
+```         
+tools->Install Packages..->tidyverse
+```
+
+![](/imagenes/instalar%20paquete%201.png){width="300"}
+
+![](/imagenes/instalar%20paquete%202.png){width="300"}
+
+![](/imagenes/Intalar%20paquete%203.png){width="300"}
+
+
+
+

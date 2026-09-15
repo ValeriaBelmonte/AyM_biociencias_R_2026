@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>teoria 3 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Clase 3 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -405,6 +405,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#análisis-exploratorio-de-datos" id="toc-análisis-exploratorio-de-datos" class="nav-link active" data-scroll-target="#análisis-exploratorio-de-datos"><span class="header-section-number">1</span> Análisis exploratorio de datos</a>
   <ul class="collapse">
   <li><a href="#objetivos-principales-del-eda" id="toc-objetivos-principales-del-eda" class="nav-link" data-scroll-target="#objetivos-principales-del-eda"><span class="header-section-number">1.1</span> Objetivos principales del EDA</a></li>
+  <li><a href="#tablas-y-gráficos-como-herramientas-de-exploración" id="toc-tablas-y-gráficos-como-herramientas-de-exploración" class="nav-link" data-scroll-target="#tablas-y-gráficos-como-herramientas-de-exploración"><span class="header-section-number">1.2</span> Tablas y gráficos como herramientas de exploración</a>
+  <ul class="collapse">
+  <li><a href="#tablas" id="toc-tablas" class="nav-link" data-scroll-target="#tablas"><span class="header-section-number">1.2.1</span> Tablas</a></li>
+  <li><a href="#gráficos" id="toc-gráficos" class="nav-link" data-scroll-target="#gráficos"><span class="header-section-number">1.2.2</span> Gráficos</a></li>
+  <li><a href="#el-paquete-ggplot2" id="toc-el-paquete-ggplot2" class="nav-link" data-scroll-target="#el-paquete-ggplot2"><span class="header-section-number">1.2.3</span> El Paquete <code>ggplot2</code></a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">1.2.4</span> </a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -414,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../clase3/index3.html">Clase 3</a></li><li class="breadcrumb-item"><a href="../clase3/teoria3.html">Teoría</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">teoria 3</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Clase 3</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -455,10 +462,179 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Formular preguntas e hipótesis iniciales</strong></p>
 <p>La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.</p></li>
 </ol>
+</section>
+<section id="tablas-y-gráficos-como-herramientas-de-exploración" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="tablas-y-gráficos-como-herramientas-de-exploración"><span class="header-section-number">1.2</span> Tablas y gráficos como herramientas de exploración</h2>
+<p>Las tablas y los gráficos permiten organizar y comunicar la información contenida en una base de datos. Mientras las tablas presentan los valores de manera ordenada y precisa, los gráficos ayudan a reconocer rápidamente distribuciones, diferencias, tendencias y relaciones.</p>
+<p>En el EDA no se construyen gráficos “por rutina”: cada elección depende del tipo de variable y de la pregunta que se desea explorar.</p>
+<section id="tablas" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="tablas"><span class="header-section-number">1.2.1</span> Tablas</h3>
+<p>Las tablas son una forma ordenada de presentar la información contenida en una base de datos. Permiten resumir los valores de una o más variables y facilitan una primera lectura de los datos antes de realizar gráficos o cálculos más específicos.</p>
+<p>Según el tipo de variable, las tablas pueden utilizarse con distintos propósitos. En las variables categóricas, permiten conocer cuántas observaciones pertenecen a cada categoría; por ejemplo, cuántos registros corresponden a cada país o área. En las variables numéricas, permiten resumir sus valores mediante medidas como el mínimo, el máximo, la media o la mediana.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tipo de variable o pregunta</th>
+<th style="text-align: left;">Tabla adecuada</th>
+<th style="text-align: left;">Ejemplo en la base</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Una variable categórica</td>
+<td style="text-align: left;">Tabla de frecuencias absolutas</td>
+<td style="text-align: left;">Cantidad de registros por <code>area</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Una variable categórica</td>
+<td style="text-align: left;">Tabla de frecuencias relativas o porcentajes</td>
+<td style="text-align: left;">Porcentaje de registros para cada <code>area</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Una variable numérica</td>
+<td style="text-align: left;">Tabla ordenada de valores</td>
+<td style="text-align: left;">Valores de <code>food_transport</code> ordenados de menor a mayor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Una variable numérica agrupada en intervalos</td>
+<td style="text-align: left;">Tabla de distribución de frecuencias</td>
+<td style="text-align: left;">Cantidad de observaciones en intervalos de <code>food_transport</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dos variables categóricas</td>
+<td style="text-align: left;">Tabla de doble entrada o contingencia</td>
+<td style="text-align: left;">Cantidad de registros por <code>area</code> y año seleccionado</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Una variable y una condición</td>
+<td style="text-align: left;">Tabla filtrada</td>
+<td style="text-align: left;">Registros de Argentina entre 1990 y 2020</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gráficos" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="gráficos"><span class="header-section-number">1.2.2</span> Gráficos</h3>
+<p>Los gráficos nos ayudan a mirar los datos de otra manera. A diferencia de las tablas, permiten encontrar patrones: comprender como se distribuye una variable; compararla en uno o más grupos; observar si cambia en el tiempo o exploarar si dos variables podrían estar relacionadas.</p>
+<p>Antes de construir un gráfico, es importante pensar la inforamción se quiere mostrar. No hay un único gráfico que sirva par todas las situaciones pero la siguiente tabla nos guiará en una elección inicial:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tipo de variable o pregunta</th>
+<th style="text-align: left;">Gráfico adecuado</th>
+<th style="text-align: left;">Ejemplo en la base</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Una variable categórica</td>
+<td style="text-align: left;">Gráfico de barras</td>
+<td style="text-align: left;">Cantidad de registros por <code>area</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Una variable numérica</td>
+<td style="text-align: left;">Histograma</td>
+<td style="text-align: left;">Distribución de <code>food_transport</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Una variable numérica según grupos</td>
+<td style="text-align: left;">Diagrama de caja y bigotes</td>
+<td style="text-align: left;">Emisiones por continente o grupo de países</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dos variables numéricas</td>
+<td style="text-align: left;">Gráfico de dispersión</td>
+<td style="text-align: left;">Relación entre <code>urban_population</code> y <code>food_transport</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Evolución de una variable en el tiempo</td>
+<td style="text-align: left;">Gráfico de líneas</td>
+<td style="text-align: left;">Emisiones de Argentina entre 1990 y 2020</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="el-paquete-ggplot2" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="el-paquete-ggplot2"><span class="header-section-number">1.2.3</span> El Paquete <code>ggplot2</code></h3>
+</section>
+<section id="section" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="section"><span class="header-section-number">1.2.4</span> </h3>
+<p>El paquete <strong><code>ggplot2</code></strong> forma parte de <code>tidyverse</code> y se utiliza para construir gráficos en R. Su funcionamiento se basa en la <strong>gramática de los gráficos</strong>, es decir, en la idea de que un gráfico se construye agregando distintas <strong>capas</strong>.</p>
+<p>La estructura básica es:</p>
+<pre><code>ggplot(datos, aes(x = variable_x, y = variable_y)) +   geom_...()+labs()+theme()</code></pre>
+<p>Cada parte cumple una función:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Capa</th>
+<th>Función</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ggplot()</code></td>
+<td>Indica el conjunto de datos que se utilizará.</td>
+</tr>
+<tr class="even">
+<td><code>aes()</code></td>
+<td>Define qué variables se representarán y cómo se vinculan con elementos visuales como los ejes, colores o tamaños.</td>
+</tr>
+<tr class="odd">
+<td><code>geom_...()</code></td>
+<td>Define el tipo de representación gráfica: puntos, barras, líneas, histogramas, cajas, etc.</td>
+</tr>
+<tr class="even">
+<td><code>labs()</code></td>
+<td>Permite agregar títulos y nombres a los ejes.</td>
+</tr>
+<tr class="odd">
+<td><code>theme_...()</code></td>
+<td>Permite modificar la apariencia general del gráfico.</td>
+</tr>
+</tbody>
+</table>
+<p>Por ejemplo:</p>
+<pre><code>ggplot(agro, aes(x = year, y = total_emission)) +   geom_point() +   labs(     x = "Año",     y = "Emisiones totales",     title = "Emisiones totales según año"   ) +   theme_minimal()</code></pre>
+<p>Podemos pensar entonces un gráfico como una construcción por capas:</p>
+<p><strong>datos + variables + tipo de gráfico + etiquetas + apariencia</strong></p>
+<p>El operador <code>+</code> permite ir agregando cada una de estas capas al gráfico.</p>
+<section id="el-paquete-esquisse" class="level4" data-number="1.2.4.1">
+<h4 data-number="1.2.4.1" class="anchored" data-anchor-id="el-paquete-esquisse"><span class="header-section-number">1.2.4.1</span> El paquete <code>esquisse</code></h4>
+<p>El paquete <strong><code>esquisse</code></strong> permite crear gráficos de manera interactiva utilizando <code>ggplot2</code>. A través de una interfaz gráfica podemos <strong>arrastrar y soltar variables</strong> para definir los ejes, colores, agrupamientos y otros elementos del gráfico.</p>
+<p>Una de sus principales ventajas es que, además de construir el gráfico visualmente, permite <strong>obtener el código de <code>ggplot2</code> utilizado para generarlo</strong>. Esto lo convierte en una herramienta útil para comenzar a familiarizarse con la estructura de los gráficos en R.</p>
+<p>Para instalarlo:</p>
+<pre><code>install.packages("esquisse") </code></pre>
+<p>Para utilizarlo:</p>
+<pre><code>library(esquisse)  esquisser() </code></pre>
+<p>Después de instalarlo, puede aparecer en el menú:</p>
+<p><strong>Addins → Browse Addins → esquisse</strong></p>
+<p>Desde allí podés abrir su interfaz para construir gráficos, sin usar la opción <code>library( )</code></p>
+<p>También podemos abrir directamente una base de datos:</p>
+<pre><code>esquisser(datos) </code></pre>
+<p>A partir de allí podemos seleccionar las variables y explorar diferentes representaciones gráficas. Una vez obtenido el gráfico deseado, podemos copiar el código generado y utilizarlo en nuestro script o documento Quarto.</p>
+<blockquote class="blockquote">
+<p><strong>Importante:</strong> <code>esquisse</code> no reemplaza el aprendizaje de <code>ggplot2</code>. Lo utilizaremos como una herramienta para explorar gráficos y comprender cómo se construye su código.</p>
+</blockquote>
 
 
 <!-- -->
 
+</section>
+</section>
 </section>
 </section>
 
@@ -913,41 +1089,144 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "teoria 3"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis exploratorio de datos</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>El **Análisis Exploratorio de Datos** —o **EDA**, por sus siglas en inglés *Exploratory Data Analysis*— es la primera aproximación sistemática a una base de datos.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Su propósito no es obtener conclusiones definitivas, sino conocer los datos, detectar posibles problemas y formular preguntas que orienten el análisis posterior.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué representa cada fila de la base?</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué información contiene cada columna?</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué tipos de variables tenemos?</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Hay datos faltantes, errores o valores inusuales?</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué patrones o relaciones comienzan a aparecer?</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivos principales del EDA</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Entender la estructura de la base**</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    Permite identificar la cantidad de observaciones y variables, conocer qué representa cada una y reconocer su tipo: numérica, categórica, fecha, texto, entre otros.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Detectar anomalías o problemas de calidad**</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    Permite reconocer datos faltantes, valores atípicos, errores de carga, registros duplicados o categorías escritas de maneras diferentes.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Encontrar patrones y relaciones**</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    A través de resúmenes y gráficos, permite observar distribuciones, diferencias entre grupos, tendencias y posibles relaciones entre variables.</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Formular preguntas e hipótesis iniciales**</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Clase 3"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis exploratorio de datos</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>El **Análisis Exploratorio de Datos** —o **EDA**, por sus siglas en inglés *Exploratory Data Analysis*— es la primera aproximación sistemática a una base de datos.</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>Su propósito no es obtener conclusiones definitivas, sino conocer los datos, detectar posibles problemas y formular preguntas que orienten el análisis posterior.</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>Antes de realizar cálculos, gráficos o modelos, necesitamos preguntarnos:</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué representa cada fila de la base?</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué información contiene cada columna?</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué tipos de variables tenemos?</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Hay datos faltantes, errores o valores inusuales?</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué patrones o relaciones comienzan a aparecer?</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivos principales del EDA</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Entender la estructura de la base**</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    Permite identificar la cantidad de observaciones y variables, conocer qué representa cada una y reconocer su tipo: numérica, categórica, fecha, texto, entre otros.</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Detectar anomalías o problemas de calidad**</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    Permite reconocer datos faltantes, valores atípicos, errores de carga, registros duplicados o categorías escritas de maneras diferentes.</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Encontrar patrones y relaciones**</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    A través de resúmenes y gráficos, permite observar distribuciones, diferencias entre grupos, tendencias y posibles relaciones entre variables.</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Formular preguntas e hipótesis iniciales**</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    La exploración orienta las preguntas que podremos responder con los datos y ayuda a decidir cuáles serán los siguientes pasos del análisis.</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tablas y gráficos como herramientas de exploración</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>Las tablas y los gráficos permiten organizar y comunicar la información contenida en una base de datos. Mientras las tablas presentan los valores de manera ordenada y precisa, los gráficos ayudan a reconocer rápidamente distribuciones, diferencias, tendencias y relaciones.</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>En el EDA no se construyen gráficos “por rutina”: cada elección depende del tipo de variable y de la pregunta que se desea explorar.</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tablas</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>Las tablas son una forma ordenada de presentar la información contenida en una base de datos. Permiten resumir los valores de una o más variables y facilitan una primera lectura de los datos antes de realizar gráficos o cálculos más específicos.</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>Según el tipo de variable, las tablas pueden utilizarse con distintos propósitos. En las variables categóricas, permiten conocer cuántas observaciones pertenecen a cada categoría; por ejemplo, cuántos registros corresponden a cada país o área. En las variables numéricas, permiten resumir sus valores mediante medidas como el mínimo, el máximo, la media o la mediana.</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tipo de variable o pregunta <span class="pp">|</span> Tabla adecuada <span class="pp">|</span> Ejemplo en la base <span class="pp">|</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---|:---|:---|</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable categórica <span class="pp">|</span> Tabla de frecuencias absolutas <span class="pp">|</span> Cantidad de registros por <span class="in">`area`</span> <span class="pp">|</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable categórica <span class="pp">|</span> Tabla de frecuencias relativas o porcentajes <span class="pp">|</span> Porcentaje de registros para cada <span class="in">`area`</span> <span class="pp">|</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable numérica <span class="pp">|</span> Tabla ordenada de valores <span class="pp">|</span> Valores de <span class="in">`food_transport`</span> ordenados de menor a mayor <span class="pp">|</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable numérica agrupada en intervalos <span class="pp">|</span> Tabla de distribución de frecuencias <span class="pp">|</span> Cantidad de observaciones en intervalos de <span class="in">`food_transport`</span> <span class="pp">|</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Dos variables categóricas <span class="pp">|</span> Tabla de doble entrada o contingencia <span class="pp">|</span> Cantidad de registros por <span class="in">`area`</span> y año seleccionado <span class="pp">|</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable y una condición <span class="pp">|</span> Tabla filtrada <span class="pp">|</span> Registros de Argentina entre 1990 y 2020 <span class="pp">|</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="fu">### Gráficos</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>Los gráficos nos ayudan a mirar los datos de otra manera. A diferencia de las tablas, permiten encontrar patrones: comprender como se distribuye una variable; compararla en uno o más grupos; observar si cambia en el tiempo o exploarar si dos variables podrían estar relacionadas.</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>Antes de construir un gráfico, es importante pensar la inforamción se quiere mostrar. No hay un único gráfico que sirva par todas las situaciones pero la siguiente tabla nos guiará en una elección inicial:</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tipo de variable o pregunta <span class="pp">|</span> Gráfico adecuado <span class="pp">|</span> Ejemplo en la base <span class="pp">|</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---|:---|:---|</span></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable categórica <span class="pp">|</span> Gráfico de barras <span class="pp">|</span> Cantidad de registros por <span class="in">`area`</span> <span class="pp">|</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable numérica <span class="pp">|</span> Histograma <span class="pp">|</span> Distribución de <span class="in">`food_transport`</span> <span class="pp">|</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Una variable numérica según grupos <span class="pp">|</span> Diagrama de caja y bigotes <span class="pp">|</span> Emisiones por continente o grupo de países <span class="pp">|</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Dos variables numéricas <span class="pp">|</span> Gráfico de dispersión <span class="pp">|</span> Relación entre <span class="in">`urban_population`</span> y <span class="in">`food_transport`</span> <span class="pp">|</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Evolución de una variable en el tiempo <span class="pp">|</span> Gráfico de líneas <span class="pp">|</span> Emisiones de Argentina entre 1990 y 2020 <span class="pp">|</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### El Paquete `ggplot2`</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="fu">### </span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>El paquete **`ggplot2`** forma parte de `tidyverse` y se utiliza para construir gráficos en R. Su funcionamiento se basa en la **gramática de los gráficos**, es decir, en la idea de que un gráfico se construye agregando distintas **capas**.</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>La estructura básica es:</span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(datos, aes(x = variable_x, y = variable_y)) +   geom_...()+labs()+theme()</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>Cada parte cumple una función:</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Capa <span class="pp">|</span> Función <span class="pp">|</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|----|</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ggplot()`</span> <span class="pp">|</span> Indica el conjunto de datos que se utilizará. <span class="pp">|</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`aes()`</span> <span class="pp">|</span> Define qué variables se representarán y cómo se vinculan con elementos visuales como los ejes, colores o tamaños. <span class="pp">|</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`geom_...()`</span> <span class="pp">|</span> Define el tipo de representación gráfica: puntos, barras, líneas, histogramas, cajas, etc. <span class="pp">|</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`labs()`</span> <span class="pp">|</span> Permite agregar títulos y nombres a los ejes. <span class="pp">|</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`theme_...()`</span> <span class="pp">|</span> Permite modificar la apariencia general del gráfico. <span class="pp">|</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>Por ejemplo:</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(agro, aes(x = year, y = total_emission)) +   geom_point() +   labs(     x = "Año",     y = "Emisiones totales",     title = "Emisiones totales según año"   ) +   theme_minimal()</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>Podemos pensar entonces un gráfico como una construcción por capas:</span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a>**datos + variables + tipo de gráfico + etiquetas + apariencia**</span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a>El operador <span class="in">`+`</span> permite ir agregando cada una de estas capas al gráfico.</span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="fu">#### El paquete `esquisse`</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a>El paquete **`esquisse`** permite crear gráficos de manera interactiva utilizando `ggplot2`. A través de una interfaz gráfica podemos **arrastrar y soltar variables** para definir los ejes, colores, agrupamientos y otros elementos del gráfico.</span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a>Una de sus principales ventajas es que, además de construir el gráfico visualmente, permite **obtener el código de `ggplot2` utilizado para generarlo**. Esto lo convierte en una herramienta útil para comenzar a familiarizarse con la estructura de los gráficos en R.</span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a>Para instalarlo:</span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="in">install.packages("esquisse") </span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a>Para utilizarlo:</span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="in">library(esquisse)  esquisser() </span></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a>Después de instalarlo, puede aparecer en el menú:</span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a>**Addins → Browse Addins → esquisse**</span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a>Desde allí podés abrir su interfaz para construir gráficos, sin usar la opción <span class="in">`library( )`</span></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a>También podemos abrir directamente una base de datos:</span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="in">esquisser(datos) </span></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a>A partir de allí podemos seleccionar las variables y explorar diferentes representaciones gráficas. Una vez obtenido el gráfico deseado, podemos copiar el código generado y utilizarlo en nuestro script o documento Quarto.</span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Importante:** </span><span class="in">`esquisse`</span><span class="at"> no reemplaza el aprendizaje de </span><span class="in">`ggplot2`</span><span class="at">. Lo utilizaremos como una herramienta para explorar gráficos y comprender cómo se construye su código.</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

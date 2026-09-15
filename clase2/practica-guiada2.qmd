@@ -36,14 +36,16 @@ install.packages("janitor")
 agro <- read_csv("../datos originales/Agrofood_co2_emission.csv")
 ```
 
-A partir de este momento, agro será nuestro objeto de trabajo. Modificarlo no cambia automáticamente el archivo CSV original.
+A partir de este momento, agro será nuestro objeto de trabajo.
+Modificarlo no cambia automáticamente el archivo CSV original.
 
-2. Reconocimiento de la estructura de la base
+2.  Reconocimiento de la estructura de la base
 
-En esta base, cada fila representa información de un área o país en un año determinado. Las columnas representan variables, por ejemplo, las emisiones por distintos rubros, la población y la temperatura media.
+En esta base, cada fila representa información de un área o país en un
+año determinado. Las columnas representan variables, por ejemplo, las
+emisiones por distintos rubros, la población y la temperatura media.
 
-
-```
+```         
 dim(agro)
 
 nrow(agro)
@@ -51,45 +53,41 @@ nrow(agro)
 ncol(agro)
 ```
 
-
-```
+```         
 glimpse(agro)
 ```
 
-La función `glimpse()` permite observar los nombres de las variables, sus tipos y algunos de sus valores.
+La función `glimpse()` permite observar los nombres de las variables,
+sus tipos y algunos de sus valores.
 
-3. Limpieza de nombres
+3.  Limpieza de nombres
 
-Los nombres originales contienen espacios, mayúsculas, paréntesis y símbolos. Para trabajar de manera más sencilla, los normalizaremos.
+Los nombres originales contienen espacios, mayúsculas, paréntesis y
+símbolos. Para trabajar de manera más sencilla, los normalizaremos.
 
-```
+```         
 agro <- agro |>
   clean_names()
 
 names(agro)
 ```
 
-Por ejemplo 
+Por ejemplo
 
-
-Area                         → area
-Year                         → year
-Average Temperature °C       → average_temperature_c
-Total Population - Female    → total_population_female
-
+Area → area Year → year Average Temperature °C → average_temperature_c
+Total Population - Female → total_population_female
 
 A partir de este punto se utilizarán los nombres limpios.
 
-4. Tipos de variables
+4.  Tipos de variables
 
 En la base predominan variables de texto y variables numéricas.
 
-area contiene nombres de países o regiones.
-year representa el año de cada registro.
-Las emisiones, la población y la temperatura son variables numéricas.
+area contiene nombres de países o regiones. year representa el año de
+cada registro. Las emisiones, la población y la temperatura son
+variables numéricas.
 
-
-```
+```         
 class(agro$area)
 
 class(agro$year)
@@ -97,52 +95,58 @@ class(agro$year)
 class(agro$total_emission)
 ```
 
-Aunque year está expresada mediante números, representa el tiempo y se mantendrá como variable numérica para estudiar posteriormente su evolución.
+Aunque year está expresada mediante números, representa el tiempo y se
+mantendrá como variable numérica para estudiar posteriormente su
+evolución.
 
-5. Selección y reordenamiento de variables
+5.  Selección y reordenamiento de variables
 
-Seleccionar variables significa conservar determinadas columnas de la base. Esta operación no elimina filas.
+Seleccionar variables significa conservar determinadas columnas de la
+base. Esta operación no elimina filas.
 
-a.  seleccionar algunas variables especificas: area, year, total_emission, average_temperature_c 
+a.  seleccionar algunas variables especificas: area, year,
+    total_emission, average_temperature_c
 
-```
+```         
 agro |>
   select(area, year, total_emission, average_temperature_c)
 ```
- 
-b. Seleccionar las varaialbes desde áreas hasta rice_cultivation 
-```
+
+b.  Seleccionar las varaialbes desde áreas hasta rice_cultivation
+
+```         
 agro |>
   select(area:rice_cultivation)
 ```
 
-Selccionar las variables que  tienen una determinada parlabra. Ejemplo, "population"
-Observación: la palabar debe ir entre comillas
-```
+Selccionar las variables que tienen una determinada parlabra. Ejemplo,
+"population" Observación: la palabar debe ir entre comillas
+
+```         
 agro |>
   select(area, year, contains("population"))
 ```
 
-Selccionar las variables que  tienen una determinada parlabra. Ejemplo, "population"
-Observación: la palabar debe ir entre comillas
+Selccionar las variables que tienen una determinada parlabra. Ejemplo,
+"population" Observación: la palabar debe ir entre comillas
 
-```
+```         
 agro |>
   select(ends_with("fires"))
 ```
 
-c. Eliminar una variable 
-se utliza la función `select()` y se escribe la varaible precedida por el signo -
+c.  Eliminar una variable se utliza la función `select()` y se escribe
+    la varaible precedida por el signo -
 
-```
+```         
 agro |>
   select(-average_temperature_c)
 ```
 
+Podemos crear una base reducida para trabajar con algunas variables
+seleccionadas.
 
-Podemos crear una base reducida para trabajar con algunas variables seleccionadas.
-
-```
+```         
 agro_reducida <- agro |>
   select(
     area,
@@ -157,27 +161,25 @@ agro_reducida <- agro |>
   relocate(total_emission, .after = year)
 ```
 
+`relocate(total_emission, .after = year)` sirve para ordenar una
+variables .after =.. o .besfore=... de otra en particular.
 
-`relocate(total_emission, .after = year)`  sirve para ordenar  una variables .after =.. o .besfore=... de otra en particular.  
+6.  Filtrado y ordenamiento de observaciones
 
+Mientras select() trabaja con columnas, filter() permite conservar las
+filas que cumplen una condición.
 
-
-6. Filtrado y ordenamiento de observaciones
-
-Mientras select() trabaja con columnas, filter() permite conservar las filas que cumplen una condición.  
-
-
-```
+```         
 agro |>
   filter(area == "Argentina")
 ```
 
-```
+```         
 agro |>
   filter(year == 2020)
 ```
 
-```
+```         
 agro |>
   filter(
     area == "Argentina",
@@ -185,7 +187,7 @@ agro |>
   )
 ```
 
-```
+```         
 agro |>
   filter(
     area %in% c(
@@ -199,22 +201,22 @@ agro |>
   )
 ```
 
-
-```
+```         
 agro |>
   arrange(total_emission)
 ```
 
-```
+```         
 agro |>
   arrange(area, year)
 ```
 
-7. Creación y recodificación de variables
+7.  Creación y recodificación de variables
 
-La función mutate() permite crear nuevas variables o modificar las existentes.
+La función mutate() permite crear nuevas variables o modificar las
+existentes.
 
-```
+```         
 agro <- agro |>
   mutate(
     total_population =
@@ -228,9 +230,10 @@ agro <- agro |>
   )
 ```
 
-También podemos crear una variable para distinguir a Argentina de otros paises
+También podemos crear una variable para distinguir a Argentina de otros
+paises
 
-```
+```         
 agro <- agro |>
   mutate(
     grupo_region = case_when(
@@ -241,16 +244,16 @@ agro <- agro |>
   )
 ```
 
-8. Valores faltantes y duplicados
+8.  Valores faltantes y duplicados
 
-Un valor faltante se representa en R mediante NA. No significa que el valor sea cero, sino que la información no está disponible.
+Un valor faltante se representa en R mediante NA. No significa que el
+valor sea cero, sino que la información no está disponible.
 
-```
+```         
 sum(is.na(agro))
 ```
 
-
-```
+```         
 agro |>
   summarise(
     across(
@@ -260,31 +263,29 @@ agro |>
   )
 ```
 
-
 Para detectar si existen filas completamente duplicadas:
-```
+
+```         
 sum(duplicated(agro))
 ```
 
-```
+```         
 agro |>
   count(area, year) |>
   filter(n > 1)
 ```
 
-
-En esta base, debería haber como máximo una observación por combinación de área y año.
-
+En esta base, debería haber como máximo una observación por combinación
+de área y año.
 
 Antes de eliminar duplicados, es necesario investigar por qué aparecen.
 
+9.  Resúmenes agrupados iniciales
 
+La combinación de group_by() y summarise() permite organizar y resumir
+información para distintos grupos.
 
-9. Resúmenes agrupados iniciales
-
-La combinación de group_by() y summarise() permite organizar y resumir información para distintos grupos.  
-
-```
+```         
 agro |>
   group_by(area) |>
   summarise(
@@ -294,15 +295,15 @@ agro |>
   )
 ```
 
-En las próximas clases utilizaremos estas mismas funciones para calcular medidas descriptivas y comparar las emisiones entre países y rubros.  
-
+En las próximas clases utilizaremos estas mismas funciones para calcular
+medidas descriptivas y comparar las emisiones entre países y rubros.
 
 10. Construcción y guardado de la base limpia
 
-Finalmente, construiremos una versión ordenada de la basecon los países de América del Sur incluidos, que utilizaremos en las clases siguientes.
+Finalmente, construiremos una versión ordenada de la basecon los países
+de América del Sur incluidos, que utilizaremos en las clases siguientes.
 
-
-```
+```         
 agro_sudamerica <- agro |>
   filter(
     area %in% c(
@@ -323,10 +324,10 @@ agro_sudamerica <- agro |>
   )
 ```
 
+Creamos una nueva variable de clasifiación para idenitificar Argentina,
+los paises límitrofes y los restantes
 
-Creamos una nueva variable de clasifiación para idenitificar Argentina, los paises límitrofes y los restantes 
-
-```
+```         
 agro_sudamerica <-agro_sudamerica  |>
   mutate(
     grupo_region = case_when(
@@ -346,48 +347,48 @@ agro_sudamerica <-agro_sudamerica  |>
   arrange(area, year)
 ```
 
-
-```
+```         
 write_csv(
   agro_sudamerica,
   "../datos transformados/agro_sudamerica.csv"
 )
 ```
 
+También es posible guardarla como objeto de R. Este formato conserva
+mejor las clases de las variables.
 
-También es posible guardarla como objeto de R. Este formato conserva mejor las clases de las variables.
-
-```
+```         
 saveRDS(
   agro_sudamerica,
   "../datos transformados/agro_sudamerica.rds"
 )
 ```
 
-```
+```         
 agro_sudamerica2<- readRDS(
   "../datos transformados/agro_sudamerica.rds"
 )
 ```
 
-Al finalizar esta etapa, contaremos con una base limpia, ordenada y preparada para realizar tablas, gráficos y análisis descriptivos.
+Al finalizar esta etapa, contaremos con una base limpia, ordenada y
+preparada para realizar tablas, gráficos y análisis descriptivos.
 
-```
+```         
 agro |>
   select(area:rice_cultivation)
 ```
 
-```
+```         
 agro |>
   select(area, year, contains("population"))
 ```
 
-```
+```         
 agro |>
   select(ends_with("fires"))
 ```
 
-```
+```         
 agro |>
   select(-average_temperature_c)
 ```
@@ -395,7 +396,7 @@ agro |>
 Podemos crear una base reducida para trabajar con algunas variables
 seleccionadas.
 
-```
+```         
 agro_reducida <- agro |>
   select(
     area,
@@ -417,17 +418,17 @@ glimpse(agro_reducida)
 Mientras select() trabaja con columnas, filter() permite conservar las
 filas que cumplen una condición.
 
-```
+```         
 agro |>
   filter(area == "Argentina")
 ```
 
-```
+```         
 agro |>
   filter(year == 2020)
 ```
 
-```
+```         
 agro |>
   filter(
     area == "Argentina",
@@ -435,7 +436,7 @@ agro |>
   )
 ```
 
-```
+```         
 agro |>
   filter(
     area %in% c(
@@ -449,12 +450,12 @@ agro |>
   )
 ```
 
-```
+```         
 agro |>
   arrange(total_emission)
 ```
 
-```
+```         
 agro |>
   arrange(area, year)
 ```
@@ -464,7 +465,7 @@ agro |>
 La función mutate() permite crear nuevas variables o modificar las
 existentes.
 
-```
+```         
 agro <- agro |>
   mutate(
     total_population =
@@ -481,7 +482,7 @@ agro <- agro |>
 También podemos crear una variable para distinguir a Argentina de sus
 países limítrofes.
 
-```
+```         
 agro <- agro |>
   mutate(
     grupo_region = case_when(
@@ -505,11 +506,11 @@ agro <- agro |>
 Un valor faltante se representa en R mediante NA. No significa que el
 valor sea cero, sino que la información no está disponible.
 
-```
+```         
 sum(is.na(agro))
 ```
 
-```
+```         
 agro |>
   summarise(
     across(
@@ -521,11 +522,11 @@ agro |>
 
 Para detectar si existen filas completamente duplicadas:
 
-```
+```         
 sum(duplicated(agro))
 ```
 
-```
+```         
 agro |>
   count(area, year) |>
   filter(n > 1)
@@ -536,14 +537,12 @@ de área y año.
 
 Antes de eliminar duplicados, es necesario investigar por qué aparecen.
 
-
-
 9.  Resúmenes agrupados iniciales
 
 La combinación de group_by() y summarise() permite organizar y resumir
 información para distintos grupos.
 
-```
+```         
 agro |>
   group_by(area) |>
   summarise(
@@ -561,14 +560,14 @@ medidas descriptivas y comparar las emisiones entre países y rubros.
 Finalmente, construiremos una versión ordenada de la base que
 utilizaremos en las clases siguientes.
 
-```
+```         
 agro_limpia <- agro |>
   arrange(area, year)
 
 glimpse(agro_limpia)
 ```
 
-```
+```         
 write_csv(
   agro_limpia,
   "../datos transformados/agrofood_limpia.csv"
@@ -578,14 +577,14 @@ write_csv(
 También es posible guardarla como objeto de R. Este formato conserva
 mejor las clases de las variables.
 
-```
+```         
 saveRDS(
   agro_limpia,
   "../datos transformados/agrofood_limpia.rds"
 )
 ```
 
-```
+```         
 agro_limpia <- readRDS(
   "../datos transformados/agrofood_limpia.rds"
 )
