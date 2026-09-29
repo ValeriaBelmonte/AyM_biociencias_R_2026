@@ -16,20 +16,20 @@ Análisis_agrofood
 
 Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:
 
-- datos_originales: contiene la base de datos tal como fue recibida. No debe modificarse, para conservar siempre una copia original.\
-- datos_transformados: contiene las bases de datos que se generen luego de limpiar, seleccionar o crear variables.
-- scripts: contiene los archivos de código utilizados en el análisis, por ejemplo, documentos .qmd o scripts .R.
-- resultados: contiene tablas, resúmenes u otros resultados obtenidos durante el análisis.
-- figuras: contiene los gráficos e imágenes generados en el proyecto.
+- **datos originales**: contiene la base de datos tal como fue recibida. No debe modificarse, para conservar siempre una copia original.\
+- **datos transformados**: contiene las bases de datos que se generen luego de limpiar, seleccionar o crear variables.
+- **scripts**: contiene los archivos de código utilizados en el análisis, por ejemplo, documentos .qmd o scripts .R.
+- **resultados**: contiene tablas, resúmenes u otros resultados obtenidos durante el análisis.
+- **figuras**: contiene los gráficos e imágenes generados en el proyecto.
 - informes: contiene los documentos finales elaborados para comunicar los resultados.
-- prompts (opcional): permite guardar un registro de los prompts utilizados al trabajar con herramientas de inteligencia artificial.
+- **prompts** (opcional): permite guardar un registro de los prompts utilizados al trabajar con herramientas de inteligencia artificial.
 
 La estructura inicial del proyecto será:
 
 ``` text
-Analisis_agrofood/  
-├── datos_originales/  
-├── datos_transformados/  
+Analisis agrofood/  
+├── datos originales/  
+├── datos transformados/  
 ├── figuras/  
 ├── informes/  
 ├── prompts/
@@ -47,7 +47,7 @@ File → New Project → New Directory → New Project
 
 ![](/imagenes/nuevo%20proecto%20(1).png)
 
-Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood, como se muestra en las siguientes figuras`
+Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood`, como se muestra en las siguientes figuras
 
 ![](/imagenes/crear%20proyecto%202.png){width="300"}
 
@@ -55,7 +55,10 @@ Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood, co
 
 ![](/imagenes/crear%20proyecto%204.png){width="300"}
 
-![](/imagenes/crear%20proyecto%205.png){width="300"}Luego:
+![](/imagenes/crear%20proyecto%205.png){width="300"}
+
+
+Luego:
 
 RStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.
 
@@ -75,7 +78,7 @@ Seleccionar:
 
 - Seleccionar word
 
-- Aceptar
+- Crear
 
 ![](/imagenes/crear%20script%202.png){width="500"}
 
@@ -87,11 +90,12 @@ Para la escritura, y programación trabajaremos desde `Source`
 
 ## Diferenciar texto y código
 
-En Quarto podemos combinar:
+## Idea central
 
-Texto \# Introducción
+Quarto permite combinar explicaciones, código y resultados en un mismo documento. Así, el análisis queda ordenado, es reproducible y puede compartirse fácilmente.
 
-Este es mi primer documento reproducible en R. Código.
+Más adelante veremos distintas opciones para personalizar los bloques de código. Para ampliar sobre la escritura de documentos en R Markdown, pueden consultar la guía de [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
+
 
 ![](/imagenes/chunks.png){width="500"}
 
@@ -103,7 +107,7 @@ Quarto generará automáticamente un documento donde aparecerán:
 
 el texto escrito, el código y los resultados obtenidos en R.
 
-# Idea central
+### Idea central
 
 Quarto permite integrar en un mismo documento:
 
@@ -111,22 +115,22 @@ Quarto permite integrar en un mismo documento:
 
 - código,
 
-- esultados y gráficos
+- resultados y gráficos
 
 Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código
 
-**Bonus de la clase**
+### Bonus de la clase
 
-Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
+1.  cargar la base de datos `Agrofood_co2_emission.csv` en la carpeta_datos originales
 
-```
+2.  Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
 
+```r         
 # Instalación tidyverse
 install.packages("tidyverse")
-
 ```
 
-```
+```         
 library(tidyverse)
 ```
 
@@ -143,7 +147,3 @@ tools->Install Packages..->tidyverse
 ![](/imagenes/instalar%20paquete%202.png){width="300"}
 
 ![](/imagenes/Intalar%20paquete%203.png){width="300"}
-
-
-
-
