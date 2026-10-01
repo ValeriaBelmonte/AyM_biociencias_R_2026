@@ -1,8 +1,8 @@
 ---
-title: Práctica guiada
+title: Práctica guiada 1
 ---
 
-# Práctica guiada: creación del primer documento en Quarto
+# Próposito
 
 En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.
 
@@ -36,7 +36,24 @@ Analisis agrofood/
 ├── resultados/  
 └── scripts/  
 ```
+## Guardar la base de datos original
 
+Descargar base de datos Agrofood_co2_emission.csv\
+[Agrofood_co2_emission](../datos/Agrofood_co2_emission.csv)  
+
+Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales
+
+``` text
+Analisis agrofood/  
+├── datos originales/  
+            └── Agrofood_co2_emission.csv
+├── datos transformados/  
+├── figuras/  
+├── informes/  
+├── prompts/
+├── resultados/  
+└── scripts/  
+```
 ## Paso 2. Crear un proyecto en RStudio
 
 Abrir RStudio y seleccionar:
@@ -87,13 +104,12 @@ Para la escritura, y programación trabajaremos desde `Source`
 
 ## Paso 4. Escribir en el script dentro de quarto
 
-## Diferenciar texto y código
+### Diferenciar texto y código
 
-## Idea central
 
 Quarto permite combinar explicaciones, código y resultados en un mismo documento. Así, el análisis queda ordenado, es reproducible y puede compartirse fácilmente.
 
-Más adelante veremos distintas opciones para personalizar los bloques de código. Para ampliar sobre la escritura de documentos en R Markdown, pueden consultar la guía de [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
+Más adelante,  en la Parte 6, veremos distintas opciones para personalizar los bloques de código. Para ampliar sobre la escritura de documentos en R Markdown, pueden consultar la guía de [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
 
 ![](/imagenes/chunks.png){width="500"}
 
@@ -117,11 +133,33 @@ Quarto permite integrar en un mismo documento:
 
 Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código
 
+## Crear y guardar un documento Quarto
+
+Una vez creado el proyecto, abre un nuevo documento Quarto:
+
+1. Ve a **File > New File > Quarto Document**.
+2. Escribe un título para el documento.
+3. Haz clic en **Create**.
+4. Guarda el archivo dentro de la carpeta **scripts**.
+
+Para guardarlo:
+
+**File > Save As...**
+
+Selecciona la carpeta:
+
+```text
+scripts
+```
+y guarda el archivo con el nombre descriptivo, por ejemplo: 
+
+```
+practica_co2.qmd
+```
 ### Bonus de la clase
 
-1.  cargar la base de datos `Agrofood_co2_emission.csv` en la carpeta_datos originales
 
-2.  Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
+1.  Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
 
 ``` r
 # Instalación tidyverse

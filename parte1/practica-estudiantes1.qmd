@@ -1,5 +1,5 @@
 ---
-title: "Practica para estudiantes 1"
+title: "Práctica para estudiantes 1"
 ---
 
 
@@ -34,10 +34,10 @@ lechuga/
 └── scripts/  
 ```
 
-##Guardar la base de datos original
+## Guardar la base de datos original
 
 Descargar base de datos lechuga.xlsx\
-[Descargar la base de datos lechuga](../datos/lechuga.xlsx)
+[lechuga](../datos/lechuga.xlsx)  
 Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales  
 *Observación*: En esta etapa no debes importar todavía la base de datos en RStudio.\
 La importación se realizará en la Parte 2 de la práctica.\
@@ -57,7 +57,17 @@ lechuga/
 
 ## Crear el proyecto en RStudio
 
-Ahora abre RStudio y crea un proyecto utilizando la carpeta lechuga que acabas de organizar. Para hacerlo: 1. Selecciona File \> New Project. 2. Elige Existing Directory. 3. Busca y selecciona la carpeta lechuga. 4. Haz clic en Create Project. RStudio utilizará esa carpeta como directorio principal del proyecto. Una vez creado el proyecto, observa el panel Files. Para observar ¿Qué archivo nuevo apareció dentro de la carpeta lechuga? ¿Qué extensión tiene? La estructura del proyecto debería quedar similar a esta:
+Ahora abre RStudio y crea un proyecto utilizando la carpeta lechuga que acabas de organizar.   Para hacerlo:   
+1. Selecciona File \> New Project.   
+2. Elige Existing Directory.  
+3. Busca y selecciona la carpeta lechuga.  
+4. Haz clic en Create Project.   
+RStudio utilizará esa carpeta como directorio principal del proyecto.  
+Una vez creado el proyecto, observa el panel Files.  
+Para observar:  
+¿Qué archivo nuevo apareció dentro de la carpeta lechuga?   
+¿Qué extensión tiene?  
+La estructura del proyecto debería quedar similar a esta:  
 
 ``` text
 lechuga/  

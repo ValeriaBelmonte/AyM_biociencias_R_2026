@@ -17,17 +17,6 @@ website:
       - href: index.qmd
         text: Inicio
 
-      - section: "Parte 0"
-        contents:
-          - href: parte0/index.qmd
-            text: Presentación
-          - href: parte0/teoria0.qmd
-            text: "Teoría"
-          - href: parte0/practica-guiada0.qmd
-            text: "Práctica guiada"
-          - href: parte0/practica-estudiantes0.qmd
-            text: "Práctica para estudiantes"
-
       - section: "Parte 1"
         contents:
           - href: parte1/index1.qmd
