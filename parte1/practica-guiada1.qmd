@@ -2,7 +2,7 @@
 title: Práctica guiada 1
 ---
 
-# Próposito
+## Próposito
 
 En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.
 

@@ -367,21 +367,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#próposito" id="toc-próposito" class="nav-link active" data-scroll-target="#próposito"><span class="header-section-number">1</span> Próposito</a>
+  <li><a href="#próposito" id="toc-próposito" class="nav-link active" data-scroll-target="#próposito"><span class="header-section-number">1</span> Próposito</a></li>
+  <li><a href="#paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora" id="toc-paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora" class="nav-link" data-scroll-target="#paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora"><span class="header-section-number">2</span> Paso 1. Crear una carpeta para el proyecto, en la computadora</a></li>
+  <li><a href="#guardar-la-base-de-datos-original" id="toc-guardar-la-base-de-datos-original" class="nav-link" data-scroll-target="#guardar-la-base-de-datos-original"><span class="header-section-number">3</span> Guardar la base de datos original</a></li>
+  <li><a href="#paso-2.-crear-un-proyecto-en-rstudio" id="toc-paso-2.-crear-un-proyecto-en-rstudio" class="nav-link" data-scroll-target="#paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">4</span> Paso 2. Crear un proyecto en RStudio</a></li>
+  <li><a href="#paso-3.-crear-el-primer-documento-quarto" id="toc-paso-3.-crear-el-primer-documento-quarto" class="nav-link" data-scroll-target="#paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">5</span> Paso 3. Crear el primer documento Quarto</a></li>
+  <li><a href="#paso-4.-escribir-en-el-script-dentro-de-quarto" id="toc-paso-4.-escribir-en-el-script-dentro-de-quarto" class="nav-link" data-scroll-target="#paso-4.-escribir-en-el-script-dentro-de-quarto"><span class="header-section-number">6</span> Paso 4. Escribir en el script dentro de quarto</a>
   <ul class="collapse">
-  <li><a href="#paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora" id="toc-paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora" class="nav-link" data-scroll-target="#paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora"><span class="header-section-number">1.1</span> Paso 1. Crear una carpeta para el proyecto, en la computadora</a></li>
-  <li><a href="#guardar-la-base-de-datos-original" id="toc-guardar-la-base-de-datos-original" class="nav-link" data-scroll-target="#guardar-la-base-de-datos-original"><span class="header-section-number">1.2</span> Guardar la base de datos original</a></li>
-  <li><a href="#paso-2.-crear-un-proyecto-en-rstudio" id="toc-paso-2.-crear-un-proyecto-en-rstudio" class="nav-link" data-scroll-target="#paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">1.3</span> Paso 2. Crear un proyecto en RStudio</a></li>
-  <li><a href="#paso-3.-crear-el-primer-documento-quarto" id="toc-paso-3.-crear-el-primer-documento-quarto" class="nav-link" data-scroll-target="#paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">1.4</span> Paso 3. Crear el primer documento Quarto</a></li>
-  <li><a href="#paso-4.-escribir-en-el-script-dentro-de-quarto" id="toc-paso-4.-escribir-en-el-script-dentro-de-quarto" class="nav-link" data-scroll-target="#paso-4.-escribir-en-el-script-dentro-de-quarto"><span class="header-section-number">1.5</span> Paso 4. Escribir en el script dentro de quarto</a>
-  <ul class="collapse">
-  <li><a href="#diferenciar-texto-y-código" id="toc-diferenciar-texto-y-código" class="nav-link" data-scroll-target="#diferenciar-texto-y-código"><span class="header-section-number">1.5.1</span> Diferenciar texto y código</a></li>
-  <li><a href="#idea-central" id="toc-idea-central" class="nav-link" data-scroll-target="#idea-central"><span class="header-section-number">1.5.2</span> Idea central</a></li>
+  <li><a href="#diferenciar-texto-y-código" id="toc-diferenciar-texto-y-código" class="nav-link" data-scroll-target="#diferenciar-texto-y-código"><span class="header-section-number">6.1</span> Diferenciar texto y código</a></li>
+  <li><a href="#idea-central" id="toc-idea-central" class="nav-link" data-scroll-target="#idea-central"><span class="header-section-number">6.2</span> Idea central</a></li>
   </ul></li>
-  <li><a href="#crear-y-guardar-un-documento-quarto" id="toc-crear-y-guardar-un-documento-quarto" class="nav-link" data-scroll-target="#crear-y-guardar-un-documento-quarto"><span class="header-section-number">1.6</span> Crear y guardar un documento Quarto</a>
+  <li><a href="#crear-y-guardar-un-documento-quarto" id="toc-crear-y-guardar-un-documento-quarto" class="nav-link" data-scroll-target="#crear-y-guardar-un-documento-quarto"><span class="header-section-number">7</span> Crear y guardar un documento Quarto</a>
   <ul class="collapse">
-  <li><a href="#bonus-de-la-clase" id="toc-bonus-de-la-clase" class="nav-link" data-scroll-target="#bonus-de-la-clase"><span class="header-section-number">1.6.1</span> Bonus de la clase</a></li>
-  </ul></li>
+  <li><a href="#bonus-de-la-clase" id="toc-bonus-de-la-clase" class="nav-link" data-scroll-target="#bonus-de-la-clase"><span class="header-section-number">7.1</span> Bonus de la clase</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -408,12 +406,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="próposito" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Próposito</h1>
+<section id="próposito" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="próposito"><span class="header-section-number">1</span> Próposito</h2>
 <p>En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.</p>
 <p>Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.</p>
-<section id="paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora"><span class="header-section-number">1.1</span> Paso 1. Crear una carpeta para el proyecto, en la computadora</h2>
+</section>
+<section id="paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="paso-1.-crear-una-carpeta-para-el-proyecto-en-la-computadora"><span class="header-section-number">2</span> Paso 1. Crear una carpeta para el proyecto, en la computadora</h2>
 <p>En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:</p>
 <p>Análisis_agrofood</p>
 <p>Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:</p>
@@ -437,8 +436,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── resultados/  
 └── scripts/  </code></pre>
 </section>
-<section id="guardar-la-base-de-datos-original" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="guardar-la-base-de-datos-original"><span class="header-section-number">1.2</span> Guardar la base de datos original</h2>
+<section id="guardar-la-base-de-datos-original" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="guardar-la-base-de-datos-original"><span class="header-section-number">3</span> Guardar la base de datos original</h2>
 <p>Descargar base de datos Agrofood_co2_emission.csv<br>
 <a href="../datos/Agrofood_co2_emission.csv">Agrofood_co2_emission</a></p>
 <p>Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales</p>
@@ -452,8 +451,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── resultados/  
 └── scripts/  </code></pre>
 </section>
-<section id="paso-2.-crear-un-proyecto-en-rstudio" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">1.3</span> Paso 2. Crear un proyecto en RStudio</h2>
+<section id="paso-2.-crear-un-proyecto-en-rstudio" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">4</span> Paso 2. Crear un proyecto en RStudio</h2>
 <p>Abrir RStudio y seleccionar:</p>
 <pre><code>File → New Project → New Directory → New Project</code></pre>
 <p><img src="..\imagenes/nuevo proecto (1).png" class="img-fluid"></p>
@@ -471,8 +470,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="paso-3.-crear-el-primer-documento-quarto" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">1.4</span> Paso 3. Crear el primer documento Quarto</h2>
+<section id="paso-3.-crear-el-primer-documento-quarto" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">5</span> Paso 3. Crear el primer documento Quarto</h2>
 <p>En RStudio:</p>
 <p>File → New File → Quarto Document</p>
 <p>Seleccionar:</p>
@@ -488,10 +487,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="..\imagenes/crear script 1 (1).png" class="img-fluid" width="500"></p>
 <p>Para la escritura, y programación trabajaremos desde <code>Source</code></p>
 </section>
-<section id="paso-4.-escribir-en-el-script-dentro-de-quarto" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="paso-4.-escribir-en-el-script-dentro-de-quarto"><span class="header-section-number">1.5</span> Paso 4. Escribir en el script dentro de quarto</h2>
-<section id="diferenciar-texto-y-código" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="diferenciar-texto-y-código"><span class="header-section-number">1.5.1</span> Diferenciar texto y código</h3>
+<section id="paso-4.-escribir-en-el-script-dentro-de-quarto" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="paso-4.-escribir-en-el-script-dentro-de-quarto"><span class="header-section-number">6</span> Paso 4. Escribir en el script dentro de quarto</h2>
+<section id="diferenciar-texto-y-código" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="diferenciar-texto-y-código"><span class="header-section-number">6.1</span> Diferenciar texto y código</h3>
 <p>Quarto permite combinar explicaciones, código y resultados en un mismo documento. Así, el análisis queda ordenado, es reproducible y puede compartirse fácilmente.</p>
 <p>Más adelante, en la Parte 6, veremos distintas opciones para personalizar los bloques de código. Para ampliar sobre la escritura de documentos en R Markdown, pueden consultar la guía de <a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown</a>.</p>
 <p><img src="..\imagenes/chunks.png" class="img-fluid" width="500"></p>
@@ -500,8 +499,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Quarto generará automáticamente un documento donde aparecerán:</p>
 <p>el texto escrito, el código y los resultados obtenidos en R.</p>
 </section>
-<section id="idea-central" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="idea-central"><span class="header-section-number">1.5.2</span> Idea central</h3>
+<section id="idea-central" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="idea-central"><span class="header-section-number">6.2</span> Idea central</h3>
 <p>Quarto permite integrar en un mismo documento:</p>
 <ul>
 <li><p>explicaciones, comentarios,</p></li>
@@ -511,8 +510,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código</p>
 </section>
 </section>
-<section id="crear-y-guardar-un-documento-quarto" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="crear-y-guardar-un-documento-quarto"><span class="header-section-number">1.6</span> Crear y guardar un documento Quarto</h2>
+<section id="crear-y-guardar-un-documento-quarto" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="crear-y-guardar-un-documento-quarto"><span class="header-section-number">7</span> Crear y guardar un documento Quarto</h2>
 <p>Una vez creado el proyecto, abre un nuevo documento Quarto:</p>
 <ol type="1">
 <li>Ve a <strong>File &gt; New File &gt; Quarto Document</strong>.</li>
@@ -526,8 +525,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre class="text"><code>scripts</code></pre>
 <p>y guarda el archivo con el nombre descriptivo, por ejemplo:</p>
 <pre><code>practica_co2.qmd</code></pre>
-<section id="bonus-de-la-clase" class="level3" data-number="1.6.1">
-<h3 data-number="1.6.1" class="anchored" data-anchor-id="bonus-de-la-clase"><span class="header-section-number">1.6.1</span> Bonus de la clase</h3>
+<section id="bonus-de-la-clase" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="bonus-de-la-clase"><span class="header-section-number">7.1</span> Bonus de la clase</h3>
 <ol type="1">
 <li>Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete <strong>tidyverse</strong></li>
 </ol>
@@ -544,7 +543,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <!-- -->
 
-</section>
 </section>
 </section>
 
@@ -1003,7 +1001,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Práctica guiada 1</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Próposito</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Próposito</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
