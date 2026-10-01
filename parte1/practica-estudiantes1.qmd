@@ -37,7 +37,7 @@ lechuga/
 
 Descargar base de datos lechuga.xls:[lechuga](../datos/lechuga.xlsx)
 
-Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales
+Utilizando el explorador de archivos de tu computadora, guardá el archivo dentro de la carpeta: datos originales
 
 **Observación**: En esta etapa no debes importar todavía la base de datos en RStudio.\
 La importación se realizará en la Parte 2 de la práctica.\
@@ -58,10 +58,11 @@ lechuga/
 ## Crear el proyecto en RStudio
 
 Ahora abre RStudio y crea un proyecto utilizando la carpeta lechuga que acabas de organizar. Para hacerlo:\
-1. Selecciona File \> New Project.\
-2. Elige Existing Directory.\
-3. Busca y selecciona la carpeta lechuga.\
-4. Haz clic en Create Project. \
+a) Seleccioná **File > New Project**.  
+b) Elegí **Existing Directory**.  
+c) Buscá y seleccioná la carpeta **lechuga**.  
+d) Hacé clic en **Create Project**.  
+
 RStudio utilizará esa carpeta como directorio principal del proyecto.\
 Una vez creado el proyecto, observa el panel Files.\
 Para observar:\
@@ -86,7 +87,7 @@ lechuga/
 
 ## Comprobar la organización del proyecto
 
-Antes de continuar con la siguiente parte de la práctica, verifica que: -RStudio esté trabajando dentro del proyecto lechuga.\
+Antes de continuar con la siguiente parte de la práctica, verificá que: -RStudio esté trabajando dentro del proyecto lechuga.\
 - Exista el archivo lechuga.Rproj.\
 - Estén creadas las carpetas:\
 - datos originales\
@@ -95,12 +96,12 @@ Antes de continuar con la siguiente parte de la práctica, verifica que: -RStudi
 - El archivo lechuga.xlsx se encuentre dentro de datos originales.\
 - El archivo original no haya sido modificado.
 
-## Para pensar Responde brevemente:
+## Para pensar :
 
-a)  ¿Qué ventaja tiene trabajar dentro de un proyecto de RStudio?\
-b)  ¿Por qué conviene separar los datos originales de los datos transformados?\
-c)  ¿Por qué es importante conservar la base de datos original sin modificaciones?\
-d)  ¿Qué ventaja tiene guardar los scripts separados de los archivos de datos?
+a) ¿Qué ventaja tiene trabajar dentro de un proyecto de RStudio? \
+b) ¿Por qué conviene separar los datos originales de los datos transformados? \
+c) ¿Por qué es importante conservar la base de datos original sin modificaciones? \
+d) ¿Qué ventaja tiene guardar los scripts separados de los archivos de datos?
 
 ## Resultado esperado
 
