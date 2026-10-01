@@ -5,21 +5,7 @@ editor:
     wrap: 72
 ---
 
-## Organización de los contenidos
-
-| Sección | Objetivos abordados | Funciones principales |
-|:---|:---|:---|
-| Preparación e importación | Importar un archivo CSV | `read_csv()` |
-| Reconocimiento de la base | Reconocer filas, columnas, variables y observaciones | `dim()`, `nrow()`, `ncol()`, `names()`, `glimpse()`, `str()` |
-| Limpieza de nombres | Trabajar con nombres consistentes | `clean_names()` |
-| Selección y reordenamiento | Seleccionar y ordenar variables | `select()`, `relocate()` |
-| Filtrado y ordenamiento | Filtrar y ordenar observaciones | `filter()`, `arrange()`, `between()`, `%in%` |
-| Creación y recodificación | Crear y recodificar variables | `mutate()`, `case_when()` |
-| Control de calidad | Detectar faltantes y duplicados | `is.na()`, `drop_na()`, `duplicated()`, `distinct()` |
-| Resúmenes agrupados | Explorar subconjuntos de datos | `group_by()`, `summarise()`, `n_distinct()` |
-| Base limpia | Guardar una nueva base de datos | `write_csv()`, `saveRDS()` |
-
-## 1. Preparación del entorno e importación
+## Preparación del entorno e importación
 
 Los paquetes se instalan una única vez en la computadora. En cambio,
 deben cargarse cada vez que se inicia una nueva sesión de trabajo en R.
@@ -38,6 +24,69 @@ agro <- read_csv("../datos originales/Agrofood_co2_emission.csv")
 
 A partir de este momento, agro será nuestro objeto de trabajo.
 Modificarlo no cambia automáticamente el archivo CSV original.
+
+Según la extensión del archivo a importar hay diferentes caminos
+
+  Cuando los datsso están separados por ;
+```r
+datos <- read_csv2("../datos originales/archivo.csv")
+```
+
+Esta función interpreta, por defecto, el punto y coma como separador de
+columnas y la coma como separador decimal.
+
+
+* Archivos de Excel
+
+Para importar archivos de Excel con extensión `.xlsx` o `.xls` se utiliza
+el paquete `readxl`. Si aún no está instalado, debe instalarse una sola vez:
+
+```r
+install.packages("readxl")
+```
+
+En cada sesión en la que se lo necesite, se carga el paquete:
+
+```r
+library(readxl)
+```
+
+Luego se importa el archivo:
+
+```r
+datos <- read_excel("../datos originales/archivo.xlsx")
+```
+
+Si el libro contiene varias hojas, puede indicarse cuál se desea leer:
+
+``` r
+datos <- read_excel(
+  "../datos originales/archivo.xlsx",
+  sheet = "Hoja1"
+)
+```
+* Archivos de texto
+
+Cuando los datos se encuentran en un archivo de texto, se puede utilizar
+`read_delim()`. Debe indicarse cuál es el separador entre las columnas.
+
+* Para datos separados por tabulaciones:
+
+```r
+datos <- read_delim(
+  "../datos originales/archivo.txt",
+  delim = "\t"
+)
+```
+
+Para datos separados por otro símbolo, por ejemplo una barra vertical:
+
+```r
+datos <- read_delim(
+  "../datos originales/archivo.txt",
+  delim = "|"
+)
+```
 
 2.  **Reconocimiento de la estructura de la base**
 
@@ -383,3 +432,19 @@ preparada para realizar tablas, gráficos y análisis descriptivos.agro
 
 Podemos crear una base reducida para trabajar con algunas variables
 seleccionadas.
+
+## Resumen de las  principlaes funciones utilizadas 
+
+| Sección | Objetivos abordados | Funciones principales |
+|:-----------------------|:-----------------------|:-----------------------|
+| Preparación e importación | Importar un archivo CSV | `read_csv()` |
+| Reconocimiento de la base | Reconocer filas, columnas, variables y observaciones | `dim()`, `nrow()`, `ncol()`, `names()`, `glimpse()`, `str()` |
+| Limpieza de nombres | Trabajar con nombres consistentes | `clean_names()` |
+| Selección y reordenamiento | Seleccionar y ordenar variables | `select()`, `relocate()` |
+| Filtrado y ordenamiento | Filtrar y ordenar observaciones | `filter()`, `arrange()`, `between()`, `%in%` |
+| Creación y recodificación | Crear y recodificar variables | `mutate()`, `case_when()` |
+| Control de calidad | Detectar faltantes y duplicados | `is.na()`, `drop_na()`, `duplicated()`, `distinct()` |
+| Resúmenes agrupados | Explorar subconjuntos de datos | `group_by()`, `summarise()`, `n_distinct()` |
+| Base limpia | Guardar una nueva base de datos | `write_csv()`, `saveRDS()` |
+
+## 

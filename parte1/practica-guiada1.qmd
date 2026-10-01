@@ -57,7 +57,6 @@ Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood`, c
 
 ![](/imagenes/crear%20proyecto%205.png){width="300"}
 
-
 Luego:
 
 RStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.
@@ -96,7 +95,6 @@ Quarto permite combinar explicaciones, código y resultados en un mismo document
 
 Más adelante veremos distintas opciones para personalizar los bloques de código. Para ampliar sobre la escritura de documentos en R Markdown, pueden consultar la guía de [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
 
-
 ![](/imagenes/chunks.png){width="500"}
 
 Presionar el botón:
@@ -125,7 +123,7 @@ Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adel
 
 2.  Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
 
-```r         
+``` r
 # Instalación tidyverse
 install.packages("tidyverse")
 ```
