@@ -421,9 +421,9 @@ window.Quarto = {
   <ul>
   <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link active" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">1</span> Regresión lineal simple</a>
   <ul class="collapse">
-  <li><a href="#paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis" id="toc-paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis" class="nav-link" data-scroll-target="#paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis"><span class="header-section-number">1.1</span> Paso 1 <strong>Plantear la pregunta de investigación y las hipótesis</strong></a></li>
+  <li><a href="#paso-1--plantear-la-pregunta-de-investigación-y-las-hipótesis" id="toc-paso-1--plantear-la-pregunta-de-investigación-y-las-hipótesis" class="nav-link" data-scroll-target="#paso-1--plantear-la-pregunta-de-investigación-y-las-hipótesis"><span class="header-section-number">1.1</span> Paso 1 -Plantear la pregunta de investigación y las hipótesis</a></li>
   <li><a href="#paso-2-explicitar-el-modelo-estadístico" id="toc-paso-2-explicitar-el-modelo-estadístico" class="nav-link" data-scroll-target="#paso-2-explicitar-el-modelo-estadístico"><span class="header-section-number">1.2</span> Paso 2 — Explicitar el modelo estadístico</a></li>
-  <li><a href="#paso-3-análsis-exploratorio-de-los-datos" id="toc-paso-3-análsis-exploratorio-de-los-datos" class="nav-link" data-scroll-target="#paso-3-análsis-exploratorio-de-los-datos"><span class="header-section-number">1.3</span> Paso 3 Análsis exploratorio de los datos</a></li>
+  <li><a href="#paso-3---análsis-exploratorio-de-los-datos" id="toc-paso-3---análsis-exploratorio-de-los-datos" class="nav-link" data-scroll-target="#paso-3---análsis-exploratorio-de-los-datos"><span class="header-section-number">1.3</span> Paso 3 - Análsis exploratorio de los datos</a></li>
   <li><a href="#estimar-los-parámetros-del-modelo" id="toc-estimar-los-parámetros-del-modelo" class="nav-link" data-scroll-target="#estimar-los-parámetros-del-modelo"><span class="header-section-number">1.4</span> Estimar los parámetros del modelo</a></li>
   <li><a href="#paso-5-validar-el-modelo-ajustado" id="toc-paso-5-validar-el-modelo-ajustado" class="nav-link" data-scroll-target="#paso-5-validar-el-modelo-ajustado"><span class="header-section-number">1.5</span> Paso 5 — Validar el modelo ajustado</a></li>
   <li><a href="#paso-6-interpretar-y-comunicar-los-resultados" id="toc-paso-6-interpretar-y-comunicar-los-resultados" class="nav-link" data-scroll-target="#paso-6-interpretar-y-comunicar-los-resultados"><span class="header-section-number">1.6</span> Paso 6 — Interpretar y comunicar los resultados</a>
@@ -463,8 +463,8 @@ window.Quarto = {
 <section id="regresión-lineal-simple" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Regresión lineal simple</h1>
 <p>Un investigador desea estudiar si la <strong>densidad de siembra</strong> (medida en plantas por m²) tiene un efecto sobre el <strong>rendimiento del cultivo de trigo</strong> (medido en tn/ha). Para ello, fijó seis densidades de siembra distintas —200, 220, 240, 260, 280 y 300 plantas por m²— y destinó seis parcelas a cada densidad, obteniendo un total de 36 parcelas. La Tabla 1.1 presenta el rendimiento de trigo registrado en cada parcela, según su densidad de siembra.</p>
-<section id="paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="paso-1-plantear-la-pregunta-de-investigación-y-las-hipótesis"><span class="header-section-number">1.1</span> Paso 1 <strong>Plantear la pregunta de investigación y las hipótesis</strong></h2>
+<section id="paso-1--plantear-la-pregunta-de-investigación-y-las-hipótesis" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="paso-1--plantear-la-pregunta-de-investigación-y-las-hipótesis"><span class="header-section-number">1.1</span> Paso 1 -Plantear la pregunta de investigación y las hipótesis</h2>
 <p>A partir de esta situación, la pregunta de investigación es:</p>
 <p>¿Existe una relación entre la densidad de siembra y el rendimiento de trigo?</p>
 <p>Esta pregunta se traduce en una hipótesis estadística sobre el parámetro que mide esa relación en el modelo: la pendiente <span class="math inline">\(\beta_1\)</span> (que definiremos formalmente en el Paso 2).</p>
@@ -507,8 +507,8 @@ window.Quarto = {
 <p><span class="math display">\[H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}\]</span> <span class="math display">\[H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}\]</span></p>
 <p>Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.</p>
 </section>
-<section id="paso-3-análsis-exploratorio-de-los-datos" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="paso-3-análsis-exploratorio-de-los-datos"><span class="header-section-number">1.3</span> Paso 3 Análsis exploratorio de los datos</h2>
+<section id="paso-3---análsis-exploratorio-de-los-datos" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="paso-3---análsis-exploratorio-de-los-datos"><span class="header-section-number">1.3</span> Paso 3 - Análsis exploratorio de los datos</h2>
 <p>Antes de ajustar en modelo, exploramos los datos para concer su distribución y vizualizar la realción entre las variables</p>
 <p>Cargamos los datos</p>
 <div class="cell">
@@ -1175,7 +1175,7 @@ densidad     0.02065997  0.02645907</code></pre>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Un investigador desea estudiar si la **densidad de siembra** (medida en plantas por m²) tiene un efecto sobre el **rendimiento del cultivo de trigo** (medido en tn/ha). Para ello, fijó seis densidades de siembra distintas —200, 220, 240, 260, 280 y 300 plantas por m²— y destinó seis parcelas a cada densidad, obteniendo un total de 36 parcelas. La Tabla 1.1 presenta el rendimiento de trigo registrado en cada parcela, según su densidad de siembra.</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1 **Plantear la pregunta de investigación y las hipótesis**</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1 -Plantear la pregunta de investigación y las hipótesis</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>A partir de esta situación, la pregunta de investigación es:</span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -1203,7 +1203,7 @@ densidad     0.02065997  0.02645907</code></pre>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.</span>
 <span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3 Análsis exploratorio de los datos</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3 - Análsis exploratorio de los datos</span></span>
 <span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>Antes de ajustar en modelo, exploramos los datos para concer su distribución y vizualizar la realción entre las variables</span>
 <span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a></span>

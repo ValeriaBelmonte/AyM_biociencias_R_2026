@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -385,8 +414,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo"><span class="header-section-number">1</span> Objetivo</a></li>
+  <li><a href="#paso-0.-preparación-del-entorno" id="toc-paso-0.-preparación-del-entorno" class="nav-link" data-scroll-target="#paso-0.-preparación-del-entorno"><span class="header-section-number">2</span> Paso 0. Preparación del entorno</a></li>
+  <li><a href="#paso-1.-pregunta-de-investigación-e-hipótesis" id="toc-paso-1.-pregunta-de-investigación-e-hipótesis" class="nav-link" data-scroll-target="#paso-1.-pregunta-de-investigación-e-hipótesis"><span class="header-section-number">3</span> Paso 1. Pregunta de investigación e hipótesis</a></li>
+  <li><a href="#paso-2.-modelo-estadístico-y-supuestos" id="toc-paso-2.-modelo-estadístico-y-supuestos" class="nav-link" data-scroll-target="#paso-2.-modelo-estadístico-y-supuestos"><span class="header-section-number">4</span> Paso 2. Modelo estadístico y supuestos</a></li>
+  <li><a href="#paso-3.-exploración-de-los-datos" id="toc-paso-3.-exploración-de-los-datos" class="nav-link" data-scroll-target="#paso-3.-exploración-de-los-datos"><span class="header-section-number">5</span> Paso 3. Exploración de los datos</a></li>
+  <li><a href="#paso-4.-estimación-de-los-parámetros" id="toc-paso-4.-estimación-de-los-parámetros" class="nav-link" data-scroll-target="#paso-4.-estimación-de-los-parámetros"><span class="header-section-number">6</span> Paso 4. Estimación de los parámetros</a></li>
+  <li><a href="#paso-5.-validación-del-modelo" id="toc-paso-5.-validación-del-modelo" class="nav-link" data-scroll-target="#paso-5.-validación-del-modelo"><span class="header-section-number">7</span> Paso 5. Validación del modelo</a></li>
+  <li><a href="#paso-6.-interpretación-y-comunicación" id="toc-paso-6.-interpretación-y-comunicación" class="nav-link" data-scroll-target="#paso-6.-interpretación-y-comunicación"><span class="header-section-number">8</span> Paso 6. Interpretación y comunicación</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">9</span> Cierre</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -410,10 +453,218 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="objetivo" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Objetivo</h1>
+<p>Estudiar si la <strong>precipitación anual</strong> (mm) se relaciona con la <strong>biomasa aérea</strong> (kg/ha) en 60 sitios. Vas a recorrer los seis pasos del protocolo de análisis: pregunta, modelo, exploración, estimación, validación e interpretación.</p>
+<blockquote class="blockquote">
+<p>Completá los espacios marcados con <code>___</code> y respondé cada <strong>Pregunta</strong> en tus palabras. Si una respuesta no te sale, anotá qué intentaste: también es parte del trabajo.</p>
+</blockquote>
+</section>
+<section id="paso-0.-preparación-del-entorno" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Paso 0. Preparación del entorno</h1>
+<p>Creá un proyecto de RStudio (<code>File &gt; New Project</code>) y guardá en la misma carpeta esta guía y el archivo <code>datos_regresion_ecologia.csv</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar una sola vez si hace falta:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("ggplot2", "car", "lmtest"))</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="paso-1.-pregunta-de-investigación-e-hipótesis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Paso 1. Pregunta de investigación e hipótesis</h1>
+<p><strong>Pregunta de investigación:</strong> ¿existe relación entre la precipitación y la biomasa aérea?</p>
+<p><strong>Pregunta 1.1:</strong> ¿Cuál es la variable respuesta (Y) y cuál la explicativa (X)? Justificá con una frase.</p>
+</section>
+<section id="paso-2.-modelo-estadístico-y-supuestos" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Paso 2. Modelo estadístico y supuestos</h1>
+<p>El modelo es:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)\]</span></p>
+<p><strong>Pregunta 2.1:</strong> Completá la tabla de componentes.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Componente</th>
+<th>En este ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Variable respuesta</td>
+<td>___</td>
+</tr>
+<tr class="even">
+<td>Variable explicativa</td>
+<td>___</td>
+</tr>
+<tr class="odd">
+<td>Error aleatorio</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pregunta 2.2:</strong> Enumerá los cuatro supuestos de la regresión lineal simple.</p>
+<ol type="1">
+<li>___<br>
+</li>
+<li>___<br>
+</li>
+<li>___<br>
+</li>
+<li>___</li>
+</ol>
+<p><strong>Pregunta 2.3:</strong> El supuesto de <strong>independencia</strong> no se puede verificar con gráficos. ¿De qué depende? Pensá en cómo se eligieron los sitios.</p>
+</section>
+<section id="paso-3.-exploración-de-los-datos" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Paso 3. Exploración de los datos</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos_regresion_ecologia.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.1:</strong> ¿Cuántas filas y columnas tiene la base? ¿Hay valores faltantes?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: faltantes</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(datos))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos[, <span class="fu">c</span>(<span class="st">"Precipitacion_mm"</span>, <span class="st">"Biomasa_kg_ha"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.2:</strong> Anotá la media y el desvío estándar de cada variable.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: desvios</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(datos[, <span class="fu">c</span>(<span class="st">"Precipitacion_mm"</span>, <span class="st">"Biomasa_kg_ha"</span>)], sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Precipitación: media ___ · desvío <strong><em>Biomasa: media</em></strong> · desvío ___</p>
+</blockquote>
+<p><strong>Gráfico de dispersión.</strong> Este código dibuja los puntos y la recta de tendencia:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dispersion</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 7</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> Precipitacion_mm, <span class="at">y =</span> Biomasa_kg_ha)) <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Precipitación (mm)"</span>, <span class="at">y =</span> <span class="st">"Biomasa aérea (kg/ha)"</span>) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.3:</strong> Mirando el gráfico, respondé:</p>
+<ul>
+<li>¿La relación parece lineal o curva?<br>
+</li>
+<li>¿Es positiva o negativa?<br>
+</li>
+<li>¿La dispersión de los puntos cambia a lo largo del eje X (forma de abanico)?<br>
+</li>
+<li>¿Ves valores atípicos?</li>
+</ul>
+<p><strong>Pregunta 3.4:</strong> ¿Qué es el <code>ID_Sitio</code>? ¿Tiene sentido usarlo como variable en el modelo? Explicá por qué sí o por qué no.</p>
+<p><strong>Correlación.</strong> Cuanto más cerca de 1 (en valor absoluto), más fuerte es la asociación lineal:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: correlacion</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(datos<span class="sc">$</span>Precipitacion_mm, datos<span class="sc">$</span>Biomasa_kg_ha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.5:</strong> ¿Cuál es el valor de <span class="math inline">\(r\)</span>? ¿Es coherente con lo que ves en el gráfico?</p>
+<blockquote class="blockquote">
+<p>Respuesta: ___</p>
+</blockquote>
+</section>
+<section id="paso-4.-estimación-de-los-parámetros" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Paso 4. Estimación de los parámetros</h1>
+<p>Ajustamos el modelo con <code>lm()</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ajuste</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Biomasa_kg_ha <span class="sc">~</span> Precipitacion_mm, <span class="at">data =</span> datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 4.1:</strong> Mirá la salida de <code>summary(modelo)</code>. Anotá en la tabla:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: salida</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 26%">
+<col style="width: 23%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Estimación (<span class="math inline">\(b\)</span>)</th>
+<th>Error estándar</th>
+<th>t</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ordenada (<span class="math inline">\(b_0\)</span>)</td>
+<td>___</td>
+<td>___</td>
+<td>___</td>
+<td>___</td>
+</tr>
+<tr class="even">
+<td>Pendiente (<span class="math inline">\(b_1\)</span>)</td>
+<td>___</td>
+<td>___</td>
+<td>___</td>
+<td>___</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pregunta 4.2:</strong> Escribí la recta estimada: $ = $ ___ <span class="math inline">\(+\)</span> ___ <span class="math inline">\(\times\)</span> Precipitación.</p>
+<p><strong>Pregunta 4.3:</strong> Interpretá <span class="math inline">\(b_1\)</span> con una frase completa. Usá la expresión “por cada aumento de 1 mm…”.</p>
+<p><strong>Pregunta 4.4:</strong> ¿Tiene sentido interpretar <span class="math inline">\(b_0\)</span>? Pensá en qué precipitación corresponde al valor <span class="math inline">\(0\)</span> y si está dentro del rango de los datos.</p>
+<p><strong>Intervalo de confianza del 95 %:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ic</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 4.5:</strong> ¿El IC de <span class="math inline">\(\beta_1\)</span> contiene al 0? ¿Qué te dice eso en relación con la hipótesis nula?</p>
+<p><strong>Calidad de ajuste.</strong> En la salida, buscá <em>Residual standard error</em>, <em>Multiple R-squared</em> y el estadístico F.</p>
+<p><strong>Pregunta 4.6:</strong> Anotá los valores y explicá qué significa el <span class="math inline">\(R^2\)</span> con tus palabras.</p>
+</section>
+<section id="paso-5.-validación-del-modelo" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Paso 5. Validación del modelo</h1>
+<p>Los errores <span class="math inline">\(\varepsilon_i\)</span> no se observan. Los <strong>residuos</strong> <span class="math inline">\(e_i = y_i - \hat{y}_i\)</span> son su aproximación.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diagnosticos</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 5.1:</strong> Completá con lo que observás:</p>
+<ul>
+<li><p><em>Residuals vs Fitted</em> (linealidad): ¿hay patrón curvo o tendencia?<br>
+</p></li>
+<li><p><em>Q-Q</em> (normalidad): ¿los puntos siguen la recta?</p></li>
+<li><p><em>Scale-Location</em> (homocedasticidad): ¿la dispersión es pareja?<br>
+</p></li>
+<li><p><em>Residuals vs Leverage</em> (influyentes): ¿hay puntos con distancia de Cook alta?</p></li>
+</ul>
+<p><strong>Pruebas formales.</strong> Los gráficos son subjetivos; estas pruebas dan un número:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: pruebas</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo))              <span class="co"># normalidad</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">bptest</span>(modelo)                        <span class="co"># homocedasticidad</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 5.2:</strong> ¿Qué hipótesis nula tiene cada prueba? Si el p-valor es mayor a 0.05, ¿qué concluís?</p>
+<blockquote class="blockquote">
+<p>Shapiro-Wilk: H₀ ___ · p = ___ · conclusión <strong><em>Breusch-Pagan: H₀</em></strong> · p = ___ · conclusión ___</p>
+</blockquote>
+<p><strong>Influyentes.</strong> Un punto influyente puede mover mucho la recta.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cook</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cd <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(modelo)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(cd <span class="sc">&gt;</span> <span class="dv">4</span> <span class="sc">/</span> <span class="fu">nrow</span>(datos))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 5.3:</strong> ¿Hay observaciones influyentes? Si las hubiera, ¿qué harías? ¿Quitarlas? Justificá.</p>
+<p><strong>Pregunta 5.4:</strong> Si algún supuesto no se cumpliera, ¿qué cambiarías en el modelo? (Pista: el protocolo es iterativo; volvés al Paso 2.)</p>
+</section>
+<section id="paso-6.-interpretación-y-comunicación" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Paso 6. Interpretación y comunicación</h1>
+<p><strong>Pregunta 6.1:</strong> Predicción. ¿Cuál es la biomasa esperada para 500 mm y para 1000 mm de precipitación? Usá la recta y comprobá con R:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prediccion</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Precipitacion_mm =</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">1000</span>)),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">"confidence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>500 mm: ___ · 1000 mm: ___</p>
+</blockquote>
+<p><strong>Pregunta 6.2:</strong> Redactá un párrafo de resultados con el formato de la práctica guiada. Incluí: <span class="math inline">\(b_1\)</span>, su IC 95 %, el valor p, <span class="math inline">\(R^2\)</span> y la conclusión sobre los supuestos.</p>
+<blockquote class="blockquote">
+<hr>
+</blockquote>
+<p><strong>Pregunta 6.3:</strong> Un colega dice: <em>“la lluvia causa más biomasa”</em>. ¿Qué le responderías? Pensá en si el estudio fue experimental o observacional.</p>
+</section>
+<section id="cierre" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Cierre</h1>
+<p>Respondé en dos o tres frases: ¿qué aprendiste sobre el modelo, qué parte te costó más y qué harías distinto si tuvieras más variables?</p>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -866,9 +1117,248 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Objetivo</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Estudiar si la **precipitación anual** (mm) se relaciona con la **biomasa aérea** (kg/ha) en 60 sitios. Vas a recorrer los seis pasos del protocolo de análisis: pregunta, modelo, exploración, estimación, validación e interpretación.</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Completá los espacios marcados con </span><span class="in">`___`</span><span class="at"> y respondé cada **Pregunta** en tus palabras. Si una respuesta no te sale, anotá qué intentaste: también es parte del trabajo.</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 0. Preparación del entorno</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>Creá un proyecto de RStudio (<span class="in">`File &gt; New Project`</span>) y guardá en la misma carpeta esta guía y el archivo <span class="in">`datos_regresion_ecologia.csv`</span>.</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar una sola vez si hace falta:</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("ggplot2", "car", "lmtest"))</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 1. Pregunta de investigación e hipótesis</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿existe relación entre la precipitación y la biomasa aérea?</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.1:** ¿Cuál es la variable respuesta (Y) y cuál la explicativa (X)? Justificá con una frase.</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 2. Modelo estadístico y supuestos</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>El modelo es:</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>$$Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.1:** Completá la tabla de componentes.</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Componente           <span class="pp">|</span> En este ejemplo <span class="pp">|</span></span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------------|-----------------|</span></span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable respuesta   <span class="pp">|</span> <span class="sc">\_\_\_</span>          <span class="pp">|</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable explicativa <span class="pp">|</span> <span class="sc">\_\_\_</span>          <span class="pp">|</span></span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error aleatorio      <span class="pp">|</span> <span class="sc">\_\_\_</span>          <span class="pp">|</span></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.2:** Enumerá los cuatro supuestos de la regresión lineal simple.</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="sc">\_\_\_</span>   </span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span><span class="sc">\_\_\_</span>   </span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span><span class="sc">\_\_\_</span>  </span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span><span class="sc">\_\_\_</span>  </span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.3:** El supuesto de **independencia** no se puede verificar con gráficos. ¿De qué depende? Pensá en cómo se eligieron los sitios.</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 3. Exploración de los datos</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga</span></span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos_regresion_ecologia.csv"</span>)</span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos)</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.1:** ¿Cuántas filas y columnas tiene la base? ¿Hay valores faltantes?</span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: faltantes</span></span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(datos))</span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen</span></span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos[, <span class="fu">c</span>(<span class="st">"Precipitacion_mm"</span>, <span class="st">"Biomasa_kg_ha"</span>)])</span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.2:** Anotá la media y el desvío estándar de cada variable.</span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: desvios</span></span>
+<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(datos[, <span class="fu">c</span>(<span class="st">"Precipitacion_mm"</span>, <span class="st">"Biomasa_kg_ha"</span>)], sd)</span>
+<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Precipitación: media </span><span class="sc">\_\_\_</span><span class="at"> · desvío ***Biomasa: media*** · desvío </span><span class="sc">\_\_\_</span></span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>**Gráfico de dispersión.** Este código dibuja los puntos y la recta de tendencia:</span>
+<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dispersion</span></span>
+<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 7</span></span>
+<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 4.5</span></span>
+<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos, <span class="fu">aes</span>(<span class="at">x =</span> Precipitacion_mm, <span class="at">y =</span> Biomasa_kg_ha)) <span class="sc">+</span></span>
+<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Precipitación (mm)"</span>, <span class="at">y =</span> <span class="st">"Biomasa aérea (kg/ha)"</span>) <span class="sc">+</span></span>
+<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-99"><a href="#cb15-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.3:** Mirando el gráfico, respondé:</span>
+<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿La relación parece lineal o curva?   </span>
+<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Es positiva o negativa?   </span>
+<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿La dispersión de los puntos cambia a lo largo del eje X (forma de abanico)?   </span>
+<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Ves valores atípicos?    </span>
+<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.4:** ¿Qué es el <span class="in">`ID_Sitio`</span>? ¿Tiene sentido usarlo como variable en el modelo? Explicá por qué sí o por qué no.</span>
+<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-111"><a href="#cb15-111" aria-hidden="true" tabindex="-1"></a>**Correlación.** Cuanto más cerca de 1 (en valor absoluto), más fuerte es la asociación lineal:</span>
+<span id="cb15-112"><a href="#cb15-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-113"><a href="#cb15-113" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-114"><a href="#cb15-114" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: correlacion</span></span>
+<span id="cb15-115"><a href="#cb15-115" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(datos<span class="sc">$</span>Precipitacion_mm, datos<span class="sc">$</span>Biomasa_kg_ha)</span>
+<span id="cb15-116"><a href="#cb15-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-117"><a href="#cb15-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-118"><a href="#cb15-118" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.5:** ¿Cuál es el valor de $r$? ¿Es coherente con lo que ves en el gráfico?</span>
+<span id="cb15-119"><a href="#cb15-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-120"><a href="#cb15-120" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Respuesta: </span><span class="sc">\_\_\_</span></span>
+<span id="cb15-121"><a href="#cb15-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-122"><a href="#cb15-122" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 4. Estimación de los parámetros</span></span>
+<span id="cb15-123"><a href="#cb15-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-124"><a href="#cb15-124" aria-hidden="true" tabindex="-1"></a>Ajustamos el modelo con <span class="in">`lm()`</span>:</span>
+<span id="cb15-125"><a href="#cb15-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-126"><a href="#cb15-126" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-127"><a href="#cb15-127" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ajuste</span></span>
+<span id="cb15-128"><a href="#cb15-128" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Biomasa_kg_ha <span class="sc">~</span> Precipitacion_mm, <span class="at">data =</span> datos)</span>
+<span id="cb15-129"><a href="#cb15-129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-130"><a href="#cb15-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-131"><a href="#cb15-131" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.1:** Mirá la salida de <span class="in">`summary(modelo)`</span>. Anotá en la tabla:</span>
+<span id="cb15-132"><a href="#cb15-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-133"><a href="#cb15-133" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-134"><a href="#cb15-134" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: salida</span></span>
+<span id="cb15-135"><a href="#cb15-135" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo)</span>
+<span id="cb15-136"><a href="#cb15-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-137"><a href="#cb15-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-138"><a href="#cb15-138" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parámetro         <span class="pp">|</span> Estimación ($b$) <span class="pp">|</span> Error estándar <span class="pp">|</span> t      <span class="pp">|</span> p      <span class="pp">|</span></span>
+<span id="cb15-139"><a href="#cb15-139" aria-hidden="true" tabindex="-1"></a><span class="pp">|-------------------|------------------|----------------|--------|--------|</span></span>
+<span id="cb15-140"><a href="#cb15-140" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Ordenada ($b_0$)  <span class="pp">|</span> <span class="sc">\_\_\_</span>           <span class="pp">|</span> <span class="sc">\_\_\_</span>         <span class="pp">|</span> <span class="sc">\_\_\_</span> <span class="pp">|</span> <span class="sc">\_\_\_</span> <span class="pp">|</span></span>
+<span id="cb15-141"><a href="#cb15-141" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Pendiente ($b_1$) <span class="pp">|</span> <span class="sc">\_\_\_</span>           <span class="pp">|</span> <span class="sc">\_\_\_</span>         <span class="pp">|</span> <span class="sc">\_\_\_</span> <span class="pp">|</span> <span class="sc">\_\_\_</span> <span class="pp">|</span></span>
+<span id="cb15-142"><a href="#cb15-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-143"><a href="#cb15-143" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.2:** Escribí la recta estimada: \$\widehat{\text{Biomasa}} = \$ <span class="sc">\_\_\_</span> $+$ <span class="sc">\_\_\_</span> $\times$ Precipitación.</span>
+<span id="cb15-144"><a href="#cb15-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-145"><a href="#cb15-145" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.3:** Interpretá $b_1$ con una frase completa. Usá la expresión "por cada aumento de 1 mm…".</span>
+<span id="cb15-146"><a href="#cb15-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-147"><a href="#cb15-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-148"><a href="#cb15-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-149"><a href="#cb15-149" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.4:** ¿Tiene sentido interpretar $b_0$? Pensá en qué precipitación corresponde al valor $0$ y si está dentro del rango de los datos.</span>
+<span id="cb15-150"><a href="#cb15-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-151"><a href="#cb15-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-152"><a href="#cb15-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-153"><a href="#cb15-153" aria-hidden="true" tabindex="-1"></a>**Intervalo de confianza del 95 %:**</span>
+<span id="cb15-154"><a href="#cb15-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-155"><a href="#cb15-155" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-156"><a href="#cb15-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ic</span></span>
+<span id="cb15-157"><a href="#cb15-157" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span>
+<span id="cb15-158"><a href="#cb15-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-159"><a href="#cb15-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-160"><a href="#cb15-160" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.5:** ¿El IC de $\beta_1$ contiene al 0? ¿Qué te dice eso en relación con la hipótesis nula?</span>
+<span id="cb15-161"><a href="#cb15-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-162"><a href="#cb15-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-163"><a href="#cb15-163" aria-hidden="true" tabindex="-1"></a>**Calidad de ajuste.** En la salida, buscá *Residual standard error*, *Multiple R-squared* y el estadístico F.</span>
+<span id="cb15-164"><a href="#cb15-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-165"><a href="#cb15-165" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.6:** Anotá los valores y explicá qué significa el $R^2$ con tus palabras.</span>
+<span id="cb15-166"><a href="#cb15-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-167"><a href="#cb15-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-168"><a href="#cb15-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-169"><a href="#cb15-169" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 5. Validación del modelo</span></span>
+<span id="cb15-170"><a href="#cb15-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-171"><a href="#cb15-171" aria-hidden="true" tabindex="-1"></a>Los errores $\varepsilon_i$ no se observan. Los **residuos** $e_i = y_i - \hat{y}_i$ son su aproximación.</span>
+<span id="cb15-172"><a href="#cb15-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-173"><a href="#cb15-173" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-174"><a href="#cb15-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diagnosticos</span></span>
+<span id="cb15-175"><a href="#cb15-175" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb15-176"><a href="#cb15-176" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb15-177"><a href="#cb15-177" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb15-178"><a href="#cb15-178" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span>
+<span id="cb15-179"><a href="#cb15-179" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb15-180"><a href="#cb15-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-181"><a href="#cb15-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-182"><a href="#cb15-182" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.1:** Completá con lo que observás:</span>
+<span id="cb15-183"><a href="#cb15-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-184"><a href="#cb15-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*Residuals vs Fitted* (linealidad): ¿hay patrón curvo o tendencia?   </span>
+<span id="cb15-185"><a href="#cb15-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*Q-Q* (normalidad): ¿los puntos siguen la recta? </span>
+<span id="cb15-186"><a href="#cb15-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-187"><a href="#cb15-187" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*Scale-Location* (homocedasticidad): ¿la dispersión es pareja?  </span>
+<span id="cb15-188"><a href="#cb15-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>*Residuals vs Leverage* (influyentes): ¿hay puntos con distancia de Cook alta?   </span>
+<span id="cb15-189"><a href="#cb15-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-190"><a href="#cb15-190" aria-hidden="true" tabindex="-1"></a>**Pruebas formales.** Los gráficos son subjetivos; estas pruebas dan un número:</span>
+<span id="cb15-191"><a href="#cb15-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-192"><a href="#cb15-192" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-193"><a href="#cb15-193" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: pruebas</span></span>
+<span id="cb15-194"><a href="#cb15-194" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo))              <span class="co"># normalidad</span></span>
+<span id="cb15-195"><a href="#cb15-195" aria-hidden="true" tabindex="-1"></a>lmtest<span class="sc">::</span><span class="fu">bptest</span>(modelo)                        <span class="co"># homocedasticidad</span></span>
+<span id="cb15-196"><a href="#cb15-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-197"><a href="#cb15-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-198"><a href="#cb15-198" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.2:** ¿Qué hipótesis nula tiene cada prueba? Si el p-valor es mayor a 0.05, ¿qué concluís?</span>
+<span id="cb15-199"><a href="#cb15-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-200"><a href="#cb15-200" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Shapiro-Wilk: H₀ </span><span class="sc">\_\_\_</span><span class="at"> · p = </span><span class="sc">\_\_\_</span><span class="at"> · conclusión ***Breusch-Pagan: H₀*** · p = </span><span class="sc">\_\_\_</span><span class="at"> · conclusión </span><span class="sc">\_\_\_</span></span>
+<span id="cb15-201"><a href="#cb15-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-202"><a href="#cb15-202" aria-hidden="true" tabindex="-1"></a>**Influyentes.** Un punto influyente puede mover mucho la recta.</span>
+<span id="cb15-203"><a href="#cb15-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-204"><a href="#cb15-204" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-205"><a href="#cb15-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: cook</span></span>
+<span id="cb15-206"><a href="#cb15-206" aria-hidden="true" tabindex="-1"></a>cd <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(modelo)</span>
+<span id="cb15-207"><a href="#cb15-207" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(cd <span class="sc">&gt;</span> <span class="dv">4</span> <span class="sc">/</span> <span class="fu">nrow</span>(datos))</span>
+<span id="cb15-208"><a href="#cb15-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-209"><a href="#cb15-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-210"><a href="#cb15-210" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.3:** ¿Hay observaciones influyentes? Si las hubiera, ¿qué harías? ¿Quitarlas? Justificá.</span>
+<span id="cb15-211"><a href="#cb15-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-212"><a href="#cb15-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-213"><a href="#cb15-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-214"><a href="#cb15-214" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.4:** Si algún supuesto no se cumpliera, ¿qué cambiarías en el modelo? (Pista: el protocolo es iterativo; volvés al Paso 2.)</span>
+<span id="cb15-215"><a href="#cb15-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-216"><a href="#cb15-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-217"><a href="#cb15-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-218"><a href="#cb15-218" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paso 6. Interpretación y comunicación</span></span>
+<span id="cb15-219"><a href="#cb15-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-220"><a href="#cb15-220" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.1:** Predicción. ¿Cuál es la biomasa esperada para 500 mm y para 1000 mm de precipitación? Usá la recta y comprobá con R:</span>
+<span id="cb15-221"><a href="#cb15-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-222"><a href="#cb15-222" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb15-223"><a href="#cb15-223" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prediccion</span></span>
+<span id="cb15-224"><a href="#cb15-224" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(modelo, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Precipitacion_mm =</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">1000</span>)),</span>
+<span id="cb15-225"><a href="#cb15-225" aria-hidden="true" tabindex="-1"></a>        <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
+<span id="cb15-226"><a href="#cb15-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb15-227"><a href="#cb15-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-228"><a href="#cb15-228" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; 500 mm: </span><span class="sc">\_\_\_</span><span class="at"> · 1000 mm: </span><span class="sc">\_\_\_</span></span>
+<span id="cb15-229"><a href="#cb15-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-230"><a href="#cb15-230" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.2:** Redactá un párrafo de resultados con el formato de la práctica guiada. Incluí: $b_1$, su IC 95 %, el valor p, $R^2$ y la conclusión sobre los supuestos.</span>
+<span id="cb15-231"><a href="#cb15-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-232"><a href="#cb15-232" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; </span></span>
+<span id="cb15-233"><a href="#cb15-233" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;</span></span>
+<span id="cb15-234"><a href="#cb15-234" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; ------------------------------------------------------------------------</span></span>
+<span id="cb15-235"><a href="#cb15-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-236"><a href="#cb15-236" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.3:** Un colega dice: *"la lluvia causa más biomasa"*. ¿Qué le responderías? Pensá en si el estudio fue experimental o observacional.</span>
+<span id="cb15-237"><a href="#cb15-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-238"><a href="#cb15-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-239"><a href="#cb15-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-240"><a href="#cb15-240" aria-hidden="true" tabindex="-1"></a><span class="fu"># Cierre</span></span>
+<span id="cb15-241"><a href="#cb15-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-242"><a href="#cb15-242" aria-hidden="true" tabindex="-1"></a>Respondé en dos o tres frases: ¿qué aprendiste sobre el modelo, qué parte te costó más y qué harías distinto si tuvieras más variables?</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

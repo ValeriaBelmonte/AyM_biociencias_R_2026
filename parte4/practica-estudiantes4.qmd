@@ -1,3 +1,243 @@
 ---
 title: "Practica estudiantes"
 ---
+
+# Objetivo
+
+Estudiar si la **precipitación anual** (mm) se relaciona con la **biomasa aérea** (kg/ha) en 60 sitios. Vas a recorrer los seis pasos del protocolo de análisis: pregunta, modelo, exploración, estimación, validación e interpretación.
+
+> Completá los espacios marcados con `___` y respondé cada **Pregunta** en tus palabras. Si una respuesta no te sale, anotá qué intentaste: también es parte del trabajo.
+
+# Paso 0. Preparación del entorno
+
+Creá un proyecto de RStudio (`File > New Project`) y guardá en la misma carpeta esta guía y el archivo `datos_regresion_ecologia.csv`.
+
+```r
+#| label: paquetes
+# Instalar una sola vez si hace falta:
+# install.packages(c("ggplot2", "car", "lmtest"))
+library(ggplot2)
+```
+
+# Paso 1. Pregunta de investigación e hipótesis
+
+**Pregunta de investigación:** ¿existe relación entre la precipitación y la biomasa aérea?
+
+**Pregunta 1.1:** ¿Cuál es la variable respuesta (Y) y cuál la explicativa (X)? Justificá con una frase.
+
+
+
+
+# Paso 2. Modelo estadístico y supuestos
+
+El modelo es:
+
+$$Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$
+
+**Pregunta 2.1:** Completá la tabla de componentes.
+
+| Componente           | En este ejemplo |
+|----------------------|-----------------|
+| Variable respuesta   | \_\_\_          |
+| Variable explicativa | \_\_\_          |
+| Error aleatorio      | \_\_\_          |
+
+**Pregunta 2.2:** Enumerá los cuatro supuestos de la regresión lineal simple.
+
+1.  \_\_\_   
+2. \_\_\_   
+3. \_\_\_  
+4. \_\_\_  
+
+**Pregunta 2.3:** El supuesto de **independencia** no se puede verificar con gráficos. ¿De qué depende? Pensá en cómo se eligieron los sitios.
+
+
+
+# Paso 3. Exploración de los datos
+
+```r
+#| label: carga
+datos <- read.csv("datos_regresion_ecologia.csv")
+str(datos)
+```
+
+**Pregunta 3.1:** ¿Cuántas filas y columnas tiene la base? ¿Hay valores faltantes?
+```r
+#| label: faltantes
+dim(datos)
+colSums(is.na(datos))
+```
+
+
+```r
+#| label: resumen
+summary(datos[, c("Precipitacion_mm", "Biomasa_kg_ha")])
+```
+
+**Pregunta 3.2:** Anotá la media y el desvío estándar de cada variable.
+
+```r
+#| label: desvios
+sapply(datos[, c("Precipitacion_mm", "Biomasa_kg_ha")], sd)
+```
+
+> Precipitación: media \_\_\_ · desvío ***Biomasa: media*** · desvío \_\_\_
+
+**Gráfico de dispersión.** Este código dibuja los puntos y la recta de tendencia:
+
+
+```r
+#| label: dispersion
+#| fig-width: 7
+#| fig-height: 4.5
+ggplot(datos, aes(x = Precipitacion_mm, y = Biomasa_kg_ha)) +
+  geom_point(color = "darkgreen", size = 2.5) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  labs(x = "Precipitación (mm)", y = "Biomasa aérea (kg/ha)") +
+  theme_classic()
+```
+
+**Pregunta 3.3:** Mirando el gráfico, respondé:
+
+- ¿La relación parece lineal o curva?   
+- ¿Es positiva o negativa?   
+- ¿La dispersión de los puntos cambia a lo largo del eje X (forma de abanico)?   
+- ¿Ves valores atípicos?    
+
+**Pregunta 3.4:** ¿Qué es el `ID_Sitio`? ¿Tiene sentido usarlo como variable en el modelo? Explicá por qué sí o por qué no.
+
+
+
+**Correlación.** Cuanto más cerca de 1 (en valor absoluto), más fuerte es la asociación lineal:
+
+```r
+#| label: correlacion
+cor(datos$Precipitacion_mm, datos$Biomasa_kg_ha)
+```
+
+**Pregunta 3.5:** ¿Cuál es el valor de $r$? ¿Es coherente con lo que ves en el gráfico?
+
+> Respuesta: \_\_\_
+
+# Paso 4. Estimación de los parámetros
+
+Ajustamos el modelo con `lm()`:
+
+```r
+#| label: ajuste
+modelo <- lm(Biomasa_kg_ha ~ Precipitacion_mm, data = datos)
+```
+
+**Pregunta 4.1:** Mirá la salida de `summary(modelo)`. Anotá en la tabla:
+
+```r
+#| label: salida
+summary(modelo)
+```
+
+| Parámetro         | Estimación ($b$) | Error estándar | t      | p      |
+|-------------------|------------------|----------------|--------|--------|
+| Ordenada ($b_0$)  | \_\_\_           | \_\_\_         | \_\_\_ | \_\_\_ |
+| Pendiente ($b_1$) | \_\_\_           | \_\_\_         | \_\_\_ | \_\_\_ |
+
+**Pregunta 4.2:** Escribí la recta estimada: \$\widehat{\text{Biomasa}} = \$ \_\_\_ $+$ \_\_\_ $\times$ Precipitación.
+
+**Pregunta 4.3:** Interpretá $b_1$ con una frase completa. Usá la expresión "por cada aumento de 1 mm…".
+
+
+
+**Pregunta 4.4:** ¿Tiene sentido interpretar $b_0$? Pensá en qué precipitación corresponde al valor $0$ y si está dentro del rango de los datos.
+
+
+
+**Intervalo de confianza del 95 %:**
+
+```r
+#| label: ic
+confint(modelo)
+```
+
+**Pregunta 4.5:** ¿El IC de $\beta_1$ contiene al 0? ¿Qué te dice eso en relación con la hipótesis nula?
+
+
+**Calidad de ajuste.** En la salida, buscá *Residual standard error*, *Multiple R-squared* y el estadístico F.
+
+**Pregunta 4.6:** Anotá los valores y explicá qué significa el $R^2$ con tus palabras.
+
+
+
+# Paso 5. Validación del modelo
+
+Los errores $\varepsilon_i$ no se observan. Los **residuos** $e_i = y_i - \hat{y}_i$ son su aproximación.
+
+```r
+#| label: diagnosticos
+#| fig-width: 8
+#| fig-height: 7
+par(mfrow = c(2, 2))
+plot(modelo)
+par(mfrow = c(1, 1))
+```
+
+**Pregunta 5.1:** Completá con lo que observás:
+
+- *Residuals vs Fitted* (linealidad): ¿hay patrón curvo o tendencia?   
+- *Q-Q* (normalidad): ¿los puntos siguen la recta? 
+
+- *Scale-Location* (homocedasticidad): ¿la dispersión es pareja?  
+- *Residuals vs Leverage* (influyentes): ¿hay puntos con distancia de Cook alta?   
+
+**Pruebas formales.** Los gráficos son subjetivos; estas pruebas dan un número:
+
+```r
+#| label: pruebas
+shapiro.test(residuals(modelo))              # normalidad
+lmtest::bptest(modelo)                        # homocedasticidad
+```
+
+**Pregunta 5.2:** ¿Qué hipótesis nula tiene cada prueba? Si el p-valor es mayor a 0.05, ¿qué concluís?
+
+> Shapiro-Wilk: H₀ \_\_\_ · p = \_\_\_ · conclusión ***Breusch-Pagan: H₀*** · p = \_\_\_ · conclusión \_\_\_
+
+**Influyentes.** Un punto influyente puede mover mucho la recta.
+
+```r
+#| label: cook
+cd <- cooks.distance(modelo)
+which(cd > 4 / nrow(datos))
+```
+
+**Pregunta 5.3:** ¿Hay observaciones influyentes? Si las hubiera, ¿qué harías? ¿Quitarlas? Justificá.
+
+
+
+**Pregunta 5.4:** Si algún supuesto no se cumpliera, ¿qué cambiarías en el modelo? (Pista: el protocolo es iterativo; volvés al Paso 2.)
+
+
+
+# Paso 6. Interpretación y comunicación
+
+**Pregunta 6.1:** Predicción. ¿Cuál es la biomasa esperada para 500 mm y para 1000 mm de precipitación? Usá la recta y comprobá con R:
+
+```r
+#| label: prediccion
+predict(modelo, newdata = data.frame(Precipitacion_mm = c(500, 1000)),
+        interval = "confidence")
+```
+
+> 500 mm: \_\_\_ · 1000 mm: \_\_\_
+
+**Pregunta 6.2:** Redactá un párrafo de resultados con el formato de la práctica guiada. Incluí: $b_1$, su IC 95 %, el valor p, $R^2$ y la conclusión sobre los supuestos.
+
+> 
+>
+> ------------------------------------------------------------------------
+
+**Pregunta 6.3:** Un colega dice: *"la lluvia causa más biomasa"*. ¿Qué le responderías? Pensá en si el estudio fue experimental o observacional.
+
+
+
+# Cierre
+
+Respondé en dos o tres frases: ¿qué aprendiste sobre el modelo, qué parte te costó más y qué harías distinto si tuvieras más variables?
+

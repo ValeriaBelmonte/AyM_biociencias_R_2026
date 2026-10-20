@@ -6,7 +6,7 @@ title: "Práctica guiada"
 
 Un investigador desea estudiar si la **densidad de siembra** (medida en plantas por m²) tiene un efecto sobre el **rendimiento del cultivo de trigo** (medido en tn/ha). Para ello, fijó seis densidades de siembra distintas —200, 220, 240, 260, 280 y 300 plantas por m²— y destinó seis parcelas a cada densidad, obteniendo un total de 36 parcelas. La Tabla 1.1 presenta el rendimiento de trigo registrado en cada parcela, según su densidad de siembra.
 
-## Paso 1 **Plantear la pregunta de investigación y las hipótesis**
+## Paso 1 -Plantear la pregunta de investigación y las hipótesis
 
 A partir de esta situación, la pregunta de investigación es:
 
@@ -34,7 +34,7 @@ $$H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densida
 
 Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.
 
-## Paso 3 Análsis exploratorio de los datos
+## Paso 3 - Análsis exploratorio de los datos
 
 Antes de ajustar en modelo, exploramos los datos para concer su distribución y vizualizar la realción entre las variables
 
