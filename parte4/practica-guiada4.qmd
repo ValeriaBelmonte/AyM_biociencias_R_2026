@@ -18,17 +18,17 @@ Esta pregunta se traduce en una hipótesis estadística sobre el parámetro que 
 
 Antes de ajustar cualquier modelo, definimos sus componentes:
 
-| Componente del MLG   | En regresión lineal simple      |
-|----------------------|---------------------------------|
-| Variable respuesta   | $Y_i$: rendimiento de trigo     |
-| Parte sistemática    | $\beta_0 + \beta_1x_i$)         |
-| Variable explicativa | $x_i$: densidad de siembra      |
+| Componente del MLG   | En regresión lineal simple         |
+|----------------------|------------------------------------|
+| Variable respuesta   | $Y_i$: rendimiento de trigo        |
+| Parte sistemática    | $\beta_0 + \beta_1x_i$             |
+| Variable explicativa | $x_i$: densidad de siembra         |
 | Error aleatorio      | $\varepsilon_i\sim N(0, \sigma^2)$ |
-|                      |                                 |
+|                      |                                    |
 
 El modelo estadístico queda formalmente expresado como: $$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$
 
-donde $b_0$ y $b_1$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos, y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:
+donde \$\beta_0 \$ y \$\$\beta_1\$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos. Y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:
 
 $$H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}$$ $$H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}$$
 
@@ -90,7 +90,7 @@ El gráfico de dispersión muestra una tendencia clara: a medida que aumenta la 
 
 También se observa que, para una misma densidad, existe cierta variabilidad en el rendimiento entre las seis parcelas —por ejemplo, en la densidad de 260 plantas/m² los valores van de aproximadamente 3.2 a 4.2 tn/ha—. Esta dispersión alrededor de la tendencia central es precisamente la que el modelo va a intentar capturar mediante el término de error aleatorio εᵢ.
 
-**¿Qué buscamos en este gráfico, en general?**  Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:
+**¿Qué buscamos en este gráfico, en general?** Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:
 
 **La forma de la relación**: ¿es lineal, o se insinúa una curva? (si hay curvatura marcada, un modelo lineal no sería adecuado).
 
@@ -120,16 +120,19 @@ summary(modelo)
 
 ```
 
-
-
 La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:
 
 $b_o = −2.555$ (ordenada al origen) $b_1 = 0.0236$ (pendiente)
 
-Con estos valores, la recta de regresión estimada es: 
-$$\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}$$
+[📖 Ver explicación detallada de summary()](../explicaciones extras/summary regresion(rinde).html)
+
+Con estos valores, la recta de regresión estimada es: $$\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}$$
 
 Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida `—Std. Error`, `t value` y `Pr(>|t|)`— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.
+
+
+
+
 
 ## Paso 5 — Validar el modelo ajustado
 
@@ -170,7 +173,6 @@ El intervalo de confianza del 95 % para la pendiente permite estimar un rango de
 
 confint(modelo)
 ```
-
 
 Con una confianza del 95 %, se estima que por cada aumento de una planta por m² en la densidad de siembra, el rendimiento medio aumenta entre 0.0206 y 0.0264 tn/ha. Como el intervalo no contiene al cero, este resultado es coherente con la prueba de hipótesis anterior.
 

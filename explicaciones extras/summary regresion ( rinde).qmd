@@ -1,0 +1,107 @@
+---
+title: "explicación de la salida de lm"
+---
+
+## Interpretación de los resultados del modelo de regresión lineal
+
+Ajustamos un modelo de regresión lineal simple para estudiar la relación entre la densidad de siembra y el rendimiento del trigo.
+
+``` r
+modelo <- lm(rinde ~ densidad, data = trigo)
+summary(modelo)
+```
+
+### 1. Modelo ajustado (Call)
+
+``` text
+Call:
+lm(formula = rinde ~ densidad, data = trigo)
+```
+
+Esta primera parte indica el modelo que se ha ajustado:
+
+- `lm()`: función utilizada para ajustar un modelo lineal.
+- `rinde`: variable respuesta o dependiente (Y).
+- `densidad`: variable explicativa o independiente (X).
+- `data = trigo`: conjunto de datos utilizado.
+
+El modelo de regresión lineal simple se expresa como:
+
+$$Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i$$
+
+donde:
+
+- $\beta_0$: ordenada al origen.
+- $\beta_1$: pendiente de la recta de regresión.
+- $\varepsilon_i$: error aleatorio asociado a la observación $i$.
+
+### 2. Resumen de los residuos (Residuals)
+
+``` text
+Residuals:
+    Min       1Q    Median      3Q      Max
+-0.56270 -0.18472 -0.01651  0.16718  0.57968
+```
+
+Los residuos representan las diferencias entre los valores observados y los valores predichos por el modelo:
+
+$$e_i = y_i - \hat{y}_i$$
+
+R presenta un resumen de cinco medidas:
+
+| Medida | Valor | Interpretación |
+|----|---:|----|
+| Min | -0.56270 | Residuo más pequeño |
+| 1Q | -0.18472 | Primer cuartil: el 25 % de los residuos son menores o iguales a este valor |
+| Median | -0.01651 | Mediana de los residuos |
+| 3Q | 0.16718 | Tercer cuartil: el 75 % de los residuos son menores o iguales a este valor |
+| Max | 0.57968 | Residuo más grande |
+
+**Interpretación:** la mediana de los residuos es cercana a cero y los valores extremos tienen magnitudes similares. Esto sugiere que los residuos están aproximadamente centrados en cero, aunque no permite concluir que cumplen los supuestos del modelo.
+
+### 3. Coeficientes estimados (Coefficients)
+
+``` text
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept) -2.555159   0.360007  -7.098  3.36e-08 ***
+densidad     0.023560   0.001427  16.512  < 2e-16 ***
+```
+
+**Estimate: coeficientes estimados**
+
+Los coeficientes permiten construir la ecuación de regresión ajustada:
+
+$$\widehat{\text{rinde}} = -2.555159 + 0.023560\,\text{densidad}$$
+
+- **Intercepto (**$\hat{\beta}_0=-2.555159$): rendimiento predicho cuando la densidad es igual a cero. En este caso, su interpretación agronómica puede no ser relevante, especialmente si la densidad cero está fuera del rango observado.
+- **Pendiente (**$\hat{\beta}_1=0.023560$): por cada unidad adicional de densidad de siembra, el rendimiento esperado aumenta, en promedio, 0.023560 unidades, según el modelo lineal ajustado.
+
+**Std. Error: error estándar de los coeficientes**
+
+Mide la variabilidad muestral estimada de cada coeficiente. Cuanto menor sea su valor, mayor será la precisión de la estimación, en relación con la escala del coeficiente.
+
+- Error estándar del intercepto: 0.360007.
+- Error estándar de la pendiente: 0.001427.
+
+**t value: estadístico de prueba**
+
+Permite contrastar la hipótesis nula de que un coeficiente poblacional es igual a cero.
+
+$$H_0:\beta_j=0
+\qquad
+H_1:\beta_j\neq 0$$
+
+El estadístico se calcula como:
+
+$$t=\frac{\hat{\beta}_j}{EE(\hat{\beta}_j)}$$
+
+Para la pendiente:
+
+$$t=\frac{0.023560}{0.001427}\approx 16.51$$
+
+**Pr(\>\|t\|): valor p**
+
+Indica el valor p correspondiente a una prueba bilateral para cada coeficiente.
+
+Para la variable `densidad`, el valor p es menor que $2\times10^{-16}$.

@@ -486,7 +486,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Parte sistemática</td>
-<td><span class="math inline">\(\beta_0 + \beta_1x_i\)</span>)</td>
+<td><span class="math inline">\(\beta_0 + \beta_1x_i\)</span></td>
 </tr>
 <tr class="odd">
 <td>Variable explicativa</td>
@@ -503,7 +503,7 @@ window.Quarto = {
 </tbody>
 </table>
 <p>El modelo estadístico queda formalmente expresado como: <span class="math display">\[Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\]</span></p>
-<p>donde <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> son los parámetros poblacionales desconocidos que se estimarán a partir de los datos, y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:</p>
+<p>donde $_0 $ y $$_1$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos. Y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:</p>
 <p><span class="math display">\[H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}\]</span> <span class="math display">\[H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}\]</span></p>
 <p>Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.</p>
 </section>
@@ -611,6 +611,7 @@ F-statistic: 272.7 on 1 and 34 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:</p>
 <p><span class="math inline">\(b_o = −2.555\)</span> (ordenada al origen) <span class="math inline">\(b_1 = 0.0236\)</span> (pendiente)</p>
+<p><a href="../explicaciones extras/summary regresion(rinde).html">📖 Ver explicación detallada de summary()</a></p>
 <p>Con estos valores, la recta de regresión estimada es: <span class="math display">\[\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}\]</span></p>
 <p>Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida <code>—Std. Error</code>, <code>t value</code> y <code>Pr(&gt;|t|)</code>— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.</p>
 </section>
@@ -1186,17 +1187,17 @@ densidad     0.02065997  0.02645907</code></pre>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>Antes de ajustar cualquier modelo, definimos sus componentes:</span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Componente del MLG   <span class="pp">|</span> En regresión lineal simple      <span class="pp">|</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------------|---------------------------------|</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable respuesta   <span class="pp">|</span> $Y_i$: rendimiento de trigo     <span class="pp">|</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parte sistemática    <span class="pp">|</span> $\beta_0 + \beta_1x_i$)         <span class="pp">|</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable explicativa <span class="pp">|</span> $x_i$: densidad de siembra      <span class="pp">|</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Componente del MLG   <span class="pp">|</span> En regresión lineal simple         <span class="pp">|</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|----------------------|------------------------------------|</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable respuesta   <span class="pp">|</span> $Y_i$: rendimiento de trigo        <span class="pp">|</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Parte sistemática    <span class="pp">|</span> $\beta_0 + \beta_1x_i$             <span class="pp">|</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Variable explicativa <span class="pp">|</span> $x_i$: densidad de siembra         <span class="pp">|</span></span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error aleatorio      <span class="pp">|</span> $\varepsilon_i\sim N(0, \sigma^2)$ <span class="pp">|</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                      <span class="pp">|</span>                                 <span class="pp">|</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>                      <span class="pp">|</span>                                    <span class="pp">|</span></span>
 <span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>El modelo estadístico queda formalmente expresado como: $$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$</span>
 <span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>donde $b_0$ y $b_1$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos, y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>donde \$\beta_0 \$ y \$\$\beta_1\$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos. Y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:</span>
 <span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>$$H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}$$ $$H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}$$</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a></span>
@@ -1256,7 +1257,7 @@ densidad     0.02065997  0.02645907</code></pre>
 <span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a>También se observa que, para una misma densidad, existe cierta variabilidad en el rendimiento entre las seis parcelas —por ejemplo, en la densidad de 260 plantas/m² los valores van de aproximadamente 3.2 a 4.2 tn/ha—. Esta dispersión alrededor de la tendencia central es precisamente la que el modelo va a intentar capturar mediante el término de error aleatorio εᵢ.</span>
 <span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>**¿Qué buscamos en este gráfico, en general?**  Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:</span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a>**¿Qué buscamos en este gráfico, en general?** Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:</span>
 <span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>**La forma de la relación**: ¿es lineal, o se insinúa una curva? (si hay curvatura marcada, un modelo lineal no sería adecuado).</span>
 <span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
@@ -1284,130 +1285,132 @@ densidad     0.02065997  0.02645907</code></pre>
 <span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:</span>
 <span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:</span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a>$b_o = −2.555$ (ordenada al origen) $b_1 = 0.0236$ (pendiente)</span>
 <span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a>$b_o = −2.555$ (ordenada al origen) $b_1 = 0.0236$ (pendiente)</span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">📖 Ver explicación detallada de summary()</span><span class="co">]</span>(../explicaciones extras/summary regresion(rinde).html)</span>
 <span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>Con estos valores, la recta de regresión estimada es: </span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a>$$\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}$$</span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida <span class="in">`—Std. Error`</span>, <span class="in">`t value`</span> y <span class="in">`Pr(&gt;|t|)`</span>— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.</span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>Con estos valores, la recta de regresión estimada es: $$\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}$$</span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida <span class="in">`—Std. Error`</span>, <span class="in">`t value`</span> y <span class="in">`Pr(&gt;|t|)`</span>— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.</span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5 — Validar el modelo ajustado</span></span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a>Antes de interpretar los resultados, es necesario evaluar si los supuestos del modelo son razonables. Los errores aleatorios εᵢ no son observables directamente; por eso utilizamos los residuos como su aproximación empírica: $$e_i = y_i - \hat{y}_i$$</span>
-<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>Figura: los cuatro gráficos diagnósticos — Residuals vs Fitted, Q-Q Residuals, Scale-Location, Residuals vs Leverage</span>
-<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>**Residuos vs. valores ajustados.** Permite evaluar linealidad y homocedasticidad. Esperamos una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias ni curvaturas. En este ejemplo, los residuos no muestran un patrón sistemático, lo que apoya el supuesto de linealidad.</span>
-<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>**Gráfico Q-Q de los residuos.** Permite evaluar si los residuos se distribuyen aproximadamente Normal. Esperamos que los puntos se ubiquen cercanos a la recta de referencia. En este caso, la mayoría de los puntos se ajustan bien a la recta, con leves desvíos en los extremos (observaciones 22 y 27), que no resultan preocupantes.</span>
-<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a>**Scale-Location.** También permite evaluar homocedasticidad, observando si la dispersión de los residuos es aproximadamente constante a lo largo de los valores ajustados. No se observan cambios marcados en la dispersión.</span>
-<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a>**Residuos vs. leverage.** Permite identificar observaciones influyentes: aquellas cuya presencia o ausencia podría modificar de manera considerable los coeficientes estimados. Ninguna observación se destaca con una distancia de Cook preocupante.</span>
-<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>**Sobre la independencia.** A diferencia de los otros tres supuestos, la independencia de las observaciones no se evalúa con estos gráficos: como señalamos en el Paso 2, depende del diseño del estudio. En este caso, dado que las parcelas fueron trabajadas de manera independiente, el supuesto se considera razonable.</span>
-<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a>En conjunto, el análisis de residuos no evidencia incumplimientos relevantes de los supuestos del modelo, por lo que podemos avanzar con confianza a la interpretación de los resultados.</span>
-<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6 — Interpretar y comunicar los resultados</span></span>
-<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intervalo de confianza para la pendiente</span></span>
-<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a>Como planteamos en el Paso 2: H₀: β₁ = 0 vs. H₁: β₁ ≠ 0. Siguiendo la lógica presentada en la sección 1.2.3, el valor *p* asociado a la pendiente es menor a 0.001 (<span class="in">`Pr(&gt;|t|) &lt; 2e-16`</span>). Se rechaza H₀ y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
-<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a>**Intervalo de confianza para la pendiente**</span>
-<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a>El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional $\beta_1$.</span>
-<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span>
-<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una planta por m² en la densidad de siembra, el rendimiento medio aumenta entre 0.0206 y 0.0264 tn/ha. Como el intervalo no contiene al cero, este resultado es coherente con la prueba de hipótesis anterior.</span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5 — Validar el modelo ajustado</span></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a>Antes de interpretar los resultados, es necesario evaluar si los supuestos del modelo son razonables. Los errores aleatorios εᵢ no son observables directamente; por eso utilizamos los residuos como su aproximación empírica: $$e_i = y_i - \hat{y}_i$$</span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)</span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a>Figura: los cuatro gráficos diagnósticos — Residuals vs Fitted, Q-Q Residuals, Scale-Location, Residuals vs Leverage</span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a>**Residuos vs. valores ajustados.** Permite evaluar linealidad y homocedasticidad. Esperamos una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias ni curvaturas. En este ejemplo, los residuos no muestran un patrón sistemático, lo que apoya el supuesto de linealidad.</span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a>**Gráfico Q-Q de los residuos.** Permite evaluar si los residuos se distribuyen aproximadamente Normal. Esperamos que los puntos se ubiquen cercanos a la recta de referencia. En este caso, la mayoría de los puntos se ajustan bien a la recta, con leves desvíos en los extremos (observaciones 22 y 27), que no resultan preocupantes.</span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>**Scale-Location.** También permite evaluar homocedasticidad, observando si la dispersión de los residuos es aproximadamente constante a lo largo de los valores ajustados. No se observan cambios marcados en la dispersión.</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>**Residuos vs. leverage.** Permite identificar observaciones influyentes: aquellas cuya presencia o ausencia podría modificar de manera considerable los coeficientes estimados. Ninguna observación se destaca con una distancia de Cook preocupante.</span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>**Sobre la independencia.** A diferencia de los otros tres supuestos, la independencia de las observaciones no se evalúa con estos gráficos: como señalamos en el Paso 2, depende del diseño del estudio. En este caso, dado que las parcelas fueron trabajadas de manera independiente, el supuesto se considera razonable.</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>En conjunto, el análisis de residuos no evidencia incumplimientos relevantes de los supuestos del modelo, por lo que podemos avanzar con confianza a la interpretación de los resultados.</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6 — Interpretar y comunicar los resultados</span></span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a><span class="fu">### Intervalo de confianza para la pendiente</span></span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a>Como planteamos en el Paso 2: H₀: β₁ = 0 vs. H₁: β₁ ≠ 0. Siguiendo la lógica presentada en la sección 1.2.3, el valor *p* asociado a la pendiente es menor a 0.001 (<span class="in">`Pr(&gt;|t|) &lt; 2e-16`</span>). Se rechaza H₀ y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>**Intervalo de confianza para la pendiente**</span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a>El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional $\beta_1$.</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(modelo)</span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una planta por m² en la densidad de siembra, el rendimiento medio aumenta entre 0.0206 y 0.0264 tn/ha. Como el intervalo no contiene al cero, este resultado es coherente con la prueba de hipótesis anterior.</span>
 <span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
 <span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>*Observación*:este intervalo puede obtenerse de la salida del modelo (<span class="in">`summary(modelo)`</span>) o usando la función <span class="in">`confint(modelo)`</span></span>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
 <span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.</span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>*Observación*:este intervalo puede obtenerse de la salida del modelo (<span class="in">`summary(modelo)`</span>) o usando la función <span class="in">`confint(modelo)`</span></span>
 <span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Interpretación de los coeficientes</span></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a>La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.</span>
 <span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a>La pendiente estimada es b₁ = 0.0235: en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.</span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Interpretación de los coeficientes</span></span>
 <span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a>Como las densidades evaluadas difieren en 20 plantas/m², resulta más intuitivo expresar el efecto reescalado a ese incremento (esto es una re-expresión del mismo parámetro, no un valor nuevo a estimar): $$20 \times 0.0235 = 0.47 \text{ tn/ha}$$</span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a>La pendiente estimada es b₁ = 0.0235: en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.</span>
 <span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a>Es decir, por cada aumento de 20 plantas/m², se espera que el rendimiento medio aumente aproximadamente $0.47 \text { tn/ha}$.</span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a>Como las densidades evaluadas difieren en 20 plantas/m², resulta más intuitivo expresar el efecto reescalado a ese incremento (esto es una re-expresión del mismo parámetro, no un valor nuevo a estimar): $$20 \times 0.0235 = 0.47 \text{ tn/ha}$$</span>
 <span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a>La ordenada al origen estimada es $b_o = −2.555$ (ordenada al origen), y representa el rendimiento esperado cuando la densidad es igual a cero. Esta interpretación no tiene sentido práctico, ya que una densidad de cero plantas/m² se encuentra fuera del rango estudiado; por eso tampoco se interpreta su intervalo de confianza.</span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a>Es decir, por cada aumento de 20 plantas/m², se espera que el rendimiento medio aumente aproximadamente $0.47 \text { tn/ha}$.</span>
 <span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>Variabilidad no explicada por el modelo</span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a>La ordenada al origen estimada es $b_o = −2.555$ (ordenada al origen), y representa el rendimiento esperado cuando la densidad es igual a cero. Esta interpretación no tiene sentido práctico, ya que una densidad de cero plantas/m² se encuentra fuera del rango estudiado; por eso tampoco se interpreta su intervalo de confianza.</span>
 <span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a>El error estándar residual es $0.2924$, lo que indica que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29 \text { tn/ha}$.</span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a>Variabilidad no explicada por el modelo</span>
 <span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Coeficiente de determinación</span></span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a>El error estándar residual es $0.2924$, lo que indica que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29 \text { tn/ha}$.</span>
 <span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a>$$R^2=0.889$$</span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Coeficiente de determinación</span></span>
 <span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \text{ \%}$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa. El porcentaje restante corresponde a otros factores no incluidos en el modelo y a la variabilidad aleatoria.</span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a>$$R^2=0.889$$</span>
 <span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prueba global del modelo</span></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \text{ \%}$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa. El porcentaje restante corresponde a otros factores no incluidos en el modelo y a la variabilidad aleatoria.</span>
 <span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a>El estadístico F ($272.7$, $p &lt; 2.2e-16$) evalúa si el modelo en conjunto explica una parte significativa de la variabilidad de la respuesta. En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prueba global del modelo</span></span>
 <span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Comunicación de los resultados</span></span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a>El estadístico F ($272.7$, $p &lt; 2.2e-16$) evalúa si el modelo en conjunto explica una parte significativa de la variabilidad de la respuesta. En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
 <span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables (\$b_1 = 0.0235 \text{ tn/ha por planta/m²} \$; $IC 95 \% = <span class="co">[</span><span class="ot">0.0206; 0.0264</span><span class="co">]</span>; p &lt; 0.001$). El modelo explicó el $88.9 \text{ \%}$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Comunicación de los resultados</span></span>
 <span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a><span class="fu"># </span></span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables (\$b_1 = 0.0235 \text{ tn/ha por planta/m²} \$; $IC 95 \% = <span class="co">[</span><span class="ot">0.0206; 0.0264</span><span class="co">]</span>; p &lt; 0.001$). El modelo explicó el $88.9 \text{ \%}$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
 <span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a>El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a><span class="fu"># </span></span>
 <span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>####Intervalo de confianza para la pendiente</span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a>El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.</span>
 <span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a>####Intervalo de confianza para la pendiente</span>
 <span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>Para estos datos, el intervalo de confianza es aproximadamente:</span>
 <span id="cb9-227"><a href="#cb9-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre $0.0206$ y $0.0264 \ tn/ha$.</span>
+<span id="cb9-228"><a href="#cb9-228" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$</span>
 <span id="cb9-229"><a href="#cb9-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a>Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.</span>
+<span id="cb9-230"><a href="#cb9-230" aria-hidden="true" tabindex="-1"></a>Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre $0.0206$ y $0.0264 \ tn/ha$.</span>
 <span id="cb9-231"><a href="#cb9-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>###Variabilidad no explicada por el modelo</span>
+<span id="cb9-232"><a href="#cb9-232" aria-hidden="true" tabindex="-1"></a>Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.</span>
 <span id="cb9-233"><a href="#cb9-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a>El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente $0.29\ tn/ha$.</span>
+<span id="cb9-234"><a href="#cb9-234" aria-hidden="true" tabindex="-1"></a>###Variabilidad no explicada por el modelo</span>
 <span id="cb9-235"><a href="#cb9-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29\ tn/ha$..</span>
+<span id="cb9-236"><a href="#cb9-236" aria-hidden="true" tabindex="-1"></a>El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente $0.29\ tn/ha$.</span>
 <span id="cb9-237"><a href="#cb9-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a>###Coeficiente de determinación</span>
+<span id="cb9-238"><a href="#cb9-238" aria-hidden="true" tabindex="-1"></a>Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29\ tn/ha$..</span>
 <span id="cb9-239"><a href="#cb9-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>El coeficiente de determinación obtenido es:$R^2=0.889$</span>
+<span id="cb9-240"><a href="#cb9-240" aria-hidden="true" tabindex="-1"></a>###Coeficiente de determinación</span>
 <span id="cb9-241"><a href="#cb9-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \%$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.</span>
+<span id="cb9-242"><a href="#cb9-242" aria-hidden="true" tabindex="-1"></a>El coeficiente de determinación obtenido es:$R^2=0.889$</span>
 <span id="cb9-243"><a href="#cb9-243" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a>El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.</span>
+<span id="cb9-244"><a href="#cb9-244" aria-hidden="true" tabindex="-1"></a>Esto indica que el $88.9 \%$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.</span>
 <span id="cb9-245"><a href="#cb9-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a>####Prueba global del modelo</span>
+<span id="cb9-246"><a href="#cb9-246" aria-hidden="true" tabindex="-1"></a>El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.</span>
 <span id="cb9-247"><a href="#cb9-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a>Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p. Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.</span>
+<span id="cb9-248"><a href="#cb9-248" aria-hidden="true" tabindex="-1"></a>####Prueba global del modelo</span>
 <span id="cb9-249"><a href="#cb9-249" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a>En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
+<span id="cb9-250"><a href="#cb9-250" aria-hidden="true" tabindex="-1"></a>Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p. Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.</span>
 <span id="cb9-251"><a href="#cb9-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comunicar los resultados</span></span>
+<span id="cb9-252"><a href="#cb9-252" aria-hidden="true" tabindex="-1"></a>En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.</span>
 <span id="cb9-253"><a href="#cb9-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables ($\beta=0.0235\ tn/ha \ por\ planta/m^2$²; $IC95%: 0.0206–0.0264; p&lt;0.001)$. El modelo explicó el $88.9  \ %$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
+<span id="cb9-254"><a href="#cb9-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comunicar los resultados</span></span>
+<span id="cb9-255"><a href="#cb9-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-256"><a href="#cb9-256" aria-hidden="true" tabindex="-1"></a>Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables ($\beta=0.0235\ tn/ha \ por\ planta/m^2$²; $IC95%: 0.0206–0.0264; p&lt;0.001)$. El modelo explicó el $88.9  \ %$ de la variabilidad del rendimiento ($R^2=0.889$).</span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

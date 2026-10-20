@@ -147,11 +147,11 @@ Bajo estos supuestos, las estimaciones de la ordenada al origen y de la pendient
 
 Las estimaciones $b_0$ y $b_1$ se calcularon a partir de una muestra particular de datos. Si hubiéramos tomado otra muestra —otras unidades experimentales, otras observaciones—, los valores de $b_0$ y $b_1$ habrían sido distintos. Esto significa que $b_0$ y $b_1$ son, en sí mismas, variables aleatorias: cada uno tiene una distribución de probabilidad, una media y una varianza, que describen cómo varían de muestra a muestra.
 
-Bajo los supuestos presentados en 1.2.2, puede demostrarse que esta variabilidad se puede cuantificar mediante el error estándar de cada estimación, que notaremos $EE(b_0)$ y$EE(b_1)$ . El error estándar mide, en promedio, cuánto se espera que la estimación se aleje del verdadero valor del parámetro poblacional si repitiéramos el muestreo muchas veces. Un error estándar pequeño indica una estimación más precisa.
+Bajo los supuestos presentados en 1.2.2, puede demostrarse que esta variabilidad se puede cuantificar mediante el error estándar de cada estimación, que notaremos $EE(b_0)$ y $EE(b_1)$ . El error estándar mide, en promedio, cuánto se espera que la estimación se aleje del verdadero valor del parámetro poblacional si repitiéramos el muestreo muchas veces. Un error estándar pequeño indica una estimación más precisa.
 
 Con la estimación y su error estándar podemos responder dos preguntas distintas:
 
-####Prueba de hipótesis para la pendiente
+#### Prueba de hipótesis para la pendiente
 
 La pendiente $\beta_1$ es, generalmente, el parámetro de mayor interés en una regresión lineal simple: indica si existe una relación lineal entre X e Y. Para evaluarlo, se plantea la siguiente prueba de hipótesis:
 
@@ -167,11 +167,13 @@ Cuanto más grande (en valor absoluto) sea este estadístico, menos compatible e
 
 Este mismo procedimiento puede aplicarse a $\beta_0$, aunque en la práctica su interpretación suele tener menos interés (como veremos en la sección 1.3).
 
-####Intervalo de confianza para la pendiente
+#### Intervalo de confianza para la pendiente
 
-El valor p indica si se rechaza o no la hipótesis de que $\beta_1=0$, pero no informa cuál podría ser el verdadero valor de $\beta_1$. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):
+El valor $p$ indica si se rechaza o no la hipótesis de que $\beta_1=0$, pero no informa cuál podría ser el verdadero valor de $\beta_1$. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):
 
-𝐼 donde t\* es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.
+$$IC(\mu,(1-\alpha)\%)=\beta_1\pm t_{\frac{\alpha}{2}} \times EE(b_1)$$
+
+donde $t$ es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.
 
 Si este intervalo no contiene al cero, se llega a la misma conclusión que con la prueba de hipótesis: existe evidencia de una relación lineal entre las variables. El intervalo de confianza tiene la ventaja de aportar información adicional sobre la magnitud plausible del efecto, no solo sobre su significancia estadística.
 

@@ -572,9 +572,10 @@ window.Quarto = {
 <section id="inferencia-sobre-los-parámetros" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="inferencia-sobre-los-parámetros"><span class="header-section-number">1.2.3</span> Inferencia sobre los parámetros</h3>
 <p>Las estimaciones <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> se calcularon a partir de una muestra particular de datos. Si hubiéramos tomado otra muestra —otras unidades experimentales, otras observaciones—, los valores de <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> habrían sido distintos. Esto significa que <span class="math inline">\(b_0\)</span> y <span class="math inline">\(b_1\)</span> son, en sí mismas, variables aleatorias: cada uno tiene una distribución de probabilidad, una media y una varianza, que describen cómo varían de muestra a muestra.</p>
-<p>Bajo los supuestos presentados en 1.2.2, puede demostrarse que esta variabilidad se puede cuantificar mediante el error estándar de cada estimación, que notaremos <span class="math inline">\(EE(b_0)\)</span> y<span class="math inline">\(EE(b_1)\)</span> . El error estándar mide, en promedio, cuánto se espera que la estimación se aleje del verdadero valor del parámetro poblacional si repitiéramos el muestreo muchas veces. Un error estándar pequeño indica una estimación más precisa.</p>
+<p>Bajo los supuestos presentados en 1.2.2, puede demostrarse que esta variabilidad se puede cuantificar mediante el error estándar de cada estimación, que notaremos <span class="math inline">\(EE(b_0)\)</span> y <span class="math inline">\(EE(b_1)\)</span> . El error estándar mide, en promedio, cuánto se espera que la estimación se aleje del verdadero valor del parámetro poblacional si repitiéramos el muestreo muchas veces. Un error estándar pequeño indica una estimación más precisa.</p>
 <p>Con la estimación y su error estándar podemos responder dos preguntas distintas:</p>
-<p>####Prueba de hipótesis para la pendiente</p>
+<section id="prueba-de-hipótesis-para-la-pendiente" class="level4" data-number="1.2.3.1">
+<h4 data-number="1.2.3.1" class="anchored" data-anchor-id="prueba-de-hipótesis-para-la-pendiente"><span class="header-section-number">1.2.3.1</span> Prueba de hipótesis para la pendiente</h4>
 <p>La pendiente <span class="math inline">\(\beta_1\)</span> es, generalmente, el parámetro de mayor interés en una regresión lineal simple: indica si existe una relación lineal entre X e Y. Para evaluarlo, se plantea la siguiente prueba de hipótesis:</p>
 <p><span class="math inline">\(H_0: \beta_1 = 0\)</span> vs <span class="math inline">\(H_1: \beta_1 \neq0\)</span></p>
 <p>Si <span class="math inline">\(\beta_1=0\)</span>, la recta de regresión teórica es horizontal: esto significa que, en promedio, la variable respuesta no cambia con la variable explicativa.</p>
@@ -582,11 +583,15 @@ window.Quarto = {
 <p><span class="math display">\[t=\frac{b_1}{EE(b_1)}\]</span></p>
 <p>Cuanto más grande (en valor absoluto) sea este estadístico, menos compatible es la estimación observada con la hipótesis nula de que <span class="math inline">\(\beta_1=0\)</span>. A partir de t se obtiene un valor p, que indica la probabilidad de observar una estimación como <span class="math inline">\(\beta_1\)</span> (o más extrema), si en realidad <span class="math inline">\(\beta_1\)</span> fuera igual a cero. Un valor p pequeño (habitualmente, menor a 0.05) lleva a rechazar H₀ y concluir que existe evidencia de una relación lineal entre las variables.</p>
 <p>Este mismo procedimiento puede aplicarse a <span class="math inline">\(\beta_0\)</span>, aunque en la práctica su interpretación suele tener menos interés (como veremos en la sección 1.3).</p>
-<p>####Intervalo de confianza para la pendiente</p>
-<p>El valor p indica si se rechaza o no la hipótesis de que <span class="math inline">\(\beta_1=0\)</span>, pero no informa cuál podría ser el verdadero valor de <span class="math inline">\(\beta_1\)</span>. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):</p>
-<p>𝐼 donde t* es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.</p>
+</section>
+<section id="intervalo-de-confianza-para-la-pendiente" class="level4" data-number="1.2.3.2">
+<h4 data-number="1.2.3.2" class="anchored" data-anchor-id="intervalo-de-confianza-para-la-pendiente"><span class="header-section-number">1.2.3.2</span> Intervalo de confianza para la pendiente</h4>
+<p>El valor <span class="math inline">\(p\)</span> indica si se rechaza o no la hipótesis de que <span class="math inline">\(\beta_1=0\)</span>, pero no informa cuál podría ser el verdadero valor de <span class="math inline">\(\beta_1\)</span>. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):</p>
+<p><span class="math display">\[IC(\mu,(1-\alpha)\%)=\beta_1\pm t_{\frac{\alpha}{2}} \times EE(b_1)\]</span></p>
+<p>donde <span class="math inline">\(t\)</span> es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.</p>
 <p>Si este intervalo no contiene al cero, se llega a la misma conclusión que con la prueba de hipótesis: existe evidencia de una relación lineal entre las variables. El intervalo de confianza tiene la ventaja de aportar información adicional sobre la magnitud plausible del efecto, no solo sobre su significancia estadística.</p>
 <p>En la sección Práctica Guiada aplicaremos estos conceptos —estimación, error estándar, prueba de hipótesis e intervalo de confianza— a un ejemplo concreto: la relación entre el rendimiento de trigo y la densidad de siembra.</p>
+</section>
 </section>
 </section>
 <section id="section" class="level2" data-number="1.3">
@@ -1198,11 +1203,11 @@ window.Quarto = {
 <span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>Las estimaciones $b_0$ y $b_1$ se calcularon a partir de una muestra particular de datos. Si hubiéramos tomado otra muestra —otras unidades experimentales, otras observaciones—, los valores de $b_0$ y $b_1$ habrían sido distintos. Esto significa que $b_0$ y $b_1$ son, en sí mismas, variables aleatorias: cada uno tiene una distribución de probabilidad, una media y una varianza, que describen cómo varían de muestra a muestra.</span>
 <span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>Bajo los supuestos presentados en 1.2.2, puede demostrarse que esta variabilidad se puede cuantificar mediante el error estándar de cada estimación, que notaremos $EE(b_0)$ y$EE(b_1)$ . El error estándar mide, en promedio, cuánto se espera que la estimación se aleje del verdadero valor del parámetro poblacional si repitiéramos el muestreo muchas veces. Un error estándar pequeño indica una estimación más precisa.</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>Bajo los supuestos presentados en 1.2.2, puede demostrarse que esta variabilidad se puede cuantificar mediante el error estándar de cada estimación, que notaremos $EE(b_0)$ y $EE(b_1)$ . El error estándar mide, en promedio, cuánto se espera que la estimación se aleje del verdadero valor del parámetro poblacional si repitiéramos el muestreo muchas veces. Un error estándar pequeño indica una estimación más precisa.</span>
 <span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>Con la estimación y su error estándar podemos responder dos preguntas distintas:</span>
 <span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>####Prueba de hipótesis para la pendiente</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Prueba de hipótesis para la pendiente</span></span>
 <span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>La pendiente $\beta_1$ es, generalmente, el parámetro de mayor interés en una regresión lineal simple: indica si existe una relación lineal entre X e Y. Para evaluarlo, se plantea la siguiente prueba de hipótesis:</span>
 <span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
@@ -1218,17 +1223,19 @@ window.Quarto = {
 <span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>Este mismo procedimiento puede aplicarse a $\beta_0$, aunque en la práctica su interpretación suele tener menos interés (como veremos en la sección 1.3).</span>
 <span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>####Intervalo de confianza para la pendiente</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Intervalo de confianza para la pendiente</span></span>
 <span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>El valor p indica si se rechaza o no la hipótesis de que $\beta_1=0$, pero no informa cuál podría ser el verdadero valor de $\beta_1$. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):</span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>El valor $p$ indica si se rechaza o no la hipótesis de que $\beta_1=0$, pero no informa cuál podría ser el verdadero valor de $\beta_1$. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):</span>
 <span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>𝐼 donde t<span class="sc">\*</span> es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>$$IC(\mu,(1-\alpha)\%)=\beta_1\pm t_{\frac{\alpha}{2}} \times EE(b_1)$$</span>
 <span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>Si este intervalo no contiene al cero, se llega a la misma conclusión que con la prueba de hipótesis: existe evidencia de una relación lineal entre las variables. El intervalo de confianza tiene la ventaja de aportar información adicional sobre la magnitud plausible del efecto, no solo sobre su significancia estadística.</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>donde $t$ es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.</span>
 <span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>En la sección Práctica Guiada aplicaremos estos conceptos —estimación, error estándar, prueba de hipótesis e intervalo de confianza— a un ejemplo concreto: la relación entre el rendimiento de trigo y la densidad de siembra.</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>Si este intervalo no contiene al cero, se llega a la misma conclusión que con la prueba de hipótesis: existe evidencia de una relación lineal entre las variables. El intervalo de confianza tiene la ventaja de aportar información adicional sobre la magnitud plausible del efecto, no solo sobre su significancia estadística.</span>
 <span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## </span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>En la sección Práctica Guiada aplicaremos estos conceptos —estimación, error estándar, prueba de hipótesis e intervalo de confianza— a un ejemplo concreto: la relación entre el rendimiento de trigo y la densidad de siembra.</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="fu">## </span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
