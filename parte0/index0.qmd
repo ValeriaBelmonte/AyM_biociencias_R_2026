@@ -1,0 +1,15 @@
+---
+title: "Instalación y primeros pasos"
+---
+
+## OBJETIVOS
+
+Al finalizar esta actividad, se espera que los estudiantes puedan:
+
+- Instalar R y RStudio en su computadora. -Diferenciar R de RStudio y comprender la relación entre ambos.
+
+- Iniciar RStudio y reconocer los principales componentes de su interfaz.
+
+- Utilizar la consola para ejecutarinstrucciones sencillas en R.
+
+- Familiarizarse con el entorno de trabajo que se utilizará durante el curso.

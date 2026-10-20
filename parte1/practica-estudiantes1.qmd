@@ -24,8 +24,8 @@ Dentro de la carpeta `lechuga`, crea las siguientes carpetas:
 
 ``` text
 lechuga/  
-├── datos originales/  
-├── datos transformados/  
+├── datos_originales/  
+├── datos_transformados/  
 ├── figuras/  
 ├── informes/  
 ├── prompts/
@@ -45,9 +45,9 @@ Hasta este momento, la estructura debería ser:
 
 ``` text
 lechuga/  
-├── datos originales/ 
+├── datos_originales/ 
                 └── lechuga.xlsx
-├── datos transformados/  
+├── datos_transformados/  
 ├── figuras/  
 ├── informes/  
 ├── prompts/
@@ -58,10 +58,10 @@ lechuga/
 ## Crear el proyecto en RStudio
 
 Ahora abre RStudio y crea un proyecto utilizando la carpeta lechuga que acabas de organizar. Para hacerlo:\
-a) Seleccioná **File > New Project**.  
-b) Elegí **Existing Directory**.  
-c) Buscá y seleccioná la carpeta **lechuga**.  
-d) Hacé clic en **Create Project**.  
+a) Seleccioná **File \> New Project**.\
+b) Elegí **Existing Directory**.\
+c) Buscá y seleccioná la carpeta **lechuga**.\
+d) Hacé clic en **Create Project**.
 
 RStudio utilizará esa carpeta como directorio principal del proyecto.\
 Una vez creado el proyecto, observa el panel Files.\
@@ -75,9 +75,9 @@ lechuga/
 │
 ├── lechuga.Rproj
 │
-├── datos originales/ 
+├── datos_originales/ 
                 └── lechuga.xlsx
-├── datos transformados/  
+├── datos_transformados/  
 ├── figuras/  
 ├── informes/  
 ├── prompts/
@@ -98,10 +98,10 @@ Antes de continuar con la siguiente parte de la práctica, verificá que: -RStud
 
 ## Para pensar :
 
-a) ¿Qué ventaja tiene trabajar dentro de un proyecto de RStudio? \
-b) ¿Por qué conviene separar los datos originales de los datos transformados? \
-c) ¿Por qué es importante conservar la base de datos original sin modificaciones? \
-d) ¿Qué ventaja tiene guardar los scripts separados de los archivos de datos?
+a)  ¿Qué ventaja tiene trabajar dentro de un proyecto de RStudio?\
+b)  ¿Por qué conviene separar los datos originales de los datos transformados?\
+c)  ¿Por qué es importante conservar la base de datos original sin modificaciones?\
+d)  ¿Qué ventaja tiene guardar los scripts separados de los archivos de datos?
 
 ## Resultado esperado
 

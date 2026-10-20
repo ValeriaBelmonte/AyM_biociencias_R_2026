@@ -17,6 +17,14 @@ website:
       - href: index.qmd
         text: Inicio
 
+      - section: "Parte 0"
+        contents:
+          - href: parte0/index0.qmd
+            text: Presentación
+          - href: parte0/instalacion0.qmd
+            text: "Instalación"
+          
+            
       - section: "Parte 1"
         contents:
           - href: parte1/index1.qmd

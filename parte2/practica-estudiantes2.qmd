@@ -1,5 +1,5 @@
 ---
-title: "Práctica estudiantes 2"
+title: "Práctica para estudiantes 2"
 ---
 
 ## Propósito
@@ -10,21 +10,20 @@ En esta práctica trabajaremos con un registro de condiciones de cultivo de lech
 
 Antes de comenzar a trabajar en RStudio, vamos a observar el archivo que utilizaremos en esta práctica.
 
-a)  Ingresá a la carpeta datos originales del proyecto lechuga.
+a\.  Ingresá a la carpeta datos originales del proyecto lechuga.
 
-b)  Abrí el archivo lechuga.xlsx.
+b\. Abrí el archivo lechuga.xlsx.
 
-c)  Observá cómo está organizada la información.
+c\. Observá cómo está organizada la información.
 
 Antes de importar el archivo, respondé:
 
-a)  ¿Qué tipo de archivo es `lechuga.xlsx`?
-b)  ¿En qué hoja se encuentran los datos?
-c)  ¿Qué representa cada fila de la base: una planta o una medición de una planta en una fecha?
+d\. ¿Qué tipo de archivo es `lechuga.xlsx`?
+e\.  ¿En qué hoja se encuentran los datos?
+f\. ¿Qué representa cada fila de la base: una planta o una medición de una planta en una fecha?
 
-<!-- -->
 
-4.  ¿Por qué esta base puede considerarse una base longitudinal o de medidas repetidas?
+g\.  ¿Por qué esta base puede considerarse una base longitudinal o de medidas repetidas?
 
 > Pista: cada planta aparece en más de una fila, porque fue medida en distintas fechas.
 
@@ -32,15 +31,15 @@ c)  ¿Qué representa cada fila de la base: una planta o una medición de una pl
 
 Trabajaremos con la carpeta lechuga creada en la práctica para estudiantes 1
 
-1.  Abríel RStudio\
+a\.  Abrí el RStudio\
 
-    a\. Abrimos el proyecto lechuga
+b\. Abrí el proyecto lechuga
 
-    b\. Creamos una nueva hoja de trabajo (file)
+c\. Creá una nueva hoja de trabajo (file)
 
 ## Cargar paquetes e importar la base
 
-Instalen los paquetes solo si aún no los tienen instalados.
+a\. Instalá los paquetes solo si aún no los tienen instalados.
 
 ``` r
 install.packages("tidyverse")
@@ -56,13 +55,13 @@ library(readxl)
 library(janitor)
 ```
 
-Limpiar entorno de trabajo
+c.\ Creá la sentencia para limpiar el entorno de trabajo
 
 ``` r
 rm(list=ls())
 ```
 
-Importen la hoja `lechuga` y guárdenla en un objeto llamado `lechuga`.
+d\. Importen la hoja `lechuga` y guárdenla en un objeto llamado `lechuga`.
 
 ``` r
 lechuga <- read_excel(
@@ -79,27 +78,22 @@ Responda:
 
 a\. ¿Cuántas filas y columnas tiene la base?
 
+b\. ¿Cuales son los nombres de las variables?
+
 b\. ¿Cuántas plantas distintas fueron registradas?
 
 c\. ¿Qué variables son numéricas? ¿Cuál identifica a la planta?
 
 d\. Observen la variable `Date`. ¿Todas las fechas aparecen escritas del mismo modo?
 
-``` r
-lechuga
-dim(lechuga)
-names(lechuga)
-glimpse(lechuga)
-summary(lechuga)
-```
-
-5.  ¿Cuántos registros tiene cada planta?
+e\.¿Cuántas plantas hay?
 
 ``` r
-lechuga |> summarise(plantas_distintas = n_distinct(Plant_ID))
+lechuga |> summarise(plantas_distintas = n_distinct(Plant_ID)
 ```
 
-6.  ¿Todas cuentan con el mismo número de mediciones?
+e\.¿Cuántos registros tiene cada planta?
+¿Todas cuentan con el mismo número de mediciones?
 
 ``` r
 lechuga |> count(Plant_ID)
@@ -109,13 +103,9 @@ lechuga |> count(Plant_ID)
 
 Los nombres originales contienen mayúsculas, espacios, paréntesis y símbolos de unidad. Para facilitar el trabajo en R, se los normalizará.
 
-``` r
-#usar la función  clean_names() del paquete janitor
-lechuga <- lechuga |> clean_names()
-names(lechuga)
-```
 
-Verifique los nuevos nombres. Deberían quedar de la siguiente manera:
+
+Los nuevos nombres, deberían quedar de la siguiente manera:
 
 ``` text
 plant_id
@@ -131,7 +121,7 @@ growth_days
 
 En esta planilla la fecha puede aparecer con formatos distintos.
 
-1.  Crearemos una nueva variable llamada `fecha`, expresada como fecha de R.
+a\.  Creá una nueva variable llamada `fecha`, expresada como fecha de R.
 
 ``` r
 lechuga <- lechuga |>
@@ -144,29 +134,33 @@ lechuga <- lechuga |>
   select(-date)
 ```
 
-5.2 Compruebe que la nueva variable fue creada correctamente:
+b\. Comprobá que la nueva variable fue creada correctamente:
+
+c\. ¿Qué operación realizó select(-date)?
+
+## Estudiar la estrutura de la base 
+
+a\. Utilzá la función `summary()` para obtener un resumen rápido de la  base. ¿Qué muestra esta salida?
+
+b\. ¿hay datos faltantes?
+
+## Completar el dato/s faltante/s
+
+a\. Identificá la cantidad de datos faltantes y observá  a que fila corresponde.
+ 
+La siguente sentencia identifica  cuantos datos hay faltantes
+``` r
+sum(is.na(lechuga)) 
+``` 
+La siguente sentencia identifica  donde está el valor faltante  en la variable  `humidity_porc` 
 
 ``` r
-glimpse(lechuga)
-range(lechuga$fecha)
-```
-
-3.  ¿Qué operación realizó select(-date)?
-
-## Detectar y completar el dato faltante
-
-La base que recibieron contiene un dato faltante en la humedad de la planta 1, correspondiente al **25 de agosto de 2023**. El valor correcto de humedad es **52**.
-
-Primero, identifiquen la cantidad de datos faltantes y observen la fila que los contiene.
-
-``` r
-sum(is.na(lechuga))
-
 lechuga |>
   filter(is.na(humidity_porc))
 ```
+El dato faltante en la humedad de la planta 1, correspondiente al **25 de agosto de 2023**. El valor correcto de humedad es **52**.
 
-Luego reemplacen únicamente ese valor faltante:
+b\. Reemplazá únicamente ese valor faltante:
 
 ``` r
 lechuga <- lechuga |>
@@ -180,53 +174,48 @@ lechuga <- lechuga |>
   )
 ```
 
-Verifiquen que no queden datos faltantes y que el valor se haya incorporado en la fila correcta.
+c\. Verificá que no queden datos faltantes y que el valor se haya incorporado en la fila correcta.
 
-``` r
-sum(is.na(lechuga))
 
-lechuga |>
-  filter(plant_id == 1, fecha == as.Date("2023-08-25"))
-```
 
 ## Consultas breves sobre la base
 
 Respondan mediante código en R:
 
-1.  ¿Cuál es el valor de humedad de la planta 3 el 15 de septiembre de 2023?
+a\.  ¿Cuál es el valor de humedad de la planta 3 el 15 de septiembre de 2023?
 
 ``` r
 humedad_3<-lechuga |> filter(plant_id==3,fecha=="2023-09-15") |> select(plant_id, fecha, humidity_porc)
 humedad_3
 ```
 
-2.  ¿Cuáles son la temperatura, el pH y los sólidos disueltos totales de esa misma planta y fecha?
+b\.  ¿Cuáles son la temperatura, el pH y los sólidos disueltos totales de esa misma planta y fecha?
 
 ``` r
 temp_ph_solidos<-lechuga |> filter(plant_id==3, fecha=="2023-09-15") |> select(plant_id,fecha,temperature_c, p_h_level,tds_value_ppm)
 temp_ph_solidos
 ```
 
-3.  ¿Cuál es la primera fecha registrada cronológicamente en la base?
+c\.  ¿Cuál es la primera fecha registrada cronológicamente en la base?
 
-```{r eval=FALSE}
+```r
 # 7.3 Primera fecha registrada
 primera_fecha <- min(lechuga$fecha)
 primera_fecha
 ```
 
-4.  ¿Cuántas plantas fueron medidas en esa primera fecha?
+d\.  ¿Cuántas plantas fueron medidas en esa primera fecha?
 
-```{r eval=FALSE}
-# 7.4 Cantidad de plantas en la primera fecha
+```r 
+
 cantidad_plantas <- nrow(lechuga |> filter(fecha == primera_fecha))
 cantidad_plantas
 ```
 
-5.  ¿Qué planta tuvo la mayor humedad en esa primera fecha?
+e\.  ¿Qué planta tuvo la mayor humedad en esa primera fecha?
 
-```{r eval=FALSE}
-# 7.5 Planta con mayor humedad en la primera fecha
+```r 
+
 planta_mayor_humedad <- lechuga |> 
   filter(fecha == primera_fecha) |> 
   arrange(desc(humedad)) |> 
@@ -242,25 +231,25 @@ planta_mayor_humedad
 
 ## Guardar la base corregida
 
-Guarden la base con nombres limpios, fechas uniformes y el dato faltante corregido dentro de la carpeta `datos transformados`.
+a\. Guardá la base con nombres limpios, fechas uniformes y el dato faltante corregido dentro de la carpeta `datos transformados`.
 
-```{r eval=FALSE}
+```r 
 write_csv(
   lechuga,
   "datos transformados/lechuga_limpia.csv"
-)
+         )
 ```
 
 ## Crear una base con todas las plantas en la primera fecha
 
-Primero identifiquen la primera fecha cronológica y guárdenla en un objeto.
+a\. Primero identificá la primera fecha cronológica y guárdenla en un objeto.
 
 ``` r
 primera_fecha <- min(lechuga$fecha, na.rm = TRUE)
 primera_fecha
 ```
 
-Luego creen una nueva base que contenga todas las plantas medidas en esa fecha.
+b\. Creá una nueva base que contenga todas las plantas medidas en esa fecha.
 
 ``` r
 lechuga_primera_fecha <- lechuga |>
@@ -269,7 +258,7 @@ lechuga_primera_fecha <- lechuga |>
 lechuga_primera_fecha
 ```
 
-Comprueben cuántas filas tiene la nueva base y guárdenla dentro de `datos transformados`.
+c.\ Comprobá cuántas filas tiene la nueva base y guárdenla dentro de `datos transformados`.
 
 ``` r
 nrow(lechuga_primera_fecha)
@@ -279,6 +268,11 @@ write_csv(
   "../datos transformados/lechuga_primera_fecha.csv"
 )
 ```
+
+## Guardá el trabajo 
+
+
+
 
 ## Para pensar
 
