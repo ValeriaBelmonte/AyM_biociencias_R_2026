@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Teoría 5 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2e30ad26079c1dae90a1fd11eba2b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../estilos.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte5/index5.html">Parte 5</a></li><li class="breadcrumb-item"><a href="../parte5/teoria5.html">Teoría</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 0</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte0/index0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte0/instalacion0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instalación</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/index1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/teoria1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/practica-guiada1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/practica-estudiantes1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/index2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/teoria2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/practica-guiada2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/practica-estudiantes2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/index3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/teoria3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/practica-guiada3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/practica-estudiantes3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/index4.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/teoria4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/practica-guiada4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/practica-estudiantes4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 5</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/index5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/teoria5.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/practica-guiada5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/practica-estudiantes5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 6</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/index6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/practica-guiada6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/practica-estudiantes6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#modelo-lineal-con-una-variable-explicativa-categórica" id="toc-modelo-lineal-con-una-variable-explicativa-categórica" class="nav-link active" data-scroll-target="#modelo-lineal-con-una-variable-explicativa-categórica"><span class="header-section-number">1</span> Modelo lineal con una variable explicativa categórica</a></li>
+  <li><a href="#anova-de-un-factor" id="toc-anova-de-un-factor" class="nav-link" data-scroll-target="#anova-de-un-factor"><span class="header-section-number">2</span> ANOVA de un factor</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-e-hipótesis" id="toc-pregunta-e-hipótesis" class="nav-link" data-scroll-target="#pregunta-e-hipótesis"><span class="header-section-number">2.1</span> Pregunta e hipótesis</a></li>
+  <li><a href="#idea-del-estadístico-f" id="toc-idea-del-estadístico-f" class="nav-link" data-scroll-target="#idea-del-estadístico-f"><span class="header-section-number">2.2</span> Idea del estadístico F</a></li>
+  <li><a href="#supuestos" id="toc-supuestos" class="nav-link" data-scroll-target="#supuestos"><span class="header-section-number">2.3</span> Supuestos</a></li>
+  <li><a href="#comparaciones-múltiples" id="toc-comparaciones-múltiples" class="nav-link" data-scroll-target="#comparaciones-múltiples"><span class="header-section-number">2.4</span> Comparaciones múltiples</a></li>
+  <li><a href="#ejemplo-de-referencia-en-r" id="toc-ejemplo-de-referencia-en-r" class="nav-link" data-scroll-target="#ejemplo-de-referencia-en-r"><span class="header-section-number">2.5</span> Ejemplo de referencia en R</a></li>
+  <li><a href="#medias-estimadas-y-comparaciones-con-emmeans" id="toc-medias-estimadas-y-comparaciones-con-emmeans" class="nav-link" data-scroll-target="#medias-estimadas-y-comparaciones-con-emmeans"><span class="header-section-number">2.6</span> Medias estimadas y comparaciones con emmeans</a></li>
+  <li><a href="#pregunta-e-hipótesis-1" id="toc-pregunta-e-hipótesis-1" class="nav-link" data-scroll-target="#pregunta-e-hipótesis-1"><span class="header-section-number">2.7</span> Pregunta e hipótesis</a></li>
+  <li><a href="#estadístico-t" id="toc-estadístico-t" class="nav-link" data-scroll-target="#estadístico-t"><span class="header-section-number">2.8</span> Estadístico t</a></li>
+  <li><a href="#relación-con-el-anova" id="toc-relación-con-el-anova" class="nav-link" data-scroll-target="#relación-con-el-anova"><span class="header-section-number">2.9</span> Relación con el ANOVA</a></li>
+  <li><a href="#supuestos-1" id="toc-supuestos-1" class="nav-link" data-scroll-target="#supuestos-1"><span class="header-section-number">2.10</span> Supuestos</a></li>
+  <li><a href="#ejemplo-de-referencia-en-r-1" id="toc-ejemplo-de-referencia-en-r-1" class="nav-link" data-scroll-target="#ejemplo-de-referencia-en-r-1"><span class="header-section-number">2.11</span> Ejemplo de referencia en R</a></li>
+  </ul></li>
+  <li><a href="#protocolo-aplicado-a-la-comparación-de-grupos" id="toc-protocolo-aplicado-a-la-comparación-de-grupos" class="nav-link" data-scroll-target="#protocolo-aplicado-a-la-comparación-de-grupos"><span class="header-section-number">3</span> Protocolo aplicado a la comparación de grupos</a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">4</span> Resumen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte5/index5.html">Parte 5</a></li><li class="breadcrumb-item"><a href="../parte5/teoria5.html">Teoría</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Teoría 5</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="modelo-lineal-con-una-variable-explicativa-categórica" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Modelo lineal con una variable explicativa categórica</h1>
+<p>En la Parte 4 vimos regresión, donde la variable explicativa es numérica. Ahora la variable explicativa es <strong>categórica</strong>: indica el grupo al que pertenece cada observación (por ejemplo, variedad, tratamiento o lote).</p>
+<p>El Modelo Lineal General sigue siendo el mismo:</p>
+<p><span class="math display">\[Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}\]</span></p>
+<ul>
+<li><span class="math inline">\(Y_{ij}\)</span>: observación <span class="math inline">\(j\)</span> del grupo <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(\mu\)</span>: media general.</li>
+<li><span class="math inline">\(\tau_i\)</span>: efecto del grupo <span class="math inline">\(i\)</span>, es decir, cuánto se aparta su media de la media general.</li>
+<li><span class="math inline">\(\varepsilon_{ij}\)</span>: error aleatorio, con los mismos supuestos de la Parte 4.</li>
+</ul>
+<p>Los supuestos son los mismos de regresión: independencia, normalidad y homocedasticidad. Lo que cambia es que las predicciones son las medias de cada grupo:</p>
+<p><span class="math display">\[\hat{y}_{ij} = \bar{y}_i\]</span></p>
+<p>Como en la Parte 4, el protocolo de seis pasos se aplica igual: pregunta, modelo, exploración, estimación, validación e interpretación.</p>
+</section>
+<section id="anova-de-un-factor" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> ANOVA de un factor</h1>
+<section id="pregunta-e-hipótesis" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="pregunta-e-hipótesis"><span class="header-section-number">2.1</span> Pregunta e hipótesis</h2>
+<p>Con <span class="math inline">\(k\)</span> grupos, la pregunta es si al menos uno de ellos tiene una media distinta. Las hipótesis son:</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \cdots = \mu_k \qquad H_1: \text{al menos una media difiere}\]</span></p>
+<p>Equivalentemente, en términos de efectos, <span class="math inline">\(H_0: \tau_1 = \cdots = \tau_k = 0\)</span>.</p>
+<p>Notar que <span class="math inline">\(H_1\)</span> no dice <em>cuál</em> grupo difiere. Para eso se necesitan comparaciones posteriores, que se ven más abajo.</p>
+</section>
+<section id="idea-del-estadístico-f" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="idea-del-estadístico-f"><span class="header-section-number">2.2</span> Idea del estadístico F</h2>
+<p>El ANOVA compara dos fuentes de variabilidad:</p>
+<ul>
+<li><strong>Variabilidad entre grupos:</strong> cuánto se separan las medias de los grupos entre sí.</li>
+<li><strong>Variabilidad dentro de los grupos:</strong> cuánto varían las observaciones dentro de cada grupo (es el error).</li>
+</ul>
+<p>La suma de cuadrados total se descompone así:</p>
+<p><span class="math display">\[SC_{total} = SC_{tratamientos} + SC_{error}\]</span></p>
+<p>Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fuente</th>
+<th>SC</th>
+<th>gl</th>
+<th>CM</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tratamientos (entre grupos)</td>
+<td><span class="math inline">\(\sum_i n_i(\bar{y}_i - \bar{y})^2\)</span></td>
+<td><span class="math inline">\(k-1\)</span></td>
+<td><span class="math inline">\(SC_{trat}/(k-1)\)</span></td>
+<td><span class="math inline">\(CM_{trat}/CM_{error}\)</span></td>
+</tr>
+<tr class="even">
+<td>Error (dentro de grupos)</td>
+<td><span class="math inline">\(\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2\)</span></td>
+<td><span class="math inline">\(N-k\)</span></td>
+<td><span class="math inline">\(SC_{error}/(N-k)\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td><span class="math inline">\(\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2\)</span></td>
+<td><span class="math inline">\(N-1\)</span></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Si <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(F\)</span> sigue una distribución <span class="math inline">\(F_{k-1,\,N-k}\)</span>. Un valor grande de <span class="math inline">\(F\)</span> indica que la variabilidad entre grupos es grande comparada con la variabilidad dentro de ellos, y lleva a rechazar <span class="math inline">\(H_0\)</span>.</p>
+</section>
+<section id="supuestos" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="supuestos"><span class="header-section-number">2.3</span> Supuestos</h2>
+<p>Se verifican sobre los residuos del modelo, igual que en la Parte 4:</p>
+<ol type="1">
+<li><strong>Independencia:</strong> depende del diseño. Se justifica en el paso 2.</li>
+<li><strong>Normalidad:</strong> Shapiro-Wilk sobre los residuos y gráfico Q-Q.</li>
+<li><strong>Homocedasticidad:</strong> la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (<code>car::leveneTest()</code>) o de Bartlett (<code>bartlett.test()</code>), y con un gráfico de residuos contra valores ajustados.</li>
+</ol>
+<p>Si la normalidad o la homocedasticidad fallan, se puede transformar la respuesta (Parte 4, transformaciones) o usar una alternativa no paramétrica, como Kruskal-Wallis. Kruskal-Wallis no pertenece al Modelo Lineal General y no se trata en esta parte.</p>
+</section>
+<section id="comparaciones-múltiples" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="comparaciones-múltiples"><span class="header-section-number">2.4</span> Comparaciones múltiples</h2>
+<p>Si el ANOVA da significativo, el siguiente paso es identificar qué pares de grupos difieren según la variable respuesta. Comparar todos los pares con pruebas t sueltas aumenta la probabilidad de cometer al menos un error de tipo I: con <span class="math inline">\(\alpha = 0.05\)</span> y muchas comparaciones, la probabilidad de un falso positivo crece rápidamente.</p>
+<p>Por eso se usan métodos de comparaciones múltiples que controlan ese error global. El más usado en este curso es el de <strong>Tukey</strong> (<code>TukeyHSD()</code>), que da intervalos de confianza para las diferencias de medias ajustados por el número de comparaciones.</p>
+<p>Este paso <strong>solo se hace si el ANOVA es significativo</strong>. Un ANOVA no significativo no autoriza a buscar diferencias pares.</p>
+</section>
+<section id="ejemplo-de-referencia-en-r" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="ejemplo-de-referencia-en-r"><span class="header-section-number">2.5</span> Ejemplo de referencia en R</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-ejemplo</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variedad =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">10</span>)),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">rendimiento =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.0</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.8</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.4</span>, <span class="at">sd =</span> <span class="fl">0.6</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo)                           <span class="co"># tabla ANOVA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Lectura:</strong> la fila de <code>variedad</code> es la prueba de <span class="math inline">\(H_0\)</span> (la F y su p-valor). La fila <code>Residuals</code> es la variabilidad dentro de los grupos.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-supuestos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo))         <span class="co"># normalidad de residuos</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)  <span class="co"># homocedasticidad</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-tukey</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="medias-estimadas-y-comparaciones-con-emmeans" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="medias-estimadas-y-comparaciones-con-emmeans"><span class="header-section-number">2.6</span> Medias estimadas y comparaciones con emmeans</h2>
+<p>El paquete <strong>emmeans</strong> trabaja directamente sobre un modelo ajustado con <code>lm()</code> y responde las preguntas que importan en la práctica:</p>
+<ul>
+<li>¿Cuál es la media estimada de cada grupo, con su intervalo de confianza?</li>
+<li>¿Qué diferencias entre grupos son significativas, con un ajuste por comparaciones múltiples?</li>
+<li>¿Qué contrastes específicos interesan (por ejemplo, un grupo control contra el promedio de los tratamientos)?</li>
+</ul>
+<p>La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo. Con modelos más complejos (varios factores, covariables o desbalance), las medias marginales estimadas siguen siendo válidas, mientras que las medias crudas pueden engañar.</p>
+<p><strong>Medias marginales estimadas:</strong> son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-medias</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo, <span class="sc">~</span> variedad)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>medias                       <span class="co"># medias estimadas con IC 95 %</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medias) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rendimiento estimado"</span>, <span class="at">y =</span> <span class="st">"Variedad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Comparaciones pareadas con ajuste:</strong> <code>pairs()</code> calcula todas las diferencias entre grupos. El argumento <code>adjust</code> controla el error global; con <code>"tukey"</code> el resultado es equivalente al de <code>TukeyHSD()</code>, pero con la salida en forma de tabla de contrastes.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-pares</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Contrastes específicos:</strong> cuando la pregunta no es “todos contra todos”, se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-contrastes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"A vs promedio(B, C)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Advertencia:</strong> los contrastes específicos deben plantearse antes de ver los datos, o al menos declararse como planificados. Si se eligen después de mirar los resultados, el control del error se pierde, igual que con las comparaciones sueltas de la sección anterior.</p>
+<p><strong>Conexión con la prueba t:</strong> cuando hay dos grupos, <code>pairs()</code> sobre el modelo ajustado da la misma diferencia de medias que <code>t.test(var.equal = TRUE)</code>, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-vs-t</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>modelo_AB <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="../explicaciones extras/emmeans.html">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</a> # Prueba t de Student</p>
+</section>
+<section id="pregunta-e-hipótesis-1" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="pregunta-e-hipótesis-1"><span class="header-section-number">2.7</span> Pregunta e hipótesis</h2>
+<p>Cuando hay solo dos grupos, la pregunta es si sus medias difieren:</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 \qquad H_1: \mu_1 \neq \mu_2\]</span></p>
+<p>Equivalentemente, <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span>.</p>
+</section>
+<section id="estadístico-t" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="estadístico-t"><span class="header-section-number">2.8</span> Estadístico t</h2>
+<p>Para varianzas iguales (versión <em>pooled</em>), el estadístico es:</p>
+<p><span class="math display">\[t = \frac{\bar{y}_1 - \bar{y}_2}{s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}, \qquad s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}\]</span></p>
+<p>Con <span class="math inline">\(n_1 + n_2 - 2\)</span> grados de libertad. Si <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(t\)</span> sigue una distribución t de Student.</p>
+<p>Si las varianzas no son iguales, se usa la versión de <strong>Welch</strong>, que es el valor por defecto de <code>t.test()</code> en R. Ajusta los grados de libertad y no asume homocedasticidad. En la práctica conviene usar Welch salvo que haya una razón fuerte para asumir varianzas iguales.</p>
+</section>
+<section id="relación-con-el-anova" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="relación-con-el-anova"><span class="header-section-number">2.9</span> Relación con el ANOVA</h2>
+<p>Con dos grupos, el ANOVA y la prueba t son el mismo análisis:</p>
+<p><span class="math display">\[F_{1,\,N-2} = t^2_{N-2}\]</span></p>
+<p>Por eso el p-valor es idéntico en los dos casos. El ANOVA es más general porque sirve para <span class="math inline">\(k\)</span> grupos; la prueba t se usa cuando hay dos.</p>
+</section>
+<section id="supuestos-1" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="supuestos-1"><span class="header-section-number">2.10</span> Supuestos</h2>
+<p>Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homocedasticidad si se usa la versión con varianzas iguales. La prueba de Levene sirve para decidir entre la versión clásica y la de Welch.</p>
+</section>
+<section id="ejemplo-de-referencia-en-r-1" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="ejemplo-de-referencia-en-r-1"><span class="header-section-number">2.11</span> Ejemplo de referencia en R</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-ejemplo</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"A"</span>]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"B"</span>]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)    <span class="co"># versión clásica</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B)                      <span class="co"># versión de Welch (por defecto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Verificación de la relación con ANOVA:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-vs-anova</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>datos_AB <span class="ot">&lt;-</span> <span class="fu">subset</span>(datos, variedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>datos_AB<span class="sc">$</span>variedad <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(datos_AB<span class="sc">$</span>variedad)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>t_res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>f_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">t_cuadrado =</span> <span class="fu">unname</span>(t_res<span class="sc">$</span>statistic<span class="sc">^</span><span class="dv">2</span>), <span class="at">F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>])</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_t =</span> t_res<span class="sc">$</span>p.value, <span class="at">p_F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la prueba t.</p>
+</section>
+</section>
+<section id="protocolo-aplicado-a-la-comparación-de-grupos" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Protocolo aplicado a la comparación de grupos</h1>
+<p>Para aplicar lo visto, usar el mismo protocolo de la Parte 4:</p>
+<ol type="1">
+<li><strong>Pregunta e hipótesis:</strong> ¿las medias de los grupos son iguales?</li>
+<li><strong>Modelo y supuestos:</strong> especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.</li>
+<li><strong>Exploración:</strong> boxplots o gráficos de puntos por grupo, con medias y dispersión.</li>
+<li><strong>Estimación:</strong> tabla ANOVA (o <code>t.test()</code> si son dos grupos), medias por grupo e intervalos de confianza.</li>
+<li><strong>Validación:</strong> normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con <code>emmeans</code>.</li>
+<li><strong>Interpretación:</strong> resultado en términos del problema, indicando qué grupos difieren y cuánto.</li>
+</ol>
+</section>
+<section id="resumen" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Resumen</h1>
+<ul>
+<li>Un factor con <span class="math inline">\(k\)</span> grupos se analiza con <strong>ANOVA</strong>; con dos grupos, la <strong>prueba t</strong> da el mismo resultado.</li>
+<li>El ANOVA pregunta si alguna media difiere; para saber cuál, se usan comparaciones múltiples con control del error global.</li>
+<li>Los supuestos son los del Modelo Lineal General: independencia, normalidad y homocedasticidad, verificados sobre los residuos.</li>
+</ul>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría 5"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modelo lineal con una variable explicativa categórica</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>En la Parte 4 vimos regresión, donde la variable explicativa es numérica. Ahora la variable explicativa es **categórica**: indica el grupo al que pertenece cada observación (por ejemplo, variedad, tratamiento o lote).</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>El Modelo Lineal General sigue siendo el mismo:</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>$$Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}$$</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Y_{ij}$: observación $j$ del grupo $i$.</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\mu$: media general.</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\tau_i$: efecto del grupo $i$, es decir, cuánto se aparta su media de la media general.</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\varepsilon_{ij}$: error aleatorio, con los mismos supuestos de la Parte 4.</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>Los supuestos son los mismos de regresión: independencia, normalidad y homocedasticidad. Lo que cambia es que las predicciones son las medias de cada grupo:</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>$$\hat{y}_{ij} = \bar{y}_i$$</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>Como en la Parte 4, el protocolo de seis pasos se aplica igual: pregunta, modelo, exploración, estimación, validación e interpretación.</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># ANOVA de un factor</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta e hipótesis</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>Con $k$ grupos, la pregunta es si al menos uno de ellos tiene una media distinta. Las hipótesis son:</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 = \cdots = \mu_k \qquad H_1: \text{al menos una media difiere}$$</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>Equivalentemente, en términos de efectos, $H_0: \tau_1 = \cdots = \tau_k = 0$.</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>Notar que $H_1$ no dice *cuál* grupo difiere. Para eso se necesitan comparaciones posteriores, que se ven más abajo.</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Idea del estadístico F</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>El ANOVA compara dos fuentes de variabilidad:</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variabilidad entre grupos:** cuánto se separan las medias de los grupos entre sí.</span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variabilidad dentro de los grupos:** cuánto varían las observaciones dentro de cada grupo (es el error).</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>La suma de cuadrados total se descompone así:</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>$$SC_{total} = SC_{tratamientos} + SC_{error}$$</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Fuente <span class="pp">|</span> SC <span class="pp">|</span> gl <span class="pp">|</span> CM <span class="pp">|</span> F <span class="pp">|</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|---|---|</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tratamientos (entre grupos) <span class="pp">|</span> $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ <span class="pp">|</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error (dentro de grupos) <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ <span class="pp">|</span> <span class="pp">|</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Total <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ <span class="pp">|</span> $N-1$ <span class="pp">|</span> <span class="pp">|</span> <span class="pp">|</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>Si $H_0$ es verdadera, $F$ sigue una distribución $F_{k-1,\,N-k}$. Un valor grande de $F$ indica que la variabilidad entre grupos es grande comparada con la variabilidad dentro de ellos, y lleva a rechazar $H_0$.</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Supuestos</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>Se verifican sobre los residuos del modelo, igual que en la Parte 4:</span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Independencia:** depende del diseño. Se justifica en el paso 2.</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Normalidad:** Shapiro-Wilk sobre los residuos y gráfico Q-Q.</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Homocedasticidad:** la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (<span class="in">`car::leveneTest()`</span>) o de Bartlett (<span class="in">`bartlett.test()`</span>), y con un gráfico de residuos contra valores ajustados.</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>Si la normalidad o la homocedasticidad fallan, se puede transformar la respuesta (Parte 4, transformaciones) o usar una alternativa no paramétrica, como Kruskal-Wallis. Kruskal-Wallis no pertenece al Modelo Lineal General y no se trata en esta parte.</span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparaciones múltiples</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>Si el ANOVA da significativo, el siguiente paso es identificar qué pares de grupos difieren según la variable respuesta. Comparar todos los pares con pruebas t sueltas aumenta la probabilidad de cometer al menos un error de tipo I: con $\alpha = 0.05$ y muchas comparaciones, la probabilidad de un falso positivo crece rápidamente.</span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>Por eso se usan métodos de comparaciones múltiples que controlan ese error global. El más usado en este curso es el de **Tukey** (<span class="in">`TukeyHSD()`</span>), que da intervalos de confianza para las diferencias de medias ajustados por el número de comparaciones.</span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>Este paso **solo se hace si el ANOVA es significativo**. Un ANOVA no significativo no autoriza a buscar diferencias pares.</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplo de referencia en R</span></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-ejemplo</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">variedad =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">10</span>)),</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">rendimiento =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.0</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.8</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.4</span>, <span class="at">sd =</span> <span class="fl">0.6</span>))</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo)                           <span class="co"># tabla ANOVA</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>**Lectura:** la fila de <span class="in">`variedad`</span> es la prueba de $H_0$ (la F y su p-valor). La fila <span class="in">`Residuals`</span> es la variabilidad dentro de los grupos.</span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-supuestos</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo))         <span class="co"># normalidad de residuos</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)  <span class="co"># homocedasticidad</span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-tukey</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos))</span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medias estimadas y comparaciones con emmeans</span></span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>El paquete **emmeans** trabaja directamente sobre un modelo ajustado con <span class="in">`lm()`</span> y responde las preguntas que importan en la práctica:</span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Cuál es la media estimada de cada grupo, con su intervalo de confianza?</span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué diferencias entre grupos son significativas, con un ajuste por comparaciones múltiples?</span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué contrastes específicos interesan (por ejemplo, un grupo control contra el promedio de los tratamientos)?</span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo. Con modelos más complejos (varios factores, covariables o desbalance), las medias marginales estimadas siguen siendo válidas, mientras que las medias crudas pueden engañar.</span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>**Medias marginales estimadas:** son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.</span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-medias</span></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo, <span class="sc">~</span> variedad)</span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>medias                       <span class="co"># medias estimadas con IC 95 %</span></span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medias) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rendimiento estimado"</span>, <span class="at">y =</span> <span class="st">"Variedad"</span>)</span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>**Comparaciones pareadas con ajuste:** <span class="in">`pairs()`</span> calcula todas las diferencias entre grupos. El argumento <span class="in">`adjust`</span> controla el error global; con <span class="in">`"tukey"`</span> el resultado es equivalente al de <span class="in">`TukeyHSD()`</span>, pero con la salida en forma de tabla de contrastes.</span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-pares</span></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>**Contrastes específicos:** cuando la pregunta no es "todos contra todos", se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-contrastes</span></span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias,</span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"A vs promedio(B, C)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>**Advertencia:** los contrastes específicos deben plantearse antes de ver los datos, o al menos declararse como planificados. Si se eligen después de mirar los resultados, el control del error se pierde, igual que con las comparaciones sueltas de la sección anterior.</span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>**Conexión con la prueba t:** cuando hay dos grupos, <span class="in">`pairs()`</span> sobre el modelo ajustado da la misma diferencia de medias que <span class="in">`t.test(var.equal = TRUE)`</span>, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.</span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-vs-t</span></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>modelo_AB <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB)</span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</span><span class="co">](../explicaciones extras/emmeans.qmd)</span></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prueba t de Student</span></span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta e hipótesis</span></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>Cuando hay solo dos grupos, la pregunta es si sus medias difieren:</span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 \qquad H_1: \mu_1 \neq \mu_2$$</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>Equivalentemente, $H_0: \mu_1 - \mu_2 = 0$.</span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estadístico t</span></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a>Para varianzas iguales (versión *pooled*), el estadístico es:</span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>$$t = \frac{\bar{y}_1 - \bar{y}_2}{s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}, \qquad s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}$$</span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>Con $n_1 + n_2 - 2$ grados de libertad. Si $H_0$ es verdadera, $t$ sigue una distribución t de Student.</span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>Si las varianzas no son iguales, se usa la versión de **Welch**, que es el valor por defecto de <span class="in">`t.test()`</span> en R. Ajusta los grados de libertad y no asume homocedasticidad. En la práctica conviene usar Welch salvo que haya una razón fuerte para asumir varianzas iguales.</span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relación con el ANOVA</span></span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>Con dos grupos, el ANOVA y la prueba t son el mismo análisis:</span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>$$F_{1,\,N-2} = t^2_{N-2}$$</span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>Por eso el p-valor es idéntico en los dos casos. El ANOVA es más general porque sirve para $k$ grupos; la prueba t se usa cuando hay dos.</span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a><span class="fu">## Supuestos</span></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homocedasticidad si se usa la versión con varianzas iguales. La prueba de Levene sirve para decidir entre la versión clásica y la de Welch.</span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplo de referencia en R</span></span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-ejemplo</span></span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"A"</span>]</span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"B"</span>]</span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)    <span class="co"># versión clásica</span></span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B)                      <span class="co"># versión de Welch (por defecto)</span></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a>**Verificación de la relación con ANOVA:**</span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-vs-anova</span></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>datos_AB <span class="ot">&lt;-</span> <span class="fu">subset</span>(datos, variedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a>datos_AB<span class="sc">$</span>variedad <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(datos_AB<span class="sc">$</span>variedad)</span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a>t_res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>f_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB))</span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">t_cuadrado =</span> <span class="fu">unname</span>(t_res<span class="sc">$</span>statistic<span class="sc">^</span><span class="dv">2</span>), <span class="at">F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>])</span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_t =</span> t_res<span class="sc">$</span>p.value, <span class="at">p_F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>])</span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la prueba t.</span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a><span class="fu"># Protocolo aplicado a la comparación de grupos</span></span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>Para aplicar lo visto, usar el mismo protocolo de la Parte 4:</span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Pregunta e hipótesis:** ¿las medias de los grupos son iguales?</span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Modelo y supuestos:** especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.</span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Exploración:** boxplots o gráficos de puntos por grupo, con medias y dispersión.</span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Estimación:** tabla ANOVA (o <span class="in">`t.test()`</span> si son dos grupos), medias por grupo e intervalos de confianza.</span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Validación:** normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con <span class="in">`emmeans`</span>.</span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**Interpretación:** resultado en términos del problema, indicando qué grupos difieren y cuánto.</span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="fu"># Resumen</span></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un factor con $k$ grupos se analiza con **ANOVA**; con dos grupos, la **prueba t** da el mismo resultado.</span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El ANOVA pregunta si alguna media difiere; para saber cuál, se usan comparaciones múltiples con control del error global.</span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los supuestos son los del Modelo Lineal General: independencia, normalidad y homocedasticidad, verificados sobre los residuos.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

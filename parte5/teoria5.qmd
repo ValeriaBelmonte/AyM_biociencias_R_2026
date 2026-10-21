@@ -1,0 +1,227 @@
+---
+title: "Teoría 5"
+---
+
+
+# Modelo lineal con una variable explicativa categórica
+
+En la Parte 4 vimos regresión, donde la variable explicativa es numérica. Ahora la variable explicativa es **categórica**: indica el grupo al que pertenece cada observación (por ejemplo, variedad, tratamiento o lote).
+
+El Modelo Lineal General sigue siendo el mismo:
+
+$$Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}$$
+
+- $Y_{ij}$: observación $j$ del grupo $i$.
+- $\mu$: media general.
+- $\tau_i$: efecto del grupo $i$, es decir, cuánto se aparta su media de la media general.
+- $\varepsilon_{ij}$: error aleatorio, con los mismos supuestos de la Parte 4.
+
+Los supuestos son los mismos de regresión: independencia, normalidad y homocedasticidad. Lo que cambia es que las predicciones son las medias de cada grupo:
+
+$$\hat{y}_{ij} = \bar{y}_i$$
+
+Como en la Parte 4, el protocolo de seis pasos se aplica igual: pregunta, modelo, exploración, estimación, validación e interpretación.
+
+# ANOVA de un factor
+
+## Pregunta e hipótesis
+
+Con $k$ grupos, la pregunta es si al menos uno de ellos tiene una media distinta. Las hipótesis son:
+
+$$H_0: \mu_1 = \mu_2 = \cdots = \mu_k \qquad H_1: \text{al menos una media difiere}$$
+
+Equivalentemente, en términos de efectos, $H_0: \tau_1 = \cdots = \tau_k = 0$.
+
+Notar que $H_1$ no dice *cuál* grupo difiere. Para eso se necesitan comparaciones posteriores, que se ven más abajo.
+
+## Idea del estadístico F
+
+El ANOVA compara dos fuentes de variabilidad:
+
+- **Variabilidad entre grupos:** cuánto se separan las medias de los grupos entre sí.
+- **Variabilidad dentro de los grupos:** cuánto varían las observaciones dentro de cada grupo (es el error).
+
+La suma de cuadrados total se descompone así:
+
+$$SC_{total} = SC_{tratamientos} + SC_{error}$$
+
+Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:
+
+| Fuente | SC | gl | CM | F |
+|---|---|---|---|---|
+| Tratamientos (entre grupos) | $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ |
+| Error (dentro de grupos) | $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ | |
+| Total | $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ | $N-1$ | | |
+
+Si $H_0$ es verdadera, $F$ sigue una distribución $F_{k-1,\,N-k}$. Un valor grande de $F$ indica que la variabilidad entre grupos es grande comparada con la variabilidad dentro de ellos, y lleva a rechazar $H_0$.
+
+## Supuestos
+
+Se verifican sobre los residuos del modelo, igual que en la Parte 4:
+
+1. **Independencia:** depende del diseño. Se justifica en el paso 2.
+2. **Normalidad:** Shapiro-Wilk sobre los residuos y gráfico Q-Q.
+3. **Homocedasticidad:** la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (`car::leveneTest()`) o de Bartlett (`bartlett.test()`), y con un gráfico de residuos contra valores ajustados.
+
+Si la normalidad o la homocedasticidad fallan, se puede transformar la respuesta (Parte 4, transformaciones) o usar una alternativa no paramétrica, como Kruskal-Wallis. Kruskal-Wallis no pertenece al Modelo Lineal General y no se trata en esta parte.
+
+## Comparaciones múltiples
+
+Si el ANOVA da significativo, el siguiente paso es identificar qué pares de grupos difieren según la variable respuesta. Comparar todos los pares con pruebas t sueltas aumenta la probabilidad de cometer al menos un error de tipo I: con $\alpha = 0.05$ y muchas comparaciones, la probabilidad de un falso positivo crece rápidamente.
+
+Por eso se usan métodos de comparaciones múltiples que controlan ese error global. El más usado en este curso es el de **Tukey** (`TukeyHSD()`), que da intervalos de confianza para las diferencias de medias ajustados por el número de comparaciones.
+
+Este paso **solo se hace si el ANOVA es significativo**. Un ANOVA no significativo no autoriza a buscar diferencias pares.
+
+## Ejemplo de referencia en R
+
+```r
+#| label: anova-ejemplo
+set.seed(10)
+datos <- data.frame(
+  variedad = factor(rep(c("A", "B", "C"), each = 10)),
+  rendimiento = c(rnorm(10, mean = 5.0, sd = 0.6),
+                  rnorm(10, mean = 5.8, sd = 0.6),
+                  rnorm(10, mean = 5.4, sd = 0.6))
+)
+
+modelo <- lm(rendimiento ~ variedad, data = datos)
+anova(modelo)                           # tabla ANOVA
+```
+
+**Lectura:** la fila de `variedad` es la prueba de $H_0$ (la F y su p-valor). La fila `Residuals` es la variabilidad dentro de los grupos.
+
+```r
+#| label: anova-supuestos
+shapiro.test(residuals(modelo))         # normalidad de residuos
+car::leveneTest(rendimiento ~ variedad, data = datos)  # homocedasticidad
+```
+
+```r
+#| label: anova-tukey
+TukeyHSD(aov(rendimiento ~ variedad, data = datos))
+```
+
+## Medias estimadas y comparaciones con emmeans
+
+El paquete **emmeans** trabaja directamente sobre un modelo ajustado con `lm()` y responde las preguntas que importan en la práctica:
+
+- ¿Cuál es la media estimada de cada grupo, con su intervalo de confianza?
+- ¿Qué diferencias entre grupos son significativas, con un ajuste por comparaciones múltiples?
+- ¿Qué contrastes específicos interesan (por ejemplo, un grupo control contra el promedio de los tratamientos)?
+
+La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo. Con modelos más complejos (varios factores, covariables o desbalance), las medias marginales estimadas siguen siendo válidas, mientras que las medias crudas pueden engañar.
+
+**Medias marginales estimadas:** son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.
+
+```r
+#| label: emmeans-medias
+library(emmeans)
+
+medias <- emmeans(modelo, ~ variedad)
+medias                       # medias estimadas con IC 95 %
+plot(medias) + labs(x = "Rendimiento estimado", y = "Variedad")
+```
+
+**Comparaciones pareadas con ajuste:** `pairs()` calcula todas las diferencias entre grupos. El argumento `adjust` controla el error global; con `"tukey"` el resultado es equivalente al de `TukeyHSD()`, pero con la salida en forma de tabla de contrastes.
+
+```r
+#| label: emmeans-pares
+pairs(medias, adjust = "tukey")
+```
+
+**Contrastes específicos:** cuando la pregunta no es "todos contra todos", se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:
+
+```r
+#| label: emmeans-contrastes
+contrast(medias,
+         list("A vs promedio(B, C)" = c(1, -0.5, -0.5)),
+         adjust = "none")
+```
+
+**Advertencia:** los contrastes específicos deben plantearse antes de ver los datos, o al menos declararse como planificados. Si se eligen después de mirar los resultados, el control del error se pierde, igual que con las comparaciones sueltas de la sección anterior.
+
+**Conexión con la prueba t:** cuando hay dos grupos, `pairs()` sobre el modelo ajustado da la misma diferencia de medias que `t.test(var.equal = TRUE)`, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.
+
+```r
+#| label: emmeans-vs-t
+modelo_AB <- lm(rendimiento ~ variedad, data = datos_AB)
+pairs(emmeans(modelo_AB, ~ variedad))
+```
+
+[🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes](../explicaciones extras/emmeans.qmd)
+# Prueba t de Student
+
+## Pregunta e hipótesis
+
+Cuando hay solo dos grupos, la pregunta es si sus medias difieren:
+
+$$H_0: \mu_1 = \mu_2 \qquad H_1: \mu_1 \neq \mu_2$$
+
+Equivalentemente, $H_0: \mu_1 - \mu_2 = 0$.
+
+## Estadístico t
+
+Para varianzas iguales (versión *pooled*), el estadístico es:
+
+$$t = \frac{\bar{y}_1 - \bar{y}_2}{s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}, \qquad s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}$$
+
+Con $n_1 + n_2 - 2$ grados de libertad. Si $H_0$ es verdadera, $t$ sigue una distribución t de Student.
+
+Si las varianzas no son iguales, se usa la versión de **Welch**, que es el valor por defecto de `t.test()` en R. Ajusta los grados de libertad y no asume homocedasticidad. En la práctica conviene usar Welch salvo que haya una razón fuerte para asumir varianzas iguales.
+
+## Relación con el ANOVA
+
+Con dos grupos, el ANOVA y la prueba t son el mismo análisis:
+
+$$F_{1,\,N-2} = t^2_{N-2}$$
+
+Por eso el p-valor es idéntico en los dos casos. El ANOVA es más general porque sirve para $k$ grupos; la prueba t se usa cuando hay dos.
+
+## Supuestos
+
+Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homocedasticidad si se usa la versión con varianzas iguales. La prueba de Levene sirve para decidir entre la versión clásica y la de Welch.
+
+## Ejemplo de referencia en R
+
+```r
+#| label: t-ejemplo
+grupo_A <- datos$rendimiento[datos$variedad == "A"]
+grupo_B <- datos$rendimiento[datos$variedad == "B"]
+
+t.test(grupo_A, grupo_B, var.equal = TRUE)    # versión clásica
+t.test(grupo_A, grupo_B)                      # versión de Welch (por defecto)
+```
+
+**Verificación de la relación con ANOVA:**
+
+```r
+#| label: t-vs-anova
+datos_AB <- subset(datos, variedad %in% c("A", "B"))
+datos_AB$variedad <- droplevels(datos_AB$variedad)
+
+t_res <- t.test(rendimiento ~ variedad, data = datos_AB, var.equal = TRUE)
+f_res <- anova(lm(rendimiento ~ variedad, data = datos_AB))
+
+c(t_cuadrado = unname(t_res$statistic^2), F = f_res$`F value`[1])
+c(p_t = t_res$p.value, p_F = f_res$`Pr(>F)`[1])
+```
+
+Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la prueba t.
+
+# Protocolo aplicado a la comparación de grupos
+
+Para aplicar lo visto, usar el mismo protocolo de la Parte 4:
+
+1. **Pregunta e hipótesis:** ¿las medias de los grupos son iguales?
+2. **Modelo y supuestos:** especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.
+3. **Exploración:** boxplots o gráficos de puntos por grupo, con medias y dispersión.
+4. **Estimación:** tabla ANOVA (o `t.test()` si son dos grupos), medias por grupo e intervalos de confianza.
+5. **Validación:** normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con `emmeans`.
+6. **Interpretación:** resultado en términos del problema, indicando qué grupos difieren y cuánto.
+
+# Resumen
+
+- Un factor con $k$ grupos se analiza con **ANOVA**; con dos grupos, la **prueba t** da el mismo resultado.
+- El ANOVA pregunta si alguna media difiere; para saber cuál, se usan comparaciones múltiples con control del error global.
+- Los supuestos son los del Modelo Lineal General: independencia, normalidad y homocedasticidad, verificados sobre los residuos.

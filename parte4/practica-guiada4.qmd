@@ -1,251 +1,356 @@
 ---
-title: "Práctica guiada"
+title: "Práctica guiada · Parte 4"
+subtitle: "Regresión lineal simple, regresión con transformación y correlación"
+format:
+  html:
+    toc: true
+    embed-resources: true
+lang: es
+execute:
+  warning: false
+  message: false
 ---
 
-# Regresión lineal simple
+Esta práctica tiene tres ejemplos. En todos seguimos el protocolo de seis pasos de la teoría: **pregunta e hipótesis → modelo → exploración → estimación → validación → interpretación**.
 
-Un investigador desea estudiar si la **densidad de siembra** (medida en plantas por m²) tiene un efecto sobre el **rendimiento del cultivo de trigo** (medido en tn/ha). Para ello, fijó seis densidades de siembra distintas —200, 220, 240, 260, 280 y 300 plantas por m²— y destinó seis parcelas a cada densidad, obteniendo un total de 36 parcelas. La Tabla 1.1 presenta el rendimiento de trigo registrado en cada parcela, según su densidad de siembra.
+| Práctica | Tema | Datos |
+|------------------------|------------------------|------------------------|
+| 1 | Regresión lineal simple | Densidad de siembra y rendimiento de trigo |
+| 2 | Regresión lineal con transformación | Peso del cerebro y peso del cuerpo en mamíferos |
+| 3 | Correlación | Peso vivo y perímetro torácico en animales |
 
-## Paso 1 -Plantear la pregunta de investigación y las hipótesis
+Completá en tu propio documento las preguntas marcadas con **Pregunta**.
 
-A partir de esta situación, la pregunta de investigación es:
+------------------------------------------------------------------------
 
-¿Existe una relación entre la densidad de siembra y el rendimiento de trigo?
+# Práctica 1: regresión lineal simple (trigo)
 
-Esta pregunta se traduce en una hipótesis estadística sobre el parámetro que mide esa relación en el modelo: la pendiente $\beta_1$ (que definiremos formalmente en el Paso 2).
+Un investigador quiere saber si la **densidad de siembra** (plantas/m²) tiene efecto sobre el **rendimiento** del trigo (tn/ha). Fijó seis densidades (200, 220, 240, 260, 280 y 300 plantas/m²) y usó seis parcelas por densidad: 36 parcelas en total.
 
-## Paso 2 — Explicitar el modelo estadístico
+## Paso 1. Pregunta e hipótesis
 
-Antes de ajustar cualquier modelo, definimos sus componentes:
+**Pregunta de investigación:** ¿existe relación entre la densidad de siembra y el rendimiento de trigo? Esto es: ¿se puede expresar el rendimiento de trigo en función de la densidad de siembra, y en particular por medio de una regresión linal?
 
-| Componente del MLG   | En regresión lineal simple         |
-|----------------------|------------------------------------|
-| Variable respuesta   | $Y_i$: rendimiento de trigo        |
-| Parte sistemática    | $\beta_0 + \beta_1x_i$             |
-| Variable explicativa | $x_i$: densidad de siembra         |
-| Error aleatorio      | $\varepsilon_i\sim N(0, \sigma^2)$ |
-|                      |                                    |
+## Paso 2. Modelo e Hipotésis
 
-El modelo estadístico queda formalmente expresado como: $$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$
+$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$
 
-donde \$\beta_0 \$ y \$\$\beta_1\$ son los parámetros poblacionales desconocidos que se estimarán a partir de los datos. Y las hipótesis estadísticas que responden a la pregunta de investigación del Paso 1 son:
+- $Y_i$: rendimiento de la parcela $i$.
+- $x_i$: densidad de siembra de la parcela $i$.
 
-$$H_1: \beta_1 = 0 \quad \text{( No existe una relación lineal entre la densidad y el rendimiento)}$$ $$H_1: \beta_1 \neq 0 \quad \text{(existe una relación lineal entre la densidad y el rendimiento)}$$
+la pregunta se traduce en términos de hipótesis como Esto se traduce en una hipótesis sobre la pendiente $\beta_1$:
 
-Sobre el diseño y el supuesto de independencia: dado que cada parcela recibió su densidad de siembra de forma controlada por el investigador y las parcelas fueron trabajadas de manera independiente entre sí (sin que el manejo de una influya sobre otra), es razonable asumir que se cumple el supuesto de independencia de las observaciones. Este es, precisamente, el tipo de decisión que —como señalamos en la sección 1.1— depende del diseño del estudio y debe evaluarse en este paso, no en la validación posterior.
+$H_0: \beta_1 = 0$ (no hay una relación) $H_1: \beta_1 \neq 0$ (hay una relación)
 
-## Paso 3 - Análsis exploratorio de los datos
+## Paso 3. Exploración
 
-Antes de ajustar en modelo, exploramos los datos para concer su distribución y vizualizar la realción entre las variables
-
-Cargamos los datos
-
-```{r}
-
-# Base de datos: densidad de siembra y rendimiento
+``` r
 
 densidad <- rep(c(200, 220, 240, 260, 280, 300), each = 6)
 
 rinde <- c(
-  # Densidad 200
-  2.6, 1.9, 1.85, 2.05, 2.15, 2.35,
-  
-  # Densidad 220
-  2.7, 2.6, 2.25, 2.5, 2.9, 2.4,
-  
-  # Densidad 240
-  3, 3.1, 3.25, 2.75, 3.5, 3.1,
-  
-  # Densidad 260
-  4, 3.7, 3.2, 4.15, 3.55, 3.4,
-  
-  # Densidad 280
-  3.6, 3.9, 4.55, 4.2, 4.4, 4,
-  
-  # Densidad 300
-  4.5, 4.6, 4.85, 4.2, 4.35, 3.95
+  2.6, 1.9, 1.85, 2.05, 2.15, 2.35,     # 200
+  2.7, 2.6, 2.25, 2.5, 2.9, 2.4,        # 220
+  3, 3.1, 3.25, 2.75, 3.5, 3.1,         # 240
+  4, 3.7, 3.2, 4.15, 3.55, 3.4,         # 260
+  3.6, 3.9, 4.55, 4.2, 4.4, 4,          # 280
+  4.5, 4.6, 4.85, 4.2, 4.35, 3.95       # 300
 )
 
 trigo <- data.frame(densidad, rinde)
 ```
 
-Graficamos la inforamción
-
-```{r}
+``` r
 
 library(ggplot2)
-g_densidad<- ggplot(trigo, aes(x = densidad, y = rinde)) + 
-  geom_point(color="blue", size=3) + 
-  labs(title = "Rendimiento en función de densidad de siembra", x = "Densidad (plantas por m²) ", y = "Rendimiento(tn/ha)")+
-  theme_classic() +
-  theme(axis.title.x = element_text(size = 10),
-        axis.title.y = element_text(size = 10),
-        title = element_text(size = 14))
-g_densidad
+ggplot(trigo, aes(x = densidad, y = rinde)) +
+  geom_point(color = "blue", size = 3) +
+  labs(x = "Densidad (plantas/m²)", y = "Rendimiento (tn/ha)",
+       title = "Rendimiento en función de la densidad de siembra") +
+  theme_classic()
 ```
 
-Figura: Gráfico de dispersión Rendimiento vs densidad de siembra
+**Pregunta 1.1:** ¿la relación parece lineal? ¿Es positiva o negativa? ¿Hay valores atípicos?
 
-El gráfico de dispersión muestra una tendencia clara: a medida que aumenta la densidad de siembra, el rendimiento tiende a aumentar también. La relación se observa aproximadamente **lineal**, sin curvaturas evidentes, lo cual es un primer indicio a favor de ajustar un modelo de regresión lineal simple.
+**Pregunta 1.2:** a densidad de 260 plantas/m², ¿entre qué valores van los rendimientos?
 
-También se observa que, para una misma densidad, existe cierta variabilidad en el rendimiento entre las seis parcelas —por ejemplo, en la densidad de 260 plantas/m² los valores van de aproximadamente 3.2 a 4.2 tn/ha—. Esta dispersión alrededor de la tendencia central es precisamente la que el modelo va a intentar capturar mediante el término de error aleatorio εᵢ.
+## Paso 4. Estimación
 
-**¿Qué buscamos en este gráfico, en general?** Al explorar la relación entre una variable respuesta y una variable explicativa numérica, conviene prestar atención a:
+Estimamos el modelo
 
-**La forma de la relación**: ¿es lineal, o se insinúa una curva? (si hay curvatura marcada, un modelo lineal no sería adecuado).
-
-**La dirección de la relación**: ¿positiva (ambas variables aumentan juntas) o negativa?
-
-**La dispersión de los puntos alrededor de la tendencia**: ¿es similar en todo el rango de X, o cambia (por ejemplo, se abre como un abanico)? Esto es un primer indicio visual de homocedasticidad, que se confirmará más formalmente en el Paso 5 con el análisis de residuos.
-
-**Valores atípicos**: puntos que se alejan notoriamente del patrón general del resto de los datos.
-
-En este ejemplo, el gráfico sugiere una relación lineal, positiva, sin atípicos evidentes ni cambios marcados en la dispersión — todo lo cual es coherente con los supuestos que vamos a validar formalmente más adelante.
-
-## Estimar los parámetros del modelo
-
-Ajustamos el modelo de regresión lineal simple en R con la función `lm()`:
-
-Se obtienen las estimaciones de los parámetros, sus intervalos de confianza del 95 %, medidas de calidad de ajuste y, cuando corresponda, medidas de magnitud del efecto.
-
-```{r}
- 
-modelo <- lm(rinde ~ densidad, data = trigo)
-
+``` r
+modelo_trigo <- lm(rinde ~ densidad, data = trigo)
+summary(modelo_trigo)
+confint(modelo_trigo)
 ```
 
-```{r}
+Pedimos el resumen del modelo
 
-summary(modelo)
-
+``` r
+summary(modelo_trigo)
 ```
 
-La columna Estimate contiene las estimaciones b₀ y b₁, la ordenada al origen y la pendiente:
+![Figura: Resumen de modelo_trigo](/imagenes/summary%20(trigo).png)
 
-$b_o = −2.555$ (ordenada al origen) $b_1 = 0.0236$ (pendiente)
+La recta estimada es $\widehat{\text{rinde}} = -2.555 + 0.0236 \times \text{densidad}$.
 
-[📖 Ver explicación detallada de summary()](../explicaciones extras/summary regresion(rinde).html)
+[🔍 ¿Qué significa cada parte de `summary()`?](../explicaciones%20extras/summary%20regresion%20(rinde).qmd)
 
-Con estos valores, la recta de regresión estimada es: $$\widehat{\text{rinde}} = -2.55 + 0.0235 \times \text{densidad}$$
+Pedimos el intervalo de confianza para la pendiente
 
-Esta recta permite estimar el rendimiento medio esperado para cualquier valor de densidad de siembra dentro del rango estudiado (200 a 300 plantas/m²). Las demás columnas de la salida `—Std. Error`, `t value` y `Pr(>|t|)`— corresponden al error estándar y a la prueba de hipótesis de cada parámetro, que interpretaremos en el Paso 6.
+``` r
+confint(modelo_trigo)
+```
 
+```         
+                 2.5 %      97.5 %
+(Intercept) -3.28678042 -1.82353704
+densidad     0.02065997  0.02645907
+```
 
+El intervalo de confianza para la pendiente es
 
+$$IC(\beta_1,95\%)=(0.021;0026)$$
 
+**Pregunta 1.3:** ¿qué significa $b_1 = 0.0236$ en palabras? Usá la expresión "por cada aumento de 1 planta/m²…".
 
-## Paso 5 — Validar el modelo ajustado
+**Pregunta 1.4:** ¿tiene sentido interpretar $b_0$? (Pista: ¿qué pasa en densidad 0?)
 
-Antes de interpretar los resultados, es necesario evaluar si los supuestos del modelo son razonables. Los errores aleatorios εᵢ no son observables directamente; por eso utilizamos los residuos como su aproximación empírica: $$e_i = y_i - \hat{y}_i$$
+**Pregunta 1.5:** ¿el IC 95 % de $\beta_1$ contiene al 0? ¿Qué concluís sobre $H_0$?
 
-```{r}
+## Paso 5. Validación
+
+``` r
+par(mfrow = c(2, 2))
+plot(modelo_trigo)
+par(mfrow = c(1, 1))
+shapiro.test(residuals(modelo_trigo))
+```
+
+Los residuos se leen así:
+
+- **Residuals vs Fitted** (linealidad): nube sin patrón alrededor de cero.
+- **Q-Q** (normalidad): puntos sobre la recta. Si no sabés leerlo, mirá la [página sobre el gráfico Q-Q](qqplot.html).
+- **Scale-Location** (homocedasticidad): dispersión pareja.
+- **Residuals vs Leverage** (influyentes): distancia de Cook.
+
+**Pregunta 1.6:** ¿los supuestos se cumplen? Mirá el gráfico de distancia de Cook y el p-valor de Shapiro-Wilk.
+
+### Residuos altos, puntos de palanca y observaciones influyentes
+
+En R, estos valores se obtienen con `rstandard()`, `hatvalues()` y `cooks.distance()`. El gráfico *Residuals vs Leverage* de `plot(modelo)` (cuarto gráfico) los muestra juntos.
+
+``` r
+n <- nrow(trigo)  #reemplazar por el nombre del data.frame a utilzar
+#reemplazar por el modelo a verificar
+which(abs(rstandard(modelo_trigo)) > 2)     # residuos altos 
+which(hatvalues(modelo_trigo) > 4 / n)      # palanca 
+which(cooks.distance(modelo_trigo) > 4 / n) # influyentes
+plot(modelo_trigo, which = 5)
+```
+
+Cada línea responde una pregunta distinta sobre los datos:
+
+- **n \<- nrow(trigo)**: guarda el número de filas de la base, que en este caso son 36 parcelas. Se usa para calcular los umbrales.
+
+- **which(abs(rstandard(modelo_trigo)) \> 2)**: busca residuos altos. \`rstandard()\` divide cada residuo por su error estándar corregido, de modo que quedan en una escala comparable. `abs()` toma el valor absoluto, y `\> 2` marca los que se alejan más de dos desvíos de la recta. `which()` devuelve los números de fila que cumplen esa condición.
+
+- **which(hatvalues(modelo_trigo) \> 4 / n)**: busca puntos de palanca. `hatvalues()` mide qué tan lejos está cada valor de x del centro de los datos. Si es mayor que 4/n, la observación tiene mucho peso en la estimación de la pendiente.
+
+- **which(cooks.distance(modelo_trigo) \> 4 / n)\`**: busca observaciones influyentes. cooks.distance() mide cuánto cambiarían los coeficientes si se quitara esa observación. Si supera 4/n, conviene revisarla.
+
+- **plot(modelo_trigo, which = 5)**: dibuja el gráfico Residuals vs Leverage, que muestra los tres conceptos juntos. Los puntos con distancia de Cook alta aparecen en las curvas punteadas de fondo.
+
+Con $n = 36$, el umbral es $4/36 \approx 0.11$. La parcela 36 lo supera. Antes de decidir si la quitás, comprobá si cambia la conclusión ajustando el modelo sin ella.
+
+``` r
+
+modelo_sin36 <- lm(rinde ~ densidad, data = trigo[-36, ])
+coef(modelo_trigo)
+coef(modelo_sin36)
+```
+
+**Pregunta 1.7:** ¿cambian mucho los coeficientes? ¿Qué decidirías?
+
+## Paso 6. Interpretación
+
+La pendiente es significativa (p \< 0.001). Por cada planta/m² adicional, el rendimiento medio aumenta entre 0.0207 y 0.0265 tn/ha (IC 95 %). El modelo explica el 88.9 % de la variabilidad del rendimiento ($R^2 = 0.889$).
+
+**Pregunta 1.8:** redactá un párrafo de resultados con estos valores, sin copiar esta frase.
+
+------------------------------------------------------------------------
+
+# Práctica 2: regresión lineal con transformación (cerebro y cuerpo)
+
+En 62 especies de mamíferos (Allison y Cicchetti, 1976; Weisberg, 2003) se midieron el peso del cuerpo (kg) y el peso del cerebro (g). Queremos estudiar si el peso del cerebro depende del peso corporal.
+
+Descargá el archivo de datos: [📥 Descargar mamiferos.csv](../datos/mamiferos.csv){download="mamiferos.csv"}.
+
+## Paso 1. Pregunta e hipótesis
+
+**Pregunta de investigación:** ¿el peso del cerebro aumenta con el peso del cuerpo?
+
+**Pregunta 2.1:** ¿Cuál es la variable respuesta y cuál la explicativa? Justificá.
+
+## Paso 2. Exploración en escala original
+
+``` r
+
+datos <- read.csv("mamiferos_corregido.csv")
+str(datos)
+```
+
+**Atención:** en las especies grandes (elefantes, humano), el cerebro y el cuerpo deben ser grandes; en los ratones, ambos pequeños. Si la pendiente final da cerca de 1.27 en vez de 0.75, las columnas están invertidas.
+
+``` r
+
+plot(peso_cerebro ~ peso_cuerpo, data = datos, pch = 19, col = "steelblue",
+     xlab = "Peso del cuerpo (kg)", ylab = "Peso del cerebro (g)")
+```
+
+**Pregunta 2.2:** ¿qué problemas ves? (Pista: el rango de valores y los puntos alejados.)
+
+## Paso 3. Modelo en escala original y diagnóstico
+
+``` r
+
+m_original <- lm(peso_cerebro ~ peso_cuerpo, data = datos)
+par(mfrow = c(1, 2))
+plot(m_original, which = 1)
+plot(m_original, which = 2)
+par(mfrow = c(1, 1))
+shapiro.test(residuals(m_original))
+```
+
+**Pregunta 2.3:** ¿los residuos muestran patrón? ¿Se cumple la normalidad?
+
+## Paso 4. Transformación logarítmica
+
+``` r
+
+datos$ln_cuerpo  <- log(datos$peso_cuerpo)
+datos$ln_cerebro <- log(datos$peso_cerebro)
+
+plot(ln_cerebro ~ ln_cuerpo, data = datos, pch = 19, col = "darkgreen",
+     xlab = "ln(peso del cuerpo)", ylab = "ln(peso del cerebro)")
+```
+
+**Pregunta 2.4:** ¿la nube se ve más recta? ¿Siguen siendo alejados los mismos puntos?
+
+``` r
+
+m_log <- lm(ln_cerebro ~ ln_cuerpo, data = datos)
+summary(m_log)
+confint(m_log)
+```
+
+**Pregunta 2.5:** ¿cuál es el valor de la pendiente? Como el modelo es $\ln(\text{cerebro}) = b_0 + b_1 \ln(\text{cuerpo})$, interpretá $b_1$ así: "un aumento de 1 % en el peso corporal se asocia con un aumento de \_\_\_ % en el peso del cerebro". Este valor se llama **exponente alométrico**.
+
+**Pregunta 2.6:** si la pendiente fuera 1, ¿qué significaría? ¿Y si fuera 0?
+
+## Paso 5. Validación del modelo transformado
+
+``` r
 
 par(mfrow = c(2, 2))
-plot(modelo)
+plot(m_log)
+par(mfrow = c(1, 1))
+shapiro.test(residuals(m_log))
+lmtest::bptest(m_log)
 ```
 
-Figura: los cuatro gráficos diagnósticos — Residuals vs Fitted, Q-Q Residuals, Scale-Location, Residuals vs Leverage
+``` r
 
-**Residuos vs. valores ajustados.** Permite evaluar linealidad y homocedasticidad. Esperamos una nube de puntos distribuida aleatoriamente alrededor de cero, sin tendencias ni curvaturas. En este ejemplo, los residuos no muestran un patrón sistemático, lo que apoya el supuesto de linealidad.
-
-**Gráfico Q-Q de los residuos.** Permite evaluar si los residuos se distribuyen aproximadamente Normal. Esperamos que los puntos se ubiquen cercanos a la recta de referencia. En este caso, la mayoría de los puntos se ajustan bien a la recta, con leves desvíos en los extremos (observaciones 22 y 27), que no resultan preocupantes.
-
-**Scale-Location.** También permite evaluar homocedasticidad, observando si la dispersión de los residuos es aproximadamente constante a lo largo de los valores ajustados. No se observan cambios marcados en la dispersión.
-
-**Residuos vs. leverage.** Permite identificar observaciones influyentes: aquellas cuya presencia o ausencia podría modificar de manera considerable los coeficientes estimados. Ninguna observación se destaca con una distancia de Cook preocupante.
-
-**Sobre la independencia.** A diferencia de los otros tres supuestos, la independencia de las observaciones no se evalúa con estos gráficos: como señalamos en el Paso 2, depende del diseño del estudio. En este caso, dado que las parcelas fueron trabajadas de manera independiente, el supuesto se considera razonable.
-
-En conjunto, el análisis de residuos no evidencia incumplimientos relevantes de los supuestos del modelo, por lo que podemos avanzar con confianza a la interpretación de los resultados.
-
-## Paso 6 — Interpretar y comunicar los resultados
-
-### Intervalo de confianza para la pendiente
-
-Como planteamos en el Paso 2: H₀: β₁ = 0 vs. H₁: β₁ ≠ 0. Siguiendo la lógica presentada en la sección 1.2.3, el valor *p* asociado a la pendiente es menor a 0.001 (`Pr(>|t|) < 2e-16`). Se rechaza H₀ y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.
-
-**Intervalo de confianza para la pendiente**
-
-El intervalo de confianza del 95 % para la pendiente permite estimar un rango de valores plausibles para el parámetro poblacional $\beta_1$.
-
-```{r}
-
-
-confint(modelo)
+cd <- cooks.distance(m_log)
+datos$especie[cd > 4 / nrow(datos)]
 ```
 
-Con una confianza del 95 %, se estima que por cada aumento de una planta por m² en la densidad de siembra, el rendimiento medio aumenta entre 0.0206 y 0.0264 tn/ha. Como el intervalo no contiene al cero, este resultado es coherente con la prueba de hipótesis anterior.
+**Pregunta 2.7:** ¿se cumplen normalidad y homocedasticidad? ¿Qué especies son influyentes, y qué pasa si las quitás?
 
-Para estos datos, el intervalo de confianza es aproximadamente:
+## Paso 6. Volver a la escala original
 
-$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$
+El modelo en escala original es $\text{cerebro} = e^{b_0} \cdot \text{cuerpo}^{\,b_1}$. Cuidado: `exp()` de la predicción da la **mediana**, no la media. Para corregir el sesgo se usa el factor de Duan.
 
-*Observación*:este intervalo puede obtenerse de la salida del modelo (`summary(modelo)`) o usando la función `confint(modelo)`
+``` r
+pred <- predict(m_log, newdata = data.frame(ln_cuerpo = log(c(1, 100, 1000))))
+exp(pred)                                       # mediana
+duan <- mean(exp(residuals(m_log)))
+exp(pred) * duan                                # media corregida
+```
 
-La prueba de hipótesis para la ordenada al origen suele tener menor interés práctico. En este ejemplo, una densidad de siembra igual a cero queda fuera del rango de valores estudiado; por ello, su interpretación no resulta relevante. Por lo tanto , tampoco se interpreta el intervalo de confianza para la ordenada al origen.
+**Pregunta 2.8:** ¿qué predicción usarías para un animal de 100 kg? ¿Por qué?
 
-#### Interpretación de los coeficientes
+------------------------------------------------------------------------
 
-La pendiente estimada es b₁ = 0.0235: en promedio, por cada aumento de una planta por m² en la densidad de siembra, el rendimiento esperado aumenta 0.0235 tn/ha.
+# Práctica 3: correlación (peso vivo y perímetro torácico)
 
-Como las densidades evaluadas difieren en 20 plantas/m², resulta más intuitivo expresar el efecto reescalado a ese incremento (esto es una re-expresión del mismo parámetro, no un valor nuevo a estimar): $$20 \times 0.0235 = 0.47 \text{ tn/ha}$$
+Se midieron 18 animales, elegidos dentro de una muestra de la EAC "Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal" (carrera de Ing. Agronómica). Para cada animal se registró el perímetro torácico (cm) y el peso vivo (kg).
 
-Es decir, por cada aumento de 20 plantas/m², se espera que el rendimiento medio aumente aproximadamente $0.47 \text { tn/ha}$.
+**Pregunta 3.1:** ¿las dos variables son aleatorias? ¿Podés aplicar correlación? ¿Y regresión? Justificá.
 
-La ordenada al origen estimada es $b_o = −2.555$ (ordenada al origen), y representa el rendimiento esperado cuando la densidad es igual a cero. Esta interpretación no tiene sentido práctico, ya que una densidad de cero plantas/m² se encuentra fuera del rango estudiado; por eso tampoco se interpreta su intervalo de confianza.
+``` r
 
-Variabilidad no explicada por el modelo
+animales <- data.frame(
+  peso_vivo = c(433, 584, 350, 410, 441.0, 479, 397, 357, 389, 485,
+                420, 485, 394, 429, 446, 431, 400, 393),
+  perimetro_toracico = c(175, 189, 170, 171, 176.5, 177, 170, 165, 170, 182,
+                         176, 184, 172, 176, 179, 173, 172.5, 174)
+)
+```
 
-El error estándar residual es $0.2924$, lo que indica que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29 \text { tn/ha}$.
+**Atención:** en la descripción el orden es perímetro y luego peso, pero en los datos la primera columna tiene valores de peso (350 a 584) y la segunda de perímetro (165 a 189). El código sigue esa interpretación.
 
-#### Coeficiente de determinación
+## Paso 1. Hipótesis
 
-$$R^2=0.889$$
+$$H_0: \rho = 0 \qquad H_1: \rho \neq 0$$
 
-Esto indica que el $88.9 \text{ \%}$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa. El porcentaje restante corresponde a otros factores no incluidos en el modelo y a la variabilidad aleatoria.
+## Paso 2. Exploración y supuestos
 
-#### Prueba global del modelo
+``` r
 
-El estadístico F ($272.7$, $p < 2.2e-16$) evalúa si el modelo en conjunto explica una parte significativa de la variabilidad de la respuesta. En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.
+plot(perimetro_toracico ~ peso_vivo, data = animales, pch = 19, col = "darkred",
+     xlab = "Peso vivo (kg)", ylab = "Perímetro torácico (cm)")
+```
 
-#### Comunicación de los resultados
+Para la prueba de hipótesis conviene que ambas variables tengan distribución aproximadamente normal:
 
-Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables (\$b_1 = 0.0235 \text{ tn/ha por planta/m²} \$; $IC 95 \% = [0.0206; 0.0264]; p < 0.001$). El modelo explicó el $88.9 \text{ \%}$ de la variabilidad del rendimiento ($R^2=0.889$).
+``` r
 
-# 
+shapiro.test(animales$peso_vivo)
+shapiro.test(animales$perimetro_toracico)
+```
 
-El valor p asociado a la pendiente es menor que 0.001. Por lo tanto, se rechaza la hipótesis nula y se concluye que existe evidencia de una relación lineal positiva entre la densidad de siembra y el rendimiento de trigo.
+**Pregunta 3.2:** ¿la relación es lineal? ¿Qué p-valores obtenés en Shapiro-Wilk?
 
-####Intervalo de confianza para la pendiente
+## Paso 3. Coeficiente de correlación
 
-Para estos datos, el intervalo de confianza es aproximadamente:
+``` r
 
-$$IC(\beta_1, 95\%)=(0.0206;\ 0.0264)$$
+cor(animales$peso_vivo, animales$perimetro_toracico)
+cor.test(animales$peso_vivo, animales$perimetro_toracico)   # prueba H0: rho = 0 e IC 95 %
+```
 
-Con una confianza del 95 %, se estima que por cada aumento de una unidad en la densidad de siembra, el rendimiento medio aumenta entre $0.0206$ y $0.0264 \ tn/ha$.
+**Pregunta 3.3:** ¿cuál es el valor de $r$? ¿Es positivo o negativo? ¿Qué fuerza tiene?
 
-Como el intervalo no contiene al cero, este resultado coincide con la prueba de hipótesis anterior.
+**Pregunta 3.4:** ¿qué p-valor obtenés y qué concluís sobre $H_0$?
 
-###Variabilidad no explicada por el modelo
+**Pregunta 3.5:** ¿cuál es el intervalo de confianza para $\rho$? ¿Qué te dice sobre la magnitud de la asociación?
 
-El error estándar residual indica la variabilidad de los rendimientos alrededor de la recta estimada. En este ejemplo, su valor es aproximadamente $0.29\ tn/ha$.
+**Pregunta 3.6:** ¿cuánto vale $r^2$? Interpretalo con una frase.
 
-Esto significa que, en promedio, los rendimientos observados se alejan de la recta estimada alrededor de $0.29\ tn/ha$..
+## Paso 4. Simetría de la correlación
 
-###Coeficiente de determinación
+``` r
 
-El coeficiente de determinación obtenido es:$R^2=0.889$
+coef(lm(peso_vivo ~ perimetro_toracico, data = animales))["perimetro_toracico"]
+coef(lm(perimetro_toracico ~ peso_vivo, data = animales))["peso_vivo"]
+cor(animales$perimetro_toracico, animales$peso_vivo)
+```
 
-Esto indica que el $88.9 \%$ de la variabilidad observada en el rendimiento se explica mediante el modelo lineal que utiliza la densidad de siembra como variable explicativa.
+**Pregunta 3.7:** ¿cambia la correlación si intercambiamos las variables? ¿Y las pendientes? ¿Qué variable elegirías como respuesta si quisieras predecir el peso a partir del perímetro?
 
-El porcentaje restante se debe a otros factores no incorporados en el modelo y a la variabilidad aleatoria.
+## Paso 5. Cierre
 
-####Prueba global del modelo
+Redactá dos o tres frases con el resultado. Recordá: **correlación no implica causalidad**, y el valor de $r$ describe solo asociación lineal.
 
-Al final de la salida de summary(modelo) también aparece un estadístico F y su valor p. Esta prueba evalúa si el modelo, en conjunto, explica una parte significativa de la variabilidad de la respuesta.
-
-En una regresión lineal simple, esta prueba conduce a la misma conclusión que la prueba de hipótesis para la pendiente.
-
-## Comunicar los resultados
-
-Se ajustó un modelo de regresión lineal simple para evaluar la asociación entre la densidad de siembra y el rendimiento de trigo. El análisis de los residuos no evidenció incumplimientos relevantes de los supuestos de linealidad, normalidad, homocedasticidad e independencia. Se observó una asociación lineal positiva y estadísticamente significativa entre ambas variables ($\beta=0.0235\ tn/ha \ por\ planta/m^2$²; $IC95%: 0.0206–0.0264; p<0.001)$. El modelo explicó el $88.9  \ %$ de la variabilidad del rendimiento ($R^2=0.889$).
+**Pregunta 3.8:** ¿qué pasaría con $r$ si el perímetro se midiera mal en un animal? ¿Cómo lo detectarías en el gráfico?

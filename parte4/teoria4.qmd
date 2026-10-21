@@ -147,20 +147,6 @@ $$\varepsilon_i \sim N(0, \sigma^2)$$
 
 Bajo estos supuestos, las estimaciones de la ordenada al origen y de la pendiente permiten realizar inferencias sobre los parámetros poblacionales.
 
-
-### Verificación de los supuestos
-
-Los supuestos se verifican sobre los **residuos**, porque los errores $\varepsilon_i$ no son observables.
-
-**Linealidad, homocedasticidad e independencia** se evalúan con el gráfico de residuos contra valores ajustados (la nube debe estar centrada en cero y sin patrón ni abanico) y con el diseño del estudio (la independencia no se verifica con datos, se justifica con el diseño).
-
-**Normalidad** se evalúa con dos herramientas complementarias:
-
-- **Gráfico Q-Q:** compara los cuantiles de los residuos con los de una normal teórica. Si los residuos son normales, los puntos caen sobre la recta de referencia. Colas que se separan indican colas más pesadas o livianas; una forma de S indica asimetría. Para ver cómo construirlo e interpretarlo, consultar la página [Cómo hacer e interpretar un gráfico Q-Q](qqplot.html).
-- **Prueba de Shapiro-Wilk:** $H_0$: los residuos provienen de una distribución normal; $H_1$: no provienen de una distribución normal. Si $p > 0.05$, no hay evidencia para rechazar la normalidad.
-
-Tener en cuenta que con muestras chicas la prueba tiene poca potencia, y con muestras grandes cualquier desvío leve resulta significativo. Por eso conviene mirar el gráfico Q-Q junto con el valor $p$.
-
 ### Inferencia sobre los parámetros
 
 Las estimaciones $b_0$ y $b_1$ se calcularon a partir de una muestra particular de datos. Si hubiéramos tomado otra muestra —otras unidades experimentales, otras observaciones—, los valores de $b_0$ y $b_1$ habrían sido distintos. Esto significa que $b_0$ y $b_1$ son, en sí mismas, variables aleatorias: cada uno tiene una distribución de probabilidad, una media y una varianza, que describen cómo varían de muestra a muestra.
@@ -189,7 +175,7 @@ Este mismo procedimiento puede aplicarse a $\beta_0$, aunque en la práctica su 
 
 El valor $p$ indica si se rechaza o no la hipótesis de que $\beta_1=0$, pero no informa cuál podría ser el verdadero valor de $\beta_1$. Para eso se construye un intervalo de confianza (IC), que ofrece un rango de valores plausibles para el parámetro poblacional, con un nivel de confianza dado (habitualmente, 95 %):
 
-$$IC(\mu,(1-\alpha)\%)=\beta_1\pm t_{\frac{\alpha}{2}} \times EE(b_1)$$
+$$IC(\beta_1,(1-\alpha)\%)=b_1\pm t_{\frac{\alpha}{2}} \times EE(b_1)$$
 
 donde $t$ es un valor crítico de la distribución t que depende del nivel de confianza elegido y de los grados de libertad del modelo.
 
@@ -197,57 +183,48 @@ Si este intervalo no contiene al cero, se llega a la misma conclusión que con l
 
 En la sección Práctica Guiada aplicaremos estos conceptos —estimación, error estándar, prueba de hipótesis e intervalo de confianza— a un ejemplo concreto: la relación entre el rendimiento de trigo y la densidad de siembra.
 
+### Verificación de los supuestos
 
-## Correlación
+Los supuestos se verifican sobre los **residuos**, porque los errores $\varepsilon_i$ no son observables.
 
-El **coeficiente de correlación de Pearson** mide la fuerza y la dirección de la relación **lineal** entre dos variables:
+**Linealidad, homocedasticidad e independencia** se evalúan con el gráfico de residuos contra valores ajustados (la nube debe estar centrada en cero y sin patrón ni abanico) y con el diseño del estudio (la independencia no se verifica con datos, se justifica con el diseño).
 
-$$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}, \qquad -1 \le r \le 1$$
+**Normalidad** se evalúa con dos herramientas complementarias:
 
-- El signo indica la dirección de la relación.
-- El valor absoluto indica la fuerza: cerca de 0 la relación lineal es débil; cerca de 1 o −1, fuerte.
-- En regresión lineal simple, $r^2$ coincide con el $R^2$ del modelo.
+- **Gráfico Q-Q:** compara los cuantiles de los residuos con los de una normal teórica. Si los residuos son normales, los puntos caen sobre la recta de referencia. Colas que se separan indican colas más pesadas o livianas; una forma de S indica asimetría. Para ver cómo construirlo e interpretarlo, consultar la página [Cómo hacer e interpretar un gráfico Q-Q](../explicaciones extras/qqplot.qmd).
+- **Prueba de Shapiro-Wilk:** $H_0$: los residuos provienen de una distribución normal; $H_1$: no provienen de una distribución normal. Si $p > 0.05$, no hay evidencia para rechazar la normalidad.
 
-**Supuestos.** A diferencia de la regresión, en la correlación **las dos variables deben ser aleatorias**: ambas se miden sobre unidades seleccionadas al azar. Para la prueba de hipótesis conviene que la relación sea lineal y que las dos variables sigan aproximadamente una distribución normal conjunta.
+Tener en cuenta que con muestras chicas la prueba tiene poca potencia, y con muestras grandes cualquier desvío leve resulta significativo. Por eso conviene mirar el gráfico Q-Q junto con el valor $p$.
 
-Si una de las variables fue fijada por el investigador (por ejemplo, las dosis de nitrógeno), no conviene calcular la correlación: en ese caso se usa la regresión.
 
-**Prueba de hipótesis:** $H_0: \rho = 0$ vs $H_1: \rho \neq 0$, con
-$$t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}} \qquad \text{con } n-2 \text{ grados de libertad}$$
+### Residuos altos, puntos de palanca y observaciones influyentes
 
-**Ejemplo: peso vivo y perímetro torácico de animales.** Se midieron 18 animales, elegidos dentro de una muestra de la EAC "Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal" (carrera de Ing. Agronómica). En cada animal se midieron el perímetro torácico (cm) y el peso vivo (kg). Ambas variables son aleatorias, porque los animales no fueron fijados por el investigador.
+Al validar el modelo conviene distinguir tres situaciones, que no siempre coinciden:
 
-```{r}
-#| label: ejemplo-correlacion
-animales <- data.frame(
-  peso_vivo = c(433, 584, 350, 410, 441.0, 479, 397, 357, 389, 485,
-                420, 485, 394, 429, 446, 431, 400, 393),
-  perimetro_toracico = c(175, 189, 170, 171, 176.5, 177, 170, 165, 170, 182,
-                         176, 184, 172, 176, 179, 173, 172.5, 174)
-)
+- **Residuo alto (atípico en Y):** la observación se aleja mucho de la recta en la dirección vertical. Se mide con el **residuo estandarizado** $r_i = \dfrac{e_i}{s\sqrt{1-h_{ii}}}$. Como regla orientativa, $|r_i| > 2$ merece revisión.
+- **Punto de palanca (leverage):** la observación tiene un valor de $x$ lejos del centro de los datos. Se mide con $h_{ii}$. En regresión simple, el promedio de $h_{ii}$ es $2/n$; como criterio práctico se revisan los puntos con $h_{ii} > 4/n$.
+- **Observación influyente:** al quitarla, los coeficientes cambian de forma apreciable. La medida más usada es la **distancia de Cook**:
 
-cor(animales$perimetro_toracico, animales$peso_vivo)
-cor.test(animales$perimetro_toracico, animales$peso_vivo)   # prueba H0: rho = 0 e IC 95 % para rho
-```
+$$D_i = \frac{e_i^2}{2\,s^2}\cdot\frac{h_{ii}}{(1-h_{ii})^2}$$
 
-Con $r \approx 0.93$ y $p < 0.001$ se rechaza $H_0: \rho = 0$: existe una asociación lineal positiva fuerte entre el perímetro torácico y el peso vivo.
+Como criterio orientativo, $D_i > 4/n$ indica una observación a revisar.
 
-**Pregunta:** ¿qué pasa con la correlación si cambiamos el orden de las variables? ¿Y con las pendientes?
+Un punto puede ser atípico sin ser influyente (si está cerca del centro de $x$), o puede tener mucha palanca sin ser atípico (si sigue la tendencia del resto). La influencia depende de ambas cosas.
 
-```{r}
-#| label: simetria
-coef(lm(peso_vivo ~ perimetro_toracico, data = animales))["perimetro_toracico"]  # pendiente de peso sobre perímetro
-coef(lm(perimetro_toracico ~ peso_vivo, data = animales))["peso_vivo"]           # pendiente de perímetro sobre peso
-cor(animales$perimetro_toracico, animales$peso_vivo)                              # igual en ambos sentidos
-```
+**Qué hacer con un punto sospechoso:**
 
-La correlación es simétrica, pero las pendientes no. Por eso la regresión tiene una variable respuesta y una explicativa, y la correlación no.
+1. Verificar si es un error de carga o de medición.
+2. Ajustar el modelo sin ese punto y comparar los coeficientes.
+3. No eliminarlo sin una justificación. Si se elimina, informarlo en el reporte.
+
+
+
 
 ## Cuando la relación no es lineal: linealización
 
 No toda relación curva requiere un modelo no lineal. Muchas veces se puede **transformar** una de las variables (o las dos) para que la relación sea lineal y luego aplicar el modelo lineal habitual.
 
-Un caso frecuente en biología es la relación **alométrica** entre peso y longitud de peces:
+Un caso frecuente en biología es la relación **alométrica** entre peso y longitud:
 
 $$W = a \cdot L^{b} \quad\Rightarrow\quad \log(W) = \log(a) + b \cdot \log(L)$$
 
@@ -279,4 +256,31 @@ coef(modelo_log)[2]                                         # estimación de b
 
 **Advertencia:** al transformar la respuesta, la interpretación cambia (los coeficientes están en escala logarítmica y, para volver a la escala original, hay que aplicar la exponencial), y hay que validar de nuevo los supuestos sobre el modelo transformado.
 
+## Correlación
 
+El **coeficiente de correlación de Pearson** mide la fuerza y la dirección de la relación **lineal** entre dos variables:
+
+$$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}, \qquad -1 \le r \le 1$$
+
+- El signo indica la dirección de la relación.
+- El valor absoluto indica la fuerza: cerca de 0 la relación lineal es débil; cerca de 1 o −1, fuerte.
+- En regresión lineal simple, $r^2$ coincide con el $R^2$ del modelo.
+
+**Supuestos.** A diferencia de la regresión, en la correlación **las dos variables deben ser aleatorias**: ambas se miden sobre unidades seleccionadas al azar. Para la prueba de hipótesis conviene que la relación sea lineal y que las dos variables sigan aproximadamente una distribución normal conjunta.
+
+
+
+**Prueba de hipótesis:** $H_0: \rho = 0$ vs $H_1: \rho \neq 0$, con $$t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}} \qquad \text{con } n-2 \text{ grados de libertad}$$
+
+**Ejemplo: peso vivo y perímetro torácico de animales.** Se midieron 18 animales, elegidos dentro de una muestra de la EAC "Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal" (carrera de Ing. Agronómica). En cada animal se midieron el perímetro torácico (cm) y el peso vivo (kg). Ambas variables son aleatorias, porque los animales no fueron fijados por el investigador.
+ (Se desarrollará en R en la práctica guiada)
+
+
+Con $r \approx 0.93$ y $p < 0.001$ se rechaza $H_0: \rho = 0$: existe una asociación lineal positiva fuerte entre el perímetro torácico y el peso vivo.
+
+**Pregunta:** ¿qué pasa con la correlación si cambiamos el orden de las variables? ¿Y con las pendientes?
+
+```{r} #| label: simetria coef(lm(peso_vivo ~ perimetro_toracico, data = animales))["perimetro_toracico"]  # pendiente de peso sobre perímetro coef(lm(perimetro_toracico ~ peso_vivo, data = animales))["peso_vivo"]           # pendiente de perímetro sobre peso cor(animales$perimetro_toracico, animales$peso_vivo)                              # igual en ambos sentidos}
+```
+
+La correlación es simétrica, pero las pendientes no. Por eso la regresión tiene una variable respuesta y una explicativa, y la correlación no.

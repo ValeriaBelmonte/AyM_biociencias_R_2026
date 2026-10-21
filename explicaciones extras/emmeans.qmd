@@ -1,0 +1,87 @@
+---
+title: "Resumen de emmeans"
+subtitle: "Medias estimadas, comparaciones y contrastes a partir de un modelo lineal"
+format:
+  html:
+    toc: true
+    embed-resources: true
+lang: es
+execute:
+  warning: false
+  message: false
+---
+
+# ¿Qué es emmeans?
+
+**emmeans** (*estimated marginal means*) es un paquete de R que calcula, a partir de un modelo ajustado con `lm()`, `aov()` o `glm()`:
+
+- las **medias estimadas** de cada grupo, con error estándar e intervalo de confianza;
+- las **comparaciones entre grupos** con control del error por comparaciones múltiples;
+- **contrastes** definidos por el investigador.
+
+Trabaja sobre el modelo completo, así que sirve también cuando hay varios factores, covariables o un diseño desbalanceado, situaciones en las que calcular medias a mano puede dar resultados engañosos.
+
+# Funciones principales
+
+| Función | Qué hace |
+|---|---|
+| `emmeans(modelo, ~ factor)` | Medias estimadas por nivel del factor, con IC 95 % |
+| `pairs(medias, adjust = "tukey")` | Todas las diferencias entre pares, con ajuste |
+| `contrast(medias, lista, adjust = "none")` | Contrastes definidos de antemano |
+| `plot(medias)` | Gráfico de medias con intervalos de confianza |
+
+# Ejemplo mínimo
+
+```{r}
+#| label: ejemplo-minimo
+library(emmeans)
+
+set.seed(10)
+datos <- data.frame(
+  variedad = factor(rep(c("A", "B", "C"), each = 10)),
+  rendimiento = c(rnorm(10, 5.0, 0.6), rnorm(10, 5.8, 0.6), rnorm(10, 5.4, 0.6))
+)
+modelo <- lm(rendimiento ~ variedad, data = datos)
+
+medias <- emmeans(modelo, ~ variedad)
+medias
+pairs(medias, adjust = "tukey")
+```
+
+# Opciones de ajuste
+
+Las comparaciones pareadas pueden ajustarse de varias formas. Algunas más usadas:
+
+| `adjust` | Método | Cuándo usarlo |
+|---|---|---|
+| `"tukey"` | Tukey | Todas las comparaciones pareadas |
+| `"bonferroni"` | Bonferroni | Pocas comparaciones, muy conservador |
+| `"holm"` | Holm | Alternativa a Bonferroni, menos conservadora |
+| `"none"` | Sin ajuste | Solo para contrastes planificados de antemano |
+
+# Contrastes planificados
+
+Cuando la pregunta no es "todos contra todos", se definen los contrastes con coeficientes que suman cero. Por ejemplo, la variedad A contra el promedio de B y C:
+
+```{r}
+#| label: contraste
+contrast(medias,
+         list("A vs promedio(B, C)" = c(1, -0.5, -0.5)),
+         adjust = "none")
+```
+
+**Regla:** los contrastes tienen que estar definidos antes de mirar los datos. Si se eligen después, el error tipo I no está controlado.
+
+# Errores frecuentes
+
+- **Usar medias crudas en vez de medias estimadas** cuando el diseño está desbalanceado o hay más de un factor. Las medias estimadas consideran el modelo completo.
+- **Olvidar el ajuste** al comparar pares. Sin ajuste, la probabilidad de encontrar una diferencia falsa aumenta con el número de comparaciones.
+- **Interpretar `pairs()` sin mirar el sentido de la resta.** La diferencia se calcula como nivel1 − nivel2, según el orden de los niveles del factor. Conviene revisar `levels()`.
+- **Aplicar emmeans a un modelo no validado.** Antes de comparar grupos, hay que verificar los supuestos del modelo, como en cualquier análisis lineal.
+
+# Relación con Tukey y la prueba t
+
+- Con `adjust = "tukey"`, `pairs()` da el mismo resultado que `TukeyHSD()`, en formato de tabla.
+- Con dos grupos, `pairs()` da la misma diferencia y p-valor que `t.test(var.equal = TRUE)`.
+
+Ver la [Teoría 5](teoria5.html) para el desarrollo completo de ANOVA, Tukey y la prueba t.

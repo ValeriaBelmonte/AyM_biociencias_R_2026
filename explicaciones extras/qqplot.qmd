@@ -1,0 +1,78 @@
+---
+title: "Cómo hacer e interpretar un gráfico Q-Q"
+subtitle: "Parte 4 · Regresión lineal simple"
+format:
+  html:
+    toc: true
+    embed-resources: true
+lang: es
+execute:
+  warning: false
+  message: false
+---
+
+# ¿Qué es un gráfico Q-Q?
+
+Un gráfico Q-Q (*quantile-quantile*, cuantil-cuantil) compara los **cuantiles** de una muestra con los cuantiles de una distribución teórica. En regresión lo usamos con los **residuos** para evaluar si siguen una distribución normal.
+
+- **Eje horizontal:** cuantiles teóricos de la normal estándar.
+- **Eje vertical:** cuantiles observados de los residuos ordenados.
+
+Si los residuos son normales, los puntos caen cerca de una recta.
+
+# Paso a paso para construirlo a mano
+
+Supongamos $n$ residuos. Para cada uno:
+
+1. Ordenarlos de menor a mayor: $e_{(1)} \le e_{(2)} \le \dots \le e_{(n)}$.
+2. Calcular la **posición de probabilidad** de cada uno: $p_i = \dfrac{i - 0.5}{n}$.
+3. Obtener el **cuantil teórico** de la normal: $q_i = \Phi^{-1}(p_i)$, donde $\Phi^{-1}$ es la inversa de la distribución normal estándar.
+4. Graficar los pares $(q_i,\ e_{(i)})$.
+
+```{r}
+#| label: qq-manual
+set.seed(1)
+e <- rnorm(30, mean = 0, sd = 2)     # residuos de ejemplo
+
+n <- length(e)
+e_ord <- sort(e)                      # paso 1: ordenar
+p <- (1:n - 0.5) / n                  # paso 2: posiciones de probabilidad
+q <- qnorm(p)                         # paso 3: cuantiles teóricos
+
+plot(q, e_ord, pch = 19, col = "steelblue",
+     xlab = "Cuantiles teóricos (normal estándar)",
+     ylab = "Cuantiles observados de los residuos",
+     main = "Q-Q plot construido a mano")
+abline(lm(e_ord ~ q), col = "red")   # recta de referencia aproximada
+```
+
+# Con R, en una línea
+
+R hace los pasos anteriores automáticamente:
+
+```{r}
+#| label: qq-r
+qqnorm(e, main = "Gráfico Q-Q de los residuos")
+qqline(e, col = "red")
+```
+
+Para un modelo ajustado:
+
+```{r}
+#| label: qq-modelo
+#| eval: false
+modelo <- lm(y ~ x, data = datos)     # reemplazar por tu modelo
+qqnorm(residuals(modelo), main = "Q-Q de los residuos")
+qqline(residuals(modelo), col = "red")
+```
+
+# Cómo interpretarlo
+
+| Patrón observado | Qué indica | Qué hacer |
+|---|---|---|
+| Puntos sobre la recta | Normalidad razonable | Continuar con la inferencia |
+| Colas que se separan de la recta (en ambos extremos) | Colas más pesadas que la normal | Revisar valores extremos; considerar transformar $Y$ |
+| Curva en forma de S | Asimetría | Probar transformación logarítmica o raíz cuadrada |
+| Un único punto alejado | Posible valor atípico | Verificar el dato y su distancia de Cook |
+
+**Recordar:** con muestras chicas, el gráfico tiene mucha variabilidad aunque los datos sean normales. Conviene combinarlo con la prueba de Shapiro-Wilk, `shapiro.test(residuals(modelo))`.

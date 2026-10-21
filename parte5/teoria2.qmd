@@ -1,5 +1,0 @@
----
-title: "Introducción"
----
-
-## Objetivo de la clase
