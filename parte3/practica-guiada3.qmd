@@ -2,34 +2,184 @@
 title: "Práctica guiada 3"
 ---
 
-## Práctica guiada
+En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base `agro`. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino **conocer los datos, detectar problemas y formular preguntas**.
 
-En esta práctica aplicaremos algunas de las herramientas del análisis exploratorio de datos a la base `agro`. El propósito no será obtener conclusiones definitivas ni ajustar modelos estadísticos, sino conocer mejor la información disponible y formular preguntas a partir de ella.
+Nos concentramos en las emisiones del transporte de alimentos. Construiremos tablas y gráficos para ver cómo se distribuye la variable, comparar áreas, observar su evolución en el tiempo y explorar su relación con la población urbana.
 
-Nos concentraremos en las emisiones generadas por el transporte de alimentos (`total_emission`). A lo largo de la práctica construiremos tablas y gráficos para observar cómo se distribuye esta variable, comparar áreas, analizar su evolución en el tiempo y explorar su posible relación con la población urbana.
+En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?
 
-En cada actividad será importante no solo ejecutar el código, sino también interpretar los resultados: ¿qué muestra la tabla?, ¿qué patrón se observa en el gráfico?, ¿qué dudas o nuevas preguntas surgen?
+## Paquetes
 
-## Paquetes a utlizar
+```r
+#| label: paquetes
+library(tidyverse)
+```
 
-`{# Cargamos los paquetes que utilizaremos} 
-library(tidyverse)`
+Si el paquete no está instalado: `install.packages("tidyverse")`.
 
+## Carga y revisión de nombres
 
-Para pensar
+```r
+#| label: carga
+agro <- read_csv("Agrofood_co2_emission.csv") |>
+  janitor::clean_names()      # nombres en minúscula, sin espacios ni símbolos
 
-1.  ¿Entre qué años se extiende la información?
+names(agro)
+```
 
-2.  ¿Todos los años tienen la misma cantidad de registros?
+**Pregunta 0:** ¿cuáles son los nombres de las columnas que usaremos (área, año, emisiones del transporte de alimentos y población urbana)? Si alguno no coincide con los nombres de este documento, anotá cuál es el correcto y reemplazalo en el código.
 
-3.  ¿Qué podría significar que un año tenga menos registros que los demás?
+## Actividad 1. ¿Qué información tenemos?
 
+```r
+#| label: estructura
+dim(agro)
+glimpse(agro)
+```
 
+**Pregunta 1.1:** ¿qué representa cada fila? ¿Cuántas filas y columnas tiene la base?
 
-# probamos si todos los años tienen registro} si da cero todos tienen registro todos_los_anios \<- tibble( year = 1990:2020 )
+**Pregunta 1.2:** ¿qué tipo de variable es cada una de las que vas a usar: numérica, categórica o fecha?
 
-todos_los_anios  anti_join(tabla_anio, by = "year")
+## Actividad 2. ¿Entre qué años se extiende la información?
 
+```r
+#| label: rango-anios
+range(agro$year, na.rm = TRUE)
+```
 
+**Pregunta 2.1:** ¿entre qué años se extiende la información?
 
+**Pregunta 2.2:** ¿todos los años tienen la misma cantidad de registros?
 
+```r
+#| label: registros-por-anio
+tabla_anio <- agro |>
+  count(year, name = "registros")
+
+tabla_anio
+```
+
+**Pregunta 2.3:** ¿qué podría significar que un año tenga menos registros que los demás?
+
+Para comprobar si falta algún año dentro del rango, comparamos con la secuencia completa de años:
+
+```r
+#| label: anios-faltantes
+todos_los_anios <- tibble(year = 1990:2020)
+
+anti_join(todos_los_anios, tabla_anio, by = "year")
+```
+
+Si el resultado está vacío, todos los años tienen registros. Si no, esos años faltan en la base.
+
+## Actividad 3. ¿Cómo se distribuyen las emisiones?
+
+Primero revisamos los valores faltantes, porque cambian las medidas que calculemos:
+
+```r
+#| label: faltantes
+sum(is.na(agro$total_emission))
+```
+
+```r
+#| label: distribucion
+ggplot(agro, aes(x = total_emission)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white") +
+  labs(x = "Emisiones totales del transporte de alimentos",
+       y = "Frecuencia",
+       title = "Distribución de las emisiones") +
+  theme_minimal()
+
+summary(agro$total_emission)
+```
+
+**Pregunta 3.1:** ¿la distribución es simétrica o tiene cola hacia un lado? ¿Cómo lo sabés?
+
+**Pregunta 3.2:** comparando la media y la mediana, ¿cuál describe mejor el centro? ¿Por qué?
+
+## Actividad 4. ¿Cómo varían las emisiones entre áreas?
+
+Calculamos medidas resumen por área con tidyverse:
+
+```r
+#| label: resumen-areas
+resumen_areas <- agro |>
+  group_by(area) |>
+  summarise(
+    n       = n(),
+    media   = mean(total_emission, na.rm = TRUE),
+    mediana = median(total_emission, na.rm = TRUE),
+    desvio  = sd(total_emission, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  arrange(desc(mediana))
+
+head(resumen_areas, 10)
+```
+
+Para ver la distribución de algunas áreas, comparamos con diagramas de caja. Elegí las 10 áreas con mayor mediana:
+
+```r
+#| label: boxplot-areas
+#| fig-height: 6
+top_areas <- resumen_areas |>
+  slice_head(n = 10) |>
+  pull(area)
+
+agro |>
+  filter(area %in% top_areas) |>
+  ggplot(aes(x = reorder(area, total_emission, median), y = total_emission)) +
+  geom_boxplot(fill = "lightblue") +
+  coord_flip() +
+  labs(x = "Área", y = "Emisiones totales", title = "Emisiones por área (10 con mayor mediana)") +
+  theme_minimal()
+```
+
+**Pregunta 4.1:** ¿la media y la mediana dicen lo mismo sobre el orden de las áreas? Si difieren, ¿qué lo explica?
+
+**Pregunta 4.2:** ¿qué áreas tienen mayor dispersión? ¿Qué medida usarías para compararla?
+
+## Actividad 5. ¿Cómo evolucionan las emisiones en el tiempo?
+
+Elegí un área y graficá su evolución. Cambiá `"Argentina"` por otra área si lo preferís:
+
+```r
+#| label: evolucion-area
+agro |>
+  filter(area == "Argentina") |>
+  ggplot(aes(x = year, y = total_emission)) +
+  geom_line(color = "darkgreen", linewidth = 1) +
+  geom_point() +
+  labs(x = "Año", y = "Emisiones totales", title = "Evolución de las emisiones en Argentina") +
+  theme_minimal()
+```
+
+**Pregunta 5.1:** ¿la serie crece, decrece o se mantiene estable? ¿Hay algún año que se separe del resto?
+
+**Pregunta 5.2:** ¿qué podría explicar un salto en la serie? Pensá en fuentes de datos o en cambios de metodología.
+
+## Actividad 6. ¿Se relacionan las emisiones con la población urbana?
+
+```r
+#| label: dispersion-urbana
+#| eval: false
+ggplot(agro, aes(x = urban_population, y = total_emission)) +
+  geom_point(alpha = 0.5, color = "steelblue") +
+  labs(x = "Población urbana", y = "Emisiones totales",
+       title = "Emisiones según población urbana") +
+  theme_minimal()
+```
+
+**Atención:** la columna de población urbana puede tener otro nombre o estar en otra escala. Ajustala después de revisar `names(agro)`. Quitá `eval: false` cuando el código esté corregido.
+
+**Pregunta 6.1:** ¿la relación parece lineal, curva o inexistente? ¿Hay puntos que se alejen mucho del patrón general?
+
+**Pregunta 6.2:** en esta etapa, ¿podemos afirmar que la población urbana causa más emisiones? ¿Qué diseño de estudio se necesitaría para eso?
+
+## Cierre
+
+Respondé en tres o cuatro frases:
+
+- ¿Qué problemas de calidad de datos encontraste (faltantes, años ausentes, valores extremos)?
+- ¿Qué pregunta te gustaría responder con un análisis posterior?

@@ -390,9 +390,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#práctica-guiada" id="toc-práctica-guiada" class="nav-link active" data-scroll-target="#práctica-guiada"><span class="header-section-number">0.1</span> Práctica guiada</a></li>
-  <li><a href="#paquetes-a-utlizar" id="toc-paquetes-a-utlizar" class="nav-link" data-scroll-target="#paquetes-a-utlizar"><span class="header-section-number">0.2</span> Paquetes a utlizar</a></li>
-  <li><a href="#probamos-si-todos-los-años-tienen-registro-si-da-cero-todos-tienen-registro-todos_los_anios---tibble-year-19902020" id="toc-probamos-si-todos-los-años-tienen-registro-si-da-cero-todos-tienen-registro-todos_los_anios---tibble-year-19902020" class="nav-link" data-scroll-target="#probamos-si-todos-los-años-tienen-registro-si-da-cero-todos-tienen-registro-todos_los_anios---tibble-year-19902020"><span class="header-section-number">1</span> probamos si todos los años tienen registro} si da cero todos tienen registro todos_los_anios &lt;- tibble( year = 1990:2020 )</a></li>
+  <li><a href="#paquetes" id="toc-paquetes" class="nav-link active" data-scroll-target="#paquetes"><span class="header-section-number">1</span> Paquetes</a></li>
+  <li><a href="#carga-y-revisión-de-nombres" id="toc-carga-y-revisión-de-nombres" class="nav-link" data-scroll-target="#carga-y-revisión-de-nombres"><span class="header-section-number">2</span> Carga y revisión de nombres</a></li>
+  <li><a href="#actividad-1.-qué-información-tenemos" id="toc-actividad-1.-qué-información-tenemos" class="nav-link" data-scroll-target="#actividad-1.-qué-información-tenemos"><span class="header-section-number">3</span> Actividad 1. ¿Qué información tenemos?</a></li>
+  <li><a href="#actividad-2.-entre-qué-años-se-extiende-la-información" id="toc-actividad-2.-entre-qué-años-se-extiende-la-información" class="nav-link" data-scroll-target="#actividad-2.-entre-qué-años-se-extiende-la-información"><span class="header-section-number">4</span> Actividad 2. ¿Entre qué años se extiende la información?</a></li>
+  <li><a href="#actividad-3.-cómo-se-distribuyen-las-emisiones" id="toc-actividad-3.-cómo-se-distribuyen-las-emisiones" class="nav-link" data-scroll-target="#actividad-3.-cómo-se-distribuyen-las-emisiones"><span class="header-section-number">5</span> Actividad 3. ¿Cómo se distribuyen las emisiones?</a></li>
+  <li><a href="#actividad-4.-cómo-varían-las-emisiones-entre-áreas" id="toc-actividad-4.-cómo-varían-las-emisiones-entre-áreas" class="nav-link" data-scroll-target="#actividad-4.-cómo-varían-las-emisiones-entre-áreas"><span class="header-section-number">6</span> Actividad 4. ¿Cómo varían las emisiones entre áreas?</a></li>
+  <li><a href="#actividad-5.-cómo-evolucionan-las-emisiones-en-el-tiempo" id="toc-actividad-5.-cómo-evolucionan-las-emisiones-en-el-tiempo" class="nav-link" data-scroll-target="#actividad-5.-cómo-evolucionan-las-emisiones-en-el-tiempo"><span class="header-section-number">7</span> Actividad 5. ¿Cómo evolucionan las emisiones en el tiempo?</a></li>
+  <li><a href="#actividad-6.-se-relacionan-las-emisiones-con-la-población-urbana" id="toc-actividad-6.-se-relacionan-las-emisiones-con-la-población-urbana" class="nav-link" data-scroll-target="#actividad-6.-se-relacionan-las-emisiones-con-la-población-urbana"><span class="header-section-number">8</span> Actividad 6. ¿Se relacionan las emisiones con la población urbana?</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">9</span> Cierre</a></li>
   </ul>
 </nav>
     </div>
@@ -418,25 +424,135 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="práctica-guiada" class="level2" data-number="0.1">
-<h2 data-number="0.1" class="anchored" data-anchor-id="práctica-guiada"><span class="header-section-number">0.1</span> Práctica guiada</h2>
-<p>En esta práctica aplicaremos algunas de las herramientas del análisis exploratorio de datos a la base <code>agro</code>. El propósito no será obtener conclusiones definitivas ni ajustar modelos estadísticos, sino conocer mejor la información disponible y formular preguntas a partir de ella.</p>
-<p>Nos concentraremos en las emisiones generadas por el transporte de alimentos (<code>total_emission</code>). A lo largo de la práctica construiremos tablas y gráficos para observar cómo se distribuye esta variable, comparar áreas, analizar su evolución en el tiempo y explorar su posible relación con la población urbana.</p>
-<p>En cada actividad será importante no solo ejecutar el código, sino también interpretar los resultados: ¿qué muestra la tabla?, ¿qué patrón se observa en el gráfico?, ¿qué dudas o nuevas preguntas surgen?</p>
+<p>En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base <code>agro</code>. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino <strong>conocer los datos, detectar problemas y formular preguntas</strong>.</p>
+<p>Nos concentramos en las emisiones del transporte de alimentos. Construiremos tablas y gráficos para ver cómo se distribuye la variable, comparar áreas, observar su evolución en el tiempo y explorar su relación con la población urbana.</p>
+<p>En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?</p>
+<section id="paquetes" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="paquetes"><span class="header-section-number">1</span> Paquetes</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si el paquete no está instalado: <code>install.packages("tidyverse")</code>.</p>
 </section>
-<section id="paquetes-a-utlizar" class="level2" data-number="0.2">
-<h2 data-number="0.2" class="anchored" data-anchor-id="paquetes-a-utlizar"><span class="header-section-number">0.2</span> Paquetes a utlizar</h2>
-<p><code>{# Cargamos los paquetes que utilizaremos}  library(tidyverse)</code></p>
-<p>Para pensar</p>
-<ol type="1">
-<li><p>¿Entre qué años se extiende la información?</p></li>
-<li><p>¿Todos los años tienen la misma cantidad de registros?</p></li>
-<li><p>¿Qué podría significar que un año tenga menos registros que los demás?</p></li>
-</ol>
+<section id="carga-y-revisión-de-nombres" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="carga-y-revisión-de-nombres"><span class="header-section-number">2</span> Carga y revisión de nombres</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Agrofood_co2_emission.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()      <span class="co"># nombres en minúscula, sin espacios ni símbolos</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 0:</strong> ¿cuáles son los nombres de las columnas que usaremos (área, año, emisiones del transporte de alimentos y población urbana)? Si alguno no coincide con los nombres de este documento, anotá cuál es el correcto y reemplazalo en el código.</p>
 </section>
-<section id="probamos-si-todos-los-años-tienen-registro-si-da-cero-todos-tienen-registro-todos_los_anios---tibble-year-19902020" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> probamos si todos los años tienen registro} si da cero todos tienen registro todos_los_anios &lt;- tibble( year = 1990:2020 )</h1>
-<p>todos_los_anios anti_join(tabla_anio, by = “year”)</p>
+<section id="actividad-1.-qué-información-tenemos" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="actividad-1.-qué-información-tenemos"><span class="header-section-number">3</span> Actividad 1. ¿Qué información tenemos?</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: estructura</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.1:</strong> ¿qué representa cada fila? ¿Cuántas filas y columnas tiene la base?</p>
+<p><strong>Pregunta 1.2:</strong> ¿qué tipo de variable es cada una de las que vas a usar: numérica, categórica o fecha?</p>
+</section>
+<section id="actividad-2.-entre-qué-años-se-extiende-la-información" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="actividad-2.-entre-qué-años-se-extiende-la-información"><span class="header-section-number">4</span> Actividad 2. ¿Entre qué años se extiende la información?</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: rango-anios</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(agro<span class="sc">$</span>year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.1:</strong> ¿entre qué años se extiende la información?</p>
+<p><strong>Pregunta 2.2:</strong> ¿todos los años tienen la misma cantidad de registros?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: registros-por-anio</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tabla_anio <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, <span class="at">name =</span> <span class="st">"registros"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>tabla_anio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.3:</strong> ¿qué podría significar que un año tenga menos registros que los demás?</p>
+<p>Para comprobar si falta algún año dentro del rango, comparamos con la secuencia completa de años:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anios-faltantes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>todos_los_anios <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">year =</span> <span class="dv">1990</span><span class="sc">:</span><span class="dv">2020</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(todos_los_anios, tabla_anio, <span class="at">by =</span> <span class="st">"year"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si el resultado está vacío, todos los años tienen registros. Si no, esos años faltan en la base.</p>
+</section>
+<section id="actividad-3.-cómo-se-distribuyen-las-emisiones" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="actividad-3.-cómo-se-distribuyen-las-emisiones"><span class="header-section-number">5</span> Actividad 3. ¿Cómo se distribuyen las emisiones?</h2>
+<p>Primero revisamos los valores faltantes, porque cambian las medidas que calculemos:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: faltantes</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(agro<span class="sc">$</span>total_emission))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: distribucion</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro, <span class="fu">aes</span>(<span class="at">x =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Emisiones totales del transporte de alimentos"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribución de las emisiones"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(agro<span class="sc">$</span>total_emission)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.1:</strong> ¿la distribución es simétrica o tiene cola hacia un lado? ¿Cómo lo sabés?</p>
+<p><strong>Pregunta 3.2:</strong> comparando la media y la mediana, ¿cuál describe mejor el centro? ¿Por qué?</p>
+</section>
+<section id="actividad-4.-cómo-varían-las-emisiones-entre-áreas" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="actividad-4.-cómo-varían-las-emisiones-entre-áreas"><span class="header-section-number">6</span> Actividad 4. ¿Cómo varían las emisiones entre áreas?</h2>
+<p>Calculamos medidas resumen por área con tidyverse:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen-areas</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>resumen_areas <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> <span class="fu">n</span>(),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">media   =</span> <span class="fu">mean</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">desvio  =</span> <span class="fu">sd</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mediana))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(resumen_areas, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para ver la distribución de algunas áreas, comparamos con diagramas de caja. Elegí las 10 áreas con mayor mediana:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-areas</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>top_areas <span class="ot">&lt;-</span> resumen_areas <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(area)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">%in%</span> top_areas) <span class="sc">|&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(area, total_emission, median), <span class="at">y =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Área"</span>, <span class="at">y =</span> <span class="st">"Emisiones totales"</span>, <span class="at">title =</span> <span class="st">"Emisiones por área (10 con mayor mediana)"</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 4.1:</strong> ¿la media y la mediana dicen lo mismo sobre el orden de las áreas? Si difieren, ¿qué lo explica?</p>
+<p><strong>Pregunta 4.2:</strong> ¿qué áreas tienen mayor dispersión? ¿Qué medida usarías para compararla?</p>
+</section>
+<section id="actividad-5.-cómo-evolucionan-las-emisiones-en-el-tiempo" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="actividad-5.-cómo-evolucionan-las-emisiones-en-el-tiempo"><span class="header-section-number">7</span> Actividad 5. ¿Cómo evolucionan las emisiones en el tiempo?</h2>
+<p>Elegí un área y graficá su evolución. Cambiá <code>"Argentina"</code> por otra área si lo preferís:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: evolucion-area</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Emisiones totales"</span>, <span class="at">title =</span> <span class="st">"Evolución de las emisiones en Argentina"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 5.1:</strong> ¿la serie crece, decrece o se mantiene estable? ¿Hay algún año que se separe del resto?</p>
+<p><strong>Pregunta 5.2:</strong> ¿qué podría explicar un salto en la serie? Pensá en fuentes de datos o en cambios de metodología.</p>
+</section>
+<section id="actividad-6.-se-relacionan-las-emisiones-con-la-población-urbana" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="actividad-6.-se-relacionan-las-emisiones-con-la-población-urbana"><span class="header-section-number">8</span> Actividad 6. ¿Se relacionan las emisiones con la población urbana?</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dispersion-urbana</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro, <span class="fu">aes</span>(<span class="at">x =</span> urban_population, <span class="at">y =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Población urbana"</span>, <span class="at">y =</span> <span class="st">"Emisiones totales"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Emisiones según población urbana"</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Atención:</strong> la columna de población urbana puede tener otro nombre o estar en otra escala. Ajustala después de revisar <code>names(agro)</code>. Quitá <code>eval: false</code> cuando el código esté corregido.</p>
+<p><strong>Pregunta 6.1:</strong> ¿la relación parece lineal, curva o inexistente? ¿Hay puntos que se alejen mucho del patrón general?</p>
+<p><strong>Pregunta 6.2:</strong> en esta etapa, ¿podemos afirmar que la población urbana causa más emisiones? ¿Qué diseño de estudio se necesitaría para eso?</p>
+</section>
+<section id="cierre" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="cierre"><span class="header-section-number">9</span> Cierre</h2>
+<p>Respondé en tres o cuatro frases:</p>
+<ul>
+<li>¿Qué problemas de calidad de datos encontraste (faltantes, años ausentes, valores extremos)?</li>
+<li>¿Qué pregunta te gustaría responder con un análisis posterior?</li>
+</ul>
 
 
 <!-- -->
@@ -894,40 +1010,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctica guiada 3"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Práctica guiada</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>En esta práctica aplicaremos algunas de las herramientas del análisis exploratorio de datos a la base <span class="in">`agro`</span>. El propósito no será obtener conclusiones definitivas ni ajustar modelos estadísticos, sino conocer mejor la información disponible y formular preguntas a partir de ella.</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Nos concentraremos en las emisiones generadas por el transporte de alimentos (<span class="in">`total_emission`</span>). A lo largo de la práctica construiremos tablas y gráficos para observar cómo se distribuye esta variable, comparar áreas, analizar su evolución en el tiempo y explorar su posible relación con la población urbana.</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>En cada actividad será importante no solo ejecutar el código, sino también interpretar los resultados: ¿qué muestra la tabla?, ¿qué patrón se observa en el gráfico?, ¿qué dudas o nuevas preguntas surgen?</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes a utlizar</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>`{# Cargamos los paquetes que utilizaremos} </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>library(tidyverse)`</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>Para pensar</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>¿Entre qué años se extiende la información?</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>¿Todos los años tienen la misma cantidad de registros?</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>¿Qué podría significar que un año tenga menos registros que los demás?</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># probamos si todos los años tienen registro} si da cero todos tienen registro todos_los_anios \&lt;- tibble( year = 1990:2020 )</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>todos_los_anios  anti_join(tabla_anio, by = "year")</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctica guiada 3"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base <span class="in">`agro`</span>. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino **conocer los datos, detectar problemas y formular preguntas**.</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>Nos concentramos en las emisiones del transporte de alimentos. Construiremos tablas y gráficos para ver cómo se distribuye la variable, comparar áreas, observar su evolución en el tiempo y explorar su relación con la población urbana.</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>Si el paquete no está instalado: <span class="in">`install.packages("tidyverse")`</span>.</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Carga y revisión de nombres</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Agrofood_co2_emission.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()      <span class="co"># nombres en minúscula, sin espacios ni símbolos</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>**Pregunta 0:** ¿cuáles son los nombres de las columnas que usaremos (área, año, emisiones del transporte de alimentos y población urbana)? Si alguno no coincide con los nombres de este documento, anotá cuál es el correcto y reemplazalo en el código.</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 1. ¿Qué información tenemos?</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: estructura</span></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro)</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.1:** ¿qué representa cada fila? ¿Cuántas filas y columnas tiene la base?</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.2:** ¿qué tipo de variable es cada una de las que vas a usar: numérica, categórica o fecha?</span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 2. ¿Entre qué años se extiende la información?</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: rango-anios</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(agro<span class="sc">$</span>year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.1:** ¿entre qué años se extiende la información?</span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.2:** ¿todos los años tienen la misma cantidad de registros?</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: registros-por-anio</span></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>tabla_anio <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(year, <span class="at">name =</span> <span class="st">"registros"</span>)</span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>tabla_anio</span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.3:** ¿qué podría significar que un año tenga menos registros que los demás?</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>Para comprobar si falta algún año dentro del rango, comparamos con la secuencia completa de años:</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anios-faltantes</span></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>todos_los_anios <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">year =</span> <span class="dv">1990</span><span class="sc">:</span><span class="dv">2020</span>)</span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a><span class="fu">anti_join</span>(todos_los_anios, tabla_anio, <span class="at">by =</span> <span class="st">"year"</span>)</span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a>Si el resultado está vacío, todos los años tienen registros. Si no, esos años faltan en la base.</span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 3. ¿Cómo se distribuyen las emisiones?</span></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a>Primero revisamos los valores faltantes, porque cambian las medidas que calculemos:</span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: faltantes</span></span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(agro<span class="sc">$</span>total_emission))</span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: distribucion</span></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro, <span class="fu">aes</span>(<span class="at">x =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">30</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Emisiones totales del transporte de alimentos"</span>,</span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>,</span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribución de las emisiones"</span>) <span class="sc">+</span></span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(agro<span class="sc">$</span>total_emission)</span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.1:** ¿la distribución es simétrica o tiene cola hacia un lado? ¿Cómo lo sabés?</span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.2:** comparando la media y la mediana, ¿cuál describe mejor el centro? ¿Por qué?</span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 4. ¿Cómo varían las emisiones entre áreas?</span></span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a>Calculamos medidas resumen por área con tidyverse:</span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen-areas</span></span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a>resumen_areas <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> <span class="fu">n</span>(),</span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a>    <span class="at">media   =</span> <span class="fu">mean</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a>    <span class="at">desvio  =</span> <span class="fu">sd</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(mediana))</span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(resumen_areas, <span class="dv">10</span>)</span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a>Para ver la distribución de algunas áreas, comparamos con diagramas de caja. Elegí las 10 áreas con mayor mediana:</span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-areas</span></span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 6</span></span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a>top_areas <span class="ot">&lt;-</span> resumen_areas <span class="sc">|&gt;</span></span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(area)</span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">%in%</span> top_areas) <span class="sc">|&gt;</span></span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(area, total_emission, median), <span class="at">y =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"lightblue"</span>) <span class="sc">+</span></span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Área"</span>, <span class="at">y =</span> <span class="st">"Emisiones totales"</span>, <span class="at">title =</span> <span class="st">"Emisiones por área (10 con mayor mediana)"</span>) <span class="sc">+</span></span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.1:** ¿la media y la mediana dicen lo mismo sobre el orden de las áreas? Si difieren, ¿qué lo explica?</span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.2:** ¿qué áreas tienen mayor dispersión? ¿Qué medida usarías para compararla?</span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 5. ¿Cómo evolucionan las emisiones en el tiempo?</span></span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a>Elegí un área y graficá su evolución. Cambiá <span class="in">`"Argentina"`</span> por otra área si lo preferís:</span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: evolucion-area</span></span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Año"</span>, <span class="at">y =</span> <span class="st">"Emisiones totales"</span>, <span class="at">title =</span> <span class="st">"Evolución de las emisiones en Argentina"</span>) <span class="sc">+</span></span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.1:** ¿la serie crece, decrece o se mantiene estable? ¿Hay algún año que se separe del resto?</span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.2:** ¿qué podría explicar un salto en la serie? Pensá en fuentes de datos o en cambios de metodología.</span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 6. ¿Se relacionan las emisiones con la población urbana?</span></span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dispersion-urbana</span></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro, <span class="fu">aes</span>(<span class="at">x =</span> urban_population, <span class="at">y =</span> total_emission)) <span class="sc">+</span></span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Población urbana"</span>, <span class="at">y =</span> <span class="st">"Emisiones totales"</span>,</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Emisiones según población urbana"</span>) <span class="sc">+</span></span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>**Atención:** la columna de población urbana puede tener otro nombre o estar en otra escala. Ajustala después de revisar <span class="in">`names(agro)`</span>. Quitá <span class="in">`eval: false`</span> cuando el código esté corregido.</span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.1:** ¿la relación parece lineal, curva o inexistente? ¿Hay puntos que se alejen mucho del patrón general?</span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.2:** en esta etapa, ¿podemos afirmar que la población urbana causa más emisiones? ¿Qué diseño de estudio se necesitaría para eso?</span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cierre</span></span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a>Respondé en tres o cuatro frases:</span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué problemas de calidad de datos encontraste (faltantes, años ausentes, valores extremos)?</span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué pregunta te gustaría responder con un análisis posterior?</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

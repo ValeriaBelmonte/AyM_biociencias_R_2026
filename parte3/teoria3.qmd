@@ -1,5 +1,5 @@
 ---
-title: "Clase 3"
+title: "Teoria 3"
 ---
 
 # Análisis exploratorio de datos
@@ -42,12 +42,13 @@ En el EDA no se construyen gráficos “por rutina”: cada elección depende de
 
 ### Tablas
 
+
 Las tablas son una forma ordenada de presentar la información contenida en una base de datos. Permiten resumir los valores de una o más variables y facilitan una primera lectura de los datos antes de realizar gráficos o cálculos más específicos.
 
 Según el tipo de variable, las tablas pueden utilizarse con distintos propósitos. En las variables categóricas, permiten conocer cuántas observaciones pertenecen a cada categoría; por ejemplo, cuántos registros corresponden a cada país o área. En las variables numéricas, permiten resumir sus valores mediante medidas como el mínimo, el máximo, la media o la mediana.
 
 | Tipo de variable o pregunta | Tabla adecuada | Ejemplo en la base |
-|:---|:---|:---|
+|:-----------------------|:-----------------------|:-----------------------|
 | Una variable categórica | Tabla de frecuencias absolutas | Cantidad de registros por `area` |
 | Una variable categórica | Tabla de frecuencias relativas o porcentajes | Porcentaje de registros para cada `area` |
 | Una variable numérica | Tabla ordenada de valores | Valores de `food_transport` ordenados de menor a mayor |
@@ -57,12 +58,12 @@ Según el tipo de variable, las tablas pueden utilizarse con distintos propósit
 
 ### Gráficos
 
-Los gráficos nos ayudan a mirar los datos de otra manera. A diferencia de las tablas, permiten encontrar patrones: comprender como se distribuye una variable; compararla en uno o más grupos; observar si cambia en el tiempo o exploarar si dos variables podrían estar relacionadas.
+Los gráficos nos ayudan a mirar los datos de otra manera. A diferencia de las tablas, permiten encontrar patrones: comprender cómo se distribuye una variable; compararla en uno o más grupos; observar si cambia en el tiempo o explorar si dos variables podrían estar relacionadas.
 
-Antes de construir un gráfico, es importante pensar la inforamción se quiere mostrar. No hay un único gráfico que sirva par todas las situaciones pero la siguiente tabla nos guiará en una elección inicial:
+Antes de construir un gráfico, es importante pensar qué información que se quiere mostrar. No hay un único gráfico que sirva para todas las situaciones pero la siguiente tabla nos guiará en una elección inicial:
 
 | Tipo de variable o pregunta | Gráfico adecuado | Ejemplo en la base |
-|:---|:---|:---|
+|:-----------------------|:-----------------------|:-----------------------|
 | Una variable categórica | Gráfico de barras | Cantidad de registros por `area` |
 | Una variable numérica | Histograma | Distribución de `food_transport` |
 | Una variable numérica según grupos | Diagrama de caja y bigotes | Emisiones por continente o grupo de países |
@@ -70,8 +71,6 @@ Antes de construir un gráfico, es importante pensar la inforamción se quiere m
 | Evolución de una variable en el tiempo | Gráfico de líneas | Emisiones de Argentina entre 1990 y 2020 |
 
 ### El Paquete `ggplot2`
-
-### 
 
 El paquete **`ggplot2`** forma parte de `tidyverse` y se utiliza para construir gráficos en R. Su funcionamiento se basa en la **gramática de los gráficos**, es decir, en la idea de que un gráfico se construye agregando distintas **capas**.
 
@@ -84,7 +83,7 @@ ggplot(datos, aes(x = variable_x, y = variable_y)) +   geom_...()+labs()+theme()
 Cada parte cumple una función:
 
 | Capa | Función |
-|----|----|
+|------------------------------------|------------------------------------|
 | `ggplot()` | Indica el conjunto de datos que se utilizará. |
 | `aes()` | Define qué variables se representarán y cómo se vinculan con elementos visuales como los ejes, colores o tamaños. |
 | `geom_...()` | Define el tipo de representación gráfica: puntos, barras, líneas, histogramas, cajas, etc. |
@@ -136,3 +135,123 @@ esquisser(datos)
 A partir de allí podemos seleccionar las variables y explorar diferentes representaciones gráficas. Una vez obtenido el gráfico deseado, podemos copiar el código generado y utilizarlo en nuestro script o documento Quarto.
 
 > **Importante:** `esquisse` no reemplaza el aprendizaje de `ggplot2`. Lo utilizaremos como una herramienta para explorar gráficos y comprender cómo se construye su código.
+
+# Medidas resumen
+
+Las tablas de frecuencias y los gráficos muestran la forma de los datos. Las **medidas resumen** los condensan en un número. Son útiles para comparar grupos y para comunicar resultados, pero **no reemplazan al gráfico**: dos conjuntos con la misma media pueden tener distribuciones muy distintas.
+
+## Medidas de tendencia central
+
+| Medida | Definición | Cuándo conviene |
+|:-----------------------|:-----------------------|:-----------------------|
+| Media | $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$ | Variables numéricas simétricas, sin valores extremos |
+| Mediana | Valor central de los datos ordenados | Distribuciones asimétricas o con valores atípicos |
+| Moda | Valor más frecuente | Variables categóricas, o numéricas discretas |
+
+Si la media y la mediana difieren mucho, la distribución es asimétrica. En ese caso, la mediana describe mejor el centro.
+
+## Medidas de dispersión
+
+| Medida | Definición | Interpretación |
+|:-----------------------|:-----------------------|:-----------------------|
+| Rango | máximo − mínimo | Amplitud total, sensible a extremos |
+| Desvío estándar | $s = \sqrt{\frac{1}{n-1}\sum (x_i - \bar{x})^2}$ | Dispersión en las mismas unidades de la variable |
+| Rango intercuartílico (IQR) | Q3 − Q1 | Dispersión del 50 % central, robusta a extremos |
+| Coeficiente de variación | $CV = s / \bar{x} \times 100$ | Permite comparar dispersión entre variables con distinta escala |
+
+## Medidas de posición
+
+Los **cuantiles** dividen los datos ordenados en partes. El primer cuartil (Q1) deja el 25 % de los datos por debajo; la mediana es el segundo cuartil (50 %); el tercer cuartil (Q3) deja el 75 % por debajo. Son la base del diagrama de caja y bigotes.
+
+## Resumen en R con tidyverse
+
+El flujo `group_by()` + `summarise()` calcula medidas por grupo en una sola instrucción:
+
+```r
+#| label: resumen-tidyverse
+library(tidyverse)
+
+agro <- read_csv("Agrofood_co2_emission.csv")   # ajustar nombre de archivo y columnas
+
+agro |>
+  group_by(area) |>
+  summarise(
+    n            = n(),
+    media        = mean(total_emission, na.rm = TRUE),
+    mediana      = median(total_emission, na.rm = TRUE),
+    desvio       = sd(total_emission, na.rm = TRUE),
+    minimo       = min(total_emission, na.rm = TRUE),
+    maximo       = max(total_emission, na.rm = TRUE),
+    rango_inter  = IQR(total_emission, na.rm = TRUE),
+    .groups      = "drop"
+  )
+```
+
+Notas:
+
+- `na.rm = TRUE` excluye los faltantes del cálculo. Antes de usarlo, conviene saber cuántos hay con `sum(is.na(agro$total_emission))`.
+- `.groups = "drop"` evita el mensaje sobre la estructura de grupos en la salida.
+- El operador `|>` (pipe nativo) encadena pasos de izquierda a derecha.
+
+Para el coeficiente de variación y cuantiles específicos, se agregan columnas dentro del mismo `summarise()`:
+
+```r
+#| label: resumen-cv-cuantiles
+agro |>
+  group_by(area) |>
+  summarise(
+    cv   = sd(total_emission, na.rm = TRUE) / mean(total_emission, na.rm = TRUE) * 100,
+    q1   = quantile(total_emission, 0.25, na.rm = TRUE),
+    q3   = quantile(total_emission, 0.75, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+## Resumen con R base
+
+El mismo resultado se puede obtener sin tidyverse, con funciones básicas:
+
+```r
+#| label: resumen-base
+# Resumen general de todas las variables numéricas
+summary(agro$total_emission)
+
+# Medidas por grupo con tapply()
+tapply(agro$total_emission, agro$area, mean, na.rm = TRUE)
+tapply(agro$total_emission, agro$area, sd,   na.rm = TRUE)
+
+# Varias medidas por grupo con aggregate()
+aggregate(total_emission ~ area, data = agro,
+          FUN = function(x) c(media = mean(x), mediana = median(x), desvio = sd(x)))
+```
+
+**Comparación:** `tidyverse` devuelve una tabla ordenada en una sola instrucción y se integra con gráficos y tablas. R base es más directo para una variable suelta, pero con varias medidas por grupo el código se vuelve más largo.
+
+## Tablas para comunicar con flextable
+
+El paquete **`flextable`** convierte un data frame en una tabla con formato para informes, documentos Word o HTML. Se usa al final del análisis, para presentar los resultados.
+
+```r
+#| label: flextable-resumen
+#| eval: false
+library(flextable)
+
+tabla_resumen <- agro |>
+  group_by(area) |>
+  summarise(
+    n       = n(),
+    media   = mean(total_emission, na.rm = TRUE),
+    mediana = median(total_emission, na.rm = TRUE),
+    desvio  = sd(total_emission, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+flextable(tabla_resumen) |>
+  set_header_labels(area = "Área", n = "n", media = "Media",
+                    mediana = "Mediana", desvio = "Desvío estándar") |>
+  colformat_double(j = c("media", "mediana", "desvio"), digits = 1) |>
+  theme_booktabs() |>
+  autofit()
+```
+
+Con `flextable` se pueden agregar encabezados, combinar celdas, cambiar colores y exportar a Word o HTML. Ese desarrollo se verá en la Parte 6.
