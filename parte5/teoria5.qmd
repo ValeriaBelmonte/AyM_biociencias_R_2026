@@ -2,7 +2,6 @@
 title: "Teoría 5"
 ---
 
-
 # Modelo lineal con una variable explicativa categórica
 
 En la Parte 4 vimos regresión, donde la variable explicativa es numérica. Ahora la variable explicativa es **categórica**: indica el grupo al que pertenece cada observación (por ejemplo, variedad, tratamiento o lote).
@@ -48,10 +47,10 @@ $$SC_{total} = SC_{tratamientos} + SC_{error}$$
 Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:
 
 | Fuente | SC | gl | CM | F |
-|---|---|---|---|---|
+|---------------|---------------|---------------|---------------|---------------|
 | Tratamientos (entre grupos) | $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ |
-| Error (dentro de grupos) | $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ | |
-| Total | $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ | $N-1$ | | |
+| Error (dentro de grupos) | $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ |  |
+| Total | $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ | $N-1$ |  |  |
 
 Si $H_0$ es verdadera, $F$ sigue una distribución $F_{k-1,\,N-k}$. Un valor grande de $F$ indica que la variabilidad entre grupos es grande comparada con la variabilidad dentro de ellos, y lleva a rechazar $H_0$.
 
@@ -59,9 +58,9 @@ Si $H_0$ es verdadera, $F$ sigue una distribución $F_{k-1,\,N-k}$. Un valor gra
 
 Se verifican sobre los residuos del modelo, igual que en la Parte 4:
 
-1. **Independencia:** depende del diseño. Se justifica en el paso 2.
-2. **Normalidad:** Shapiro-Wilk sobre los residuos y gráfico Q-Q.
-3. **Homocedasticidad:** la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (`car::leveneTest()`) o de Bartlett (`bartlett.test()`), y con un gráfico de residuos contra valores ajustados.
+1.  **Independencia:** depende del diseño. Se justifica en el paso 2.
+2.  **Normalidad:** Shapiro-Wilk sobre los residuos y gráfico Q-Q.
+3.  **Homocedasticidad:** la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (`car::leveneTest()`) o de Bartlett (`bartlett.test()`), y con un gráfico de residuos contra valores ajustados.
 
 Si la normalidad o la homocedasticidad fallan, se puede transformar la respuesta (Parte 4, transformaciones) o usar una alternativa no paramétrica, como Kruskal-Wallis. Kruskal-Wallis no pertenece al Modelo Lineal General y no se trata en esta parte.
 
@@ -75,7 +74,7 @@ Este paso **solo se hace si el ANOVA es significativo**. Un ANOVA no significati
 
 ## Ejemplo de referencia en R
 
-```r
+``` r
 #| label: anova-ejemplo
 set.seed(10)
 datos <- data.frame(
@@ -91,16 +90,65 @@ anova(modelo)                           # tabla ANOVA
 
 **Lectura:** la fila de `variedad` es la prueba de $H_0$ (la F y su p-valor). La fila `Residuals` es la variabilidad dentro de los grupos.
 
-```r
+``` r
 #| label: anova-supuestos
 shapiro.test(residuals(modelo))         # normalidad de residuos
 car::leveneTest(rendimiento ~ variedad, data = datos)  # homocedasticidad
 ```
 
-```r
+``` r
 #| label: anova-tukey
 TukeyHSD(aov(rendimiento ~ variedad, data = datos))
 ```
+
+## Niveles del factor y nivel de referencia
+
+El orden de los niveles de un factor no cambia la prueba F del ANOVA, pero sí determina **cuál es el grupo de referencia** en los coeficientes de `lm()`: el primer nivel es la referencia, y los demás coeficientes son diferencias contra él.
+
+Para ver el orden actual:
+
+``` r
+#| label: niveles
+
+levels(datos$tratamiento)
+```
+
+Para poner el control al principio, con forcats:
+
+``` r
+#| label: niveles-relevel
+library(forcats)
+
+datos <- datos |>
+  mutate(tratamiento = fct_relevel(tratamiento, "Control"))
+levels(datos$tratamiento)   # "T1" "T2" "Control"
+```
+
+Lógica de fct_relevel() para el control:
+
+- Control al principio: fct_relevel(tratamiento, "Control"). Sin after, el control pasa al primer lugar.
+
+- Control al final: fct_relevel(tratamiento, "Control", after = Inf). Inf manda el control al último lugar.
+
+-  Control en una posición intermedia: fct_relevel(tratamiento, "Control", after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.
+
+El primer nivel es el de referencia en lm(), así que el control al principio hace que cada coeficiente compare contra el control.
+
+O con base R, dando el orden completo:
+
+``` r
+#| label: niveles-base
+
+datos$tratamiento <- factor(datos$tratamiento, levels = c("T1", "T2", "Control"))
+```
+
+**Efecto sobre la interpretación:**
+
+- La tabla de `anova()` y el p-valor de la prueba F no cambian.
+- Los coeficientes de `summary()` cambian de referencia: con el control al final, cada coeficiente compara un tratamiento contra el primer nivel, no contra el control.
+- Solo el orden de las categorías en tablas y gráficos cambia con `fct_relevel()` o `factor()`.
+
+Si la pregunta es "¿cada tratamiento difiere del control?", es más claro pedir esas comparaciones directamente con `emmeans`, sin depender del orden de los niveles. Ver la sección siguiente.
 
 ## Medias estimadas y comparaciones con emmeans
 
@@ -114,7 +162,7 @@ La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo
 
 **Medias marginales estimadas:** son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.
 
-```r
+``` r
 #| label: emmeans-medias
 library(emmeans)
 
@@ -125,14 +173,14 @@ plot(medias) + labs(x = "Rendimiento estimado", y = "Variedad")
 
 **Comparaciones pareadas con ajuste:** `pairs()` calcula todas las diferencias entre grupos. El argumento `adjust` controla el error global; con `"tukey"` el resultado es equivalente al de `TukeyHSD()`, pero con la salida en forma de tabla de contrastes.
 
-```r
+``` r
 #| label: emmeans-pares
 pairs(medias, adjust = "tukey")
 ```
 
 **Contrastes específicos:** cuando la pregunta no es "todos contra todos", se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:
 
-```r
+``` r
 #| label: emmeans-contrastes
 contrast(medias,
          list("A vs promedio(B, C)" = c(1, -0.5, -0.5)),
@@ -143,13 +191,14 @@ contrast(medias,
 
 **Conexión con la prueba t:** cuando hay dos grupos, `pairs()` sobre el modelo ajustado da la misma diferencia de medias que `t.test(var.equal = TRUE)`, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.
 
-```r
+``` r
 #| label: emmeans-vs-t
 modelo_AB <- lm(rendimiento ~ variedad, data = datos_AB)
 pairs(emmeans(modelo_AB, ~ variedad))
 ```
 
-[🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes](../explicaciones extras/emmeans.qmd)
+[🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes](../explicaciones%20extras/emmeans.qmd) 
+
 # Prueba t de Student
 
 ## Pregunta e hipótesis
@@ -184,7 +233,7 @@ Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homoceda
 
 ## Ejemplo de referencia en R
 
-```r
+``` r
 #| label: t-ejemplo
 grupo_A <- datos$rendimiento[datos$variedad == "A"]
 grupo_B <- datos$rendimiento[datos$variedad == "B"]
@@ -195,7 +244,7 @@ t.test(grupo_A, grupo_B)                      # versión de Welch (por defecto)
 
 **Verificación de la relación con ANOVA:**
 
-```r
+``` r
 #| label: t-vs-anova
 datos_AB <- subset(datos, variedad %in% c("A", "B"))
 datos_AB$variedad <- droplevels(datos_AB$variedad)
@@ -213,12 +262,12 @@ Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la p
 
 Para aplicar lo visto, usar el mismo protocolo de la Parte 4:
 
-1. **Pregunta e hipótesis:** ¿las medias de los grupos son iguales?
-2. **Modelo y supuestos:** especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.
-3. **Exploración:** boxplots o gráficos de puntos por grupo, con medias y dispersión.
-4. **Estimación:** tabla ANOVA (o `t.test()` si son dos grupos), medias por grupo e intervalos de confianza.
-5. **Validación:** normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con `emmeans`.
-6. **Interpretación:** resultado en términos del problema, indicando qué grupos difieren y cuánto.
+1.  **Pregunta e hipótesis:** ¿las medias de los grupos son iguales?
+2.  **Modelo y supuestos:** especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.
+3.  **Exploración:** boxplots o gráficos de puntos por grupo, con medias y dispersión.
+4.  **Estimación:** tabla ANOVA (o `t.test()` si son dos grupos), medias por grupo e intervalos de confianza.
+5.  **Validación:** normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con `emmeans`.
+6.  **Interpretación:** resultado en términos del problema, indicando qué grupos difieren y cuánto.
 
 # Resumen
 

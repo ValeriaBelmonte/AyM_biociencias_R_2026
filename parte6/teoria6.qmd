@@ -1,0 +1,219 @@
+---
+title: "Teoría 6"
+---
+
+# ¿Por qué un informe en Quarto?
+
+Hasta ahora escribimos el código, los resultados y el texto por separado: un script para el análisis, las salidas en la consola, las tablas copiadas a Word y los gráficos guardados como imágenes. Cuando los datos cambian, hay que rehacer todo a mano, y es fácil que un número del texto no coincida con el de la tabla.
+
+**Quarto** permite escribir el texto, el código y los resultados en un solo documento. Al renderizarlo, el código se ejecuta y sus salidas (tablas, gráficos, valores) se insertan en el lugar que corresponde. Si cambian los datos, se vuelve a renderizar y todo se actualiza.
+
+Esto es lo que se llama **reproducibilidad**: cualquiera puede repetir el análisis a partir del mismo documento y obtener los mismos resultados.
+
+# Estructura de un documento Quarto
+
+Un archivo `.qmd` tiene tres partes:
+
+1.  **Encabezado YAML:** entre dos líneas `---`, con el título, el autor, la fecha y el formato de salida.
+2.  **Texto:** escrito en Markdown.
+3.  **Chunks de código:** bloques ```` ```r ```` que se ejecutan al renderizar.
+
+``` yaml
+---
+title: "Efecto del azufre sobre la roña de la papa"
+author: "Valeria Belmonte"
+date: today
+format:
+  html:
+    toc: true
+    embed-resources: true
+lang: es
+---
+```
+
+## Formatos de salida
+
+Un mismo documento puede generar distintos formatos. Se elige en el encabezado, y también se puede indicar más de uno:
+
+| Formato | Cuándo usarlo | Requisito |
+|------------------------|------------------------|------------------------|
+| `html` | Informes para leer en pantalla, páginas web | Ninguno |
+| `docx` | Informes que se editan en Word o se envían a una revista | Ninguno |
+| `pdf` | Documentos finales con formato fijo | Una instalación de LaTeX (TinyTeX se instala con `quarto install tinytex`) |
+
+Para renderizar, en RStudio se usa el botón **Render**, o desde la terminal `quarto render informe.qmd`.
+
+# Opciones de los chunks
+
+Las opciones se escriben al inicio del chunk, con `#|`. Las más usadas en un informe son:
+
+| Opción | Efecto | Ejemplo |
+|------------------------|------------------------|------------------------|
+| `echo: false` | Oculta el código y muestra solo la salida | Informes para el lector final |
+| `eval: false` | No ejecuta el código | Mostrar código que no debe correr |
+| `warning: false` | Oculta las advertencias | Después de revisarlas |
+| `message: false` | Oculta los mensajes de carga de paquetes | Carga de librerías |
+| `label:` | Nombre del chunk, necesario para las referencias cruzadas | `#| label: fig-boxplot` |
+| `fig-cap:` | Leyenda de la figura | `#| fig-cap: "Índice de roña por tratamiento"` |
+| `tbl-cap:` | Leyenda de la tabla | `#| tbl-cap: "Medias por tratamiento"` |
+
+Un ejemplo completo:
+
+```r
+#| label: fig-boxplot
+#| fig-cap: "Índice de roña según tratamiento"
+#| echo: true
+set.seed(3)
+datos <- data.frame(
+  trt = rep(c("Testigo", "Azufre"), each = 8),
+  inf = c(rnorm(8, 40, 5), rnorm(8, 30, 5))
+)
+
+library(ggplot2)
+ggplot(datos, aes(x = trt, y = inf, fill = trt)) +
+  geom_boxplot(alpha = 0.5) +
+  labs(x = "Tratamiento", y = "Índice de roña") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+# Referencias cruzadas
+
+Si el chunk tiene `label: fig-...` o `label: tbl-...` y una leyenda, Quarto lo numera automáticamente, y en el texto se lo puede citar con `@fig-...`. Así, si cambia el orden de las figuras, las referencias se actualizan solas.
+
+Por ejemplo, en el texto escribimos "En la @fig-boxplot se observa que el testigo tiene un índice más alto".
+
+Las referencias para tablas siguen la misma lógica, con prefijo `tbl-`.
+
+# Texto dinámico: valores dentro de la oración
+
+Se pueden insertar resultados calculados directamente en el texto con código entre comillas invertidas y la letra `r`:
+
+> La media del testigo es `r round(mean(datos$inf[datos$trt == "Testigo"]), 1)` y la del azufre es `r round(mean(datos$inf[datos$trt == "Azufre"]), 1)`.
+
+Al renderizar, esas partes se reemplazan por los valores calculados. Si los datos cambian, el número se actualiza solo. Esto evita el error típico de copiar un valor a mano.
+
+# Tablas
+
+Las tablas con formato (encabezados, colores, celdas combinadas, exportación a Word) se explican en un documento aparte: [Tablas con flextable](flextable.html).
+
+Para una tabla simple se puede usar `knitr::kable()`, que funciona en HTML y PDF.
+
+# Formato del texto
+
+## Negrita, cursiva y encabezados
+
+- `**negrita**` produce **negrita**.
+- `*cursiva*` produce *cursiva*.
+- `# Título`, `## Subtítulo` y `### Sección` crean encabezados de distinto nivel.
+- `` `código` `` produce texto de código, por ejemplo `lm()`.
+
+## Imágenes
+
+Una imagen guardada en la carpeta del proyecto se inserta con:
+
+``` markdown
+![Leyenda de la imagen](imagenes/logo.png){width=60%}
+```
+
+Para que tenga número y pueda citarse con `@fig-...`, conviene insertarla en un chunk con `fig-cap`:
+
+```r
+#| label: fig-ejemplo-imagen
+#| fig-cap: "Ejemplo de imagen insertada desde un archivo"
+#| out-width: "60%"
+#| eval: false
+knitr::include_graphics("imagenes/logo.png")
+```
+
+## Índice
+
+El índice se activa en el encabezado YAML con `toc: true`. Opciones útiles:
+
+- `toc-depth: 3`: incluye hasta los encabezados de tercer nivel.
+- `toc-title: "Índice"`: cambia el título.
+- `number-sections: true`: numera las secciones.
+
+## Salto de página
+
+En PDF o Word, para empezar una página nueva se escribe:
+
+``` markdown
+{{< pagebreak >}}
+```
+
+En HTML no tiene efecto visible, porque la página no tiene páginas fijas.
+
+## Separador decimal
+
+En R, los números se imprimen con punto. Para mostrarlos con coma, hay dos opciones:
+
+- **En la salida de R**, con `options(OutDec = ",")` al inicio del documento.
+- **En el texto**, con `format()` dentro del código en línea:
+
+``` markdown
+La media fue `r format(round(3.456, 2), decimal.mark = ",")`.
+```
+
+Al renderizar, eso produce "La media fue 3,46.". Conviene elegir una sola convención para todo el documento.
+
+## Tipografía
+
+La tipografía se define en el encabezado YAML, según el formato de salida:
+
+- **HTML:** `mainfont: "Roboto"` (acepta nombres de Google Fonts).
+- **PDF:** `mainfont: "Times New Roman"` con `pdf-engine: xelatex`, y la fuente debe estar instalada en el equipo.
+- **Word:** la fuente se define en un documento de referencia, con `reference-doc: plantilla.docx`.
+
+# Fórmulas
+
+La escritura de fórmulas en LaTeX se explica en un documento aparte: [Fórmulas en LaTeX con Quarto](formulas_latex.html).
+
+# Citas y bibliografía
+
+Quarto genera la bibliografía a partir de un archivo `.bib` (por ejemplo, exportado desde Zotero):
+
+``` yaml
+bibliography: referencias.bib
+```
+
+En el texto se cita con el identificador de la referencia: `[@cochran1957]` produce una cita entre paréntesis, y `@cochran1957` una cita narrativa. Quarto arma la lista de referencias al final del documento.
+
+# Estructura de un informe
+
+Para un informe de análisis de datos, una estructura habitual es:
+
+1.  **Introducción:** contexto y pregunta de investigación.
+2.  **Materiales y métodos:** diseño, datos y modelo estadístico, con los supuestos verificados.
+3.  **Resultados:** tablas y gráficos, con el texto que los interpreta.
+4.  **Discusión:** qué significan los resultados, sus limitaciones y comparaciones con otros estudios.
+5.  **Conclusiones y referencias.**
+
+Los gráficos y tablas van con `echo: false` en la mayoría de los casos, para que el lector vea el resultado y no el código. El código se puede dejar disponible con `code-fold: true`, que lo oculta en un bloque plegable.
+
+# Parámetros
+
+Un informe puede repetirse para distintos conjuntos de datos o distintas áreas. En el encabezado se definen parámetros:
+
+``` yaml
+params:
+  area: "Argentina"
+```
+
+Y en el código se usan con `params$area`, por ejemplo para filtrar los datos. Al renderizar, se indica el valor con `quarto render informe.qmd -P area:Chile`.
+
+# Buenas prácticas
+
+- **Un informe, un archivo:** el texto, el código y las figuras deben estar en el mismo documento, salvo datos grandes.
+- **Rutas relativas:** los datos se leen con rutas relativas al documento, para que funcione en otra computadora.
+- **Semilla fija:** si hay simulaciones o muestreos, usar `set.seed()` para que los resultados se repitan.
+- **Revisar las advertencias:** antes de ocultarlas con `warning: false`, conviene leerlas.
+- **Renderizar seguido:** un error en un chunk se detecta más rápido si se renderiza con frecuencia, y no al final.
+
+# Resumen
+
+- Quarto integra texto, código y resultados en un documento que se actualiza al renderizar.
+- El encabezado YAML define el título, el formato y las opciones generales.
+- Los chunks `{r}` ejecutan el código, y las opciones `#|` controlan qué se muestra.
+- Las referencias cruzadas (`@fig-`, `@tbl-`) y el texto dinámico (`r...`) evitan errores de numeración y de transcripción de valores.
+- Con `flextable` y `docx`, las tablas pasan a Word con el formato del informe.

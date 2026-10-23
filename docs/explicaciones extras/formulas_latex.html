@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introducción – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Fórmulas en LaTeX con Quarto – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -288,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte4/index4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte4/index4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -358,13 +387,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/index6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/index6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/teoria6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teoría</span></a>
   </div>
 </li>
@@ -392,7 +421,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objetivo-de-la-clase" id="toc-objetivo-de-la-clase" class="nav-link active" data-scroll-target="#objetivo-de-la-clase"><span class="header-section-number">1</span> Objetivo de la clase</a></li>
+  <li><a href="#fórmulas-en-línea-y-en-bloque" id="toc-fórmulas-en-línea-y-en-bloque" class="nav-link active" data-scroll-target="#fórmulas-en-línea-y-en-bloque"><span class="header-section-number">1</span> Fórmulas en línea y en bloque</a></li>
+  <li><a href="#subíndices-superíndices-y-fracciones" id="toc-subíndices-superíndices-y-fracciones" class="nav-link" data-scroll-target="#subíndices-superíndices-y-fracciones"><span class="header-section-number">2</span> Subíndices, superíndices y fracciones</a></li>
+  <li><a href="#letras-griegas" id="toc-letras-griegas" class="nav-link" data-scroll-target="#letras-griegas"><span class="header-section-number">3</span> Letras griegas</a></li>
+  <li><a href="#símbolos-comunes-en-estadística" id="toc-símbolos-comunes-en-estadística" class="nav-link" data-scroll-target="#símbolos-comunes-en-estadística"><span class="header-section-number">4</span> Símbolos comunes en estadística</a></li>
+  <li><a href="#ejemplos-del-curso" id="toc-ejemplos-del-curso" class="nav-link" data-scroll-target="#ejemplos-del-curso"><span class="header-section-number">5</span> Ejemplos del curso</a></li>
+  <li><a href="#varias-líneas-alineadas" id="toc-varias-líneas-alineadas" class="nav-link" data-scroll-target="#varias-líneas-alineadas"><span class="header-section-number">6</span> Varias líneas alineadas</a></li>
+  <li><a href="#numerar-y-citar-fórmulas" id="toc-numerar-y-citar-fórmulas" class="nav-link" data-scroll-target="#numerar-y-citar-fórmulas"><span class="header-section-number">7</span> Numerar y citar fórmulas</a></li>
+  <li><a href="#errores-frecuentes" id="toc-errores-frecuentes" class="nav-link" data-scroll-target="#errores-frecuentes"><span class="header-section-number">8</span> Errores frecuentes</a></li>
+  <li><a href="#dónde-probar" id="toc-dónde-probar" class="nav-link" data-scroll-target="#dónde-probar"><span class="header-section-number">9</span> Dónde probar</a></li>
   </ul>
 </nav>
     </div>
@@ -401,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Introducción</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Fórmulas en LaTeX con Quarto</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -418,8 +455,196 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="objetivo-de-la-clase" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="objetivo-de-la-clase"><span class="header-section-number">1</span> Objetivo de la clase</h2>
+<section id="fórmulas-en-línea-y-en-bloque" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Fórmulas en línea y en bloque</h1>
+<p>Quarto usa la sintaxis de LaTeX entre signos de pesos.</p>
+<ul>
+<li><strong>En línea</strong>, dentro del texto: <code>$\bar{x} = 5$</code> produce <span class="math inline">\(\bar{x} = 5\)</span>.</li>
+<li><strong>En bloque</strong>, centrada y en una línea propia, con dos signos de pesos:</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i\]</span></p>
+</section>
+<section id="subíndices-superíndices-y-fracciones" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Subíndices, superíndices y fracciones</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Escribís</th>
+<th>Obtenés</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>$x_i$</code></td>
+<td><span class="math inline">\(x_i\)</span></td>
+</tr>
+<tr class="even">
+<td><code>$\sigma^2$</code></td>
+<td><span class="math inline">\(\sigma^2\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>$\beta_{1}$</code></td>
+<td><span class="math inline">\(\beta_{1}\)</span></td>
+</tr>
+<tr class="even">
+<td><code>$\frac{a}{b}$</code></td>
+<td><span class="math inline">\(\frac{a}{b}\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>$\sqrt{n-1}$</code></td>
+<td><span class="math inline">\(\sqrt{n-1}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Si el subíndice o el superíndice tiene más de un carácter, va entre llaves: <code>x_{ij}</code> produce <span class="math inline">\(x_{ij}\)</span>.</p>
+</section>
+<section id="letras-griegas" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Letras griegas</h1>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Escribís</th>
+<th>Obtenés</th>
+<th>Escribís</th>
+<th>Obtenés</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\alpha</code></td>
+<td><span class="math inline">\(\alpha\)</span></td>
+<td><code>\beta</code></td>
+<td><span class="math inline">\(\beta\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\varepsilon</code></td>
+<td><span class="math inline">\(\varepsilon\)</span></td>
+<td><code>\sigma</code></td>
+<td><span class="math inline">\(\sigma\)</span></td>
+</tr>
+<tr class="odd">
+<td><code>\mu</code></td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><code>\rho</code></td>
+<td><span class="math inline">\(\rho\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\tau</code></td>
+<td><span class="math inline">\(\tau\)</span></td>
+<td><code>\sum</code></td>
+<td><span class="math inline">\(\sum\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="símbolos-comunes-en-estadística" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Símbolos comunes en estadística</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 22%">
+<col style="width: 57%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Escribís</th>
+<th>Obtenés</th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\bar{x}</code></td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td>Media muestral</td>
+</tr>
+<tr class="even">
+<td><code>\hat{y}</code></td>
+<td><span class="math inline">\(\hat{y}\)</span></td>
+<td>Valor predicho</td>
+</tr>
+<tr class="odd">
+<td><code>\sim</code></td>
+<td><span class="math inline">\(\sim\)</span></td>
+<td>Distribución: <span class="math inline">\(Y \sim N(\mu, \sigma^2)\)</span></td>
+</tr>
+<tr class="even">
+<td><code>\neq</code></td>
+<td><span class="math inline">\(\neq\)</span></td>
+<td>Distinto de</td>
+</tr>
+<tr class="odd">
+<td><code>\le</code>, <code>\ge</code></td>
+<td><span class="math inline">\(\le\)</span>, <span class="math inline">\(\ge\)</span></td>
+<td>Menor o igual, mayor o igual</td>
+</tr>
+<tr class="even">
+<td><code>\pm</code></td>
+<td><span class="math inline">\(\pm\)</span></td>
+<td>Intervalos de confianza</td>
+</tr>
+<tr class="odd">
+<td><code>\approx</code></td>
+<td><span class="math inline">\(\approx\)</span></td>
+<td>Aproximadamente igual</td>
+</tr>
+<tr class="even">
+<td><code>\text{...}</code></td>
+<td><span class="math inline">\(\text{texto}\)</span></td>
+<td>Texto dentro de una fórmula</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ejemplos-del-curso" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Ejemplos del curso</h1>
+<p>Modelo lineal simple:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)\]</span></p>
+<p>Estadístico t para la pendiente:</p>
+<p><span class="math display">\[t = \frac{b_1}{EE(b_1)}\]</span></p>
+<p>Intervalo de confianza:</p>
+<p><span class="math display">\[IC(\beta_1, 95\,\%) = b_1 \pm t_{\frac{\alpha}{2}} \times EE(b_1)\]</span></p>
+<p>Estadístico F del ANOVA:</p>
+<p><span class="math display">\[F = \frac{CM_{\text{trat}}}{CM_{\text{error}}}\]</span></p>
+<p>Coeficiente de correlación de Pearson:</p>
+<p><span class="math display">\[r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}\]</span></p>
+</section>
+<section id="varias-líneas-alineadas" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Varias líneas alineadas</h1>
+<p>Para sistemas de ecuaciones o pasos de un desarrollo, se usa <code>aligned</code> y <code>&amp;</code> para alinear el signo igual:</p>
+<p><span class="math display">\[\begin{aligned}
+S_{xy} &amp;= \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \\
+S_{xx} &amp;= \sum_{i=1}^{n}(x_i - \bar{x})^2 \\
+b_1 &amp;= \frac{S_{xy}}{S_{xx}}
+\end{aligned}\]</span></p>
+</section>
+<section id="numerar-y-citar-fórmulas" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Numerar y citar fórmulas</h1>
+<p>Una fórmula se numera agregando una etiqueta <code>{#eq-...}</code> después del cierre de los signos de pesos. Luego se cita con <code>@eq-...</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>$$ {#eq-modelo}</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>El modelo de la ecuación @eq-modelo supone errores independientes.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i\]</span> {#eq-modelo}</p>
+<p>Como vimos en la ecuación <strong>?@eq-modelo</strong>, el modelo supone errores independientes.</p>
+</section>
+<section id="errores-frecuentes" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Errores frecuentes</h1>
+<ul>
+<li><strong>Olvidar cerrar</strong> un <code>\frac{}{}</code> o un <code>\left(</code> con su <code>\right)</code>. Quarto muestra el error en rojo al renderizar.</li>
+<li><strong>Usar <code>*</code> para multiplicar</strong> en la fórmula. En LaTeX, la multiplicación se escribe con espacio o con <code>\cdot</code>, y <code>\times</code> para el signo de producto.</li>
+<li><strong>Escribir <code>sd</code> o <code>var</code></strong> dentro de la fórmula, cuando debería ser <code>\text{sd}</code> o <code>\text{Var}</code>, para que se vea como texto y no como producto de letras.</li>
+<li><strong>Escribir el símbolo <code>%</code> sin escapar.</strong> En LaTeX, <code>%</code> empieza un comentario. Usar <code>\%</code>.</li>
+<li><strong>Poner una coma decimal</strong> dentro de la fórmula. En LaTeX, el decimal es el punto: <code>0.05</code>, no <code>0,05</code>.</li>
+</ul>
+</section>
+<section id="dónde-probar" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Dónde probar</h1>
+<p>El editor visual de RStudio muestra las fórmulas al renderizar. También se puede probar en <a href="https://www.overleaf.com">Overleaf</a>, con el mismo lenguaje de fórmulas.</p>
 
 
 <!-- -->
@@ -877,11 +1102,119 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introducción"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la clase</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Fórmulas en LaTeX con Quarto"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Fórmulas en línea y en bloque</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Quarto usa la sintaxis de LaTeX entre signos de pesos.</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**En línea**, dentro del texto: <span class="in">`$\bar{x} = 5$`</span> produce $\bar{x} = 5$.</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**En bloque**, centrada y en una línea propia, con dos signos de pesos:</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">``` markdown</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>$$\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i$$</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Subíndices, superíndices y fracciones</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Escribís        <span class="pp">|</span> Obtenés       <span class="pp">|</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------------|---------------|</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`$x_i$`</span>         <span class="pp">|</span> $x_i$         <span class="pp">|</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`$\sigma^2$`</span>    <span class="pp">|</span> $\sigma^2$    <span class="pp">|</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`$\beta_{1}$`</span>   <span class="pp">|</span> $\beta_{1}$   <span class="pp">|</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`$\frac{a}{b}$`</span> <span class="pp">|</span> $\frac{a}{b}$ <span class="pp">|</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`$\sqrt{n-1}$`</span>  <span class="pp">|</span> $\sqrt{n-1}$  <span class="pp">|</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>Si el subíndice o el superíndice tiene más de un carácter, va entre llaves: <span class="in">`x_{ij}`</span> produce $x_{ij}$.</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Letras griegas</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Escribís      <span class="pp">|</span> Obtenés       <span class="pp">|</span> Escribís <span class="pp">|</span> Obtenés  <span class="pp">|</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|---------------|----------|----------|</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\alpha`</span>      <span class="pp">|</span> $\alpha$      <span class="pp">|</span> <span class="in">`\beta`</span>  <span class="pp">|</span> $\beta$  <span class="pp">|</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\varepsilon`</span> <span class="pp">|</span> $\varepsilon$ <span class="pp">|</span> <span class="in">`\sigma`</span> <span class="pp">|</span> $\sigma$ <span class="pp">|</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\mu`</span>         <span class="pp">|</span> $\mu$         <span class="pp">|</span> <span class="in">`\rho`</span>   <span class="pp">|</span> $\rho$   <span class="pp">|</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\tau`</span>        <span class="pp">|</span> $\tau$        <span class="pp">|</span> <span class="in">`\sum`</span>   <span class="pp">|</span> $\sum$   <span class="pp">|</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="fu"># Símbolos comunes en estadística</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Escribís     <span class="pp">|</span> Obtenés        <span class="pp">|</span> Uso                                     <span class="pp">|</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="pp">|--------------|----------------|-----------------------------------------|</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\bar{x}`</span>    <span class="pp">|</span> $\bar{x}$      <span class="pp">|</span> Media muestral                          <span class="pp">|</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\hat{y}`</span>    <span class="pp">|</span> $\hat{y}$      <span class="pp">|</span> Valor predicho                          <span class="pp">|</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\sim`</span>       <span class="pp">|</span> $\sim$         <span class="pp">|</span> Distribución: $Y \sim N(\mu, \sigma^2)$ <span class="pp">|</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\neq`</span>       <span class="pp">|</span> $\neq$         <span class="pp">|</span> Distinto de                             <span class="pp">|</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\le`</span>, <span class="in">`\ge`</span> <span class="pp">|</span> $\le$, $\ge$   <span class="pp">|</span> Menor o igual, mayor o igual            <span class="pp">|</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\pm`</span>        <span class="pp">|</span> $\pm$          <span class="pp">|</span> Intervalos de confianza                 <span class="pp">|</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\approx`</span>    <span class="pp">|</span> $\approx$      <span class="pp">|</span> Aproximadamente igual                   <span class="pp">|</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`\text{...}`</span> <span class="pp">|</span> $\text{texto}$ <span class="pp">|</span> Texto dentro de una fórmula             <span class="pp">|</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="fu"># Ejemplos del curso</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>Modelo lineal simple:</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>Estadístico t para la pendiente:</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>$$t = \frac{b_1}{EE(b_1)}$$</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>Intervalo de confianza:</span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>$$IC(\beta_1, 95\,\%) = b_1 \pm t_{\frac{\alpha}{2}} \times EE(b_1)$$</span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>Estadístico F del ANOVA:</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>$$F = \frac{CM_{\text{trat}}}{CM_{\text{error}}}$$</span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>Coeficiente de correlación de Pearson:</span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>$$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}$$</span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a><span class="fu"># Varias líneas alineadas</span></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>Para sistemas de ecuaciones o pasos de un desarrollo, se usa <span class="in">`aligned`</span> y <span class="in">`&amp;`</span> para alinear el signo igual:</span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>$$\begin{aligned}</span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>S_{xy} &amp;= \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) <span class="sc">\\</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>S_{xx} &amp;= \sum_{i=1}^{n}(x_i - \bar{x})^2 <span class="sc">\\</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>b_1 &amp;= \frac{S_{xy}}{S_{xx}}</span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>\end{aligned}$$</span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="fu"># Numerar y citar fórmulas</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>Una fórmula se numera agregando una etiqueta <span class="in">`{#eq-...}`</span> después del cierre de los signos de pesos. Luego se cita con <span class="in">`@eq-...`</span>:</span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="in">``` markdown</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i</span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>$$ {#eq-modelo}</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>El modelo de la ecuación @eq-modelo supone errores independientes.</span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a>$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$</span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a> {#eq-modelo}</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>Como vimos en la ecuación @eq-modelo, el modelo supone errores independientes.</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a><span class="fu"># Errores frecuentes</span></span>
+<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Olvidar cerrar** un <span class="in">`\frac{}{}`</span> o un <span class="in">`\left(`</span> con su <span class="in">`\right)`</span>. Quarto muestra el error en rojo al renderizar.</span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Usar `*` para multiplicar** en la fórmula. En LaTeX, la multiplicación se escribe con espacio o con <span class="in">`\cdot`</span>, y <span class="in">`\times`</span> para el signo de producto.</span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Escribir `sd` o `var`** dentro de la fórmula, cuando debería ser <span class="in">`\text{sd}`</span> o <span class="in">`\text{Var}`</span>, para que se vea como texto y no como producto de letras.</span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Escribir el símbolo `%` sin escapar.** En LaTeX, <span class="in">`%`</span> empieza un comentario. Usar <span class="in">`\%`</span>.</span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Poner una coma decimal** dentro de la fórmula. En LaTeX, el decimal es el punto: <span class="in">`0.05`</span>, no <span class="in">`0,05`</span>.</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="fu"># Dónde probar</span></span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>El editor visual de RStudio muestra las fórmulas al renderizar. También se puede probar en <span class="co">[</span><span class="ot">Overleaf</span><span class="co">](https://www.overleaf.com)</span>, con el mismo lenguaje de fórmulas.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

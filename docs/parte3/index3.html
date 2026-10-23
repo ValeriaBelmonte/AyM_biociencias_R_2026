@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte4/index4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte4/index4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -356,13 +356,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/index6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/index6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/teoria6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teoría</span></a>
   </div>
 </li>
@@ -418,6 +418,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objetivo-de-la-clase" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivo-de-la-clase"><span class="header-section-number">1</span> Objetivo de la clase</h2>
+<p>Al finalizar esta clase, el/la estudiante deberá ser capaz de:</p>
+<ul>
+<li>Explicar el propósito del análisis exploratorio y las preguntas básicas que orientan la exploración de una base de datos.</li>
+<li>Reconocer la estructura de una base: qué representa cada fila, qué contiene cada columna y de qué tipo es cada variable.</li>
+<li>Detectar problemas de calidad de los datos, como faltantes, valores atípicos, errores de carga, duplicados y categorías escritas de distintas maneras.</li>
+<li>Elegir y construir tablas de frecuencias, tablas de doble entrada y tablas filtradas según el tipo de variable y la pregunta.</li>
+<li>Elegir el gráfico adecuado (barras, histograma, caja y bigotes, dispersión, líneas) según el tipo de variable y la pregunta.</li>
+<li>Construir gráficos con <code>ggplot2</code> por capas: datos, variables, tipo de gráfico, etiquetas y apariencia.</li>
+<li>Usar <code>esquisse</code> como herramienta interactiva para explorar gráficos y obtener su código.</li>
+<li>Calcular medidas de tendencia central (media, mediana, moda), de dispersión (rango, desvío estándar, IQR, coeficiente de variación) y de posición (cuantiles).</li>
+<li>Obtener medidas resumen por grupo con <code>group_by()</code> y <code>summarise()</code> de tidyverse, y con funciones de R base.</li>
+<li>Reconocer cuándo conviene la media y cuándo la mediana, y comparar la dispersión entre variables de distinta escala.</li>
+<li>Presentar un resumen en una tabla con formato, usando <code>flextable</code>.</li>
+</ul>
 
 
 <!-- -->
@@ -879,7 +893,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introducción"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la clase</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la clase</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Al finalizar esta clase, el/la estudiante deberá ser capaz de:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explicar el propósito del análisis exploratorio y las preguntas básicas que orientan la exploración de una base de datos.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Reconocer la estructura de una base: qué representa cada fila, qué contiene cada columna y de qué tipo es cada variable.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Detectar problemas de calidad de los datos, como faltantes, valores atípicos, errores de carga, duplicados y categorías escritas de distintas maneras.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Elegir y construir tablas de frecuencias, tablas de doble entrada y tablas filtradas según el tipo de variable y la pregunta.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Elegir el gráfico adecuado (barras, histograma, caja y bigotes, dispersión, líneas) según el tipo de variable y la pregunta.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Construir gráficos con <span class="in">`ggplot2`</span> por capas: datos, variables, tipo de gráfico, etiquetas y apariencia.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar <span class="in">`esquisse`</span> como herramienta interactiva para explorar gráficos y obtener su código.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Calcular medidas de tendencia central (media, mediana, moda), de dispersión (rango, desvío estándar, IQR, coeficiente de variación) y de posición (cuantiles).</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Obtener medidas resumen por grupo con <span class="in">`group_by()`</span> y <span class="in">`summarise()`</span> de tidyverse, y con funciones de R base.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Reconocer cuándo conviene la media y cuándo la mediana, y comparar la dispersión entre variables de distinta escala.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Presentar un resumen en una tabla con formato, usando <span class="in">`flextable`</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

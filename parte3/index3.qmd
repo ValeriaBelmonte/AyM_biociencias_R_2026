@@ -3,3 +3,17 @@ title: "Introducción"
 ---
 
 ## Objetivo de la clase
+
+Al finalizar esta clase, el/la estudiante deberá ser capaz de:
+
+- Explicar el propósito del análisis exploratorio y las preguntas básicas que orientan la exploración de una base de datos.
+- Reconocer la estructura de una base: qué representa cada fila, qué contiene cada columna y de qué tipo es cada variable.
+- Detectar problemas de calidad de los datos, como faltantes, valores atípicos, errores de carga, duplicados y categorías escritas de distintas maneras.
+- Elegir y construir tablas de frecuencias, tablas de doble entrada y tablas filtradas según el tipo de variable y la pregunta.
+- Elegir el gráfico adecuado (barras, histograma, caja y bigotes, dispersión, líneas) según el tipo de variable y la pregunta.
+- Construir gráficos con `ggplot2` por capas: datos, variables, tipo de gráfico, etiquetas y apariencia.
+- Usar `esquisse` como herramienta interactiva para explorar gráficos y obtener su código.
+- Calcular medidas de tendencia central (media, mediana, moda), de dispersión (rango, desvío estándar, IQR, coeficiente de variación) y de posición (cuantiles).
+- Obtener medidas resumen por grupo con `group_by()` y `summarise()` de tidyverse, y con funciones de R base.
+- Reconocer cuándo conviene la media y cuándo la mediana, y comparar la dispersión entre variables de distinta escala.
+- Presentar un resumen en una tabla con formato, usando `flextable`.

@@ -2,19 +2,15 @@
 title: "Objetivo de la clase"
 ---
 
+Al finalizar esta clase, el/la estudiante deberá ser capaz de:
 
-Al finalizar la clase, como estudiante podrás:
-
-
-1. Importar un archivo CSV a R.
-2. Reconocer qué representan las filas, las columnas, las variables y las observaciones de una base de datos.
-3. Identificar los tipos de variables presentes en la base.
-4. Seleccionar y ordenar variables y observaciones.
-5. Filtrar observaciones según condiciones de interés.
-6. Crear nuevas variables y recodificar variables existentes.
-7. Detectar valores faltantes y registros duplicados.
-8.Generar resúmenes agrupados para explorar subconjuntos de datos.
-9. Guardar una nueva versión limpia y organizada de la base de datos.
-
+- Importar un archivo CSV a R.
+- Reconocer qué representan las filas, las columnas, las variables y las observaciones de una base de datos.
+- Identificar los tipos de variables presentes en la base.
+- Seleccionar y ordenar variables y observaciones.
+- Filtrar observaciones según condiciones de interés.
+- Crear nuevas variables y recodificar variables existentes.
+- Detectar valores faltantes y registros duplicados. 8.Generar resúmenes agrupados para explorar subconjuntos de datos.
+- Guardar una nueva versión limpia y organizada de la base de datos.
 
 Al finalizar esta etapa, contaremos con una base de datos limpia, documentada y adaptada a la pregunta de análisis que deseamos abordar.

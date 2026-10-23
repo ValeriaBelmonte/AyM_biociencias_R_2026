@@ -1,0 +1,113 @@
+---
+title: "Fórmulas en LaTeX con Quarto"
+---
+
+# Fórmulas en línea y en bloque
+
+Quarto usa la sintaxis de LaTeX entre signos de pesos.
+
+- **En línea**, dentro del texto: `$\bar{x} = 5$` produce $\bar{x} = 5$.
+- **En bloque**, centrada y en una línea propia, con dos signos de pesos:
+
+``` markdown
+$$
+\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i
+$$
+```
+
+$$\bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i$$
+
+# Subíndices, superíndices y fracciones
+
+| Escribís        | Obtenés       |
+|-----------------|---------------|
+| `$x_i$`         | $x_i$         |
+| `$\sigma^2$`    | $\sigma^2$    |
+| `$\beta_{1}$`   | $\beta_{1}$   |
+| `$\frac{a}{b}$` | $\frac{a}{b}$ |
+| `$\sqrt{n-1}$`  | $\sqrt{n-1}$  |
+
+Si el subíndice o el superíndice tiene más de un carácter, va entre llaves: `x_{ij}` produce $x_{ij}$.
+
+# Letras griegas
+
+| Escribís      | Obtenés       | Escribís | Obtenés  |
+|---------------|---------------|----------|----------|
+| `\alpha`      | $\alpha$      | `\beta`  | $\beta$  |
+| `\varepsilon` | $\varepsilon$ | `\sigma` | $\sigma$ |
+| `\mu`         | $\mu$         | `\rho`   | $\rho$   |
+| `\tau`        | $\tau$        | `\sum`   | $\sum$   |
+
+# Símbolos comunes en estadística
+
+| Escribís     | Obtenés        | Uso                                     |
+|--------------|----------------|-----------------------------------------|
+| `\bar{x}`    | $\bar{x}$      | Media muestral                          |
+| `\hat{y}`    | $\hat{y}$      | Valor predicho                          |
+| `\sim`       | $\sim$         | Distribución: $Y \sim N(\mu, \sigma^2)$ |
+| `\neq`       | $\neq$         | Distinto de                             |
+| `\le`, `\ge` | $\le$, $\ge$   | Menor o igual, mayor o igual            |
+| `\pm`        | $\pm$          | Intervalos de confianza                 |
+| `\approx`    | $\approx$      | Aproximadamente igual                   |
+| `\text{...}` | $\text{texto}$ | Texto dentro de una fórmula             |
+
+# Ejemplos del curso
+
+Modelo lineal simple:
+
+$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$
+
+Estadístico t para la pendiente:
+
+$$t = \frac{b_1}{EE(b_1)}$$
+
+Intervalo de confianza:
+
+$$IC(\beta_1, 95\,\%) = b_1 \pm t_{\frac{\alpha}{2}} \times EE(b_1)$$
+
+Estadístico F del ANOVA:
+
+$$F = \frac{CM_{\text{trat}}}{CM_{\text{error}}}$$
+
+Coeficiente de correlación de Pearson:
+
+$$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x_i - \bar{x})^2 \sum_{i=1}^{n}(y_i - \bar{y})^2}}$$
+
+# Varias líneas alineadas
+
+Para sistemas de ecuaciones o pasos de un desarrollo, se usa `aligned` y `&` para alinear el signo igual:
+
+$$\begin{aligned}
+S_{xy} &= \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y}) \\
+S_{xx} &= \sum_{i=1}^{n}(x_i - \bar{x})^2 \\
+b_1 &= \frac{S_{xy}}{S_{xx}}
+\end{aligned}$$
+
+# Numerar y citar fórmulas
+
+Una fórmula se numera agregando una etiqueta `{#eq-...}` después del cierre de los signos de pesos. Luego se cita con `@eq-...`:
+
+``` markdown
+$$
+Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
+$$ {#eq-modelo}
+
+El modelo de la ecuación @eq-modelo supone errores independientes.
+```
+
+$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i$$
+ {#eq-modelo}
+
+Como vimos en la ecuación @eq-modelo, el modelo supone errores independientes.
+
+# Errores frecuentes
+
+- **Olvidar cerrar** un `\frac{}{}` o un `\left(` con su `\right)`. Quarto muestra el error en rojo al renderizar.
+- **Usar `*` para multiplicar** en la fórmula. En LaTeX, la multiplicación se escribe con espacio o con `\cdot`, y `\times` para el signo de producto.
+- **Escribir `sd` o `var`** dentro de la fórmula, cuando debería ser `\text{sd}` o `\text{Var}`, para que se vea como texto y no como producto de letras.
+- **Escribir el símbolo `%` sin escapar.** En LaTeX, `%` empieza un comentario. Usar `\%`.
+- **Poner una coma decimal** dentro de la fórmula. En LaTeX, el decimal es el punto: `0.05`, no `0,05`.
+
+# Dónde probar
+
+El editor visual de RStudio muestra las fórmulas al renderizar. También se puede probar en [Overleaf](https://www.overleaf.com), con el mismo lenguaje de fórmulas.

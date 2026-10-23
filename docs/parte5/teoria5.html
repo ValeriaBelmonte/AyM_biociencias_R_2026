@@ -315,7 +315,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte4/index4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte4/index4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -385,13 +385,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/index6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/index6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/teoria6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teoría</span></a>
   </div>
 </li>
@@ -427,15 +427,19 @@ window.Quarto = {
   <li><a href="#supuestos" id="toc-supuestos" class="nav-link" data-scroll-target="#supuestos"><span class="header-section-number">2.3</span> Supuestos</a></li>
   <li><a href="#comparaciones-múltiples" id="toc-comparaciones-múltiples" class="nav-link" data-scroll-target="#comparaciones-múltiples"><span class="header-section-number">2.4</span> Comparaciones múltiples</a></li>
   <li><a href="#ejemplo-de-referencia-en-r" id="toc-ejemplo-de-referencia-en-r" class="nav-link" data-scroll-target="#ejemplo-de-referencia-en-r"><span class="header-section-number">2.5</span> Ejemplo de referencia en R</a></li>
-  <li><a href="#medias-estimadas-y-comparaciones-con-emmeans" id="toc-medias-estimadas-y-comparaciones-con-emmeans" class="nav-link" data-scroll-target="#medias-estimadas-y-comparaciones-con-emmeans"><span class="header-section-number">2.6</span> Medias estimadas y comparaciones con emmeans</a></li>
-  <li><a href="#pregunta-e-hipótesis-1" id="toc-pregunta-e-hipótesis-1" class="nav-link" data-scroll-target="#pregunta-e-hipótesis-1"><span class="header-section-number">2.7</span> Pregunta e hipótesis</a></li>
-  <li><a href="#estadístico-t" id="toc-estadístico-t" class="nav-link" data-scroll-target="#estadístico-t"><span class="header-section-number">2.8</span> Estadístico t</a></li>
-  <li><a href="#relación-con-el-anova" id="toc-relación-con-el-anova" class="nav-link" data-scroll-target="#relación-con-el-anova"><span class="header-section-number">2.9</span> Relación con el ANOVA</a></li>
-  <li><a href="#supuestos-1" id="toc-supuestos-1" class="nav-link" data-scroll-target="#supuestos-1"><span class="header-section-number">2.10</span> Supuestos</a></li>
-  <li><a href="#ejemplo-de-referencia-en-r-1" id="toc-ejemplo-de-referencia-en-r-1" class="nav-link" data-scroll-target="#ejemplo-de-referencia-en-r-1"><span class="header-section-number">2.11</span> Ejemplo de referencia en R</a></li>
+  <li><a href="#niveles-del-factor-y-nivel-de-referencia" id="toc-niveles-del-factor-y-nivel-de-referencia" class="nav-link" data-scroll-target="#niveles-del-factor-y-nivel-de-referencia"><span class="header-section-number">2.6</span> Niveles del factor y nivel de referencia</a></li>
+  <li><a href="#medias-estimadas-y-comparaciones-con-emmeans" id="toc-medias-estimadas-y-comparaciones-con-emmeans" class="nav-link" data-scroll-target="#medias-estimadas-y-comparaciones-con-emmeans"><span class="header-section-number">2.7</span> Medias estimadas y comparaciones con emmeans</a></li>
   </ul></li>
-  <li><a href="#protocolo-aplicado-a-la-comparación-de-grupos" id="toc-protocolo-aplicado-a-la-comparación-de-grupos" class="nav-link" data-scroll-target="#protocolo-aplicado-a-la-comparación-de-grupos"><span class="header-section-number">3</span> Protocolo aplicado a la comparación de grupos</a></li>
-  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">4</span> Resumen</a></li>
+  <li><a href="#prueba-t-de-student" id="toc-prueba-t-de-student" class="nav-link" data-scroll-target="#prueba-t-de-student"><span class="header-section-number">3</span> Prueba t de Student</a>
+  <ul class="collapse">
+  <li><a href="#pregunta-e-hipótesis-1" id="toc-pregunta-e-hipótesis-1" class="nav-link" data-scroll-target="#pregunta-e-hipótesis-1"><span class="header-section-number">3.1</span> Pregunta e hipótesis</a></li>
+  <li><a href="#estadístico-t" id="toc-estadístico-t" class="nav-link" data-scroll-target="#estadístico-t"><span class="header-section-number">3.2</span> Estadístico t</a></li>
+  <li><a href="#relación-con-el-anova" id="toc-relación-con-el-anova" class="nav-link" data-scroll-target="#relación-con-el-anova"><span class="header-section-number">3.3</span> Relación con el ANOVA</a></li>
+  <li><a href="#supuestos-1" id="toc-supuestos-1" class="nav-link" data-scroll-target="#supuestos-1"><span class="header-section-number">3.4</span> Supuestos</a></li>
+  <li><a href="#ejemplo-de-referencia-en-r-1" id="toc-ejemplo-de-referencia-en-r-1" class="nav-link" data-scroll-target="#ejemplo-de-referencia-en-r-1"><span class="header-section-number">3.5</span> Ejemplo de referencia en R</a></li>
+  </ul></li>
+  <li><a href="#protocolo-aplicado-a-la-comparación-de-grupos" id="toc-protocolo-aplicado-a-la-comparación-de-grupos" class="nav-link" data-scroll-target="#protocolo-aplicado-a-la-comparación-de-grupos"><span class="header-section-number">4</span> Protocolo aplicado a la comparación de grupos</a></li>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen"><span class="header-section-number">5</span> Resumen</a></li>
   </ul>
 </nav>
     </div>
@@ -574,8 +578,41 @@ window.Quarto = {
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-tukey</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="medias-estimadas-y-comparaciones-con-emmeans" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="medias-estimadas-y-comparaciones-con-emmeans"><span class="header-section-number">2.6</span> Medias estimadas y comparaciones con emmeans</h2>
+<section id="niveles-del-factor-y-nivel-de-referencia" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="niveles-del-factor-y-nivel-de-referencia"><span class="header-section-number">2.6</span> Niveles del factor y nivel de referencia</h2>
+<p>El orden de los niveles de un factor no cambia la prueba F del ANOVA, pero sí determina <strong>cuál es el grupo de referencia</strong> en los coeficientes de <code>lm()</code>: el primer nivel es la referencia, y los demás coeficientes son diferencias contra él.</p>
+<p>Para ver el orden actual:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: niveles</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(datos<span class="sc">$</span>tratamiento)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para poner el control al principio, con forcats:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: niveles-relevel</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tratamiento =</span> <span class="fu">fct_relevel</span>(tratamiento, <span class="st">"Control"</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(datos<span class="sc">$</span>tratamiento)   <span class="co"># "T1" "T2" "Control"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Lógica de fct_relevel() para el control:</p>
+<ul>
+<li><p>Control al principio: fct_relevel(tratamiento, “Control”). Sin after, el control pasa al primer lugar.</p></li>
+<li><p>Control al final: fct_relevel(tratamiento, “Control”, after = Inf). Inf manda el control al último lugar.</p></li>
+<li><p>Control en una posición intermedia: fct_relevel(tratamiento, “Control”, after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.</p></li>
+</ul>
+<p>El primer nivel es el de referencia en lm(), así que el control al principio hace que cada coeficiente compare contra el control.</p>
+<p>O con base R, dando el orden completo:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: niveles-base</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>tratamiento <span class="ot">&lt;-</span> <span class="fu">factor</span>(datos<span class="sc">$</span>tratamiento, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"T1"</span>, <span class="st">"T2"</span>, <span class="st">"Control"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Efecto sobre la interpretación:</strong></p>
+<ul>
+<li>La tabla de <code>anova()</code> y el p-valor de la prueba F no cambian.</li>
+<li>Los coeficientes de <code>summary()</code> cambian de referencia: con el control al final, cada coeficiente compara un tratamiento contra el primer nivel, no contra el control.</li>
+<li>Solo el orden de las categorías en tablas y gráficos cambia con <code>fct_relevel()</code> o <code>factor()</code>.</li>
+</ul>
+<p>Si la pregunta es “¿cada tratamiento difiere del control?”, es más claro pedir esas comparaciones directamente con <code>emmeans</code>, sin depender del orden de los niveles. Ver la sección siguiente.</p>
+</section>
+<section id="medias-estimadas-y-comparaciones-con-emmeans" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="medias-estimadas-y-comparaciones-con-emmeans"><span class="header-section-number">2.7</span> Medias estimadas y comparaciones con emmeans</h2>
 <p>El paquete <strong>emmeans</strong> trabaja directamente sobre un modelo ajustado con <code>lm()</code> y responde las preguntas que importan en la práctica:</p>
 <ul>
 <li>¿Cuál es la media estimada de cada grupo, con su intervalo de confianza?</li>
@@ -584,73 +621,76 @@ window.Quarto = {
 </ul>
 <p>La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo. Con modelos más complejos (varios factores, covariables o desbalance), las medias marginales estimadas siguen siendo válidas, mientras que las medias crudas pueden engañar.</p>
 <p><strong>Medias marginales estimadas:</strong> son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-medias</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo, <span class="sc">~</span> variedad)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>medias                       <span class="co"># medias estimadas con IC 95 %</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medias) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rendimiento estimado"</span>, <span class="at">y =</span> <span class="st">"Variedad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-medias</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo, <span class="sc">~</span> variedad)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>medias                       <span class="co"># medias estimadas con IC 95 %</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medias) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rendimiento estimado"</span>, <span class="at">y =</span> <span class="st">"Variedad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Comparaciones pareadas con ajuste:</strong> <code>pairs()</code> calcula todas las diferencias entre grupos. El argumento <code>adjust</code> controla el error global; con <code>"tukey"</code> el resultado es equivalente al de <code>TukeyHSD()</code>, pero con la salida en forma de tabla de contrastes.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-pares</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-pares</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Contrastes específicos:</strong> cuando la pregunta no es “todos contra todos”, se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-contrastes</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"A vs promedio(B, C)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-contrastes</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"A vs promedio(B, C)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Advertencia:</strong> los contrastes específicos deben plantearse antes de ver los datos, o al menos declararse como planificados. Si se eligen después de mirar los resultados, el control del error se pierde, igual que con las comparaciones sueltas de la sección anterior.</p>
 <p><strong>Conexión con la prueba t:</strong> cuando hay dos grupos, <code>pairs()</code> sobre el modelo ajustado da la misma diferencia de medias que <code>t.test(var.equal = TRUE)</code>, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-vs-t</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>modelo_AB <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><a href="../explicaciones extras/emmeans.html">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</a> # Prueba t de Student</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-vs-t</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>modelo_AB <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><a href="../explicaciones extras/emmeans.html">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</a></p>
 </section>
-<section id="pregunta-e-hipótesis-1" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="pregunta-e-hipótesis-1"><span class="header-section-number">2.7</span> Pregunta e hipótesis</h2>
+</section>
+<section id="prueba-t-de-student" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Prueba t de Student</h1>
+<section id="pregunta-e-hipótesis-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="pregunta-e-hipótesis-1"><span class="header-section-number">3.1</span> Pregunta e hipótesis</h2>
 <p>Cuando hay solo dos grupos, la pregunta es si sus medias difieren:</p>
 <p><span class="math display">\[H_0: \mu_1 = \mu_2 \qquad H_1: \mu_1 \neq \mu_2\]</span></p>
 <p>Equivalentemente, <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span>.</p>
 </section>
-<section id="estadístico-t" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="estadístico-t"><span class="header-section-number">2.8</span> Estadístico t</h2>
+<section id="estadístico-t" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="estadístico-t"><span class="header-section-number">3.2</span> Estadístico t</h2>
 <p>Para varianzas iguales (versión <em>pooled</em>), el estadístico es:</p>
 <p><span class="math display">\[t = \frac{\bar{y}_1 - \bar{y}_2}{s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}, \qquad s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}\]</span></p>
 <p>Con <span class="math inline">\(n_1 + n_2 - 2\)</span> grados de libertad. Si <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(t\)</span> sigue una distribución t de Student.</p>
 <p>Si las varianzas no son iguales, se usa la versión de <strong>Welch</strong>, que es el valor por defecto de <code>t.test()</code> en R. Ajusta los grados de libertad y no asume homocedasticidad. En la práctica conviene usar Welch salvo que haya una razón fuerte para asumir varianzas iguales.</p>
 </section>
-<section id="relación-con-el-anova" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="relación-con-el-anova"><span class="header-section-number">2.9</span> Relación con el ANOVA</h2>
+<section id="relación-con-el-anova" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="relación-con-el-anova"><span class="header-section-number">3.3</span> Relación con el ANOVA</h2>
 <p>Con dos grupos, el ANOVA y la prueba t son el mismo análisis:</p>
 <p><span class="math display">\[F_{1,\,N-2} = t^2_{N-2}\]</span></p>
 <p>Por eso el p-valor es idéntico en los dos casos. El ANOVA es más general porque sirve para <span class="math inline">\(k\)</span> grupos; la prueba t se usa cuando hay dos.</p>
 </section>
-<section id="supuestos-1" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="supuestos-1"><span class="header-section-number">2.10</span> Supuestos</h2>
+<section id="supuestos-1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="supuestos-1"><span class="header-section-number">3.4</span> Supuestos</h2>
 <p>Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homocedasticidad si se usa la versión con varianzas iguales. La prueba de Levene sirve para decidir entre la versión clásica y la de Welch.</p>
 </section>
-<section id="ejemplo-de-referencia-en-r-1" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="ejemplo-de-referencia-en-r-1"><span class="header-section-number">2.11</span> Ejemplo de referencia en R</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-ejemplo</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"A"</span>]</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"B"</span>]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)    <span class="co"># versión clásica</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B)                      <span class="co"># versión de Welch (por defecto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="ejemplo-de-referencia-en-r-1" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="ejemplo-de-referencia-en-r-1"><span class="header-section-number">3.5</span> Ejemplo de referencia en R</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-ejemplo</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"A"</span>]</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"B"</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)    <span class="co"># versión clásica</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B)                      <span class="co"># versión de Welch (por defecto)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Verificación de la relación con ANOVA:</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-vs-anova</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>datos_AB <span class="ot">&lt;-</span> <span class="fu">subset</span>(datos, variedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>datos_AB<span class="sc">$</span>variedad <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(datos_AB<span class="sc">$</span>variedad)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>t_res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>f_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB))</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">t_cuadrado =</span> <span class="fu">unname</span>(t_res<span class="sc">$</span>statistic<span class="sc">^</span><span class="dv">2</span>), <span class="at">F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>])</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_t =</span> t_res<span class="sc">$</span>p.value, <span class="at">p_F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-vs-anova</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>datos_AB <span class="ot">&lt;-</span> <span class="fu">subset</span>(datos, variedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>datos_AB<span class="sc">$</span>variedad <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(datos_AB<span class="sc">$</span>variedad)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>t_res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>f_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">t_cuadrado =</span> <span class="fu">unname</span>(t_res<span class="sc">$</span>statistic<span class="sc">^</span><span class="dv">2</span>), <span class="at">F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>])</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_t =</span> t_res<span class="sc">$</span>p.value, <span class="at">p_F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la prueba t.</p>
 </section>
 </section>
-<section id="protocolo-aplicado-a-la-comparación-de-grupos" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Protocolo aplicado a la comparación de grupos</h1>
+<section id="protocolo-aplicado-a-la-comparación-de-grupos" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Protocolo aplicado a la comparación de grupos</h1>
 <p>Para aplicar lo visto, usar el mismo protocolo de la Parte 4:</p>
 <ol type="1">
 <li><strong>Pregunta e hipótesis:</strong> ¿las medias de los grupos son iguales?</li>
@@ -661,8 +701,8 @@ window.Quarto = {
 <li><strong>Interpretación:</strong> resultado en términos del problema, indicando qué grupos difieren y cuánto.</li>
 </ol>
 </section>
-<section id="resumen" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Resumen</h1>
+<section id="resumen" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Resumen</h1>
 <ul>
 <li>Un factor con <span class="math inline">\(k\)</span> grupos se analiza con <strong>ANOVA</strong>; con dos grupos, la <strong>prueba t</strong> da el mismo resultado.</li>
 <li>El ANOVA pregunta si alguna media difiere; para saber cuál, se usan comparaciones múltiples con control del error global.</li>
@@ -1125,233 +1165,282 @@ window.Quarto = {
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría 5"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modelo lineal con una variable explicativa categórica</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>En la Parte 4 vimos regresión, donde la variable explicativa es numérica. Ahora la variable explicativa es **categórica**: indica el grupo al que pertenece cada observación (por ejemplo, variedad, tratamiento o lote).</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>El Modelo Lineal General sigue siendo el mismo:</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>$$Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}$$</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Y_{ij}$: observación $j$ del grupo $i$.</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\mu$: media general.</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\tau_i$: efecto del grupo $i$, es decir, cuánto se aparta su media de la media general.</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\varepsilon_{ij}$: error aleatorio, con los mismos supuestos de la Parte 4.</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>Los supuestos son los mismos de regresión: independencia, normalidad y homocedasticidad. Lo que cambia es que las predicciones son las medias de cada grupo:</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>$$\hat{y}_{ij} = \bar{y}_i$$</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>Como en la Parte 4, el protocolo de seis pasos se aplica igual: pregunta, modelo, exploración, estimación, validación e interpretación.</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="fu"># ANOVA de un factor</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta e hipótesis</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>Con $k$ grupos, la pregunta es si al menos uno de ellos tiene una media distinta. Las hipótesis son:</span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 = \cdots = \mu_k \qquad H_1: \text{al menos una media difiere}$$</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>Equivalentemente, en términos de efectos, $H_0: \tau_1 = \cdots = \tau_k = 0$.</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>Notar que $H_1$ no dice *cuál* grupo difiere. Para eso se necesitan comparaciones posteriores, que se ven más abajo.</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Idea del estadístico F</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>El ANOVA compara dos fuentes de variabilidad:</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variabilidad entre grupos:** cuánto se separan las medias de los grupos entre sí.</span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variabilidad dentro de los grupos:** cuánto varían las observaciones dentro de cada grupo (es el error).</span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>La suma de cuadrados total se descompone así:</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>$$SC_{total} = SC_{tratamientos} + SC_{error}$$</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:</span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Fuente <span class="pp">|</span> SC <span class="pp">|</span> gl <span class="pp">|</span> CM <span class="pp">|</span> F <span class="pp">|</span></span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|---|---|</span></span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tratamientos (entre grupos) <span class="pp">|</span> $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ <span class="pp">|</span></span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error (dentro de grupos) <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ <span class="pp">|</span> <span class="pp">|</span></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Total <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ <span class="pp">|</span> $N-1$ <span class="pp">|</span> <span class="pp">|</span> <span class="pp">|</span></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a>Si $H_0$ es verdadera, $F$ sigue una distribución $F_{k-1,\,N-k}$. Un valor grande de $F$ indica que la variabilidad entre grupos es grande comparada con la variabilidad dentro de ellos, y lleva a rechazar $H_0$.</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Supuestos</span></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>Se verifican sobre los residuos del modelo, igual que en la Parte 4:</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Independencia:** depende del diseño. Se justifica en el paso 2.</span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Normalidad:** Shapiro-Wilk sobre los residuos y gráfico Q-Q.</span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Homocedasticidad:** la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (<span class="in">`car::leveneTest()`</span>) o de Bartlett (<span class="in">`bartlett.test()`</span>), y con un gráfico de residuos contra valores ajustados.</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a>Si la normalidad o la homocedasticidad fallan, se puede transformar la respuesta (Parte 4, transformaciones) o usar una alternativa no paramétrica, como Kruskal-Wallis. Kruskal-Wallis no pertenece al Modelo Lineal General y no se trata en esta parte.</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparaciones múltiples</span></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>Si el ANOVA da significativo, el siguiente paso es identificar qué pares de grupos difieren según la variable respuesta. Comparar todos los pares con pruebas t sueltas aumenta la probabilidad de cometer al menos un error de tipo I: con $\alpha = 0.05$ y muchas comparaciones, la probabilidad de un falso positivo crece rápidamente.</span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>Por eso se usan métodos de comparaciones múltiples que controlan ese error global. El más usado en este curso es el de **Tukey** (<span class="in">`TukeyHSD()`</span>), que da intervalos de confianza para las diferencias de medias ajustados por el número de comparaciones.</span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>Este paso **solo se hace si el ANOVA es significativo**. Un ANOVA no significativo no autoriza a buscar diferencias pares.</span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplo de referencia en R</span></span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-ejemplo</span></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">variedad =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">10</span>)),</span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>  <span class="at">rendimiento =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.0</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
-<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.8</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.4</span>, <span class="at">sd =</span> <span class="fl">0.6</span>))</span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)</span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo)                           <span class="co"># tabla ANOVA</span></span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>**Lectura:** la fila de <span class="in">`variedad`</span> es la prueba de $H_0$ (la F y su p-valor). La fila <span class="in">`Residuals`</span> es la variabilidad dentro de los grupos.</span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-supuestos</span></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo))         <span class="co"># normalidad de residuos</span></span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)  <span class="co"># homocedasticidad</span></span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-tukey</span></span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos))</span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medias estimadas y comparaciones con emmeans</span></span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>El paquete **emmeans** trabaja directamente sobre un modelo ajustado con <span class="in">`lm()`</span> y responde las preguntas que importan en la práctica:</span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Cuál es la media estimada de cada grupo, con su intervalo de confianza?</span>
-<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué diferencias entre grupos son significativas, con un ajuste por comparaciones múltiples?</span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué contrastes específicos interesan (por ejemplo, un grupo control contra el promedio de los tratamientos)?</span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo. Con modelos más complejos (varios factores, covariables o desbalance), las medias marginales estimadas siguen siendo válidas, mientras que las medias crudas pueden engañar.</span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>**Medias marginales estimadas:** son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.</span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-medias</span></span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo, <span class="sc">~</span> variedad)</span>
-<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>medias                       <span class="co"># medias estimadas con IC 95 %</span></span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medias) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rendimiento estimado"</span>, <span class="at">y =</span> <span class="st">"Variedad"</span>)</span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a>**Comparaciones pareadas con ajuste:** <span class="in">`pairs()`</span> calcula todas las diferencias entre grupos. El argumento <span class="in">`adjust`</span> controla el error global; con <span class="in">`"tukey"`</span> el resultado es equivalente al de <span class="in">`TukeyHSD()`</span>, pero con la salida en forma de tabla de contrastes.</span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-pares</span></span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>**Contrastes específicos:** cuando la pregunta no es "todos contra todos", se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:</span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-contrastes</span></span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias,</span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"A vs promedio(B, C)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>**Advertencia:** los contrastes específicos deben plantearse antes de ver los datos, o al menos declararse como planificados. Si se eligen después de mirar los resultados, el control del error se pierde, igual que con las comparaciones sueltas de la sección anterior.</span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a>**Conexión con la prueba t:** cuando hay dos grupos, <span class="in">`pairs()`</span> sobre el modelo ajustado da la misma diferencia de medias que <span class="in">`t.test(var.equal = TRUE)`</span>, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.</span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-vs-t</span></span>
-<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a>modelo_AB <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB)</span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span>
-<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</span><span class="co">](../explicaciones extras/emmeans.qmd)</span></span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prueba t de Student</span></span>
-<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta e hipótesis</span></span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>Cuando hay solo dos grupos, la pregunta es si sus medias difieren:</span>
-<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 \qquad H_1: \mu_1 \neq \mu_2$$</span>
-<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>Equivalentemente, $H_0: \mu_1 - \mu_2 = 0$.</span>
-<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estadístico t</span></span>
-<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a>Para varianzas iguales (versión *pooled*), el estadístico es:</span>
-<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>$$t = \frac{\bar{y}_1 - \bar{y}_2}{s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}, \qquad s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}$$</span>
-<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>Con $n_1 + n_2 - 2$ grados de libertad. Si $H_0$ es verdadera, $t$ sigue una distribución t de Student.</span>
-<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>Si las varianzas no son iguales, se usa la versión de **Welch**, que es el valor por defecto de <span class="in">`t.test()`</span> en R. Ajusta los grados de libertad y no asume homocedasticidad. En la práctica conviene usar Welch salvo que haya una razón fuerte para asumir varianzas iguales.</span>
-<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relación con el ANOVA</span></span>
-<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a>Con dos grupos, el ANOVA y la prueba t son el mismo análisis:</span>
-<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>$$F_{1,\,N-2} = t^2_{N-2}$$</span>
-<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>Por eso el p-valor es idéntico en los dos casos. El ANOVA es más general porque sirve para $k$ grupos; la prueba t se usa cuando hay dos.</span>
-<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a><span class="fu">## Supuestos</span></span>
-<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homocedasticidad si se usa la versión con varianzas iguales. La prueba de Levene sirve para decidir entre la versión clásica y la de Welch.</span>
-<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplo de referencia en R</span></span>
-<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-ejemplo</span></span>
-<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"A"</span>]</span>
-<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"B"</span>]</span>
-<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)    <span class="co"># versión clásica</span></span>
-<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B)                      <span class="co"># versión de Welch (por defecto)</span></span>
-<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a>**Verificación de la relación con ANOVA:**</span>
-<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-vs-anova</span></span>
-<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a>datos_AB <span class="ot">&lt;-</span> <span class="fu">subset</span>(datos, variedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
-<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a>datos_AB<span class="sc">$</span>variedad <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(datos_AB<span class="sc">$</span>variedad)</span>
-<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a>t_res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>f_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB))</span>
-<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">t_cuadrado =</span> <span class="fu">unname</span>(t_res<span class="sc">$</span>statistic<span class="sc">^</span><span class="dv">2</span>), <span class="at">F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>])</span>
-<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_t =</span> t_res<span class="sc">$</span>p.value, <span class="at">p_F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>])</span>
-<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la prueba t.</span>
-<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a><span class="fu"># Protocolo aplicado a la comparación de grupos</span></span>
-<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>Para aplicar lo visto, usar el mismo protocolo de la Parte 4:</span>
-<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Pregunta e hipótesis:** ¿las medias de los grupos son iguales?</span>
-<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Modelo y supuestos:** especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.</span>
-<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Exploración:** boxplots o gráficos de puntos por grupo, con medias y dispersión.</span>
-<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>**Estimación:** tabla ANOVA (o <span class="in">`t.test()`</span> si son dos grupos), medias por grupo e intervalos de confianza.</span>
-<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Validación:** normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con <span class="in">`emmeans`</span>.</span>
-<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>**Interpretación:** resultado en términos del problema, indicando qué grupos difieren y cuánto.</span>
-<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a><span class="fu"># Resumen</span></span>
-<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un factor con $k$ grupos se analiza con **ANOVA**; con dos grupos, la **prueba t** da el mismo resultado.</span>
-<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El ANOVA pregunta si alguna media difiere; para saber cuál, se usan comparaciones múltiples con control del error global.</span>
-<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los supuestos son los del Modelo Lineal General: independencia, normalidad y homocedasticidad, verificados sobre los residuos.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría 5"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Modelo lineal con una variable explicativa categórica</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>En la Parte 4 vimos regresión, donde la variable explicativa es numérica. Ahora la variable explicativa es **categórica**: indica el grupo al que pertenece cada observación (por ejemplo, variedad, tratamiento o lote).</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>El Modelo Lineal General sigue siendo el mismo:</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>$$Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}$$</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Y_{ij}$: observación $j$ del grupo $i$.</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\mu$: media general.</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\tau_i$: efecto del grupo $i$, es decir, cuánto se aparta su media de la media general.</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\varepsilon_{ij}$: error aleatorio, con los mismos supuestos de la Parte 4.</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>Los supuestos son los mismos de regresión: independencia, normalidad y homocedasticidad. Lo que cambia es que las predicciones son las medias de cada grupo:</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>$$\hat{y}_{ij} = \bar{y}_i$$</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>Como en la Parte 4, el protocolo de seis pasos se aplica igual: pregunta, modelo, exploración, estimación, validación e interpretación.</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="fu"># ANOVA de un factor</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta e hipótesis</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>Con $k$ grupos, la pregunta es si al menos uno de ellos tiene una media distinta. Las hipótesis son:</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 = \cdots = \mu_k \qquad H_1: \text{al menos una media difiere}$$</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>Equivalentemente, en términos de efectos, $H_0: \tau_1 = \cdots = \tau_k = 0$.</span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>Notar que $H_1$ no dice *cuál* grupo difiere. Para eso se necesitan comparaciones posteriores, que se ven más abajo.</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Idea del estadístico F</span></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>El ANOVA compara dos fuentes de variabilidad:</span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variabilidad entre grupos:** cuánto se separan las medias de los grupos entre sí.</span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Variabilidad dentro de los grupos:** cuánto varían las observaciones dentro de cada grupo (es el error).</span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>La suma de cuadrados total se descompone así:</span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>$$SC_{total} = SC_{tratamientos} + SC_{error}$$</span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Fuente <span class="pp">|</span> SC <span class="pp">|</span> gl <span class="pp">|</span> CM <span class="pp">|</span> F <span class="pp">|</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|---------------|---------------|---------------|---------------|</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tratamientos (entre grupos) <span class="pp">|</span> $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ <span class="pp">|</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error (dentro de grupos) <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ <span class="pp">|</span>  <span class="pp">|</span></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Total <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ <span class="pp">|</span> $N-1$ <span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span></span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>Si $H_0$ es verdadera, $F$ sigue una distribución $F_{k-1,\,N-k}$. Un valor grande de $F$ indica que la variabilidad entre grupos es grande comparada con la variabilidad dentro de ellos, y lleva a rechazar $H_0$.</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="fu">## Supuestos</span></span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>Se verifican sobre los residuos del modelo, igual que en la Parte 4:</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Independencia:** depende del diseño. Se justifica en el paso 2.</span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Normalidad:** Shapiro-Wilk sobre los residuos y gráfico Q-Q.</span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Homocedasticidad:** la varianza debe ser similar en todos los grupos. Se evalúa con la prueba de Levene (<span class="in">`car::leveneTest()`</span>) o de Bartlett (<span class="in">`bartlett.test()`</span>), y con un gráfico de residuos contra valores ajustados.</span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>Si la normalidad o la homocedasticidad fallan, se puede transformar la respuesta (Parte 4, transformaciones) o usar una alternativa no paramétrica, como Kruskal-Wallis. Kruskal-Wallis no pertenece al Modelo Lineal General y no se trata en esta parte.</span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparaciones múltiples</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a>Si el ANOVA da significativo, el siguiente paso es identificar qué pares de grupos difieren según la variable respuesta. Comparar todos los pares con pruebas t sueltas aumenta la probabilidad de cometer al menos un error de tipo I: con $\alpha = 0.05$ y muchas comparaciones, la probabilidad de un falso positivo crece rápidamente.</span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a>Por eso se usan métodos de comparaciones múltiples que controlan ese error global. El más usado en este curso es el de **Tukey** (<span class="in">`TukeyHSD()`</span>), que da intervalos de confianza para las diferencias de medias ajustados por el número de comparaciones.</span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a>Este paso **solo se hace si el ANOVA es significativo**. Un ANOVA no significativo no autoriza a buscar diferencias pares.</span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplo de referencia en R</span></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-ejemplo</span></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">10</span>)</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a>  <span class="at">variedad =</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">each =</span> <span class="dv">10</span>)),</span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a>  <span class="at">rendimiento =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.0</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.8</span>, <span class="at">sd =</span> <span class="fl">0.6</span>),</span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="fl">5.4</span>, <span class="at">sd =</span> <span class="fl">0.6</span>))</span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)</span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo)                           <span class="co"># tabla ANOVA</span></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a>**Lectura:** la fila de <span class="in">`variedad`</span> es la prueba de $H_0$ (la F y su p-valor). La fila <span class="in">`Residuals`</span> es la variabilidad dentro de los grupos.</span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-supuestos</span></span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo))         <span class="co"># normalidad de residuos</span></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos)  <span class="co"># homocedasticidad</span></span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-tukey</span></span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos))</span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## Niveles del factor y nivel de referencia</span></span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a>El orden de los niveles de un factor no cambia la prueba F del ANOVA, pero sí determina **cuál es el grupo de referencia** en los coeficientes de <span class="in">`lm()`</span>: el primer nivel es la referencia, y los demás coeficientes son diferencias contra él.</span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a>Para ver el orden actual:</span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: niveles</span></span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(datos<span class="sc">$</span>tratamiento)</span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a>Para poner el control al principio, con forcats:</span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: niveles-relevel</span></span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">|&gt;</span></span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tratamiento =</span> <span class="fu">fct_relevel</span>(tratamiento, <span class="st">"Control"</span>))</span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(datos<span class="sc">$</span>tratamiento)   <span class="co"># "T1" "T2" "Control"</span></span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a>Lógica de fct_relevel() para el control:</span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Control al principio: fct_relevel(tratamiento, "Control"). Sin after, el control pasa al primer lugar.</span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Control al final: fct_relevel(tratamiento, "Control", after = Inf). Inf manda el control al último lugar.</span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Control en una posición intermedia: fct_relevel(tratamiento, "Control", after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.</span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a>El primer nivel es el de referencia en lm(), así que el control al principio hace que cada coeficiente compare contra el control.</span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a>O con base R, dando el orden completo:</span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: niveles-base</span></span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>tratamiento <span class="ot">&lt;-</span> <span class="fu">factor</span>(datos<span class="sc">$</span>tratamiento, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"T1"</span>, <span class="st">"T2"</span>, <span class="st">"Control"</span>))</span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a>**Efecto sobre la interpretación:**</span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La tabla de <span class="in">`anova()`</span> y el p-valor de la prueba F no cambian.</span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los coeficientes de <span class="in">`summary()`</span> cambian de referencia: con el control al final, cada coeficiente compara un tratamiento contra el primer nivel, no contra el control.</span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Solo el orden de las categorías en tablas y gráficos cambia con <span class="in">`fct_relevel()`</span> o <span class="in">`factor()`</span>.</span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a>Si la pregunta es "¿cada tratamiento difiere del control?", es más claro pedir esas comparaciones directamente con <span class="in">`emmeans`</span>, sin depender del orden de los niveles. Ver la sección siguiente.</span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medias estimadas y comparaciones con emmeans</span></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a>El paquete **emmeans** trabaja directamente sobre un modelo ajustado con <span class="in">`lm()`</span> y responde las preguntas que importan en la práctica:</span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Cuál es la media estimada de cada grupo, con su intervalo de confianza?</span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué diferencias entre grupos son significativas, con un ajuste por comparaciones múltiples?</span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué contrastes específicos interesan (por ejemplo, un grupo control contra el promedio de los tratamientos)?</span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a>La ventaja frente a calcular medias a mano es que emmeans usa el modelo completo. Con modelos más complejos (varios factores, covariables o desbalance), las medias marginales estimadas siguen siendo válidas, mientras que las medias crudas pueden engañar.</span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a>**Medias marginales estimadas:** son las predicciones del modelo para cada nivel del factor. En un ANOVA de un factor con diseño balanceado, coinciden con las medias de los grupos, pero incluyen su error estándar e intervalo de confianza calculados con el modelo.</span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-medias</span></span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo, <span class="sc">~</span> variedad)</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a>medias                       <span class="co"># medias estimadas con IC 95 %</span></span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(medias) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rendimiento estimado"</span>, <span class="at">y =</span> <span class="st">"Variedad"</span>)</span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a>**Comparaciones pareadas con ajuste:** <span class="in">`pairs()`</span> calcula todas las diferencias entre grupos. El argumento <span class="in">`adjust`</span> controla el error global; con <span class="in">`"tukey"`</span> el resultado es equivalente al de <span class="in">`TukeyHSD()`</span>, pero con la salida en forma de tabla de contrastes.</span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-pares</span></span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a>**Contrastes específicos:** cuando la pregunta no es "todos contra todos", se definen los contrastes de antemano. Por ejemplo, comparar la variedad A contra el promedio de B y C:</span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-contrastes</span></span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias,</span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"A vs promedio(B, C)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a>**Advertencia:** los contrastes específicos deben plantearse antes de ver los datos, o al menos declararse como planificados. Si se eligen después de mirar los resultados, el control del error se pierde, igual que con las comparaciones sueltas de la sección anterior.</span>
+<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a>**Conexión con la prueba t:** cuando hay dos grupos, <span class="in">`pairs()`</span> sobre el modelo ajustado da la misma diferencia de medias que <span class="in">`t.test(var.equal = TRUE)`</span>, con el mismo p-valor. Esto refuerza que la prueba t es un caso particular del modelo lineal.</span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: emmeans-vs-t</span></span>
+<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a>modelo_AB <span class="ot">&lt;-</span> <span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB)</span>
+<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</span><span class="co">](../explicaciones%20extras/emmeans.qmd)</span> </span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prueba t de Student</span></span>
+<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pregunta e hipótesis</span></span>
+<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a>Cuando hay solo dos grupos, la pregunta es si sus medias difieren:</span>
+<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 \qquad H_1: \mu_1 \neq \mu_2$$</span>
+<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a>Equivalentemente, $H_0: \mu_1 - \mu_2 = 0$.</span>
+<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a><span class="fu">## Estadístico t</span></span>
+<span id="cb13-213"><a href="#cb13-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-214"><a href="#cb13-214" aria-hidden="true" tabindex="-1"></a>Para varianzas iguales (versión *pooled*), el estadístico es:</span>
+<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-216"><a href="#cb13-216" aria-hidden="true" tabindex="-1"></a>$$t = \frac{\bar{y}_1 - \bar{y}_2}{s_p\sqrt{\dfrac{1}{n_1} + \dfrac{1}{n_2}}}, \qquad s_p^2 = \frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}$$</span>
+<span id="cb13-217"><a href="#cb13-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-218"><a href="#cb13-218" aria-hidden="true" tabindex="-1"></a>Con $n_1 + n_2 - 2$ grados de libertad. Si $H_0$ es verdadera, $t$ sigue una distribución t de Student.</span>
+<span id="cb13-219"><a href="#cb13-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-220"><a href="#cb13-220" aria-hidden="true" tabindex="-1"></a>Si las varianzas no son iguales, se usa la versión de **Welch**, que es el valor por defecto de <span class="in">`t.test()`</span> en R. Ajusta los grados de libertad y no asume homocedasticidad. En la práctica conviene usar Welch salvo que haya una razón fuerte para asumir varianzas iguales.</span>
+<span id="cb13-221"><a href="#cb13-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-222"><a href="#cb13-222" aria-hidden="true" tabindex="-1"></a><span class="fu">## Relación con el ANOVA</span></span>
+<span id="cb13-223"><a href="#cb13-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-224"><a href="#cb13-224" aria-hidden="true" tabindex="-1"></a>Con dos grupos, el ANOVA y la prueba t son el mismo análisis:</span>
+<span id="cb13-225"><a href="#cb13-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-226"><a href="#cb13-226" aria-hidden="true" tabindex="-1"></a>$$F_{1,\,N-2} = t^2_{N-2}$$</span>
+<span id="cb13-227"><a href="#cb13-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-228"><a href="#cb13-228" aria-hidden="true" tabindex="-1"></a>Por eso el p-valor es idéntico en los dos casos. El ANOVA es más general porque sirve para $k$ grupos; la prueba t se usa cuando hay dos.</span>
+<span id="cb13-229"><a href="#cb13-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-230"><a href="#cb13-230" aria-hidden="true" tabindex="-1"></a><span class="fu">## Supuestos</span></span>
+<span id="cb13-231"><a href="#cb13-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-232"><a href="#cb13-232" aria-hidden="true" tabindex="-1"></a>Son los mismos que en ANOVA: independencia, normalidad en cada grupo, y homocedasticidad si se usa la versión con varianzas iguales. La prueba de Levene sirve para decidir entre la versión clásica y la de Welch.</span>
+<span id="cb13-233"><a href="#cb13-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-234"><a href="#cb13-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ejemplo de referencia en R</span></span>
+<span id="cb13-235"><a href="#cb13-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-236"><a href="#cb13-236" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-237"><a href="#cb13-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-ejemplo</span></span>
+<span id="cb13-238"><a href="#cb13-238" aria-hidden="true" tabindex="-1"></a>grupo_A <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"A"</span>]</span>
+<span id="cb13-239"><a href="#cb13-239" aria-hidden="true" tabindex="-1"></a>grupo_B <span class="ot">&lt;-</span> datos<span class="sc">$</span>rendimiento[datos<span class="sc">$</span>variedad <span class="sc">==</span> <span class="st">"B"</span>]</span>
+<span id="cb13-240"><a href="#cb13-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-241"><a href="#cb13-241" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)    <span class="co"># versión clásica</span></span>
+<span id="cb13-242"><a href="#cb13-242" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(grupo_A, grupo_B)                      <span class="co"># versión de Welch (por defecto)</span></span>
+<span id="cb13-243"><a href="#cb13-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-244"><a href="#cb13-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-245"><a href="#cb13-245" aria-hidden="true" tabindex="-1"></a>**Verificación de la relación con ANOVA:**</span>
+<span id="cb13-246"><a href="#cb13-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-247"><a href="#cb13-247" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb13-248"><a href="#cb13-248" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-vs-anova</span></span>
+<span id="cb13-249"><a href="#cb13-249" aria-hidden="true" tabindex="-1"></a>datos_AB <span class="ot">&lt;-</span> <span class="fu">subset</span>(datos, variedad <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>))</span>
+<span id="cb13-250"><a href="#cb13-250" aria-hidden="true" tabindex="-1"></a>datos_AB<span class="sc">$</span>variedad <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(datos_AB<span class="sc">$</span>variedad)</span>
+<span id="cb13-251"><a href="#cb13-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-252"><a href="#cb13-252" aria-hidden="true" tabindex="-1"></a>t_res <span class="ot">&lt;-</span> <span class="fu">t.test</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-253"><a href="#cb13-253" aria-hidden="true" tabindex="-1"></a>f_res <span class="ot">&lt;-</span> <span class="fu">anova</span>(<span class="fu">lm</span>(rendimiento <span class="sc">~</span> variedad, <span class="at">data =</span> datos_AB))</span>
+<span id="cb13-254"><a href="#cb13-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-255"><a href="#cb13-255" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">t_cuadrado =</span> <span class="fu">unname</span>(t_res<span class="sc">$</span>statistic<span class="sc">^</span><span class="dv">2</span>), <span class="at">F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">F value</span><span class="st">`</span>[<span class="dv">1</span>])</span>
+<span id="cb13-256"><a href="#cb13-256" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">p_t =</span> t_res<span class="sc">$</span>p.value, <span class="at">p_F =</span> f_res<span class="sc">$</span><span class="st">`</span><span class="at">Pr(&gt;F)</span><span class="st">`</span>[<span class="dv">1</span>])</span>
+<span id="cb13-257"><a href="#cb13-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-258"><a href="#cb13-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-259"><a href="#cb13-259" aria-hidden="true" tabindex="-1"></a>Ambos valores deben coincidir, lo que muestra que el ANOVA de dos grupos es la prueba t.</span>
+<span id="cb13-260"><a href="#cb13-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-261"><a href="#cb13-261" aria-hidden="true" tabindex="-1"></a><span class="fu"># Protocolo aplicado a la comparación de grupos</span></span>
+<span id="cb13-262"><a href="#cb13-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-263"><a href="#cb13-263" aria-hidden="true" tabindex="-1"></a>Para aplicar lo visto, usar el mismo protocolo de la Parte 4:</span>
+<span id="cb13-264"><a href="#cb13-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-265"><a href="#cb13-265" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Pregunta e hipótesis:** ¿las medias de los grupos son iguales?</span>
+<span id="cb13-266"><a href="#cb13-266" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Modelo y supuestos:** especificar la variable respuesta, el factor y los supuestos, incluida la independencia justificada por el diseño.</span>
+<span id="cb13-267"><a href="#cb13-267" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Exploración:** boxplots o gráficos de puntos por grupo, con medias y dispersión.</span>
+<span id="cb13-268"><a href="#cb13-268" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Estimación:** tabla ANOVA (o <span class="in">`t.test()`</span> si son dos grupos), medias por grupo e intervalos de confianza.</span>
+<span id="cb13-269"><a href="#cb13-269" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Validación:** normalidad y homocedasticidad de los residuos. Si el ANOVA es significativo, comparaciones múltiples con Tukey o con <span class="in">`emmeans`</span>.</span>
+<span id="cb13-270"><a href="#cb13-270" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**Interpretación:** resultado en términos del problema, indicando qué grupos difieren y cuánto.</span>
+<span id="cb13-271"><a href="#cb13-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-272"><a href="#cb13-272" aria-hidden="true" tabindex="-1"></a><span class="fu"># Resumen</span></span>
+<span id="cb13-273"><a href="#cb13-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-274"><a href="#cb13-274" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Un factor con $k$ grupos se analiza con **ANOVA**; con dos grupos, la **prueba t** da el mismo resultado.</span>
+<span id="cb13-275"><a href="#cb13-275" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El ANOVA pregunta si alguna media difiere; para saber cuál, se usan comparaciones múltiples con control del error global.</span>
+<span id="cb13-276"><a href="#cb13-276" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los supuestos son los del Modelo Lineal General: independencia, normalidad y homocedasticidad, verificados sobre los residuos.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

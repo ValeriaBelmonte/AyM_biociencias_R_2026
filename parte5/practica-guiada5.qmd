@@ -1,3 +1,488 @@
 ---
-title: "Untitled"
+title: "Práctica guiada 5"
 ---
+
+Esta práctica tiene tres ejemplos. En todos seguimos el protocolo de seis pasos de la teoría: **pregunta e hipótesis → modelo → exploración → estimación → validación → interpretación**.
+
+| Práctica | Tema | Datos |
+|---|---|---|
+| 1 | Diseño completamente al azar (DCA) | Roña de la papa (`agridat::cochran.crd`) |
+| 2 | Prueba t de Student como modelo lineal | Roña de la papa: testigo contra azufre |
+| 3 | Diseño en bloques completos al azar | Remolacha azucarera (`agridat::cochran.beets`) |
+
+Completá en tu propio documento las preguntas marcadas con **Pregunta**.
+
+Antes de empezar, instalá el paquete `agridat` si no lo tenés:
+
+```r
+install.packages("agridat")
+```
+
+```r
+#| label: paquetes
+library(tidyverse)
+library(agridat)
+library(emmeans)
+```
+
+---
+
+# Práctica 1: diseño completamente al azar (roña de la papa)
+
+En el cuadro 4.1 del libro *Diseño de experimentos* (Cochran y Cox, 1957) se presentan los resultados de un experimento sobre la **roña de la papa**. La roña no prospera en suelos muy ácidos, así que se aplicó azufre para acidificarlos. Se comparan el **testigo** (sin tratamiento) y 6 combinaciones de dosis (300, 600 y 1200 kg/ha) aplicadas en otoño (F) o primavera (S).
+
+Notación: `0` = testigo; `F` = otoño; `S` = primavera. Los números 3, 6 y 12 son las cantidades de azufre en 100 kg/ha. La variable de respuesta es el **índice de roña** (`inf`).
+
+## Paso 1. Pregunta de investigación e hipótesis
+
+**Pregunta de investigación:** ¿el azufre cambia el índice de roña respecto del testigo, y el momento de aplicación (otoño o primavera) importa?
+
+Las hipótesis para el ANOVA son:
+
+$$H_0: \mu_1 = \mu_2 = \cdots = \mu_7 \qquad H_1: \text{al menos una media difiere}$$
+
+**Pregunta 1.1:** ¿qué significa $H_0$ en palabras, para este experimento?
+
+## Paso 2. Modelo y supuestos
+
+$$Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}$$
+
+- $Y_{ij}$: índice de roña de la parcela $j$ con el tratamiento $i$.
+- $\tau_i$: efecto del tratamiento $i$.
+
+En el contexto del modelo, las hipótesis quedan como: 
+$$H_0: \tau_1 = \tau_2 = \cdots = \tau_7=0 \qquad H_1: \tau_i\neq0  \text{ para algún} \quad i$$
+
+**Pregunta 1.2:** la asignación de los tratamientos a las parcelas fue completamente al azar. ¿Qué implica esto para el supuesto de independencia?
+
+## Paso 3. Exploración
+
+```r
+#| label: carga-papa
+datos_papas <- cochran.crd
+str(datos_papas)
+summary(datos_papas)
+```
+
+**Pregunta 1.3:** ¿cuántas observaciones hay por tratamiento? Usá `table(datos_papas$trt)`. ¿El diseño está balanceado?
+
+**Pregunta 1.4:** revisá el orden de los niveles con `levels(datos_papas$trt)`. Los contrastes de la sección 1.5 suponen que el cuarto nivel es el testigo (`0`). ¿Es así?
+Cambiarlo al primer nivel 
+
+
+
+**Pregunta 1.5:** realizá el boxplot del índice de roña según tratamiento y respondé: ¿qué tratamientos tienen menor índice de roña? ¿Hay tratamientos con mucha dispersión, es decir, con una caja o bigotes más largos que el resto?
+```r
+#| label: boxplot-papa
+ggplot(datos_papas, aes(x = trt, y = inf, fill = trt)) +
+  geom_boxplot(alpha = 0.5) +
+  geom_point(alpha = 0.6) +
+  labs(
+    title = "Índice de roña según tratamiento",
+    x = "Tratamiento",
+    y = "Índice de roña"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+ ¿qué tratamientos tienen menor índice de roña? ¿Hay tratamientos con mucha dispersión?
+
+## Paso 4. Estimación
+
+
+Con el modelo ajustado, evaluamos si el tratamiento tiene efecto sobre el índice de roña. La tabla de ANOVA prueba $H_0$: todas las medias de tratamiento son iguales. La columna F compara la variabilidad entre tratamientos con la variabilidad dentro de ellos, y el p-valor indica qué tan compatible es el resultado con $H_0$.
+```r
+#| label: anova-papa
+anova_papa <- aov(inf ~ trt, data = datos_papas)
+anova(anova_papa)
+```
+
+**Pregunta 1.6:** ¿cuál es el valor de F y su p-valor? ¿Qué concluís sobre $H_0$?
+
+
+## Medias por tratamiento
+
+Primero observamos el índice de roña promedio de cada tratamiento, con su desvío estándar y el número de parcelas:
+
+```r
+#| label: medias-papa
+medias <- emmeans(anova_papa, ~ trt)
+medias
+
+medias_df <- as.data.frame(confint(medias))
+
+ggplot(medias_df, aes(x = trt, y = emmean)) +
+  geom_point(size = 3, color = "blue") +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), width = 0.2) +
+  labs(
+    x = "Tratamiento",
+    y = "Índice de roña estimado",
+    title = "Medias estimadas e IC del 95 %"
+  ) +
+  theme_classic()
+```
+Estas medias son las observadas. Las medias estimadas con el modelo, con sus intervalos de confianza, se muestran a continuación.
+Medias estimadas con su intervalo de confianza:
+
+```r
+#| label: medias-papa
+medias <- emmeans(anova_papa, ~ trt)
+medias
+
+medias_df <- as.data.frame(confint(medias))
+
+ggplot(medias_df, aes(x = trt, y = emmean)) +
+  geom_point(size = 3, color = "blue") +
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), width = 0.2) +
+  labs(
+    x = "Tratamiento",
+    y = "Índice de roña estimado",
+    title = "Medias estimadas e IC del 95 %"
+  ) +
+  theme_classic()
+```
+
+Comparaciones de todos los pares, con ajuste de Tukey:
+
+```r
+#| label: tukey-papa
+pairs(medias, adjust = "tukey")
+```
+
+**Pregunta 1.7:** ¿qué pares de tratamientos difieren? ¿Hay alguno que no difiera del testigo?
+
+### Contrastes planificados (continuación del paso 4)
+
+Cuando las preguntas son específicas, es más informativo probar contrastes que comparar todos los pares. En este experimento interesan dos:
+
+- **Testigo contra azufre:** ¿el azufre, en cualquier dosis y momento, reduce la roña?
+- **Otoño contra primavera:** ¿el momento de aplicación cambia el efecto?
+
+Los coeficientes de cada contraste suman cero. Para que el primero compare el testigo contra los seis tratamientos con azufre, el testigo tiene coeficiente $-6$ y los demás $+1$:
+
+```r
+#| label: contrastes-papa
+# Orden de niveles esperado: F3, F6, F12, 0, S3, S6, S12
+# Verificar con levels(datos_papas$trt) antes de correr
+contrasts(datos_papas$trt) <- cbind(
+  c1 = c(1, 1, 1, -6, 1, 1, 1),    # testigo contra azufre
+  c2 = c(-1, -1, -1, 0, 1, 1, 1)   # otoño contra primavera
+)
+
+m1 <- aov(inf ~ trt, data = datos_papas)
+summary(m1, split = list(trt = list("Testigo vs azufre" = 1,
+                                    "Otoño vs primavera" = 2)))
+```
+
+**Pregunta 1.8:** ¿cuál de los dos contrastes es significativo? ¿Qué te dice la suma de cuadrados de cada uno?
+
+**Pregunta 1.9:** los contrastes se definieron antes de mirar los datos. ¿Por qué eso importa para controlar el error tipo I?
+
+## Paso 5. Validación
+
+```r
+#| label: diag-papa
+#| fig-width: 8
+#| fig-height: 7
+par(mfrow = c(2, 2))
+plot(anova_papa)
+par(mfrow = c(1, 1))
+```
+
+```r
+#| label: levene-papa
+car::leveneTest(inf ~ trt, data = datos_papas)
+shapiro.test(residuals(anova_papa))
+```
+
+**Pregunta 1.10:** ¿se cumplen normalidad y homocedasticidad? Si la homocedasticidad falla, ¿qué alternativa propondrías (transformación o Kruskal-Wallis)?
+
+## Paso 6. Interpretación
+
+**Pregunta 1.11:** redactá un párrafo de resultados con: el valor de F y su p-valor, los dos contrastes con sus p-valores, y la conclusión sobre el efecto del azufre y del momento de aplicación.
+
+---
+
+# Práctica 2: la prueba t de Student como modelo lineal (roña de la papa)
+
+Vamos a comparar el **testigo** contra **todas las parcelas con azufre juntas**. Son dos grupos, así que la prueba t de Student es la herramienta clásica. Lo que queremos mostrar es que esa prueba es un caso particular del modelo lineal, el mismo que usamos en el ANOVA.
+
+## Paso 1. Pregunta e hipótesis
+
+**Pregunta de investigación:** ¿el testigo tiene un índice de roña distinto del promedio de las parcelas con azufre?
+
+$$H_0: \mu_{\text{testigo}} = \mu_{\text{azufre}} \qquad H_1: \mu_{\text{testigo}} \neq \mu_{\text{azufre}}$$
+
+**Pregunta 2.1:** ¿qué diferencia hay entre esta pregunta y la del contraste $c_1$ de la práctica 1?
+
+## Paso 2. Modelo
+
+Con dos grupos, el modelo lineal se escribe con una variable indicadora $x_i$, que vale 1 si la parcela recibió azufre y 0 si es testigo:
+
+$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$
+
+- $\beta_0 = \mu_{\text{testigo}}$: media del testigo.
+- $\beta_1 = \mu_{\text{azufre}} - \mu_{\text{testigo}}$: diferencia entre las medias.
+
+Así, $H_0: \mu_{\text{testigo}} = \mu_{\text{azufre}}$ es equivalente a $H_0: \beta_1 = 0$.
+
+**Pregunta 2.2:** ¿qué parte del modelo cambia si en lugar de dos grupos hubiera tres?
+
+## Paso 3. Exploración
+
+Creamos el factor de dos grupos a partir de la base de la práctica 1:
+
+```r
+#| label: dos-grupos
+datos_t <- datos_papas |>
+  mutate(grupo = if_else(as.character(trt) == "0", "Testigo", "Azufre"),
+         grupo = factor(grupo, levels = c("Testigo", "Azufre")))
+
+table(datos_t$grupo)
+```
+
+```r
+#| label: boxplot-t
+ggplot(datos_t, aes(x = grupo, y = inf, fill = grupo)) +
+  geom_boxplot(alpha = 0.5) +
+  geom_jitter(width = 0.1, alpha = 0.6) +
+  labs(x = NULL, y = "Índice de roña", title = "Testigo contra azufre") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+**Pregunta 2.3:** ¿la diferencia entre los grupos se ve a simple vista? ¿Cuál grupo tiene mayor dispersión?
+
+Medias y desvíos por grupo:
+
+```r
+#| label: resumen-t
+datos_t |>
+  group_by(grupo) |>
+  summarise(n = n(), media = mean(inf), desvio = sd(inf), .groups = "drop")
+```
+
+## Paso 4. Estimación: tres formas que dan el mismo resultado
+
+**Forma A: prueba t clásica con varianzas iguales**
+
+```r
+#| label: t-clasica
+t.test(inf ~ grupo, data = datos_t, var.equal = TRUE)
+```
+
+**Forma B: modelo lineal con `lm()`**
+
+```r
+#| label: t-lm
+modelo_t <- lm(inf ~ grupo, data = datos_t)
+summary(modelo_t)
+```
+
+**Pregunta 2.4:** en la salida de `summary()`, ¿qué valor corresponde a $\beta_0$ y cuál a $\beta_1$? Comparalos con las medias del paso 3.
+
+**Forma C: ANOVA sobre el mismo modelo**
+
+```r
+#| label: t-anova
+anova(modelo_t)
+```
+
+**Pregunta 2.5:** compará el valor de $t$ de `t.test()` y de `summary()`, y el valor de $F$ del ANOVA. ¿Qué relación encontrás entre $F$ y $t^2$?
+
+**Pregunta 2.6:** ¿los p-valores de las tres formas coinciden? ¿Por qué debería ser así?
+
+## Paso 5. Validación
+
+```r
+#| label: validacion-t
+#| fig-width: 8
+#| fig-height: 7
+par(mfrow = c(2, 2))
+plot(modelo_t)
+par(mfrow = c(1, 1))
+
+shapiro.test(residuals(modelo_t))
+car::leveneTest(inf ~ grupo, data = datos_t)
+```
+
+**Pregunta 2.7:** ¿qué resultado de Levene te lleva a elegir entre la versión con varianzas iguales y la de Welch? Corré `t.test(inf ~ grupo, data = datos_t)` (versión de Welch) y compará los resultados.
+
+## Paso 6. Interpretación
+
+**Pregunta 2.8:** redactá la conclusión del testigo contra el azufre con la diferencia de medias, su intervalo de confianza del 95 % (`confint(modelo_t)`) y el p-valor.
+
+**Pregunta 2.9:** la prueba t de Student es un caso particular de $\text{modelo lineal}$ con una variable explicativa de dos niveles. ¿Qué cambia si la variable tuviera cuatro niveles? ¿Seguiría siendo una prueba t?
+
+---
+
+# Práctica 3: diseño en bloques (remolacha azucarera)
+
+El experimento compara **fertilizantes** en la producción de remolacha azucarera. Los tratamientos combinan superfosfato (P), cloruro de potasio (K) y nitrato de sodio (N). Las parcelas se agruparon en **bloques** según el terreno, para que la variabilidad entre bloques no quede en el error.
+
+Variables de la base `cochran.beets`:
+
+- `fert`: tratamiento de fertilizante.
+- `block`: bloque.
+- `yield`: rendimiento (toneladas/acre).
+- `plants`: número de plantas por parcela.
+
+## Paso 1. Pregunta e hipótesis
+
+**Pregunta de investigación:** ¿el tipo de fertilizante cambia el rendimiento de la remolacha, una vez descontada la variabilidad entre bloques?
+
+$$H_0: \tau_1 = \cdots = \tau_k = 0 \qquad H_1: \text{al menos un } \tau_i \neq 0$$
+
+**Pregunta 3.1:** ¿por qué el bloque no es la pregunta principal, aunque lo incluyamos en el modelo?
+
+## Paso 2. Modelo
+
+$$Y_{ij} = \mu + \tau_i + \beta_j + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2)$$
+
+- $\tau_i$: efecto del fertilizante $i$.
+- $\beta_j$: efecto del bloque $j$.
+
+**Pregunta 3.2:** ¿cuántas observaciones hay por combinación de fertilizante y bloque? ¿Qué consecuencia tiene para la interacción?
+
+## Paso 3. Exploración
+
+```r
+#| label: carga-remolacha
+datos_remolacha <- cochran.beets |>
+  mutate(fert = factor(fert), block = factor(block))
+
+str(datos_remolacha)
+summary(datos_remolacha)
+```
+
+Gráfico de dispersión de plantas por fertilizante, separado por bloque:
+
+```r
+#| label: plantas-bloque
+ggplot(datos_remolacha, aes(x = fert, y = plants, color = fert)) +
+  geom_point(size = 2.5) +
+  facet_wrap(~ block) +
+  labs(x = "Fertilizante", y = "Número de plantas por parcela",
+       title = "Plantas por fertilizante, según bloque") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Boxplot del rendimiento según bloque:
+
+```r
+#| label: boxplot-bloque
+ggplot(datos_remolacha, aes(x = block, y = yield, fill = block)) +
+  geom_boxplot(alpha = 0.5) +
+  labs(x = "Bloque", y = "Rendimiento (toneladas/acre)",
+       title = "Rendimiento según bloque") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Boxplot del rendimiento según fertilizante:
+
+```r
+#| label: boxplot-fert
+ggplot(datos_remolacha, aes(x = fert, y = yield, fill = fert)) +
+  geom_boxplot(alpha = 0.5) +
+  labs(x = "Fertilizante", y = "Rendimiento (toneladas/acre)",
+       title = "Rendimiento según fertilizante") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+**Pregunta 3.3:** ¿el rendimiento cambia más entre fertilizantes o entre bloques? Justificá con los gráficos.
+
+## Paso 4. Estimación
+
+```r
+#| label: anova-remolacha
+modelo_remolacha <- aov(yield ~ fert + block, data = datos_remolacha)
+anova(modelo_remolacha)
+```
+
+**Pregunta 3.4:** ¿qué p-valor tiene el fertilizante? ¿Y el bloque? ¿Por qué el p-valor del bloque no es la pregunta central?
+
+Comparaciones de medias de fertilizantes, con ajuste de Tukey:
+
+```r
+#| label: tukey-remolacha
+medias_rem <- emmeans(modelo_remolacha, ~ fert)
+pairs(medias_rem, adjust = "tukey")
+```
+
+### ¿Hay interacción entre tratamiento y bloque?
+
+Con una sola observación por combinación fertilizante-bloque, el modelo no puede estimar la interacción: no quedan grados de libertad para el error.
+
+**Pregunta 3.5:** verificá la cantidad de observaciones por combinación con `table(datos_remolacha$fert, datos_remolacha$block)`. ¿Qué pasa con los grados de libertad si intentás ajustar `yield ~ fert * block`?
+
+Para evaluar si el efecto del fertilizante depende del bloque, se usa la **prueba de no aditividad de Tukey**, que tiene un grado de libertad. Se calcula con el paquete `agricolae`:
+
+```r
+#| label: no-aditividad
+#| eval: false
+# install.packages("agricolae")
+cm_error <- anova(modelo_remolacha)["Residuals", "Mean Sq"]
+
+agricolae::nonadditivity(
+  y = datos_remolacha$yield,
+  trt = datos_remolacha$fert,
+  block = datos_remolacha$block,
+  MSerror = cm_error
+)
+```
+
+**Pregunta 3.6:** si el p-valor de la prueba de no aditividad es mayor a 0.05, ¿qué modelo elegirías? ¿Qué significa rechazarla?
+
+### Contrastes planificados
+
+Supongamos que el investigador quería comparar **el promedio de los fertilizantes que incluyen nitrógeno contra los que no**. Antes de usar contrastes, identificá los niveles con `levels(datos_remolacha$fert)`, y definí los coeficientes según el orden.
+
+Ejemplo: si los niveles son `A, B, C, D` y el interés es `A + B` contra `C + D`:
+
+```r
+#| label: contraste-remolacha
+
+medias_rem <- emmeans(modelo_remolacha, ~ fert)
+
+contrast(medias_rem,
+         list("(A+B) vs (C+D)" = c(0.5, 0.5, -0.5, -0.5)),
+         adjust = "none")
+```
+
+**Pregunta 3.7:** los coeficientes de un contraste deben sumar cero. Verificá que los de este ejemplo cumplen esa condición. ¿Qué pasa si no suman cero?
+
+## Paso 5. Validación
+
+```r
+#| label: diag-remolacha
+#| fig-width: 8
+#| fig-height: 7
+par(mfrow = c(2, 2))
+plot(modelo_remolacha)
+par(mfrow = c(1, 1))
+
+shapiro.test(residuals(modelo_remolacha))
+```
+
+**Pregunta 3.8:** ¿los residuos muestran patrón según el bloque o el fertilizante? Graficalos contra cada factor con `boxplot(residuals(modelo_remolacha) ~ datos_remolacha$block)`.
+
+## Paso 6. Interpretación
+
+**Pregunta 3.9:** redactá un párrafo con: el efecto del fertilizante (F y p-valor), la comparación de medias que resulte significativa, el resultado de la prueba de no aditividad y la conclusión sobre el efecto de los fertilizantes.
+
+---
+
+## Cierre
+
+Respondé en tres o cuatro frases:
+
+- ¿Qué relación encontraste entre la prueba t y el modelo lineal?
+- ¿Cuándo conviene bloquear y qué se gana con eso?
+- ¿Qué parte del análisis te pareció más difícil de interpretar?
+

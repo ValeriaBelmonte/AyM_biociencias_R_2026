@@ -3,3 +3,13 @@ title: "Introducción"
 ---
 
 ## Objetivo de la clase
+
+Al finalizar esta clase, el/la estudiante deberá ser capaz de:
+
+- Plantear la comparación de grupos como un modelo lineal con una variable explicativa categórica.
+- Aplicar el ANOVA de un factor, interpretar la tabla de análisis de la varianza y su estadístico F.
+- Verificar los supuestos del ANOVA y elegir el procedimiento adecuado si no se cumplen.
+- Realizar comparaciones múltiples con control del error global (Tukey) y definir contrastes planificados.
+- Estimar medias marginales y comparaciones con el paquete emmeans, y ajustar el nivel de referencia de un factor.
+- Aplicar la prueba t de Student, tanto con varianzas iguales como con la versión de Welch, y reconocerla como un caso particular del modelo lineal con dos grupos.
+- Analizar un diseño en bloques completos al azar, y distinguir la interacción tratamiento × bloque de la prueba de no aditividad.

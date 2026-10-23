@@ -1,0 +1,14 @@
+---
+title: "Introducción"
+---
+
+# Objetivo de la clase
+
+Al finalizar esta clase, el/la estudiante deberá ser capaz de:
+
+- Describir el modelo lineal general y sus supuestos (linealidad, normalidad, homocedasticidad e independencia).
+-  Aplicar el protocolo de seis pasos para un análisis estadístico completo.
+- Estimar los parámetros de una regresión lineal simple con lm() e interpretar la ordenada al origen y la pendiente.
+- Realizar la prueba de hipótesis y el intervalo de confianza para la pendiente, y decidir a partir de ellos. Validar el modelo con gráficos de residuos y pruebas formales de normalidad, e identificar residuos altos, puntos de palanca y observaciones influyentes.
+- Calcular e interpretar el coeficiente de correlación y el coeficiente de determinación.
+- Aplicar transformaciones para linealizar relaciones no lineales e interpretar el modelo transformado.

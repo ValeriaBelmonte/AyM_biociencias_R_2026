@@ -1,0 +1,15 @@
+---
+title: "Introducción"
+---
+
+## Objetivo de la clase
+
+Al finalizar esta clase, el/la estudiante deberá ser capaz de:
+
+- Estructurar un documento Quarto con encabezado YAML, texto y chunks de código.
+- Elegir el formato de salida (HTML, Word o PDF) y configurar las opciones de los chunks para mostrar u ocultar código, resultados y advertencias.
+- Insertar figuras y tablas numeradas, y citarlas en el texto con referencias cruzadas.
+- Incorporar resultados calculados dentro del texto, de modo que se actualicen al renderizar.
+- Dar formato a tablas con flextable y exportarlas a Word o HTML.
+- Escribir fórmulas matemáticas en LaTeX, en línea y en bloque, con numeración.
+- Organizar un informe con introducción, métodos, resultados, discusión y referencias, y configurar índice, citas y bibliografía

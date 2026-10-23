@@ -1,0 +1,126 @@
+---
+title: "Tablas con flextable"
+---
+
+# ¿Qué es flextable?
+
+**flextable** es un paquete de R para crear tablas con formato para informes. Se integra con Quarto y sirve tanto para HTML como para Word y PDF. A diferencia de `knitr::kable()`, permite controlar encabezados, colores, celdas combinadas y el formato de cada columna.
+
+``` r
+install.packages("flextable")
+```
+
+# Tabla básica
+
+Se crea a partir de un data frame, y se le aplican pasos de formato con el operador `|>`:
+
+```{r}
+#| label: tbl-basica
+#| tbl-cap: "Medias y desvíos por tratamiento"
+#| message: false
+library(flextable)
+library(tidyverse)
+
+datos <- tibble(
+  tratamiento = c("Testigo", "S3", "S6", "S12"),
+  n           = c(4, 4, 4, 4),
+  media       = c(38.2, 29.1, 26.5, 24.0),
+  desvio      = c(4.1, 3.5, 3.9, 2.8)
+)
+
+flextable(datos) |>
+  theme_booktabs() |>
+  autofit()
+```
+
+# Encabezados y etiquetas
+
+`set_header_labels()` cambia los nombres de las columnas sin cambiar los del data frame:
+
+```{r}
+#| label: tbl-encabezados
+#| tbl-cap: "Tabla con encabezados personalizados"
+#| message: false
+flextable(datos) |>
+  set_header_labels(
+    tratamiento = "Tratamiento",
+    n           = "n",
+    media       = "Media",
+    desvio      = "Desvío estándar"
+  ) |>
+  theme_booktabs() |>
+  autofit()
+```
+
+Un encabezado superior que agrupa columnas se agrega con `add_header_row()`.
+
+# Formato de números
+
+`colformat_double()` controla los decimales de cada columna. Si el separador decimal tiene que ser la coma, se indica en `decimal.mark`:
+
+```{r}
+#| label: tbl-decimales
+#| tbl-cap: "Formato de números con coma decimal"
+#| message: false
+flextable(datos) |>
+  colformat_double(j = c("media", "desvio"), digits = 1, decimal.mark = ",") |>
+  theme_booktabs() |>
+  autofit()
+```
+
+# Color, negrita y alineación
+
+```{r}
+#| label: tbl-colores
+#| tbl-cap: "Destacar el mejor tratamiento"
+#| message: false
+flextable(datos) |>
+  bold(part = "header") |>
+  bold(i = ~ media == min(media), j = "media") |>
+  bg(i = ~ media == min(media), bg = "#E8F5E9", part = "body") |>
+  align(j = c("n", "media", "desvio"), align = "center", part = "all") |>
+  theme_booktabs() |>
+  autofit()
+```
+
+# Celdas combinadas y notas
+
+`merge_v()` combina celdas verticales con el mismo valor, y `add_footer_lines()` agrega una nota al pie:
+
+```{r}
+#| label: tbl-notas
+#| tbl-cap: "Tabla con celdas combinadas y nota"
+#| message: false
+datos_grupo <- tibble(
+  grupo = c("Testigo", "Azufre", "Azufre", "Azufre"),
+  tratamiento = c("Testigo", "S3", "S6", "S12"),
+  media = c(38.2, 29.1, 26.5, 24.0)
+)
+
+flextable(datos_grupo) |>
+  merge_v(j = "grupo") |>
+  add_footer_lines("Nota: medias estimadas a partir del modelo ajustado.") |>
+  theme_booktabs() |>
+  autofit()
+```
+
+# Exportar a Word y HTML
+
+Dentro de un documento Quarto, la tabla se incluye sola al renderizar. Para guardarla como archivo independiente:
+
+``` r
+ft <- flextable(datos) |> theme_booktabs() |> autofit()
+
+save_as_docx(ft, path = "tabla_medias.docx")
+save_as_html(ft, path = "tabla_medias.html")
+```
+
+Si el informe es `docx`, la tabla pasa a Word con el mismo formato que se ve en el documento.
+
+# Buenas prácticas
+
+- **Una tabla, un mensaje:** no mostrar todas las columnas del data frame si solo algunas responden la pregunta.
+- **Leyenda y número:** usar `tbl-cap` y un label `tbl-...`, para citarla con `@tbl-...` en el texto.
+- **Redondeo consistente:** elegir la misma cantidad de decimales en todas las columnas de un mismo tipo.
+- **Unidades en el encabezado:** por ejemplo "Rendimiento (tn/ha)", para que el lector no tenga que buscarlas.
+- **Probar en el formato final:** una tabla que se ve bien en HTML puede desbordar en Word si tiene muchas columnas. Conviene revisar `autofit()` y el ancho de página.

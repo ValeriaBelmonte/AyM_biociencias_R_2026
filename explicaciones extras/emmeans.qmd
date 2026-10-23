@@ -1,14 +1,5 @@
 ---
 title: "Resumen de emmeans"
-subtitle: "Medias estimadas, comparaciones y contrastes a partir de un modelo lineal"
-format:
-  html:
-    toc: true
-    embed-resources: true
-lang: es
-execute:
-  warning: false
-  message: false
 ---
 
 # ¿Qué es emmeans?
@@ -24,7 +15,7 @@ Trabaja sobre el modelo completo, así que sirve también cuando hay varios fact
 # Funciones principales
 
 | Función | Qué hace |
-|---|---|
+|------------------------------------|------------------------------------|
 | `emmeans(modelo, ~ factor)` | Medias estimadas por nivel del factor, con IC 95 % |
 | `pairs(medias, adjust = "tukey")` | Todas las diferencias entre pares, con ajuste |
 | `contrast(medias, lista, adjust = "none")` | Contrastes definidos de antemano |
@@ -52,12 +43,12 @@ pairs(medias, adjust = "tukey")
 
 Las comparaciones pareadas pueden ajustarse de varias formas. Algunas más usadas:
 
-| `adjust` | Método | Cuándo usarlo |
-|---|---|---|
-| `"tukey"` | Tukey | Todas las comparaciones pareadas |
-| `"bonferroni"` | Bonferroni | Pocas comparaciones, muy conservador |
-| `"holm"` | Holm | Alternativa a Bonferroni, menos conservadora |
-| `"none"` | Sin ajuste | Solo para contrastes planificados de antemano |
+| `adjust`       | Método     | Cuándo usarlo                                 |
+|------------------------|------------------------|------------------------|
+| `"tukey"`      | Tukey      | Todas las comparaciones pareadas              |
+| `"bonferroni"` | Bonferroni | Pocas comparaciones, muy conservador          |
+| `"holm"`       | Holm       | Alternativa a Bonferroni, menos conservadora  |
+| `"none"`       | Sin ajuste | Solo para contrastes planificados de antemano |
 
 # Contrastes planificados
 
@@ -84,4 +75,4 @@ contrast(medias,
 - Con `adjust = "tukey"`, `pairs()` da el mismo resultado que `TukeyHSD()`, en formato de tabla.
 - Con dos grupos, `pairs()` da la misma diferencia y p-valor que `t.test(var.equal = TRUE)`.
 
-Ver la [Teoría 5](teoria5.html) para el desarrollo completo de ANOVA, Tukey y la prueba t.
+

@@ -116,9 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      Análisis y modelado de datos para investigaciones en biociencias con R y RStudio
-      </li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte6/index6.html">Parte 6</a></li><li class="breadcrumb-item"><a href="../parte6/index6.html">Presentación</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -288,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte4/index4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte4/index4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -358,13 +356,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/index6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/index6.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/teoria6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teoría</span></a>
   </div>
 </li>
@@ -399,7 +397,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte6/index6.html">Parte 6</a></li><li class="breadcrumb-item"><a href="../parte6/index6.html">Presentación</a></li></ol></nav>
 <div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Introducción</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
@@ -420,6 +418,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="objetivo-de-la-clase" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="objetivo-de-la-clase"><span class="header-section-number">1</span> Objetivo de la clase</h2>
+<p>Al finalizar esta clase, el/la estudiante deberá ser capaz de:</p>
+<ul>
+<li>Estructurar un documento Quarto con encabezado YAML, texto y chunks de código.</li>
+<li>Elegir el formato de salida (HTML, Word o PDF) y configurar las opciones de los chunks para mostrar u ocultar código, resultados y advertencias.</li>
+<li>Insertar figuras y tablas numeradas, y citarlas en el texto con referencias cruzadas.</li>
+<li>Incorporar resultados calculados dentro del texto, de modo que se actualicen al renderizar.</li>
+<li>Dar formato a tablas con flextable y exportarlas a Word o HTML.</li>
+<li>Escribir fórmulas matemáticas en LaTeX, en línea y en bloque, con numeración.</li>
+<li>Organizar un informe con introducción, métodos, resultados, discusión y referencias, y configurar índice, citas y bibliografía</li>
+</ul>
 
 
 <!-- -->
@@ -881,7 +889,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Introducción"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la clase</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objetivo de la clase</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Al finalizar esta clase, el/la estudiante deberá ser capaz de:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Estructurar un documento Quarto con encabezado YAML, texto y chunks de código.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Elegir el formato de salida (HTML, Word o PDF) y configurar las opciones de los chunks para mostrar u ocultar código, resultados y advertencias.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Insertar figuras y tablas numeradas, y citarlas en el texto con referencias cruzadas.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Incorporar resultados calculados dentro del texto, de modo que se actualicen al renderizar.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Dar formato a tablas con flextable y exportarlas a Word o HTML.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Escribir fórmulas matemáticas en LaTeX, en línea y en bloque, con numeración.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Organizar un informe con introducción, métodos, resultados, discusión y referencias, y configurar índice, citas y bibliografía</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

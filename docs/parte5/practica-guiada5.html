@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Untitled – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Práctica guiada 5 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -286,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte4/index4.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte4/index4.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
@@ -356,13 +385,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/index6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/index6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentación</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte6/teoria6.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte6/teoria6.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Teoría</span></a>
   </div>
 </li>
@@ -385,15 +414,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#práctica-1-diseño-completamente-al-azar-roña-de-la-papa" id="toc-práctica-1-diseño-completamente-al-azar-roña-de-la-papa" class="nav-link active" data-scroll-target="#práctica-1-diseño-completamente-al-azar-roña-de-la-papa"><span class="header-section-number">1</span> Práctica 1: diseño completamente al azar (roña de la papa)</a>
+  <ul class="collapse">
+  <li><a href="#paso-1.-pregunta-de-investigación-e-hipótesis" id="toc-paso-1.-pregunta-de-investigación-e-hipótesis" class="nav-link" data-scroll-target="#paso-1.-pregunta-de-investigación-e-hipótesis"><span class="header-section-number">1.1</span> Paso 1. Pregunta de investigación e hipótesis</a></li>
+  <li><a href="#paso-2.-modelo-y-supuestos" id="toc-paso-2.-modelo-y-supuestos" class="nav-link" data-scroll-target="#paso-2.-modelo-y-supuestos"><span class="header-section-number">1.2</span> Paso 2. Modelo y supuestos</a></li>
+  <li><a href="#paso-3.-exploración" id="toc-paso-3.-exploración" class="nav-link" data-scroll-target="#paso-3.-exploración"><span class="header-section-number">1.3</span> Paso 3. Exploración</a></li>
+  <li><a href="#paso-4.-estimación" id="toc-paso-4.-estimación" class="nav-link" data-scroll-target="#paso-4.-estimación"><span class="header-section-number">1.4</span> Paso 4. Estimación</a></li>
+  <li><a href="#medias-por-tratamiento" id="toc-medias-por-tratamiento" class="nav-link" data-scroll-target="#medias-por-tratamiento"><span class="header-section-number">1.5</span> Medias por tratamiento</a>
+  <ul class="collapse">
+  <li><a href="#contrastes-planificados-continuación-del-paso-4" id="toc-contrastes-planificados-continuación-del-paso-4" class="nav-link" data-scroll-target="#contrastes-planificados-continuación-del-paso-4"><span class="header-section-number">1.5.1</span> Contrastes planificados (continuación del paso 4)</a></li>
+  </ul></li>
+  <li><a href="#paso-5.-validación" id="toc-paso-5.-validación" class="nav-link" data-scroll-target="#paso-5.-validación"><span class="header-section-number">1.6</span> Paso 5. Validación</a></li>
+  <li><a href="#paso-6.-interpretación" id="toc-paso-6.-interpretación" class="nav-link" data-scroll-target="#paso-6.-interpretación"><span class="header-section-number">1.7</span> Paso 6. Interpretación</a></li>
+  </ul></li>
+  <li><a href="#práctica-2-la-prueba-t-de-student-como-modelo-lineal-roña-de-la-papa" id="toc-práctica-2-la-prueba-t-de-student-como-modelo-lineal-roña-de-la-papa" class="nav-link" data-scroll-target="#práctica-2-la-prueba-t-de-student-como-modelo-lineal-roña-de-la-papa"><span class="header-section-number">2</span> Práctica 2: la prueba t de Student como modelo lineal (roña de la papa)</a>
+  <ul class="collapse">
+  <li><a href="#paso-1.-pregunta-e-hipótesis" id="toc-paso-1.-pregunta-e-hipótesis" class="nav-link" data-scroll-target="#paso-1.-pregunta-e-hipótesis"><span class="header-section-number">2.1</span> Paso 1. Pregunta e hipótesis</a></li>
+  <li><a href="#paso-2.-modelo" id="toc-paso-2.-modelo" class="nav-link" data-scroll-target="#paso-2.-modelo"><span class="header-section-number">2.2</span> Paso 2. Modelo</a></li>
+  <li><a href="#paso-3.-exploración-1" id="toc-paso-3.-exploración-1" class="nav-link" data-scroll-target="#paso-3.-exploración-1"><span class="header-section-number">2.3</span> Paso 3. Exploración</a></li>
+  <li><a href="#paso-4.-estimación-tres-formas-que-dan-el-mismo-resultado" id="toc-paso-4.-estimación-tres-formas-que-dan-el-mismo-resultado" class="nav-link" data-scroll-target="#paso-4.-estimación-tres-formas-que-dan-el-mismo-resultado"><span class="header-section-number">2.4</span> Paso 4. Estimación: tres formas que dan el mismo resultado</a></li>
+  <li><a href="#paso-5.-validación-1" id="toc-paso-5.-validación-1" class="nav-link" data-scroll-target="#paso-5.-validación-1"><span class="header-section-number">2.5</span> Paso 5. Validación</a></li>
+  <li><a href="#paso-6.-interpretación-1" id="toc-paso-6.-interpretación-1" class="nav-link" data-scroll-target="#paso-6.-interpretación-1"><span class="header-section-number">2.6</span> Paso 6. Interpretación</a></li>
+  </ul></li>
+  <li><a href="#práctica-3-diseño-en-bloques-remolacha-azucarera" id="toc-práctica-3-diseño-en-bloques-remolacha-azucarera" class="nav-link" data-scroll-target="#práctica-3-diseño-en-bloques-remolacha-azucarera"><span class="header-section-number">3</span> Práctica 3: diseño en bloques (remolacha azucarera)</a>
+  <ul class="collapse">
+  <li><a href="#paso-1.-pregunta-e-hipótesis-1" id="toc-paso-1.-pregunta-e-hipótesis-1" class="nav-link" data-scroll-target="#paso-1.-pregunta-e-hipótesis-1"><span class="header-section-number">3.1</span> Paso 1. Pregunta e hipótesis</a></li>
+  <li><a href="#paso-2.-modelo-1" id="toc-paso-2.-modelo-1" class="nav-link" data-scroll-target="#paso-2.-modelo-1"><span class="header-section-number">3.2</span> Paso 2. Modelo</a></li>
+  <li><a href="#paso-3.-exploración-2" id="toc-paso-3.-exploración-2" class="nav-link" data-scroll-target="#paso-3.-exploración-2"><span class="header-section-number">3.3</span> Paso 3. Exploración</a></li>
+  <li><a href="#paso-4.-estimación-1" id="toc-paso-4.-estimación-1" class="nav-link" data-scroll-target="#paso-4.-estimación-1"><span class="header-section-number">3.4</span> Paso 4. Estimación</a>
+  <ul class="collapse">
+  <li><a href="#hay-interacción-entre-tratamiento-y-bloque" id="toc-hay-interacción-entre-tratamiento-y-bloque" class="nav-link" data-scroll-target="#hay-interacción-entre-tratamiento-y-bloque"><span class="header-section-number">3.4.1</span> ¿Hay interacción entre tratamiento y bloque?</a></li>
+  <li><a href="#contrastes-planificados" id="toc-contrastes-planificados" class="nav-link" data-scroll-target="#contrastes-planificados"><span class="header-section-number">3.4.2</span> Contrastes planificados</a></li>
+  </ul></li>
+  <li><a href="#paso-5.-validación-2" id="toc-paso-5.-validación-2" class="nav-link" data-scroll-target="#paso-5.-validación-2"><span class="header-section-number">3.5</span> Paso 5. Validación</a></li>
+  <li><a href="#paso-6.-interpretación-2" id="toc-paso-6.-interpretación-2" class="nav-link" data-scroll-target="#paso-6.-interpretación-2"><span class="header-section-number">3.6</span> Paso 6. Interpretación</a></li>
+  <li><a href="#cierre" id="toc-cierre" class="nav-link" data-scroll-target="#cierre"><span class="header-section-number">3.7</span> Cierre</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte5/index5.html">Parte 5</a></li><li class="breadcrumb-item"><a href="../parte5/practica-guiada5.html">Práctica guiada</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Untitled</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Práctica guiada 5</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -410,10 +480,391 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Esta práctica tiene tres ejemplos. En todos seguimos el protocolo de seis pasos de la teoría: <strong>pregunta e hipótesis → modelo → exploración → estimación → validación → interpretación</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Práctica</th>
+<th>Tema</th>
+<th>Datos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Diseño completamente al azar (DCA)</td>
+<td>Roña de la papa (<code>agridat::cochran.crd</code>)</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Prueba t de Student como modelo lineal</td>
+<td>Roña de la papa: testigo contra azufre</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Diseño en bloques completos al azar</td>
+<td>Remolacha azucarera (<code>agridat::cochran.beets</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Completá en tu propio documento las preguntas marcadas con <strong>Pregunta</strong>.</p>
+<p>Antes de empezar, instalá el paquete <code>agridat</code> si no lo tenés:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"agridat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agridat)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+<section id="práctica-1-diseño-completamente-al-azar-roña-de-la-papa" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Práctica 1: diseño completamente al azar (roña de la papa)</h1>
+<p>En el cuadro 4.1 del libro <em>Diseño de experimentos</em> (Cochran y Cox, 1957) se presentan los resultados de un experimento sobre la <strong>roña de la papa</strong>. La roña no prospera en suelos muy ácidos, así que se aplicó azufre para acidificarlos. Se comparan el <strong>testigo</strong> (sin tratamiento) y 6 combinaciones de dosis (300, 600 y 1200 kg/ha) aplicadas en otoño (F) o primavera (S).</p>
+<p>Notación: <code>0</code> = testigo; <code>F</code> = otoño; <code>S</code> = primavera. Los números 3, 6 y 12 son las cantidades de azufre en 100 kg/ha. La variable de respuesta es el <strong>índice de roña</strong> (<code>inf</code>).</p>
+<section id="paso-1.-pregunta-de-investigación-e-hipótesis" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="paso-1.-pregunta-de-investigación-e-hipótesis"><span class="header-section-number">1.1</span> Paso 1. Pregunta de investigación e hipótesis</h2>
+<p><strong>Pregunta de investigación:</strong> ¿el azufre cambia el índice de roña respecto del testigo, y el momento de aplicación (otoño o primavera) importa?</p>
+<p>Las hipótesis para el ANOVA son:</p>
+<p><span class="math display">\[H_0: \mu_1 = \mu_2 = \cdots = \mu_7 \qquad H_1: \text{al menos una media difiere}\]</span></p>
+<p><strong>Pregunta 1.1:</strong> ¿qué significa <span class="math inline">\(H_0\)</span> en palabras, para este experimento?</p>
+</section>
+<section id="paso-2.-modelo-y-supuestos" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="paso-2.-modelo-y-supuestos"><span class="header-section-number">1.2</span> Paso 2. Modelo y supuestos</h2>
+<p><span class="math display">\[Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}\]</span></p>
+<ul>
+<li><span class="math inline">\(Y_{ij}\)</span>: índice de roña de la parcela <span class="math inline">\(j\)</span> con el tratamiento <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(\tau_i\)</span>: efecto del tratamiento <span class="math inline">\(i\)</span>.</li>
+</ul>
+<p>En el contexto del modelo, las hipótesis quedan como: <span class="math display">\[H_0: \tau_1 = \tau_2 = \cdots = \tau_7=0 \qquad H_1: \tau_i\neq0  \text{ para algún} \quad i\]</span></p>
+<p><strong>Pregunta 1.2:</strong> la asignación de los tratamientos a las parcelas fue completamente al azar. ¿Qué implica esto para el supuesto de independencia?</p>
+</section>
+<section id="paso-3.-exploración" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="paso-3.-exploración"><span class="header-section-number">1.3</span> Paso 3. Exploración</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga-papa</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>datos_papas <span class="ot">&lt;-</span> cochran.crd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_papas)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_papas)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.3:</strong> ¿cuántas observaciones hay por tratamiento? Usá <code>table(datos_papas$trt)</code>. ¿El diseño está balanceado?</p>
+<p><strong>Pregunta 1.4:</strong> revisá el orden de los niveles con <code>levels(datos_papas$trt)</code>. Los contrastes de la sección 1.5 suponen que el cuarto nivel es el testigo (<code>0</code>). ¿Es así? Cambiarlo al primer nivel</p>
+<p><strong>Pregunta 1.5:</strong> realizá el boxplot del índice de roña según tratamiento y respondé: ¿qué tratamientos tienen menor índice de roña? ¿Hay tratamientos con mucha dispersión, es decir, con una caja o bigotes más largos que el resto?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-papa</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_papas, <span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> inf, <span class="at">fill =</span> trt)) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Índice de roña según tratamiento"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Índice de roña"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>¿qué tratamientos tienen menor índice de roña? ¿Hay tratamientos con mucha dispersión?</p>
+</section>
+<section id="paso-4.-estimación" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="paso-4.-estimación"><span class="header-section-number">1.4</span> Paso 4. Estimación</h2>
+<p>Con el modelo ajustado, evaluamos si el tratamiento tiene efecto sobre el índice de roña. La tabla de ANOVA prueba <span class="math inline">\(H_0\)</span>: todas las medias de tratamiento son iguales. La columna F compara la variabilidad entre tratamientos con la variabilidad dentro de ellos, y el p-valor indica qué tan compatible es el resultado con <span class="math inline">\(H_0\)</span>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-papa</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>anova_papa <span class="ot">&lt;-</span> <span class="fu">aov</span>(inf <span class="sc">~</span> trt, <span class="at">data =</span> datos_papas)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(anova_papa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.6:</strong> ¿cuál es el valor de F y su p-valor? ¿Qué concluís sobre <span class="math inline">\(H_0\)</span>?</p>
+</section>
+<section id="medias-por-tratamiento" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="medias-por-tratamiento"><span class="header-section-number">1.5</span> Medias por tratamiento</h2>
+<p>Primero observamos el índice de roña promedio de cada tratamiento, con su desvío estándar y el número de parcelas:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medias-papa</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(anova_papa, <span class="sc">~</span> trt)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>medias</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>medias_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">confint</span>(medias))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(medias_df, <span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> emmean)) <span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower.CL, <span class="at">ymax =</span> upper.CL), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Índice de roña estimado"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Medias estimadas e IC del 95 %"</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Estas medias son las observadas. Las medias estimadas con el modelo, con sus intervalos de confianza, se muestran a continuación. Medias estimadas con su intervalo de confianza:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medias-papa</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(anova_papa, <span class="sc">~</span> trt)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>medias</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>medias_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">confint</span>(medias))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(medias_df, <span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> emmean)) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower.CL, <span class="at">ymax =</span> upper.CL), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Índice de roña estimado"</span>,</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Medias estimadas e IC del 95 %"</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Comparaciones de todos los pares, con ajuste de Tukey:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tukey-papa</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.7:</strong> ¿qué pares de tratamientos difieren? ¿Hay alguno que no difiera del testigo?</p>
+<section id="contrastes-planificados-continuación-del-paso-4" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="contrastes-planificados-continuación-del-paso-4"><span class="header-section-number">1.5.1</span> Contrastes planificados (continuación del paso 4)</h3>
+<p>Cuando las preguntas son específicas, es más informativo probar contrastes que comparar todos los pares. En este experimento interesan dos:</p>
+<ul>
+<li><strong>Testigo contra azufre:</strong> ¿el azufre, en cualquier dosis y momento, reduce la roña?</li>
+<li><strong>Otoño contra primavera:</strong> ¿el momento de aplicación cambia el efecto?</li>
+</ul>
+<p>Los coeficientes de cada contraste suman cero. Para que el primero compare el testigo contra los seis tratamientos con azufre, el testigo tiene coeficiente <span class="math inline">\(-6\)</span> y los demás <span class="math inline">\(+1\)</span>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: contrastes-papa</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden de niveles esperado: F3, F6, F12, 0, S3, S6, S12</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar con levels(datos_papas$trt) antes de correr</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(datos_papas<span class="sc">$</span>trt) <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">c1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),    <span class="co"># testigo contra azufre</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">c2 =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)   <span class="co"># otoño contra primavera</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(inf <span class="sc">~</span> trt, <span class="at">data =</span> datos_papas)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1, <span class="at">split =</span> <span class="fu">list</span>(<span class="at">trt =</span> <span class="fu">list</span>(<span class="st">"Testigo vs azufre"</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Otoño vs primavera"</span> <span class="ot">=</span> <span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.8:</strong> ¿cuál de los dos contrastes es significativo? ¿Qué te dice la suma de cuadrados de cada uno?</p>
+<p><strong>Pregunta 1.9:</strong> los contrastes se definieron antes de mirar los datos. ¿Por qué eso importa para controlar el error tipo I?</p>
+</section>
+</section>
+<section id="paso-5.-validación" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="paso-5.-validación"><span class="header-section-number">1.6</span> Paso 5. Validación</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diag-papa</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anova_papa)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: levene-papa</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(inf <span class="sc">~</span> trt, <span class="at">data =</span> datos_papas)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(anova_papa))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.10:</strong> ¿se cumplen normalidad y homocedasticidad? Si la homocedasticidad falla, ¿qué alternativa propondrías (transformación o Kruskal-Wallis)?</p>
+</section>
+<section id="paso-6.-interpretación" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="paso-6.-interpretación"><span class="header-section-number">1.7</span> Paso 6. Interpretación</h2>
+<p><strong>Pregunta 1.11:</strong> redactá un párrafo de resultados con: el valor de F y su p-valor, los dos contrastes con sus p-valores, y la conclusión sobre el efecto del azufre y del momento de aplicación.</p>
+<hr>
+</section>
+</section>
+<section id="práctica-2-la-prueba-t-de-student-como-modelo-lineal-roña-de-la-papa" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Práctica 2: la prueba t de Student como modelo lineal (roña de la papa)</h1>
+<p>Vamos a comparar el <strong>testigo</strong> contra <strong>todas las parcelas con azufre juntas</strong>. Son dos grupos, así que la prueba t de Student es la herramienta clásica. Lo que queremos mostrar es que esa prueba es un caso particular del modelo lineal, el mismo que usamos en el ANOVA.</p>
+<section id="paso-1.-pregunta-e-hipótesis" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="paso-1.-pregunta-e-hipótesis"><span class="header-section-number">2.1</span> Paso 1. Pregunta e hipótesis</h2>
+<p><strong>Pregunta de investigación:</strong> ¿el testigo tiene un índice de roña distinto del promedio de las parcelas con azufre?</p>
+<p><span class="math display">\[H_0: \mu_{\text{testigo}} = \mu_{\text{azufre}} \qquad H_1: \mu_{\text{testigo}} \neq \mu_{\text{azufre}}\]</span></p>
+<p><strong>Pregunta 2.1:</strong> ¿qué diferencia hay entre esta pregunta y la del contraste <span class="math inline">\(c_1\)</span> de la práctica 1?</p>
+</section>
+<section id="paso-2.-modelo" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="paso-2.-modelo"><span class="header-section-number">2.2</span> Paso 2. Modelo</h2>
+<p>Con dos grupos, el modelo lineal se escribe con una variable indicadora <span class="math inline">\(x_i\)</span>, que vale 1 si la parcela recibió azufre y 0 si es testigo:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)\]</span></p>
+<ul>
+<li><span class="math inline">\(\beta_0 = \mu_{\text{testigo}}\)</span>: media del testigo.</li>
+<li><span class="math inline">\(\beta_1 = \mu_{\text{azufre}} - \mu_{\text{testigo}}\)</span>: diferencia entre las medias.</li>
+</ul>
+<p>Así, <span class="math inline">\(H_0: \mu_{\text{testigo}} = \mu_{\text{azufre}}\)</span> es equivalente a <span class="math inline">\(H_0: \beta_1 = 0\)</span>.</p>
+<p><strong>Pregunta 2.2:</strong> ¿qué parte del modelo cambia si en lugar de dos grupos hubiera tres?</p>
+</section>
+<section id="paso-3.-exploración-1" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="paso-3.-exploración-1"><span class="header-section-number">2.3</span> Paso 3. Exploración</h2>
+<p>Creamos el factor de dos grupos a partir de la base de la práctica 1:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dos-grupos</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>datos_t <span class="ot">&lt;-</span> datos_papas <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo =</span> <span class="fu">if_else</span>(<span class="fu">as.character</span>(trt) <span class="sc">==</span> <span class="st">"0"</span>, <span class="st">"Testigo"</span>, <span class="st">"Azufre"</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">grupo =</span> <span class="fu">factor</span>(grupo, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Testigo"</span>, <span class="st">"Azufre"</span>)))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos_t<span class="sc">$</span>grupo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-t</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_t, <span class="fu">aes</span>(<span class="at">x =</span> grupo, <span class="at">y =</span> inf, <span class="at">fill =</span> grupo)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Índice de roña"</span>, <span class="at">title =</span> <span class="st">"Testigo contra azufre"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.3:</strong> ¿la diferencia entre los grupos se ve a simple vista? ¿Cuál grupo tiene mayor dispersión?</p>
+<p>Medias y desvíos por grupo:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen-t</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>datos_t <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">media =</span> <span class="fu">mean</span>(inf), <span class="at">desvio =</span> <span class="fu">sd</span>(inf), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="paso-4.-estimación-tres-formas-que-dan-el-mismo-resultado" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="paso-4.-estimación-tres-formas-que-dan-el-mismo-resultado"><span class="header-section-number">2.4</span> Paso 4. Estimación: tres formas que dan el mismo resultado</h2>
+<p><strong>Forma A: prueba t clásica con varianzas iguales</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-clasica</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(inf <span class="sc">~</span> grupo, <span class="at">data =</span> datos_t, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Forma B: modelo lineal con <code>lm()</code></strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-lm</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>modelo_t <span class="ot">&lt;-</span> <span class="fu">lm</span>(inf <span class="sc">~</span> grupo, <span class="at">data =</span> datos_t)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.4:</strong> en la salida de <code>summary()</code>, ¿qué valor corresponde a <span class="math inline">\(\beta_0\)</span> y cuál a <span class="math inline">\(\beta_1\)</span>? Comparalos con las medias del paso 3.</p>
+<p><strong>Forma C: ANOVA sobre el mismo modelo</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-anova</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.5:</strong> compará el valor de <span class="math inline">\(t\)</span> de <code>t.test()</code> y de <code>summary()</code>, y el valor de <span class="math inline">\(F\)</span> del ANOVA. ¿Qué relación encontrás entre <span class="math inline">\(F\)</span> y <span class="math inline">\(t^2\)</span>?</p>
+<p><strong>Pregunta 2.6:</strong> ¿los p-valores de las tres formas coinciden? ¿Por qué debería ser así?</p>
+</section>
+<section id="paso-5.-validación-1" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="paso-5.-validación-1"><span class="header-section-number">2.5</span> Paso 5. Validación</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: validacion-t</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_t)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo_t))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(inf <span class="sc">~</span> grupo, <span class="at">data =</span> datos_t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.7:</strong> ¿qué resultado de Levene te lleva a elegir entre la versión con varianzas iguales y la de Welch? Corré <code>t.test(inf ~ grupo, data = datos_t)</code> (versión de Welch) y compará los resultados.</p>
+</section>
+<section id="paso-6.-interpretación-1" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="paso-6.-interpretación-1"><span class="header-section-number">2.6</span> Paso 6. Interpretación</h2>
+<p><strong>Pregunta 2.8:</strong> redactá la conclusión del testigo contra el azufre con la diferencia de medias, su intervalo de confianza del 95 % (<code>confint(modelo_t)</code>) y el p-valor.</p>
+<p><strong>Pregunta 2.9:</strong> la prueba t de Student es un caso particular de <span class="math inline">\(\text{modelo lineal}\)</span> con una variable explicativa de dos niveles. ¿Qué cambia si la variable tuviera cuatro niveles? ¿Seguiría siendo una prueba t?</p>
+<hr>
+</section>
+</section>
+<section id="práctica-3-diseño-en-bloques-remolacha-azucarera" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Práctica 3: diseño en bloques (remolacha azucarera)</h1>
+<p>El experimento compara <strong>fertilizantes</strong> en la producción de remolacha azucarera. Los tratamientos combinan superfosfato (P), cloruro de potasio (K) y nitrato de sodio (N). Las parcelas se agruparon en <strong>bloques</strong> según el terreno, para que la variabilidad entre bloques no quede en el error.</p>
+<p>Variables de la base <code>cochran.beets</code>:</p>
+<ul>
+<li><code>fert</code>: tratamiento de fertilizante.</li>
+<li><code>block</code>: bloque.</li>
+<li><code>yield</code>: rendimiento (toneladas/acre).</li>
+<li><code>plants</code>: número de plantas por parcela.</li>
+</ul>
+<section id="paso-1.-pregunta-e-hipótesis-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="paso-1.-pregunta-e-hipótesis-1"><span class="header-section-number">3.1</span> Paso 1. Pregunta e hipótesis</h2>
+<p><strong>Pregunta de investigación:</strong> ¿el tipo de fertilizante cambia el rendimiento de la remolacha, una vez descontada la variabilidad entre bloques?</p>
+<p><span class="math display">\[H_0: \tau_1 = \cdots = \tau_k = 0 \qquad H_1: \text{al menos un } \tau_i \neq 0\]</span></p>
+<p><strong>Pregunta 3.1:</strong> ¿por qué el bloque no es la pregunta principal, aunque lo incluyamos en el modelo?</p>
+</section>
+<section id="paso-2.-modelo-1" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="paso-2.-modelo-1"><span class="header-section-number">3.2</span> Paso 2. Modelo</h2>
+<p><span class="math display">\[Y_{ij} = \mu + \tau_i + \beta_j + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2)\]</span></p>
+<ul>
+<li><span class="math inline">\(\tau_i\)</span>: efecto del fertilizante <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\(\beta_j\)</span>: efecto del bloque <span class="math inline">\(j\)</span>.</li>
+</ul>
+<p><strong>Pregunta 3.2:</strong> ¿cuántas observaciones hay por combinación de fertilizante y bloque? ¿Qué consecuencia tiene para la interacción?</p>
+</section>
+<section id="paso-3.-exploración-2" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="paso-3.-exploración-2"><span class="header-section-number">3.3</span> Paso 3. Exploración</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga-remolacha</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>datos_remolacha <span class="ot">&lt;-</span> cochran.beets <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fert =</span> <span class="fu">factor</span>(fert), <span class="at">block =</span> <span class="fu">factor</span>(block))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_remolacha)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_remolacha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Gráfico de dispersión de plantas por fertilizante, separado por bloque:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: plantas-bloque</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_remolacha, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> plants, <span class="at">color =</span> fert)) <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> block) <span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fertilizante"</span>, <span class="at">y =</span> <span class="st">"Número de plantas por parcela"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Plantas por fertilizante, según bloque"</span>) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Boxplot del rendimiento según bloque:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-bloque</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_remolacha, <span class="fu">aes</span>(<span class="at">x =</span> block, <span class="at">y =</span> yield, <span class="at">fill =</span> block)) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bloque"</span>, <span class="at">y =</span> <span class="st">"Rendimiento (toneladas/acre)"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rendimiento según bloque"</span>) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Boxplot del rendimiento según fertilizante:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-fert</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_remolacha, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> yield, <span class="at">fill =</span> fert)) <span class="sc">+</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fertilizante"</span>, <span class="at">y =</span> <span class="st">"Rendimiento (toneladas/acre)"</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rendimiento según fertilizante"</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.3:</strong> ¿el rendimiento cambia más entre fertilizantes o entre bloques? Justificá con los gráficos.</p>
+</section>
+<section id="paso-4.-estimación-1" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="paso-4.-estimación-1"><span class="header-section-number">3.4</span> Paso 4. Estimación</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-remolacha</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>modelo_remolacha <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fert <span class="sc">+</span> block, <span class="at">data =</span> datos_remolacha)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_remolacha)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.4:</strong> ¿qué p-valor tiene el fertilizante? ¿Y el bloque? ¿Por qué el p-valor del bloque no es la pregunta central?</p>
+<p>Comparaciones de medias de fertilizantes, con ajuste de Tukey:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tukey-remolacha</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>medias_rem <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo_remolacha, <span class="sc">~</span> fert)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias_rem, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="hay-interacción-entre-tratamiento-y-bloque" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="hay-interacción-entre-tratamiento-y-bloque"><span class="header-section-number">3.4.1</span> ¿Hay interacción entre tratamiento y bloque?</h3>
+<p>Con una sola observación por combinación fertilizante-bloque, el modelo no puede estimar la interacción: no quedan grados de libertad para el error.</p>
+<p><strong>Pregunta 3.5:</strong> verificá la cantidad de observaciones por combinación con <code>table(datos_remolacha$fert, datos_remolacha$block)</code>. ¿Qué pasa con los grados de libertad si intentás ajustar <code>yield ~ fert * block</code>?</p>
+<p>Para evaluar si el efecto del fertilizante depende del bloque, se usa la <strong>prueba de no aditividad de Tukey</strong>, que tiene un grado de libertad. Se calcula con el paquete <code>agricolae</code>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: no-aditividad</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("agricolae")</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>cm_error <span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo_remolacha)[<span class="st">"Residuals"</span>, <span class="st">"Mean Sq"</span>]</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>agricolae<span class="sc">::</span><span class="fu">nonadditivity</span>(</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> datos_remolacha<span class="sc">$</span>yield,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">trt =</span> datos_remolacha<span class="sc">$</span>fert,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">block =</span> datos_remolacha<span class="sc">$</span>block,</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">MSerror =</span> cm_error</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.6:</strong> si el p-valor de la prueba de no aditividad es mayor a 0.05, ¿qué modelo elegirías? ¿Qué significa rechazarla?</p>
+</section>
+<section id="contrastes-planificados" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="contrastes-planificados"><span class="header-section-number">3.4.2</span> Contrastes planificados</h3>
+<p>Supongamos que el investigador quería comparar <strong>el promedio de los fertilizantes que incluyen nitrógeno contra los que no</strong>. Antes de usar contrastes, identificá los niveles con <code>levels(datos_remolacha$fert)</code>, y definí los coeficientes según el orden.</p>
+<p>Ejemplo: si los niveles son <code>A, B, C, D</code> y el interés es <code>A + B</code> contra <code>C + D</code>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: contraste-remolacha</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>medias_rem <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo_remolacha, <span class="sc">~</span> fert)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias_rem,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"(A+B) vs (C+D)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.7:</strong> los coeficientes de un contraste deben sumar cero. Verificá que los de este ejemplo cumplen esa condición. ¿Qué pasa si no suman cero?</p>
+</section>
+</section>
+<section id="paso-5.-validación-2" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="paso-5.-validación-2"><span class="header-section-number">3.5</span> Paso 5. Validación</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diag-remolacha</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_remolacha)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo_remolacha))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.8:</strong> ¿los residuos muestran patrón según el bloque o el fertilizante? Graficalos contra cada factor con <code>boxplot(residuals(modelo_remolacha) ~ datos_remolacha$block)</code>.</p>
+</section>
+<section id="paso-6.-interpretación-2" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="paso-6.-interpretación-2"><span class="header-section-number">3.6</span> Paso 6. Interpretación</h2>
+<p><strong>Pregunta 3.9:</strong> redactá un párrafo con: el efecto del fertilizante (F y p-valor), la comparación de medias que resulte significativa, el resultado de la prueba de no aditividad y la conclusión sobre el efecto de los fertilizantes.</p>
+<hr>
+</section>
+<section id="cierre" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="cierre"><span class="header-section-number">3.7</span> Cierre</h2>
+<p>Respondé en tres o cuatro frases:</p>
+<ul>
+<li>¿Qué relación encontraste entre la prueba t y el modelo lineal?</li>
+<li>¿Cuándo conviene bloquear y qué se gana con eso?</li>
+<li>¿Qué parte del análisis te pareció más difícil de interpretar?</li>
+</ul>
 
 
 <!-- -->
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -866,9 +1317,493 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Untitled"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctica guiada 5"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>Esta práctica tiene tres ejemplos. En todos seguimos el protocolo de seis pasos de la teoría: **pregunta e hipótesis → modelo → exploración → estimación → validación → interpretación**.</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Práctica <span class="pp">|</span> Tema <span class="pp">|</span> Datos <span class="pp">|</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 1 <span class="pp">|</span> Diseño completamente al azar (DCA) <span class="pp">|</span> Roña de la papa (<span class="in">`agridat::cochran.crd`</span>) <span class="pp">|</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 2 <span class="pp">|</span> Prueba t de Student como modelo lineal <span class="pp">|</span> Roña de la papa: testigo contra azufre <span class="pp">|</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 3 <span class="pp">|</span> Diseño en bloques completos al azar <span class="pp">|</span> Remolacha azucarera (<span class="in">`agridat::cochran.beets`</span>) <span class="pp">|</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>Completá en tu propio documento las preguntas marcadas con **Pregunta**.</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>Antes de empezar, instalá el paquete <span class="in">`agridat`</span> si no lo tenés:</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"agridat"</span>)</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(agridat)</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># Práctica 1: diseño completamente al azar (roña de la papa)</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>En el cuadro 4.1 del libro *Diseño de experimentos* (Cochran y Cox, 1957) se presentan los resultados de un experimento sobre la **roña de la papa**. La roña no prospera en suelos muy ácidos, así que se aplicó azufre para acidificarlos. Se comparan el **testigo** (sin tratamiento) y 6 combinaciones de dosis (300, 600 y 1200 kg/ha) aplicadas en otoño (F) o primavera (S).</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>Notación: <span class="in">`0`</span> = testigo; <span class="in">`F`</span> = otoño; <span class="in">`S`</span> = primavera. Los números 3, 6 y 12 son las cantidades de azufre en 100 kg/ha. La variable de respuesta es el **índice de roña** (<span class="in">`inf`</span>).</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Pregunta de investigación e hipótesis</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿el azufre cambia el índice de roña respecto del testigo, y el momento de aplicación (otoño o primavera) importa?</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>Las hipótesis para el ANOVA son:</span>
+<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_1 = \mu_2 = \cdots = \mu_7 \qquad H_1: \text{al menos una media difiere}$$</span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.1:** ¿qué significa $H_0$ en palabras, para este experimento?</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Modelo y supuestos</span></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a>$$Y_{ij} = \mu + \tau_i + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2) \text{ independientes}$$</span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$Y_{ij}$: índice de roña de la parcela $j$ con el tratamiento $i$.</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\tau_i$: efecto del tratamiento $i$.</span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>En el contexto del modelo, las hipótesis quedan como: </span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>$$H_0: \tau_1 = \tau_2 = \cdots = \tau_7=0 \qquad H_1: \tau_i\neq0  \text{ para algún} \quad i$$</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.2:** la asignación de los tratamientos a las parcelas fue completamente al azar. ¿Qué implica esto para el supuesto de independencia?</span>
+<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Exploración</span></span>
+<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-60"><a href="#cb28-60" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-61"><a href="#cb28-61" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga-papa</span></span>
+<span id="cb28-62"><a href="#cb28-62" aria-hidden="true" tabindex="-1"></a>datos_papas <span class="ot">&lt;-</span> cochran.crd</span>
+<span id="cb28-63"><a href="#cb28-63" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_papas)</span>
+<span id="cb28-64"><a href="#cb28-64" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_papas)</span>
+<span id="cb28-65"><a href="#cb28-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-66"><a href="#cb28-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-67"><a href="#cb28-67" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.3:** ¿cuántas observaciones hay por tratamiento? Usá <span class="in">`table(datos_papas$trt)`</span>. ¿El diseño está balanceado?</span>
+<span id="cb28-68"><a href="#cb28-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-69"><a href="#cb28-69" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.4:** revisá el orden de los niveles con <span class="in">`levels(datos_papas$trt)`</span>. Los contrastes de la sección 1.5 suponen que el cuarto nivel es el testigo (<span class="in">`0`</span>). ¿Es así?</span>
+<span id="cb28-70"><a href="#cb28-70" aria-hidden="true" tabindex="-1"></a>Cambiarlo al primer nivel </span>
+<span id="cb28-71"><a href="#cb28-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-72"><a href="#cb28-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-73"><a href="#cb28-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.5:** realizá el boxplot del índice de roña según tratamiento y respondé: ¿qué tratamientos tienen menor índice de roña? ¿Hay tratamientos con mucha dispersión, es decir, con una caja o bigotes más largos que el resto?</span>
+<span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-papa</span></span>
+<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_papas, <span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> inf, <span class="at">fill =</span> trt)) <span class="sc">+</span></span>
+<span id="cb28-78"><a href="#cb28-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-81"><a href="#cb28-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Índice de roña según tratamiento"</span>,</span>
+<span id="cb28-82"><a href="#cb28-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb28-83"><a href="#cb28-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Índice de roña"</span></span>
+<span id="cb28-84"><a href="#cb28-84" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-85"><a href="#cb28-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-86"><a href="#cb28-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb28-87"><a href="#cb28-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-88"><a href="#cb28-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-89"><a href="#cb28-89" aria-hidden="true" tabindex="-1"></a> ¿qué tratamientos tienen menor índice de roña? ¿Hay tratamientos con mucha dispersión?</span>
+<span id="cb28-90"><a href="#cb28-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-91"><a href="#cb28-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 4. Estimación</span></span>
+<span id="cb28-92"><a href="#cb28-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-93"><a href="#cb28-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-94"><a href="#cb28-94" aria-hidden="true" tabindex="-1"></a>Con el modelo ajustado, evaluamos si el tratamiento tiene efecto sobre el índice de roña. La tabla de ANOVA prueba $H_0$: todas las medias de tratamiento son iguales. La columna F compara la variabilidad entre tratamientos con la variabilidad dentro de ellos, y el p-valor indica qué tan compatible es el resultado con $H_0$.</span>
+<span id="cb28-95"><a href="#cb28-95" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-96"><a href="#cb28-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-papa</span></span>
+<span id="cb28-97"><a href="#cb28-97" aria-hidden="true" tabindex="-1"></a>anova_papa <span class="ot">&lt;-</span> <span class="fu">aov</span>(inf <span class="sc">~</span> trt, <span class="at">data =</span> datos_papas)</span>
+<span id="cb28-98"><a href="#cb28-98" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(anova_papa)</span>
+<span id="cb28-99"><a href="#cb28-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-100"><a href="#cb28-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-101"><a href="#cb28-101" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.6:** ¿cuál es el valor de F y su p-valor? ¿Qué concluís sobre $H_0$?</span>
+<span id="cb28-102"><a href="#cb28-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-103"><a href="#cb28-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-104"><a href="#cb28-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medias por tratamiento</span></span>
+<span id="cb28-105"><a href="#cb28-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-106"><a href="#cb28-106" aria-hidden="true" tabindex="-1"></a>Primero observamos el índice de roña promedio de cada tratamiento, con su desvío estándar y el número de parcelas:</span>
+<span id="cb28-107"><a href="#cb28-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-108"><a href="#cb28-108" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-109"><a href="#cb28-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medias-papa</span></span>
+<span id="cb28-110"><a href="#cb28-110" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(anova_papa, <span class="sc">~</span> trt)</span>
+<span id="cb28-111"><a href="#cb28-111" aria-hidden="true" tabindex="-1"></a>medias</span>
+<span id="cb28-112"><a href="#cb28-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-113"><a href="#cb28-113" aria-hidden="true" tabindex="-1"></a>medias_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">confint</span>(medias))</span>
+<span id="cb28-114"><a href="#cb28-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-115"><a href="#cb28-115" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(medias_df, <span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> emmean)) <span class="sc">+</span></span>
+<span id="cb28-116"><a href="#cb28-116" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb28-117"><a href="#cb28-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower.CL, <span class="at">ymax =</span> upper.CL), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb28-118"><a href="#cb28-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-119"><a href="#cb28-119" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb28-120"><a href="#cb28-120" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Índice de roña estimado"</span>,</span>
+<span id="cb28-121"><a href="#cb28-121" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Medias estimadas e IC del 95 %"</span></span>
+<span id="cb28-122"><a href="#cb28-122" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-123"><a href="#cb28-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb28-124"><a href="#cb28-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-125"><a href="#cb28-125" aria-hidden="true" tabindex="-1"></a>Estas medias son las observadas. Las medias estimadas con el modelo, con sus intervalos de confianza, se muestran a continuación.</span>
+<span id="cb28-126"><a href="#cb28-126" aria-hidden="true" tabindex="-1"></a>Medias estimadas con su intervalo de confianza:</span>
+<span id="cb28-127"><a href="#cb28-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-128"><a href="#cb28-128" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-129"><a href="#cb28-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medias-papa</span></span>
+<span id="cb28-130"><a href="#cb28-130" aria-hidden="true" tabindex="-1"></a>medias <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(anova_papa, <span class="sc">~</span> trt)</span>
+<span id="cb28-131"><a href="#cb28-131" aria-hidden="true" tabindex="-1"></a>medias</span>
+<span id="cb28-132"><a href="#cb28-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-133"><a href="#cb28-133" aria-hidden="true" tabindex="-1"></a>medias_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">confint</span>(medias))</span>
+<span id="cb28-134"><a href="#cb28-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-135"><a href="#cb28-135" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(medias_df, <span class="fu">aes</span>(<span class="at">x =</span> trt, <span class="at">y =</span> emmean)) <span class="sc">+</span></span>
+<span id="cb28-136"><a href="#cb28-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb28-137"><a href="#cb28-137" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> lower.CL, <span class="at">ymax =</span> upper.CL), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb28-138"><a href="#cb28-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb28-139"><a href="#cb28-139" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb28-140"><a href="#cb28-140" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Índice de roña estimado"</span>,</span>
+<span id="cb28-141"><a href="#cb28-141" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Medias estimadas e IC del 95 %"</span></span>
+<span id="cb28-142"><a href="#cb28-142" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb28-143"><a href="#cb28-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb28-144"><a href="#cb28-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-145"><a href="#cb28-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-146"><a href="#cb28-146" aria-hidden="true" tabindex="-1"></a>Comparaciones de todos los pares, con ajuste de Tukey:</span>
+<span id="cb28-147"><a href="#cb28-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-148"><a href="#cb28-148" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-149"><a href="#cb28-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tukey-papa</span></span>
+<span id="cb28-150"><a href="#cb28-150" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span>
+<span id="cb28-151"><a href="#cb28-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-152"><a href="#cb28-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-153"><a href="#cb28-153" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.7:** ¿qué pares de tratamientos difieren? ¿Hay alguno que no difiera del testigo?</span>
+<span id="cb28-154"><a href="#cb28-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-155"><a href="#cb28-155" aria-hidden="true" tabindex="-1"></a><span class="fu">### Contrastes planificados (continuación del paso 4)</span></span>
+<span id="cb28-156"><a href="#cb28-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-157"><a href="#cb28-157" aria-hidden="true" tabindex="-1"></a>Cuando las preguntas son específicas, es más informativo probar contrastes que comparar todos los pares. En este experimento interesan dos:</span>
+<span id="cb28-158"><a href="#cb28-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-159"><a href="#cb28-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Testigo contra azufre:** ¿el azufre, en cualquier dosis y momento, reduce la roña?</span>
+<span id="cb28-160"><a href="#cb28-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Otoño contra primavera:** ¿el momento de aplicación cambia el efecto?</span>
+<span id="cb28-161"><a href="#cb28-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-162"><a href="#cb28-162" aria-hidden="true" tabindex="-1"></a>Los coeficientes de cada contraste suman cero. Para que el primero compare el testigo contra los seis tratamientos con azufre, el testigo tiene coeficiente $-6$ y los demás $+1$:</span>
+<span id="cb28-163"><a href="#cb28-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-164"><a href="#cb28-164" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-165"><a href="#cb28-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: contrastes-papa</span></span>
+<span id="cb28-166"><a href="#cb28-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Orden de niveles esperado: F3, F6, F12, 0, S3, S6, S12</span></span>
+<span id="cb28-167"><a href="#cb28-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar con levels(datos_papas$trt) antes de correr</span></span>
+<span id="cb28-168"><a href="#cb28-168" aria-hidden="true" tabindex="-1"></a><span class="fu">contrasts</span>(datos_papas<span class="sc">$</span>trt) <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb28-169"><a href="#cb28-169" aria-hidden="true" tabindex="-1"></a>  <span class="at">c1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="sc">-</span><span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),    <span class="co"># testigo contra azufre</span></span>
+<span id="cb28-170"><a href="#cb28-170" aria-hidden="true" tabindex="-1"></a>  <span class="at">c2 =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>)   <span class="co"># otoño contra primavera</span></span>
+<span id="cb28-171"><a href="#cb28-171" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-172"><a href="#cb28-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-173"><a href="#cb28-173" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(inf <span class="sc">~</span> trt, <span class="at">data =</span> datos_papas)</span>
+<span id="cb28-174"><a href="#cb28-174" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m1, <span class="at">split =</span> <span class="fu">list</span>(<span class="at">trt =</span> <span class="fu">list</span>(<span class="st">"Testigo vs azufre"</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb28-175"><a href="#cb28-175" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"Otoño vs primavera"</span> <span class="ot">=</span> <span class="dv">2</span>)))</span>
+<span id="cb28-176"><a href="#cb28-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-177"><a href="#cb28-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-178"><a href="#cb28-178" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.8:** ¿cuál de los dos contrastes es significativo? ¿Qué te dice la suma de cuadrados de cada uno?</span>
+<span id="cb28-179"><a href="#cb28-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-180"><a href="#cb28-180" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.9:** los contrastes se definieron antes de mirar los datos. ¿Por qué eso importa para controlar el error tipo I?</span>
+<span id="cb28-181"><a href="#cb28-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-182"><a href="#cb28-182" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5. Validación</span></span>
+<span id="cb28-183"><a href="#cb28-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-184"><a href="#cb28-184" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-185"><a href="#cb28-185" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diag-papa</span></span>
+<span id="cb28-186"><a href="#cb28-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb28-187"><a href="#cb28-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb28-188"><a href="#cb28-188" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb28-189"><a href="#cb28-189" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(anova_papa)</span>
+<span id="cb28-190"><a href="#cb28-190" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb28-191"><a href="#cb28-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-192"><a href="#cb28-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-193"><a href="#cb28-193" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-194"><a href="#cb28-194" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: levene-papa</span></span>
+<span id="cb28-195"><a href="#cb28-195" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(inf <span class="sc">~</span> trt, <span class="at">data =</span> datos_papas)</span>
+<span id="cb28-196"><a href="#cb28-196" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(anova_papa))</span>
+<span id="cb28-197"><a href="#cb28-197" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-198"><a href="#cb28-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-199"><a href="#cb28-199" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.10:** ¿se cumplen normalidad y homocedasticidad? Si la homocedasticidad falla, ¿qué alternativa propondrías (transformación o Kruskal-Wallis)?</span>
+<span id="cb28-200"><a href="#cb28-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-201"><a href="#cb28-201" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6. Interpretación</span></span>
+<span id="cb28-202"><a href="#cb28-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-203"><a href="#cb28-203" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.11:** redactá un párrafo de resultados con: el valor de F y su p-valor, los dos contrastes con sus p-valores, y la conclusión sobre el efecto del azufre y del momento de aplicación.</span>
+<span id="cb28-204"><a href="#cb28-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-205"><a href="#cb28-205" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb28-206"><a href="#cb28-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-207"><a href="#cb28-207" aria-hidden="true" tabindex="-1"></a><span class="fu"># Práctica 2: la prueba t de Student como modelo lineal (roña de la papa)</span></span>
+<span id="cb28-208"><a href="#cb28-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-209"><a href="#cb28-209" aria-hidden="true" tabindex="-1"></a>Vamos a comparar el **testigo** contra **todas las parcelas con azufre juntas**. Son dos grupos, así que la prueba t de Student es la herramienta clásica. Lo que queremos mostrar es que esa prueba es un caso particular del modelo lineal, el mismo que usamos en el ANOVA.</span>
+<span id="cb28-210"><a href="#cb28-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-211"><a href="#cb28-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Pregunta e hipótesis</span></span>
+<span id="cb28-212"><a href="#cb28-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-213"><a href="#cb28-213" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿el testigo tiene un índice de roña distinto del promedio de las parcelas con azufre?</span>
+<span id="cb28-214"><a href="#cb28-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-215"><a href="#cb28-215" aria-hidden="true" tabindex="-1"></a>$$H_0: \mu_{\text{testigo}} = \mu_{\text{azufre}} \qquad H_1: \mu_{\text{testigo}} \neq \mu_{\text{azufre}}$$</span>
+<span id="cb28-216"><a href="#cb28-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-217"><a href="#cb28-217" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.1:** ¿qué diferencia hay entre esta pregunta y la del contraste $c_1$ de la práctica 1?</span>
+<span id="cb28-218"><a href="#cb28-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-219"><a href="#cb28-219" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Modelo</span></span>
+<span id="cb28-220"><a href="#cb28-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-221"><a href="#cb28-221" aria-hidden="true" tabindex="-1"></a>Con dos grupos, el modelo lineal se escribe con una variable indicadora $x_i$, que vale 1 si la parcela recibió azufre y 0 si es testigo:</span>
+<span id="cb28-222"><a href="#cb28-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-223"><a href="#cb28-223" aria-hidden="true" tabindex="-1"></a>$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$</span>
+<span id="cb28-224"><a href="#cb28-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-225"><a href="#cb28-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_0 = \mu_{\text{testigo}}$: media del testigo.</span>
+<span id="cb28-226"><a href="#cb28-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_1 = \mu_{\text{azufre}} - \mu_{\text{testigo}}$: diferencia entre las medias.</span>
+<span id="cb28-227"><a href="#cb28-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-228"><a href="#cb28-228" aria-hidden="true" tabindex="-1"></a>Así, $H_0: \mu_{\text{testigo}} = \mu_{\text{azufre}}$ es equivalente a $H_0: \beta_1 = 0$.</span>
+<span id="cb28-229"><a href="#cb28-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-230"><a href="#cb28-230" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.2:** ¿qué parte del modelo cambia si en lugar de dos grupos hubiera tres?</span>
+<span id="cb28-231"><a href="#cb28-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-232"><a href="#cb28-232" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Exploración</span></span>
+<span id="cb28-233"><a href="#cb28-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-234"><a href="#cb28-234" aria-hidden="true" tabindex="-1"></a>Creamos el factor de dos grupos a partir de la base de la práctica 1:</span>
+<span id="cb28-235"><a href="#cb28-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-236"><a href="#cb28-236" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-237"><a href="#cb28-237" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dos-grupos</span></span>
+<span id="cb28-238"><a href="#cb28-238" aria-hidden="true" tabindex="-1"></a>datos_t <span class="ot">&lt;-</span> datos_papas <span class="sc">|&gt;</span></span>
+<span id="cb28-239"><a href="#cb28-239" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo =</span> <span class="fu">if_else</span>(<span class="fu">as.character</span>(trt) <span class="sc">==</span> <span class="st">"0"</span>, <span class="st">"Testigo"</span>, <span class="st">"Azufre"</span>),</span>
+<span id="cb28-240"><a href="#cb28-240" aria-hidden="true" tabindex="-1"></a>         <span class="at">grupo =</span> <span class="fu">factor</span>(grupo, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Testigo"</span>, <span class="st">"Azufre"</span>)))</span>
+<span id="cb28-241"><a href="#cb28-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-242"><a href="#cb28-242" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(datos_t<span class="sc">$</span>grupo)</span>
+<span id="cb28-243"><a href="#cb28-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-244"><a href="#cb28-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-245"><a href="#cb28-245" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-246"><a href="#cb28-246" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-t</span></span>
+<span id="cb28-247"><a href="#cb28-247" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_t, <span class="fu">aes</span>(<span class="at">x =</span> grupo, <span class="at">y =</span> inf, <span class="at">fill =</span> grupo)) <span class="sc">+</span></span>
+<span id="cb28-248"><a href="#cb28-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb28-249"><a href="#cb28-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb28-250"><a href="#cb28-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Índice de roña"</span>, <span class="at">title =</span> <span class="st">"Testigo contra azufre"</span>) <span class="sc">+</span></span>
+<span id="cb28-251"><a href="#cb28-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-252"><a href="#cb28-252" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb28-253"><a href="#cb28-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-254"><a href="#cb28-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-255"><a href="#cb28-255" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.3:** ¿la diferencia entre los grupos se ve a simple vista? ¿Cuál grupo tiene mayor dispersión?</span>
+<span id="cb28-256"><a href="#cb28-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-257"><a href="#cb28-257" aria-hidden="true" tabindex="-1"></a>Medias y desvíos por grupo:</span>
+<span id="cb28-258"><a href="#cb28-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-259"><a href="#cb28-259" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-260"><a href="#cb28-260" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen-t</span></span>
+<span id="cb28-261"><a href="#cb28-261" aria-hidden="true" tabindex="-1"></a>datos_t <span class="sc">|&gt;</span></span>
+<span id="cb28-262"><a href="#cb28-262" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo) <span class="sc">|&gt;</span></span>
+<span id="cb28-263"><a href="#cb28-263" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">media =</span> <span class="fu">mean</span>(inf), <span class="at">desvio =</span> <span class="fu">sd</span>(inf), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb28-264"><a href="#cb28-264" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-265"><a href="#cb28-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-266"><a href="#cb28-266" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 4. Estimación: tres formas que dan el mismo resultado</span></span>
+<span id="cb28-267"><a href="#cb28-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-268"><a href="#cb28-268" aria-hidden="true" tabindex="-1"></a>**Forma A: prueba t clásica con varianzas iguales**</span>
+<span id="cb28-269"><a href="#cb28-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-270"><a href="#cb28-270" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-271"><a href="#cb28-271" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-clasica</span></span>
+<span id="cb28-272"><a href="#cb28-272" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(inf <span class="sc">~</span> grupo, <span class="at">data =</span> datos_t, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-273"><a href="#cb28-273" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-274"><a href="#cb28-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-275"><a href="#cb28-275" aria-hidden="true" tabindex="-1"></a>**Forma B: modelo lineal con `lm()`**</span>
+<span id="cb28-276"><a href="#cb28-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-277"><a href="#cb28-277" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-278"><a href="#cb28-278" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-lm</span></span>
+<span id="cb28-279"><a href="#cb28-279" aria-hidden="true" tabindex="-1"></a>modelo_t <span class="ot">&lt;-</span> <span class="fu">lm</span>(inf <span class="sc">~</span> grupo, <span class="at">data =</span> datos_t)</span>
+<span id="cb28-280"><a href="#cb28-280" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_t)</span>
+<span id="cb28-281"><a href="#cb28-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-282"><a href="#cb28-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-283"><a href="#cb28-283" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.4:** en la salida de <span class="in">`summary()`</span>, ¿qué valor corresponde a $\beta_0$ y cuál a $\beta_1$? Comparalos con las medias del paso 3.</span>
+<span id="cb28-284"><a href="#cb28-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-285"><a href="#cb28-285" aria-hidden="true" tabindex="-1"></a>**Forma C: ANOVA sobre el mismo modelo**</span>
+<span id="cb28-286"><a href="#cb28-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-287"><a href="#cb28-287" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-288"><a href="#cb28-288" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: t-anova</span></span>
+<span id="cb28-289"><a href="#cb28-289" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_t)</span>
+<span id="cb28-290"><a href="#cb28-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-291"><a href="#cb28-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-292"><a href="#cb28-292" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.5:** compará el valor de $t$ de <span class="in">`t.test()`</span> y de <span class="in">`summary()`</span>, y el valor de $F$ del ANOVA. ¿Qué relación encontrás entre $F$ y $t^2$?</span>
+<span id="cb28-293"><a href="#cb28-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-294"><a href="#cb28-294" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.6:** ¿los p-valores de las tres formas coinciden? ¿Por qué debería ser así?</span>
+<span id="cb28-295"><a href="#cb28-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-296"><a href="#cb28-296" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5. Validación</span></span>
+<span id="cb28-297"><a href="#cb28-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-298"><a href="#cb28-298" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-299"><a href="#cb28-299" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: validacion-t</span></span>
+<span id="cb28-300"><a href="#cb28-300" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb28-301"><a href="#cb28-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb28-302"><a href="#cb28-302" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb28-303"><a href="#cb28-303" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_t)</span>
+<span id="cb28-304"><a href="#cb28-304" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb28-305"><a href="#cb28-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-306"><a href="#cb28-306" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo_t))</span>
+<span id="cb28-307"><a href="#cb28-307" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">leveneTest</span>(inf <span class="sc">~</span> grupo, <span class="at">data =</span> datos_t)</span>
+<span id="cb28-308"><a href="#cb28-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-309"><a href="#cb28-309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-310"><a href="#cb28-310" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.7:** ¿qué resultado de Levene te lleva a elegir entre la versión con varianzas iguales y la de Welch? Corré <span class="in">`t.test(inf ~ grupo, data = datos_t)`</span> (versión de Welch) y compará los resultados.</span>
+<span id="cb28-311"><a href="#cb28-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-312"><a href="#cb28-312" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6. Interpretación</span></span>
+<span id="cb28-313"><a href="#cb28-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-314"><a href="#cb28-314" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.8:** redactá la conclusión del testigo contra el azufre con la diferencia de medias, su intervalo de confianza del 95 % (<span class="in">`confint(modelo_t)`</span>) y el p-valor.</span>
+<span id="cb28-315"><a href="#cb28-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-316"><a href="#cb28-316" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.9:** la prueba t de Student es un caso particular de $\text{modelo lineal}$ con una variable explicativa de dos niveles. ¿Qué cambia si la variable tuviera cuatro niveles? ¿Seguiría siendo una prueba t?</span>
+<span id="cb28-317"><a href="#cb28-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-318"><a href="#cb28-318" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb28-319"><a href="#cb28-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-320"><a href="#cb28-320" aria-hidden="true" tabindex="-1"></a><span class="fu"># Práctica 3: diseño en bloques (remolacha azucarera)</span></span>
+<span id="cb28-321"><a href="#cb28-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-322"><a href="#cb28-322" aria-hidden="true" tabindex="-1"></a>El experimento compara **fertilizantes** en la producción de remolacha azucarera. Los tratamientos combinan superfosfato (P), cloruro de potasio (K) y nitrato de sodio (N). Las parcelas se agruparon en **bloques** según el terreno, para que la variabilidad entre bloques no quede en el error.</span>
+<span id="cb28-323"><a href="#cb28-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-324"><a href="#cb28-324" aria-hidden="true" tabindex="-1"></a>Variables de la base <span class="in">`cochran.beets`</span>:</span>
+<span id="cb28-325"><a href="#cb28-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-326"><a href="#cb28-326" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`fert`</span>: tratamiento de fertilizante.</span>
+<span id="cb28-327"><a href="#cb28-327" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`block`</span>: bloque.</span>
+<span id="cb28-328"><a href="#cb28-328" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`yield`</span>: rendimiento (toneladas/acre).</span>
+<span id="cb28-329"><a href="#cb28-329" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`plants`</span>: número de plantas por parcela.</span>
+<span id="cb28-330"><a href="#cb28-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-331"><a href="#cb28-331" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Pregunta e hipótesis</span></span>
+<span id="cb28-332"><a href="#cb28-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-333"><a href="#cb28-333" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿el tipo de fertilizante cambia el rendimiento de la remolacha, una vez descontada la variabilidad entre bloques?</span>
+<span id="cb28-334"><a href="#cb28-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-335"><a href="#cb28-335" aria-hidden="true" tabindex="-1"></a>$$H_0: \tau_1 = \cdots = \tau_k = 0 \qquad H_1: \text{al menos un } \tau_i \neq 0$$</span>
+<span id="cb28-336"><a href="#cb28-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-337"><a href="#cb28-337" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.1:** ¿por qué el bloque no es la pregunta principal, aunque lo incluyamos en el modelo?</span>
+<span id="cb28-338"><a href="#cb28-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-339"><a href="#cb28-339" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Modelo</span></span>
+<span id="cb28-340"><a href="#cb28-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-341"><a href="#cb28-341" aria-hidden="true" tabindex="-1"></a>$$Y_{ij} = \mu + \tau_i + \beta_j + \varepsilon_{ij}, \qquad \varepsilon_{ij} \sim N(0, \sigma^2)$$</span>
+<span id="cb28-342"><a href="#cb28-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-343"><a href="#cb28-343" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\tau_i$: efecto del fertilizante $i$.</span>
+<span id="cb28-344"><a href="#cb28-344" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\beta_j$: efecto del bloque $j$.</span>
+<span id="cb28-345"><a href="#cb28-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-346"><a href="#cb28-346" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.2:** ¿cuántas observaciones hay por combinación de fertilizante y bloque? ¿Qué consecuencia tiene para la interacción?</span>
+<span id="cb28-347"><a href="#cb28-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-348"><a href="#cb28-348" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Exploración</span></span>
+<span id="cb28-349"><a href="#cb28-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-350"><a href="#cb28-350" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-351"><a href="#cb28-351" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: carga-remolacha</span></span>
+<span id="cb28-352"><a href="#cb28-352" aria-hidden="true" tabindex="-1"></a>datos_remolacha <span class="ot">&lt;-</span> cochran.beets <span class="sc">|&gt;</span></span>
+<span id="cb28-353"><a href="#cb28-353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fert =</span> <span class="fu">factor</span>(fert), <span class="at">block =</span> <span class="fu">factor</span>(block))</span>
+<span id="cb28-354"><a href="#cb28-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-355"><a href="#cb28-355" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_remolacha)</span>
+<span id="cb28-356"><a href="#cb28-356" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_remolacha)</span>
+<span id="cb28-357"><a href="#cb28-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-358"><a href="#cb28-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-359"><a href="#cb28-359" aria-hidden="true" tabindex="-1"></a>Gráfico de dispersión de plantas por fertilizante, separado por bloque:</span>
+<span id="cb28-360"><a href="#cb28-360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-361"><a href="#cb28-361" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-362"><a href="#cb28-362" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: plantas-bloque</span></span>
+<span id="cb28-363"><a href="#cb28-363" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_remolacha, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> plants, <span class="at">color =</span> fert)) <span class="sc">+</span></span>
+<span id="cb28-364"><a href="#cb28-364" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb28-365"><a href="#cb28-365" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> block) <span class="sc">+</span></span>
+<span id="cb28-366"><a href="#cb28-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fertilizante"</span>, <span class="at">y =</span> <span class="st">"Número de plantas por parcela"</span>,</span>
+<span id="cb28-367"><a href="#cb28-367" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Plantas por fertilizante, según bloque"</span>) <span class="sc">+</span></span>
+<span id="cb28-368"><a href="#cb28-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-369"><a href="#cb28-369" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb28-370"><a href="#cb28-370" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb28-371"><a href="#cb28-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-372"><a href="#cb28-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-373"><a href="#cb28-373" aria-hidden="true" tabindex="-1"></a>Boxplot del rendimiento según bloque:</span>
+<span id="cb28-374"><a href="#cb28-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-375"><a href="#cb28-375" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-376"><a href="#cb28-376" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-bloque</span></span>
+<span id="cb28-377"><a href="#cb28-377" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_remolacha, <span class="fu">aes</span>(<span class="at">x =</span> block, <span class="at">y =</span> yield, <span class="at">fill =</span> block)) <span class="sc">+</span></span>
+<span id="cb28-378"><a href="#cb28-378" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb28-379"><a href="#cb28-379" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Bloque"</span>, <span class="at">y =</span> <span class="st">"Rendimiento (toneladas/acre)"</span>,</span>
+<span id="cb28-380"><a href="#cb28-380" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rendimiento según bloque"</span>) <span class="sc">+</span></span>
+<span id="cb28-381"><a href="#cb28-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-382"><a href="#cb28-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb28-383"><a href="#cb28-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-384"><a href="#cb28-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-385"><a href="#cb28-385" aria-hidden="true" tabindex="-1"></a>Boxplot del rendimiento según fertilizante:</span>
+<span id="cb28-386"><a href="#cb28-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-387"><a href="#cb28-387" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-388"><a href="#cb28-388" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot-fert</span></span>
+<span id="cb28-389"><a href="#cb28-389" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_remolacha, <span class="fu">aes</span>(<span class="at">x =</span> fert, <span class="at">y =</span> yield, <span class="at">fill =</span> fert)) <span class="sc">+</span></span>
+<span id="cb28-390"><a href="#cb28-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb28-391"><a href="#cb28-391" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Fertilizante"</span>, <span class="at">y =</span> <span class="st">"Rendimiento (toneladas/acre)"</span>,</span>
+<span id="cb28-392"><a href="#cb28-392" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rendimiento según fertilizante"</span>) <span class="sc">+</span></span>
+<span id="cb28-393"><a href="#cb28-393" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb28-394"><a href="#cb28-394" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>,</span>
+<span id="cb28-395"><a href="#cb28-395" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span>
+<span id="cb28-396"><a href="#cb28-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-397"><a href="#cb28-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-398"><a href="#cb28-398" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.3:** ¿el rendimiento cambia más entre fertilizantes o entre bloques? Justificá con los gráficos.</span>
+<span id="cb28-399"><a href="#cb28-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-400"><a href="#cb28-400" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 4. Estimación</span></span>
+<span id="cb28-401"><a href="#cb28-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-402"><a href="#cb28-402" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-403"><a href="#cb28-403" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: anova-remolacha</span></span>
+<span id="cb28-404"><a href="#cb28-404" aria-hidden="true" tabindex="-1"></a>modelo_remolacha <span class="ot">&lt;-</span> <span class="fu">aov</span>(yield <span class="sc">~</span> fert <span class="sc">+</span> block, <span class="at">data =</span> datos_remolacha)</span>
+<span id="cb28-405"><a href="#cb28-405" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(modelo_remolacha)</span>
+<span id="cb28-406"><a href="#cb28-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-407"><a href="#cb28-407" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-408"><a href="#cb28-408" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.4:** ¿qué p-valor tiene el fertilizante? ¿Y el bloque? ¿Por qué el p-valor del bloque no es la pregunta central?</span>
+<span id="cb28-409"><a href="#cb28-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-410"><a href="#cb28-410" aria-hidden="true" tabindex="-1"></a>Comparaciones de medias de fertilizantes, con ajuste de Tukey:</span>
+<span id="cb28-411"><a href="#cb28-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-412"><a href="#cb28-412" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-413"><a href="#cb28-413" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tukey-remolacha</span></span>
+<span id="cb28-414"><a href="#cb28-414" aria-hidden="true" tabindex="-1"></a>medias_rem <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo_remolacha, <span class="sc">~</span> fert)</span>
+<span id="cb28-415"><a href="#cb28-415" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(medias_rem, <span class="at">adjust =</span> <span class="st">"tukey"</span>)</span>
+<span id="cb28-416"><a href="#cb28-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-417"><a href="#cb28-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-418"><a href="#cb28-418" aria-hidden="true" tabindex="-1"></a><span class="fu">### ¿Hay interacción entre tratamiento y bloque?</span></span>
+<span id="cb28-419"><a href="#cb28-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-420"><a href="#cb28-420" aria-hidden="true" tabindex="-1"></a>Con una sola observación por combinación fertilizante-bloque, el modelo no puede estimar la interacción: no quedan grados de libertad para el error.</span>
+<span id="cb28-421"><a href="#cb28-421" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-422"><a href="#cb28-422" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.5:** verificá la cantidad de observaciones por combinación con <span class="in">`table(datos_remolacha$fert, datos_remolacha$block)`</span>. ¿Qué pasa con los grados de libertad si intentás ajustar <span class="in">`yield ~ fert * block`</span>?</span>
+<span id="cb28-423"><a href="#cb28-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-424"><a href="#cb28-424" aria-hidden="true" tabindex="-1"></a>Para evaluar si el efecto del fertilizante depende del bloque, se usa la **prueba de no aditividad de Tukey**, que tiene un grado de libertad. Se calcula con el paquete <span class="in">`agricolae`</span>:</span>
+<span id="cb28-425"><a href="#cb28-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-426"><a href="#cb28-426" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-427"><a href="#cb28-427" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: no-aditividad</span></span>
+<span id="cb28-428"><a href="#cb28-428" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb28-429"><a href="#cb28-429" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("agricolae")</span></span>
+<span id="cb28-430"><a href="#cb28-430" aria-hidden="true" tabindex="-1"></a>cm_error <span class="ot">&lt;-</span> <span class="fu">anova</span>(modelo_remolacha)[<span class="st">"Residuals"</span>, <span class="st">"Mean Sq"</span>]</span>
+<span id="cb28-431"><a href="#cb28-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-432"><a href="#cb28-432" aria-hidden="true" tabindex="-1"></a>agricolae<span class="sc">::</span><span class="fu">nonadditivity</span>(</span>
+<span id="cb28-433"><a href="#cb28-433" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> datos_remolacha<span class="sc">$</span>yield,</span>
+<span id="cb28-434"><a href="#cb28-434" aria-hidden="true" tabindex="-1"></a>  <span class="at">trt =</span> datos_remolacha<span class="sc">$</span>fert,</span>
+<span id="cb28-435"><a href="#cb28-435" aria-hidden="true" tabindex="-1"></a>  <span class="at">block =</span> datos_remolacha<span class="sc">$</span>block,</span>
+<span id="cb28-436"><a href="#cb28-436" aria-hidden="true" tabindex="-1"></a>  <span class="at">MSerror =</span> cm_error</span>
+<span id="cb28-437"><a href="#cb28-437" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb28-438"><a href="#cb28-438" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-439"><a href="#cb28-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-440"><a href="#cb28-440" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.6:** si el p-valor de la prueba de no aditividad es mayor a 0.05, ¿qué modelo elegirías? ¿Qué significa rechazarla?</span>
+<span id="cb28-441"><a href="#cb28-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-442"><a href="#cb28-442" aria-hidden="true" tabindex="-1"></a><span class="fu">### Contrastes planificados</span></span>
+<span id="cb28-443"><a href="#cb28-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-444"><a href="#cb28-444" aria-hidden="true" tabindex="-1"></a>Supongamos que el investigador quería comparar **el promedio de los fertilizantes que incluyen nitrógeno contra los que no**. Antes de usar contrastes, identificá los niveles con <span class="in">`levels(datos_remolacha$fert)`</span>, y definí los coeficientes según el orden.</span>
+<span id="cb28-445"><a href="#cb28-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-446"><a href="#cb28-446" aria-hidden="true" tabindex="-1"></a>Ejemplo: si los niveles son <span class="in">`A, B, C, D`</span> y el interés es <span class="in">`A + B`</span> contra <span class="in">`C + D`</span>:</span>
+<span id="cb28-447"><a href="#cb28-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-448"><a href="#cb28-448" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-449"><a href="#cb28-449" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: contraste-remolacha</span></span>
+<span id="cb28-450"><a href="#cb28-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-451"><a href="#cb28-451" aria-hidden="true" tabindex="-1"></a>medias_rem <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(modelo_remolacha, <span class="sc">~</span> fert)</span>
+<span id="cb28-452"><a href="#cb28-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-453"><a href="#cb28-453" aria-hidden="true" tabindex="-1"></a><span class="fu">contrast</span>(medias_rem,</span>
+<span id="cb28-454"><a href="#cb28-454" aria-hidden="true" tabindex="-1"></a>         <span class="fu">list</span>(<span class="st">"(A+B) vs (C+D)"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="sc">-</span><span class="fl">0.5</span>)),</span>
+<span id="cb28-455"><a href="#cb28-455" aria-hidden="true" tabindex="-1"></a>         <span class="at">adjust =</span> <span class="st">"none"</span>)</span>
+<span id="cb28-456"><a href="#cb28-456" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-457"><a href="#cb28-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-458"><a href="#cb28-458" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.7:** los coeficientes de un contraste deben sumar cero. Verificá que los de este ejemplo cumplen esa condición. ¿Qué pasa si no suman cero?</span>
+<span id="cb28-459"><a href="#cb28-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-460"><a href="#cb28-460" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5. Validación</span></span>
+<span id="cb28-461"><a href="#cb28-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-462"><a href="#cb28-462" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb28-463"><a href="#cb28-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: diag-remolacha</span></span>
+<span id="cb28-464"><a href="#cb28-464" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-width: 8</span></span>
+<span id="cb28-465"><a href="#cb28-465" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-height: 7</span></span>
+<span id="cb28-466"><a href="#cb28-466" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb28-467"><a href="#cb28-467" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_remolacha)</span>
+<span id="cb28-468"><a href="#cb28-468" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb28-469"><a href="#cb28-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-470"><a href="#cb28-470" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo_remolacha))</span>
+<span id="cb28-471"><a href="#cb28-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb28-472"><a href="#cb28-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-473"><a href="#cb28-473" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.8:** ¿los residuos muestran patrón según el bloque o el fertilizante? Graficalos contra cada factor con <span class="in">`boxplot(residuals(modelo_remolacha) ~ datos_remolacha$block)`</span>.</span>
+<span id="cb28-474"><a href="#cb28-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-475"><a href="#cb28-475" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6. Interpretación</span></span>
+<span id="cb28-476"><a href="#cb28-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-477"><a href="#cb28-477" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.9:** redactá un párrafo con: el efecto del fertilizante (F y p-valor), la comparación de medias que resulte significativa, el resultado de la prueba de no aditividad y la conclusión sobre el efecto de los fertilizantes.</span>
+<span id="cb28-478"><a href="#cb28-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-479"><a href="#cb28-479" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb28-480"><a href="#cb28-480" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-481"><a href="#cb28-481" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cierre</span></span>
+<span id="cb28-482"><a href="#cb28-482" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-483"><a href="#cb28-483" aria-hidden="true" tabindex="-1"></a>Respondé en tres o cuatro frases:</span>
+<span id="cb28-484"><a href="#cb28-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-485"><a href="#cb28-485" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué relación encontraste entre la prueba t y el modelo lineal?</span>
+<span id="cb28-486"><a href="#cb28-486" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Cuándo conviene bloquear y qué se gana con eso?</span>
+<span id="cb28-487"><a href="#cb28-487" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>¿Qué parte del análisis te pareció más difícil de interpretar?</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

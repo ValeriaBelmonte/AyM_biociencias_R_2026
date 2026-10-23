@@ -1,14 +1,5 @@
 ---
 title: "Práctica guiada · Parte 4"
-subtitle: "Regresión lineal simple, regresión con transformación y correlación"
-format:
-  html:
-    toc: true
-    embed-resources: true
-lang: es
-execute:
-  warning: false
-  message: false
 ---
 
 Esta práctica tiene tres ejemplos. En todos seguimos el protocolo de seis pasos de la teoría: **pregunta e hipótesis → modelo → exploración → estimación → validación → interpretación**.
