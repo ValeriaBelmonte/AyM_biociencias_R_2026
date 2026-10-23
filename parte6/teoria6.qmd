@@ -59,7 +59,7 @@ Las opciones se escriben al inicio del chunk, con `#|`. Las más usadas en un in
 
 Un ejemplo completo:
 
-```r
+``` r
 #| label: fig-boxplot
 #| fig-cap: "Índice de roña según tratamiento"
 #| echo: true
@@ -95,7 +95,7 @@ Al renderizar, esas partes se reemplazan por los valores calculados. Si los dato
 
 # Tablas
 
-Las tablas con formato (encabezados, colores, celdas combinadas, exportación a Word) se explican en un documento aparte: [Tablas con flextable](flextable.html).
+Las tablas con formato (encabezados, colores, celdas combinadas, exportación a Word) se explican en un documento aparte: [Tablas con flextable](../explicaciones extras/flextable.qmd).
 
 Para una tabla simple se puede usar `knitr::kable()`, que funciona en HTML y PDF.
 
@@ -118,7 +118,7 @@ Una imagen guardada en la carpeta del proyecto se inserta con:
 
 Para que tenga número y pueda citarse con `@fig-...`, conviene insertarla en un chunk con `fig-cap`:
 
-```r
+``` r
 #| label: fig-ejemplo-imagen
 #| fig-cap: "Ejemplo de imagen insertada desde un archivo"
 #| out-width: "60%"
@@ -167,7 +167,7 @@ La tipografía se define en el encabezado YAML, según el formato de salida:
 
 # Fórmulas
 
-La escritura de fórmulas en LaTeX se explica en un documento aparte: [Fórmulas en LaTeX con Quarto](formulas_latex.html).
+La escritura de fórmulas en LaTeX se explica en un documento aparte: [Fórmulas en LaTeX con Quarto](../explicaciones extras/formulas_latex.qmd).
 
 # Citas y bibliografía
 
