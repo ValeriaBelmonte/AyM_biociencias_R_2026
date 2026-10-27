@@ -22,3 +22,23 @@ h3 {
   color: #5AA354;
 }
 
+/* Encabezados nivel 4 */
+h4 {
+  color: #5AA354;
+  font-family: "Verdana", sans-serif;
+  font-size: 1.1em;
+}
+
+/* Encabezados nivel 5 */
+h5 {
+  color: #5AA354;
+  font-family: "Verdana", sans-serif;
+  font-size: 1em;
+}
+
+/* Números de secciones */
+.header-section-number {
+  color: #5AA354;
+}
+
+

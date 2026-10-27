@@ -82,11 +82,11 @@ Un principio básico del análisis de datos es:
 
 Para trabajar con datos utilizaremos el lenguaje **R** y el entorno **RStudio**.
 
-###  ¿Qué es R?
+### ¿Qué es R?
 
 R es un lenguaje de programación y un entorno de software diseñado para el análisis estadístico, la visualización de datos y la ciencia de datos. Permite realizar cálculos, generar gráficos y construir modelos.
 
-###  ¿Qué es RStudio?
+### ¿Qué es RStudio?
 
 RStudio es un **entorno de desarrollo integrado (IDE)** que facilita el trabajo con R. Proporciona una interfaz organizada para escribir código, ejecutarlo, visualizar resultados y gestionar proyectos.
 
@@ -96,7 +96,7 @@ RStudio divide su pantalla en cuatro áreas principales:
 
 ![Figura 1: Distribución de la pantalla de RStudio](../imagenes/R%20Studio%201%202%203%204.png){fig-align="center"}
 
-####  Editor de código o panel *Source*
+#### Editor de código o panel *Source*
 
 En este panel se escriben y editan los programas o **scripts de R**.
 
@@ -194,7 +194,7 @@ La forma habitual de trabajo consiste en:
 
 4.  consultar gráficos, archivos, paquetes o ayuda en el panel inferior derecho.
 
-###  ¿Qué son los paquetes?
+### ¿Qué son los paquetes?
 
 Los paquetes son extensiones que agregan funciones específicas a R. Permiten realizar tareas de forma más rápida, clara y eficiente.
 
@@ -232,13 +232,13 @@ El nombre del paquete debe escribirse **entre comillas**.
 
 Cargar significa **activar el paquete para utilizar sus funciones durante la sesión de trabajo**. Debe hacerse cada vez que se inicia una nueva sesión de R:
 
-```         
+``` r        
 library(nombre_del_paquete) 
 ```
 
 Por ejemplo:
 
-```         
+```r         
 library(ggplot2) 
 ```
 
@@ -246,7 +246,7 @@ En este caso, el nombre del paquete se escribe habitualmente **sin comillas**.
 
 > **En síntesis:** un paquete se instala una vez y se carga cada vez que se necesita utilizarlo.
 
-###  ¿Qué es un objeto en R?
+### ¿Qué es un objeto en R?
 
 Un **objeto** es cualquier elemento que almacena información en la memoria de R. Puede contener un único valor, una colección de valores, una tabla de datos o incluso una función.
 
@@ -256,7 +256,10 @@ En otras palabras, un objeto es el lugar donde R guarda los datos con los que tr
 
 La asignación se realiza mediante el operador `<-`.
 
-`{r} edad <- 35}`
+``` r
+edad <- 35  #asigno 35 al objeto edad
+edad # observo que tiene edad
+```
 
 Aquí:
 
@@ -278,15 +281,16 @@ Aquí:
 
 Correctos:
 
-`{r} #| eval: false #| include: false     edad}`
-
-`{r} #| eval: false #| include: false total_emision}`
+``` r
+edad
+```
 
 Incorrectos
 
-`{r} #| eval: false #| include: false 2edad}`
-
-`{r} #| eval: false #| include: false total emisión}`
+``` r
+2edad
+total emisión
+```
 
 Podemos visualizar su contenido escribiendo el nombre del objeto.
 
@@ -298,9 +302,10 @@ Para este curso trabajaremos principalmente con cinco tipos de objetos: vectores
 
 Un vector es una colección de elementos del mismo tipo.
 
-`{r} paises <- c(   "Argentina",   "Brasil",   "Chile" )}`
-
-`{r} temperaturas <- c(   0.4,   0.6,   0.8 )}`
+``` r
+paises <- c(   "Argentina",   "Brasil",   "Chile" )
+temperaturas <- c(   0.4,   0.6,   0.8 )
+```
 
 ##### Listas
 
@@ -308,7 +313,7 @@ Una lista es una colección de elementos que pueden ser de diferentes tipos.
 
 Por ejemplo, una lista puede contener un texto, un número, un vector o incluso una tabla de datos.
 
-```         
+``` r
 estudiante <- list(   nombre = "Ana",   edad = 22,   notas = c(8, 7, 9),   regular = TRUE )
 ```
 
@@ -324,11 +329,11 @@ En este ejemplo, el objeto `estudiante` contiene:
 
 Para acceder a un elemento de la lista se utiliza el operador `$`:
 
-```         
+``` r
 estudiante$nombre
 ```
 
-```         
+``` r
 estudiante$notas
 ```
 
@@ -343,7 +348,9 @@ Es el objeto más utilizado en análisis de datos.
 
 Ejemplo: Creación del dataframe \*datos\*
 
-`{r} datos <- data.frame(   pais = c("Argentina", "Brasil"),   emision = c(120,350) )}`
+``` r
+datos <- data.frame(   pais = c("Argentina", "Brasil"),   emision = c(120,350) )
+```
 
 ##### Tibble
 
@@ -355,37 +362,50 @@ Cuando usamos **Tidyverse**
 
 Los factores representan variables categóricas.
 
-`{r} continente <- factor(   c(     "América",     "Europa",     "Asia"   ) )}`
+``` r
+continente <- factor(   c(     "América",     "Europa",     "Asia"   ) )
+```
 
 #### ¿Cómo saber qué tipo de objeto tenemos?
 
-`{r} class(datos)}`
+``` r
+class(datos)
+```
 
-###  El entorno de trabajo (Environment)
+### El entorno de trabajo (Environment)
 
 Cada vez que se crea un objeto, éste aparece en el panel **Environment** de RStudio.
 
 Por ejemplo,
 
-`{r} pais <- "Argentina"   anio <- 2020   temperatura <- 0.56}`
+``` r
+ pais <- "Argentina" 
+ anio <- 2020   
+ temperatura <- 0.56
+```
 
-###  R como calculadora y uso de scripts
+### R como calculadora y uso de scripts
 
 R puede utilizarse como una calculadora avanzada, permitiendo realizar operaciones matemáticas, trabajar con funciones y almacenar resultados en objetos.
 
 Por ejemplo en la **consola** escribir:
 
-`{r} 2+2}`
-
-`{r} log(20)}`
-
-`{r} sqrt(89)}`
+``` r
+2+2
+log(20)
+sqrt(89)
+```
 
 También es posible guardar resultados en objetos:
 
-`{r} x <- 10 y <- 5  x + y}`
+``` r
+x <- 10 
+y <- 5  
+z<-x + y # guardo la suma  en z
+z #recupero el valor de la suma
+```
 
-En R, el símbolo \<- se utiliza para asignar valores a objetos.
+En R, el símbolo `<-` se utiliza para asignar valores a objetos.
 
 Hasta aquí, las instrucciones pueden escribirse directamente en la consola. Sin embargo, trabajar únicamente en la consola tiene una limitación importante: el código no queda guardado de manera organizada.
 
@@ -401,49 +421,65 @@ Un script es un archivo de texto con extensión .R que contiene instrucciones es
 
   Los scripts también permiten agregar comentarios para documentar el código:
 
-  `{r} # Cálculo del índice de masa corporal  peso <- 78 altura <- 1.72  imc <- peso/(altura^2)  imc}`
+``` r
+# Cálculo del índice de masa corporal 
+peso <- 78 
+altura <- 1.72  
+imc <- peso/(altura^2)  
+imc
+```
 
-  En RStudio, un script puede crearse desde:
+En RStudio, un script puede crearse desde:
 
-  **File → New File → R Script**
+**File → New File → R Script**
 
-  Las líneas de código pueden ejecutarse individualmente utilizando:
+Las líneas de código pueden ejecutarse individualmente utilizando:
 
-  - 
+- **Ctrl + Enter** (Windows/Linux)
 
-  - **Ctrl + Enter** (Windows/Linux)
+- **Cmd + Enter** (Mac)
 
-  - 
+El uso de scripts constituye el primer paso hacia un trabajo más organizado y reproducible en análisis de datos.
 
-  - **Cmd + Enter** (Mac)
+### Ciencia reproducible y Quarto
 
-  - 
+A medida que los análisis de datos se vuelven más complejos, surge la necesidad de integrar el código, las explicaciones, los resultados y los gráficos en un mismo documento.
 
-  El uso de scripts constituye el primer paso hacia un trabajo más organizado y reproducible en análisis de datos.
+En este contexto cobra importancia el enfoque de la **investigación reproducible**.
 
-  ###  Ciencia reproducible y Quarto
+Según \@peng2011, la reproducibilidad implica que otras personas puedan obtener los mismos resultados a partir de los datos y el código utilizados en una investigación.
 
-  A medida que los análisis se vuelven más complejos, surge la necesidad de integrar no solo código, sino también explicaciones, resultados y gráficos en un único documento.
+Para trabajar bajo este enfoque utilizaremos **Quarto** \[\@quarto2025\], una herramienta que permite elaborar documentos reproducibles integrando:
 
-  En este contexto aparece el enfoque de la **ciencia reproducible**.
+- Texto explicativo.
 
-  Según \[\@peng2011\], un análisis es reproducible cuando otras personas pueden obtener los mismos resultados utilizando los mismos datos y el mismo código.
+- Código en R.
 
-  Para trabajar bajo este enfoque utilizaremos **Quarto**, una herramienta que permite crear documentos reproducibles integrando:
+- Tablas y gráficos.
 
-  - Texto explicativo
+- Resultados de modelos y análisis.
 
-  - Código en R
+En RStudio, un documento Quarto puede crearse desde:
 
-  - Tablas y gráficos
+**File → New File → Quarto Document**
 
-  - Resultados de modelos y análisis
+Al crear el documento, se puede seleccionar el formato de salida (HTML, PDF o Word).
 
-En un único archivo reproducible.
+Los bloques de código de R pueden ejecutarse individualmente utilizando:
 
-El objetivo no es solo analizar datos, sino **documentar y comunicar el proceso completo del ana´lsis de datos de una manera clara, ordenada y reproducbiel** favoreciendo la transparencia y el aprendizaje.
+- **Ctrl + Shift + Enter** (Windows/Linux): ejecuta el bloque completo.
 
-##  Cierre de la clase
+- **Cmd + Shift + Enter** (Mac): ejecuta el bloque completo.
+
+- **Ctrl + Enter** (Windows/Linux) o **Cmd + Enter** (Mac): ejecuta la línea actual o el código seleccionado.
+
+Para generar el documento final, se utiliza el botón **Render**, que procesa el contenido del documento, ejecuta los bloques de código configurados para ello y combina sus resultados con el texto, las tablas y los gráficos.
+
+El objetivo no es solo analizar datos, sino también **documentar y comunicar el proceso de análisis de manera clara, ordenada y reproducible**, favoreciendo la transparencia y facilitando la revisión de los resultados.
+
+En esta primera clase realizaremos una aproximación inicial a Quarto. **En la Parte 6 del curso profundizaremos en su utilización**, aprendiendo a elaborar informes y presentaciones reproducibles para comunicar los resultados de nuestros análisis..
+
+## Cierre de la clase
 
 En esta primera clase vimos:
 
@@ -461,8 +497,5 @@ En las próximas clases comenzaremos a trabajar de manera más práctica con dat
 
 ## Referencias
 
-Ackoff, R. L. (1989). *From data to wisdom*. Journal of Applied Systems Analysis, 16, 3–9.
-
-Peng, R. D. (2011). Reproducible research in computational science. *Science*, 334(6060), 1226–1227. https://doi.org/10.1126/science.1213847
-
-Posit PBC. (2025). *Quarto: Sistema de publicación científica y técnica*. https://quarto.org
+::: {#refs}
+:::
