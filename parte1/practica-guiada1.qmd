@@ -80,7 +80,7 @@ Luego, hacé clic en **Create Project**.
 
 RStudio creará un archivo con extensión `.Rproj`, que permitirá trabajar de manera organizada dentro del proyecto.
 
-![Figura: Imagen de la creación del proyecto](/imagenes/proyecto agro_food.png){width="532"}
+![Figura: Imagen de la creación del proyecto](/imagenes/proyecto agro_food.png){width="433"}
 
 ## Paso 3. Crear el primer documento Quarto
 
@@ -94,9 +94,9 @@ Desde RStudio:
 
 4.  Hacé clic en Create.
 
-![![](/imagenes/crear%20script%201%20(1).png)](/imagenes/crear%20script%202.png){width="500"}
+![![](/imagenes/crear%20script%201%20(1).png){width="460"}](/imagenes/crear%20script%202.png){width="500"}
 
-![](/imagenes/crear%20script%202%20(2).png)
+![](/imagenes/crear%20script%202%20(2).png){width="461"}
 
 Para la escritura, y programación trabajaremos desde `Source`
 
