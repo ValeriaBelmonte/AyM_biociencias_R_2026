@@ -27,33 +27,34 @@ Modificarlo no cambia automáticamente el archivo CSV original.
 
 Según la extensión del archivo a importar hay diferentes caminos
 
-  Cuando los datsso están separados por ;
-```r
+Cuando los datsso están separados por ;
+
+``` r
 datos <- read_csv2("../datos originales/archivo.csv")
 ```
 
 Esta función interpreta, por defecto, el punto y coma como separador de
 columnas y la coma como separador decimal.
 
+- Archivos de Excel
 
-* Archivos de Excel
+Para importar archivos de Excel con extensión `.xlsx` o `.xls` se
+utiliza el paquete `readxl`. Si aún no está instalado, debe instalarse
+una sola vez:
 
-Para importar archivos de Excel con extensión `.xlsx` o `.xls` se utiliza
-el paquete `readxl`. Si aún no está instalado, debe instalarse una sola vez:
-
-```r
+``` r
 install.packages("readxl")
 ```
 
 En cada sesión en la que se lo necesite, se carga el paquete:
 
-```r
+``` r
 library(readxl)
 ```
 
 Luego se importa el archivo:
 
-```r
+``` r
 datos <- read_excel("../datos originales/archivo.xlsx")
 ```
 
@@ -65,14 +66,15 @@ datos <- read_excel(
   sheet = "Hoja1"
 )
 ```
-* Archivos de texto
+
+- Archivos de texto
 
 Cuando los datos se encuentran en un archivo de texto, se puede utilizar
 `read_delim()`. Debe indicarse cuál es el separador entre las columnas.
 
-* Para datos separados por tabulaciones:
+- Para datos separados por tabulaciones:
 
-```r
+``` r
 datos <- read_delim(
   "../datos originales/archivo.txt",
   delim = "\t"
@@ -81,7 +83,7 @@ datos <- read_delim(
 
 Para datos separados por otro símbolo, por ejemplo una barra vertical:
 
-```r
+``` r
 datos <- read_delim(
   "../datos originales/archivo.txt",
   delim = "|"
@@ -433,10 +435,10 @@ preparada para realizar tablas, gráficos y análisis descriptivos.agro
 Podemos crear una base reducida para trabajar con algunas variables
 seleccionadas.
 
-## Resumen de las  principlaes funciones utilizadas 
+## Resumen de las principlaes funciones utilizadas
 
 | Sección | Objetivos abordados | Funciones principales |
-|:-----------------------|:-----------------------|:-----------------------|
+|:---|:---|:---|
 | Preparación e importación | Importar un archivo CSV | `read_csv()` |
 | Reconocimiento de la base | Reconocer filas, columnas, variables y observaciones | `dim()`, `nrow()`, `ncol()`, `names()`, `glimpse()`, `str()` |
 | Limpieza de nombres | Trabajar con nombres consistentes | `clean_names()` |

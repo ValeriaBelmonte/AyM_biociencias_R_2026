@@ -2,17 +2,17 @@
 title: Práctica guiada 1
 ---
 
-## Próposito
+## Propósito
 
 En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.
 
 Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.
 
-## Paso 1. Crear una carpeta para el proyecto, en la computadora
+## Paso 1. Organizar una carpeta para el proyecto
 
 En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:
 
-Análisis_agrofood
+Analisis_agrofood
 
 Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:
 
@@ -61,12 +61,12 @@ Analisis agrofood/
 Abrir RStudio y seleccionar:
 
 ```         
-File → New Project → New Directory → New Project
+File → New Project → Existing Directory
 ```
 
-![](/imagenes/nuevo%20proecto%20(1).png)
+Seleccioná la carpeta `Analisis_agrofood` que creaste en el Paso 1, como se muestra en las siguientes imágenes.
 
-Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood`, como se muestra en las siguientes figuras
+![](/imagenes/nuevo%20proecto%20(1).png)
 
 ![](/imagenes/crear%20proyecto%202.png){width="300"}
 
@@ -76,51 +76,87 @@ Existing Directory o New Directory seleccionar la carpeta `Analisis_agrofood`, c
 
 ![](/imagenes/crear%20proyecto%205.png){width="300"}
 
-Luego:
+Luego, hacé clic en **Create Project**.
 
-RStudio creará un archivo con extensión .Rproj, que permitirá trabajar de manera organizada dentro del proyecto.
+RStudio creará un archivo con extensión `.Rproj`, que permitirá trabajar de manera organizada dentro del proyecto.
 
-![Imagen de la crecación del proyecto](/imagenes/creacion%20proyecto%20analisis...png){width="500"}
+![Figura: Imagen de la creación del proyecto](/imagenes/proyecto agro_food.png){width="532"}
 
 ## Paso 3. Crear el primer documento Quarto
 
-En RStudio:
+Desde RStudio:
 
-File → New File → Quarto Document
+1.  File \> New File \> Quarto Document
 
-Seleccionar:
+2.  Escribí un título para el documento, por ejemplo, Análisis de emisiones de CO₂.
 
-- Agregar un título
+3.  Seleccioná Word como formato de salida.
 
-<!-- -->
+4.  Hacé clic en Create.
 
-- Seleccionar word
+![![](/imagenes/crear%20script%201%20(1).png)](/imagenes/crear%20script%202.png){width="500"}
 
-- Crear
-
-![](/imagenes/crear%20script%202.png){width="500"}
-
-![](/imagenes/crear%20script%201%20(1).png){width="500"}
+![](/imagenes/crear%20script%202%20(2).png)
 
 Para la escritura, y programación trabajaremos desde `Source`
 
-## Paso 4. Escribir en el script dentro de quarto
+**Para guardar el documento**
 
-### Diferenciar texto y código
+1.  Seleccioná **File \> Save As...**.
 
-Quarto permite combinar explicaciones, código y resultados en un mismo documento. Así, el análisis queda ordenado, es reproducible y puede compartirse fácilmente.
+2.  Ingresá a la carpeta `scripts` de tu proyecto.
 
-Más adelante, en la Parte 6, veremos distintas opciones para personalizar los bloques de código. Para ampliar sobre la escritura de documentos en R Markdown, pueden consultar la guía de [R Markdown](https://rmarkdown.rstudio.com/lesson-1.html).
+3.  Guardá el archivo con el nombre `practica_co2.qmd`.
+
+4.  Escribir en el script dentro de quarto
+
+**Escribir texto y código**
+
+Trabajaremos en el modo Source de RStudio.
+
+Quarto permite combinar explicaciones, código y resultados en un mismo documento, facilitando la organización y reproducibilidad del análisis.
+
+Debajo del encabezado inicial del documento, escribí el siguiente texto:
+
+En esta práctica comenzaremos a utilizar RStudio y Quarto para organizar y documentar un análisis de datos.
+
+A continuación, insertá un bloque de código R utilizando Ctrl + Alt + I
 
 ![](/imagenes/chunks.png){width="500"}
 
-Presionar el botón:
+Dentro del bloque de código escribí
 
-Render
+``` r
+2+3
+```
 
-Quarto generará automáticamente un documento donde aparecerán:
+**Ejecutar el bloque de código**
 
-el texto escrito, el código y los resultados obtenidos en R.
+Para ejecutar el código podemos:
+
+1.  Hacer clic en el triángulo verde (▶) ubicado en la esquina superior derecha del bloque de código. Se ejecutarán todas las instrucciones del bloque.
+
+2\. Ubicá el cursor en la línea de código y presionar Ctrl + Enter para ejecutar esa línea.
+
+Al ejecutar 2 + 3, R mostrará el siguiente resultado:
+
+``` r
+5
+```
+
+El resultado puede observarse en la consola de RStudio o debajo del bloque de código, según la configuración del editor.
+
+**Renderizar el documento**
+
+Presioná el botón Render.
+
+Quarto generará un documento Word que contendrá el texto, el código y el resultado de la operación.
+
+Abrí el archivo generado y verificá que los elementos aparezcan correctamente.
+
+Importante: el archivo .qmd contiene el documento que podemos seguir editando, mientras que el archivo .docx es el resultado generado al renderizarlo.
+
+Más adelante, en la Parte 6, aprenderemos a configurar los bloques de código y a personalizar la presentación de los documentos reproducibles.
 
 ### Idea central
 
@@ -134,34 +170,9 @@ Quarto permite integrar en un mismo documento:
 
 Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código
 
-## Crear y guardar un documento Quarto
+### Preparar el RStudio para la próxima clase 
 
-Una vez creado el proyecto, abre un nuevo documento Quarto:
-
-1.  Ve a **File \> New File \> Quarto Document**.
-2.  Escribe un título para el documento.
-3.  Haz clic en **Create**.
-4.  Guarda el archivo dentro de la carpeta **scripts**.
-
-Para guardarlo:
-
-**File \> Save As...**
-
-Selecciona la carpeta:
-
-``` text
-scripts
-```
-
-y guarda el archivo con el nombre descriptivo, por ejemplo:
-
-```         
-practica_co2.qmd
-```
-
-### Bonus de la clase
-
-1.  Para dejar prepardo el Rstudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
+1.  Para dejar preparado el RStudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
 
 ``` r
 # Instalación tidyverse
@@ -185,3 +196,17 @@ tools->Install Packages..->tidyverse
 ![](/imagenes/instalar%20paquete%202.png){width="300"}
 
 ![](/imagenes/Intalar%20paquete%203.png){width="300"}
+
+### Antes de finalizar
+
+Verificá que:
+
+- La carpeta `Analisis_agrofood` contiene las subcarpetas correspondientes.
+
+- La base original está guardada en `datos_originales`.
+
+- El proyecto de RStudio se creó correctamente.
+
+- El documento `practica_co2.qmd` está guardado en `scripts`.
+
+- Pudiste ejecutar el bloque de código y generar el documento Word mediante **Render**.
