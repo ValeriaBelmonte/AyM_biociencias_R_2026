@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -103,6 +123,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -385,8 +434,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fertilización-y-beneficio-económico-en-soja" id="toc-fertilización-y-beneficio-económico-en-soja" class="nav-link active" data-scroll-target="#fertilización-y-beneficio-económico-en-soja"><span class="header-section-number">1</span> Fertilización y beneficio económico en soja</a>
+  <ul class="collapse">
+  <li><a href="#carga-de-los-datos" id="toc-carga-de-los-datos" class="nav-link" data-scroll-target="#carga-de-los-datos"><span class="header-section-number">1.1</span> Carga de los datos</a></li>
+  <li><a href="#consignas" id="toc-consignas" class="nav-link" data-scroll-target="#consignas"><span class="header-section-number">1.2</span> Consignas</a></li>
+  </ul></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">2</span> Referencias</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -410,10 +470,103 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="fertilización-y-beneficio-económico-en-soja" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="fertilización-y-beneficio-económico-en-soja"><span class="header-section-number">1</span> Fertilización y beneficio económico en soja</h2>
+<p>Ejercicio extraido de Estadistica y Biometría<span class="citation" data-cites="balzarini2013">(<a href="#ref-balzarini2013" role="doc-biblioref">Balzarini et al., 2013</a>)</span></p>
+<p>Una empresa agrícola necesita establecer si le conviene, desde el punto de vista económico, fertilizar sus cultivos de soja. Para este propósito se realizó un ensayo en un lote de 20 hectáreas, dividido en parcelas de una hectárea cada una, en el que se evaluaron cuatro estrategias de fertilización:</p>
+<ul>
+<li>No fertilizar.</li>
+<li>Usar el fertilizante A.</li>
+<li>Usar el fertilizante B.</li>
+<li>Usar el fertilizante C.</li>
+</ul>
+<p>Los tratamientos se asignaron a las parcelas en forma aleatoria. Cada parcela fue intervenida culturalmente con la misma tecnología de siembra directa en cuanto al manejo de plagas, malezas, densidades de siembra, variedades, fecha de siembra y control de humedad en el suelo. La única diferencia entre ellas fue el fertilizante utilizado.</p>
+<p>Considerá la siguiente información:</p>
+<ul>
+<li>El precio de la tonelada de soja es de $1200.</li>
+<li>Los costos de producción, sin incluir el fertilizante, equivalen a 15 qq/ha.</li>
+<li>El costo de usar el fertilizante A equivale a 5 qq/ha.</li>
+<li>El costo de usar el fertilizante B equivale a 3,5 qq/ha.</li>
+<li>El costo de usar el fertilizante C equivale a 2 qq/ha.</li>
+</ul>
+<p>Los rendimientos obtenidos, expresados en qq/ha, fueron:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Sin fertilizar</th>
+<th style="text-align: right;">Fertilizante A</th>
+<th style="text-align: right;">Fertilizante B</th>
+<th style="text-align: right;">Fertilizante C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">27</td>
+</tr>
+</tbody>
+</table>
+<section id="carga-de-los-datos" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="carga-de-los-datos"><span class="header-section-number">1.1</span> Carga de los datos</h3>
+<p>Cargá los datos de la tabla en R y organizalos en un <code>data.frame</code> en formato largo: cada fila debe corresponder a una parcela y las columnas deben identificar el tratamiento y el rendimiento.</p>
+<p><strong>Sugerencia:</strong> podés ayudarte con una herramienta de inteligencia artificial para generar el código de carga. Verificá que los valores coincidan con la tabla y que cada tratamiento tenga cinco observaciones.</p>
+</section>
+<section id="consignas" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="consignas"><span class="header-section-number">1.2</span> Consignas</h3>
+<ol type="a">
+<li>Trabajá con la variable <strong>beneficio económico ($/ha)</strong>, calculada como:</li>
+</ol>
+<p><span class="math display">\[\text{Beneficio económico}
+=
+\text{Rendimiento}\times\text{Precio de la producción}
+-
+\text{Costos de producción}\]</span></p>
+<p>Expresá el rendimiento en qq/ha, el precio de la producción en $/qq y los costos de producción en $/ha. Incluí en estos últimos tanto el costo de producción sin fertilizante como el costo del fertilizante correspondiente. Recordá que una tonelada equivale a 10 quintales.</p>
+<ol start="2" type="a">
+<li><p>Realizá una representación gráfica comparativa de los beneficios económicos obtenidos en las parcelas de cada tratamiento.</p></li>
+<li><p>Realizá un ANOVA para comparar el beneficio económico medio entre los tratamientos. Verificá los supuestos de homogeneidad de varianzas y normalidad de los errores y, si corresponde, aplicá una prueba de comparaciones múltiples.</p></li>
+<li><p>¿Cuál de los fertilizantes recomendarías? Justificá tu respuesta a partir del análisis realizado.</p></li>
+</ol>
+</section>
+</section>
+<section id="referencias" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="referencias"><span class="header-section-number">2</span> Referencias</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-balzarini2013" class="csl-entry" role="listitem">
+Balzarini, M., Di Rienzo, J. A., &amp; Tablada, M. (2013). <em>Introducción a la bioestadística: Aplicaciones con <span>InfoStat</span></em> (1st ed.). Editorial Brujas.
+</div>
+</div>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -868,7 +1021,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fertilización y beneficio económico en soja</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Ejercicio extraido de Estadistica y Biometría<span class="co">[</span><span class="ot">@balzarini2013</span><span class="co">]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Una empresa agrícola necesita establecer si le conviene, desde el punto de vista económico, fertilizar sus cultivos de soja. Para este propósito se realizó un ensayo en un lote de 20 hectáreas, dividido en parcelas de una hectárea cada una, en el que se evaluaron cuatro estrategias de fertilización:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No fertilizar.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar el fertilizante A.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar el fertilizante B.</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar el fertilizante C.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Los tratamientos se asignaron a las parcelas en forma aleatoria. Cada parcela fue intervenida culturalmente con la misma tecnología de siembra directa en cuanto al manejo de plagas, malezas, densidades de siembra, variedades, fecha de siembra y control de humedad en el suelo. La única diferencia entre ellas fue el fertilizante utilizado.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Considerá la siguiente información:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El precio de la tonelada de soja es de \$1200.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los costos de producción, sin incluir el fertilizante, equivalen a 15 qq/ha.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El costo de usar el fertilizante A equivale a 5 qq/ha.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El costo de usar el fertilizante B equivale a 3,5 qq/ha.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El costo de usar el fertilizante C equivale a 2 qq/ha.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Los rendimientos obtenidos, expresados en qq/ha, fueron:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Sin fertilizar <span class="pp">|</span> Fertilizante A <span class="pp">|</span> Fertilizante B <span class="pp">|</span> Fertilizante C <span class="pp">|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------:|---------------:|---------------:|---------------:|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             19 <span class="pp">|</span>             33 <span class="pp">|</span>             33 <span class="pp">|</span>             28 <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             20 <span class="pp">|</span>             35 <span class="pp">|</span>             31 <span class="pp">|</span>             24 <span class="pp">|</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             22 <span class="pp">|</span>             29 <span class="pp">|</span>             35 <span class="pp">|</span>             25 <span class="pp">|</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             23 <span class="pp">|</span>             31 <span class="pp">|</span>             34 <span class="pp">|</span>             26 <span class="pp">|</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             21 <span class="pp">|</span>             30 <span class="pp">|</span>             32 <span class="pp">|</span>             27 <span class="pp">|</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Carga de los datos</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Cargá los datos de la tabla en R y organizalos en un <span class="in">`data.frame`</span> en formato largo: cada fila debe corresponder a una parcela y las columnas deben identificar el tratamiento y el rendimiento.</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**Sugerencia:** podés ayudarte con una herramienta de inteligencia artificial para generar el código de carga. Verificá que los valores coincidan con la tabla y que cada tratamiento tenga cinco observaciones.</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consignas</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>a)  Trabajá con la variable **beneficio económico (\$/ha)**, calculada como:</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>$$\text{Beneficio económico}</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>=</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\text{Rendimiento}\times\text{Precio de la producción}</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>-</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>\text{Costos de producción}$$</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>Expresá el rendimiento en qq/ha, el precio de la producción en \$/qq y los costos de producción en \$/ha. Incluí en estos últimos tanto el costo de producción sin fertilizante como el costo del fertilizante correspondiente. Recordá que una tonelada equivale a 10 quintales.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>b)  Realizá una representación gráfica comparativa de los beneficios económicos obtenidos en las parcelas de cada tratamiento.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>c)  Realizá un ANOVA para comparar el beneficio económico medio entre los tratamientos. Verificá los supuestos de homogeneidad de varianzas y normalidad de los errores y, si corresponde, aplicá una prueba de comparaciones múltiples.</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>d)  ¿Cuál de los fertilizantes recomendarías? Justificá tu respuesta a partir del análisis realizado.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referencias</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

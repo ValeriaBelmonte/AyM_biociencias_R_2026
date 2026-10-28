@@ -1,3 +1,63 @@
 ---
 title: "Practica estudiantes"
 ---
+
+## Fertilización y beneficio económico en soja
+
+Ejercicio extraido de Estadistica y Biometría[@balzarini2013]
+
+Una empresa agrícola necesita establecer si le conviene, desde el punto de vista económico, fertilizar sus cultivos de soja. Para este propósito se realizó un ensayo en un lote de 20 hectáreas, dividido en parcelas de una hectárea cada una, en el que se evaluaron cuatro estrategias de fertilización:
+
+- No fertilizar.
+- Usar el fertilizante A.
+- Usar el fertilizante B.
+- Usar el fertilizante C.
+
+Los tratamientos se asignaron a las parcelas en forma aleatoria. Cada parcela fue intervenida culturalmente con la misma tecnología de siembra directa en cuanto al manejo de plagas, malezas, densidades de siembra, variedades, fecha de siembra y control de humedad en el suelo. La única diferencia entre ellas fue el fertilizante utilizado.
+
+Considerá la siguiente información:
+
+- El precio de la tonelada de soja es de \$1200.
+- Los costos de producción, sin incluir el fertilizante, equivalen a 15 qq/ha.
+- El costo de usar el fertilizante A equivale a 5 qq/ha.
+- El costo de usar el fertilizante B equivale a 3,5 qq/ha.
+- El costo de usar el fertilizante C equivale a 2 qq/ha.
+
+Los rendimientos obtenidos, expresados en qq/ha, fueron:
+
+| Sin fertilizar | Fertilizante A | Fertilizante B | Fertilizante C |
+|---------------:|---------------:|---------------:|---------------:|
+|             19 |             33 |             33 |             28 |
+|             20 |             35 |             31 |             24 |
+|             22 |             29 |             35 |             25 |
+|             23 |             31 |             34 |             26 |
+|             21 |             30 |             32 |             27 |
+
+### Carga de los datos
+
+Cargá los datos de la tabla en R y organizalos en un `data.frame` en formato largo: cada fila debe corresponder a una parcela y las columnas deben identificar el tratamiento y el rendimiento.
+
+**Sugerencia:** podés ayudarte con una herramienta de inteligencia artificial para generar el código de carga. Verificá que los valores coincidan con la tabla y que cada tratamiento tenga cinco observaciones.
+
+### Consignas
+
+a)  Trabajá con la variable **beneficio económico (\$/ha)**, calculada como:
+
+$$\text{Beneficio económico}
+=
+\text{Rendimiento}\times\text{Precio de la producción}
+-
+\text{Costos de producción}$$
+
+Expresá el rendimiento en qq/ha, el precio de la producción en \$/qq y los costos de producción en \$/ha. Incluí en estos últimos tanto el costo de producción sin fertilizante como el costo del fertilizante correspondiente. Recordá que una tonelada equivale a 10 quintales.
+
+b)  Realizá una representación gráfica comparativa de los beneficios económicos obtenidos en las parcelas de cada tratamiento.
+
+c)  Realizá un ANOVA para comparar el beneficio económico medio entre los tratamientos. Verificá los supuestos de homogeneidad de varianzas y normalidad de los errores y, si corresponde, aplicá una prueba de comparaciones múltiples.
+
+d)  ¿Cuál de los fertilizantes recomendarías? Justificá tu respuesta a partir del análisis realizado.
+
+## Referencias
+
+::: {#refs}
+:::

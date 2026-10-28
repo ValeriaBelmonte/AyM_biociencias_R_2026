@@ -232,13 +232,13 @@ El nombre del paquete debe escribirse **entre comillas**.
 
 Cargar significa **activar el paquete para utilizar sus funciones durante la sesión de trabajo**. Debe hacerse cada vez que se inicia una nueva sesión de R:
 
-``` r        
+``` r
 library(nombre_del_paquete) 
 ```
 
 Por ejemplo:
 
-```r         
+``` r
 library(ggplot2) 
 ```
 

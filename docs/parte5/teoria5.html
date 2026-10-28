@@ -1214,7 +1214,7 @@ window.Quarto = {
 <span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:</span>
 <span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Fuente <span class="pp">|</span> SC <span class="pp">|</span> gl <span class="pp">|</span> CM <span class="pp">|</span> F <span class="pp">|</span></span>
-<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------|---------------|---------------|---------------|---------------|</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|----|----|----|----|----|</span></span>
 <span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tratamientos (entre grupos) <span class="pp">|</span> $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ <span class="pp">|</span></span>
 <span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Error (dentro de grupos) <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ <span class="pp">|</span>  <span class="pp">|</span></span>
 <span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Total <span class="pp">|</span> $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ <span class="pp">|</span> $N-1$ <span class="pp">|</span>  <span class="pp">|</span>  <span class="pp">|</span></span>
@@ -1297,7 +1297,7 @@ window.Quarto = {
 <span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Control al final: fct_relevel(tratamiento, "Control", after = Inf). Inf manda el control al último lugar.</span>
 <span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Control en una posición intermedia: fct_relevel(tratamiento, "Control", after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.</span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Control en una posición intermedia: fct_relevel(tratamiento, "Control", after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.</span>
 <span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a>El primer nivel es el de referencia en lm(), así que el control al principio hace que cada coeficiente compare contra el control.</span>
 <span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a></span>
@@ -1364,7 +1364,7 @@ window.Quarto = {
 <span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs</span>(<span class="fu">emmeans</span>(modelo_AB, <span class="sc">~</span> variedad))</span>
 <span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</span><span class="co">](../explicaciones%20extras/emmeans.qmd)</span> </span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes</span><span class="co">](../explicaciones%20extras/emmeans.qmd)</span></span>
 <span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a><span class="fu"># Prueba t de Student</span></span>
 <span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a></span>

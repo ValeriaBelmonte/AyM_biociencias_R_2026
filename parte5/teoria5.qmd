@@ -47,7 +47,7 @@ $$SC_{total} = SC_{tratamientos} + SC_{error}$$
 Cada suma de cuadrados se divide por sus grados de libertad para obtener un cuadrado medio:
 
 | Fuente | SC | gl | CM | F |
-|---------------|---------------|---------------|---------------|---------------|
+|----|----|----|----|----|
 | Tratamientos (entre grupos) | $\sum_i n_i(\bar{y}_i - \bar{y})^2$ | $k-1$ | $SC_{trat}/(k-1)$ | $CM_{trat}/CM_{error}$ |
 | Error (dentro de grupos) | $\sum_{i}\sum_{j}(y_{ij} - \bar{y}_i)^2$ | $N-k$ | $SC_{error}/(N-k)$ |  |
 | Total | $\sum_{i}\sum_{j}(y_{ij}-\bar{y})^2$ | $N-1$ |  |  |
@@ -130,7 +130,7 @@ Lógica de fct_relevel() para el control:
 
 - Control al final: fct_relevel(tratamiento, "Control", after = Inf). Inf manda el control al último lugar.
 
--  Control en una posición intermedia: fct_relevel(tratamiento, "Control", after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.
+- Control en una posición intermedia: fct_relevel(tratamiento, "Control", after = k), donde k es cuántos niveles quedan antes del control. Con after = 1, el control queda segundo.
 
 El primer nivel es el de referencia en lm(), así que el control al principio hace que cada coeficiente compare contra el control.
 
@@ -197,7 +197,7 @@ modelo_AB <- lm(rendimiento ~ variedad, data = datos_AB)
 pairs(emmeans(modelo_AB, ~ variedad))
 ```
 
-[🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes](../explicaciones%20extras/emmeans.qmd) 
+[🔎 Resumen de emmeans: funciones, opciones de ajuste y errores frecuentes](../explicaciones%20extras/emmeans.qmd)
 
 # Prueba t de Student
 
