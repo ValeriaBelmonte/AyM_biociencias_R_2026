@@ -6,28 +6,28 @@ title: "Teoría"
 
 Antes de poder analizar cualquier conjunto de datos, es necesario saber cómo llevarlos al entorno de trabajo y dejarlos en condiciones adecuadas para su análisis. Esta etapa, conocida habitualmente como *data wrangling*, constituye un prerrequisito técnico-metodológico para cualquier análisis estadístico posterior: sin datos correctamente importados, estructurados y depurados, ningún modelo ni ninguna exploración pueden considerarse confiables.
 
-En esta parte abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas. Además, introduciremos las herramientas básicas para la manipulación de datos —filtrado, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis explo
+En esta parte abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas.Además, introduciremos herramientas básicas para la manipulación de datos —filtrado de observaciones, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis exploratorio.
 
-Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Parte 3) como en el ajuste de los Modelos Lineales (Parte y Parte 5), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.
+Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Parte 3) como en el ajuste de los Modelos Lineales (Parte 4 y Parte 5), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.
 
 ## Paquetes: las herramientas que vamos a usar
 
 R incorpora, por defecto, un conjunto amplio de funciones para el manejo de datos y el cálculo estadístico —lo que se conoce como **R base**—. Sin embargo, gran parte de su potencia proviene de los **paquetes**: colecciones de funciones adicionales, desarrolladas por la comunidad, que amplían las posibilidades de R para tareas específicas.
 
-En este curso trabajaremos principalmente con el ecosistema **tidyverse**, un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:
+En este curso trabajaremos principalmente con el ecosistema **tidyverse** [@tidyverse2019], un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:
 
 | Paquete   | ¿Para qué lo usaremos?                           |
 |-----------|--------------------------------------------------|
 | `readr`   | Importar archivos `.csv`.                        |
 | `readxl`  | Importar archivos de Excel.                      |
 | `dplyr`   | Seleccionar, filtrar, crear y resumir variables. |
-| `tidyr`   | Ordenar la estructura de una base.               |
+| `tidyr`   | para reorganizar la estructura de los datos.     |
 | `ggplot2` | Crear gráficos.                                  |
-| `forcat`  | para trabajar con factores                       |
+| `forcats` | rabajar con variables categóricas (factores).    |
 
 Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el *data frame* o, más específicamente, el *tibble*), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.
 
-Para mayor información no dudes en visitar la [Página oficial de Tidyverse](https://tidyverse.tidyverse.org/)
+ara conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la [Página oficial de Tidyverse](https://tidyverse.tidyverse.org/)
 
 Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.
 
@@ -42,29 +42,13 @@ Los **bloques de código** permiten escribir y ejecutar instrucciones en R dentr
 ![Figura : Icono para insertar códigos. Seleccionar R](images/iccono%20para%20intesertar%20código.png){width="185"}
 
 2.  También podemos utilizar el teclado, presionando simultáneamente **Ctrl + Alt + i**.\
-    En ambos casos un bloque como el siguiente, donde podremos ejecutar código en **R**:
+    n ambos casos, se insertará un bloque de código como el que se muestra a continuación, en el que podremos escribir y ejecutar instrucciones en **R**:
 
-![![Figura: Activación con library del paquete tidyverse](images/tidyverse.png)Figura: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png){width="452"}
+![Figura: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png){width="452"}
 
 ### Opciones de los bloques de código
 
-Los bloques de código pueden incluir opciones que permiten controlar cómo se ejecuta el código y qué se muestra en el documento final.
-
-Estas opciones se escriben al comienzo del bloque, precedidas por #\|.
-
-Algunas opciones frecuentes son:
-
-#\| echo: true → muestra el código en el documento.
-
-#\| echo: false → ejecuta el código, pero no lo muestra.
-
-#\| eval: false → muestra el código, pero no lo ejecuta.
-
-#\| include: false → ejecuta el código, pero no muestra ni el código ni los resultados.
-
-#\| warning: false → oculta los mensajes de advertencia.
-
-#\| message: false → oculta los mensajes generados por R.
+Los bloques de código pueden incluir opciones que permiten controlar su ejecución y la presentación de los resultados en el documento final. Estas opciones se explican con mayor detalle en la [Teoría 6](../parte6/teoria6.qmd).
 
 ## Instalación de Paquetes
 
@@ -76,7 +60,7 @@ Por ejemplo:
 install.packages("tidyverse")
 ```
 
-Los paquetes se instalan una sola vez, salvo que sea necesario actualizarlo
+Los paquetes se instalan una sola vez y permanecen disponibles para sesiones posteriores, salvo que sea necesario actualizarlos o reinstalarlos.
 
 Una vez instalado, el paquete debe **cargarse para su uso** mediante la función `library()`.
 
@@ -86,31 +70,31 @@ Por ejemplo:
 library(tidyverse)
 ```
 
+![Figura: Imagen de la activación del paquete Tidyverse](/imagenes/tidyverse.png)
+
+Es importante destacar que instalar un paquete y cargarlo son dos operaciones diferentes. Esta distinción es especialmente útil para quienes recién comienzan con R.
+
 ## Importación de la base de datos
 
-Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. POr ejemplo, para archivos con extensión CSV puede emplearse `read_csv()`. Esta función genera un objeto de tipo `tibble`, una versión moderna de un data frame.
+Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. Por ejemplo, para archivos con extensión CSV puede emplearse `read_csv()`. Esta función genera un objeto de tipo `tibble`, una versión moderna de un data frame.
 
-## Código en R
-
-Suponiendo que el archivo está dentro de la carpeta `datos`:
+El nombre del archivo que se desea importar debe escribirse entre comillas. Si el archivo **no** se encuentra en la carpeta de trabajo actual, es necesario indicar su **ruta de acceso**. Por ejemplo, `../` permite subir un nivel en la estructura de carpetas, como se muestra en el código:
 
 ``` r
 datos <- read_csv("../datos originales/base_datos.csv")
 ```
 
-El nombre del archivo a importar debe estar entre comillas y si no se encuentra en la carpeta del entorno de trabajo se puede indicar antecediendo ../ como se muestra. El archivo se guardó en el objeto datos
-
 Para comprobar que el objeto fue creado:
 
 ``` r
-view(datos)
+View(datos)
 ```
 
 También puede observarse en el panel Environment de RStudio.
 
-![Figura:Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png){width="465"}
+![Figura: Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png){width="465"}
 
-Para importar archivos de Excel, con extención xlsx, necesitaremos además tener instalado el paquete *readxl* ( que no es parte del ecosistema tidyverse)
+Para importar archivos de Excel, con extensión .xlsx, utilizaremos el paquete `readxl`, que forma parte del ecosistema tidyverse, pero debe cargarse por separado."
 
 ``` r
 library(readxl)            # en cada sesión
@@ -118,13 +102,9 @@ library(readxl)            # en cada sesión
 
 ## Diferencia entre objeto y archivo
 
-El archivo original permanece almacenado en la computadora como base_datos.csv
+El archivo original, `base_datos.csv`, permanece almacenado en la computadora. Al importarlo, R crea un objeto llamado datos, que contiene la información del archivo y permite trabajar con ella en el entorno de R.
 
-El objeto creado dentro de R se denomina:
-
-datos
-
-Modificar el objeto datos no altera automáticamente el archivo CSV original.
+Modificar este objeto no altera automáticamente el archivo CSV original.
 
 # Primera inspección de la base
 
@@ -137,7 +117,7 @@ A continuación, se presentan algunas funciones iniciales de R que nos ayudarán
 Funciones iniciales:
 
 ``` r
-library(readxl)            # en cada sesión
+str(datos)
 ```
 
 Permite observar rápidamente:
@@ -162,26 +142,38 @@ dim(datos)
 
 Indica la cantidad de filas y columnas de la base.
 
+También pueden consultarse por separado el número de filas y de columnas con las siguientes funciones:
+
+``` r
+nrow(datos) # número de filas
+ncol(datos) # número de columnas
+```
+
 ``` r
 summary(datos)
 ```
 
 Presenta un **resumen general de las variables**. La información que muestra depende del tipo de variable.
 
-También pueden consultarse por separado el número de filas y de columnas con las siguentes funciones:
+## ¿Qué implica preparar una base de datos para su análisis?
 
-``` r
-nrow(datos) # númeo de filas
-ncol(datos) # númeo de columnas
-```
+Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizada. Antes de comenzar cualquier análisis estadístico, es necesario conocer su estructura, identificar posibles problemas y realizar las modificaciones que permitan trabajar adecuadamente con la información.
 
-## ¿Qué significa limpiar y ordenar los datos?
+Este proceso, conocido como preparación de datos (**data wrangling**), comprende tres tareas relacionadas:
 
-Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.
+**Inspección**: consiste en explorar la estructura de la base de datos, reconocer las variables, identificar sus tipos y detectar posibles problemas, como valores faltantes, duplicados o inconsistencias.
+
+**Limpieza**: consiste en identificar y corregir errores o inconsistencias en los datos, como nombres de variables poco claros, categorías escritas de diferentes maneras o registros duplicados. También implica decidir cómo tratar los valores faltantes.
+
+**Transformación**: consiste en modificar o reorganizar los datos según los objetivos del análisis. Por ejemplo, seleccionar observaciones, crear nuevas variables, recodificar categorías o generar resúmenes por grupos.
+
+Estas tareas no necesariamente se realizan de manera secuencial. Durante la preparación de una base de datos es frecuente volver a inspeccionarla después de realizar modificaciones, para comprobar que los resultados sean los esperados.
+
+En la siguiente sección conoceremos algunas de las funciones de R que permiten llevar a cabo estas tareas.
 
 ## Paquetes dplyr y tidyr
 
-`dplyr` y `tidyr` forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.
+`dplyr`[@dplyr2026] y `tidyr`[@tidyr2026] forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.
 
 - **`dplyr`** permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.
 
@@ -189,7 +181,7 @@ Una base de datos puede estar completa y, sin embargo, no estar lista para ser a
 
 Ambos paquetes facilitan la **limpieza y preparación de los datos** para su posterior análisis.
 
-Entre las funciones más intersantes poemos mencionar:
+Entre las funciones que utilizaremos para la manipulación y preparación de los datos, se encuentran:
 
 - `select()` → seleccionar las variables que queremos conservar.
 
@@ -201,7 +193,7 @@ Entre las funciones más intersantes poemos mencionar:
 
 - `mutate()` → crear nuevas variables o modificar las existentes.
 
-- `distinct()` → eliminar registros duplicados.
+- `distinct()` → identifica y conserva registros únicos; puede utilizarse para eliminar duplicados, pero es importante especificar qué variables definen un duplicado.
 
 - `drop_na()` → eliminar filas con datos faltantes.
 
@@ -209,12 +201,26 @@ Entre las funciones más intersantes poemos mencionar:
 
 - `recode()` → unificar o cambiar categorías.
 
-
 | paquetes | sitio oficial |
 |:--------------------------------:|:------------------------------------:|
 | ![](images/dplyr.png){width="82"} | [sitio oficial de dplyr](https://dplyr.tidyverse.org/) |
 | ![](images/tidyr.png){width="78"} | [Sitio oficial de tidyr](https://tidyr.tidyverse.org/) |
 
+Además, utilizaremos el paquete janitor [@firke2024], que incluye la función clean_names(), útil para estandarizar los nombres de las variables y facilitar su posterior manipulación."
 
-Además, instalaremos el paquete `janitor` que cuenta con una función  para estandarizar los nombres de las variables  
-- `clean_names()` → estandarizar los nombres de las variables.
+## Cierre de la clase
+
+En esta teoría aprendimos a:
+
+- **Trabajar con paquetes de R:** instalar y cargar los paquetes necesarios.
+- **Utilizar bloques de código en Quarto:** escribir y ejecutar instrucciones en R.
+- **Importar datos:** leer archivos externos y almacenarlos como objetos en R.
+- **Inspeccionar una base de datos:** reconocer su estructura, variables, observaciones y tipos de datos.
+- **Preparar los datos:** conocer las principales funciones para limpiar, seleccionar, filtrar y transformar la información.
+
+Estas herramientas nos permitirán avanzar hacia el **análisis exploratorio de datos**, que abordaremos en la Parte 3 del curso.
+
+## Referencias
+
+::: {#refs}
+:::

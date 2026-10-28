@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -399,14 +419,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#instalación-de-paquetes" id="toc-instalación-de-paquetes" class="nav-link" data-scroll-target="#instalación-de-paquetes"><span class="header-section-number">1.3</span> Instalación de Paquetes</a></li>
   <li><a href="#importación-de-la-base-de-datos" id="toc-importación-de-la-base-de-datos" class="nav-link" data-scroll-target="#importación-de-la-base-de-datos"><span class="header-section-number">1.4</span> Importación de la base de datos</a></li>
-  <li><a href="#código-en-r" id="toc-código-en-r" class="nav-link" data-scroll-target="#código-en-r"><span class="header-section-number">1.5</span> Código en R</a></li>
-  <li><a href="#diferencia-entre-objeto-y-archivo" id="toc-diferencia-entre-objeto-y-archivo" class="nav-link" data-scroll-target="#diferencia-entre-objeto-y-archivo"><span class="header-section-number">1.6</span> Diferencia entre objeto y archivo</a></li>
+  <li><a href="#diferencia-entre-objeto-y-archivo" id="toc-diferencia-entre-objeto-y-archivo" class="nav-link" data-scroll-target="#diferencia-entre-objeto-y-archivo"><span class="header-section-number">1.5</span> Diferencia entre objeto y archivo</a></li>
   </ul></li>
   <li><a href="#primera-inspección-de-la-base" id="toc-primera-inspección-de-la-base" class="nav-link" data-scroll-target="#primera-inspección-de-la-base"><span class="header-section-number">2</span> Primera inspección de la base</a>
   <ul class="collapse">
   <li><a href="#conozcamos-los-datos" id="toc-conozcamos-los-datos" class="nav-link" data-scroll-target="#conozcamos-los-datos"><span class="header-section-number">2.1</span> Conozcamos los datos</a></li>
-  <li><a href="#qué-significa-limpiar-y-ordenar-los-datos" id="toc-qué-significa-limpiar-y-ordenar-los-datos" class="nav-link" data-scroll-target="#qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">2.2</span> ¿Qué significa limpiar y ordenar los datos?</a></li>
+  <li><a href="#qué-implica-preparar-una-base-de-datos-para-su-análisis" id="toc-qué-implica-preparar-una-base-de-datos-para-su-análisis" class="nav-link" data-scroll-target="#qué-implica-preparar-una-base-de-datos-para-su-análisis"><span class="header-section-number">2.2</span> ¿Qué implica preparar una base de datos para su análisis?</a></li>
   <li><a href="#paquetes-dplyr-y-tidyr" id="toc-paquetes-dplyr-y-tidyr" class="nav-link" data-scroll-target="#paquetes-dplyr-y-tidyr"><span class="header-section-number">2.3</span> Paquetes dplyr y tidyr</a></li>
+  <li><a href="#cierre-de-la-clase" id="toc-cierre-de-la-clase" class="nav-link" data-scroll-target="#cierre-de-la-clase"><span class="header-section-number">2.4</span> Cierre de la clase</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">2.5</span> Referencias</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -436,12 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="carga-y-manipulación-de-datos" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Carga y manipulación de datos</h1>
 <p>Antes de poder analizar cualquier conjunto de datos, es necesario saber cómo llevarlos al entorno de trabajo y dejarlos en condiciones adecuadas para su análisis. Esta etapa, conocida habitualmente como <em>data wrangling</em>, constituye un prerrequisito técnico-metodológico para cualquier análisis estadístico posterior: sin datos correctamente importados, estructurados y depurados, ningún modelo ni ninguna exploración pueden considerarse confiables.</p>
-<p>En esta parte abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas. Además, introduciremos las herramientas básicas para la manipulación de datos —filtrado, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis explo</p>
-<p>Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Parte 3) como en el ajuste de los Modelos Lineales (Parte y Parte 5), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.</p>
+<p>En esta parte abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas.Además, introduciremos herramientas básicas para la manipulación de datos —filtrado de observaciones, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis exploratorio.</p>
+<p>Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Parte 3) como en el ajuste de los Modelos Lineales (Parte 4 y Parte 5), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.</p>
 <section id="paquetes-las-herramientas-que-vamos-a-usar" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="paquetes-las-herramientas-que-vamos-a-usar"><span class="header-section-number">1.1</span> Paquetes: las herramientas que vamos a usar</h2>
 <p>R incorpora, por defecto, un conjunto amplio de funciones para el manejo de datos y el cálculo estadístico —lo que se conoce como <strong>R base</strong>—. Sin embargo, gran parte de su potencia proviene de los <strong>paquetes</strong>: colecciones de funciones adicionales, desarrolladas por la comunidad, que amplían las posibilidades de R para tareas específicas.</p>
-<p>En este curso trabajaremos principalmente con el ecosistema <strong>tidyverse</strong>, un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:</p>
+<p>En este curso trabajaremos principalmente con el ecosistema <strong>tidyverse</strong> <span class="citation" data-cites="tidyverse2019">(<a href="#ref-tidyverse2019" role="doc-biblioref">Wickham et al., 2019</a>)</span>, un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -464,20 +485,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><code>tidyr</code></td>
-<td>Ordenar la estructura de una base.</td>
+<td>para reorganizar la estructura de los datos.</td>
 </tr>
 <tr class="odd">
 <td><code>ggplot2</code></td>
 <td>Crear gráficos.</td>
 </tr>
 <tr class="even">
-<td><code>forcat</code></td>
-<td>para trabajar con factores</td>
+<td><code>forcats</code></td>
+<td>rabajar con variables categóricas (factores).</td>
 </tr>
 </tbody>
 </table>
 <p>Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el <em>data frame</em> o, más específicamente, el <em>tibble</em>), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.</p>
-<p>Para mayor información no dudes en visitar la <a href="https://tidyverse.tidyverse.org/">Página oficial de Tidyverse</a></p>
+<p>ara conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la <a href="https://tidyverse.tidyverse.org/">Página oficial de Tidyverse</a></p>
 <p>Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.</p>
 </section>
 <section id="activación-de-bloque-de-código-chunk" class="level2" data-number="1.2">
@@ -495,25 +516,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ol start="2" type="1">
 <li>También podemos utilizar el teclado, presionando simultáneamente <strong>Ctrl + Alt + i</strong>.<br>
-En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <strong>R</strong>:</li>
+n ambos casos, se insertará un bloque de código como el que se muestra a continuación, en el que podremos escribir y ejecutar instrucciones en <strong>R</strong>:</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/chunk vacío.png" class="img-fluid figure-img" width="452"></p>
-<figcaption><img src="images/tidyverse.png" class="img-fluid figure-img" alt="Figura: Activación con library del paquete tidyverse">Figura: Espacio para escribir Código en R (Chunk)</figcaption>
+<figcaption>Figura: Espacio para escribir Código en R (Chunk)</figcaption>
 </figure>
 </div>
 <section id="opciones-de-los-bloques-de-código" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="opciones-de-los-bloques-de-código"><span class="header-section-number">1.2.1</span> Opciones de los bloques de código</h3>
-<p>Los bloques de código pueden incluir opciones que permiten controlar cómo se ejecuta el código y qué se muestra en el documento final.</p>
-<p>Estas opciones se escriben al comienzo del bloque, precedidas por #|.</p>
-<p>Algunas opciones frecuentes son:</p>
-<p>#| echo: true → muestra el código en el documento.</p>
-<p>#| echo: false → ejecuta el código, pero no lo muestra.</p>
-<p>#| eval: false → muestra el código, pero no lo ejecuta.</p>
-<p>#| include: false → ejecuta el código, pero no muestra ni el código ni los resultados.</p>
-<p>#| warning: false → oculta los mensajes de advertencia.</p>
-<p>#| message: false → oculta los mensajes generados por R.</p>
+<p>Los bloques de código pueden incluir opciones que permiten controlar su ejecución y la presentación de los resultados en el documento final. Estas opciones se explican con mayor detalle en la <a href="../parte6/teoria6.html">Teoría 6</a>.</p>
 </section>
 </section>
 <section id="instalación-de-paquetes" class="level2" data-number="1.3">
@@ -521,38 +534,39 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <p>Para instalar un paquete, escribimos dentro de un bloque de código la función <code>install.packages()</code>, indicando entre comillas el nombre del paquete que queremos instalar.</p>
 <p>Por ejemplo:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Los paquetes se instalan una sola vez, salvo que sea necesario actualizarlo</p>
+<p>Los paquetes se instalan una sola vez y permanecen disponibles para sesiones posteriores, salvo que sea necesario actualizarlos o reinstalarlos.</p>
 <p>Una vez instalado, el paquete debe <strong>cargarse para su uso</strong> mediante la función <code>library()</code>.</p>
 <p>Por ejemplo:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="..\imagenes/tidyverse.png" class="img-fluid figure-img"></p>
+<figcaption>Figura: Imagen de la activación del paquete Tidyverse</figcaption>
+</figure>
+</div>
+<p>Es importante destacar que instalar un paquete y cargarlo son dos operaciones diferentes. Esta distinción es especialmente útil para quienes recién comienzan con R.</p>
 </section>
 <section id="importación-de-la-base-de-datos" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="importación-de-la-base-de-datos"><span class="header-section-number">1.4</span> Importación de la base de datos</h2>
-<p>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. POr ejemplo, para archivos con extensión CSV puede emplearse <code>read_csv()</code>. Esta función genera un objeto de tipo <code>tibble</code>, una versión moderna de un data frame.</p>
-</section>
-<section id="código-en-r" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="código-en-r"><span class="header-section-number">1.5</span> Código en R</h2>
-<p>Suponiendo que el archivo está dentro de la carpeta <code>datos</code>:</p>
+<p>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. Por ejemplo, para archivos con extensión CSV puede emplearse <code>read_csv()</code>. Esta función genera un objeto de tipo <code>tibble</code>, una versión moderna de un data frame.</p>
+<p>El nombre del archivo que se desea importar debe escribirse entre comillas. Si el archivo <strong>no</strong> se encuentra en la carpeta de trabajo actual, es necesario indicar su <strong>ruta de acceso</strong>. Por ejemplo, <code>../</code> permite subir un nivel en la estructura de carpetas, como se muestra en el código:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>El nombre del archivo a importar debe estar entre comillas y si no se encuentra en la carpeta del entorno de trabajo se puede indicar antecediendo ../ como se muestra. El archivo se guardó en el objeto datos</p>
 <p>Para comprobar que el objeto fue creado:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>También puede observarse en el panel Environment de RStudio.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/datos en entorno.png" class="img-fluid figure-img" width="465"></p>
-<figcaption>Figura:Objeto datos en Entorno del RStudio</figcaption>
+<figcaption>Figura: Objeto datos en Entorno del RStudio</figcaption>
 </figure>
 </div>
-<p>Para importar archivos de Excel, con extención xlsx, necesitaremos además tener instalado el paquete <em>readxl</em> ( que no es parte del ecosistema tidyverse)</p>
+<p>Para importar archivos de Excel, con extensión .xlsx, utilizaremos el paquete <code>readxl</code>, que forma parte del ecosistema tidyverse, pero debe cargarse por separado.”</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="diferencia-entre-objeto-y-archivo" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="diferencia-entre-objeto-y-archivo"><span class="header-section-number">1.6</span> Diferencia entre objeto y archivo</h2>
-<p>El archivo original permanece almacenado en la computadora como base_datos.csv</p>
-<p>El objeto creado dentro de R se denomina:</p>
-<p>datos</p>
-<p>Modificar el objeto datos no altera automáticamente el archivo CSV original.</p>
+<section id="diferencia-entre-objeto-y-archivo" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="diferencia-entre-objeto-y-archivo"><span class="header-section-number">1.5</span> Diferencia entre objeto y archivo</h2>
+<p>El archivo original, <code>base_datos.csv</code>, permanece almacenado en la computadora. Al importarlo, R crea un objeto llamado datos, que contiene la información del archivo y permite trabajar con ella en el entorno de R.</p>
+<p>Modificar este objeto no altera automáticamente el archivo CSV original.</p>
 </section>
 </section>
 <section id="primera-inspección-de-la-base" class="level1" data-number="2">
@@ -562,7 +576,7 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <p>Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: <strong>¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?</strong></p>
 <p>A continuación, se presentan algunas funciones iniciales de R que nos ayudarán a responder estas preguntas y a realizar una primera exploración de la base de datos<strong>.</strong></p>
 <p>Funciones iniciales:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Permite observar rápidamente:</p>
 <ul>
 <li><p>la cantidad de filas y columnas;</p></li>
@@ -574,32 +588,38 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <p>Muestra los nombres de las variables.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Indica la cantidad de filas y columnas de la base.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>También pueden consultarse por separado el número de filas y de columnas con las siguientes funciones:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) <span class="co"># número de filas</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos) <span class="co"># número de columnas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Presenta un <strong>resumen general de las variables</strong>. La información que muestra depende del tipo de variable.</p>
-<p>También pueden consultarse por separado el número de filas y de columnas con las siguentes funciones:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) <span class="co"># númeo de filas</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos) <span class="co"># númeo de columnas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="qué-significa-limpiar-y-ordenar-los-datos" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="qué-significa-limpiar-y-ordenar-los-datos"><span class="header-section-number">2.2</span> ¿Qué significa limpiar y ordenar los datos?</h2>
-<p>Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.</p>
+<section id="qué-implica-preparar-una-base-de-datos-para-su-análisis" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="qué-implica-preparar-una-base-de-datos-para-su-análisis"><span class="header-section-number">2.2</span> ¿Qué implica preparar una base de datos para su análisis?</h2>
+<p>Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizada. Antes de comenzar cualquier análisis estadístico, es necesario conocer su estructura, identificar posibles problemas y realizar las modificaciones que permitan trabajar adecuadamente con la información.</p>
+<p>Este proceso, conocido como preparación de datos (<strong>data wrangling</strong>), comprende tres tareas relacionadas:</p>
+<p><strong>Inspección</strong>: consiste en explorar la estructura de la base de datos, reconocer las variables, identificar sus tipos y detectar posibles problemas, como valores faltantes, duplicados o inconsistencias.</p>
+<p><strong>Limpieza</strong>: consiste en identificar y corregir errores o inconsistencias en los datos, como nombres de variables poco claros, categorías escritas de diferentes maneras o registros duplicados. También implica decidir cómo tratar los valores faltantes.</p>
+<p><strong>Transformación</strong>: consiste en modificar o reorganizar los datos según los objetivos del análisis. Por ejemplo, seleccionar observaciones, crear nuevas variables, recodificar categorías o generar resúmenes por grupos.</p>
+<p>Estas tareas no necesariamente se realizan de manera secuencial. Durante la preparación de una base de datos es frecuente volver a inspeccionarla después de realizar modificaciones, para comprobar que los resultados sean los esperados.</p>
+<p>En la siguiente sección conoceremos algunas de las funciones de R que permiten llevar a cabo estas tareas.</p>
 </section>
 <section id="paquetes-dplyr-y-tidyr" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="paquetes-dplyr-y-tidyr"><span class="header-section-number">2.3</span> Paquetes dplyr y tidyr</h2>
-<p><code>dplyr</code> y <code>tidyr</code> forman parte del conjunto de paquetes <strong>tidyverse</strong> y se utilizan para preparar y organizar bases de datos antes del análisis.</p>
+<p><code>dplyr</code><span class="citation" data-cites="dplyr2026">(<a href="#ref-dplyr2026" role="doc-biblioref">Wickham, François, et al., 2026</a>)</span> y <code>tidyr</code><span class="citation" data-cites="tidyr2026">(<a href="#ref-tidyr2026" role="doc-biblioref">Wickham, Vaughan, et al., 2026</a>)</span> forman parte del conjunto de paquetes <strong>tidyverse</strong> y se utilizan para preparar y organizar bases de datos antes del análisis.</p>
 <ul>
 <li><p><strong><code>dplyr</code></strong> permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.</p></li>
 <li><p><strong><code>tidyr</code></strong> permite organizar y reestructurar los datos, además de trabajar con valores faltantes.</p></li>
 </ul>
 <p>Ambos paquetes facilitan la <strong>limpieza y preparación de los datos</strong> para su posterior análisis.</p>
-<p>Entre las funciones más intersantes poemos mencionar:</p>
+<p>Entre las funciones que utilizaremos para la manipulación y preparación de los datos, se encuentran:</p>
 <ul>
 <li><p><code>select()</code> → seleccionar las variables que queremos conservar.</p></li>
 <li><p><code>filter()</code> → seleccionar filas según una condición.</p></li>
 <li><p><code>arrange()</code> → ordenar las filas según una o más variables.</p></li>
 <li><p><code>rename()</code> → cambiar el nombre de una variable.</p></li>
 <li><p><code>mutate()</code> → crear nuevas variables o modificar las existentes.</p></li>
-<li><p><code>distinct()</code> → eliminar registros duplicados.</p></li>
+<li><p><code>distinct()</code> → identifica y conserva registros únicos; puede utilizarse para eliminar duplicados, pero es importante especificar qué variables definen un duplicado.</p></li>
 <li><p><code>drop_na()</code> → eliminar filas con datos faltantes.</p></li>
 <li><p><code>replace_na()</code> → reemplazar valores faltantes.</p></li>
 <li><p><code>recode()</code> → unificar o cambiar categorías.</p></li>
@@ -622,8 +642,36 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 </tr>
 </tbody>
 </table>
-<p>Además, instalaremos el paquete <code>janitor</code> que cuenta con una función para estandarizar los nombres de las variables<br>
-- <code>clean_names()</code> → estandarizar los nombres de las variables.</p>
+<p>Además, utilizaremos el paquete janitor <span class="citation" data-cites="firke2024">(<a href="#ref-firke2024" role="doc-biblioref">Firke, 2024</a>)</span>, que incluye la función clean_names(), útil para estandarizar los nombres de las variables y facilitar su posterior manipulación.”</p>
+</section>
+<section id="cierre-de-la-clase" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="cierre-de-la-clase"><span class="header-section-number">2.4</span> Cierre de la clase</h2>
+<p>En esta teoría aprendimos a:</p>
+<ul>
+<li><strong>Trabajar con paquetes de R:</strong> instalar y cargar los paquetes necesarios.</li>
+<li><strong>Utilizar bloques de código en Quarto:</strong> escribir y ejecutar instrucciones en R.</li>
+<li><strong>Importar datos:</strong> leer archivos externos y almacenarlos como objetos en R.</li>
+<li><strong>Inspeccionar una base de datos:</strong> reconocer su estructura, variables, observaciones y tipos de datos.</li>
+<li><strong>Preparar los datos:</strong> conocer las principales funciones para limpiar, seleccionar, filtrar y transformar la información.</li>
+</ul>
+<p>Estas herramientas nos permitirán avanzar hacia el <strong>análisis exploratorio de datos</strong>, que abordaremos en la Parte 3 del curso.</p>
+</section>
+<section id="referencias" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="referencias"><span class="header-section-number">2.5</span> Referencias</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-firke2024" class="csl-entry" role="listitem">
+Firke, S. (2024). <em>Janitor: Simple tools for examining and cleaning dirty data</em>. <a href="https://sfirke.github.io/janitor/">https://sfirke.github.io/janitor/</a>
+</div>
+<div id="ref-tidyverse2019" class="csl-entry" role="listitem">
+Wickham, H., Averick, M., Bryan, J., Chang, W., McGowan, L. D., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., … Yutani, H. (2019). Welcome to the tidyverse. <em>Journal of Open Source Software</em>, <em>4</em>(43), 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>
+</div>
+<div id="ref-dplyr2026" class="csl-entry" role="listitem">
+Wickham, H., François, R., Henry, L., Müller, K., &amp; Vaughan, D. (2026). <em>Dplyr: A grammar of data manipulation</em>. <a href="https://dplyr.tidyverse.org">https://dplyr.tidyverse.org</a>
+</div>
+<div id="ref-tidyr2026" class="csl-entry" role="listitem">
+Wickham, H., Vaughan, D., &amp; Girlich, M. (2026). <em>Tidyr: Tidy messy data</em>. <a href="https://tidyr.tidyverse.org">https://tidyr.tidyverse.org</a>
+</div>
+</div>
 
 
 <!-- -->
@@ -1090,28 +1138,28 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>Antes de poder analizar cualquier conjunto de datos, es necesario saber cómo llevarlos al entorno de trabajo y dejarlos en condiciones adecuadas para su análisis. Esta etapa, conocida habitualmente como *data wrangling*, constituye un prerrequisito técnico-metodológico para cualquier análisis estadístico posterior: sin datos correctamente importados, estructurados y depurados, ningún modelo ni ninguna exploración pueden considerarse confiables.</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>En esta parte abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas. Además, introduciremos las herramientas básicas para la manipulación de datos —filtrado, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis explo</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>En esta parte abordaremos los primeros pasos necesarios para trabajar con R y RStudio: la instalación y activación de los paquetes que utilizaremos a lo largo del curso, la importación de bases de datos externas, y el reconocimiento de la estructura de los objetos que R genera a partir de ellas.Además, introduciremos herramientas básicas para la manipulación de datos —filtrado de observaciones, selección y transformación de variables— que nos permitirán preparar la información antes de iniciar su análisis exploratorio.</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Parte 3) como en el ajuste de los Modelos Lineales (Parte y Parte 5), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>Las competencias desarrolladas en esta clase son transversales a todo el curso: se utilizarán tanto en el análisis exploratorio de datos (Parte 3) como en el ajuste de los Modelos Lineales (Parte 4 y Parte 5), y constituyen la base operativa sobre la cual se apoya cualquier análisis estadístico riguroso.</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes: las herramientas que vamos a usar</span></span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>R incorpora, por defecto, un conjunto amplio de funciones para el manejo de datos y el cálculo estadístico —lo que se conoce como **R base**—. Sin embargo, gran parte de su potencia proviene de los **paquetes**: colecciones de funciones adicionales, desarrolladas por la comunidad, que amplían las posibilidades de R para tareas específicas.</span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>En este curso trabajaremos principalmente con el ecosistema **tidyverse**, un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>En este curso trabajaremos principalmente con el ecosistema **tidyverse** <span class="co">[</span><span class="ot">@tidyverse2019</span><span class="co">]</span>, un conjunto de paquetes diseñados para trabajar con datos de manera ordenada, coherente y con una sintaxis común entre sí. Entre los paquetes que forman parte del tidyverse, utilizaremos especialmente:</span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Paquete   <span class="pp">|</span> ¿Para qué lo usaremos?                           <span class="pp">|</span></span>
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|-----------|--------------------------------------------------|</span></span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`readr`</span>   <span class="pp">|</span> Importar archivos <span class="in">`.csv`</span>.                        <span class="pp">|</span></span>
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`readxl`</span>  <span class="pp">|</span> Importar archivos de Excel.                      <span class="pp">|</span></span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`dplyr`</span>   <span class="pp">|</span> Seleccionar, filtrar, crear y resumir variables. <span class="pp">|</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`tidyr`</span>   <span class="pp">|</span> Ordenar la estructura de una base.               <span class="pp">|</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`tidyr`</span>   <span class="pp">|</span> para reorganizar la estructura de los datos.     <span class="pp">|</span></span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ggplot2`</span> <span class="pp">|</span> Crear gráficos.                                  <span class="pp">|</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`forcat`</span>  <span class="pp">|</span> para trabajar con factores                       <span class="pp">|</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`forcats`</span> <span class="pp">|</span> rabajar con variables categóricas (factores).    <span class="pp">|</span></span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el *data frame* o, más específicamente, el *tibble*), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.</span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>Para mayor información no dudes en visitar la <span class="co">[</span><span class="ot">Página oficial de Tidyverse</span><span class="co">](https://tidyverse.tidyverse.org/)</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>ara conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la <span class="co">[</span><span class="ot">Página oficial de Tidyverse</span><span class="co">](https://tidyverse.tidyverse.org/)</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.</span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
@@ -1126,182 +1174,188 @@ En ambos casos un bloque como el siguiente, donde podremos ejecutar código en <
 <span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura : Icono para insertar códigos. Seleccionar R](images/iccono%20para%20intesertar%20código.png)</span>{width="185"}</span>
 <span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>También podemos utilizar el teclado, presionando simultáneamente **Ctrl + Alt + i**.\</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>    En ambos casos un bloque como el siguiente, donde podremos ejecutar código en **R**:</span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>    n ambos casos, se insertará un bloque de código como el que se muestra a continuación, en el que podremos escribir y ejecutar instrucciones en **R**:</span>
 <span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="al">![Figura: Activación con library del paquete tidyverse](images/tidyverse.png)</span><span class="ot">Figura: Espacio para escribir Código en R (Chunk)</span><span class="co">](images/chunk%20vacío.png)</span>{width="452"}</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Espacio para escribir Código en R (Chunk)](images/chunk%20vacío.png)</span>{width="452"}</span>
 <span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="fu">### Opciones de los bloques de código</span></span>
 <span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>Los bloques de código pueden incluir opciones que permiten controlar cómo se ejecuta el código y qué se muestra en el documento final.</span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a>Los bloques de código pueden incluir opciones que permiten controlar su ejecución y la presentación de los resultados en el documento final. Estas opciones se explican con mayor detalle en la <span class="co">[</span><span class="ot">Teoría 6</span><span class="co">](../parte6/teoria6.qmd)</span>.</span>
 <span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a>Estas opciones se escriben al comienzo del bloque, precedidas por #<span class="sc">\|</span>.</span>
+<span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## Instalación de Paquetes</span></span>
 <span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>Algunas opciones frecuentes son:</span>
+<span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a>Para instalar un paquete, escribimos dentro de un bloque de código la función <span class="in">`install.packages()`</span>, indicando entre comillas el nombre del paquete que queremos instalar.</span>
 <span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>#<span class="sc">\|</span> echo: true → muestra el código en el documento.</span>
+<span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a>Por ejemplo:</span>
 <span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a>#<span class="sc">\|</span> echo: false → ejecuta el código, pero no lo muestra.</span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a>#<span class="sc">\|</span> eval: false → muestra el código, pero no lo ejecuta.</span>
+<span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>#<span class="sc">\|</span> include: false → ejecuta el código, pero no muestra ni el código ni los resultados.</span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez y permanecen disponibles para sesiones posteriores, salvo que sea necesario actualizarlos o reinstalarlos.</span>
 <span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>#<span class="sc">\|</span> warning: false → oculta los mensajes de advertencia.</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>Una vez instalado, el paquete debe **cargarse para su uso** mediante la función <span class="in">`library()`</span>.</span>
 <span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>#<span class="sc">\|</span> message: false → oculta los mensajes generados por R.</span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>Por ejemplo:</span>
 <span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Instalación de Paquetes</span></span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>Para instalar un paquete, escribimos dentro de un bloque de código la función <span class="in">`install.packages()`</span>, indicando entre comillas el nombre del paquete que queremos instalar.</span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a>Por ejemplo:</span>
+<span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Imagen de la activación del paquete Tidyverse](/imagenes/tidyverse.png)</span></span>
 <span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a>Es importante destacar que instalar un paquete y cargarlo son dos operaciones diferentes. Esta distinción es especialmente útil para quienes recién comienzan con R.</span>
+<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importación de la base de datos</span></span>
 <span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una sola vez, salvo que sea necesario actualizarlo</span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. Por ejemplo, para archivos con extensión CSV puede emplearse <span class="in">`read_csv()`</span>. Esta función genera un objeto de tipo <span class="in">`tibble`</span>, una versión moderna de un data frame.</span>
 <span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>Una vez instalado, el paquete debe **cargarse para su uso** mediante la función <span class="in">`library()`</span>.</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>El nombre del archivo que se desea importar debe escribirse entre comillas. Si el archivo **no** se encuentra en la carpeta de trabajo actual, es necesario indicar su **ruta de acceso**. Por ejemplo, <span class="in">`../`</span> permite subir un nivel en la estructura de carpetas, como se muestra en el código:</span>
 <span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>Por ejemplo:</span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span>
+<span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>Para comprobar que el objeto fue creado:</span>
 <span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importación de la base de datos</span></span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. POr ejemplo, para archivos con extensión CSV puede emplearse <span class="in">`read_csv()`</span>. Esta función genera un objeto de tipo <span class="in">`tibble`</span>, una versión moderna de un data frame.</span>
+<span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datos)</span>
+<span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a><span class="fu">## Código en R</span></span>
+<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a>También puede observarse en el panel Environment de RStudio.</span>
 <span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a>Suponiendo que el archivo está dentro de la carpeta <span class="in">`datos`</span>:</span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png)</span>{width="465"}</span>
 <span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a>El nombre del archivo a importar debe estar entre comillas y si no se encuentra en la carpeta del entorno de trabajo se puede indicar antecediendo ../ como se muestra. El archivo se guardó en el objeto datos</span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a>Para importar archivos de Excel, con extensión .xlsx, utilizaremos el paquete <span class="in">`readxl`</span>, que forma parte del ecosistema tidyverse, pero debe cargarse por separado."</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span>
+<span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a>Para comprobar que el objeto fue creado:</span>
+<span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diferencia entre objeto y archivo</span></span>
 <span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(datos)</span>
-<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a>El archivo original, <span class="in">`base_datos.csv`</span>, permanece almacenado en la computadora. Al importarlo, R crea un objeto llamado datos, que contiene la información del archivo y permite trabajar con ella en el entorno de R.</span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a>Modificar este objeto no altera automáticamente el archivo CSV original.</span>
 <span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a>También puede observarse en el panel Environment de RStudio.</span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="fu"># Primera inspección de la base</span></span>
 <span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura:Objeto datos en Entorno del RStudio](images/datos%20en%20entorno.png)</span>{width="465"}</span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conozcamos los datos</span></span>
 <span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>Para importar archivos de Excel, con extención xlsx, necesitaremos además tener instalado el paquete *readxl* ( que no es parte del ecosistema tidyverse)</span>
+<span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a>Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: **¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?**</span>
 <span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span>
-<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a>A continuación, se presentan algunas funciones iniciales de R que nos ayudarán a responder estas preguntas y a realizar una primera exploración de la base de datos**.**</span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a>Funciones iniciales:</span>
 <span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="fu">## Diferencia entre objeto y archivo</span></span>
-<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a>El archivo original permanece almacenado en la computadora como base_datos.csv</span>
+<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos)</span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>El objeto creado dentro de R se denomina:</span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>Permite observar rápidamente:</span>
 <span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>datos</span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la cantidad de filas y columnas;</span>
 <span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a>Modificar el objeto datos no altera automáticamente el archivo CSV original.</span>
+<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>los nombres de las variables;</span>
 <span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="fu"># Primera inspección de la base</span></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>el tipo de cada variable;</span>
 <span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conozcamos los datos</span></span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>algunos valores de ejemplo.</span>
 <span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>Al comenzar una investigación que utiliza una base de datos, es importante conocer y comprender su estructura. Para ello, debemos responder algunas preguntas iniciales: **¿Cuál es la unidad de análisis? ¿Qué representa cada fila? ¿Qué representa cada columna? ¿Cuántas observaciones y variables contiene la base? ¿Cómo se llaman las variables? ¿Qué tipo de información contiene cada una? ¿Existen datos faltantes o valores atípicos o extraños?**</span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>A continuación, se presentan algunas funciones iniciales de R que nos ayudarán a responder estas preguntas y a realizar una primera exploración de la base de datos**.**</span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos)</span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>Funciones iniciales:</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a>Muestra los nombres de las variables.</span>
 <span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)            <span class="co"># en cada sesión</span></span>
+<span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span>
 <span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>Permite observar rápidamente:</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a>Indica la cantidad de filas y columnas de la base.</span>
 <span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>la cantidad de filas y columnas;</span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>También pueden consultarse por separado el número de filas y de columnas con las siguientes funciones:</span>
 <span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>los nombres de las variables;</span>
-<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>el tipo de cada variable;</span>
-<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>algunos valores de ejemplo.</span>
-<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos)</span>
-<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>Muestra los nombres de las variables.</span>
-<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos)</span>
-<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>Indica la cantidad de filas y columnas de la base.</span>
-<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span>
-<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a>Presenta un **resumen general de las variables**. La información que muestra depende del tipo de variable.</span>
-<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a>También pueden consultarse por separado el número de filas y de columnas con las siguentes funciones:</span>
-<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) <span class="co"># númeo de filas</span></span>
-<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos) <span class="co"># númeo de columnas</span></span>
-<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datos) <span class="co"># número de filas</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(datos) <span class="co"># número de columnas</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)</span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>Presenta un **resumen general de las variables**. La información que muestra depende del tipo de variable.</span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Qué implica preparar una base de datos para su análisis?</span></span>
+<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a>Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizada. Antes de comenzar cualquier análisis estadístico, es necesario conocer su estructura, identificar posibles problemas y realizar las modificaciones que permitan trabajar adecuadamente con la información.</span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a>Este proceso, conocido como preparación de datos (**data wrangling**), comprende tres tareas relacionadas:</span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a>**Inspección**: consiste en explorar la estructura de la base de datos, reconocer las variables, identificar sus tipos y detectar posibles problemas, como valores faltantes, duplicados o inconsistencias.</span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a>**Limpieza**: consiste en identificar y corregir errores o inconsistencias en los datos, como nombres de variables poco claros, categorías escritas de diferentes maneras o registros duplicados. También implica decidir cómo tratar los valores faltantes.</span>
+<span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a>**Transformación**: consiste en modificar o reorganizar los datos según los objetivos del análisis. Por ejemplo, seleccionar observaciones, crear nuevas variables, recodificar categorías o generar resúmenes por grupos.</span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a>Estas tareas no necesariamente se realizan de manera secuencial. Durante la preparación de una base de datos es frecuente volver a inspeccionarla después de realizar modificaciones, para comprobar que los resultados sean los esperados.</span>
+<span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a>En la siguiente sección conoceremos algunas de las funciones de R que permiten llevar a cabo estas tareas.</span>
+<span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes dplyr y tidyr</span></span>
+<span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="in">`dplyr`</span><span class="co">[</span><span class="ot">@dplyr2026</span><span class="co">]</span> y <span class="in">`tidyr`</span><span class="co">[</span><span class="ot">@tidyr2026</span><span class="co">]</span> forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.</span>
 <span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Qué significa limpiar y ordenar los datos?</span></span>
+<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`dplyr`** permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.</span>
 <span id="cb11-179"><a href="#cb11-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a>Una base de datos puede estar completa y, sin embargo, no estar lista para ser analizadas.</span>
+<span id="cb11-180"><a href="#cb11-180" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`tidyr`** permite organizar y reestructurar los datos, además de trabajar con valores faltantes.</span>
 <span id="cb11-181"><a href="#cb11-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquetes dplyr y tidyr</span></span>
+<span id="cb11-182"><a href="#cb11-182" aria-hidden="true" tabindex="-1"></a>Ambos paquetes facilitan la **limpieza y preparación de los datos** para su posterior análisis.</span>
 <span id="cb11-183"><a href="#cb11-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a><span class="in">`dplyr`</span> y <span class="in">`tidyr`</span> forman parte del conjunto de paquetes **tidyverse** y se utilizan para preparar y organizar bases de datos antes del análisis.</span>
+<span id="cb11-184"><a href="#cb11-184" aria-hidden="true" tabindex="-1"></a>Entre las funciones que utilizaremos para la manipulación y preparación de los datos, se encuentran:</span>
 <span id="cb11-185"><a href="#cb11-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`dplyr`** permite manipular los datos: seleccionar variables, filtrar observaciones, ordenar filas, crear o modificar variables y realizar resúmenes.</span>
+<span id="cb11-186"><a href="#cb11-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`select()`</span> → seleccionar las variables que queremos conservar.</span>
 <span id="cb11-187"><a href="#cb11-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`tidyr`** permite organizar y reestructurar los datos, además de trabajar con valores faltantes.</span>
+<span id="cb11-188"><a href="#cb11-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`filter()`</span> → seleccionar filas según una condición.</span>
 <span id="cb11-189"><a href="#cb11-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a>Ambos paquetes facilitan la **limpieza y preparación de los datos** para su posterior análisis.</span>
+<span id="cb11-190"><a href="#cb11-190" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`arrange()`</span> → ordenar las filas según una o más variables.</span>
 <span id="cb11-191"><a href="#cb11-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a>Entre las funciones más intersantes poemos mencionar:</span>
+<span id="cb11-192"><a href="#cb11-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`rename()`</span> → cambiar el nombre de una variable.</span>
 <span id="cb11-193"><a href="#cb11-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`select()`</span> → seleccionar las variables que queremos conservar.</span>
+<span id="cb11-194"><a href="#cb11-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`mutate()`</span> → crear nuevas variables o modificar las existentes.</span>
 <span id="cb11-195"><a href="#cb11-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`filter()`</span> → seleccionar filas según una condición.</span>
+<span id="cb11-196"><a href="#cb11-196" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`distinct()`</span> → identifica y conserva registros únicos; puede utilizarse para eliminar duplicados, pero es importante especificar qué variables definen un duplicado.</span>
 <span id="cb11-197"><a href="#cb11-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`arrange()`</span> → ordenar las filas según una o más variables.</span>
+<span id="cb11-198"><a href="#cb11-198" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`drop_na()`</span> → eliminar filas con datos faltantes.</span>
 <span id="cb11-199"><a href="#cb11-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`rename()`</span> → cambiar el nombre de una variable.</span>
+<span id="cb11-200"><a href="#cb11-200" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`replace_na()`</span> → reemplazar valores faltantes.</span>
 <span id="cb11-201"><a href="#cb11-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`mutate()`</span> → crear nuevas variables o modificar las existentes.</span>
+<span id="cb11-202"><a href="#cb11-202" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`recode()`</span> → unificar o cambiar categorías.</span>
 <span id="cb11-203"><a href="#cb11-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`distinct()`</span> → eliminar registros duplicados.</span>
-<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`drop_na()`</span> → eliminar filas con datos faltantes.</span>
-<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`replace_na()`</span> → reemplazar valores faltantes.</span>
-<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`recode()`</span> → unificar o cambiar categorías.</span>
-<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-204"><a href="#cb11-204" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> paquetes <span class="pp">|</span> sitio oficial <span class="pp">|</span></span>
+<span id="cb11-205"><a href="#cb11-205" aria-hidden="true" tabindex="-1"></a><span class="pp">|:--------------------------------:|:------------------------------------:|</span></span>
+<span id="cb11-206"><a href="#cb11-206" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="al">![](images/dplyr.png)</span>{width="82"} <span class="pp">|</span> <span class="co">[</span><span class="ot">sitio oficial de dplyr</span><span class="co">](https://dplyr.tidyverse.org/)</span> <span class="pp">|</span></span>
+<span id="cb11-207"><a href="#cb11-207" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="al">![](images/tidyr.png)</span>{width="78"} <span class="pp">|</span> <span class="co">[</span><span class="ot">Sitio oficial de tidyr</span><span class="co">](https://tidyr.tidyverse.org/)</span> <span class="pp">|</span></span>
+<span id="cb11-208"><a href="#cb11-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-209"><a href="#cb11-209" aria-hidden="true" tabindex="-1"></a>Además, utilizaremos el paquete janitor <span class="co">[</span><span class="ot">@firke2024</span><span class="co">]</span>, que incluye la función clean_names(), útil para estandarizar los nombres de las variables y facilitar su posterior manipulación."</span>
+<span id="cb11-210"><a href="#cb11-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-211"><a href="#cb11-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cierre de la clase</span></span>
 <span id="cb11-212"><a href="#cb11-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> paquetes <span class="pp">|</span> sitio oficial <span class="pp">|</span></span>
-<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a><span class="pp">|:--------------------------------:|:------------------------------------:|</span></span>
-<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="al">![](images/dplyr.png)</span>{width="82"} <span class="pp">|</span> <span class="co">[</span><span class="ot">sitio oficial de dplyr</span><span class="co">](https://dplyr.tidyverse.org/)</span> <span class="pp">|</span></span>
-<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="al">![](images/tidyr.png)</span>{width="78"} <span class="pp">|</span> <span class="co">[</span><span class="ot">Sitio oficial de tidyr</span><span class="co">](https://tidyr.tidyverse.org/)</span> <span class="pp">|</span></span>
-<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a>Además, instalaremos el paquete <span class="in">`janitor`</span> que cuenta con una función  para estandarizar los nombres de las variables  </span>
-<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`clean_names()`</span> → estandarizar los nombres de las variables.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb11-213"><a href="#cb11-213" aria-hidden="true" tabindex="-1"></a>En esta teoría aprendimos a:</span>
+<span id="cb11-214"><a href="#cb11-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-215"><a href="#cb11-215" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Trabajar con paquetes de R:** instalar y cargar los paquetes necesarios.</span>
+<span id="cb11-216"><a href="#cb11-216" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Utilizar bloques de código en Quarto:** escribir y ejecutar instrucciones en R.</span>
+<span id="cb11-217"><a href="#cb11-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Importar datos:** leer archivos externos y almacenarlos como objetos en R.</span>
+<span id="cb11-218"><a href="#cb11-218" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Inspeccionar una base de datos:** reconocer su estructura, variables, observaciones y tipos de datos.</span>
+<span id="cb11-219"><a href="#cb11-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Preparar los datos:** conocer las principales funciones para limpiar, seleccionar, filtrar y transformar la información.</span>
+<span id="cb11-220"><a href="#cb11-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-221"><a href="#cb11-221" aria-hidden="true" tabindex="-1"></a>Estas herramientas nos permitirán avanzar hacia el **análisis exploratorio de datos**, que abordaremos en la Parte 3 del curso.</span>
+<span id="cb11-222"><a href="#cb11-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-223"><a href="#cb11-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referencias</span></span>
+<span id="cb11-224"><a href="#cb11-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-225"><a href="#cb11-225" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb11-226"><a href="#cb11-226" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

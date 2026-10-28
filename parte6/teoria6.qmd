@@ -36,7 +36,7 @@ lang: es
 Un mismo documento puede generar distintos formatos. Se elige en el encabezado, y también se puede indicar más de uno:
 
 | Formato | Cuándo usarlo | Requisito |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | `html` | Informes para leer en pantalla, páginas web | Ninguno |
 | `docx` | Informes que se editan en Word o se envían a una revista | Ninguno |
 | `pdf` | Documentos finales con formato fijo | Una instalación de LaTeX (TinyTeX se instala con `quarto install tinytex`) |
@@ -48,7 +48,7 @@ Para renderizar, en RStudio se usa el botón **Render**, o desde la terminal `qu
 Las opciones se escriben al inicio del chunk, con `#|`. Las más usadas en un informe son:
 
 | Opción | Efecto | Ejemplo |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | `echo: false` | Oculta el código y muestra solo la salida | Informes para el lector final |
 | `eval: false` | No ejecuta el código | Mostrar código que no debe correr |
 | `warning: false` | Oculta las advertencias | Después de revisarlas |
@@ -95,7 +95,7 @@ Al renderizar, esas partes se reemplazan por los valores calculados. Si los dato
 
 # Tablas
 
-Las tablas con formato (encabezados, colores, celdas combinadas, exportación a Word) se explican en un documento aparte: [Tablas con flextable](../explicaciones extras/flextable.qmd).
+Las tablas con formato (encabezados, colores, celdas combinadas, exportación a Word) se explican en un documento aparte: [Tablas con flextable](../explicaciones%20extras/flextable.qmd).
 
 Para una tabla simple se puede usar `knitr::kable()`, que funciona en HTML y PDF.
 
@@ -167,7 +167,7 @@ La tipografía se define en el encabezado YAML, según el formato de salida:
 
 # Fórmulas
 
-La escritura de fórmulas en LaTeX se explica en un documento aparte: [Fórmulas en LaTeX con Quarto](../explicaciones extras/formulas_latex.qmd).
+La escritura de fórmulas en LaTeX se explica en un documento aparte: [Fórmulas en LaTeX con Quarto](../explicaciones%20extras/formulas_latex.qmd).
 
 # Citas y bibliografía
 
