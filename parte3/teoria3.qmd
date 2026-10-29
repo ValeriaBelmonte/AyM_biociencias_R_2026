@@ -42,12 +42,11 @@ En el EDA no se construyen gráficos “por rutina”: cada elección depende de
 
 ### Tablas
 
-
 Las tablas son una forma ordenada de presentar la información contenida en una base de datos. Permiten resumir los valores de una o más variables y facilitan una primera lectura de los datos antes de realizar gráficos o cálculos más específicos.
 
-Según el tipo de variable, las tablas pueden utilizarse con distintos propósitos. En las variables categóricas, permiten conocer cuántas observaciones pertenecen a cada categoría; por ejemplo, cuántos registros corresponden a cada país o área. En las variables numéricas, permiten resumir sus valores mediante medidas como el mínimo, el máximo, la media o la mediana.
+Según el tipo de variable, las tablas pueden utilizarse con distintos propósitos. En las variables categóricas, permiten conocer cuántas observaciones pertenecen a cada categoría; por ejemplo, cuántos registros corresponden a cada país o área. En las variables numéricas, permiten resumir sus valores mediante medidas como el mínimo, el máximo, la media, la mediana, varianza, entre otros.
 
-| Tipo de variable o pregunta | Tabla adecuada | Ejemplo en la base |
+| Tipo de variable o pregunta | Tabla adecuada | Ejemplo en la base `Agrofood_co2_emission` |
 |:-----------------------|:-----------------------|:-----------------------|
 | Una variable categórica | Tabla de frecuencias absolutas | Cantidad de registros por `area` |
 | Una variable categórica | Tabla de frecuencias relativas o porcentajes | Porcentaje de registros para cada `area` |
@@ -70,14 +69,16 @@ Antes de construir un gráfico, es importante pensar qué información que se qu
 | Dos variables numéricas | Gráfico de dispersión | Relación entre `urban_population` y `food_transport` |
 | Evolución de una variable en el tiempo | Gráfico de líneas | Emisiones de Argentina entre 1990 y 2020 |
 
-### El Paquete `ggplot2`
+### El Paquete ggplot2
 
-El paquete **`ggplot2`** forma parte de `tidyverse` y se utiliza para construir gráficos en R. Su funcionamiento se basa en la **gramática de los gráficos**, es decir, en la idea de que un gráfico se construye agregando distintas **capas**.
+El paquete **`ggplot2`** [@wickham2016ggplot2]forma parte de `tidyverse` y se utiliza para construir gráficos en R. Su funcionamiento se basa en la **gramática de los gráficos**, es decir, en la idea de que un gráfico se construye agregando distintas **capas**.
 
 La estructura básica es:
 
 ```         
-ggplot(datos, aes(x = variable_x, y = variable_y)) +   geom_...()+labs()+theme()
+ggplot(datos, aes(x = variable_x, y = variable_y)) +                  geom_...()
+      +labs()+
+      theme()
 ```
 
 Cada parte cumple una función:
@@ -93,7 +94,10 @@ Cada parte cumple una función:
 Por ejemplo:
 
 ```         
-ggplot(agro, aes(x = year, y = total_emission)) +   geom_point() +   labs(     x = "Año",     y = "Emisiones totales",     title = "Emisiones totales según año"   ) +   theme_minimal()
+ggplot(agro, aes(x = year, y = total_emission)) +  
+geom_point() +  
+labs(     x = "Año",     y = "Emisiones totales",     title = "Emisiones totales según año"   ) + 
+theme_minimal()
 ```
 
 Podemos pensar entonces un gráfico como una construcción por capas:
@@ -102,22 +106,23 @@ Podemos pensar entonces un gráfico como una construcción por capas:
 
 El operador `+` permite ir agregando cada una de estas capas al gráfico.
 
-#### El paquete `esquisse`
+#### El paquete esquisse
 
-El paquete **`esquisse`** permite crear gráficos de manera interactiva utilizando `ggplot2`. A través de una interfaz gráfica podemos **arrastrar y soltar variables** para definir los ejes, colores, agrupamientos y otros elementos del gráfico.
+El paquete `esquisse` [@perrier2025esquisse] permite crear gráficos de manera interactiva utilizando `ggplot2`. A través de una interfaz gráfica podemos **arrastrar y soltar variables** para definir los ejes, colores, agrupamientos y otros elementos del gráfico.
 
 Una de sus principales ventajas es que, además de construir el gráfico visualmente, permite **obtener el código de `ggplot2` utilizado para generarlo**. Esto lo convierte en una herramienta útil para comenzar a familiarizarse con la estructura de los gráficos en R.
 
 Para instalarlo:
 
-```         
+``` r
 install.packages("esquisse") 
 ```
 
 Para utilizarlo:
 
-```         
-library(esquisse)  esquisser() 
+``` r
+library(esquisse)  #carga el paquete en la sesión de R.
+esquisser()  #abre una interfaz gráfica interactiva que permite construir gráficos con ggplot2               sin necesidad de escribir inicialmente el código.
 ```
 
 Después de instalarlo, puede aparecer en el menú:
@@ -142,22 +147,35 @@ Las tablas de frecuencias y los gráficos muestran la forma de los datos. Las **
 
 ## Medidas de tendencia central
 
-| Medida | Definición | Cuándo conviene |
-|:-----------------------|:-----------------------|:-----------------------|
-| Media | $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$ | Variables numéricas simétricas, sin valores extremos |
-| Mediana | Valor central de los datos ordenados | Distribuciones asimétricas o con valores atípicos |
-| Moda | Valor más frecuente | Variables categóricas, o numéricas discretas |
+| Medida | Definición | Cuándo conviene | Función en R |
+|:----------------|:----------------|:--------------------|:----------------|
+| Media | $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$ | Variables numéricas simétricas, sin valores extremos | `mean(x, na.rm = TRUE)` |
+| Mediana | Valor central de los datos ordenados | Distribuciones asimétricas o con valores atípicos | `median(x, na.rm = TRUE)` |
+| Moda | Valor más frecuente | Variables categóricas o numéricas discretas | `sort(table(x), decreasing = TRUE)`[^1] |
 
-Si la media y la mediana difieren mucho, la distribución es asimétrica. En ese caso, la mediana describe mejor el centro.
+[^1]: La expresión `sort(table(x), decreasing = TRUE)` permite identificar las frecuencias más altas, pero no devuelve directamente el valor modal.
+
+*Notas*:
+
+- La expresión `na.rm = TRUE`: excluye los valores faltantes antes de realizar el cálculo
+
+<!-- -->
+
+- Si la media y la mediana difieren mucho, la distribución es asimétrica. En ese caso, la mediana describe mejor el centro.
 
 ## Medidas de dispersión
 
-| Medida | Definición | Interpretación |
-|:-----------------------|:-----------------------|:-----------------------|
-| Rango | máximo − mínimo | Amplitud total, sensible a extremos |
-| Desvío estándar | $s = \sqrt{\frac{1}{n-1}\sum (x_i - \bar{x})^2}$ | Dispersión en las mismas unidades de la variable |
-| Rango intercuartílico (IQR) | Q3 − Q1 | Dispersión del 50 % central, robusta a extremos |
-| Coeficiente de variación | $CV = s / \bar{x} \times 100$ | Permite comparar dispersión entre variables con distinta escala |
+| Medida | Definición | Interpretación | Función en R |
+|:---------------|:---------------|:--------------------|:------------------|
+| Rango | $R = x_{\max} - x_{\min}$ | Amplitud total, sensible a valores extremos | `diff(range(x, na.rm = TRUE))` |
+| Desvío estándar | $s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}$ | Dispersión en las mismas unidades de la variable | `sd(x, na.rm = TRUE)` |
+| Rango intercuartílico (IQR) | $IQR = Q_3 - Q_1$ | Dispersión del 50 % central, robusta a valores extremos | `IQR(x, na.rm = TRUE)` |
+| Coeficiente de variación (CV) | $CV = \frac{s}{\bar{x}}\times 100$ | Dispersión relativa; permite comparar variables con distintas escalas | `sd(x, na.rm = TRUE)/mean(x, na.rm = TRUE)*100` |
+
+*Notas*
+
+- El desvío estándar calculado mediante sd() en R es el desvío estándar muestral, por eso el denominador es (n-1).
+- El coeficiente de variación se expresa en porcentaje y resulta apropiado para variables cuantitativas de escala de razón, con media positiva y suficientemente alejada de cero. No es adecuado para cualquier variable solo porque tenga unidades diferentes.
 
 ## Medidas de posición
 
@@ -167,7 +185,7 @@ Los **cuantiles** dividen los datos ordenados en partes. El primer cuartil (Q1) 
 
 El flujo `group_by()` + `summarise()` calcula medidas por grupo en una sola instrucción:
 
-```r
+``` r
 #| label: resumen-tidyverse
 library(tidyverse)
 
@@ -187,7 +205,7 @@ agro |>
   )
 ```
 
-Notas:
+*Notas*:
 
 - `na.rm = TRUE` excluye los faltantes del cálculo. Antes de usarlo, conviene saber cuántos hay con `sum(is.na(agro$total_emission))`.
 - `.groups = "drop"` evita el mensaje sobre la estructura de grupos en la salida.
@@ -195,7 +213,7 @@ Notas:
 
 Para el coeficiente de variación y cuantiles específicos, se agregan columnas dentro del mismo `summarise()`:
 
-```r
+``` r
 #| label: resumen-cv-cuantiles
 agro |>
   group_by(area) |>
@@ -211,7 +229,7 @@ agro |>
 
 El mismo resultado se puede obtener sin tidyverse, con funciones básicas:
 
-```r
+``` r
 #| label: resumen-base
 # Resumen general de todas las variables numéricas
 summary(agro$total_emission)
@@ -229,9 +247,16 @@ aggregate(total_emission ~ area, data = agro,
 
 ## Tablas para comunicar con flextable
 
-El paquete **`flextable`** convierte un data frame en una tabla con formato para informes, documentos Word o HTML. Se usa al final del análisis, para presentar los resultados.
+El paquete `flextable` [@gohel2026flextable] convierte un data frame en una tabla con formato para informes, documentos Word o HTML. Se usa al final del análisis, para presentar los resultados.
+
+Recordá la primera vez instalar el paquete 
 
 ```r
+install.packages("flextable")
+```
+Ahora podemos usarlo:
+
+``` r
 #| label: flextable-resumen
 #| eval: false
 library(flextable)
@@ -254,4 +279,9 @@ flextable(tabla_resumen) |>
   autofit()
 ```
 
-Con `flextable` se pueden agregar encabezados, combinar celdas, cambiar colores y exportar a Word o HTML. Ese desarrollo se verá en la Parte 6.
+Con `flextable` se pueden agregar encabezados, combinar celdas, cambiar colores y exportar a Word o HTML. Ese desarrollo se verá en la [Teoría 6](../parte6/teoria6.qmd)
+
+## Referencias
+
+::: {#refs}
+:::

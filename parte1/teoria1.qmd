@@ -96,7 +96,7 @@ RStudio divide su pantalla en cuatro áreas principales:
 
 ![Figura 1: Distribución de la pantalla de RStudio](../imagenes/R%20Studio%201%202%203%204.png){fig-align="center"}
 
-#### Editor de código o panel *Source*
+#### Editor de código o panel Source -1-
 
 En este panel se escriben y editan los programas o **scripts de R**.
 
@@ -126,7 +126,7 @@ Ctrl + Enter
 
 Es recomendable trabajar principalmente en un script, porque permite conservar un registro ordenado del análisis realizado.
 
-#### Consola
+#### Consola -2-
 
 La consola es el lugar donde R ejecuta las instrucciones.
 
@@ -152,7 +152,7 @@ La consola mostrará el resultado:
 
 También aparecen en este panel los resultados, mensajes, advertencias y errores. El código escrito directamente en la consola se ejecuta inmediatamente, pero no queda guardado automáticamente.
 
-#### Entorno de trabajo
+#### Entorno de trabajo -3-
 
 El panel **Environment** muestra los objetos que se encuentran cargados en la sesión de R, por ejemplo:
 
@@ -168,7 +168,7 @@ El panel **Environment** muestra los objetos que se encuentran cargados en la se
 
 También incluye otras pestañas, como **History**, donde se pueden consultar las instrucciones ejecutadas anteriormente.
 
-#### Archivos, gráficos, paquetes y ayuda
+#### Archivos, gráficos, paquetes y ayuda -3-
 
 Este panel reúne varias herramientas:
 
@@ -206,7 +206,7 @@ Los paquetes son extensiones que agregan funciones específicas a R. Permiten re
 
 - **Los paquetes** son colecciones de libros especializados.
 
-![Analogía con una biblioteca](../imagenes/Biblioteca%20R_%20Conceptos%20y%20Paquetes.png){fig-align="center"}
+![Figura: Analogía con una biblioteca](../imagenes/Biblioteca%20R_%20Conceptos%20y%20Paquetes.png){fig-align="center"}
 
 #### Instalar y cargar paquetes
 

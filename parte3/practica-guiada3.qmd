@@ -2,59 +2,117 @@
 title: "Práctica guiada 3"
 ---
 
-En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base `agro`. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino **conocer los datos, detectar problemas y formular preguntas**.
+En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base `emisiones_sa_sudamerica.csv`. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino **conocer los datos, detectar problemas y formular preguntas**.
 
 Nos concentramos en las emisiones del transporte de alimentos. Construiremos tablas y gráficos para ver cómo se distribuye la variable, comparar áreas, observar su evolución en el tiempo y explorar su relación con la población urbana.
 
 En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?
 
-## Paquetes
+
+
+
+## Actividad 1. Preparación del entorno de trabajo
+
+En esta práctica continuaremos trabajando con el proyecto
+**Analisis_emisiones_safood**, creado en las prácticas anteriores.
+
+Utilizaremos la base de datos `emisiones_sa_sudamerica.csv`,
+generada y guardada al finalizar la Práctica 2.
+
+### Paso 1. Abrir el proyecto en RStudio
+
+1. Abrí RStudio.
+2. Abrí el proyecto `Analisis_agrofood.Rproj`.
+3. Verificá que se encuentren las carpetas del proyecto.
+
+### Paso 2. Crear un nuevo documento Quarto
+
+1. Seleccioná **File → New File → Quarto Document**.
+2. Escribí como título **Práctica 3. Análisis exploratorio de datos**.
+3. Guardá el documento con el nombre `practica_3.qmd`
+   en la carpeta `scripts`.
+
+### Paso 3. Limpiar el entorno de trabajo
+
+Antes de comenzar, eliminaremos los objetos que puedan
+haber quedado cargados de sesiones anteriores.
+
+Para ello, ejecutá la siguiente instrucción en la
+**consola de RStudio**:
+
+```r
+rm(list = ls())
+```
+
+La función `ls()` devuelve los nombres de los objetos
+existentes en el entorno de trabajo, mientras que
+`rm()` permite eliminarlos.
+
+Por lo tanto, `rm(list = ls())` elimina los objetos
+del entorno de trabajo actual.
+
+**Importante:** esta instrucción no elimina los archivos
+guardados en las carpetas del proyecto. Solamente elimina
+los objetos que se encuentran cargados en la sesión de R.
+
+### Paso 4. Cargar los paquetes
+
+Para realizar el análisis exploratorio utilizaremos
+el paquete `tidyverse`.
 
 ```r
 #| label: paquetes
 library(tidyverse)
 ```
 
-Si el paquete no está instalado: `install.packages("tidyverse")`.
+Si el paquete no está instalado, ejecutá previamente
+`install.packages("tidyverse")` desde la consola de RStudio.
 
-## Carga y revisión de nombres
+### Paso 5. Importar la base de datos
+
+En la Práctica 2 generaste y guardaste la base de datos
+`emisiones_sa_sudamerica.csv` en la carpeta `datos transformados`.
+
+Ahora vamos a importarla nuevamente al entorno de R.
 
 ```r
-#| label: carga
-agro <- read_csv("Agrofood_co2_emission.csv") |>
-  janitor::clean_names()      # nombres en minúscula, sin espacios ni símbolos
-
-names(agro)
+#| label: importar-datos
+emisiones_sa <- read_csv("../datos transformados/emisiones_sa_sudamerica.csv")
 ```
 
-**Pregunta 0:** ¿cuáles son los nombres de las columnas que usaremos (área, año, emisiones del transporte de alimentos y población urbana)? Si alguno no coincide con los nombres de este documento, anotá cuál es el correcto y reemplazalo en el código.
+### Paso 6. Verificar la importación
 
-## Actividad 1. ¿Qué información tenemos?
+Una vez importados los datos, ejecutá:
 
-```r
-#| label: estructura
-dim(agro)
-glimpse(agro)
+
+
+## Actividad 2. ¿Qué información tenemos?
+
+``` r
+#| label: verificar-datos
+glimpse(emisiones_sa)
+names(emisiones_sa)
+dim(emisiones_sa)
 ```
 
 **Pregunta 1.1:** ¿qué representa cada fila? ¿Cuántas filas y columnas tiene la base?
 
 **Pregunta 1.2:** ¿qué tipo de variable es cada una de las que vas a usar: numérica, categórica o fecha?
 
-## Actividad 2. ¿Entre qué años se extiende la información?
+## Actividad 3. ¿Entre qué años se extiende la información?
 
-```r
+``` r
 #| label: rango-anios
-range(agro$year, na.rm = TRUE)
+range(emisiones_sa$year, na.rm = TRUE)
 ```
 
 **Pregunta 2.1:** ¿entre qué años se extiende la información?
 
 **Pregunta 2.2:** ¿todos los años tienen la misma cantidad de registros?
 
-```r
+``` r
 #| label: registros-por-anio
-tabla_anio <- agro |>
+tabla_anio <- emisiones_sa |>
   count(year, name = "registros")
 
 tabla_anio
@@ -64,7 +122,7 @@ tabla_anio
 
 Para comprobar si falta algún año dentro del rango, comparamos con la secuencia completa de años:
 
-```r
+``` r
 #| label: anios-faltantes
 todos_los_anios <- tibble(year = 1990:2020)
 
@@ -73,38 +131,38 @@ anti_join(todos_los_anios, tabla_anio, by = "year")
 
 Si el resultado está vacío, todos los años tienen registros. Si no, esos años faltan en la base.
 
-## Actividad 3. ¿Cómo se distribuyen las emisiones?
+## Actividad 4. ¿Cómo se distribuyen las emisiones?
 
 Primero revisamos los valores faltantes, porque cambian las medidas que calculemos:
 
-```r
+``` r
 #| label: faltantes
-sum(is.na(agro$total_emission))
+sum(is.na(emisiones_sa$total_emission))
 ```
 
-```r
+``` r
 #| label: distribucion
-ggplot(agro, aes(x = total_emission)) +
+ggplot(emisiones_sa, aes(x = total_emission)) +
   geom_histogram(bins = 30, fill = "steelblue", color = "white") +
   labs(x = "Emisiones totales del transporte de alimentos",
        y = "Frecuencia",
        title = "Distribución de las emisiones") +
   theme_minimal()
 
-summary(agro$total_emission)
+summary(emisiones_sa$total_emission)
 ```
 
 **Pregunta 3.1:** ¿la distribución es simétrica o tiene cola hacia un lado? ¿Cómo lo sabés?
 
 **Pregunta 3.2:** comparando la media y la mediana, ¿cuál describe mejor el centro? ¿Por qué?
 
-## Actividad 4. ¿Cómo varían las emisiones entre áreas?
+## Actividad 5. ¿Cómo varían las emisiones entre áreas?
 
 Calculamos medidas resumen por área con tidyverse:
 
-```r
+``` r
 #| label: resumen-areas
-resumen_areas <- agro |>
+resumen_areas <- emisiones_sa |>
   group_by(area) |>
   summarise(
     n       = n(),
@@ -120,14 +178,14 @@ head(resumen_areas, 10)
 
 Para ver la distribución de algunas áreas, comparamos con diagramas de caja. Elegí las 10 áreas con mayor mediana:
 
-```r
+``` r
 #| label: boxplot-areas
 #| fig-height: 6
 top_areas <- resumen_areas |>
   slice_head(n = 10) |>
   pull(area)
 
-agro |>
+emisiones_sa |>
   filter(area %in% top_areas) |>
   ggplot(aes(x = reorder(area, total_emission, median), y = total_emission)) +
   geom_boxplot(fill = "lightblue") +
@@ -140,13 +198,13 @@ agro |>
 
 **Pregunta 4.2:** ¿qué áreas tienen mayor dispersión? ¿Qué medida usarías para compararla?
 
-## Actividad 5. ¿Cómo evolucionan las emisiones en el tiempo?
+## Actividad 6. ¿Cómo evolucionan las emisiones en el tiempo?
 
 Elegí un área y graficá su evolución. Cambiá `"Argentina"` por otra área si lo preferís:
 
-```r
+``` r
 #| label: evolucion-area
-agro |>
+emisiones_sa |>
   filter(area == "Argentina") |>
   ggplot(aes(x = year, y = total_emission)) +
   geom_line(color = "darkgreen", linewidth = 1) +
@@ -159,19 +217,19 @@ agro |>
 
 **Pregunta 5.2:** ¿qué podría explicar un salto en la serie? Pensá en fuentes de datos o en cambios de metodología.
 
-## Actividad 6. ¿Se relacionan las emisiones con la población urbana?
+## Actividad 7. ¿Se relacionan las emisiones con la población urbana?
 
-```r
+``` r
 #| label: dispersion-urbana
 #| eval: false
-ggplot(agro, aes(x = urban_population, y = total_emission)) +
+ggplot(emisiones_sa, aes(x = urban_population, y = total_emission)) +
   geom_point(alpha = 0.5, color = "steelblue") +
   labs(x = "Población urbana", y = "Emisiones totales",
        title = "Emisiones según población urbana") +
   theme_minimal()
 ```
 
-**Atención:** la columna de población urbana puede tener otro nombre o estar en otra escala. Ajustala después de revisar `names(agro)`. Quitá `eval: false` cuando el código esté corregido.
+**Atención:** la columna de población urbana puede tener otro nombre o estar en otra escala. Ajustala después de revisar `names(emisiones_sa)`. Quitá `eval: false` cuando el código esté corregido.
 
 **Pregunta 6.1:** ¿la relación parece lineal, curva o inexistente? ¿Hay puntos que se alejen mucho del patrón general?
 

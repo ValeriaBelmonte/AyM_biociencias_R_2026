@@ -27,7 +27,7 @@ Esta carpeta contendrá todos los archivos relacionados con el proyecto, organiz
 La estructura inicial del proyecto será:
 
 ``` text
-Analisis agrofood/  
+Analisis_agrofood/  
 ├── datos_originales/  
 ├── datos_transformados/  
 ├── figuras/  
@@ -45,7 +45,7 @@ Descargar base de datos Agrofood_co2_emission.csv\
 Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales
 
 ``` text
-Analisis agrofood/  
+Analisis_agrofood/  
 ├── datos_originales/  
             └── Agrofood_co2_emission.csv
 ├── datos_transformados/  
@@ -80,7 +80,7 @@ Luego, hacé clic en **Create Project**.
 
 RStudio creará un archivo con extensión `.Rproj`, que permitirá trabajar de manera organizada dentro del proyecto.
 
-![Figura: Imagen de la creación del proyecto](/imagenes/proyecto agro_food.png){width="433"}
+![Figura: Imagen de la creación del proyecto](/imagenes/proyecto%20agro_food.png){width="433"}
 
 ## Paso 3. Crear el primer documento Quarto
 
@@ -140,8 +140,8 @@ Para ejecutar el código podemos:
 
 Al ejecutar 2 + 3, R mostrará el siguiente resultado:
 
-``` r
-5
+```         
+[1] 5
 ```
 
 El resultado puede observarse en la consola de RStudio o debajo del bloque de código, según la configuración del editor.
@@ -170,7 +170,7 @@ Quarto permite integrar en un mismo documento:
 
 Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código
 
-### Preparar el RStudio para la próxima clase 
+### Preparar el RStudio para la próxima clase
 
 1.  Para dejar preparado el RStudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**
 

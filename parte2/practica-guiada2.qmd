@@ -1,452 +1,381 @@
 ---
 title: "Práctica Guiada 2"
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
-## Preparación del entorno e importación
+## Propósito
 
-Los paquetes se instalan una única vez en la computadora. En cambio,
-deben cargarse cada vez que se inicia una nueva sesión de trabajo en R.
+En la [Práctica guiada 1](../parte1/practica-guiada1.qmd) organizamos el proyecto `Analisis_agrofood`, creamos las carpetas, instalamos `tidyverse` e importamos la base original. En esta práctica continuaremos **en el mismo proyecto** para reconocer, limpiar y organizar los datos, construir una base de países de América del Sur y guardarla en `datos transformados`.
 
-``` r
-install.packages("tidyverse")
-install.packages("janitor")
+Al finalizar, habrás generado el archivo `agro_sudamerica.csv`, que utilizaremos en las próximas prácticas.
+
+## Paso 1. Abrir el proyecto
+
+1. Abrí RStudio y el archivo `.Rproj` del proyecto `Analisis_agrofood`.
+2. Comprobá que estén las carpetas `datos originales`, `datos transformados` y `scripts`.
+3. Verificá que el archivo `Agrofood_co2_emission.csv` esté dentro de `datos originales`.
+
+No es necesario crear nuevamente el proyecto ni volver a descargar la base original.
+
+## Paso 2. Crear un documento Quarto y cargar los paquetes
+
+Seleccioná **File > New File > Quarto Document**. Creá el documento y guardalo dentro de `scripts` con el nombre `practica_agrofood_2.qmd`. En esta guía usamos bloques de código R que podés insertar con **Ctrl + Alt + I**.
+
+```r
+#| label: paquetes
+
+# Instalación: solo cuando el paquete todavía no está instalado.
+# install.packages("tidyverse")
+# install.packages("janitor")
+
+# Carga: se realiza en cada nueva sesión de R.
+library(tidyverse)
+library(janitor)
 ```
 
-1.  **Importar datos significa leer un archivo externo y convertirlo en
-    un objeto que R pueda utilizar.**
+El símbolo `#` inicia un **comentario**: R no ejecuta lo que aparece después de ese símbolo en la misma línea. Por eso dejamos las instalaciones comentadas; `tidyverse` ya fue instalado en la práctica anterior. Si todavía no instalaste `janitor`, quitá temporalmente el `#`, ejecutá la instalación y volvé a comentarla.
 
-``` r
-agro <- read_csv("../datos originales/Agrofood_co2_emission.csv")
+**Para pensar:** ¿cuál es la diferencia entre instalar un paquete mediante `install.packages()` y cargarlo con `library()`?
+
+## Paso 3. Preparar el entorno e importar la base original
+
+Al abrir el proyecto, quizás encuentres el objeto `agro` en el panel **Environment**, porque RStudio puede restaurar objetos de una sesión anterior. Vamos a practicar cómo limpiar el entorno y recuperar los datos desde el archivo original.
+
+Ejecutá **interactivamente** el siguiente bloque (con **Run** o **Ctrl + Enter**) y observá el panel *Environment* antes y después:
+
+```r
+#| label: limpiar-entorno
+rm(list = ls())
 ```
 
-A partir de este momento, agro será nuestro objeto de trabajo.
-Modificarlo no cambia automáticamente el archivo CSV original.
+- `ls()` muestra los nombres de los objetos del entorno actual.
+- `rm()` elimina los objetos indicados.
+- `rm(list = ls())` elimina los objetos del entorno actual, **no** los archivos del disco ni los paquetes instalados.
 
-Según la extensión del archivo a importar hay diferentes caminos
+**Pregunta 2.1.** ¿Qué sucedió en el panel *Environment*? ¿Sigue existiendo el CSV en `datos originales`?
 
-Cuando los datsso están separados por ;
+Ahora importá la base desde el nuevo documento:
 
-``` r
-datos <- read_csv2("../datos originales/archivo.csv")
+```r
+#| label: importar-agro
+agro <- read_csv("../datos_originales/Agrofood_co2_emission.csv")
 ```
 
-Esta función interpreta, por defecto, el punto y coma como separador de
-columnas y la coma como separador decimal.
+En esta ruta, `..` permite subir desde la carpeta `scripts` a la carpeta principal del proyecto. El documento debe incluir la importación para poder ejecutarse sin depender de objetos guardados en sesiones anteriores. En general, Quarto renderiza los documentos con motor knitr en una sesión nueva de R: `rm(list = ls())` es aquí un ejercicio didáctico y **no un requisito habitual de reproducibilidad**.
 
-- Archivos de Excel
+## Paso 4. Reconocer la estructura de la base
 
-Para importar archivos de Excel con extensión `.xlsx` o `.xls` se
-utiliza el paquete `readxl`. Si aún no está instalado, debe instalarse
-una sola vez:
+Cada fila corresponde a un área o país en un año determinado; las columnas incluyen emisiones de diferentes rubros, población y temperatura.
 
-``` r
-install.packages("readxl")
+```r
+#| label: dimensiones
+dim(agro)   # cantidad de filas y columnas
+nrow(agro)  # cantidad de filas
+ncol(agro)  # cantidad de columnas
 ```
 
-En cada sesión en la que se lo necesite, se carga el paquete:
-
-``` r
-library(readxl)
-```
-
-Luego se importa el archivo:
-
-``` r
-datos <- read_excel("../datos originales/archivo.xlsx")
-```
-
-Si el libro contiene varias hojas, puede indicarse cuál se desea leer:
-
-``` r
-datos <- read_excel(
-  "../datos originales/archivo.xlsx",
-  sheet = "Hoja1"
-)
-```
-
-- Archivos de texto
-
-Cuando los datos se encuentran en un archivo de texto, se puede utilizar
-`read_delim()`. Debe indicarse cuál es el separador entre las columnas.
-
-- Para datos separados por tabulaciones:
-
-``` r
-datos <- read_delim(
-  "../datos originales/archivo.txt",
-  delim = "\t"
-)
-```
-
-Para datos separados por otro símbolo, por ejemplo una barra vertical:
-
-``` r
-datos <- read_delim(
-  "../datos originales/archivo.txt",
-  delim = "|"
-)
-```
-
-2.  **Reconocimiento de la estructura de la base**
-
-En esta base, cada fila representa información de un área o país en un
-año determinado. Las columnas representan variables, por ejemplo, las
-emisiones por distintos rubros, la población y la temperatura media.
-
-``` r
-dim(agro)
-
-nrow(agro)
-
-ncol(agro)
-```
-
-``` r
+```r
+#| label: vistazo
 glimpse(agro)
+
 ```
 
-La función `glimpse()` permite observar los nombres de las variables,
-sus tipos y algunos de sus valores.
+`glimpse()` muestra los nombres de las variables, sus tipos y algunos valores.
 
-3.  **Limpieza de nombres**
+Solo el nombre de las variables 
+```r
+names(agro)
+```
 
-Los nombres originales contienen espacios, mayúsculas, paréntesis y
-símbolos. Para trabajar de manera más sencilla, los normalizaremos.
+**Pregunta 2.2.** ¿Cuántas filas y columnas tiene la base? Identificá una variable de texto y una numérica.
 
-``` r
-agro <- agro |>
-  clean_names()
+## Paso 5. Limpiar y organizar la base
+
+### 5.1. Normalizar nombres de variables
+
+Los nombres originales incluyen espacios, mayúsculas y símbolos. Para facilitar el trabajo, usaremos `clean_names()` del paquete `janitor`.
+
+```r
+#| label: nombres-limpios
+agro <- clean_names(agro)
 
 names(agro)
 ```
 
-Por ejemplo:
+Por ejemplo, `Area` pasa a `area` y `Year` a `year`. A partir de ahora trabajaremos con los nombres limpios.
 
-Area → area\
-Year → year\
-Average Temperature °C → average_temperature_c
-
-Total Population - Female → total_population_female
-
-A partir de este punto se utilizarán los nombres limpios.
-
-4.  **Tipos de variables**
-
-En la base predominan variables de texto y variables numéricas.
-
-area contiene nombres de países o regiones. year representa el año de
-cada registro. Las emisiones, la población y la temperatura son
-variables numéricas.
-
-``` r
-class(agro$area)
-
-class(agro$year)
-
-class(agro$total_emission)
+```r
+#| label: tipos
+class(agro$area)  
 ```
+**Pregunta 2.3.** ¿Qué tipo de variable es `year`?
 
-Aunque year está expresada mediante números, representa el tiempo y se
-mantendrá como variable numérica para estudiar posteriormente su
-evolución.
 
-5.  **Selección y reordenamiento de variables**
 
-Seleccionar variables significa conservar determinadas columnas de la
-base. Esta operación no elimina filas.
+### 5.2. Seleccionar y reordenar columnas
 
-a.  seleccionar algunas variables especificas: area, year,
-    total_emission, average_temperature_c
+`select()` conserva columnas sin filtrar filas.
 
-``` r
+```r
+#| label: seleccion-ejemplos
 agro |>
   select(area, year, total_emission, average_temperature_c)
 ```
 
-b.  Seleccionar las varaialbes desde áreas hasta rice_cultivation
 
-``` r
+```r
 agro |>
   select(area:rice_cultivation)
 ```
 
-Selccionar las variables que tienen una determinada parlabra. Ejemplo,
-"population" Observación: la palabar debe ir entre comillas
 
-``` r
+```r
 agro |>
   select(area, year, contains("population"))
 ```
 
-Seleccionar las variables que terminan en una deteminada palabra, por
-ejemplo "fires"
 
-``` r
+```r
 agro |>
   select(ends_with("fires"))
 ```
 
-c.  Eliminar una variable se utliza la función `select()` y se escribe
-    la varaible precedida por el signo -
 
-```         
+```r
 agro |>
   select(-average_temperature_c)
 ```
 
-Podemos crear una base reducida para trabajar con algunas variables
-seleccionadas.
+Las funciones `contains()` y `ends_with()` buscan partes de los nombres de columnas. El signo `-` delante de un nombre excluye esa columna.
 
-``` r
+Crearemos una base reducida para practicar; la base `agro` conserva todas sus columnas.
+
+```r
+#| label: base-reducida
 agro_reducida <- agro |>
   select(
-    area,
-    year,
-    rural_population,
-    urban_population,
-    total_population_male,
-    total_population_female,
-    total_emission,
-    average_temperature_c
+    area, year, rural_population, urban_population,
+    total_population_male, total_population_female,
+    total_emission, average_temperature_c
   ) |>
   relocate(total_emission, .after = year)
+
+glimpse(agro_reducida)
 ```
 
-`relocate(total_emission, .after = year)` sirve para ordenar un
-variable. Se puede adicionar
+`relocate()` cambia el orden de las columnas; `.after = year` coloca la variable después de `year`, y `.before = year` la colocaría antes.
 
-.after =...-\> después de...
+**Pregunta 2.4.** ¿Qué diferencia hay entre `select()` y `relocate()`? ¿Cuántas filas tiene `agro_reducida` en comparación con `agro`?
 
-.besfore=... -\> antes de...
+### 5.3. Filtrar y ordenar observaciones
 
-6.  Filtrado y ordenamiento de observaciones
+Mientras `select()` trabaja con columnas, `filter()` conserva las **filas** que cumplen una condición.
 
-Mientras select() trabaja con columnas, filter() permite conservar las
-filas que cumplen una condición.
+```r
+#| label: filtros
+agro |> filter(area == "Argentina")
+```
 
-``` r
+
+```r
+agro |> filter(year == 2020)
+```
+
+
+```r
+agro |> filter(area == "Argentina", year == 2020)
+```
+
+
+```r
 agro |>
-  filter(area == "Argentina")
+  filter(area %in% c(
+    "Argentina", "Bolivia (Plurinational State of)",
+    "Brazil", "Chile", "Paraguay", "Uruguay"
+  ))
 ```
 
-``` r
-agro |>
-  filter(year == 2020)
+`==` comprueba igualdad; `%in%` comprueba si un valor pertenece a un conjunto.
+
+```r
+#| label: ordenar
+agro |> arrange(total_emission)
 ```
 
-``` r
-agro |>
-  filter(
-    area == "Argentina",
-    year == 2020
-  )
+
+```r
+agro |> arrange(area, year)
 ```
 
-``` r
-agro |>
-  filter(
-    area %in% c(
-      "Argentina",
-      "Bolivia (Plurinational State of)",
-      "Brazil",
-      "Chile",
-      "Paraguay",
-      "Uruguay"
-    )
-  )
-```
+`arrange()` ordena filas sin eliminar observaciones. Para ordenar de mayor a menor, se puede usar `desc(total_emission)`.
 
-``` r
-agro |>
-  arrange(total_emission)
-```
+**Pregunta 2.5.** ¿Qué diferencia observás entre `filter()` y `arrange()`?
 
-``` r
-agro |>
-  arrange(area, year)
-```
+## Paso 6. Transformar variables y controlar los datos
 
-7.  **Creación y recodificación de variables**
+### 6.1. Crear nuevas variables
 
-La función mutate() permite crear nuevas variables o modificar las
-existentes.
+`mutate()` permite crear columnas o modificar las existentes.
 
-``` r
+```r
+#| label: nuevas-variables
 agro <- agro |>
   mutate(
-    total_population =
-      total_population_male + total_population_female,
-    
+    total_population = total_population_male + total_population_female,
     urban_population_percentage =
       100 * urban_population / total_population,
-    
-    positive_temperature_change =
-      average_temperature_c > 0
+    positive_temperature_change = average_temperature_c > 0
   )
 ```
 
-También podemos crear una variable para distinguir a Argentina de otros
-paises
+La última variable es lógica (`TRUE`/`FALSE`). El porcentaje puede ser faltante cuando faltan componentes; si la población total es cero, debe revisarse antes de interpretar el cociente.
 
-``` r
-agro <- agro |>
-  mutate(
-    grupo_region = case_when(
-      area == "Argentina" ~ "Argentina",
-      
-      TRUE ~ "Otros países o regiones"
-    )
-  )
-```
+**Pregunta 2.6.** ¿Qué representa cada una de las tres variables creadas? ¿De qué tipo es `positive_temperature_change`?
 
-8.  **Valores faltantes y duplicados**
+### 6.2. Detectar valores faltantes y duplicados
 
-Un valor faltante se representa en R mediante NA. No significa que el
-valor sea cero, sino que la información no está disponible.
+En R, `NA` representa información faltante; no equivale al valor cero.
 
-``` r
+```r
+#| label: faltantes
 sum(is.na(agro))
-```
 
-``` r
 agro |>
-  summarise(
-    across(
-      everything(),
-      ~ sum(is.na(.x))
-    )
-  )
+  summarise(across(everything(), ~ sum(is.na(.x))))
 ```
 
-Para detectar si existen filas completamente duplicadas:
+Para revisar posibles duplicados:
 
-``` r
+```r
+#| label: duplicados
 sum(duplicated(agro))
-```
 
-``` r
 agro |>
   count(area, year) |>
   filter(n > 1)
 ```
 
-En esta base, debería haber como máximo una observación por combinación
-de área y año.
+El primer cálculo detecta filas completamente repetidas; el segundo identifica combinaciones de área y año repetidas, aunque sus demás columnas sean distintas. **No elimines duplicados automáticamente:** primero investigá su origen.
 
-Antes de eliminar duplicados, es necesario investigar por qué aparecen.
+### 6.3. Resumir por grupos
 
-9.  **Resúmenes agrupados iniciales**
-
-La combinación de group_by() y summarise() permite organizar y resumir
-información para distintos grupos.
-
-``` r
+```r
+#| label: resumen-grupos
 agro |>
   group_by(area) |>
   summarise(
     cantidad_anios = n(),
-    primer_anio = min(year),
-    ultimo_anio = max(year)
+    primer_anio = min(year, na.rm = TRUE),
+    ultimo_anio = max(year, na.rm = TRUE),
+    .groups = "drop"
   )
 ```
 
-En las próximas clases utilizaremos estas mismas funciones para calcular
-medidas descriptivas y comparar las emisiones entre países y rubros.
+`group_by()` define los grupos y `summarise()` calcula un resumen para cada uno. En este ejemplo, suponemos que cada área tiene al menos un año registrado.
 
-10. Construcción y guardado de la base limpia
+**Pregunta 2.6.** ¿Todos los países tienen la misma cantidad de registros anuales? ¿Qué información te permite averiguarlo?
 
-Finalmente, construiremos una versión ordenada de la basecon los países
-de América del Sur incluidos, que utilizaremos en las clases siguientes.
+## Paso 7. Construir una nueva base para América del Sur
 
-``` r
+Nuestro objetivo es conservar los registros correspondientes a los países de América del Sur y crear la variable `grupo_region` con tres categorías: **Argentina**, **Países limítrofes** y **Otros países de América del Sur**.
+
+Primero filtramos las áreas que queremos conservar. En este ejercicio se incluyen los países soberanos de América del Sur; no se incluyen las islas Malvinas/Falkland como un país independiente.
+
+```r
+#| label: sudamerica
 agro_sudamerica <- agro |>
-  filter(
-    area %in% c(
-      "Argentina",
-      "Bolivia (Plurinational State of)",
-      "Brazil",
-      "Chile",
-      "Colombia",
-      "Ecuador",
-      "Falkland Islands (Malvinas)",
-      "Guyana",
-      "Paraguay",
-      "Peru",
-      "Suriname",
-      "Uruguay",
-      "Venezuela (Bolivarian Republic of)"
-    )
-  )
+  filter(area %in% c(
+    "Argentina", "Bolivia (Plurinational State of)",
+    "Brazil", "Chile", "Colombia", "Ecuador",
+    "Guyana", "Paraguay", "Peru", "Suriname",
+    "Uruguay", "Venezuela (Bolivarian Republic of)"
+  ))
 ```
 
-Creamos una nueva variable de clasifiación para idenitificar Argentina,
-los paises límitrofes y los restantes
+A continuación creamos la clasificación regional y ordenamos las observaciones.
 
-``` r
-agro_sudamerica <-agro_sudamerica  |>
+```r
+#| label: grupo-region
+agro_sudamerica <- agro_sudamerica |>
   mutate(
     grupo_region = case_when(
       area == "Argentina" ~ "Argentina",
-      
       area %in% c(
         "Bolivia (Plurinational State of)",
-        "Brazil",
-        "Chile",
-        "Paraguay",
-        "Uruguay"
+        "Brazil", "Chile", "Paraguay", "Uruguay"
       ) ~ "Países limítrofes",
-      
       TRUE ~ "Otros países de América del Sur"
     )
   ) |>
   arrange(area, year)
 ```
 
-``` r
+`case_when()` asigna un valor de acuerdo con las condiciones, evaluadas de arriba hacia abajo. `TRUE` contempla los casos restantes.
+
+Comprobamos el resultado:
+
+```r
+#| label: comprobar-region
+agro_sudamerica |> distinct(area, grupo_region) |> arrange(grupo_region, area)
+```
+
+
+```r
+agro_sudamerica |> count(grupo_region)
+```
+
+**Pregunta 2.7.** ¿Cuántos países distintos aparecen en la nueva base? ¿Qué países quedaron clasificados como limítrofes?
+
+## Paso 8. Guardar y verificar la nueva base
+
+Guardá la base transformada en la carpeta `datos_transformados`, creada en la Práctica guiada 1.
+
+
+```r
+#| label: guardar-csv
 write_csv(
-  agro_sudamerica,
-  "../datos transformados/agro_sudamerica.csv"
+  agro_sudamerica,"../datos_transformados/agro_sudamerica.csv"
 )
 ```
 
-También es posible guardarla como objeto de R. Este formato conserva
-mejor las clases de las variables.
+`write_csv()` guarda un archivo CSV; **no** reemplaza ni modifica el archivo original de `datos originales`.
 
-``` r
-saveRDS(
-  agro_sudamerica,
-  "../datos transformados/agro_sudamerica.rds"
-)
+Comprobá desde el explorador de archivos de RStudio que `agro_sudamerica.csv` aparezca en la carpeta correspondiente. Para verificar que puede importarse otra vez, leemos el archivo con otro nombre de objeto:
+
+::: {.callout-tip}
+## Resultado de la práctica
+
+Terminaste con una base de datos de América del Sur que contiene variables transformadas y una clasificación regional. La conservamos como CSV en `datos transformados` para continuar con el análisis exploratorio en la próxima práctica.
+:::
+
+## Ampliación opcional: otros formatos de importación y guardado
+
+Además de `read_csv()`, podemos importar otros tipos de archivos. Estos son **ejemplos**: no los ejecutes sin tener los archivos correspondientes.
+
+| Tipo de archivo | Función | Paquete |
+|---|---|---|
+| CSV delimitado por comas | `read_csv()` | `readr` (incluido en `tidyverse`) |
+| CSV delimitado por punto y coma | `read_csv2()` | `readr` (incluido en `tidyverse`) |
+| Excel (`.xlsx`, `.xls`) | `read_excel()` | `readxl` |
+| Texto delimitado | `read_delim()` | `readr` |
+| Objeto R (`.rds`) | `readRDS()` | R base |
+
+`read_csv2()` utiliza por defecto punto y coma como separador y coma como marca decimal.
+
+Para importar Excel, primero instalá `readxl` (solo si hace falta) y luego cargalo:
+
+```r
+#| eval: false
+# install.packages("readxl")
+library(readxl)
+datos_excel <- read_excel("../datos originales/archivo.xlsx")
 ```
 
-```         
-agro_sudamerica2<- readRDS(
-  "../datos transformados/agro_sudamerica.rds"
-)
+También se puede guardar un objeto de R conservando sus clases mediante RDS:
+
+```r
+#| eval: false
+saveRDS(agro_sudamerica, "../datos transformados/agro_sudamerica.rds")
+agro_desde_rds <- readRDS("../datos transformados/agro_sudamerica.rds")
 ```
 
-Al finalizar esta etapa, contaremos con una base limpia, ordenada y
-preparada para realizar tablas, gráficos y análisis descriptivos.agro
-\|\> select(-average_temperature_c)
-
-Podemos crear una base reducida para trabajar con algunas variables
-seleccionadas.
-
-## Resumen de las principlaes funciones utilizadas
-
-| Sección | Objetivos abordados | Funciones principales |
-|:---|:---|:---|
-| Preparación e importación | Importar un archivo CSV | `read_csv()` |
-| Reconocimiento de la base | Reconocer filas, columnas, variables y observaciones | `dim()`, `nrow()`, `ncol()`, `names()`, `glimpse()`, `str()` |
-| Limpieza de nombres | Trabajar con nombres consistentes | `clean_names()` |
-| Selección y reordenamiento | Seleccionar y ordenar variables | `select()`, `relocate()` |
-| Filtrado y ordenamiento | Filtrar y ordenar observaciones | `filter()`, `arrange()`, `between()`, `%in%` |
-| Creación y recodificación | Crear y recodificar variables | `mutate()`, `case_when()` |
-| Control de calidad | Detectar faltantes y duplicados | `is.na()`, `drop_na()`, `duplicated()`, `distinct()` |
-| Resúmenes agrupados | Explorar subconjuntos de datos | `group_by()`, `summarise()`, `n_distinct()` |
-| Base limpia | Guardar una nueva base de datos | `write_csv()`, `saveRDS()` |
-
-## 
+En esta práctica, **el producto que debemos entregar es el CSV**. El formato RDS queda como lectura complementaria.

@@ -23,11 +23,11 @@ En este curso trabajaremos principalmente con el ecosistema **tidyverse** [@tidy
 | `dplyr`   | Seleccionar, filtrar, crear y resumir variables. |
 | `tidyr`   | para reorganizar la estructura de los datos.     |
 | `ggplot2` | Crear gráficos.                                  |
-| `forcats` | rabajar con variables categóricas (factores).    |
+| `forcats` | trabajar con variables categóricas (factores).   |
 
 Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el *data frame* o, más específicamente, el *tibble*), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.
 
-ara conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la [Página oficial de Tidyverse](https://tidyverse.tidyverse.org/)
+Para conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la [Página oficial de Tidyverse](https://tidyverse.tidyverse.org/)
 
 Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.
 
@@ -81,7 +81,7 @@ Importar datos significa leer un archivo externo y convertirlo en un objeto que 
 El nombre del archivo que se desea importar debe escribirse entre comillas. Si el archivo **no** se encuentra en la carpeta de trabajo actual, es necesario indicar su **ruta de acceso**. Por ejemplo, `../` permite subir un nivel en la estructura de carpetas, como se muestra en el código:
 
 ``` r
-datos <- read_csv("../datos originales/base_datos.csv")
+datos <- read_csv("../datos_originales/base_datos.csv")
 ```
 
 Para comprobar que el objeto fue creado:

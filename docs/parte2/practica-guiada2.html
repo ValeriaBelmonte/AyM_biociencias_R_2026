@@ -390,9 +390,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#preparación-del-entorno-e-importación" id="toc-preparación-del-entorno-e-importación" class="nav-link active" data-scroll-target="#preparación-del-entorno-e-importación"><span class="header-section-number">1</span> Preparación del entorno e importación</a></li>
-  <li><a href="#resumen-de-las-principlaes-funciones-utilizadas" id="toc-resumen-de-las-principlaes-funciones-utilizadas" class="nav-link" data-scroll-target="#resumen-de-las-principlaes-funciones-utilizadas"><span class="header-section-number">2</span> Resumen de las principlaes funciones utilizadas</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"><span class="header-section-number">3</span> </a></li>
+  <li><a href="#propósito" id="toc-propósito" class="nav-link active" data-scroll-target="#propósito"><span class="header-section-number">1</span> Propósito</a></li>
+  <li><a href="#paso-1.-abrir-el-proyecto" id="toc-paso-1.-abrir-el-proyecto" class="nav-link" data-scroll-target="#paso-1.-abrir-el-proyecto"><span class="header-section-number">2</span> Paso 1. Abrir el proyecto</a></li>
+  <li><a href="#paso-2.-crear-un-documento-quarto-y-cargar-los-paquetes" id="toc-paso-2.-crear-un-documento-quarto-y-cargar-los-paquetes" class="nav-link" data-scroll-target="#paso-2.-crear-un-documento-quarto-y-cargar-los-paquetes"><span class="header-section-number">3</span> Paso 2. Crear un documento Quarto y cargar los paquetes</a></li>
+  <li><a href="#paso-3.-preparar-el-entorno-e-importar-la-base-original" id="toc-paso-3.-preparar-el-entorno-e-importar-la-base-original" class="nav-link" data-scroll-target="#paso-3.-preparar-el-entorno-e-importar-la-base-original"><span class="header-section-number">4</span> Paso 3. Preparar el entorno e importar la base original</a></li>
+  <li><a href="#paso-4.-reconocer-la-estructura-de-la-base" id="toc-paso-4.-reconocer-la-estructura-de-la-base" class="nav-link" data-scroll-target="#paso-4.-reconocer-la-estructura-de-la-base"><span class="header-section-number">5</span> Paso 4. Reconocer la estructura de la base</a></li>
+  <li><a href="#paso-5.-limpiar-y-organizar-la-base" id="toc-paso-5.-limpiar-y-organizar-la-base" class="nav-link" data-scroll-target="#paso-5.-limpiar-y-organizar-la-base"><span class="header-section-number">6</span> Paso 5. Limpiar y organizar la base</a>
+  <ul class="collapse">
+  <li><a href="#normalizar-nombres-de-variables" id="toc-normalizar-nombres-de-variables" class="nav-link" data-scroll-target="#normalizar-nombres-de-variables"><span class="header-section-number">6.1</span> 5.1. Normalizar nombres de variables</a></li>
+  <li><a href="#seleccionar-y-reordenar-columnas" id="toc-seleccionar-y-reordenar-columnas" class="nav-link" data-scroll-target="#seleccionar-y-reordenar-columnas"><span class="header-section-number">6.2</span> 5.2. Seleccionar y reordenar columnas</a></li>
+  <li><a href="#filtrar-y-ordenar-observaciones" id="toc-filtrar-y-ordenar-observaciones" class="nav-link" data-scroll-target="#filtrar-y-ordenar-observaciones"><span class="header-section-number">6.3</span> 5.3. Filtrar y ordenar observaciones</a></li>
+  </ul></li>
+  <li><a href="#paso-6.-transformar-variables-y-controlar-los-datos" id="toc-paso-6.-transformar-variables-y-controlar-los-datos" class="nav-link" data-scroll-target="#paso-6.-transformar-variables-y-controlar-los-datos"><span class="header-section-number">7</span> Paso 6. Transformar variables y controlar los datos</a>
+  <ul class="collapse">
+  <li><a href="#crear-nuevas-variables" id="toc-crear-nuevas-variables" class="nav-link" data-scroll-target="#crear-nuevas-variables"><span class="header-section-number">7.1</span> 6.1. Crear nuevas variables</a></li>
+  <li><a href="#detectar-valores-faltantes-y-duplicados" id="toc-detectar-valores-faltantes-y-duplicados" class="nav-link" data-scroll-target="#detectar-valores-faltantes-y-duplicados"><span class="header-section-number">7.2</span> 6.2. Detectar valores faltantes y duplicados</a></li>
+  <li><a href="#resumir-por-grupos" id="toc-resumir-por-grupos" class="nav-link" data-scroll-target="#resumir-por-grupos"><span class="header-section-number">7.3</span> 6.3. Resumir por grupos</a></li>
+  </ul></li>
+  <li><a href="#paso-7.-construir-una-nueva-base-para-américa-del-sur" id="toc-paso-7.-construir-una-nueva-base-para-américa-del-sur" class="nav-link" data-scroll-target="#paso-7.-construir-una-nueva-base-para-américa-del-sur"><span class="header-section-number">8</span> Paso 7. Construir una nueva base para América del Sur</a></li>
+  <li><a href="#paso-8.-guardar-y-verificar-la-nueva-base" id="toc-paso-8.-guardar-y-verificar-la-nueva-base" class="nav-link" data-scroll-target="#paso-8.-guardar-y-verificar-la-nueva-base"><span class="header-section-number">9</span> Paso 8. Guardar y verificar la nueva base</a></li>
+  <li><a href="#ampliación-opcional-otros-formatos-de-importación-y-guardado" id="toc-ampliación-opcional-otros-formatos-de-importación-y-guardado" class="nav-link" data-scroll-target="#ampliación-opcional-otros-formatos-de-importación-y-guardado"><span class="header-section-number">10</span> Ampliación opcional: otros formatos de importación y guardado</a></li>
   </ul>
 </nav>
     </div>
@@ -418,267 +435,236 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preparación-del-entorno-e-importación" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="preparación-del-entorno-e-importación"><span class="header-section-number">1</span> Preparación del entorno e importación</h2>
-<p>Los paquetes se instalan una única vez en la computadora. En cambio, deben cargarse cada vez que se inicia una nueva sesión de trabajo en R.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"janitor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol type="1">
-<li><strong>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar.</strong></li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/Agrofood_co2_emission.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A partir de este momento, agro será nuestro objeto de trabajo. Modificarlo no cambia automáticamente el archivo CSV original.</p>
-<p>Según la extensión del archivo a importar hay diferentes caminos</p>
-<p>Cuando los datsso están separados por ;</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"../datos originales/archivo.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Esta función interpreta, por defecto, el punto y coma como separador de columnas y la coma como separador decimal.</p>
-<ul>
-<li>Archivos de Excel</li>
-</ul>
-<p>Para importar archivos de Excel con extensión <code>.xlsx</code> o <code>.xls</code> se utiliza el paquete <code>readxl</code>. Si aún no está instalado, debe instalarse una sola vez:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>En cada sesión en la que se lo necesite, se carga el paquete:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Luego se importa el archivo:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../datos originales/archivo.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Si el libro contiene varias hojas, puede indicarse cuál se desea leer:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos originales/archivo.xlsx"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Hoja1"</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Archivos de texto</li>
-</ul>
-<p>Cuando los datos se encuentran en un archivo de texto, se puede utilizar <code>read_delim()</code>. Debe indicarse cuál es el separador entre las columnas.</p>
-<ul>
-<li>Para datos separados por tabulaciones:</li>
-</ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos originales/archivo.txt"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Para datos separados por otro símbolo, por ejemplo una barra vertical:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos originales/archivo.txt"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">"|"</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li><strong>Reconocimiento de la estructura de la base</strong></li>
-</ol>
-<p>En esta base, cada fila representa información de un área o país en un año determinado. Las columnas representan variables, por ejemplo, las emisiones por distintos rubros, la población y la temperatura media.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>La función <code>glimpse()</code> permite observar los nombres de las variables, sus tipos y algunos de sus valores.</p>
-<ol start="3" type="1">
-<li><strong>Limpieza de nombres</strong></li>
-</ol>
-<p>Los nombres originales contienen espacios, mayúsculas, paréntesis y símbolos. Para trabajar de manera más sencilla, los normalizaremos.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Por ejemplo:</p>
-<p>Area → area<br>
-Year → year<br>
-Average Temperature °C → average_temperature_c</p>
-<p>Total Population - Female → total_population_female</p>
-<p>A partir de este punto se utilizarán los nombres limpios.</p>
-<ol start="4" type="1">
-<li><strong>Tipos de variables</strong></li>
-</ol>
-<p>En la base predominan variables de texto y variables numéricas.</p>
-<p>area contiene nombres de países o regiones. year representa el año de cada registro. Las emisiones, la población y la temperatura son variables numéricas.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>area)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>year)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>total_emission)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Aunque year está expresada mediante números, representa el tiempo y se mantendrá como variable numérica para estudiar posteriormente su evolución.</p>
-<ol start="5" type="1">
-<li><strong>Selección y reordenamiento de variables</strong></li>
-</ol>
-<p>Seleccionar variables significa conservar determinadas columnas de la base. Esta operación no elimina filas.</p>
-<ol type="a">
-<li>seleccionar algunas variables especificas: area, year, total_emission, average_temperature_c</li>
-</ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, total_emission, average_temperature_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="a">
-<li>Seleccionar las varaialbes desde áreas hasta rice_cultivation</li>
-</ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area<span class="sc">:</span>rice_cultivation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Selccionar las variables que tienen una determinada parlabra. Ejemplo, “population” Observación: la palabar debe ir entre comillas</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, <span class="fu">contains</span>(<span class="st">"population"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Seleccionar las variables que terminan en una deteminada palabra, por ejemplo “fires”</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"fires"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="a">
-<li>Eliminar una variable se utliza la función <code>select()</code> y se escribe la varaible precedida por el signo -</li>
-</ol>
-<pre><code>agro |&gt;
-  select(-average_temperature_c)</code></pre>
-<p>Podemos crear una base reducida para trabajar con algunas variables seleccionadas.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>agro_reducida <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    area,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    year,</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    rural_population,</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    urban_population,</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    total_population_male,</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    total_population_female,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    total_emission,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    average_temperature_c</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(total_emission, <span class="at">.after =</span> year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>relocate(total_emission, .after = year)</code> sirve para ordenar un variable. Se puede adicionar</p>
-<p>.after =…-&gt; después de…</p>
-<p>.besfore=… -&gt; antes de…</p>
-<ol start="6" type="1">
-<li>Filtrado y ordenamiento de observaciones</li>
-</ol>
-<p>Mientras select() trabaja con columnas, filter() permite conservar las filas que cumplen una condición.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">==</span> <span class="st">"Argentina"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    year <span class="sc">==</span> <span class="dv">2020</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Argentina"</span>,</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Brazil"</span>,</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Chile"</span>,</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Paraguay"</span>,</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Uruguay"</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(total_emission)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(area, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="7" type="1">
-<li><strong>Creación y recodificación de variables</strong></li>
-</ol>
-<p>La función mutate() permite crear nuevas variables o modificar las existentes.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_population =</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>      total_population_male <span class="sc">+</span> total_population_female,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">urban_population_percentage =</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>      <span class="dv">100</span> <span class="sc">*</span> urban_population <span class="sc">/</span> total_population,</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">positive_temperature_change =</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>      average_temperature_c <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>También podemos crear una variable para distinguir a Argentina de otros paises</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_region =</span> <span class="fu">case_when</span>(</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">~</span> <span class="st">"Argentina"</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Otros países o regiones"</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="8" type="1">
-<li><strong>Valores faltantes y duplicados</strong></li>
-</ol>
-<p>Un valor faltante se representa en R mediante NA. No significa que el valor sea cero, sino que la información no está disponible.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(agro))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">everything</span>(),</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Para detectar si existen filas completamente duplicadas:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(agro))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(area, year) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>En esta base, debería haber como máximo una observación por combinación de área y año.</p>
-<p>Antes de eliminar duplicados, es necesario investigar por qué aparecen.</p>
-<ol start="9" type="1">
-<li><strong>Resúmenes agrupados iniciales</strong></li>
-</ol>
-<p>La combinación de group_by() y summarise() permite organizar y resumir información para distintos grupos.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cantidad_anios =</span> <span class="fu">n</span>(),</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">primer_anio =</span> <span class="fu">min</span>(year),</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ultimo_anio =</span> <span class="fu">max</span>(year)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>En las próximas clases utilizaremos estas mismas funciones para calcular medidas descriptivas y comparar las emisiones entre países y rubros.</p>
-<ol start="10" type="1">
-<li>Construcción y guardado de la base limpia</li>
-</ol>
-<p>Finalmente, construiremos una versión ordenada de la basecon los países de América del Sur incluidos, que utilizaremos en las clases siguientes.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Argentina"</span>,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Brazil"</span>,</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Chile"</span>,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Colombia"</span>,</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Ecuador"</span>,</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Falkland Islands (Malvinas)"</span>,</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Guyana"</span>,</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Paraguay"</span>,</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Peru"</span>,</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Suriname"</span>,</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Uruguay"</span>,</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Venezuela (Bolivarian Republic of)"</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Creamos una nueva variable de clasifiación para idenitificar Argentina, los paises límitrofes y los restantes</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span>agro_sudamerica  <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_region =</span> <span class="fu">case_when</span>(</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">~</span> <span class="st">"Argentina"</span>,</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Brazil"</span>,</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Chile"</span>,</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Paraguay"</span>,</span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Uruguay"</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">~</span> <span class="st">"Países limítrofes"</span>,</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Otros países de América del Sur"</span></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(area, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  agro_sudamerica,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos transformados/agro_sudamerica.csv"</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>También es posible guardarla como objeto de R. Este formato conserva mejor las clases de las variables.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  agro_sudamerica,</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos transformados/agro_sudamerica.rds"</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>agro_sudamerica2&lt;- readRDS(
-  "../datos transformados/agro_sudamerica.rds"
-)</code></pre>
-<p>Al finalizar esta etapa, contaremos con una base limpia, ordenada y preparada para realizar tablas, gráficos y análisis descriptivos.agro |&gt; select(-average_temperature_c)</p>
-<p>Podemos crear una base reducida para trabajar con algunas variables seleccionadas.</p>
+<section id="propósito" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="propósito"><span class="header-section-number">1</span> Propósito</h2>
+<p>En la <a href="../parte1/practica-guiada1.html">Práctica guiada 1</a> organizamos el proyecto <code>Analisis_agrofood</code>, creamos las carpetas, instalamos <code>tidyverse</code> e importamos la base original. En esta práctica continuaremos <strong>en el mismo proyecto</strong> para reconocer, limpiar y organizar los datos, construir una base de países de América del Sur y guardarla en <code>datos transformados</code>.</p>
+<p>Al finalizar, habrás generado el archivo <code>agro_sudamerica.csv</code>, que utilizaremos en las próximas prácticas.</p>
 </section>
-<section id="resumen-de-las-principlaes-funciones-utilizadas" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="resumen-de-las-principlaes-funciones-utilizadas"><span class="header-section-number">2</span> Resumen de las principlaes funciones utilizadas</h2>
+<section id="paso-1.-abrir-el-proyecto" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="paso-1.-abrir-el-proyecto"><span class="header-section-number">2</span> Paso 1. Abrir el proyecto</h2>
+<ol type="1">
+<li>Abrí RStudio y el archivo <code>.Rproj</code> del proyecto <code>Analisis_agrofood</code>.</li>
+<li>Comprobá que estén las carpetas <code>datos originales</code>, <code>datos transformados</code> y <code>scripts</code>.</li>
+<li>Verificá que el archivo <code>Agrofood_co2_emission.csv</code> esté dentro de <code>datos originales</code>.</li>
+</ol>
+<p>No es necesario crear nuevamente el proyecto ni volver a descargar la base original.</p>
+</section>
+<section id="paso-2.-crear-un-documento-quarto-y-cargar-los-paquetes" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="paso-2.-crear-un-documento-quarto-y-cargar-los-paquetes"><span class="header-section-number">3</span> Paso 2. Crear un documento Quarto y cargar los paquetes</h2>
+<p>Seleccioná <strong>File &gt; New File &gt; Quarto Document</strong>. Creá el documento y guardalo dentro de <code>scripts</code> con el nombre <code>practica_agrofood_2.qmd</code>. En esta guía usamos bloques de código R que podés insertar con <strong>Ctrl + Alt + I</strong>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación: solo cuando el paquete todavía no está instalado.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("janitor")</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga: se realiza en cada nueva sesión de R.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El símbolo <code>#</code> inicia un <strong>comentario</strong>: R no ejecuta lo que aparece después de ese símbolo en la misma línea. Por eso dejamos las instalaciones comentadas; <code>tidyverse</code> ya fue instalado en la práctica anterior. Si todavía no instalaste <code>janitor</code>, quitá temporalmente el <code>#</code>, ejecutá la instalación y volvé a comentarla.</p>
+<p><strong>Para pensar:</strong> ¿cuál es la diferencia entre instalar un paquete mediante <code>install.packages()</code> y cargarlo con <code>library()</code>?</p>
+</section>
+<section id="paso-3.-preparar-el-entorno-e-importar-la-base-original" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="paso-3.-preparar-el-entorno-e-importar-la-base-original"><span class="header-section-number">4</span> Paso 3. Preparar el entorno e importar la base original</h2>
+<p>Al abrir el proyecto, quizás encuentres el objeto <code>agro</code> en el panel <strong>Environment</strong>, porque RStudio puede restaurar objetos de una sesión anterior. Vamos a practicar cómo limpiar el entorno y recuperar los datos desde el archivo original.</p>
+<p>Ejecutá <strong>interactivamente</strong> el siguiente bloque (con <strong>Run</strong> o <strong>Ctrl + Enter</strong>) y observá el panel <em>Environment</em> antes y después:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: limpiar-entorno</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>ls()</code> muestra los nombres de los objetos del entorno actual.</li>
+<li><code>rm()</code> elimina los objetos indicados.</li>
+<li><code>rm(list = ls())</code> elimina los objetos del entorno actual, <strong>no</strong> los archivos del disco ni los paquetes instalados.</li>
+</ul>
+<p><strong>Pregunta 2.1.</strong> ¿Qué sucedió en el panel <em>Environment</em>? ¿Sigue existiendo el CSV en <code>datos originales</code>?</p>
+<p>Ahora importá la base desde el nuevo documento:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: importar-agro</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos_originales/Agrofood_co2_emission.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En esta ruta, <code>..</code> permite subir desde la carpeta <code>scripts</code> a la carpeta principal del proyecto. El documento debe incluir la importación para poder ejecutarse sin depender de objetos guardados en sesiones anteriores. En general, Quarto renderiza los documentos con motor knitr en una sesión nueva de R: <code>rm(list = ls())</code> es aquí un ejercicio didáctico y <strong>no un requisito habitual de reproducibilidad</strong>.</p>
+</section>
+<section id="paso-4.-reconocer-la-estructura-de-la-base" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="paso-4.-reconocer-la-estructura-de-la-base"><span class="header-section-number">5</span> Paso 4. Reconocer la estructura de la base</h2>
+<p>Cada fila corresponde a un área o país en un año determinado; las columnas incluyen emisiones de diferentes rubros, población y temperatura.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dimensiones</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)   <span class="co"># cantidad de filas y columnas</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro)  <span class="co"># cantidad de filas</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)  <span class="co"># cantidad de columnas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: vistazo</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>glimpse()</code> muestra los nombres de las variables, sus tipos y algunos valores.</p>
+<p>Solo el nombre de las variables</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.2.</strong> ¿Cuántas filas y columnas tiene la base? Identificá una variable de texto y una numérica.</p>
+</section>
+<section id="paso-5.-limpiar-y-organizar-la-base" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="paso-5.-limpiar-y-organizar-la-base"><span class="header-section-number">6</span> Paso 5. Limpiar y organizar la base</h2>
+<section id="normalizar-nombres-de-variables" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="normalizar-nombres-de-variables"><span class="header-section-number">6.1</span> 5.1. Normalizar nombres de variables</h3>
+<p>Los nombres originales incluyen espacios, mayúsculas y símbolos. Para facilitar el trabajo, usaremos <code>clean_names()</code> del paquete <code>janitor</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nombres-limpios</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(agro)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Por ejemplo, <code>Area</code> pasa a <code>area</code> y <code>Year</code> a <code>year</code>. A partir de ahora trabajaremos con los nombres limpios.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tipos</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>area)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.3.</strong> ¿Qué tipo de variable es <code>year</code>?</p>
+</section>
+<section id="seleccionar-y-reordenar-columnas" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="seleccionar-y-reordenar-columnas"><span class="header-section-number">6.2</span> 5.2. Seleccionar y reordenar columnas</h3>
+<p><code>select()</code> conserva columnas sin filtrar filas.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: seleccion-ejemplos</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, total_emission, average_temperature_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area<span class="sc">:</span>rice_cultivation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, <span class="fu">contains</span>(<span class="st">"population"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"fires"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>average_temperature_c)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Las funciones <code>contains()</code> y <code>ends_with()</code> buscan partes de los nombres de columnas. El signo <code>-</code> delante de un nombre excluye esa columna.</p>
+<p>Crearemos una base reducida para practicar; la base <code>agro</code> conserva todas sus columnas.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: base-reducida</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>agro_reducida <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    area, year, rural_population, urban_population,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    total_population_male, total_population_female,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    total_emission, average_temperature_c</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(total_emission, <span class="at">.after =</span> year)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro_reducida)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>relocate()</code> cambia el orden de las columnas; <code>.after = year</code> coloca la variable después de <code>year</code>, y <code>.before = year</code> la colocaría antes.</p>
+<p><strong>Pregunta 2.4.</strong> ¿Qué diferencia hay entre <code>select()</code> y <code>relocate()</code>? ¿Cuántas filas tiene <code>agro_reducida</code> en comparación con <code>agro</code>?</p>
+</section>
+<section id="filtrar-y-ordenar-observaciones" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="filtrar-y-ordenar-observaciones"><span class="header-section-number">6.3</span> 5.3. Filtrar y ordenar observaciones</h3>
+<p>Mientras <code>select()</code> trabaja con columnas, <code>filter()</code> conserva las <strong>filas</strong> que cumplen una condición.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: filtros</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>, year <span class="sc">==</span> <span class="dv">2020</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Argentina"</span>, <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>==</code> comprueba igualdad; <code>%in%</code> comprueba si un valor pertenece a un conjunto.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ordenar</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">arrange</span>(total_emission)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">arrange</span>(area, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>arrange()</code> ordena filas sin eliminar observaciones. Para ordenar de mayor a menor, se puede usar <code>desc(total_emission)</code>.</p>
+<p><strong>Pregunta 2.5.</strong> ¿Qué diferencia observás entre <code>filter()</code> y <code>arrange()</code>?</p>
+</section>
+</section>
+<section id="paso-6.-transformar-variables-y-controlar-los-datos" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="paso-6.-transformar-variables-y-controlar-los-datos"><span class="header-section-number">7</span> Paso 6. Transformar variables y controlar los datos</h2>
+<section id="crear-nuevas-variables" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="crear-nuevas-variables"><span class="header-section-number">7.1</span> 6.1. Crear nuevas variables</h3>
+<p><code>mutate()</code> permite crear columnas o modificar las existentes.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nuevas-variables</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_population =</span> total_population_male <span class="sc">+</span> total_population_female,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">urban_population_percentage =</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>      <span class="dv">100</span> <span class="sc">*</span> urban_population <span class="sc">/</span> total_population,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">positive_temperature_change =</span> average_temperature_c <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La última variable es lógica (<code>TRUE</code>/<code>FALSE</code>). El porcentaje puede ser faltante cuando faltan componentes; si la población total es cero, debe revisarse antes de interpretar el cociente.</p>
+<p><strong>Pregunta 2.6.</strong> ¿Qué representa cada una de las tres variables creadas? ¿De qué tipo es <code>positive_temperature_change</code>?</p>
+</section>
+<section id="detectar-valores-faltantes-y-duplicados" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="detectar-valores-faltantes-y-duplicados"><span class="header-section-number">7.2</span> 6.2. Detectar valores faltantes y duplicados</h3>
+<p>En R, <code>NA</code> representa información faltante; no equivale al valor cero.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: faltantes</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(agro))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para revisar posibles duplicados:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: duplicados</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(agro))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(area, year) <span class="sc">|&gt;</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El primer cálculo detecta filas completamente repetidas; el segundo identifica combinaciones de área y año repetidas, aunque sus demás columnas sean distintas. <strong>No elimines duplicados automáticamente:</strong> primero investigá su origen.</p>
+</section>
+<section id="resumir-por-grupos" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="resumir-por-grupos"><span class="header-section-number">7.3</span> 6.3. Resumir por grupos</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen-grupos</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">cantidad_anios =</span> <span class="fu">n</span>(),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">primer_anio =</span> <span class="fu">min</span>(year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ultimo_anio =</span> <span class="fu">max</span>(year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>group_by()</code> define los grupos y <code>summarise()</code> calcula un resumen para cada uno. En este ejemplo, suponemos que cada área tiene al menos un año registrado.</p>
+<p><strong>Pregunta 2.6.</strong> ¿Todos los países tienen la misma cantidad de registros anuales? ¿Qué información te permite averiguarlo?</p>
+</section>
+</section>
+<section id="paso-7.-construir-una-nueva-base-para-américa-del-sur" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="paso-7.-construir-una-nueva-base-para-américa-del-sur"><span class="header-section-number">8</span> Paso 7. Construir una nueva base para América del Sur</h2>
+<p>Nuestro objetivo es conservar los registros correspondientes a los países de América del Sur y crear la variable <code>grupo_region</code> con tres categorías: <strong>Argentina</strong>, <strong>Países limítrofes</strong> y <strong>Otros países de América del Sur</strong>.</p>
+<p>Primero filtramos las áreas que queremos conservar. En este ejercicio se incluyen los países soberanos de América del Sur; no se incluyen las islas Malvinas/Falkland como un país independiente.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: sudamerica</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Argentina"</span>, <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Ecuador"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Guyana"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Peru"</span>, <span class="st">"Suriname"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Uruguay"</span>, <span class="st">"Venezuela (Bolivarian Republic of)"</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A continuación creamos la clasificación regional y ordenamos las observaciones.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grupo-region</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span> agro_sudamerica <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">~</span> <span class="st">"Argentina"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">~</span> <span class="st">"Países limítrofes"</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Otros países de América del Sur"</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(area, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>case_when()</code> asigna un valor de acuerdo con las condiciones, evaluadas de arriba hacia abajo. <code>TRUE</code> contempla los casos restantes.</p>
+<p>Comprobamos el resultado:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: comprobar-region</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="sc">|&gt;</span> <span class="fu">distinct</span>(area, grupo_region) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(grupo_region, area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="sc">|&gt;</span> <span class="fu">count</span>(grupo_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.7.</strong> ¿Cuántos países distintos aparecen en la nueva base? ¿Qué países quedaron clasificados como limítrofes?</p>
+</section>
+<section id="paso-8.-guardar-y-verificar-la-nueva-base" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="paso-8.-guardar-y-verificar-la-nueva-base"><span class="header-section-number">9</span> Paso 8. Guardar y verificar la nueva base</h2>
+<p>Guardá la base transformada en la carpeta <code>datos_transformados</code>, creada en la Práctica guiada 1.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: guardar-csv</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  agro_sudamerica,<span class="st">"../datos_transformados/agro_sudamerica.csv"</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>write_csv()</code> guarda un archivo CSV; <strong>no</strong> reemplaza ni modifica el archivo original de <code>datos originales</code>.</p>
+<p>Comprobá desde el explorador de archivos de RStudio que <code>agro_sudamerica.csv</code> aparezca en la carpeta correspondiente. Para verificar que puede importarse otra vez, leemos el archivo con otro nombre de objeto:</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resultado de la práctica
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Terminaste con una base de datos de América del Sur que contiene variables transformadas y una clasificación regional. La conservamos como CSV en <code>datos transformados</code> para continuar con el análisis exploratorio en la próxima práctica.</p>
+</div>
+</div>
+</section>
+<section id="ampliación-opcional-otros-formatos-de-importación-y-guardado" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="ampliación-opcional-otros-formatos-de-importación-y-guardado"><span class="header-section-number">10</span> Ampliación opcional: otros formatos de importación y guardado</h2>
+<p>Además de <code>read_csv()</code>, podemos importar otros tipos de archivos. Estos son <strong>ejemplos</strong>: no los ejecutes sin tener los archivos correspondientes.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -687,62 +673,50 @@ Average Temperature °C → average_temperature_c</p>
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Sección</th>
-<th style="text-align: left;">Objetivos abordados</th>
-<th style="text-align: left;">Funciones principales</th>
+<th>Tipo de archivo</th>
+<th>Función</th>
+<th>Paquete</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Preparación e importación</td>
-<td style="text-align: left;">Importar un archivo CSV</td>
-<td style="text-align: left;"><code>read_csv()</code></td>
+<td>CSV delimitado por comas</td>
+<td><code>read_csv()</code></td>
+<td><code>readr</code> (incluido en <code>tidyverse</code>)</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Reconocimiento de la base</td>
-<td style="text-align: left;">Reconocer filas, columnas, variables y observaciones</td>
-<td style="text-align: left;"><code>dim()</code>, <code>nrow()</code>, <code>ncol()</code>, <code>names()</code>, <code>glimpse()</code>, <code>str()</code></td>
+<td>CSV delimitado por punto y coma</td>
+<td><code>read_csv2()</code></td>
+<td><code>readr</code> (incluido en <code>tidyverse</code>)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Limpieza de nombres</td>
-<td style="text-align: left;">Trabajar con nombres consistentes</td>
-<td style="text-align: left;"><code>clean_names()</code></td>
+<td>Excel (<code>.xlsx</code>, <code>.xls</code>)</td>
+<td><code>read_excel()</code></td>
+<td><code>readxl</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Selección y reordenamiento</td>
-<td style="text-align: left;">Seleccionar y ordenar variables</td>
-<td style="text-align: left;"><code>select()</code>, <code>relocate()</code></td>
+<td>Texto delimitado</td>
+<td><code>read_delim()</code></td>
+<td><code>readr</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Filtrado y ordenamiento</td>
-<td style="text-align: left;">Filtrar y ordenar observaciones</td>
-<td style="text-align: left;"><code>filter()</code>, <code>arrange()</code>, <code>between()</code>, <code>%in%</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Creación y recodificación</td>
-<td style="text-align: left;">Crear y recodificar variables</td>
-<td style="text-align: left;"><code>mutate()</code>, <code>case_when()</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Control de calidad</td>
-<td style="text-align: left;">Detectar faltantes y duplicados</td>
-<td style="text-align: left;"><code>is.na()</code>, <code>drop_na()</code>, <code>duplicated()</code>, <code>distinct()</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Resúmenes agrupados</td>
-<td style="text-align: left;">Explorar subconjuntos de datos</td>
-<td style="text-align: left;"><code>group_by()</code>, <code>summarise()</code>, <code>n_distinct()</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Base limpia</td>
-<td style="text-align: left;">Guardar una nueva base de datos</td>
-<td style="text-align: left;"><code>write_csv()</code>, <code>saveRDS()</code></td>
+<td>Objeto R (<code>.rds</code>)</td>
+<td><code>readRDS()</code></td>
+<td>R base</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="section" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="section"><span class="header-section-number">3</span> </h2>
+<p><code>read_csv2()</code> utiliza por defecto punto y coma como separador y coma como marca decimal.</p>
+<p>Para importar Excel, primero instalá <code>readxl</code> (solo si hace falta) y luego cargalo:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("readxl")</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../datos originales/archivo.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>También se puede guardar un objeto de R conservando sus clases mediante RDS:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(agro_sudamerica, <span class="st">"../datos transformados/agro_sudamerica.rds"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>agro_desde_rds <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../datos transformados/agro_sudamerica.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En esta práctica, <strong>el producto que debemos entregar es el CSV</strong>. El formato RDS queda como lectura complementaria.</p>
 
 
 <!-- -->
@@ -1200,458 +1174,387 @@ Average Temperature °C → average_temperature_c</p>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb38" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctica Guiada 2"</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> </span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co">  markdown: </span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co">    wrap: 72</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preparación del entorno e importación</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>Los paquetes se instalan una única vez en la computadora. En cambio,</span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>deben cargarse cada vez que se inicia una nueva sesión de trabajo en R.</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"janitor"</span>)</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Importar datos significa leer un archivo externo y convertirlo en</span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    un objeto que R pueda utilizar.**</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/Agrofood_co2_emission.csv"</span>)</span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>A partir de este momento, agro será nuestro objeto de trabajo.</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>Modificarlo no cambia automáticamente el archivo CSV original.</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>Según la extensión del archivo a importar hay diferentes caminos</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>Cuando los datsso están separados por ;</span>
-<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv2</span>(<span class="st">"../datos originales/archivo.csv"</span>)</span>
-<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>Esta función interpreta, por defecto, el punto y coma como separador de</span>
-<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>columnas y la coma como separador decimal.</span>
-<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Archivos de Excel</span>
-<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>Para importar archivos de Excel con extensión <span class="in">`.xlsx`</span> o <span class="in">`.xls`</span> se</span>
-<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>utiliza el paquete <span class="in">`readxl`</span>. Si aún no está instalado, debe instalarse</span>
-<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a>una sola vez:</span>
-<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
-<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a>En cada sesión en la que se lo necesite, se carga el paquete:</span>
-<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a>Luego se importa el archivo:</span>
-<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-58"><a href="#cb38-58" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../datos originales/archivo.xlsx"</span>)</span>
-<span id="cb38-59"><a href="#cb38-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-60"><a href="#cb38-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-61"><a href="#cb38-61" aria-hidden="true" tabindex="-1"></a>Si el libro contiene varias hojas, puede indicarse cuál se desea leer:</span>
-<span id="cb38-62"><a href="#cb38-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-63"><a href="#cb38-63" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-64"><a href="#cb38-64" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb38-65"><a href="#cb38-65" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos originales/archivo.xlsx"</span>,</span>
-<span id="cb38-66"><a href="#cb38-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"Hoja1"</span></span>
-<span id="cb38-67"><a href="#cb38-67" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-68"><a href="#cb38-68" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-69"><a href="#cb38-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-70"><a href="#cb38-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Archivos de texto</span>
-<span id="cb38-71"><a href="#cb38-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-72"><a href="#cb38-72" aria-hidden="true" tabindex="-1"></a>Cuando los datos se encuentran en un archivo de texto, se puede utilizar</span>
-<span id="cb38-73"><a href="#cb38-73" aria-hidden="true" tabindex="-1"></a><span class="in">`read_delim()`</span>. Debe indicarse cuál es el separador entre las columnas.</span>
-<span id="cb38-74"><a href="#cb38-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-75"><a href="#cb38-75" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Para datos separados por tabulaciones:</span>
-<span id="cb38-76"><a href="#cb38-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-77"><a href="#cb38-77" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-78"><a href="#cb38-78" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(</span>
-<span id="cb38-79"><a href="#cb38-79" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos originales/archivo.txt"</span>,</span>
-<span id="cb38-80"><a href="#cb38-80" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span></span>
-<span id="cb38-81"><a href="#cb38-81" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-82"><a href="#cb38-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-83"><a href="#cb38-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-84"><a href="#cb38-84" aria-hidden="true" tabindex="-1"></a>Para datos separados por otro símbolo, por ejemplo una barra vertical:</span>
-<span id="cb38-85"><a href="#cb38-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-86"><a href="#cb38-86" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-87"><a href="#cb38-87" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(</span>
-<span id="cb38-88"><a href="#cb38-88" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos originales/archivo.txt"</span>,</span>
-<span id="cb38-89"><a href="#cb38-89" aria-hidden="true" tabindex="-1"></a>  <span class="at">delim =</span> <span class="st">"|"</span></span>
-<span id="cb38-90"><a href="#cb38-90" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-91"><a href="#cb38-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-92"><a href="#cb38-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-93"><a href="#cb38-93" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**Reconocimiento de la estructura de la base**</span>
-<span id="cb38-94"><a href="#cb38-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-95"><a href="#cb38-95" aria-hidden="true" tabindex="-1"></a>En esta base, cada fila representa información de un área o país en un</span>
-<span id="cb38-96"><a href="#cb38-96" aria-hidden="true" tabindex="-1"></a>año determinado. Las columnas representan variables, por ejemplo, las</span>
-<span id="cb38-97"><a href="#cb38-97" aria-hidden="true" tabindex="-1"></a>emisiones por distintos rubros, la población y la temperatura media.</span>
-<span id="cb38-98"><a href="#cb38-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-99"><a href="#cb38-99" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-100"><a href="#cb38-100" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)</span>
-<span id="cb38-101"><a href="#cb38-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-102"><a href="#cb38-102" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro)</span>
-<span id="cb38-103"><a href="#cb38-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-104"><a href="#cb38-104" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)</span>
-<span id="cb38-105"><a href="#cb38-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-106"><a href="#cb38-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-107"><a href="#cb38-107" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-108"><a href="#cb38-108" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro)</span>
-<span id="cb38-109"><a href="#cb38-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-110"><a href="#cb38-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-111"><a href="#cb38-111" aria-hidden="true" tabindex="-1"></a>La función <span class="in">`glimpse()`</span> permite observar los nombres de las variables,</span>
-<span id="cb38-112"><a href="#cb38-112" aria-hidden="true" tabindex="-1"></a>sus tipos y algunos de sus valores.</span>
-<span id="cb38-113"><a href="#cb38-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-114"><a href="#cb38-114" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**Limpieza de nombres**</span>
-<span id="cb38-115"><a href="#cb38-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-116"><a href="#cb38-116" aria-hidden="true" tabindex="-1"></a>Los nombres originales contienen espacios, mayúsculas, paréntesis y</span>
-<span id="cb38-117"><a href="#cb38-117" aria-hidden="true" tabindex="-1"></a>símbolos. Para trabajar de manera más sencilla, los normalizaremos.</span>
-<span id="cb38-118"><a href="#cb38-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-119"><a href="#cb38-119" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-120"><a href="#cb38-120" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb38-121"><a href="#cb38-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
-<span id="cb38-122"><a href="#cb38-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-123"><a href="#cb38-123" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span>
-<span id="cb38-124"><a href="#cb38-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-125"><a href="#cb38-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-126"><a href="#cb38-126" aria-hidden="true" tabindex="-1"></a>Por ejemplo:</span>
-<span id="cb38-127"><a href="#cb38-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-128"><a href="#cb38-128" aria-hidden="true" tabindex="-1"></a>Area → area\</span>
-<span id="cb38-129"><a href="#cb38-129" aria-hidden="true" tabindex="-1"></a>Year → year\</span>
-<span id="cb38-130"><a href="#cb38-130" aria-hidden="true" tabindex="-1"></a>Average Temperature °C → average_temperature_c</span>
-<span id="cb38-131"><a href="#cb38-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-132"><a href="#cb38-132" aria-hidden="true" tabindex="-1"></a>Total Population - Female → total_population_female</span>
-<span id="cb38-133"><a href="#cb38-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-134"><a href="#cb38-134" aria-hidden="true" tabindex="-1"></a>A partir de este punto se utilizarán los nombres limpios.</span>
-<span id="cb38-135"><a href="#cb38-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-136"><a href="#cb38-136" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**Tipos de variables**</span>
-<span id="cb38-137"><a href="#cb38-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-138"><a href="#cb38-138" aria-hidden="true" tabindex="-1"></a>En la base predominan variables de texto y variables numéricas.</span>
-<span id="cb38-139"><a href="#cb38-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-140"><a href="#cb38-140" aria-hidden="true" tabindex="-1"></a>area contiene nombres de países o regiones. year representa el año de</span>
-<span id="cb38-141"><a href="#cb38-141" aria-hidden="true" tabindex="-1"></a>cada registro. Las emisiones, la población y la temperatura son</span>
-<span id="cb38-142"><a href="#cb38-142" aria-hidden="true" tabindex="-1"></a>variables numéricas.</span>
-<span id="cb38-143"><a href="#cb38-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-144"><a href="#cb38-144" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-145"><a href="#cb38-145" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>area)</span>
-<span id="cb38-146"><a href="#cb38-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-147"><a href="#cb38-147" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>year)</span>
-<span id="cb38-148"><a href="#cb38-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-149"><a href="#cb38-149" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>total_emission)</span>
-<span id="cb38-150"><a href="#cb38-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-151"><a href="#cb38-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-152"><a href="#cb38-152" aria-hidden="true" tabindex="-1"></a>Aunque year está expresada mediante números, representa el tiempo y se</span>
-<span id="cb38-153"><a href="#cb38-153" aria-hidden="true" tabindex="-1"></a>mantendrá como variable numérica para estudiar posteriormente su</span>
-<span id="cb38-154"><a href="#cb38-154" aria-hidden="true" tabindex="-1"></a>evolución.</span>
-<span id="cb38-155"><a href="#cb38-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-156"><a href="#cb38-156" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**Selección y reordenamiento de variables**</span>
-<span id="cb38-157"><a href="#cb38-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-158"><a href="#cb38-158" aria-hidden="true" tabindex="-1"></a>Seleccionar variables significa conservar determinadas columnas de la</span>
-<span id="cb38-159"><a href="#cb38-159" aria-hidden="true" tabindex="-1"></a>base. Esta operación no elimina filas.</span>
-<span id="cb38-160"><a href="#cb38-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-161"><a href="#cb38-161" aria-hidden="true" tabindex="-1"></a>a.  seleccionar algunas variables especificas: area, year,</span>
-<span id="cb38-162"><a href="#cb38-162" aria-hidden="true" tabindex="-1"></a>    total_emission, average_temperature_c</span>
-<span id="cb38-163"><a href="#cb38-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-164"><a href="#cb38-164" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-165"><a href="#cb38-165" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-166"><a href="#cb38-166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, total_emission, average_temperature_c)</span>
-<span id="cb38-167"><a href="#cb38-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-168"><a href="#cb38-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-169"><a href="#cb38-169" aria-hidden="true" tabindex="-1"></a>b.  Seleccionar las varaialbes desde áreas hasta rice_cultivation</span>
-<span id="cb38-170"><a href="#cb38-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-171"><a href="#cb38-171" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-172"><a href="#cb38-172" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-173"><a href="#cb38-173" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area<span class="sc">:</span>rice_cultivation)</span>
-<span id="cb38-174"><a href="#cb38-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-175"><a href="#cb38-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-176"><a href="#cb38-176" aria-hidden="true" tabindex="-1"></a>Selccionar las variables que tienen una determinada parlabra. Ejemplo,</span>
-<span id="cb38-177"><a href="#cb38-177" aria-hidden="true" tabindex="-1"></a>"population" Observación: la palabar debe ir entre comillas</span>
-<span id="cb38-178"><a href="#cb38-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-179"><a href="#cb38-179" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-180"><a href="#cb38-180" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-181"><a href="#cb38-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, <span class="fu">contains</span>(<span class="st">"population"</span>))</span>
-<span id="cb38-182"><a href="#cb38-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-183"><a href="#cb38-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-184"><a href="#cb38-184" aria-hidden="true" tabindex="-1"></a>Seleccionar las variables que terminan en una deteminada palabra, por</span>
-<span id="cb38-185"><a href="#cb38-185" aria-hidden="true" tabindex="-1"></a>ejemplo "fires"</span>
-<span id="cb38-186"><a href="#cb38-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-187"><a href="#cb38-187" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-188"><a href="#cb38-188" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-189"><a href="#cb38-189" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"fires"</span>))</span>
-<span id="cb38-190"><a href="#cb38-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-191"><a href="#cb38-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-192"><a href="#cb38-192" aria-hidden="true" tabindex="-1"></a>c.  Eliminar una variable se utliza la función <span class="in">`select()`</span> y se escribe</span>
-<span id="cb38-193"><a href="#cb38-193" aria-hidden="true" tabindex="-1"></a>    la varaible precedida por el signo -</span>
-<span id="cb38-194"><a href="#cb38-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-195"><a href="#cb38-195" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb38-196"><a href="#cb38-196" aria-hidden="true" tabindex="-1"></a><span class="in">agro |&gt;</span></span>
-<span id="cb38-197"><a href="#cb38-197" aria-hidden="true" tabindex="-1"></a><span class="in">  select(-average_temperature_c)</span></span>
-<span id="cb38-198"><a href="#cb38-198" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-199"><a href="#cb38-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-200"><a href="#cb38-200" aria-hidden="true" tabindex="-1"></a>Podemos crear una base reducida para trabajar con algunas variables</span>
-<span id="cb38-201"><a href="#cb38-201" aria-hidden="true" tabindex="-1"></a>seleccionadas.</span>
-<span id="cb38-202"><a href="#cb38-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-203"><a href="#cb38-203" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-204"><a href="#cb38-204" aria-hidden="true" tabindex="-1"></a>agro_reducida <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb38-205"><a href="#cb38-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
-<span id="cb38-206"><a href="#cb38-206" aria-hidden="true" tabindex="-1"></a>    area,</span>
-<span id="cb38-207"><a href="#cb38-207" aria-hidden="true" tabindex="-1"></a>    year,</span>
-<span id="cb38-208"><a href="#cb38-208" aria-hidden="true" tabindex="-1"></a>    rural_population,</span>
-<span id="cb38-209"><a href="#cb38-209" aria-hidden="true" tabindex="-1"></a>    urban_population,</span>
-<span id="cb38-210"><a href="#cb38-210" aria-hidden="true" tabindex="-1"></a>    total_population_male,</span>
-<span id="cb38-211"><a href="#cb38-211" aria-hidden="true" tabindex="-1"></a>    total_population_female,</span>
-<span id="cb38-212"><a href="#cb38-212" aria-hidden="true" tabindex="-1"></a>    total_emission,</span>
-<span id="cb38-213"><a href="#cb38-213" aria-hidden="true" tabindex="-1"></a>    average_temperature_c</span>
-<span id="cb38-214"><a href="#cb38-214" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb38-215"><a href="#cb38-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(total_emission, <span class="at">.after =</span> year)</span>
-<span id="cb38-216"><a href="#cb38-216" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-217"><a href="#cb38-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-218"><a href="#cb38-218" aria-hidden="true" tabindex="-1"></a><span class="in">`relocate(total_emission, .after = year)`</span> sirve para ordenar un</span>
-<span id="cb38-219"><a href="#cb38-219" aria-hidden="true" tabindex="-1"></a>variable. Se puede adicionar</span>
-<span id="cb38-220"><a href="#cb38-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-221"><a href="#cb38-221" aria-hidden="true" tabindex="-1"></a>.after =...-<span class="sc">\&gt;</span> después de...</span>
-<span id="cb38-222"><a href="#cb38-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-223"><a href="#cb38-223" aria-hidden="true" tabindex="-1"></a>.besfore=... -<span class="sc">\&gt;</span> antes de...</span>
-<span id="cb38-224"><a href="#cb38-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-225"><a href="#cb38-225" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>Filtrado y ordenamiento de observaciones</span>
-<span id="cb38-226"><a href="#cb38-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-227"><a href="#cb38-227" aria-hidden="true" tabindex="-1"></a>Mientras select() trabaja con columnas, filter() permite conservar las</span>
-<span id="cb38-228"><a href="#cb38-228" aria-hidden="true" tabindex="-1"></a>filas que cumplen una condición.</span>
-<span id="cb38-229"><a href="#cb38-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-230"><a href="#cb38-230" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-231"><a href="#cb38-231" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-232"><a href="#cb38-232" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>)</span>
-<span id="cb38-233"><a href="#cb38-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-234"><a href="#cb38-234" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-235"><a href="#cb38-235" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-236"><a href="#cb38-236" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-237"><a href="#cb38-237" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
-<span id="cb38-238"><a href="#cb38-238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-239"><a href="#cb38-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-240"><a href="#cb38-240" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-241"><a href="#cb38-241" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-242"><a href="#cb38-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb38-243"><a href="#cb38-243" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">==</span> <span class="st">"Argentina"</span>,</span>
-<span id="cb38-244"><a href="#cb38-244" aria-hidden="true" tabindex="-1"></a>    year <span class="sc">==</span> <span class="dv">2020</span></span>
-<span id="cb38-245"><a href="#cb38-245" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-246"><a href="#cb38-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-247"><a href="#cb38-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-248"><a href="#cb38-248" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-249"><a href="#cb38-249" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-250"><a href="#cb38-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb38-251"><a href="#cb38-251" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb38-252"><a href="#cb38-252" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Argentina"</span>,</span>
-<span id="cb38-253"><a href="#cb38-253" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
-<span id="cb38-254"><a href="#cb38-254" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Brazil"</span>,</span>
-<span id="cb38-255"><a href="#cb38-255" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Chile"</span>,</span>
-<span id="cb38-256"><a href="#cb38-256" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Paraguay"</span>,</span>
-<span id="cb38-257"><a href="#cb38-257" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Uruguay"</span></span>
-<span id="cb38-258"><a href="#cb38-258" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-259"><a href="#cb38-259" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-260"><a href="#cb38-260" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-261"><a href="#cb38-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-262"><a href="#cb38-262" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-263"><a href="#cb38-263" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-264"><a href="#cb38-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(total_emission)</span>
-<span id="cb38-265"><a href="#cb38-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-266"><a href="#cb38-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-267"><a href="#cb38-267" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-268"><a href="#cb38-268" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-269"><a href="#cb38-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(area, year)</span>
-<span id="cb38-270"><a href="#cb38-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-271"><a href="#cb38-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-272"><a href="#cb38-272" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>**Creación y recodificación de variables**</span>
-<span id="cb38-273"><a href="#cb38-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-274"><a href="#cb38-274" aria-hidden="true" tabindex="-1"></a>La función mutate() permite crear nuevas variables o modificar las</span>
-<span id="cb38-275"><a href="#cb38-275" aria-hidden="true" tabindex="-1"></a>existentes.</span>
-<span id="cb38-276"><a href="#cb38-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-277"><a href="#cb38-277" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-278"><a href="#cb38-278" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb38-279"><a href="#cb38-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb38-280"><a href="#cb38-280" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_population =</span></span>
-<span id="cb38-281"><a href="#cb38-281" aria-hidden="true" tabindex="-1"></a>      total_population_male <span class="sc">+</span> total_population_female,</span>
-<span id="cb38-282"><a href="#cb38-282" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb38-283"><a href="#cb38-283" aria-hidden="true" tabindex="-1"></a>    <span class="at">urban_population_percentage =</span></span>
-<span id="cb38-284"><a href="#cb38-284" aria-hidden="true" tabindex="-1"></a>      <span class="dv">100</span> <span class="sc">*</span> urban_population <span class="sc">/</span> total_population,</span>
-<span id="cb38-285"><a href="#cb38-285" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb38-286"><a href="#cb38-286" aria-hidden="true" tabindex="-1"></a>    <span class="at">positive_temperature_change =</span></span>
-<span id="cb38-287"><a href="#cb38-287" aria-hidden="true" tabindex="-1"></a>      average_temperature_c <span class="sc">&gt;</span> <span class="dv">0</span></span>
-<span id="cb38-288"><a href="#cb38-288" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-289"><a href="#cb38-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-290"><a href="#cb38-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-291"><a href="#cb38-291" aria-hidden="true" tabindex="-1"></a>También podemos crear una variable para distinguir a Argentina de otros</span>
-<span id="cb38-292"><a href="#cb38-292" aria-hidden="true" tabindex="-1"></a>paises</span>
-<span id="cb38-293"><a href="#cb38-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-294"><a href="#cb38-294" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-295"><a href="#cb38-295" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb38-296"><a href="#cb38-296" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb38-297"><a href="#cb38-297" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_region =</span> <span class="fu">case_when</span>(</span>
-<span id="cb38-298"><a href="#cb38-298" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">~</span> <span class="st">"Argentina"</span>,</span>
-<span id="cb38-299"><a href="#cb38-299" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb38-300"><a href="#cb38-300" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Otros países o regiones"</span></span>
-<span id="cb38-301"><a href="#cb38-301" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-302"><a href="#cb38-302" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-303"><a href="#cb38-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-304"><a href="#cb38-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-305"><a href="#cb38-305" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span>**Valores faltantes y duplicados**</span>
-<span id="cb38-306"><a href="#cb38-306" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-307"><a href="#cb38-307" aria-hidden="true" tabindex="-1"></a>Un valor faltante se representa en R mediante NA. No significa que el</span>
-<span id="cb38-308"><a href="#cb38-308" aria-hidden="true" tabindex="-1"></a>valor sea cero, sino que la información no está disponible.</span>
-<span id="cb38-309"><a href="#cb38-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-310"><a href="#cb38-310" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-311"><a href="#cb38-311" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(agro))</span>
-<span id="cb38-312"><a href="#cb38-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-313"><a href="#cb38-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-314"><a href="#cb38-314" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-315"><a href="#cb38-315" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-316"><a href="#cb38-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb38-317"><a href="#cb38-317" aria-hidden="true" tabindex="-1"></a>    <span class="fu">across</span>(</span>
-<span id="cb38-318"><a href="#cb38-318" aria-hidden="true" tabindex="-1"></a>      <span class="fu">everything</span>(),</span>
-<span id="cb38-319"><a href="#cb38-319" aria-hidden="true" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))</span>
-<span id="cb38-320"><a href="#cb38-320" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-321"><a href="#cb38-321" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-322"><a href="#cb38-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-323"><a href="#cb38-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-324"><a href="#cb38-324" aria-hidden="true" tabindex="-1"></a>Para detectar si existen filas completamente duplicadas:</span>
-<span id="cb38-325"><a href="#cb38-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-326"><a href="#cb38-326" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-327"><a href="#cb38-327" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(agro))</span>
-<span id="cb38-328"><a href="#cb38-328" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-329"><a href="#cb38-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-330"><a href="#cb38-330" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-331"><a href="#cb38-331" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-332"><a href="#cb38-332" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(area, year) <span class="sc">|&gt;</span></span>
-<span id="cb38-333"><a href="#cb38-333" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
-<span id="cb38-334"><a href="#cb38-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-335"><a href="#cb38-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-336"><a href="#cb38-336" aria-hidden="true" tabindex="-1"></a>En esta base, debería haber como máximo una observación por combinación</span>
-<span id="cb38-337"><a href="#cb38-337" aria-hidden="true" tabindex="-1"></a>de área y año.</span>
-<span id="cb38-338"><a href="#cb38-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-339"><a href="#cb38-339" aria-hidden="true" tabindex="-1"></a>Antes de eliminar duplicados, es necesario investigar por qué aparecen.</span>
-<span id="cb38-340"><a href="#cb38-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-341"><a href="#cb38-341" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span>**Resúmenes agrupados iniciales**</span>
-<span id="cb38-342"><a href="#cb38-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-343"><a href="#cb38-343" aria-hidden="true" tabindex="-1"></a>La combinación de group_by() y summarise() permite organizar y resumir</span>
-<span id="cb38-344"><a href="#cb38-344" aria-hidden="true" tabindex="-1"></a>información para distintos grupos.</span>
-<span id="cb38-345"><a href="#cb38-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-346"><a href="#cb38-346" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-347"><a href="#cb38-347" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
-<span id="cb38-348"><a href="#cb38-348" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
-<span id="cb38-349"><a href="#cb38-349" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb38-350"><a href="#cb38-350" aria-hidden="true" tabindex="-1"></a>    <span class="at">cantidad_anios =</span> <span class="fu">n</span>(),</span>
-<span id="cb38-351"><a href="#cb38-351" aria-hidden="true" tabindex="-1"></a>    <span class="at">primer_anio =</span> <span class="fu">min</span>(year),</span>
-<span id="cb38-352"><a href="#cb38-352" aria-hidden="true" tabindex="-1"></a>    <span class="at">ultimo_anio =</span> <span class="fu">max</span>(year)</span>
-<span id="cb38-353"><a href="#cb38-353" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-354"><a href="#cb38-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-355"><a href="#cb38-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-356"><a href="#cb38-356" aria-hidden="true" tabindex="-1"></a>En las próximas clases utilizaremos estas mismas funciones para calcular</span>
-<span id="cb38-357"><a href="#cb38-357" aria-hidden="true" tabindex="-1"></a>medidas descriptivas y comparar las emisiones entre países y rubros.</span>
-<span id="cb38-358"><a href="#cb38-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-359"><a href="#cb38-359" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span>Construcción y guardado de la base limpia</span>
-<span id="cb38-360"><a href="#cb38-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-361"><a href="#cb38-361" aria-hidden="true" tabindex="-1"></a>Finalmente, construiremos una versión ordenada de la basecon los países</span>
-<span id="cb38-362"><a href="#cb38-362" aria-hidden="true" tabindex="-1"></a>de América del Sur incluidos, que utilizaremos en las clases siguientes.</span>
-<span id="cb38-363"><a href="#cb38-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-364"><a href="#cb38-364" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-365"><a href="#cb38-365" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb38-366"><a href="#cb38-366" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
-<span id="cb38-367"><a href="#cb38-367" aria-hidden="true" tabindex="-1"></a>    area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb38-368"><a href="#cb38-368" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Argentina"</span>,</span>
-<span id="cb38-369"><a href="#cb38-369" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
-<span id="cb38-370"><a href="#cb38-370" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Brazil"</span>,</span>
-<span id="cb38-371"><a href="#cb38-371" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Chile"</span>,</span>
-<span id="cb38-372"><a href="#cb38-372" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Colombia"</span>,</span>
-<span id="cb38-373"><a href="#cb38-373" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Ecuador"</span>,</span>
-<span id="cb38-374"><a href="#cb38-374" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Falkland Islands (Malvinas)"</span>,</span>
-<span id="cb38-375"><a href="#cb38-375" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Guyana"</span>,</span>
-<span id="cb38-376"><a href="#cb38-376" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Paraguay"</span>,</span>
-<span id="cb38-377"><a href="#cb38-377" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Peru"</span>,</span>
-<span id="cb38-378"><a href="#cb38-378" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Suriname"</span>,</span>
-<span id="cb38-379"><a href="#cb38-379" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Uruguay"</span>,</span>
-<span id="cb38-380"><a href="#cb38-380" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Venezuela (Bolivarian Republic of)"</span></span>
-<span id="cb38-381"><a href="#cb38-381" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-382"><a href="#cb38-382" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb38-383"><a href="#cb38-383" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-384"><a href="#cb38-384" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-385"><a href="#cb38-385" aria-hidden="true" tabindex="-1"></a>Creamos una nueva variable de clasifiación para idenitificar Argentina,</span>
-<span id="cb38-386"><a href="#cb38-386" aria-hidden="true" tabindex="-1"></a>los paises límitrofes y los restantes</span>
-<span id="cb38-387"><a href="#cb38-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-388"><a href="#cb38-388" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-389"><a href="#cb38-389" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span>agro_sudamerica  <span class="sc">|&gt;</span></span>
-<span id="cb38-390"><a href="#cb38-390" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb38-391"><a href="#cb38-391" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_region =</span> <span class="fu">case_when</span>(</span>
-<span id="cb38-392"><a href="#cb38-392" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">~</span> <span class="st">"Argentina"</span>,</span>
-<span id="cb38-393"><a href="#cb38-393" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb38-394"><a href="#cb38-394" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
-<span id="cb38-395"><a href="#cb38-395" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
-<span id="cb38-396"><a href="#cb38-396" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Brazil"</span>,</span>
-<span id="cb38-397"><a href="#cb38-397" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Chile"</span>,</span>
-<span id="cb38-398"><a href="#cb38-398" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Paraguay"</span>,</span>
-<span id="cb38-399"><a href="#cb38-399" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Uruguay"</span></span>
-<span id="cb38-400"><a href="#cb38-400" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">~</span> <span class="st">"Países limítrofes"</span>,</span>
-<span id="cb38-401"><a href="#cb38-401" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb38-402"><a href="#cb38-402" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Otros países de América del Sur"</span></span>
-<span id="cb38-403"><a href="#cb38-403" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb38-404"><a href="#cb38-404" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb38-405"><a href="#cb38-405" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(area, year)</span>
-<span id="cb38-406"><a href="#cb38-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-407"><a href="#cb38-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-408"><a href="#cb38-408" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-409"><a href="#cb38-409" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
-<span id="cb38-410"><a href="#cb38-410" aria-hidden="true" tabindex="-1"></a>  agro_sudamerica,</span>
-<span id="cb38-411"><a href="#cb38-411" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos transformados/agro_sudamerica.csv"</span></span>
-<span id="cb38-412"><a href="#cb38-412" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-413"><a href="#cb38-413" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-414"><a href="#cb38-414" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-415"><a href="#cb38-415" aria-hidden="true" tabindex="-1"></a>También es posible guardarla como objeto de R. Este formato conserva</span>
-<span id="cb38-416"><a href="#cb38-416" aria-hidden="true" tabindex="-1"></a>mejor las clases de las variables.</span>
-<span id="cb38-417"><a href="#cb38-417" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-418"><a href="#cb38-418" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb38-419"><a href="#cb38-419" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(</span>
-<span id="cb38-420"><a href="#cb38-420" aria-hidden="true" tabindex="-1"></a>  agro_sudamerica,</span>
-<span id="cb38-421"><a href="#cb38-421" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos transformados/agro_sudamerica.rds"</span></span>
-<span id="cb38-422"><a href="#cb38-422" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-423"><a href="#cb38-423" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-424"><a href="#cb38-424" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-425"><a href="#cb38-425" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb38-426"><a href="#cb38-426" aria-hidden="true" tabindex="-1"></a><span class="in">agro_sudamerica2&lt;- readRDS(</span></span>
-<span id="cb38-427"><a href="#cb38-427" aria-hidden="true" tabindex="-1"></a><span class="in">  "../datos transformados/agro_sudamerica.rds"</span></span>
-<span id="cb38-428"><a href="#cb38-428" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb38-429"><a href="#cb38-429" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb38-430"><a href="#cb38-430" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-431"><a href="#cb38-431" aria-hidden="true" tabindex="-1"></a>Al finalizar esta etapa, contaremos con una base limpia, ordenada y</span>
-<span id="cb38-432"><a href="#cb38-432" aria-hidden="true" tabindex="-1"></a>preparada para realizar tablas, gráficos y análisis descriptivos.agro</span>
-<span id="cb38-433"><a href="#cb38-433" aria-hidden="true" tabindex="-1"></a><span class="sc">\|\&gt;</span> select(-average_temperature_c)</span>
-<span id="cb38-434"><a href="#cb38-434" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-435"><a href="#cb38-435" aria-hidden="true" tabindex="-1"></a>Podemos crear una base reducida para trabajar con algunas variables</span>
-<span id="cb38-436"><a href="#cb38-436" aria-hidden="true" tabindex="-1"></a>seleccionadas.</span>
-<span id="cb38-437"><a href="#cb38-437" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-438"><a href="#cb38-438" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resumen de las principlaes funciones utilizadas</span></span>
-<span id="cb38-439"><a href="#cb38-439" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-440"><a href="#cb38-440" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Sección <span class="pp">|</span> Objetivos abordados <span class="pp">|</span> Funciones principales <span class="pp">|</span></span>
-<span id="cb38-441"><a href="#cb38-441" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---|:---|:---|</span></span>
-<span id="cb38-442"><a href="#cb38-442" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Preparación e importación <span class="pp">|</span> Importar un archivo CSV <span class="pp">|</span> <span class="in">`read_csv()`</span> <span class="pp">|</span></span>
-<span id="cb38-443"><a href="#cb38-443" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Reconocimiento de la base <span class="pp">|</span> Reconocer filas, columnas, variables y observaciones <span class="pp">|</span> <span class="in">`dim()`</span>, <span class="in">`nrow()`</span>, <span class="in">`ncol()`</span>, <span class="in">`names()`</span>, <span class="in">`glimpse()`</span>, <span class="in">`str()`</span> <span class="pp">|</span></span>
-<span id="cb38-444"><a href="#cb38-444" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Limpieza de nombres <span class="pp">|</span> Trabajar con nombres consistentes <span class="pp">|</span> <span class="in">`clean_names()`</span> <span class="pp">|</span></span>
-<span id="cb38-445"><a href="#cb38-445" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Selección y reordenamiento <span class="pp">|</span> Seleccionar y ordenar variables <span class="pp">|</span> <span class="in">`select()`</span>, <span class="in">`relocate()`</span> <span class="pp">|</span></span>
-<span id="cb38-446"><a href="#cb38-446" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Filtrado y ordenamiento <span class="pp">|</span> Filtrar y ordenar observaciones <span class="pp">|</span> <span class="in">`filter()`</span>, <span class="in">`arrange()`</span>, <span class="in">`between()`</span>, <span class="in">`%in%`</span> <span class="pp">|</span></span>
-<span id="cb38-447"><a href="#cb38-447" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Creación y recodificación <span class="pp">|</span> Crear y recodificar variables <span class="pp">|</span> <span class="in">`mutate()`</span>, <span class="in">`case_when()`</span> <span class="pp">|</span></span>
-<span id="cb38-448"><a href="#cb38-448" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Control de calidad <span class="pp">|</span> Detectar faltantes y duplicados <span class="pp">|</span> <span class="in">`is.na()`</span>, <span class="in">`drop_na()`</span>, <span class="in">`duplicated()`</span>, <span class="in">`distinct()`</span> <span class="pp">|</span></span>
-<span id="cb38-449"><a href="#cb38-449" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Resúmenes agrupados <span class="pp">|</span> Explorar subconjuntos de datos <span class="pp">|</span> <span class="in">`group_by()`</span>, <span class="in">`summarise()`</span>, <span class="in">`n_distinct()`</span> <span class="pp">|</span></span>
-<span id="cb38-450"><a href="#cb38-450" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Base limpia <span class="pp">|</span> Guardar una nueva base de datos <span class="pp">|</span> <span class="in">`write_csv()`</span>, <span class="in">`saveRDS()`</span> <span class="pp">|</span></span>
-<span id="cb38-451"><a href="#cb38-451" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-452"><a href="#cb38-452" aria-hidden="true" tabindex="-1"></a><span class="fu">## </span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb32" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Práctica Guiada 2"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Propósito</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>En la <span class="co">[</span><span class="ot">Práctica guiada 1</span><span class="co">](../parte1/practica-guiada1.qmd)</span> organizamos el proyecto <span class="in">`Analisis_agrofood`</span>, creamos las carpetas, instalamos <span class="in">`tidyverse`</span> e importamos la base original. En esta práctica continuaremos **en el mismo proyecto** para reconocer, limpiar y organizar los datos, construir una base de países de América del Sur y guardarla en <span class="in">`datos transformados`</span>.</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>Al finalizar, habrás generado el archivo <span class="in">`agro_sudamerica.csv`</span>, que utilizaremos en las próximas prácticas.</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Abrir el proyecto</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrí RStudio y el archivo <span class="in">`.Rproj`</span> del proyecto <span class="in">`Analisis_agrofood`</span>.</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Comprobá que estén las carpetas <span class="in">`datos originales`</span>, <span class="in">`datos transformados`</span> y <span class="in">`scripts`</span>.</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Verificá que el archivo <span class="in">`Agrofood_co2_emission.csv`</span> esté dentro de <span class="in">`datos originales`</span>.</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>No es necesario crear nuevamente el proyecto ni volver a descargar la base original.</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Crear un documento Quarto y cargar los paquetes</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>Seleccioná **File &gt; New File &gt; Quarto Document**. Creá el documento y guardalo dentro de `scripts` con el nombre `practica_agrofood_2.qmd`. En esta guía usamos bloques de código R que podés insertar con **Ctrl + Alt + I**.</span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: paquetes</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación: solo cuando el paquete todavía no está instalado.</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("janitor")</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Carga: se realiza en cada nueva sesión de R.</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a>El símbolo <span class="in">`#`</span> inicia un **comentario**: R no ejecuta lo que aparece después de ese símbolo en la misma línea. Por eso dejamos las instalaciones comentadas; <span class="in">`tidyverse`</span> ya fue instalado en la práctica anterior. Si todavía no instalaste <span class="in">`janitor`</span>, quitá temporalmente el <span class="in">`#`</span>, ejecutá la instalación y volvé a comentarla.</span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a>**Para pensar:** ¿cuál es la diferencia entre instalar un paquete mediante <span class="in">`install.packages()`</span> y cargarlo con <span class="in">`library()`</span>?</span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Preparar el entorno e importar la base original</span></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a>Al abrir el proyecto, quizás encuentres el objeto <span class="in">`agro`</span> en el panel **Environment**, porque RStudio puede restaurar objetos de una sesión anterior. Vamos a practicar cómo limpiar el entorno y recuperar los datos desde el archivo original.</span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a>Ejecutá **interactivamente** el siguiente bloque (con **Run** o **Ctrl + Enter**) y observá el panel *Environment* antes y después:</span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: limpiar-entorno</span></span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`ls()`</span> muestra los nombres de los objetos del entorno actual.</span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`rm()`</span> elimina los objetos indicados.</span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`rm(list = ls())`</span> elimina los objetos del entorno actual, **no** los archivos del disco ni los paquetes instalados.</span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.1.** ¿Qué sucedió en el panel *Environment*? ¿Sigue existiendo el CSV en <span class="in">`datos originales`</span>?</span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a>Ahora importá la base desde el nuevo documento:</span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: importar-agro</span></span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos_originales/Agrofood_co2_emission.csv"</span>)</span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a>En esta ruta, <span class="in">`..`</span> permite subir desde la carpeta <span class="in">`scripts`</span> a la carpeta principal del proyecto. El documento debe incluir la importación para poder ejecutarse sin depender de objetos guardados en sesiones anteriores. En general, Quarto renderiza los documentos con motor knitr en una sesión nueva de R: <span class="in">`rm(list = ls())`</span> es aquí un ejercicio didáctico y **no un requisito habitual de reproducibilidad**.</span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 4. Reconocer la estructura de la base</span></span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a>Cada fila corresponde a un área o país en un año determinado; las columnas incluyen emisiones de diferentes rubros, población y temperatura.</span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: dimensiones</span></span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(agro)   <span class="co"># cantidad de filas y columnas</span></span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(agro)  <span class="co"># cantidad de filas</span></span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(agro)  <span class="co"># cantidad de columnas</span></span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-77"><a href="#cb32-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: vistazo</span></span>
+<span id="cb32-78"><a href="#cb32-78" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro)</span>
+<span id="cb32-79"><a href="#cb32-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a><span class="in">`glimpse()`</span> muestra los nombres de las variables, sus tipos y algunos valores.</span>
+<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-84"><a href="#cb32-84" aria-hidden="true" tabindex="-1"></a>Solo el nombre de las variables </span>
+<span id="cb32-85"><a href="#cb32-85" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-86"><a href="#cb32-86" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span>
+<span id="cb32-87"><a href="#cb32-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-88"><a href="#cb32-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-89"><a href="#cb32-89" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.2.** ¿Cuántas filas y columnas tiene la base? Identificá una variable de texto y una numérica.</span>
+<span id="cb32-90"><a href="#cb32-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-91"><a href="#cb32-91" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5. Limpiar y organizar la base</span></span>
+<span id="cb32-92"><a href="#cb32-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-93"><a href="#cb32-93" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5.1. Normalizar nombres de variables</span></span>
+<span id="cb32-94"><a href="#cb32-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-95"><a href="#cb32-95" aria-hidden="true" tabindex="-1"></a>Los nombres originales incluyen espacios, mayúsculas y símbolos. Para facilitar el trabajo, usaremos <span class="in">`clean_names()`</span> del paquete <span class="in">`janitor`</span>.</span>
+<span id="cb32-96"><a href="#cb32-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-97"><a href="#cb32-97" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-98"><a href="#cb32-98" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nombres-limpios</span></span>
+<span id="cb32-99"><a href="#cb32-99" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(agro)</span>
+<span id="cb32-100"><a href="#cb32-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-101"><a href="#cb32-101" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(agro)</span>
+<span id="cb32-102"><a href="#cb32-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-103"><a href="#cb32-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-104"><a href="#cb32-104" aria-hidden="true" tabindex="-1"></a>Por ejemplo, <span class="in">`Area`</span> pasa a <span class="in">`area`</span> y <span class="in">`Year`</span> a <span class="in">`year`</span>. A partir de ahora trabajaremos con los nombres limpios.</span>
+<span id="cb32-105"><a href="#cb32-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-106"><a href="#cb32-106" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-107"><a href="#cb32-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tipos</span></span>
+<span id="cb32-108"><a href="#cb32-108" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(agro<span class="sc">$</span>area)  </span>
+<span id="cb32-109"><a href="#cb32-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-110"><a href="#cb32-110" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.3.** ¿Qué tipo de variable es <span class="in">`year`</span>?</span>
+<span id="cb32-111"><a href="#cb32-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-112"><a href="#cb32-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-113"><a href="#cb32-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-114"><a href="#cb32-114" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5.2. Seleccionar y reordenar columnas</span></span>
+<span id="cb32-115"><a href="#cb32-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-116"><a href="#cb32-116" aria-hidden="true" tabindex="-1"></a><span class="in">`select()`</span> conserva columnas sin filtrar filas.</span>
+<span id="cb32-117"><a href="#cb32-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-118"><a href="#cb32-118" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-119"><a href="#cb32-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: seleccion-ejemplos</span></span>
+<span id="cb32-120"><a href="#cb32-120" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-121"><a href="#cb32-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, total_emission, average_temperature_c)</span>
+<span id="cb32-122"><a href="#cb32-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-123"><a href="#cb32-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-124"><a href="#cb32-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-125"><a href="#cb32-125" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-126"><a href="#cb32-126" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-127"><a href="#cb32-127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area<span class="sc">:</span>rice_cultivation)</span>
+<span id="cb32-128"><a href="#cb32-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-129"><a href="#cb32-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-130"><a href="#cb32-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-131"><a href="#cb32-131" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-132"><a href="#cb32-132" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-133"><a href="#cb32-133" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(area, year, <span class="fu">contains</span>(<span class="st">"population"</span>))</span>
+<span id="cb32-134"><a href="#cb32-134" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-135"><a href="#cb32-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-136"><a href="#cb32-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-137"><a href="#cb32-137" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-138"><a href="#cb32-138" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-139"><a href="#cb32-139" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">"fires"</span>))</span>
+<span id="cb32-140"><a href="#cb32-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-141"><a href="#cb32-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-142"><a href="#cb32-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-143"><a href="#cb32-143" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-144"><a href="#cb32-144" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-145"><a href="#cb32-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>average_temperature_c)</span>
+<span id="cb32-146"><a href="#cb32-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-147"><a href="#cb32-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-148"><a href="#cb32-148" aria-hidden="true" tabindex="-1"></a>Las funciones <span class="in">`contains()`</span> y <span class="in">`ends_with()`</span> buscan partes de los nombres de columnas. El signo <span class="in">`-`</span> delante de un nombre excluye esa columna.</span>
+<span id="cb32-149"><a href="#cb32-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-150"><a href="#cb32-150" aria-hidden="true" tabindex="-1"></a>Crearemos una base reducida para practicar; la base <span class="in">`agro`</span> conserva todas sus columnas.</span>
+<span id="cb32-151"><a href="#cb32-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-152"><a href="#cb32-152" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-153"><a href="#cb32-153" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: base-reducida</span></span>
+<span id="cb32-154"><a href="#cb32-154" aria-hidden="true" tabindex="-1"></a>agro_reducida <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb32-155"><a href="#cb32-155" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb32-156"><a href="#cb32-156" aria-hidden="true" tabindex="-1"></a>    area, year, rural_population, urban_population,</span>
+<span id="cb32-157"><a href="#cb32-157" aria-hidden="true" tabindex="-1"></a>    total_population_male, total_population_female,</span>
+<span id="cb32-158"><a href="#cb32-158" aria-hidden="true" tabindex="-1"></a>    total_emission, average_temperature_c</span>
+<span id="cb32-159"><a href="#cb32-159" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb32-160"><a href="#cb32-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(total_emission, <span class="at">.after =</span> year)</span>
+<span id="cb32-161"><a href="#cb32-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-162"><a href="#cb32-162" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(agro_reducida)</span>
+<span id="cb32-163"><a href="#cb32-163" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-164"><a href="#cb32-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-165"><a href="#cb32-165" aria-hidden="true" tabindex="-1"></a><span class="in">`relocate()`</span> cambia el orden de las columnas; <span class="in">`.after = year`</span> coloca la variable después de <span class="in">`year`</span>, y <span class="in">`.before = year`</span> la colocaría antes.</span>
+<span id="cb32-166"><a href="#cb32-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-167"><a href="#cb32-167" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.4.** ¿Qué diferencia hay entre <span class="in">`select()`</span> y <span class="in">`relocate()`</span>? ¿Cuántas filas tiene <span class="in">`agro_reducida`</span> en comparación con <span class="in">`agro`</span>?</span>
+<span id="cb32-168"><a href="#cb32-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-169"><a href="#cb32-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### 5.3. Filtrar y ordenar observaciones</span></span>
+<span id="cb32-170"><a href="#cb32-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-171"><a href="#cb32-171" aria-hidden="true" tabindex="-1"></a>Mientras <span class="in">`select()`</span> trabaja con columnas, <span class="in">`filter()`</span> conserva las **filas** que cumplen una condición.</span>
+<span id="cb32-172"><a href="#cb32-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-173"><a href="#cb32-173" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-174"><a href="#cb32-174" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: filtros</span></span>
+<span id="cb32-175"><a href="#cb32-175" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>)</span>
+<span id="cb32-176"><a href="#cb32-176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-177"><a href="#cb32-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-178"><a href="#cb32-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-179"><a href="#cb32-179" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-180"><a href="#cb32-180" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2020</span>)</span>
+<span id="cb32-181"><a href="#cb32-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-182"><a href="#cb32-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-183"><a href="#cb32-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-184"><a href="#cb32-184" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-185"><a href="#cb32-185" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">filter</span>(area <span class="sc">==</span> <span class="st">"Argentina"</span>, year <span class="sc">==</span> <span class="dv">2020</span>)</span>
+<span id="cb32-186"><a href="#cb32-186" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-187"><a href="#cb32-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-188"><a href="#cb32-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-189"><a href="#cb32-189" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-190"><a href="#cb32-190" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-191"><a href="#cb32-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb32-192"><a href="#cb32-192" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Argentina"</span>, <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
+<span id="cb32-193"><a href="#cb32-193" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span></span>
+<span id="cb32-194"><a href="#cb32-194" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb32-195"><a href="#cb32-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-196"><a href="#cb32-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-197"><a href="#cb32-197" aria-hidden="true" tabindex="-1"></a><span class="in">`==`</span> comprueba igualdad; <span class="in">`%in%`</span> comprueba si un valor pertenece a un conjunto.</span>
+<span id="cb32-198"><a href="#cb32-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-199"><a href="#cb32-199" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-200"><a href="#cb32-200" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: ordenar</span></span>
+<span id="cb32-201"><a href="#cb32-201" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">arrange</span>(total_emission)</span>
+<span id="cb32-202"><a href="#cb32-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-203"><a href="#cb32-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-204"><a href="#cb32-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-205"><a href="#cb32-205" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-206"><a href="#cb32-206" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span> <span class="fu">arrange</span>(area, year)</span>
+<span id="cb32-207"><a href="#cb32-207" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-208"><a href="#cb32-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-209"><a href="#cb32-209" aria-hidden="true" tabindex="-1"></a><span class="in">`arrange()`</span> ordena filas sin eliminar observaciones. Para ordenar de mayor a menor, se puede usar <span class="in">`desc(total_emission)`</span>.</span>
+<span id="cb32-210"><a href="#cb32-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-211"><a href="#cb32-211" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.5.** ¿Qué diferencia observás entre <span class="in">`filter()`</span> y <span class="in">`arrange()`</span>?</span>
+<span id="cb32-212"><a href="#cb32-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-213"><a href="#cb32-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6. Transformar variables y controlar los datos</span></span>
+<span id="cb32-214"><a href="#cb32-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-215"><a href="#cb32-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.1. Crear nuevas variables</span></span>
+<span id="cb32-216"><a href="#cb32-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-217"><a href="#cb32-217" aria-hidden="true" tabindex="-1"></a><span class="in">`mutate()`</span> permite crear columnas o modificar las existentes.</span>
+<span id="cb32-218"><a href="#cb32-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-219"><a href="#cb32-219" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-220"><a href="#cb32-220" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: nuevas-variables</span></span>
+<span id="cb32-221"><a href="#cb32-221" aria-hidden="true" tabindex="-1"></a>agro <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb32-222"><a href="#cb32-222" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb32-223"><a href="#cb32-223" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_population =</span> total_population_male <span class="sc">+</span> total_population_female,</span>
+<span id="cb32-224"><a href="#cb32-224" aria-hidden="true" tabindex="-1"></a>    <span class="at">urban_population_percentage =</span></span>
+<span id="cb32-225"><a href="#cb32-225" aria-hidden="true" tabindex="-1"></a>      <span class="dv">100</span> <span class="sc">*</span> urban_population <span class="sc">/</span> total_population,</span>
+<span id="cb32-226"><a href="#cb32-226" aria-hidden="true" tabindex="-1"></a>    <span class="at">positive_temperature_change =</span> average_temperature_c <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb32-227"><a href="#cb32-227" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb32-228"><a href="#cb32-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-229"><a href="#cb32-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-230"><a href="#cb32-230" aria-hidden="true" tabindex="-1"></a>La última variable es lógica (<span class="in">`TRUE`</span>/<span class="in">`FALSE`</span>). El porcentaje puede ser faltante cuando faltan componentes; si la población total es cero, debe revisarse antes de interpretar el cociente.</span>
+<span id="cb32-231"><a href="#cb32-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-232"><a href="#cb32-232" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.6.** ¿Qué representa cada una de las tres variables creadas? ¿De qué tipo es <span class="in">`positive_temperature_change`</span>?</span>
+<span id="cb32-233"><a href="#cb32-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-234"><a href="#cb32-234" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.2. Detectar valores faltantes y duplicados</span></span>
+<span id="cb32-235"><a href="#cb32-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-236"><a href="#cb32-236" aria-hidden="true" tabindex="-1"></a>En R, <span class="in">`NA`</span> representa información faltante; no equivale al valor cero.</span>
+<span id="cb32-237"><a href="#cb32-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-238"><a href="#cb32-238" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-239"><a href="#cb32-239" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: faltantes</span></span>
+<span id="cb32-240"><a href="#cb32-240" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(agro))</span>
+<span id="cb32-241"><a href="#cb32-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-242"><a href="#cb32-242" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-243"><a href="#cb32-243" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span>
+<span id="cb32-244"><a href="#cb32-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-245"><a href="#cb32-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-246"><a href="#cb32-246" aria-hidden="true" tabindex="-1"></a>Para revisar posibles duplicados:</span>
+<span id="cb32-247"><a href="#cb32-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-248"><a href="#cb32-248" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-249"><a href="#cb32-249" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: duplicados</span></span>
+<span id="cb32-250"><a href="#cb32-250" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">duplicated</span>(agro))</span>
+<span id="cb32-251"><a href="#cb32-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-252"><a href="#cb32-252" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-253"><a href="#cb32-253" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(area, year) <span class="sc">|&gt;</span></span>
+<span id="cb32-254"><a href="#cb32-254" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">1</span>)</span>
+<span id="cb32-255"><a href="#cb32-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-256"><a href="#cb32-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-257"><a href="#cb32-257" aria-hidden="true" tabindex="-1"></a>El primer cálculo detecta filas completamente repetidas; el segundo identifica combinaciones de área y año repetidas, aunque sus demás columnas sean distintas. **No elimines duplicados automáticamente:** primero investigá su origen.</span>
+<span id="cb32-258"><a href="#cb32-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-259"><a href="#cb32-259" aria-hidden="true" tabindex="-1"></a><span class="fu">### 6.3. Resumir por grupos</span></span>
+<span id="cb32-260"><a href="#cb32-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-261"><a href="#cb32-261" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-262"><a href="#cb32-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: resumen-grupos</span></span>
+<span id="cb32-263"><a href="#cb32-263" aria-hidden="true" tabindex="-1"></a>agro <span class="sc">|&gt;</span></span>
+<span id="cb32-264"><a href="#cb32-264" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
+<span id="cb32-265"><a href="#cb32-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb32-266"><a href="#cb32-266" aria-hidden="true" tabindex="-1"></a>    <span class="at">cantidad_anios =</span> <span class="fu">n</span>(),</span>
+<span id="cb32-267"><a href="#cb32-267" aria-hidden="true" tabindex="-1"></a>    <span class="at">primer_anio =</span> <span class="fu">min</span>(year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-268"><a href="#cb32-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">ultimo_anio =</span> <span class="fu">max</span>(year, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb32-269"><a href="#cb32-269" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb32-270"><a href="#cb32-270" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb32-271"><a href="#cb32-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-272"><a href="#cb32-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-273"><a href="#cb32-273" aria-hidden="true" tabindex="-1"></a><span class="in">`group_by()`</span> define los grupos y <span class="in">`summarise()`</span> calcula un resumen para cada uno. En este ejemplo, suponemos que cada área tiene al menos un año registrado.</span>
+<span id="cb32-274"><a href="#cb32-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-275"><a href="#cb32-275" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.6.** ¿Todos los países tienen la misma cantidad de registros anuales? ¿Qué información te permite averiguarlo?</span>
+<span id="cb32-276"><a href="#cb32-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-277"><a href="#cb32-277" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 7. Construir una nueva base para América del Sur</span></span>
+<span id="cb32-278"><a href="#cb32-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-279"><a href="#cb32-279" aria-hidden="true" tabindex="-1"></a>Nuestro objetivo es conservar los registros correspondientes a los países de América del Sur y crear la variable <span class="in">`grupo_region`</span> con tres categorías: **Argentina**, **Países limítrofes** y **Otros países de América del Sur**.</span>
+<span id="cb32-280"><a href="#cb32-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-281"><a href="#cb32-281" aria-hidden="true" tabindex="-1"></a>Primero filtramos las áreas que queremos conservar. En este ejercicio se incluyen los países soberanos de América del Sur; no se incluyen las islas Malvinas/Falkland como un país independiente.</span>
+<span id="cb32-282"><a href="#cb32-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-283"><a href="#cb32-283" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-284"><a href="#cb32-284" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: sudamerica</span></span>
+<span id="cb32-285"><a href="#cb32-285" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb32-286"><a href="#cb32-286" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb32-287"><a href="#cb32-287" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Argentina"</span>, <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
+<span id="cb32-288"><a href="#cb32-288" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Colombia"</span>, <span class="st">"Ecuador"</span>,</span>
+<span id="cb32-289"><a href="#cb32-289" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Guyana"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Peru"</span>, <span class="st">"Suriname"</span>,</span>
+<span id="cb32-290"><a href="#cb32-290" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Uruguay"</span>, <span class="st">"Venezuela (Bolivarian Republic of)"</span></span>
+<span id="cb32-291"><a href="#cb32-291" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb32-292"><a href="#cb32-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-293"><a href="#cb32-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-294"><a href="#cb32-294" aria-hidden="true" tabindex="-1"></a>A continuación creamos la clasificación regional y ordenamos las observaciones.</span>
+<span id="cb32-295"><a href="#cb32-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-296"><a href="#cb32-296" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-297"><a href="#cb32-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grupo-region</span></span>
+<span id="cb32-298"><a href="#cb32-298" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="ot">&lt;-</span> agro_sudamerica <span class="sc">|&gt;</span></span>
+<span id="cb32-299"><a href="#cb32-299" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb32-300"><a href="#cb32-300" aria-hidden="true" tabindex="-1"></a>    <span class="at">grupo_region =</span> <span class="fu">case_when</span>(</span>
+<span id="cb32-301"><a href="#cb32-301" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">~</span> <span class="st">"Argentina"</span>,</span>
+<span id="cb32-302"><a href="#cb32-302" aria-hidden="true" tabindex="-1"></a>      area <span class="sc">%in%</span> <span class="fu">c</span>(</span>
+<span id="cb32-303"><a href="#cb32-303" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Bolivia (Plurinational State of)"</span>,</span>
+<span id="cb32-304"><a href="#cb32-304" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>, <span class="st">"Paraguay"</span>, <span class="st">"Uruguay"</span></span>
+<span id="cb32-305"><a href="#cb32-305" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">~</span> <span class="st">"Países limítrofes"</span>,</span>
+<span id="cb32-306"><a href="#cb32-306" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Otros países de América del Sur"</span></span>
+<span id="cb32-307"><a href="#cb32-307" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb32-308"><a href="#cb32-308" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb32-309"><a href="#cb32-309" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(area, year)</span>
+<span id="cb32-310"><a href="#cb32-310" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-311"><a href="#cb32-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-312"><a href="#cb32-312" aria-hidden="true" tabindex="-1"></a><span class="in">`case_when()`</span> asigna un valor de acuerdo con las condiciones, evaluadas de arriba hacia abajo. <span class="in">`TRUE`</span> contempla los casos restantes.</span>
+<span id="cb32-313"><a href="#cb32-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-314"><a href="#cb32-314" aria-hidden="true" tabindex="-1"></a>Comprobamos el resultado:</span>
+<span id="cb32-315"><a href="#cb32-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-316"><a href="#cb32-316" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-317"><a href="#cb32-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: comprobar-region</span></span>
+<span id="cb32-318"><a href="#cb32-318" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="sc">|&gt;</span> <span class="fu">distinct</span>(area, grupo_region) <span class="sc">|&gt;</span> <span class="fu">arrange</span>(grupo_region, area)</span>
+<span id="cb32-319"><a href="#cb32-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-320"><a href="#cb32-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-321"><a href="#cb32-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-322"><a href="#cb32-322" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-323"><a href="#cb32-323" aria-hidden="true" tabindex="-1"></a>agro_sudamerica <span class="sc">|&gt;</span> <span class="fu">count</span>(grupo_region)</span>
+<span id="cb32-324"><a href="#cb32-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-325"><a href="#cb32-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-326"><a href="#cb32-326" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.7.** ¿Cuántos países distintos aparecen en la nueva base? ¿Qué países quedaron clasificados como limítrofes?</span>
+<span id="cb32-327"><a href="#cb32-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-328"><a href="#cb32-328" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 8. Guardar y verificar la nueva base</span></span>
+<span id="cb32-329"><a href="#cb32-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-330"><a href="#cb32-330" aria-hidden="true" tabindex="-1"></a>Guardá la base transformada en la carpeta <span class="in">`datos_transformados`</span>, creada en la Práctica guiada 1.</span>
+<span id="cb32-331"><a href="#cb32-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-332"><a href="#cb32-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-333"><a href="#cb32-333" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-334"><a href="#cb32-334" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: guardar-csv</span></span>
+<span id="cb32-335"><a href="#cb32-335" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb32-336"><a href="#cb32-336" aria-hidden="true" tabindex="-1"></a>  agro_sudamerica,<span class="st">"../datos_transformados/agro_sudamerica.csv"</span></span>
+<span id="cb32-337"><a href="#cb32-337" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-338"><a href="#cb32-338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-339"><a href="#cb32-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-340"><a href="#cb32-340" aria-hidden="true" tabindex="-1"></a><span class="in">`write_csv()`</span> guarda un archivo CSV; **no** reemplaza ni modifica el archivo original de <span class="in">`datos originales`</span>.</span>
+<span id="cb32-341"><a href="#cb32-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-342"><a href="#cb32-342" aria-hidden="true" tabindex="-1"></a>Comprobá desde el explorador de archivos de RStudio que <span class="in">`agro_sudamerica.csv`</span> aparezca en la carpeta correspondiente. Para verificar que puede importarse otra vez, leemos el archivo con otro nombre de objeto:</span>
+<span id="cb32-343"><a href="#cb32-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-344"><a href="#cb32-344" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb32-345"><a href="#cb32-345" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resultado de la práctica</span></span>
+<span id="cb32-346"><a href="#cb32-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-347"><a href="#cb32-347" aria-hidden="true" tabindex="-1"></a>Terminaste con una base de datos de América del Sur que contiene variables transformadas y una clasificación regional. La conservamos como CSV en <span class="in">`datos transformados`</span> para continuar con el análisis exploratorio en la próxima práctica.</span>
+<span id="cb32-348"><a href="#cb32-348" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb32-349"><a href="#cb32-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-350"><a href="#cb32-350" aria-hidden="true" tabindex="-1"></a><span class="fu">## Ampliación opcional: otros formatos de importación y guardado</span></span>
+<span id="cb32-351"><a href="#cb32-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-352"><a href="#cb32-352" aria-hidden="true" tabindex="-1"></a>Además de <span class="in">`read_csv()`</span>, podemos importar otros tipos de archivos. Estos son **ejemplos**: no los ejecutes sin tener los archivos correspondientes.</span>
+<span id="cb32-353"><a href="#cb32-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-354"><a href="#cb32-354" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Tipo de archivo <span class="pp">|</span> Función <span class="pp">|</span> Paquete <span class="pp">|</span></span>
+<span id="cb32-355"><a href="#cb32-355" aria-hidden="true" tabindex="-1"></a><span class="pp">|---|---|---|</span></span>
+<span id="cb32-356"><a href="#cb32-356" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> CSV delimitado por comas <span class="pp">|</span> <span class="in">`read_csv()`</span> <span class="pp">|</span> <span class="in">`readr`</span> (incluido en <span class="in">`tidyverse`</span>) <span class="pp">|</span></span>
+<span id="cb32-357"><a href="#cb32-357" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> CSV delimitado por punto y coma <span class="pp">|</span> <span class="in">`read_csv2()`</span> <span class="pp">|</span> <span class="in">`readr`</span> (incluido en <span class="in">`tidyverse`</span>) <span class="pp">|</span></span>
+<span id="cb32-358"><a href="#cb32-358" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Excel (<span class="in">`.xlsx`</span>, <span class="in">`.xls`</span>) <span class="pp">|</span> <span class="in">`read_excel()`</span> <span class="pp">|</span> <span class="in">`readxl`</span> <span class="pp">|</span></span>
+<span id="cb32-359"><a href="#cb32-359" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Texto delimitado <span class="pp">|</span> <span class="in">`read_delim()`</span> <span class="pp">|</span> <span class="in">`readr`</span> <span class="pp">|</span></span>
+<span id="cb32-360"><a href="#cb32-360" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Objeto R (<span class="in">`.rds`</span>) <span class="pp">|</span> <span class="in">`readRDS()`</span> <span class="pp">|</span> R base <span class="pp">|</span></span>
+<span id="cb32-361"><a href="#cb32-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-362"><a href="#cb32-362" aria-hidden="true" tabindex="-1"></a><span class="in">`read_csv2()`</span> utiliza por defecto punto y coma como separador y coma como marca decimal.</span>
+<span id="cb32-363"><a href="#cb32-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-364"><a href="#cb32-364" aria-hidden="true" tabindex="-1"></a>Para importar Excel, primero instalá <span class="in">`readxl`</span> (solo si hace falta) y luego cargalo:</span>
+<span id="cb32-365"><a href="#cb32-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-366"><a href="#cb32-366" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-367"><a href="#cb32-367" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb32-368"><a href="#cb32-368" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("readxl")</span></span>
+<span id="cb32-369"><a href="#cb32-369" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb32-370"><a href="#cb32-370" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../datos originales/archivo.xlsx"</span>)</span>
+<span id="cb32-371"><a href="#cb32-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-372"><a href="#cb32-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-373"><a href="#cb32-373" aria-hidden="true" tabindex="-1"></a>También se puede guardar un objeto de R conservando sus clases mediante RDS:</span>
+<span id="cb32-374"><a href="#cb32-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-375"><a href="#cb32-375" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb32-376"><a href="#cb32-376" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb32-377"><a href="#cb32-377" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(agro_sudamerica, <span class="st">"../datos transformados/agro_sudamerica.rds"</span>)</span>
+<span id="cb32-378"><a href="#cb32-378" aria-hidden="true" tabindex="-1"></a>agro_desde_rds <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"../datos transformados/agro_sudamerica.rds"</span>)</span>
+<span id="cb32-379"><a href="#cb32-379" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb32-380"><a href="#cb32-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-381"><a href="#cb32-381" aria-hidden="true" tabindex="-1"></a>En esta práctica, **el producto que debemos entregar es el CSV**. El formato RDS queda como lectura complementaria.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

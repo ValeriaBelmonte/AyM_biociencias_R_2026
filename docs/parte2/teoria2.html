@@ -493,12 +493,12 @@ div.csl-indent {
 </tr>
 <tr class="even">
 <td><code>forcats</code></td>
-<td>rabajar con variables categóricas (factores).</td>
+<td>trabajar con variables categóricas (factores).</td>
 </tr>
 </tbody>
 </table>
 <p>Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el <em>data frame</em> o, más específicamente, el <em>tibble</em>), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.</p>
-<p>ara conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la <a href="https://tidyverse.tidyverse.org/">Página oficial de Tidyverse</a></p>
+<p>Para conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la <a href="https://tidyverse.tidyverse.org/">Página oficial de Tidyverse</a></p>
 <p>Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.</p>
 </section>
 <section id="activación-de-bloque-de-código-chunk" class="level2" data-number="1.2">
@@ -550,7 +550,7 @@ n ambos casos, se insertará un bloque de código como el que se muestra a conti
 <h2 data-number="1.4" class="anchored" data-anchor-id="importación-de-la-base-de-datos"><span class="header-section-number">1.4</span> Importación de la base de datos</h2>
 <p>Importar datos significa leer un archivo externo y convertirlo en un objeto que R pueda utilizar. Dependiendo el tipo de archivo usaremos diferentes funciones. Por ejemplo, para archivos con extensión CSV puede emplearse <code>read_csv()</code>. Esta función genera un objeto de tipo <code>tibble</code>, una versión moderna de un data frame.</p>
 <p>El nombre del archivo que se desea importar debe escribirse entre comillas. Si el archivo <strong>no</strong> se encuentra en la carpeta de trabajo actual, es necesario indicar su <strong>ruta de acceso</strong>. Por ejemplo, <code>../</code> permite subir un nivel en la estructura de carpetas, como se muestra en el código:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos_originales/base_datos.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Para comprobar que el objeto fue creado:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>También puede observarse en el panel Environment de RStudio.</p>
@@ -1155,11 +1155,11 @@ Wickham, H., Vaughan, D., &amp; Girlich, M. (2026). <em>Tidyr: Tidy messy data</
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`dplyr`</span>   <span class="pp">|</span> Seleccionar, filtrar, crear y resumir variables. <span class="pp">|</span></span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`tidyr`</span>   <span class="pp">|</span> para reorganizar la estructura de los datos.     <span class="pp">|</span></span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`ggplot2`</span> <span class="pp">|</span> Crear gráficos.                                  <span class="pp">|</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`forcats`</span> <span class="pp">|</span> rabajar con variables categóricas (factores).    <span class="pp">|</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`forcats`</span> <span class="pp">|</span> trabajar con variables categóricas (factores).   <span class="pp">|</span></span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>Trabajar dentro de un mismo ecosistema tiene una ventaja importante: todos estos paquetes comparten una misma lógica de funcionamiento y un mismo tipo de estructura de datos (el *data frame* o, más específicamente, el *tibble*), lo que permite combinarlos fácilmente dentro de un mismo flujo de trabajo.</span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>ara conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la <span class="co">[</span><span class="ot">Página oficial de Tidyverse</span><span class="co">](https://tidyverse.tidyverse.org/)</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>Para conocer más sobre estos paquetes y sus aplicaciones, se recomienda consultar la <span class="co">[</span><span class="ot">Página oficial de Tidyverse</span><span class="co">](https://tidyverse.tidyverse.org/)</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>Además trabajaremos con otros paquetes que iremos incorporando y explicando en la medida que los necesitemos.</span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
@@ -1213,7 +1213,7 @@ Wickham, H., Vaughan, D., &amp; Girlich, M. (2026). <em>Tidyr: Tidy messy data</
 <span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>El nombre del archivo que se desea importar debe escribirse entre comillas. Si el archivo **no** se encuentra en la carpeta de trabajo actual, es necesario indicar su **ruta de acceso**. Por ejemplo, <span class="in">`../`</span> permite subir un nivel en la estructura de carpetas, como se muestra en el código:</span>
 <span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos originales/base_datos.csv"</span>)</span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../datos_originales/base_datos.csv"</span>)</span>
 <span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a>Para comprobar que el objeto fue creado:</span>
