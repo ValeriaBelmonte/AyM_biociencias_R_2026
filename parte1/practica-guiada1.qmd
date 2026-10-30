@@ -50,10 +50,8 @@ Analisis_agrofood/
 
 ## Guardar la base de datos original
 
-Descargar base de datos Agrofood_co2_emission.csv\
-[Agrofood_co2_emission](../datos/Agrofood_co2_emission.csv)
 
-Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales
+Utilizando el explorador de archivos de tu computadora, guarda el archivo de datos `Agrofood_co2_emission` que descargaste dentro de la carpeta:`datos_originales`
 
 ``` text
 Analisis_agrofood/  
@@ -190,7 +188,7 @@ Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adel
 install.packages("tidyverse")
 ```
 
-```         
+``` r         
 library(tidyverse)
 ```
 
@@ -198,7 +196,7 @@ La instalación se realiza una única vez. En cambio, `library(tidyverse)` debe 
 
 Si la instalación mediante código no funciona o R informa que el paquete no se encuentra, también puede instalarlo desde el menú de RStudio:
 
-```         
+``` r        
 tools->Install Packages..->tidyverse
 ```
 
@@ -208,19 +206,13 @@ tools->Install Packages..->tidyverse
 
 ![](/imagenes/Intalar%20paquete%203.png){width="300"}
 
-### Antes de finalizar
+::: {.callout-tip}
+## Resultado de la práctica
 
-Verificá que:
+Organizaste tu primer proyecto de análisis de datos en RStudio, creando las carpetas necesarias y guardando la base original *Agrofood CO₂ Emission*. También creaste tu primer documento Quarto, en el que integraste texto, código y resultados, y generaste un documento Word mediante **Render**. Este proyecto será la base de trabajo para las próximas prácticas.
+:::
 
-- La carpeta `Analisis_agrofood` contiene las subcarpetas correspondientes.
 
-- La base original está guardada en `datos_originales`.
-
-- El proyecto de RStudio se creó correctamente.
-
-- El documento `practica_co2.qmd` está guardado en `scripts`.
-
-- Pudiste ejecutar el bloque de código y generar el documento Word mediante **Render**.
 
 ## ¿Qué aprendimos en esta práctica?
 
