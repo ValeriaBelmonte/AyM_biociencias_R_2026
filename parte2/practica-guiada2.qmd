@@ -379,3 +379,7 @@ agro_desde_rds <- readRDS("../datos transformados/agro_sudamerica.rds")
 ```
 
 En esta práctica, **el producto que debemos entregar es el CSV**. El formato RDS queda como lectura complementaria.
+
+## ¿Qué aprendimos en esta práctica?
+
+Aprendimos a importar, reconocer, limpiar y transformar datos en R utilizando los paquetes `tidyverse` y `janitor`. Trabajamos con funciones para seleccionar variables, filtrar y ordenar observaciones, crear nuevas variables y obtener resúmenes por grupos. También aprendimos a identificar valores faltantes y duplicados. Finalmente, construimos una base de datos de América del Sur y la guardamos en formato CSV para utilizarla en las próximas prácticas.
