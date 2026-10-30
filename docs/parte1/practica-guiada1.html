@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -391,14 +411,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#propósito" id="toc-propósito" class="nav-link active" data-scroll-target="#propósito"><span class="header-section-number">1</span> Propósito</a></li>
-  <li><a href="#paso-1.-organizar-una-carpeta-para-el-proyecto" id="toc-paso-1.-organizar-una-carpeta-para-el-proyecto" class="nav-link" data-scroll-target="#paso-1.-organizar-una-carpeta-para-el-proyecto"><span class="header-section-number">2</span> Paso 1. Organizar una carpeta para el proyecto</a></li>
-  <li><a href="#guardar-la-base-de-datos-original" id="toc-guardar-la-base-de-datos-original" class="nav-link" data-scroll-target="#guardar-la-base-de-datos-original"><span class="header-section-number">3</span> Guardar la base de datos original</a></li>
-  <li><a href="#paso-2.-crear-un-proyecto-en-rstudio" id="toc-paso-2.-crear-un-proyecto-en-rstudio" class="nav-link" data-scroll-target="#paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">4</span> Paso 2. Crear un proyecto en RStudio</a></li>
-  <li><a href="#paso-3.-crear-el-primer-documento-quarto" id="toc-paso-3.-crear-el-primer-documento-quarto" class="nav-link" data-scroll-target="#paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">5</span> Paso 3. Crear el primer documento Quarto</a>
+  <li><a href="#conjunto-de-datos" id="toc-conjunto-de-datos" class="nav-link" data-scroll-target="#conjunto-de-datos"><span class="header-section-number">2</span> Conjunto de datos</a></li>
+  <li><a href="#paso-1.-organizar-una-carpeta-para-el-proyecto" id="toc-paso-1.-organizar-una-carpeta-para-el-proyecto" class="nav-link" data-scroll-target="#paso-1.-organizar-una-carpeta-para-el-proyecto"><span class="header-section-number">3</span> Paso 1. Organizar una carpeta para el proyecto</a></li>
+  <li><a href="#guardar-la-base-de-datos-original" id="toc-guardar-la-base-de-datos-original" class="nav-link" data-scroll-target="#guardar-la-base-de-datos-original"><span class="header-section-number">4</span> Guardar la base de datos original</a></li>
+  <li><a href="#paso-2.-crear-un-proyecto-en-rstudio" id="toc-paso-2.-crear-un-proyecto-en-rstudio" class="nav-link" data-scroll-target="#paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">5</span> Paso 2. Crear un proyecto en RStudio</a></li>
+  <li><a href="#paso-3.-crear-el-primer-documento-quarto" id="toc-paso-3.-crear-el-primer-documento-quarto" class="nav-link" data-scroll-target="#paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">6</span> Paso 3. Crear el primer documento Quarto</a>
   <ul class="collapse">
-  <li><a href="#idea-central" id="toc-idea-central" class="nav-link" data-scroll-target="#idea-central"><span class="header-section-number">5.1</span> Idea central</a></li>
-  <li><a href="#preparar-el-rstudio-para-la-próxima-clase" id="toc-preparar-el-rstudio-para-la-próxima-clase" class="nav-link" data-scroll-target="#preparar-el-rstudio-para-la-próxima-clase"><span class="header-section-number">5.2</span> Preparar el RStudio para la próxima clase</a></li>
-  <li><a href="#antes-de-finalizar" id="toc-antes-de-finalizar" class="nav-link" data-scroll-target="#antes-de-finalizar"><span class="header-section-number">5.3</span> Antes de finalizar</a></li>
+  <li><a href="#idea-central" id="toc-idea-central" class="nav-link" data-scroll-target="#idea-central"><span class="header-section-number">6.1</span> Idea central</a></li>
+  <li><a href="#preparar-el-rstudio-para-la-próxima-clase" id="toc-preparar-el-rstudio-para-la-próxima-clase" class="nav-link" data-scroll-target="#preparar-el-rstudio-para-la-próxima-clase"><span class="header-section-number">6.2</span> Preparar el RStudio para la próxima clase</a></li>
+  <li><a href="#antes-de-finalizar" id="toc-antes-de-finalizar" class="nav-link" data-scroll-target="#antes-de-finalizar"><span class="header-section-number">6.3</span> Antes de finalizar</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -430,8 +451,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En esta práctica realizaremos nuestro primer trabajo organizado y reproducible en RStudio utilizando Quarto.</p>
 <p>Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.</p>
 </section>
-<section id="paso-1.-organizar-una-carpeta-para-el-proyecto" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="paso-1.-organizar-una-carpeta-para-el-proyecto"><span class="header-section-number">2</span> Paso 1. Organizar una carpeta para el proyecto</h2>
+<section id="conjunto-de-datos" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="conjunto-de-datos"><span class="header-section-number">2</span> Conjunto de datos</h2>
+<p>Trabajaremos con el conjunto de datos Agrofood CO₂ Emission, elaborado por <span class="citation" data-cites="lobello">Lo Bello (<a href="#ref-lobello" role="doc-biblioref">n.d.</a>)</span>, que reúne información sobre las emisiones de gases de efecto invernadero asociadas a distintas actividades del sistema agroalimentario y las variaciones de temperatura en diferentes países durante el período 1990–2020.</p>
+<p>La base fue construida a partir de información de la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) y del Grupo Intergubernamental de Expertos sobre el Cambio Climático (IPCC), y se encuentra disponible públicamente en Kaggle.</p>
+<p>Para facilitar la comprensión de los datos, se proporciona un documento complementario que incluye una descripción del conjunto de datos y la traducción al español de las variables. <a href="../explicaciones extras/inf_Agrofood.pdf">Info de los datos</a></p>
+</section>
+<section id="paso-1.-organizar-una-carpeta-para-el-proyecto" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="paso-1.-organizar-una-carpeta-para-el-proyecto"><span class="header-section-number">3</span> Paso 1. Organizar una carpeta para el proyecto</h2>
 <p>En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:</p>
 <p>Analisis_agrofood</p>
 <p>Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:</p>
@@ -455,8 +482,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── resultados/  
 └── scripts/  </code></pre>
 </section>
-<section id="guardar-la-base-de-datos-original" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="guardar-la-base-de-datos-original"><span class="header-section-number">3</span> Guardar la base de datos original</h2>
+<section id="guardar-la-base-de-datos-original" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="guardar-la-base-de-datos-original"><span class="header-section-number">4</span> Guardar la base de datos original</h2>
 <p>Descargar base de datos Agrofood_co2_emission.csv<br>
 <a href="../datos/Agrofood_co2_emission.csv">Agrofood_co2_emission</a></p>
 <p>Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales</p>
@@ -470,8 +497,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── resultados/  
 └── scripts/  </code></pre>
 </section>
-<section id="paso-2.-crear-un-proyecto-en-rstudio" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">4</span> Paso 2. Crear un proyecto en RStudio</h2>
+<section id="paso-2.-crear-un-proyecto-en-rstudio" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="paso-2.-crear-un-proyecto-en-rstudio"><span class="header-section-number">5</span> Paso 2. Crear un proyecto en RStudio</h2>
 <p>Abrir RStudio y seleccionar:</p>
 <pre><code>File → New Project → Existing Directory</code></pre>
 <p>Seleccioná la carpeta <code>Analisis_agrofood</code> que creaste en el Paso 1, como se muestra en las siguientes imágenes.</p>
@@ -489,8 +516,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
-<section id="paso-3.-crear-el-primer-documento-quarto" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">5</span> Paso 3. Crear el primer documento Quarto</h2>
+<section id="paso-3.-crear-el-primer-documento-quarto" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="paso-3.-crear-el-primer-documento-quarto"><span class="header-section-number">6</span> Paso 3. Crear el primer documento Quarto</h2>
 <p>Desde RStudio:</p>
 <ol type="1">
 <li><p>File &gt; New File &gt; Quarto Document</p></li>
@@ -537,8 +564,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Abrí el archivo generado y verificá que los elementos aparezcan correctamente.</p>
 <p>Importante: el archivo .qmd contiene el documento que podemos seguir editando, mientras que el archivo .docx es el resultado generado al renderizarlo.</p>
 <p>Más adelante, en la Parte 6, aprenderemos a configurar los bloques de código y a personalizar la presentación de los documentos reproducibles.</p>
-<section id="idea-central" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="idea-central"><span class="header-section-number">5.1</span> Idea central</h3>
+<section id="idea-central" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="idea-central"><span class="header-section-number">6.1</span> Idea central</h3>
 <p>Quarto permite integrar en un mismo documento:</p>
 <ul>
 <li><p>explicaciones, comentarios,</p></li>
@@ -547,8 +574,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código</p>
 </section>
-<section id="preparar-el-rstudio-para-la-próxima-clase" class="level3" data-number="5.2">
-<h3 data-number="5.2" class="anchored" data-anchor-id="preparar-el-rstudio-para-la-próxima-clase"><span class="header-section-number">5.2</span> Preparar el RStudio para la próxima clase</h3>
+<section id="preparar-el-rstudio-para-la-próxima-clase" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="preparar-el-rstudio-para-la-próxima-clase"><span class="header-section-number">6.2</span> Preparar el RStudio para la próxima clase</h3>
 <ol type="1">
 <li>Para dejar preparado el RStudio antes de la clase 2, se instalará y cargará el paquete <strong>tidyverse</strong></li>
 </ol>
@@ -562,8 +589,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="..\imagenes/instalar paquete 2.png" class="img-fluid" width="300"></p>
 <p><img src="..\imagenes/Intalar paquete 3.png" class="img-fluid" width="300"></p>
 </section>
-<section id="antes-de-finalizar" class="level3" data-number="5.3">
-<h3 data-number="5.3" class="anchored" data-anchor-id="antes-de-finalizar"><span class="header-section-number">5.3</span> Antes de finalizar</h3>
+<section id="antes-de-finalizar" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="antes-de-finalizar"><span class="header-section-number">6.3</span> Antes de finalizar</h3>
 <p>Verificá que:</p>
 <ul>
 <li><p>La carpeta <code>Analisis_agrofood</code> contiene las subcarpetas correspondientes.</p></li>
@@ -572,6 +599,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>El documento <code>practica_co2.qmd</code> está guardado en <code>scripts</code>.</p></li>
 <li><p>Pudiste ejecutar el bloque de código y generar el documento Word mediante <strong>Render</strong>.</p></li>
 </ul>
+<p>##Referencias</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-lobello" class="csl-entry" role="listitem">
+Lo Bello, A. (n.d.). <em>Agri-food CO2 emission dataset - forecasting ML</em>. Kaggle. <a href="https://www.kaggle.com/datasets/alessandrolobello/agri-food-co2-emission-dataset-forecasting-ml">https://www.kaggle.com/datasets/alessandrolobello/agri-food-co2-emission-dataset-forecasting-ml</a>
+</div>
+</div>
 
 
 <!-- -->
@@ -1040,208 +1073,222 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Organizar una carpeta para el proyecto</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>Analisis_agrofood</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**datos originales**: contiene la base de datos tal como fue recibida. No debe modificarse, para conservar siempre una copia original.\</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**datos transformados**: contiene las bases de datos que se generen luego de limpiar, seleccionar o crear variables.</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scripts**: contiene los archivos de código utilizados en el análisis, por ejemplo, documentos .qmd o scripts .R.</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**resultados**: contiene tablas, resúmenes u otros resultados obtenidos durante el análisis.</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**figuras**: contiene los gráficos e imágenes generados en el proyecto.</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>informes: contiene los documentos finales elaborados para comunicar los resultados.</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**prompts** (opcional): permite guardar un registro de los prompts utilizados al trabajar con herramientas de inteligencia artificial.</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>La estructura inicial del proyecto será:</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="in">Analisis_agrofood/  </span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_originales/  </span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_transformados/  </span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="in">├── figuras/  </span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="in">├── informes/  </span></span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a><span class="in">├── prompts/</span></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="in">├── resultados/  </span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a><span class="in">└── scripts/  </span></span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Guardar la base de datos original</span></span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>Descargar base de datos Agrofood_co2_emission.csv\</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Agrofood_co2_emission</span><span class="co">](../datos/Agrofood_co2_emission.csv)</span></span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales</span>
-<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
-<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a><span class="in">Analisis_agrofood/  </span></span>
-<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_originales/  </span></span>
-<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a><span class="in">            └── Agrofood_co2_emission.csv</span></span>
-<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_transformados/  </span></span>
-<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="in">├── figuras/  </span></span>
-<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a><span class="in">├── informes/  </span></span>
-<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a><span class="in">├── prompts/</span></span>
-<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a><span class="in">├── resultados/  </span></span>
-<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="in">└── scripts/  </span></span>
-<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Crear un proyecto en RStudio</span></span>
-<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a>Abrir RStudio y seleccionar:</span>
-<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="in">File → New Project → Existing Directory</span></span>
-<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a>Seleccioná la carpeta <span class="in">`Analisis_agrofood`</span> que creaste en el Paso 1, como se muestra en las siguientes imágenes.</span>
-<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a>![](/imagenes/nuevo%20proecto%20(1).png)</span>
-<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%202.png)</span>{width="300"}</span>
-<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%203.png)</span>{width="300"}</span>
-<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%204.png)</span>{width="300"}</span>
-<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%205.png)</span>{width="300"}</span>
-<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a>Luego, hacé clic en **Create Project**.</span>
-<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a>RStudio creará un archivo con extensión <span class="in">`.Rproj`</span>, que permitirá trabajar de manera organizada dentro del proyecto.</span>
-<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Imagen de la creación del proyecto](/imagenes/proyecto%20agro_food.png)</span>{width="433"}</span>
-<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Crear el primer documento Quarto</span></span>
-<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a>Desde RStudio:</span>
-<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>File <span class="sc">\&gt;</span> New File <span class="sc">\&gt;</span> Quarto Document</span>
-<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Escribí un título para el documento, por ejemplo, Análisis de emisiones de CO₂.</span>
-<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Seleccioná Word como formato de salida.</span>
-<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Hacé clic en Create.</span>
-<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">![](/imagenes/crear%20script%201%20(1).png){width="460"}</span><span class="co">](/imagenes/crear%20script%202.png)</span>{width="500"}</span>
-<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a>![](/imagenes/crear%20script%202%20(2).png){width="461"}</span>
-<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a>Para la escritura, y programación trabajaremos desde <span class="in">`Source`</span></span>
-<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a>**Para guardar el documento**</span>
-<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Seleccioná **File \&gt; Save As...**.</span>
-<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Ingresá a la carpeta <span class="in">`scripts`</span> de tu proyecto.</span>
-<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Guardá el archivo con el nombre <span class="in">`practica_co2.qmd`</span>.</span>
-<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Escribir en el script dentro de quarto</span>
-<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a>**Escribir texto y código**</span>
-<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a>Trabajaremos en el modo Source de RStudio.</span>
-<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a>Quarto permite combinar explicaciones, código y resultados en un mismo documento, facilitando la organización y reproducibilidad del análisis.</span>
-<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a>Debajo del encabezado inicial del documento, escribí el siguiente texto:</span>
-<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a>En esta práctica comenzaremos a utilizar RStudio y Quarto para organizar y documentar un análisis de datos.</span>
-<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a>A continuación, insertá un bloque de código R utilizando Ctrl + Alt + I</span>
-<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/chunks.png)</span>{width="500"}</span>
-<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a>Dentro del bloque de código escribí</span>
-<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">3</span></span>
-<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a>**Ejecutar el bloque de código**</span>
-<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a>Para ejecutar el código podemos:</span>
-<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Hacer clic en el triángulo verde (▶) ubicado en la esquina superior derecha del bloque de código. Se ejecutarán todas las instrucciones del bloque.</span>
-<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a>2<span class="sc">\.</span> Ubicá el cursor en la línea de código y presionar Ctrl + Enter para ejecutar esa línea.</span>
-<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a>Al ejecutar 2 + 3, R mostrará el siguiente resultado:</span>
-<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a><span class="in">[1] 5</span></span>
-<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a>El resultado puede observarse en la consola de RStudio o debajo del bloque de código, según la configuración del editor.</span>
-<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a>**Renderizar el documento**</span>
-<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a>Presioná el botón Render.</span>
-<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a>Quarto generará un documento Word que contendrá el texto, el código y el resultado de la operación.</span>
-<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a>Abrí el archivo generado y verificá que los elementos aparezcan correctamente.</span>
-<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a>Importante: el archivo .qmd contiene el documento que podemos seguir editando, mientras que el archivo .docx es el resultado generado al renderizarlo.</span>
-<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a>Más adelante, en la Parte 6, aprenderemos a configurar los bloques de código y a personalizar la presentación de los documentos reproducibles.</span>
-<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a><span class="fu">### Idea central</span></span>
-<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a>Quarto permite integrar en un mismo documento:</span>
-<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>explicaciones, comentarios,</span>
-<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>código,</span>
-<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>resultados y gráficos</span>
-<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a>Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código</span>
-<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preparar el RStudio para la próxima clase</span></span>
-<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Para dejar preparado el RStudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**</span>
-<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación tidyverse</span></span>
-<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conjunto de datos </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>Trabajaremos con el conjunto de datos Agrofood CO₂ Emission, elaborado por @lobello, que reúne información sobre las emisiones de gases de efecto invernadero asociadas a distintas actividades del sistema agroalimentario y las variaciones de temperatura en diferentes países durante el período 1990–2020.</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>La base fue construida a partir de información de la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) y del Grupo Intergubernamental de Expertos sobre el Cambio Climático (IPCC), y se encuentra disponible públicamente en Kaggle.</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>Para facilitar la comprensión de los datos, se proporciona un documento complementario que incluye una descripción del conjunto de datos y la traducción al español de las variables. <span class="co">[</span><span class="ot">Info de los datos</span><span class="co">](../explicaciones extras/inf_Agrofood.pdf)</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Organizar una carpeta para el proyecto</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>Analisis_agrofood</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>Esta carpeta contendrá todos los archivos relacionados con el proyecto, organizados en carpetas:</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**datos originales**: contiene la base de datos tal como fue recibida. No debe modificarse, para conservar siempre una copia original.\</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**datos transformados**: contiene las bases de datos que se generen luego de limpiar, seleccionar o crear variables.</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**scripts**: contiene los archivos de código utilizados en el análisis, por ejemplo, documentos .qmd o scripts .R.</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**resultados**: contiene tablas, resúmenes u otros resultados obtenidos durante el análisis.</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**figuras**: contiene los gráficos e imágenes generados en el proyecto.</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>informes: contiene los documentos finales elaborados para comunicar los resultados.</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**prompts** (opcional): permite guardar un registro de los prompts utilizados al trabajar con herramientas de inteligencia artificial.</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>La estructura inicial del proyecto será:</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a><span class="in">Analisis_agrofood/  </span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_originales/  </span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_transformados/  </span></span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a><span class="in">├── figuras/  </span></span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a><span class="in">├── informes/  </span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a><span class="in">├── prompts/</span></span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a><span class="in">├── resultados/  </span></span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a><span class="in">└── scripts/  </span></span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## Guardar la base de datos original</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>Descargar base de datos Agrofood_co2_emission.csv\</span>
+<span id="cb9-52"><a href="#cb9-52" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Agrofood_co2_emission</span><span class="co">](../datos/Agrofood_co2_emission.csv)</span></span>
+<span id="cb9-53"><a href="#cb9-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-54"><a href="#cb9-54" aria-hidden="true" tabindex="-1"></a>Utilizando el explorador de archivos de tu computadora, guarda el archivo dentro de la carpeta: datos originales</span>
+<span id="cb9-55"><a href="#cb9-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-56"><a href="#cb9-56" aria-hidden="true" tabindex="-1"></a><span class="in">``` text</span></span>
+<span id="cb9-57"><a href="#cb9-57" aria-hidden="true" tabindex="-1"></a><span class="in">Analisis_agrofood/  </span></span>
+<span id="cb9-58"><a href="#cb9-58" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_originales/  </span></span>
+<span id="cb9-59"><a href="#cb9-59" aria-hidden="true" tabindex="-1"></a><span class="in">            └── Agrofood_co2_emission.csv</span></span>
+<span id="cb9-60"><a href="#cb9-60" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_transformados/  </span></span>
+<span id="cb9-61"><a href="#cb9-61" aria-hidden="true" tabindex="-1"></a><span class="in">├── figuras/  </span></span>
+<span id="cb9-62"><a href="#cb9-62" aria-hidden="true" tabindex="-1"></a><span class="in">├── informes/  </span></span>
+<span id="cb9-63"><a href="#cb9-63" aria-hidden="true" tabindex="-1"></a><span class="in">├── prompts/</span></span>
+<span id="cb9-64"><a href="#cb9-64" aria-hidden="true" tabindex="-1"></a><span class="in">├── resultados/  </span></span>
+<span id="cb9-65"><a href="#cb9-65" aria-hidden="true" tabindex="-1"></a><span class="in">└── scripts/  </span></span>
+<span id="cb9-66"><a href="#cb9-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-67"><a href="#cb9-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-68"><a href="#cb9-68" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Crear un proyecto en RStudio</span></span>
+<span id="cb9-69"><a href="#cb9-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-70"><a href="#cb9-70" aria-hidden="true" tabindex="-1"></a>Abrir RStudio y seleccionar:</span>
+<span id="cb9-71"><a href="#cb9-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-72"><a href="#cb9-72" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb9-73"><a href="#cb9-73" aria-hidden="true" tabindex="-1"></a><span class="in">File → New Project → Existing Directory</span></span>
+<span id="cb9-74"><a href="#cb9-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-75"><a href="#cb9-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-76"><a href="#cb9-76" aria-hidden="true" tabindex="-1"></a>Seleccioná la carpeta <span class="in">`Analisis_agrofood`</span> que creaste en el Paso 1, como se muestra en las siguientes imágenes.</span>
+<span id="cb9-77"><a href="#cb9-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-78"><a href="#cb9-78" aria-hidden="true" tabindex="-1"></a>![](/imagenes/nuevo%20proecto%20(1).png)</span>
+<span id="cb9-79"><a href="#cb9-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-80"><a href="#cb9-80" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%202.png)</span>{width="300"}</span>
+<span id="cb9-81"><a href="#cb9-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-82"><a href="#cb9-82" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%203.png)</span>{width="300"}</span>
+<span id="cb9-83"><a href="#cb9-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-84"><a href="#cb9-84" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%204.png)</span>{width="300"}</span>
+<span id="cb9-85"><a href="#cb9-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-86"><a href="#cb9-86" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/crear%20proyecto%205.png)</span>{width="300"}</span>
+<span id="cb9-87"><a href="#cb9-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-88"><a href="#cb9-88" aria-hidden="true" tabindex="-1"></a>Luego, hacé clic en **Create Project**.</span>
+<span id="cb9-89"><a href="#cb9-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-90"><a href="#cb9-90" aria-hidden="true" tabindex="-1"></a>RStudio creará un archivo con extensión <span class="in">`.Rproj`</span>, que permitirá trabajar de manera organizada dentro del proyecto.</span>
+<span id="cb9-91"><a href="#cb9-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-92"><a href="#cb9-92" aria-hidden="true" tabindex="-1"></a><span class="al">![Figura: Imagen de la creación del proyecto](/imagenes/proyecto%20agro_food.png)</span>{width="433"}</span>
+<span id="cb9-93"><a href="#cb9-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-94"><a href="#cb9-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Crear el primer documento Quarto</span></span>
+<span id="cb9-95"><a href="#cb9-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-96"><a href="#cb9-96" aria-hidden="true" tabindex="-1"></a>Desde RStudio:</span>
+<span id="cb9-97"><a href="#cb9-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-98"><a href="#cb9-98" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>File <span class="sc">\&gt;</span> New File <span class="sc">\&gt;</span> Quarto Document</span>
+<span id="cb9-99"><a href="#cb9-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-100"><a href="#cb9-100" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Escribí un título para el documento, por ejemplo, Análisis de emisiones de CO₂.</span>
+<span id="cb9-101"><a href="#cb9-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-102"><a href="#cb9-102" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Seleccioná Word como formato de salida.</span>
+<span id="cb9-103"><a href="#cb9-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-104"><a href="#cb9-104" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Hacé clic en Create.</span>
+<span id="cb9-105"><a href="#cb9-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-106"><a href="#cb9-106" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">![](/imagenes/crear%20script%201%20(1).png){width="460"}</span><span class="co">](/imagenes/crear%20script%202.png)</span>{width="500"}</span>
+<span id="cb9-107"><a href="#cb9-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-108"><a href="#cb9-108" aria-hidden="true" tabindex="-1"></a>![](/imagenes/crear%20script%202%20(2).png){width="461"}</span>
+<span id="cb9-109"><a href="#cb9-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-110"><a href="#cb9-110" aria-hidden="true" tabindex="-1"></a>Para la escritura, y programación trabajaremos desde <span class="in">`Source`</span></span>
+<span id="cb9-111"><a href="#cb9-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-112"><a href="#cb9-112" aria-hidden="true" tabindex="-1"></a>**Para guardar el documento**</span>
+<span id="cb9-113"><a href="#cb9-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-114"><a href="#cb9-114" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Seleccioná **File \&gt; Save As...**.</span>
+<span id="cb9-115"><a href="#cb9-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-116"><a href="#cb9-116" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Ingresá a la carpeta <span class="in">`scripts`</span> de tu proyecto.</span>
+<span id="cb9-117"><a href="#cb9-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-118"><a href="#cb9-118" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Guardá el archivo con el nombre <span class="in">`practica_co2.qmd`</span>.</span>
+<span id="cb9-119"><a href="#cb9-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-120"><a href="#cb9-120" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Escribir en el script dentro de quarto</span>
+<span id="cb9-121"><a href="#cb9-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-122"><a href="#cb9-122" aria-hidden="true" tabindex="-1"></a>**Escribir texto y código**</span>
+<span id="cb9-123"><a href="#cb9-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-124"><a href="#cb9-124" aria-hidden="true" tabindex="-1"></a>Trabajaremos en el modo Source de RStudio.</span>
+<span id="cb9-125"><a href="#cb9-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-126"><a href="#cb9-126" aria-hidden="true" tabindex="-1"></a>Quarto permite combinar explicaciones, código y resultados en un mismo documento, facilitando la organización y reproducibilidad del análisis.</span>
+<span id="cb9-127"><a href="#cb9-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-128"><a href="#cb9-128" aria-hidden="true" tabindex="-1"></a>Debajo del encabezado inicial del documento, escribí el siguiente texto:</span>
+<span id="cb9-129"><a href="#cb9-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-130"><a href="#cb9-130" aria-hidden="true" tabindex="-1"></a>En esta práctica comenzaremos a utilizar RStudio y Quarto para organizar y documentar un análisis de datos.</span>
+<span id="cb9-131"><a href="#cb9-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-132"><a href="#cb9-132" aria-hidden="true" tabindex="-1"></a>A continuación, insertá un bloque de código R utilizando Ctrl + Alt + I</span>
+<span id="cb9-133"><a href="#cb9-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-134"><a href="#cb9-134" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/chunks.png)</span>{width="500"}</span>
+<span id="cb9-135"><a href="#cb9-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-136"><a href="#cb9-136" aria-hidden="true" tabindex="-1"></a>Dentro del bloque de código escribí</span>
+<span id="cb9-137"><a href="#cb9-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-138"><a href="#cb9-138" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb9-139"><a href="#cb9-139" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">3</span></span>
+<span id="cb9-140"><a href="#cb9-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-141"><a href="#cb9-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-142"><a href="#cb9-142" aria-hidden="true" tabindex="-1"></a>**Ejecutar el bloque de código**</span>
+<span id="cb9-143"><a href="#cb9-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-144"><a href="#cb9-144" aria-hidden="true" tabindex="-1"></a>Para ejecutar el código podemos:</span>
+<span id="cb9-145"><a href="#cb9-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-146"><a href="#cb9-146" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Hacer clic en el triángulo verde (▶) ubicado en la esquina superior derecha del bloque de código. Se ejecutarán todas las instrucciones del bloque.</span>
+<span id="cb9-147"><a href="#cb9-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-148"><a href="#cb9-148" aria-hidden="true" tabindex="-1"></a>2<span class="sc">\.</span> Ubicá el cursor en la línea de código y presionar Ctrl + Enter para ejecutar esa línea.</span>
+<span id="cb9-149"><a href="#cb9-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-150"><a href="#cb9-150" aria-hidden="true" tabindex="-1"></a>Al ejecutar 2 + 3, R mostrará el siguiente resultado:</span>
+<span id="cb9-151"><a href="#cb9-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-152"><a href="#cb9-152" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb9-153"><a href="#cb9-153" aria-hidden="true" tabindex="-1"></a><span class="in">[1] 5</span></span>
+<span id="cb9-154"><a href="#cb9-154" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-155"><a href="#cb9-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-156"><a href="#cb9-156" aria-hidden="true" tabindex="-1"></a>El resultado puede observarse en la consola de RStudio o debajo del bloque de código, según la configuración del editor.</span>
+<span id="cb9-157"><a href="#cb9-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-158"><a href="#cb9-158" aria-hidden="true" tabindex="-1"></a>**Renderizar el documento**</span>
+<span id="cb9-159"><a href="#cb9-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-160"><a href="#cb9-160" aria-hidden="true" tabindex="-1"></a>Presioná el botón Render.</span>
+<span id="cb9-161"><a href="#cb9-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-162"><a href="#cb9-162" aria-hidden="true" tabindex="-1"></a>Quarto generará un documento Word que contendrá el texto, el código y el resultado de la operación.</span>
+<span id="cb9-163"><a href="#cb9-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-164"><a href="#cb9-164" aria-hidden="true" tabindex="-1"></a>Abrí el archivo generado y verificá que los elementos aparezcan correctamente.</span>
+<span id="cb9-165"><a href="#cb9-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-166"><a href="#cb9-166" aria-hidden="true" tabindex="-1"></a>Importante: el archivo .qmd contiene el documento que podemos seguir editando, mientras que el archivo .docx es el resultado generado al renderizarlo.</span>
+<span id="cb9-167"><a href="#cb9-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-168"><a href="#cb9-168" aria-hidden="true" tabindex="-1"></a>Más adelante, en la Parte 6, aprenderemos a configurar los bloques de código y a personalizar la presentación de los documentos reproducibles.</span>
+<span id="cb9-169"><a href="#cb9-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-170"><a href="#cb9-170" aria-hidden="true" tabindex="-1"></a><span class="fu">### Idea central</span></span>
+<span id="cb9-171"><a href="#cb9-171" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-172"><a href="#cb9-172" aria-hidden="true" tabindex="-1"></a>Quarto permite integrar en un mismo documento:</span>
+<span id="cb9-173"><a href="#cb9-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-174"><a href="#cb9-174" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>explicaciones, comentarios,</span>
+<span id="cb9-175"><a href="#cb9-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-176"><a href="#cb9-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>código,</span>
+<span id="cb9-177"><a href="#cb9-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-178"><a href="#cb9-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>resultados y gráficos</span>
+<span id="cb9-179"><a href="#cb9-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-180"><a href="#cb9-180" aria-hidden="true" tabindex="-1"></a>Esto favorece un trabajo ordenado, reproducible y fácil de compartir. Más adelante, se presentarán las distintas alternativas para configurar los bloques de código</span>
 <span id="cb9-181"><a href="#cb9-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-182"><a href="#cb9-182" aria-hidden="true" tabindex="-1"></a><span class="fu">### Preparar el RStudio para la próxima clase</span></span>
+<span id="cb9-183"><a href="#cb9-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-184"><a href="#cb9-184" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Para dejar preparado el RStudio antes de la clase 2, se instalará y cargará el paquete **tidyverse**</span>
 <span id="cb9-185"><a href="#cb9-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a>La instalación se realiza una única vez. En cambio, <span class="in">`library(tidyverse)`</span> debe ejecutarse cada vez que se inicia una nueva sesión de R.</span>
-<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a>Si la instalación mediante código no funciona o R informa que el paquete no se encuentra, también puede instalarlo desde el menú de RStudio:</span>
-<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
-<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="in">tools-&gt;Install Packages..-&gt;tidyverse</span></span>
-<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/instalar%20paquete%201.png)</span>{width="300"}</span>
-<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/instalar%20paquete%202.png)</span>{width="300"}</span>
-<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/Intalar%20paquete%203.png)</span>{width="300"}</span>
-<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a><span class="fu">### Antes de finalizar</span></span>
-<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a>Verificá que:</span>
-<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La carpeta <span class="in">`Analisis_agrofood`</span> contiene las subcarpetas correspondientes.</span>
-<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La base original está guardada en <span class="in">`datos_originales`</span>.</span>
-<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El proyecto de RStudio se creó correctamente.</span>
-<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El documento <span class="in">`practica_co2.qmd`</span> está guardado en <span class="in">`scripts`</span>.</span>
-<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pudiste ejecutar el bloque de código y generar el documento Word mediante **Render**.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb9-186"><a href="#cb9-186" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb9-187"><a href="#cb9-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación tidyverse</span></span>
+<span id="cb9-188"><a href="#cb9-188" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb9-189"><a href="#cb9-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-190"><a href="#cb9-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-191"><a href="#cb9-191" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb9-192"><a href="#cb9-192" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb9-193"><a href="#cb9-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-194"><a href="#cb9-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-195"><a href="#cb9-195" aria-hidden="true" tabindex="-1"></a>La instalación se realiza una única vez. En cambio, <span class="in">`library(tidyverse)`</span> debe ejecutarse cada vez que se inicia una nueva sesión de R.</span>
+<span id="cb9-196"><a href="#cb9-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-197"><a href="#cb9-197" aria-hidden="true" tabindex="-1"></a>Si la instalación mediante código no funciona o R informa que el paquete no se encuentra, también puede instalarlo desde el menú de RStudio:</span>
+<span id="cb9-198"><a href="#cb9-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-199"><a href="#cb9-199" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb9-200"><a href="#cb9-200" aria-hidden="true" tabindex="-1"></a><span class="in">tools-&gt;Install Packages..-&gt;tidyverse</span></span>
+<span id="cb9-201"><a href="#cb9-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb9-202"><a href="#cb9-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-203"><a href="#cb9-203" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/instalar%20paquete%201.png)</span>{width="300"}</span>
+<span id="cb9-204"><a href="#cb9-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-205"><a href="#cb9-205" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/instalar%20paquete%202.png)</span>{width="300"}</span>
+<span id="cb9-206"><a href="#cb9-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-207"><a href="#cb9-207" aria-hidden="true" tabindex="-1"></a><span class="al">![](/imagenes/Intalar%20paquete%203.png)</span>{width="300"}</span>
+<span id="cb9-208"><a href="#cb9-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-209"><a href="#cb9-209" aria-hidden="true" tabindex="-1"></a><span class="fu">### Antes de finalizar</span></span>
+<span id="cb9-210"><a href="#cb9-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-211"><a href="#cb9-211" aria-hidden="true" tabindex="-1"></a>Verificá que:</span>
+<span id="cb9-212"><a href="#cb9-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-213"><a href="#cb9-213" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La carpeta <span class="in">`Analisis_agrofood`</span> contiene las subcarpetas correspondientes.</span>
+<span id="cb9-214"><a href="#cb9-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-215"><a href="#cb9-215" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>La base original está guardada en <span class="in">`datos_originales`</span>.</span>
+<span id="cb9-216"><a href="#cb9-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-217"><a href="#cb9-217" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El proyecto de RStudio se creó correctamente.</span>
+<span id="cb9-218"><a href="#cb9-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-219"><a href="#cb9-219" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El documento <span class="in">`practica_co2.qmd`</span> está guardado en <span class="in">`scripts`</span>.</span>
+<span id="cb9-220"><a href="#cb9-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-221"><a href="#cb9-221" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Pudiste ejecutar el bloque de código y generar el documento Word mediante **Render**.</span>
+<span id="cb9-222"><a href="#cb9-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-223"><a href="#cb9-223" aria-hidden="true" tabindex="-1"></a>##Referencias </span>
+<span id="cb9-224"><a href="#cb9-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-225"><a href="#cb9-225" aria-hidden="true" tabindex="-1"></a>:::{#refs}</span>
+<span id="cb9-226"><a href="#cb9-226" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

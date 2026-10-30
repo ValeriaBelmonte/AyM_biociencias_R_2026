@@ -8,6 +8,15 @@ En esta práctica realizaremos nuestro primer trabajo organizado y reproducible 
 
 Antes de comenzar a escribir código, es importante aprender a organizar correctamente los archivos de trabajo.
 
+
+## Conjunto de datos 
+
+Trabajaremos con el conjunto de datos Agrofood CO₂ Emission, elaborado por @lobello, que reúne información sobre las emisiones de gases de efecto invernadero asociadas a distintas actividades del sistema agroalimentario y las variaciones de temperatura en diferentes países durante el período 1990–2020.
+
+La base fue construida a partir de información de la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO) y del Grupo Intergubernamental de Expertos sobre el Cambio Climático (IPCC), y se encuentra disponible públicamente en Kaggle.
+
+Para facilitar la comprensión de los datos, se proporciona un documento complementario que incluye una descripción del conjunto de datos y la traducción al español de las variables. [Info de los datos](../explicaciones extras/inf_Agrofood.pdf)
+
 ## Paso 1. Organizar una carpeta para el proyecto
 
 En el escritorio (o en una ubicación fácil de encontrar), crear una carpeta llamada:
@@ -210,3 +219,8 @@ Verificá que:
 - El documento `practica_co2.qmd` está guardado en `scripts`.
 
 - Pudiste ejecutar el bloque de código y generar el documento Word mediante **Render**.
+
+##Referencias 
+
+:::{#refs}
+:::
