@@ -8,74 +8,58 @@ Nos concentramos en las emisiones del transporte de alimentos. Construiremos tab
 
 En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?
 
-
-
-
 ## Actividad 1. Preparación del entorno de trabajo
 
-En esta práctica continuaremos trabajando con el proyecto
-**Analisis_emisiones_safood**, creado en las prácticas anteriores.
+En esta práctica continuaremos trabajando con el proyecto `Analisis_agrofood.Rproj`, creado en las prácticas anteriores.
 
-Utilizaremos la base de datos `emisiones_sa_sudamerica.csv`,
-generada y guardada al finalizar la Práctica 2.
+Utilizaremos la base de datos `emisiones_sa_sudamerica.csv`, generada y guardada al finalizar la Práctica 2.
 
 ### Paso 1. Abrir el proyecto en RStudio
 
-1. Abrí RStudio.
-2. Abrí el proyecto `Analisis_agrofood.Rproj`.
-3. Verificá que se encuentren las carpetas del proyecto.
+1.  Abrí RStudio.
+2.  Abrí el proyecto `Analisis_agrofood.Rproj`.
+3.  Verificá que se encuentren las carpetas del proyecto.
 
 ### Paso 2. Crear un nuevo documento Quarto
 
-1. Seleccioná **File → New File → Quarto Document**.
-2. Escribí como título **Práctica 3. Análisis exploratorio de datos**.
-3. Guardá el documento con el nombre `practica_3.qmd`
-   en la carpeta `scripts`.
+1.  Seleccioná **File → New File → Quarto Document**.
+2.  Escribí como título **Práctica 3. Análisis exploratorio de datos**.
+3.  Guardá el documento con el nombre `practica_3.qmd` en la carpeta `scripts`.
 
 ### Paso 3. Limpiar el entorno de trabajo
 
-Antes de comenzar, eliminaremos los objetos que puedan
-haber quedado cargados de sesiones anteriores.
+Antes de comenzar, eliminaremos los objetos que puedan haber quedado cargados de sesiones anteriores.
 
-Para ello, ejecutá la siguiente instrucción en la
-**consola de RStudio**:
+Para ello, ejecutá la siguiente instrucción en la **consola de RStudio**:
 
-```r
+``` r
 rm(list = ls())
 ```
 
-La función `ls()` devuelve los nombres de los objetos
-existentes en el entorno de trabajo, mientras que
-`rm()` permite eliminarlos.
+La función `ls()` devuelve los nombres de los objetos existentes en el entorno de trabajo, mientras que `rm()` permite eliminarlos.
 
-Por lo tanto, `rm(list = ls())` elimina los objetos
-del entorno de trabajo actual.
+Por lo tanto, `rm(list = ls())` elimina los objetos del entorno de trabajo actual.
 
-**Importante:** esta instrucción no elimina los archivos
-guardados en las carpetas del proyecto. Solamente elimina
-los objetos que se encuentran cargados en la sesión de R.
+**Importante:** esta instrucción no elimina los archivos guardados en las carpetas del proyecto. Solamente elimina los objetos que se encuentran cargados en la sesión de R.
 
 ### Paso 4. Cargar los paquetes
 
-Para realizar el análisis exploratorio utilizaremos
-el paquete `tidyverse`.
+Para realizar el análisis exploratorio utilizaremos el paquete `tidyverse`.
 
-```r
+``` r
 #| label: paquetes
 library(tidyverse)
 ```
 
-Si el paquete no está instalado, ejecutá previamente
-`install.packages("tidyverse")` desde la consola de RStudio.
+Si el paquete no está instalado, ejecutá previamente `install.packages("tidyverse")` desde la consola de RStudio.
 
 ### Paso 5. Importar la base de datos
 
-En la Práctica 2 generaste y guardaste la base de datos
-`emisiones_sa_sudamerica.csv` en la carpeta `datos transformados`.
+En la Práctica 2 generaste y guardaste la base de datos `emisiones_sa_sudamerica.csv` en la carpeta `datos transformados`.
 
 Ahora vamos a importarla nuevamente al entorno de R.
 
-```r
+``` r
 #| label: importar-datos
 emisiones_sa <- read_csv("../datos transformados/emisiones_sa_sudamerica.csv")
 ```
@@ -83,8 +67,6 @@ emisiones_sa <- read_csv("../datos transformados/emisiones_sa_sudamerica.csv")
 ### Paso 6. Verificar la importación
 
 Una vez importados los datos, ejecutá:
-
-
 
 ## Actividad 2. ¿Qué información tenemos?
 
