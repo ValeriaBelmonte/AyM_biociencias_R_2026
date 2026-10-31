@@ -382,7 +382,7 @@ datos_excel <- read_excel("../datos originales/archivo.xlsx")
 
 ## Resultado de la práctica
 
-Terminaste con una base de datos de América del Sur que contiene variables transformadas y una clasificación regional. La conservamos como CSV en `datos_transformados` para continuar con el análisis exploratorio en la próxima práctica.
+Terminaste con una base de datos de América del Sur que contiene variables procesadas y una clasificación regional. La conservamos como `agro_sudamerica.csv`  en `datos_transformados` para continuar con el análisis exploratorio en la próxima práctica.
 
 :::
 
