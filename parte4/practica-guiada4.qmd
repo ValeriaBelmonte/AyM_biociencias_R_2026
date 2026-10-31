@@ -6,7 +6,7 @@ Esta práctica tiene tres ejemplos. En todos seguimos el protocolo de seis pasos
 
 | Práctica | Tema | Datos |
 |------------------------|------------------------|------------------------|
-| 1 | Regresión lineal simple | Densidad de siembra y rendimiento de trigo |
+| 1 | Regresión lineal simple |crop_residues y years  |
 | 2 | Regresión lineal con transformación | Peso del cerebro y peso del cuerpo en mamíferos |
 | 3 | Correlación | Peso vivo y perímetro torácico en animales |
 
@@ -14,334 +14,788 @@ Completá en tu propio documento las preguntas marcadas con **Pregunta**.
 
 ------------------------------------------------------------------------
 
-# Práctica 1: regresión lineal simple (trigo)
+# Práctica 1: regresión lineal simple 
 
-Un investigador quiere saber si la **densidad de siembra** (plantas/m²) tiene efecto sobre el **rendimiento** del trigo (tn/ha). Fijó seis densidades (200, 220, 240, 260, 280 y 300 plantas/m²) y usó seis parcelas por densidad: 36 parcelas en total.
+## Propósito
 
-## Paso 1. Pregunta e hipótesis
+En la Práctica 3 exploramos la evolución temporal de las emisiones provenientes de residuos de cultivos (`crop_residues`) en Argentina y Brasil.
 
-**Pregunta de investigación:** ¿existe relación entre la densidad de siembra y el rendimiento de trigo? Esto es: ¿se puede expresar el rendimiento de trigo en función de la densidad de siembra, y en particular por medio de una regresión linal?
+Los gráficos permitieron identificar tendencias y diferencias entre ambos países. Ahora utilizaremos **modelos de regresión lineal simple** para cuantificar la relación entre el año y las emisiones.
 
-## Paso 2. Modelo e Hipotésis
+Trabajaremos con el período **2009–2020**, seleccionado en la práctica anterior porque los gráficos exploratorios sugerían una tendencia aproximadamente lineal.
 
-$$Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \sigma^2)$$
+Ajustaremos un modelo para cada país y analizaremos sus coeficientes, la significación estadística de la pendiente, los intervalos de confianza y los supuestos del modelo.
 
-- $Y_i$: rendimiento de la parcela $i$.
-- $x_i$: densidad de siembra de la parcela $i$.
+## Actividad 1. Preparación del entorno de trabajo
 
-la pregunta se traduce en términos de hipótesis como Esto se traduce en una hipótesis sobre la pendiente $\beta_1$:
+### Abrir el proyecto en RStudio
 
-$H_0: \beta_1 = 0$ (no hay una relación) $H_1: \beta_1 \neq 0$ (hay una relación)
+1. Abrí RStudio y el proyecto Analisis_agrofood.Rproj.
 
-## Paso 3. Exploración
+2. Creá un nuevo documento Quarto y guardalo como practica_4.qmd en la carpeta scripts.
 
-``` r
+3. Limpiá el entorno de trabajo ejecutando rm(list = ls()) en la consola.
 
-densidad <- rep(c(200, 220, 240, 260, 280, 300), each = 6)
+4. Cargá el paquete tidyverse.
 
-rinde <- c(
-  2.6, 1.9, 1.85, 2.05, 2.15, 2.35,     # 200
-  2.7, 2.6, 2.25, 2.5, 2.9, 2.4,        # 220
-  3, 3.1, 3.25, 2.75, 3.5, 3.1,         # 240
-  4, 3.7, 3.2, 4.15, 3.55, 3.4,         # 260
-  3.6, 3.9, 4.55, 4.2, 4.4, 4,          # 280
-  4.5, 4.6, 4.85, 4.2, 4.35, 3.95       # 300
+
+```r
+#| label: paquetes
+
+library(tidyverse)
+```
+
+### Importar la base de datos
+
+En la Práctica 3 generamos el archivo `agro_regresion.csv`, que contiene las observaciones de Argentina y Brasil para el período 2009–2020.
+
+Importaremos esta base desde la carpeta `datos_transformados`.
+
+```r
+#| label: importar-datos
+
+agro_regresion <- read_csv(
+  "../datos_transformados/agro_regresion.csv"
+)
+```
+
+### Reconocer los datos
+
+Antes de comenzar el análisis, verificaremos la estructura y el contenido de la base.
+
+```r
+#| label: reconocer-datos
+
+glimpse(agro_regresion)
+
+summary(agro_regresion)
+
+count(agro_regresion, area)
+```
+
+
+## Actividad 2. Pregunta de investigación y modelo
+
+## Actividad 2. Pregunta de investigación y modelo
+
+### Paso 1. Pregunta de investigación
+
+En la Práctica 3 exploramos la evolución de las emisiones provenientes de residuos de cultivos (`crop_residues`) en Argentina y Brasil durante el período 2009–2020.
+
+Ahora queremos **cuantificar la relación entre el año y las emisiones** mediante un modelo de regresión lineal simple.
+
+**Pregunta de investigación:** ¿Existe una relación lineal entre el año y las emisiones provenientes de residuos de cultivos en Argentina y Brasil?
+
+Para responder, ajustaremos un modelo de regresión lineal simple para cada país.
+
+### Paso 2. Modelo e hipótesis
+
+El modelo de regresión lineal simple se expresa como:
+
+$$
+Y_i = \beta_0 + \beta_1 x_i + \varepsilon_i
+$$
+
+donde:
+
+- $Y_i$: emisiones provenientes de residuos de cultivos (`crop_residues`) en la observación $i$.
+- $x_i$: año de observación (`year`).
+- $\beta_0$: intercepto del modelo.
+- $\beta_1$: pendiente de la recta de regresión.
+- $\varepsilon_i$: error aleatorio.
+
+**Interpretación de los parámetros**
+
+- $\beta_0$ representa el valor esperado de las emisiones cuando $x=0$.
+- $\beta_1$ representa el cambio esperado en las emisiones por cada año adicional.
+
+**Supuestos del modelo**
+
+Para realizar la inferencia estadística habitual, consideraremos que los errores son independientes, tienen media cero, varianza constante y distribución normal:
+
+$$
+\varepsilon_i \sim N(0,\sigma^2)
+$$
+
+**Hipótesis estadísticas**
+
+Queremos determinar si existe una tendencia lineal de las emisiones a lo largo del tiempo. Por lo tanto, planteamos:
+
+$$
+H_0:\beta_1=0
+$$
+
+$$
+H_1:\beta_1\neq 0
+$$
+
+Bajo $H_0$, la pendiente es cero y no existe una tendencia lineal de las emisiones en función del año.
+
+Bajo $H_1$, la pendiente es distinta de cero, lo que indica una tendencia lineal creciente o decreciente.
+
+**Pregunta 2.1:** Si la pendiente estimada es positiva, ¿qué indica sobre la evolución de las emisiones? ¿Y si es negativa?
+
+## Actividad 3. Exploración gráfica
+
+### Paso 3. Visualizar la relación entre las variables
+
+Antes de ajustar un modelo de regresión, es importante explorar gráficamente la relación entre la variable explicativa (`year`) y la variable respuesta (`crop_residues`).
+
+Construiremos un **diagrama de dispersión** para Argentina y Brasil, utilizando `facet_wrap()` para representar cada país en un panel diferente.
+
+```r
+#| label: dispersion-paises
+
+ggplot(agro_regresion,
+       aes(x = year, y = crop_residues)) +
+  geom_point(color = "steelblue", size = 3) +
+  facet_wrap(~ area) +
+  labs(
+    x = "Año",
+    y = "Emisiones provenientes de residuos de cultivos",
+    title = "Emisiones de residuos de cultivos",
+    subtitle = "Argentina y Brasil, 2009–2020"
+  ) +
+  theme_minimal()
+```
+
+**Pregunta 3.1:** ¿La relación entre el año y las emisiones parece aproximadamente lineal en ambos países?
+
+**Pregunta 3.2:** ¿Qué tendencia observás en cada país: creciente o decreciente? ¿Se identifican observaciones que se alejan del comportamiento general?
+
+
+
+## Actividad 4. Estimación del modelo
+
+### Paso 4. Ajustar una regresión lineal simple
+
+Comenzaremos ajustando el modelo para Argentina.
+
+Primero seleccionamos las observaciones correspondientes a este país.
+
+```r
+#| label: datos-argentina
+
+datos_argentina <- agro_regresion |>
+  filter(area == "Argentina")
+```
+
+La función `lm()` permite ajustar un modelo lineal mediante el método de mínimos cuadrados.
+
+En la fórmula `crop_residues ~ year`, la variable ubicada a la izquierda de `~` es la respuesta y la ubicada a la derecha es la explicativa.
+
+```r
+#| label: modelo-argentina
+
+modelo_argentina <- lm(
+  crop_residues ~ year,
+  data = datos_argentina
 )
 
-trigo <- data.frame(densidad, rinde)
+summary(modelo_argentina)
 ```
 
-``` r
+### Interpretar los resultados del modelo
 
-library(ggplot2)
-ggplot(trigo, aes(x = densidad, y = rinde)) +
-  geom_point(color = "blue", size = 3) +
-  labs(x = "Densidad (plantas/m²)", y = "Rendimiento (tn/ha)",
-       title = "Rendimiento en función de la densidad de siembra") +
-  theme_classic()
+La función `summary()` presenta información sobre las estimaciones de los parámetros y la calidad del ajuste.
+
+En la tabla de coeficientes encontraremos:
+
+| Elemento | Interpretación |
+|---|---|
+| Estimate | Estimación de cada coeficiente ($b_0$ y $b_1$). |
+| Std. Error | Error estándar de cada estimación. |
+| t value | Estadístico t para contrastar si cada coeficiente es igual a cero. |
+| Pr(>\|t\|) | Valor p asociado a la prueba t bilateral. |
+
+Además, el resumen presenta:
+
+- **Residual standard error:** estimación del desvío estándar de los errores.
+- **Multiple R-squared ($R^2$):** proporción de la variabilidad de la respuesta explicada por el modelo.
+- **F-statistic:** estadístico de la prueba de significación global de la regresión.
+
+La recta de regresión estimada se expresa como:
+
+$$
+\widehat{Y}_i=b_0+b_1x_i
+$$
+
+donde $b_0$ y $b_1$ son las estimaciones de los parámetros poblacionales.
+
+**Pregunta 4.1:** Escribí la ecuación de la recta de regresión estimada para Argentina e interpretá la pendiente en el contexto del problema.
+
+### Prueba de hipótesis sobre la pendiente
+
+Recordemos que queremos contrastar:
+
+$$
+H_0:\beta_1=0
+\qquad
+H_1:\beta_1\neq 0
+$$
+
+Para contrastar estas hipótesis se utiliza el estadístico:
+
+$$
+t=\frac{b_1-0}{SE(b_1)}
+$$
+
+Bajo la hipótesis nula y los supuestos del modelo, este estadístico sigue una distribución t de Student con $n-2$ grados de libertad.
+
+El valor p de la prueba aparece en la fila correspondiente a `year`, dentro de la columna `Pr(>|t|)`.
+
+**Pregunta 4.2:** ¿La pendiente es estadísticamente significativa al nivel del 5 %? Justificá tu respuesta utilizando el valor p.
+
+### Intervalos de confianza
+
+La función `confint()` permite obtener intervalos de confianza para los coeficientes del modelo.
+
+```r
+#| label: intervalos-argentina
+
+confint(modelo_argentina, level = 0.95)
 ```
 
-**Pregunta 1.1:** ¿la relación parece lineal? ¿Es positiva o negativa? ¿Hay valores atípicos?
+**Pregunta 4.3:** ¿Cuál es el intervalo de confianza del 95 % para la pendiente? ¿Incluye el cero? ¿Es coherente con el resultado de la prueba de hipótesis?
 
-**Pregunta 1.2:** a densidad de 260 plantas/m², ¿entre qué valores van los rendimientos?
+### Coeficiente de determinación
 
-## Paso 4. Estimación
+El coeficiente de determinación se define como:
 
-Estimamos el modelo
+$$
+R^2=1-\frac{SCE}{SCT}
+$$
 
-``` r
-modelo_trigo <- lm(rinde ~ densidad, data = trigo)
-summary(modelo_trigo)
-confint(modelo_trigo)
+donde:
+
+- $SCE$: suma de cuadrados de los residuos.
+- $SCT$: suma de cuadrados total de la variable respuesta.
+
+En este contexto, $R^2$ representa la proporción de la variabilidad observada en las emisiones que es explicada por su relación lineal con el año.
+
+**Pregunta 4.4:** ¿Qué porcentaje de la variabilidad de las emisiones de Argentina explica el modelo ajustado?
+
+### Representar la recta estimada
+
+Utilizaremos `geom_smooth()` con `method = "lm"` para incorporar la recta de regresión al diagrama de dispersión.
+
+```r
+#| label: recta-argentina
+
+ggplot(datos_argentina,
+       aes(x = year, y = crop_residues)) +
+  geom_point(color = "steelblue", size = 3) +
+  geom_smooth(
+    method = "lm",
+    formula = y ~ x,
+    se = TRUE,
+    color = "red"
+  ) +
+  labs(
+    x = "Año",
+    y = "Emisiones provenientes de residuos de cultivos",
+    title = "Regresión lineal simple: Argentina"
+  ) +
+  theme_minimal()
 ```
 
-Pedimos el resumen del modelo
+La línea roja representa la recta estimada y la banda sombreada corresponde al intervalo de confianza del 95 % para la media de la respuesta estimada.
 
-``` r
-summary(modelo_trigo)
+### Aplicación: ajustar el modelo para Brasil
+
+Ahora repetiremos el procedimiento para Brasil.
+
+```r
+#| label: modelo-brasil
+
+datos_brasil <- agro_regresion |>
+  filter(area == "Brazil")
+
+modelo_brasil <- lm(
+  crop_residues ~ year,
+  data = datos_brasil
+)
+
+summary(modelo_brasil)
+
+confint(modelo_brasil)
 ```
 
-![Figura: Resumen de modelo_trigo](/imagenes/summary%20(trigo).png)
+**Pregunta 4.5:** Escribí la ecuación estimada para Brasil. Interpretá la pendiente, evaluá su significación estadística y el valor de $R^2$.
 
-La recta estimada es $\widehat{\text{rinde}} = -2.555 + 0.0236 \times \text{densidad}$.
+**Pregunta 4.6:** Compará las pendientes estimadas de Argentina y Brasil. ¿Cuál presenta una mayor variación anual estimada de las emisiones? ¿Las tendencias tienen el mismo signo?
 
-[🔍 ¿Qué significa cada parte de `summary()`?](../explicaciones%20extras/summary%20regresion%20(rinde).qmd)
 
-Pedimos el intervalo de confianza para la pendiente
+## Actividad 5. Validación del modelo
 
-``` r
-confint(modelo_trigo)
-```
+### Paso 5. Análisis de residuos
 
-```         
-                 2.5 %      97.5 %
-(Intercept) -3.28678042 -1.82353704
-densidad     0.02065997  0.02645907
-```
+Una vez ajustado un modelo de regresión, es necesario evaluar si los supuestos utilizados son razonables.
 
-El intervalo de confianza para la pendiente es
+Para ello analizaremos los **residuos**, que representan las diferencias entre los valores observados y los estimados por el modelo:
 
-$$IC(\beta_1,95\%)=(0.021;0026)$$
+$$
+e_i=Y_i-\widehat{Y}_i
+$$
 
-**Pregunta 1.3:** ¿qué significa $b_1 = 0.0236$ en palabras? Usá la expresión "por cada aumento de 1 planta/m²…".
+Comenzaremos con los gráficos de diagnóstico del modelo de Argentina.
 
-**Pregunta 1.4:** ¿tiene sentido interpretar $b_0$? (Pista: ¿qué pasa en densidad 0?)
+```r
+#| label: diagnostico-argentina
+#| fig-width: 9
+#| fig-height: 8
 
-**Pregunta 1.5:** ¿el IC 95 % de $\beta_1$ contiene al 0? ¿Qué concluís sobre $H_0$?
-
-## Paso 5. Validación
-
-``` r
 par(mfrow = c(2, 2))
-plot(modelo_trigo)
+
+plot(modelo_argentina)
+
 par(mfrow = c(1, 1))
-shapiro.test(residuals(modelo_trigo))
 ```
 
-Los residuos se leen así:
+Los gráficos permiten evaluar diferentes aspectos del modelo:
 
-- **Residuals vs Fitted** (linealidad): nube sin patrón alrededor de cero.
-- **Q-Q** (normalidad): puntos sobre la recta. Si no sabés leerlo, mirá la [página sobre el gráfico Q-Q](qqplot.html).
-- **Scale-Location** (homocedasticidad): dispersión pareja.
-- **Residuals vs Leverage** (influyentes): distancia de Cook.
+| Gráfico | ¿Qué evaluamos? |
+|---|---|
+| Residuals vs Fitted | Linealidad: ausencia de patrones sistemáticos en los residuos. |
+| Normal Q-Q | Normalidad: puntos aproximadamente alineados con la recta de referencia. |
+| Scale-Location | Homogeneidad de varianzas: dispersión aproximadamente constante. |
+| Residuals vs Leverage | Observaciones potencialmente influyentes. |
 
-**Pregunta 1.6:** ¿los supuestos se cumplen? Mirá el gráfico de distancia de Cook y el p-valor de Shapiro-Wilk.
+**Pregunta 5.1:** A partir de los gráficos, ¿observás indicios de incumplimiento de alguno de los supuestos del modelo?
 
-### Residuos altos, puntos de palanca y observaciones influyentes
+### Prueba de normalidad
 
-En R, estos valores se obtienen con `rstandard()`, `hatvalues()` y `cooks.distance()`. El gráfico *Residuals vs Leverage* de `plot(modelo)` (cuarto gráfico) los muestra juntos.
+Utilizaremos la prueba de Shapiro-Wilk para evaluar la normalidad de los residuos.
 
-``` r
-n <- nrow(trigo)  #reemplazar por el nombre del data.frame a utilzar
-#reemplazar por el modelo a verificar
-which(abs(rstandard(modelo_trigo)) > 2)     # residuos altos 
-which(hatvalues(modelo_trigo) > 4 / n)      # palanca 
-which(cooks.distance(modelo_trigo) > 4 / n) # influyentes
-plot(modelo_trigo, which = 5)
+```r
+#| label: shapiro-argentina
+
+shapiro.test(residuals(modelo_argentina))
 ```
 
-Cada línea responde una pregunta distinta sobre los datos:
+Las hipótesis son:
 
-- **n \<- nrow(trigo)**: guarda el número de filas de la base, que en este caso son 36 parcelas. Se usa para calcular los umbrales.
+$$
+H_0:\text{los errores tienen distribución normal}
+$$
 
-- **which(abs(rstandard(modelo_trigo)) \> 2)**: busca residuos altos. \`rstandard()\` divide cada residuo por su error estándar corregido, de modo que quedan en una escala comparable. `abs()` toma el valor absoluto, y `\> 2` marca los que se alejan más de dos desvíos de la recta. `which()` devuelve los números de fila que cumplen esa condición.
+$$
+H_1:\text{los errores no tienen distribución normal}
+$$
 
-- **which(hatvalues(modelo_trigo) \> 4 / n)**: busca puntos de palanca. `hatvalues()` mide qué tan lejos está cada valor de x del centro de los datos. Si es mayor que 4/n, la observación tiene mucho peso en la estimación de la pendiente.
+**Pregunta 5.2:** ¿Qué conclusión obtenés a partir del valor p de la prueba de Shapiro-Wilk? ¿Es coherente con lo observado en el gráfico Q-Q?
 
-- **which(cooks.distance(modelo_trigo) \> 4 / n)\`**: busca observaciones influyentes. cooks.distance() mide cuánto cambiarían los coeficientes si se quitara esa observación. Si supera 4/n, conviene revisarla.
+Recordá que un valor p mayor que 0,05 no demuestra que se cumpla la normalidad; indica que no encontramos evidencia estadística suficiente para rechazarla.
 
-- **plot(modelo_trigo, which = 5)**: dibuja el gráfico Residuals vs Leverage, que muestra los tres conceptos juntos. Los puntos con distancia de Cook alta aparecen en las curvas punteadas de fondo.
+### Examinar los residuos a lo largo del tiempo
 
-Con $n = 36$, el umbral es $4/36 \approx 0.11$. La parcela 36 lo supera. Antes de decidir si la quitás, comprobá si cambia la conclusión ajustando el modelo sin ella.
+Como los datos corresponden a años consecutivos, es importante explorar si los residuos presentan algún patrón temporal.
 
-``` r
+```r
+#| label: residuos-tiempo-argentina
 
-modelo_sin36 <- lm(rinde ~ densidad, data = trigo[-36, ])
-coef(modelo_trigo)
-coef(modelo_sin36)
+datos_argentina |>
+  mutate(residuo = residuals(modelo_argentina)) |>
+  ggplot(aes(x = year, y = residuo)) +
+  geom_point(color = "steelblue", size = 3) +
+  geom_line(color = "steelblue") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Año",
+    y = "Residuo",
+    title = "Residuos del modelo: Argentina"
+  ) +
+  theme_minimal()
 ```
 
-**Pregunta 1.7:** ¿cambian mucho los coeficientes? ¿Qué decidirías?
+**Pregunta 5.3:** ¿Los residuos fluctúan alrededor de cero sin un patrón temporal evidente o presentan algún comportamiento sistemático?
 
-## Paso 6. Interpretación
+::: {.callout-note}
+## Datos observados a lo largo del tiempo
 
-La pendiente es significativa (p \< 0.001). Por cada planta/m² adicional, el rendimiento medio aumenta entre 0.0207 y 0.0265 tn/ha (IC 95 %). El modelo explica el 88.9 % de la variabilidad del rendimiento ($R^2 = 0.889$).
+Las observaciones correspondientes a años consecutivos pueden estar relacionadas entre sí.
 
-**Pregunta 1.8:** redactá un párrafo de resultados con estos valores, sin copiar esta frase.
+Si los errores presentan autocorrelación temporal, las pruebas de significación y los intervalos de confianza habituales de la regresión lineal pueden no ser adecuados.
+
+En esta práctica realizaremos una evaluación exploratoria de este supuesto.
+:::
+
+### Validación del modelo para Brasil
+
+Repetiremos el análisis de diagnóstico para Brasil.
+
+```r
+#| label: diagnostico-brasil
+#| fig-width: 9
+#| fig-height: 8
+
+par(mfrow = c(2, 2))
+
+plot(modelo_brasil)
+
+par(mfrow = c(1, 1))
+
+shapiro.test(residuals(modelo_brasil))
+```
+
+Examinaremos también los residuos en función del año.
+
+```r
+#| label: residuos-tiempo-brasil
+
+datos_brasil |>
+  mutate(residuo = residuals(modelo_brasil)) |>
+  ggplot(aes(x = year, y = residuo)) +
+  geom_point(color = "steelblue", size = 3) +
+  geom_line(color = "steelblue") +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  labs(
+    x = "Año",
+    y = "Residuo",
+    title = "Residuos del modelo: Brasil"
+  ) +
+  theme_minimal()
+```
+
+**Pregunta 5.4:** Compará los diagnósticos de Argentina y Brasil. ¿En cuál de los modelos encontrás mayores indicios de problemas en los supuestos?
+
+## Actividad 6. Interpretación de los resultados
+
+### Paso 6. Interpretación y conclusiones
+
+Para finalizar, integraremos los resultados de los modelos ajustados para Argentina y Brasil.
+
+**Pregunta 6.1:** Redactá un breve párrafo de resultados para cada país que incluya:
+
+- La interpretación de la pendiente estimada.
+- La significación estadística de la pendiente y su intervalo de confianza del 95 %.
+- El porcentaje de variabilidad explicado por el modelo ($R^2$).
+- Las principales conclusiones del análisis de residuos.
+
+**Pregunta 6.2:** A partir de los resultados obtenidos, ¿qué podés concluir sobre la evolución de las emisiones provenientes de residuos de cultivos en Argentina y Brasil durante 2009–2020? ¿Qué limitaciones debemos considerar?
+
+::: {.callout-important}
+## Para tener en cuenta
+
+Una relación lineal estadísticamente significativa entre el año y las emisiones no implica que el paso del tiempo sea la causa de los cambios observados.
+
+Además, una diferencia entre las pendientes estimadas de ambos países no significa necesariamente que esa diferencia sea estadísticamente significativa.
+
+Las conclusiones deben considerar tanto los resultados del ajuste como
+
+## ¿Qué aprendimos en esta práctica?
+
+En esta práctica aprendimos a ajustar e interpretar modelos de **regresión lineal simple** utilizando `lm()` en R. Exploramos la relación entre el año y las emisiones provenientes de residuos de cultivos en Argentina y Brasil, estimamos e interpretamos los coeficientes de regresión y evaluamos la significación estadística de las pendientes mediante pruebas de hipótesis e intervalos de confianza.
+
+También interpretamos el coeficiente de determinación ($R^2$) y analizamos los residuos para evaluar los supuestos del modelo. Finalmente, comparamos los resultados de ambos países y discutimos las limitaciones de aplicar regresión lineal a datos observados a lo largo del tiempo.
+
 
 ------------------------------------------------------------------------
+# Práctica 2. Regresión lineal con transformación logarítmica
 
-# Práctica 2: regresión lineal con transformación (cerebro y cuerpo)
+## Propósito
 
-En 62 especies de mamíferos (Allison y Cicchetti, 1976; Weisberg, 2003) se midieron el peso del cuerpo (kg) y el peso del cerebro (g). Queremos estudiar si el peso del cerebro depende del peso corporal.
+En esta práctica estudiaremos la relación entre el peso corporal y el peso del cerebro en 62 especies de mamíferos (Allison y Cicchetti, 1976; Weisberg, 2003).
 
-Descargá el archivo de datos: [📥 Descargar mamiferos.csv](../datos/mamiferos.csv){download="mamiferos.csv"}.
+Analizaremos cómo una **transformación logarítmica** puede ayudar a representar mediante un modelo lineal una relación que no presenta un comportamiento aproximadamente lineal en su escala original.
 
-## Paso 1. Pregunta e hipótesis
+## Actividad 1. Preparación y exploración de los datos
 
-**Pregunta de investigación:** ¿el peso del cerebro aumenta con el peso del cuerpo?
+Descargá el archivo [📥 mamiferos.csv](../datos/mamiferos.csv){download="mamiferos.csv"} y guardalo en la carpeta `datos` del proyecto.
 
-**Pregunta 2.1:** ¿Cuál es la variable respuesta y cuál la explicativa? Justificá.
+Importá los datos y examiná su estructura.
 
-## Paso 2. Exploración en escala original
+```r
+#| label: datos-mamiferos
 
-``` r
+library(readxl)
+mamiferos <- read_excel("../datos_originales/mamiferos.xlsx")
 
-datos <- read.csv("mamiferos_corregido.csv")
-str(datos)
+
+glimpse(mamiferos)
 ```
 
-**Atención:** en las especies grandes (elefantes, humano), el cerebro y el cuerpo deben ser grandes; en los ratones, ambos pequeños. Si la pendiente final da cerca de 1.27 en vez de 0.75, las columnas están invertidas.
+### Paso 1. Pregunta de investigación
 
-``` r
+**Pregunta de investigación:** ¿Qué relación existe entre el peso corporal y el peso del cerebro en los mamíferos?
 
-plot(peso_cerebro ~ peso_cuerpo, data = datos, pch = 19, col = "steelblue",
-     xlab = "Peso del cuerpo (kg)", ylab = "Peso del cerebro (g)")
+**Pregunta 2.1:** ¿Cuál es la variable respuesta y cuál es la variable explicativa?
+
+### Paso 2. Exploración gráfica
+
+Construiremos un diagrama de dispersión para observar la relación entre ambas variables en su escala original.
+
+```r
+#| label: dispersion-mamiferos
+
+ggplot(mamiferos,
+       aes(x = peso_cuerpo, y = peso_cerebro)) +
+  geom_point(color = "steelblue", size = 2) +
+  labs(
+    x = "Peso corporal (kg)",
+    y = "Peso del cerebro (g)",
+    title = "Relación entre peso corporal y peso del cerebro"
+  ) +
+  theme_minimal()
 ```
 
-**Pregunta 2.2:** ¿qué problemas ves? (Pista: el rango de valores y los puntos alejados.)
+**Pregunta 2.2:** ¿La relación parece aproximadamente lineal? ¿Qué dificultades presenta el gráfico para visualizar la relación entre ambas variables?
 
-## Paso 3. Modelo en escala original y diagnóstico
+## Actividad 2. Ajuste y transformación del modelo
 
-``` r
+### Paso 3. Ajustar el modelo en escala original
 
-m_original <- lm(peso_cerebro ~ peso_cuerpo, data = datos)
+Ajustaremos inicialmente un modelo de regresión lineal simple utilizando las variables en su escala original.
+
+```r
+#| label: modelo-original
+
+modelo_original <- lm(
+  peso_cerebro ~ peso_cuerpo,
+  data = mamiferos
+)
+
+summary(modelo_original)
+```
+
+### Paso 4. Transformación logarítmica
+
+Cuando las variables presentan rangos muy amplios y una relación no lineal, puede resultar útil aplicar una transformación logarítmica.
+
+En este ejemplo transformaremos ambas variables utilizando el logaritmo natural (`log()`).
+
+```r
+#| label: transformacion-log
+
+mamiferos <- mamiferos |>
+  mutate(
+    ln_cuerpo = log(peso_cuerpo),
+    ln_cerebro = log(peso_cerebro)
+  )
+```
+
+La transformación requiere que los valores de ambas variables sean positivos.
+
+Representaremos nuevamente la relación utilizando las variables transformadas.
+
+```r
+#| label: dispersion-log
+
+ggplot(mamiferos,
+       aes(x = ln_cuerpo, y = ln_cerebro)) +
+  geom_point(color = "darkgreen", size = 2) +
+  labs(
+    x = "ln(Peso corporal)",
+    y = "ln(Peso del cerebro)",
+    title = "Relación entre pesos en escala logarítmica"
+  ) +
+  theme_minimal()
+```
+
+**Pregunta 2.3:** Compará ambos gráficos. ¿La transformación logarítmica permite visualizar una relación aproximadamente lineal?
+
+### Ajustar el modelo transformado
+
+El modelo que ajustaremos es:
+
+$$
+\ln(Y_i)=\beta_0+\beta_1\ln(x_i)+\varepsilon_i
+$$
+
+donde $Y_i$ es el peso del cerebro y $x_i$ el peso corporal.
+
+```r
+#| label: modelo-log
+
+modelo_log <- lm(
+  ln_cerebro ~ ln_cuerpo,
+  data = mamiferos
+)
+
+summary(modelo_log)
+```
+
+En este modelo, la pendiente $\beta_1$ representa una **elasticidad**: el cambio porcentual aproximado en el peso del cerebro asociado con un aumento del 1 % en el peso corporal.
+
+Este coeficiente también se denomina **exponente alométrico**.
+
+**Pregunta 2.4:** ¿Cuál es la pendiente estimada? Interpretala en términos del cambio porcentual del peso del cerebro asociado con un aumento del 1 % en el peso corporal.
+
+## Actividad 3. Validación e interpretación
+
+### Paso 5. Evaluación de los residuos
+
+Analizaremos gráficamente los residuos del modelo transformado.
+
+```r
+#| label: diagnostico-log
+#| fig-width: 8
+#| fig-height: 4
+
 par(mfrow = c(1, 2))
-plot(m_original, which = 1)
-plot(m_original, which = 2)
+
+plot(modelo_log, which = 1)
+plot(modelo_log, which = 2)
+
 par(mfrow = c(1, 1))
-shapiro.test(residuals(m_original))
 ```
 
-**Pregunta 2.3:** ¿los residuos muestran patrón? ¿Se cumple la normalidad?
+**Pregunta 2.5:** ¿Los gráficos muestran indicios de falta de linealidad, heterogeneidad de varianzas o desviaciones de la normalidad?
 
-## Paso 4. Transformación logarítmica
+### Paso 6. Interpretación
 
-``` r
+El modelo logarítmico puede expresarse en la escala original como una relación potencial:
 
-datos$ln_cuerpo  <- log(datos$peso_cuerpo)
-datos$ln_cerebro <- log(datos$peso_cerebro)
+$$
+Y=e^{\beta_0}x^{\beta_1}e^{\varepsilon}
+$$
 
-plot(ln_cerebro ~ ln_cuerpo, data = datos, pch = 19, col = "darkgreen",
-     xlab = "ln(peso del cuerpo)", ylab = "ln(peso del cerebro)")
-```
+Esta expresión permite interpretar cómo cambia el peso del cerebro en relación con el peso corporal.
 
-**Pregunta 2.4:** ¿la nube se ve más recta? ¿Siguen siendo alejados los mismos puntos?
+**Pregunta 2.6:** ¿Qué ventajas presenta el modelo transformado respecto del modelo ajustado en escala original? Fundamentá tu respuesta a partir de los gráficos y los resultados obtenidos.
 
-``` r
+## ¿Qué aprendimos en esta práctica?
 
-m_log <- lm(ln_cerebro ~ ln_cuerpo, data = datos)
-summary(m_log)
-confint(m_log)
-```
-
-**Pregunta 2.5:** ¿cuál es el valor de la pendiente? Como el modelo es $\ln(\text{cerebro}) = b_0 + b_1 \ln(\text{cuerpo})$, interpretá $b_1$ así: "un aumento de 1 % en el peso corporal se asocia con un aumento de \_\_\_ % en el peso del cerebro". Este valor se llama **exponente alométrico**.
-
-**Pregunta 2.6:** si la pendiente fuera 1, ¿qué significaría? ¿Y si fuera 0?
-
-## Paso 5. Validación del modelo transformado
-
-``` r
-
-par(mfrow = c(2, 2))
-plot(m_log)
-par(mfrow = c(1, 1))
-shapiro.test(residuals(m_log))
-lmtest::bptest(m_log)
-```
-
-``` r
-
-cd <- cooks.distance(m_log)
-datos$especie[cd > 4 / nrow(datos)]
-```
-
-**Pregunta 2.7:** ¿se cumplen normalidad y homocedasticidad? ¿Qué especies son influyentes, y qué pasa si las quitás?
-
-## Paso 6. Volver a la escala original
-
-El modelo en escala original es $\text{cerebro} = e^{b_0} \cdot \text{cuerpo}^{\,b_1}$. Cuidado: `exp()` de la predicción da la **mediana**, no la media. Para corregir el sesgo se usa el factor de Duan.
-
-``` r
-pred <- predict(m_log, newdata = data.frame(ln_cuerpo = log(c(1, 100, 1000))))
-exp(pred)                                       # mediana
-duan <- mean(exp(residuals(m_log)))
-exp(pred) * duan                                # media corregida
-```
-
-**Pregunta 2.8:** ¿qué predicción usarías para un animal de 100 kg? ¿Por qué?
-
+Aprendimos a utilizar **transformaciones logarítmicas** para estudiar relaciones que no presentan un comportamiento lineal en su escala original. Ajustamos un modelo log-log, interpretamos su pendiente como una elasticidad y evaluamos gráficamente sus residuos. También reconocimos que las transformaciones modifican la escala en la que se interpreta el modelo.
 ------------------------------------------------------------------------
 
-# Práctica 3: correlación (peso vivo y perímetro torácico)
+##################################################################################### Práctica 3. Correlación: peso vivo y perímetro torácico
 
-Se midieron 18 animales, elegidos dentro de una muestra de la EAC "Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal" (carrera de Ing. Agronómica). Para cada animal se registró el perímetro torácico (cm) y el peso vivo (kg).
+## Propósito
 
-**Pregunta 3.1:** ¿las dos variables son aleatorias? ¿Podés aplicar correlación? ¿Y regresión? Justificá.
+En esta práctica estudiaremos la relación entre el **peso vivo** y el **perímetro torácico** de 18 animales seleccionados de una muestra de la EAC *Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal*, de la carrera de Ingeniería Agronómica.
 
-``` r
+Utilizaremos el **coeficiente de correlación de Pearson** para cuantificar la dirección e intensidad de la asociación lineal entre ambas variables.
+
+## Actividad 1. Preparación y exploración de los datos
+
+### Paso 1. Pregunta de investigación e hipótesis
+
+**Pregunta de investigación:** ¿Existe una asociación lineal entre el peso vivo y el perímetro torácico de los animales?
+
+Las hipótesis estadísticas son:
+
+$$
+H_0:\rho=0
+\qquad
+H_1:\rho\neq 0
+$$
+
+donde $\rho$ es el coeficiente de correlación lineal poblacional.
+
+### Paso 2. Cargar y explorar los datos
+
+Crearemos un `data.frame` con las mediciones de los 18 animales.
+
+```r
+#| label: datos-animales
 
 animales <- data.frame(
-  peso_vivo = c(433, 584, 350, 410, 441.0, 479, 397, 357, 389, 485,
-                420, 485, 394, 429, 446, 431, 400, 393),
-  perimetro_toracico = c(175, 189, 170, 171, 176.5, 177, 170, 165, 170, 182,
-                         176, 184, 172, 176, 179, 173, 172.5, 174)
+  peso_vivo = c(433, 584, 350, 410, 441, 479,
+                397, 357, 389, 485, 420, 485,
+                394, 429, 446, 431, 400, 393),
+  perimetro_toracico = c(175, 189, 170, 171, 176.5, 177,
+                         170, 165, 170, 182, 176, 184,
+                         172, 176, 179, 173, 172.5, 174)
 )
 ```
 
-**Atención:** en la descripción el orden es perímetro y luego peso, pero en los datos la primera columna tiene valores de peso (350 a 584) y la segunda de perímetro (165 a 189). El código sigue esa interpretación.
+Construiremos un gráfico de dispersión utilizando `ggplot2`.
 
-## Paso 1. Hipótesis
+```r
+#| label: dispersion-animales
 
-$$H_0: \rho = 0 \qquad H_1: \rho \neq 0$$
-
-## Paso 2. Exploración y supuestos
-
-``` r
-
-plot(perimetro_toracico ~ peso_vivo, data = animales, pch = 19, col = "darkred",
-     xlab = "Peso vivo (kg)", ylab = "Perímetro torácico (cm)")
+ggplot(animales,
+       aes(x = perimetro_toracico, y = peso_vivo)) +
+  geom_point(color = "steelblue", size = 3) +
+  labs(
+    x = "Perímetro torácico (cm)",
+    y = "Peso vivo (kg)",
+    title = "Relación entre perímetro torácico y peso vivo"
+  ) +
+  theme_minimal()
 ```
 
-Para la prueba de hipótesis conviene que ambas variables tengan distribución aproximadamente normal:
+**Pregunta 3.1:** ¿La relación entre ambas variables parece aproximadamente lineal? ¿La asociación es positiva o negativa? ¿Se observan valores alejados del patrón general?
 
-``` r
+## Actividad 2. Estimación del coeficiente de correlación
 
-shapiro.test(animales$peso_vivo)
-shapiro.test(animales$perimetro_toracico)
+### Paso 3. Calcular el coeficiente de Pearson
+
+El coeficiente de correlación lineal de Pearson ($r$) permite cuantificar la dirección e intensidad de la asociación lineal entre dos variables cuantitativas.
+
+Sus valores están comprendidos entre $-1$ y $1$:
+
+- $r>0$: asociación lineal positiva.
+- $r<0$: asociación lineal negativa.
+- $r\approx 0$: asociación lineal débil o inexistente.
+
+Utilizaremos la función `cor()` para calcular el coeficiente de correlación muestral.
+
+```r
+#| label: correlacion-animales
+
+cor(animales$peso_vivo,
+    animales$perimetro_toracico,
+    method = "pearson")
 ```
 
-**Pregunta 3.2:** ¿la relación es lineal? ¿Qué p-valores obtenés en Shapiro-Wilk?
+**Pregunta 3.2:** ¿Cuál es el valor de $r$? Interpretá su signo y magnitud en el contexto del problema.
 
-## Paso 3. Coeficiente de correlación
+### Paso 4. Prueba de hipótesis e intervalo de confianza
 
-``` r
+La función `cor.test()` permite realizar una prueba de hipótesis sobre la correlación poblacional y obtener su intervalo de confianza.
 
-cor(animales$peso_vivo, animales$perimetro_toracico)
-cor.test(animales$peso_vivo, animales$perimetro_toracico)   # prueba H0: rho = 0 e IC 95 %
+```r
+#| label: prueba-correlacion
+
+cor.test(animales$peso_vivo,
+         animales$perimetro_toracico,
+         method = "pearson",
+         conf.level = 0.95)
 ```
 
-**Pregunta 3.3:** ¿cuál es el valor de $r$? ¿Es positivo o negativo? ¿Qué fuerza tiene?
+**Pregunta 3.3:** ¿La correlación es estadísticamente significativa al nivel del 5 %? ¿Cuál es el intervalo de confianza del 95 % para $\rho$?
 
-**Pregunta 3.4:** ¿qué p-valor obtenés y qué concluís sobre $H_0$?
+## Actividad 3. Interpretación
 
-**Pregunta 3.5:** ¿cuál es el intervalo de confianza para $\rho$? ¿Qué te dice sobre la magnitud de la asociación?
+### Paso 5. Correlación y regresión
 
-**Pregunta 3.6:** ¿cuánto vale $r^2$? Interpretalo con una frase.
+A diferencia de la regresión, en la correlación no distinguimos entre variable respuesta y variable explicativa.
 
-## Paso 4. Simetría de la correlación
+El coeficiente de correlación es simétrico:
 
-``` r
+$$
+r_{XY}=r_{YX}
+$$
 
-coef(lm(peso_vivo ~ perimetro_toracico, data = animales))["perimetro_toracico"]
-coef(lm(perimetro_toracico ~ peso_vivo, data = animales))["peso_vivo"]
-cor(animales$perimetro_toracico, animales$peso_vivo)
+Podemos comprobarlo intercambiando el orden de las variables.
+
+```r
+#| label: simetria-correlacion
+
+cor(animales$perimetro_toracico,
+    animales$peso_vivo)
 ```
 
-**Pregunta 3.7:** ¿cambia la correlación si intercambiamos las variables? ¿Y las pendientes? ¿Qué variable elegirías como respuesta si quisieras predecir el peso a partir del perímetro?
+**Pregunta 3.4:** ¿Por qué el coeficiente de correlación no cambia cuando intercambiamos las variables? Si quisiéramos predecir el peso vivo a partir del perímetro torácico, ¿utilizaríamos correlación o regresión? Justificá.
 
-## Paso 5. Cierre
+### Paso 6. Conclusiones
 
-Redactá dos o tres frases con el resultado. Recordá: **correlación no implica causalidad**, y el valor de $r$ describe solo asociación lineal.
+**Pregunta 3.5:** Redactá una breve conclusión sobre la relación entre el peso vivo y el perímetro torácico de los animales, considerando el valor de $r$, su significación estadística y el intervalo de confianza.
 
-**Pregunta 3.8:** ¿qué pasaría con $r$ si el perímetro se midiera mal en un animal? ¿Cómo lo detectarías en el gráfico?
+::: {.callout-important}
+## Para tener en cuenta
+
+**Correlación no implica causalidad.**
+
+Una correlación estadísticamente significativa indica evidencia de asociación lineal entre dos variables, pero no permite afirmar que una sea la causa de la otra.
+
+Además, el coeficiente de Pearson puede verse afectado por valores atípicos y no describe adecuadamente relaciones no lineales.
+:::
+
+## ¿Qué aprendimos en esta práctica?
+
+Aprendimos a explorar y cuantificar la asociación lineal entre dos variables cuantitativas utilizando el **coeficiente de correlación de Pearson**. Calculamos el coeficiente con `cor()`, evaluamos su significación estadística y obtuvimos un intervalo de confianza mediante `cor.test()`. Finalmente, distinguimos los objetivos de la correlación y la regresión y discutimos las limitaciones de interpretar una asociación como una relación causal.
+
+

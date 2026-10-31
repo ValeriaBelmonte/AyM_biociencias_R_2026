@@ -23,43 +23,35 @@ De hecho, las emisiones del sector agroalimentario son significativas en el estu
 
 **Características del conjunto de datos:**
 
-- 
+
 
 - **Incendios de sabana** : Emisiones derivadas de incendios en ecosistemas de sabana.
 
-- 
+
 
 - **Incendios forestales** : Emisiones procedentes de incendios en zonas forestales.
 
-- 
 
 - **Residuos de cultivos** : emisiones resultantes de la quema o descomposición de material vegetal sobrante después de la cosecha de cultivos.
 
-- 
 
 - **Cultivo de arroz** : Emisiones de metano liberadas durante el cultivo de arroz.
 
-- 
 
 - **Suelos orgánicos drenados (CO2)** : Emisiones de dióxido de carbono liberadas al drenar suelos orgánicos.
 
-- 
 
 - **Fabricación de pesticidas** : Emisiones derivadas de la producción de pesticidas.
 
-- 
 
 - **Transporte de alimentos** : emisiones derivadas del transporte de productos alimenticios.
 
-- 
 
 - **Tierra forestal** : Tierra cubierta por bosques.
 
-- 
 
 - **Conversión neta de bosques** : Cambio en el área forestal debido a la deforestación y la forestación.
 
-- 
 
 - **Consumo de alimentos en los hogares** : Emisiones derivadas del consumo de alimentos a nivel de los hogares.
 
@@ -67,79 +59,44 @@ De hecho, las emisiones del sector agroalimentario son significativas en el estu
 
 - **Venta minorista de alimentos** : Emisiones derivadas de la operación de establecimientos minoristas que venden alimentos.
 
-- 
 
 - **Uso de electricidad en las granjas** : Consumo de electricidad en las granjas.
 
-- 
 
 - **Envases de alimentos** : emisiones derivadas de la producción y eliminación de materiales de envasado de alimentos.
 
-- 
-
 - **Eliminación de residuos en sistemas agroalimentarios** : Emisiones procedentes de la eliminación de residuos en el sistema agroalimentario.
 
-- 
 
 - **Procesamiento de alimentos** : emisiones derivadas del procesamiento de productos alimenticios.
 
-- 
-
 - **Fabricación de fertilizantes** : Emisiones derivadas de la producción de fertilizantes.
-
-- 
 
 - **IPPU** : Emisiones procedentes de procesos industriales y uso de productos.
 
-- 
-
 - **Estiércol aplicado a los suelos** : Emisiones derivadas de la aplicación de estiércol animal a suelos agrícolas.
-
-- 
 
 - **Estiércol dejado en los pastos** : Emisiones procedentes del estiércol animal en los pastos o tierras de pastoreo.
 
-- 
-
 - **Gestión del estiércol** : emisiones derivadas de la gestión y el tratamiento del estiércol animal.
-
-- 
 
 - **Incendios en suelos orgánicos** : Emisiones procedentes de incendios en suelos orgánicos.
 
-- 
-
 - **Incendios en bosques tropicales húmedos** : Emisiones de incendios en bosques tropicales húmedos.
-
-- 
 
 - **Uso de energía en las explotaciones agrícolas** : Consumo de energía en las explotaciones agrícolas.
 
-- 
-
 - **Población rural** : Número de personas que viven en zonas rurales.
-
-- 
 
 - **Población urbana** : Número de personas que viven en zonas urbanas.
 
-- 
-
 - **Población total - Hombres** : Número total de individuos varones en la población.
-
-- 
 
 - **Población total - Mujeres** : Número total de individuos femeninos en la población.
 
-- 
-
 - **total_emission** : Emisiones totales de gases de efecto invernadero de diversas fuentes.
 
-- 
-
 - **Temperatura media °C** : El aumento medio de la temperatura (por año) en grados Celsius,
-
-- 
 
 **Importancia y contexto:**
 

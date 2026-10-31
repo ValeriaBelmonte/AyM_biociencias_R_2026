@@ -2,31 +2,29 @@
 title: "Práctica guiada 3"
 ---
 
-En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base `emisiones_sa_sudamerica.csv`. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino **conocer los datos, detectar problemas y formular preguntas**.
+En esta práctica aplicamos herramientas del análisis exploratorio de datos (EDA) a la base `agro_sudamerica.csv`. El objetivo no es obtener conclusiones definitivas ni ajustar modelos, sino **conocer los datos, detectar problemas y formular preguntas**.
 
-Nos concentramos en las emisiones del transporte de alimentos. Construiremos tablas y gráficos para ver cómo se distribuye la variable, comparar áreas, observar su evolución en el tiempo y explorar su relación con la población urbana.
-
-En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?
+Nos concentramos en los residuos de los cultivos. Construiremos tablas y gráficos para ver cómo se distribuye la variable, comparar áreas, observar su evolución en el tiempo y explorar su relación con emisiones resultantes de la quema o descomposición de material vegetal sobrante después de la cosecha de cultivos (`crop_residues`) En cada actividad no basta con ejecutar el código: interpretá los resultados. ¿Qué muestra la tabla? ¿Qué patrón aparece en el gráfico? ¿Qué dudas o preguntas nuevas surgen?
 
 ## Actividad 1. Preparación del entorno de trabajo
 
-En esta práctica continuaremos trabajando con el proyecto `Analisis_agrofood.Rproj`, creado en las prácticas anteriores.
+En esta práctica continuaremos trabajando con el proyecto **Analisis_agrofood**, creado en las prácticas anteriores.
 
-Utilizaremos la base de datos `emisiones_sa_sudamerica.csv`, generada y guardada al finalizar la Práctica 2.
+Utilizaremos la base de datos `agro_sudamerica.csv`, generada y guardada al finalizar la Práctica 2 \[../parte1/practica-guiada1\]
 
-### Paso 1. Abrir el proyecto en RStudio
+### Abrir el proyecto en RStudio
 
 1.  Abrí RStudio.
 2.  Abrí el proyecto `Analisis_agrofood.Rproj`.
 3.  Verificá que se encuentren las carpetas del proyecto.
 
-### Paso 2. Crear un nuevo documento Quarto
+### Crear un nuevo documento Quarto
 
 1.  Seleccioná **File → New File → Quarto Document**.
 2.  Escribí como título **Práctica 3. Análisis exploratorio de datos**.
 3.  Guardá el documento con el nombre `practica_3.qmd` en la carpeta `scripts`.
 
-### Paso 3. Limpiar el entorno de trabajo
+### Limpiar el entorno de trabajo
 
 Antes de comenzar, eliminaremos los objetos que puedan haber quedado cargados de sesiones anteriores.
 
@@ -42,7 +40,7 @@ Por lo tanto, `rm(list = ls())` elimina los objetos del entorno de trabajo actua
 
 **Importante:** esta instrucción no elimina los archivos guardados en las carpetas del proyecto. Solamente elimina los objetos que se encuentran cargados en la sesión de R.
 
-### Paso 4. Cargar los paquetes
+### Cargar los paquetes
 
 Para realizar el análisis exploratorio utilizaremos el paquete `tidyverse`.
 
@@ -51,56 +49,61 @@ Para realizar el análisis exploratorio utilizaremos el paquete `tidyverse`.
 library(tidyverse)
 ```
 
-Si el paquete no está instalado, ejecutá previamente `install.packages("tidyverse")` desde la consola de RStudio.
+### Importar la base de datos
 
-### Paso 5. Importar la base de datos
+En la Práctica 2 generaste y guardaste la base de datos `agro_sudamerica.csv` en la carpeta `datos transformados`.
 
-En la Práctica 2 generaste y guardaste la base de datos `emisiones_sa_sudamerica.csv` en la carpeta `datos transformados`.
-
-Ahora vamos a importarla nuevamente al entorno de R.
+Ahora vamos a importarla nuevamente al entorno de R. El nuevo objeto se llamar{a} `agro_sudamerica`
 
 ``` r
 #| label: importar-datos
-emisiones_sa <- read_csv("../datos transformados/emisiones_sa_sudamerica.csv")
+library(readr)
+agro_sudamerica <- read_csv("../datos_transformados/agro_sudamerica.csv")
+View(agro_sudamerica)
 ```
 
-### Paso 6. Verificar la importación
+## Actividad 2 Reconocimiento del data.frame
 
-Una vez importados los datos, ejecutá:
-
-## Actividad 2. ¿Qué información tenemos?
+**Pregunta 2.1:** ¿Qué información tenemos?
 
 ``` r
 #| label: verificar-datos
-glimpse(emisiones_sa)
-names(emisiones_sa)
-dim(emisiones_sa)
+glimpse(agro_sudamerica)
+names(agro_sudamerica)
+dim(agro_sudamerica)
 ```
 
-**Pregunta 1.1:** ¿qué representa cada fila? ¿Cuántas filas y columnas tiene la base?
-
-**Pregunta 1.2:** ¿qué tipo de variable es cada una de las que vas a usar: numérica, categórica o fecha?
-
-## Actividad 3. ¿Entre qué años se extiende la información?
+relocalizo grupo\_ region con después de área
 
 ``` r
-#| label: rango-anios
-range(emisiones_sa$year, na.rm = TRUE)
+agro_sudamerica<-agro_sudamerica |> relocate(grupo_region,.after=area)
 ```
 
-**Pregunta 2.1:** ¿entre qué años se extiende la información?
+``` r
+summary (agro_sudamerica)
+```
 
-**Pregunta 2.2:** ¿todos los años tienen la misma cantidad de registros?
+**Pregunta 2.2:** ¿qué representa cada fila? ¿Cuántas filas y columnas tiene la base?
+
+**Pregunta 2.3:** ¿qué tipo de variable es cada una de las que vas a usar: numérica, categórica o fecha?
+
+**Pregunta 2.4**¿Entre qué años se extiende la información?
+
+``` r
+range(agro_sudamerica$year)
+```
+
+**Pregunta 2.5:** ¿todos los años tienen la misma cantidad de registros?
 
 ``` r
 #| label: registros-por-anio
-tabla_anio <- emisiones_sa |>
+tabla_anio <- agro_sudamerica |>
   count(year, name = "registros")
 
 tabla_anio
 ```
 
-**Pregunta 2.3:** ¿qué podría significar que un año tenga menos registros que los demás?
+**Pregunta 2.6:** ¿qué podría significar que un año tenga menos registros que los demás?
 
 Para comprobar si falta algún año dentro del rango, comparamos con la secuencia completa de años:
 
@@ -113,113 +116,467 @@ anti_join(todos_los_anios, tabla_anio, by = "year")
 
 Si el resultado está vacío, todos los años tienen registros. Si no, esos años faltan en la base.
 
-## Actividad 4. ¿Cómo se distribuyen las emisiones?
+## Actividad 3. Evolución temporal de las emisiones de residuos de cultivos
 
-Primero revisamos los valores faltantes, porque cambian las medidas que calculemos:
+En esta actividad exploraremos cómo evolucionaron las emisiones provenientes de los residuos de cultivos (`crop_residues`) a lo largo del tiempo.
+
+Utilizaremos `esquisse` para construir un gráfico que permita visualizar la evolución de las emisiones y comparar el comportamiento de Argentina y Brasil.
+
+### Introducción a `esquisse`
+
+El paquete `esquisse`[@meyer2025esquisse] permite crear gráficos de manera interactiva mediante una interfaz visual, sin necesidad de escribir inicialmente todo el código.
+
+Esta herramienta se basa en `ggplot2` y permite:
+
+- Seleccionar las variables que se desean representar.
+- Elegir diferentes tipos de gráficos.
+- Modificar colores, títulos y otras características.
+- Recuperar el código R utilizado para construir el gráfico.
+
+Una de sus principales ventajas es que permite explorar diferentes representaciones gráficas y, posteriormente, incorporar el código generado a un documento reproducible.
+
+#### Instalación del paquete
+
+Para instalar `esquisse`, ejecutá la siguiente instrucción en la **consola de RStudio**:
+
+`install.packages("esquisse")`
+
+Recordá que la instalación se realiza una sola vez, mientras que la carga del paquete debe efectuarse en cada sesión en la que se necesite utilizarlo.
+
+#### Abrir `esquisse` desde RStudio
+
+Con la base `agro_sudamerica` cargada en el entorno de trabajo:
+
+1.  En RStudio, seleccioná el menú **Addins**.
+2.  Buscá la opción **esquisse** y seleccioná **ggplot2 builder**.
+3.  En la ventana que se abre, seleccioná el conjunto de datos `agro_sudamerica`.
+4.  Comenzá a explorar las variables utilizando la interfaz gráfica.
+
+#### Construcción del gráfico
+
+Desde el menú **Addins** de RStudio, abrí `esquisse` y seleccioná la base de datos `agro_sudamerica`.
+
+1.  Ubicá la variable `year` en el eje horizontal (X).
+2.  Ubicá la variable `crop_residues` en el eje vertical (Y).
+3.  Seleccioná un gráfico de puntos.
+4.  Observá la distribución de las observaciones a lo largo de los años.
+
+**Pregunta 3.1:** ¿Qué representa cada punto del gráfico? ¿Resulta sencillo identificar una tendencia temporal cuando se incluyen todos los países?
+
+#### Comparación entre Argentina y Brasil
+
+Ahora vamos a limitar el análisis a dos países para observar con mayor claridad sus diferencias.
+
+1.  Utilizá las opciones de filtrado de `esquisse` para seleccionar únicamente Argentina y Brasil en la variable `area`.
+2.  Incorporá la variable `area` en la opción de color para diferenciar ambos países.
+3.  Observá cómo cambia la representación gráfica.
+4.  Probá también un gráfico de líneas para visualizar la evolución temporal.
+
+**Pregunta 3.2:** ¿Qué diferencias observás entre Argentina y Brasil en los valores de emisiones provenientes de residuos de cultivos?
+
+**Pregunta 3.3:** ¿Las emisiones parecen aumentar, disminuir o mantenerse relativamente estables a lo largo del período estudiado?
+
+**Pregunta 3.4:** ¿El comportamiento temporal es similar en ambos países? ¿Se observan fluctuaciones importantes?
+
+#### Recuperar el código del gráfico
+
+Una vez obtenido el gráfico de Argentina y Brasil:
+
+1.  Abrí la sección **Code** de `esquisse`.
+2.  Copiá el código generado.
+3.  Pegalo en un nuevo bloque de código R de `practica_3.qmd`.
+4.  Ejecutá el código para reproducir el gráfico.
 
 ``` r
-#| label: faltantes
-sum(is.na(emisiones_sa$total_emission))
+cropresid_arg_bra<-agro_sudamerica %>%
+ filter(area %in% c("Argentina", "Brazil")) %>%
+ ggplot() +
+  aes(x = year, y = crop_residues, colour = area) +
+  geom_point(size = 3.45) +
+  scale_color_manual(
+    values = c(Argentina = "#67001F",
+    `Bolivia (Plurinational State of)` = "#AB1529",
+    Brazil = "#CF5246",
+    Chile = "#EB9273",
+    Colombia = "#F9C7AD",
+    Ecuador = "#FEEEE5",
+    Guyana = "#F0F0F0",
+    Paraguay = "#D2D2D2",
+    Peru = "#ACACAC",
+    Suriname = "#7C7C7C",
+    Uruguay = "#484848",
+    `Venezuela (Bolivarian Republic of)` = "#1A1A1A")
+  ) +
+  labs(
+    x = "Años",
+    y = "CO2",
+    title = "CO2 de la quema de residuos de cultivos según años ",
+    subtitle = "Comparación entre Argentina yBrasil"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 15L,
+    face = "bold",
+    hjust = 0.5),
+    plot.subtitle = element_text(size = 13L,
+    hjust = 0.5),
+    axis.text.x = element_text(size = 13L)
+  )
+cropresid_arg_bra
 ```
 
-``` r
-#| label: distribucion
-ggplot(emisiones_sa, aes(x = total_emission)) +
-  geom_histogram(bins = 30, fill = "steelblue", color = "white") +
-  labs(x = "Emisiones totales del transporte de alimentos",
-       y = "Frecuencia",
-       title = "Distribución de las emisiones") +
-  theme_minimal()
+::: callout-tip
+## Para seguir explorando `esquisse`
 
-summary(emisiones_sa$total_emission)
+En esta práctica utilizaremos algunas de las herramientas de `esquisse`, pero el paquete ofrece otras posibilidades para crear y personalizar gráficos.
+
+Para profundizar en su uso, podés consultar la [guía oficial de introducción a esquisse](https://dreamrs.github.io/esquisse/articles/get-started.html), que incluye ejemplos e imágenes de su interfaz.
+
+También podés visitar la [página oficial de esquisse](https://dreamrs.github.io/esquisse/).
+
+**Te invitamos a explorar:** probá modificar los colores, títulos o tipos de gráficos y observá cómo cambia el código de `ggplot2` generado por la herramienta.
+:::
+
+#### Guardar el gráfico en formato PNG
+
+Utilizaremos la función `ggsave()` para guardar el gráfico en la carpeta `figuras` del proyecto.
+
+``` r
+#| label: guardar-grafico
+
+ggsave(
+  filename = "../figuras/cropresid_arg_bra.png",
+  plot = cropresid_arg_bra,
+  width = 16, 
+  height = 10,
+  units = "cm",
+  dpi = 300,
+  bg="white"
+)
 ```
 
-**Pregunta 3.1:** ¿la distribución es simétrica o tiene cola hacia un lado? ¿Cómo lo sabés?
+Los argumentos de `ggsave()` son:
 
-**Pregunta 3.2:** comparando la media y la mediana, ¿cuál describe mejor el centro? ¿Por qué?
+| Argumento  | Descripción                                   |
+|------------|-----------------------------------------------|
+| `filename` | Nombre y ubicación del archivo                |
+| `plot`     | Objeto gráfico que queremos guardar           |
+| `width`    | Ancho de la imagen                            |
+| `height`   | Alto de la imagen                             |
+| `units`    | Unidad de medida (`"cm"`, `"in"` o `"mm"`)    |
+| `dpi`      | Resolución de la imagen en puntos por pulgada |
+| `bg`       | Color de fondo de la imagen                   |
 
-## Actividad 5. ¿Cómo varían las emisiones entre áreas?
+::: callout-note
+### Tamaño y resolución de una imagen
 
-Calculamos medidas resumen por área con tidyverse:
+El **tamaño** corresponde a las dimensiones físicas del gráfico, mientras que la **resolución** determina la cantidad de píxeles por unidad de longitud.
+
+Como orientación:
+
+- **96 dpi:** adecuado para visualización en pantalla.
+- **150 dpi:** resolución intermedia.
+- **300 dpi:** utilizado habitualmente para impresión y publicaciones.
+
+Una resolución mayor no modifica los datos representados, pero permite obtener una imagen con más píxeles cuando se mantiene el mismo tamaño físico.
+:::
+
+::: callout-tip
+### Para recordar
+
+Guardar un gráfico como objeto permite reutilizarlo, modificarlo y exportarlo sin necesidad de volver a escribir todo el código.
+
+Con `ggsave()` podemos controlar el formato, tamaño y resolución de la imagen según el uso que necesitemos darle.
+:::
+
+### Interpretación de los resultados
+
+A partir del gráfico elaborado, redactá un breve párrafo que describa las principales características de la evolución temporal de las emisiones en ambos países.
+
+Considerá las tendencias generales, las diferencias entre países y las posibles fluctuaciones durante el período analizado.
+
+::: callout-tip
+### Para seguir investigando
+
+Los gráficos permiten identificar posibles tendencias y relaciones entre variables, pero no cuantifican por sí solos esas relaciones.
+
+Si querés explorar otras formas de representar los datos, podés visitar [R Graph Gallery](https://r-graph-gallery.com/), una colección de ejemplos de gráficos realizados con R, principalmente con `ggplot2`, que incluye el código necesario para reproducirlos.
+
+También podés consultar su [versión traducida al español](https://r--graph--gallery-com.translate.goog/?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=tc).
+
+**Te invitamos a explorar:** buscá un tipo de gráfico que no hayamos utilizado en esta práctica y reflexioná sobre qué información de nuestra base de datos podrías representar con él.
+:::
+
+::: callout-tip
+En la próxima práctica estudiaremos cómo utilizar un modelo de **regresión lineal** para analizar la relación entre el año y las emisiones de residuos de cultivos, y comparar los resultados obtenidos para Argentina y Brasil.
+:::
+
+## Actividad 4. ¿Cómo se comparan las emisiones de residuos de cultivos entre Argentina y Brasil?
+
+En la actividad anterior exploramos gráficamente la evolución de las emisiones provenientes de residuos de cultivos (`crop_residues`) en Argentina y Brasil.
+
+Ahora utilizaremos **medidas estadísticas descriptivas** para resumir y comparar las emisiones de ambos países durante el período estudiado.
+
+### Cálculo de medidas resumen
+
+Calcularemos las siguientes medidas:
+
+- **Media:** promedio de las emisiones registradas.
+- **Mediana:** valor que divide las observaciones ordenadas en dos partes iguales.
+- **Desvío estándar:** medida de dispersión de los valores respecto de la media.
+- **Mínimo y máximo:** valores extremos observados.
+
+Para obtener estas medidas utilizaremos funciones del paquete `dplyr`, incluido en `tidyverse`.
 
 ``` r
-#| label: resumen-areas
-resumen_areas <- emisiones_sa |>
+#| label: resumen-paises
+
+resumen_paises <- agro_sudamerica |>
+  filter(area %in% c("Argentina", "Brazil")) |>
   group_by(area) |>
   summarise(
-    n       = n(),
-    media   = mean(total_emission, na.rm = TRUE),
-    mediana = median(total_emission, na.rm = TRUE),
-    desvio  = sd(total_emission, na.rm = TRUE),
+    n = sum(!is.na(crop_residues)),
+    media = mean(crop_residues, na.rm = TRUE),
+    mediana = median(crop_residues, na.rm = TRUE),
+    desvio = sd(crop_residues, na.rm = TRUE),
+    minimo = min(crop_residues, na.rm = TRUE),
+    maximo = max(crop_residues, na.rm = TRUE),
     .groups = "drop"
-  ) |>
-  arrange(desc(mediana))
+  )
 
-head(resumen_areas, 10)
+resumen_paises
 ```
 
-Para ver la distribución de algunas áreas, comparamos con diagramas de caja. Elegí las 10 áreas con mayor mediana:
+La función `group_by(area)` agrupa las observaciones según el país, mientras que `summarise()` calcula las medidas estadísticas para cada grupo.
+
+El argumento `na.rm = TRUE` indica que los valores faltantes (`NA`) deben excluirse del cálculo.
+
+### Presentación de tablas con `flextable`
+
+Hasta ahora mostramos los resultados de las medidas resumen directamente en la consola de R.
+
+El paquete `flextable`[@gohel2026flextable] permite crear tablas con una presentación más clara y adecuada para informes, documentos y presentaciones.
+
+Con este paquete podemos modificar los encabezados, establecer la cantidad de decimales y ajustar el tamaño de las columnas.
+
+#### Instalación y carga del paquete
+
+Si todavía no instalaste `flextable`, ejecutá en la **consola de RStudio**:
+
+`install.packages("flextable")` Luego, cargá el paquete o:
 
 ``` r
-#| label: boxplot-areas
-#| fig-height: 6
-top_areas <- resumen_areas |>
-  slice_head(n = 10) |>
-  pull(area)
-
-emisiones_sa |>
-  filter(area %in% top_areas) |>
-  ggplot(aes(x = reorder(area, total_emission, median), y = total_emission)) +
-  geom_boxplot(fill = "lightblue") +
-  coord_flip() +
-  labs(x = "Área", y = "Emisiones totales", title = "Emisiones por área (10 con mayor mediana)") +
-  theme_minimal()
+#install.packages(flextable)
+library(flextable)
 ```
-
-**Pregunta 4.1:** ¿la media y la mediana dicen lo mismo sobre el orden de las áreas? Si difieren, ¿qué lo explica?
-
-**Pregunta 4.2:** ¿qué áreas tienen mayor dispersión? ¿Qué medida usarías para compararla?
-
-## Actividad 6. ¿Cómo evolucionan las emisiones en el tiempo?
-
-Elegí un área y graficá su evolución. Cambiá `"Argentina"` por otra área si lo preferís:
 
 ``` r
-#| label: evolucion-area
-emisiones_sa |>
-  filter(area == "Argentina") |>
-  ggplot(aes(x = year, y = total_emission)) +
-  geom_line(color = "darkgreen", linewidth = 1) +
-  geom_point() +
-  labs(x = "Año", y = "Emisiones totales", title = "Evolución de las emisiones en Argentina") +
-  theme_minimal()
+#| label: tabla-flextable
+
+tabla_resumen_paises<-resumen_paises |>
+  flextable() |>
+  autofit()
+tabla_resumen_paises
 ```
 
-**Pregunta 5.1:** ¿la serie crece, decrece o se mantiene estable? ¿Hay algún año que se separe del resto?
+::: callout-note
+## Para tener en cuenta
 
-**Pregunta 5.2:** ¿qué podría explicar un salto en la serie? Pensá en fuentes de datos o en cambios de metodología.
+Las modificaciones realizadas con `flextable` afectan la **presentación de la tabla**, pero no cambian los valores originales almacenados en `resumen_paises`.
+:::
 
-## Actividad 7. ¿Se relacionan las emisiones con la población urbana?
+**Pregunta 4.4:** ¿Qué diferencias observás entre la tabla original `resumen_paises` y la tabla creada con `flextable`? ¿Cuál utilizarías en un informe académico? ¿Por qué?
+
+**Pregunta 4.1:** ¿Qué país presenta una mayor media de emisiones provenientes de residuos de cultivos? ¿Ocurre lo mismo con la mediana?
+
+**Pregunta 4.2:** ¿Qué país presenta mayor variabilidad en las emisiones según el desvío estándar?
+
+**Pregunta 4.3:** ¿Qué información adicional aportan los valores mínimo y máximo?
+
+### Comparación mediante diagramas de caja
+
+El **diagrama de caja (boxplot)** permite representar gráficamente la distribución de una variable cuantitativa e identificar su mediana, cuartiles, dispersión y posibles valores atípicos.
+
+Construiremos un diagrama de caja para comparar las emisiones de Argentina y Brasil.
 
 ``` r
-#| label: dispersion-urbana
-#| eval: false
-ggplot(emisiones_sa, aes(x = urban_population, y = total_emission)) +
-  geom_point(alpha = 0.5, color = "steelblue") +
-  labs(x = "Población urbana", y = "Emisiones totales",
-       title = "Emisiones según población urbana") +
-  theme_minimal()
+#| label: boxplot-paises
+#| fig-height: 5
+
+bp_arg_bra<-agro_sudamerica |>
+  filter(area %in% c("Argentina", "Brazil")) |>
+  ggplot(aes(x = area, y = crop_residues, fill = area)) +
+  geom_boxplot() +
+  labs(
+    x = "País",
+    y = "Emisiones de residuos de cultivos",
+    title = "Distribución de las emisiones de residuos de cultivos"
+  ) +
+  theme_minimal() +
+  guides(fill = "none")
+bp_arg_bra
 ```
 
-**Atención:** la columna de población urbana puede tener otro nombre o estar en otra escala. Ajustala después de revisar `names(emisiones_sa)`. Quitá `eval: false` cuando el código esté corregido.
+``` r
+#| label: guardar-grafico
 
-**Pregunta 6.1:** ¿la relación parece lineal, curva o inexistente? ¿Hay puntos que se alejen mucho del patrón general?
+ggsave(
+  filename = "../figuras/bp_arg_bra.png",
+  plot = bp_arg_bra,
+  width = 16, 
+  height = 10,
+  units = "cm",
+  dpi = 300,
+  bg="white"
+)
+```
 
-**Pregunta 6.2:** en esta etapa, ¿podemos afirmar que la población urbana causa más emisiones? ¿Qué diseño de estudio se necesitaría para eso?
+*Observá en la carpeta figuras de tu proyecto que se guardó el nuevo gráfico*
 
-## Cierre
+**Pregunta 4.4:** ¿Qué país presenta una mediana más alta? ¿Coincide con lo observado en la tabla de medidas resumen?
 
-Respondé en tres o cuatro frases:
+**Pregunta 4.5:** ¿En qué país se observa una mayor dispersión de las emisiones? Considerá la amplitud de las cajas y la longitud de los bigotes.
 
-- ¿Qué problemas de calidad de datos encontraste (faltantes, años ausentes, valores extremos)?
-- ¿Qué pregunta te gustaría responder con un análisis posterior?
+**Pregunta 4.6:** ¿Se identifican posibles valores atípicos? ¿Qué información sería necesaria para interpretarlos?
+
+### Interpretación de los resultados
+
+A partir de las medidas resumen y los diagramas de caja, redactá un breve párrafo que compare las emisiones provenientes de residuos de cultivos en Argentina y Brasil.
+
+Considerá las diferencias en los valores centrales, la dispersión y la presencia de posibles valores atípicos.
+
+## Actividad 6. Inteligencia artificial como apoyo al análisis de datos
+
+Las herramientas de inteligencia artificial generativa pueden ayudarnos a comprender código, explorar alternativas de visualización, interpretar resultados y resolver dificultades durante el análisis.
+
+Sin embargo, es importante utilizarlas de manera crítica: **las respuestas generadas por IA pueden contener errores y deben verificarse antes de incorporarlas al trabajo**.
+
+En esta actividad utilizaremos una herramienta de IA generativa, como ChatGPT, para profundizar en algunos aspectos del análisis exploratorio de datos.
+
+### Exploración de funciones de R
+
+Seleccioná una de las funciones que utilizamos durante la práctica, por ejemplo:
+
+- `group_by()`
+- `summarise()`
+- `geom_boxplot()`
+- `ggsave()`
+
+Consultá a una herramienta de IA sobre su funcionamiento.
+
+**Prompt sugerido:**
+
+> Estoy aprendiendo análisis exploratorio de datos con R y RStudio. Explicame qué hace la función `group_by()` del paquete `dplyr`, para qué se utiliza y cómo se combina con `summarise()`. Incluí un ejemplo sencillo y explicá el resultado paso a paso.
+
+Podés reemplazar `group_by()` por cualquiera de las otras funciones.
+
+### Explorar alternativas de visualización
+
+En la práctica construimos gráficos para explorar la evolución temporal y comparar las emisiones de residuos de cultivos.
+
+Consultá qué otras representaciones gráficas podrían ser adecuadas para estas variables.
+
+**Prompt sugerido:**
+
+> Estoy trabajando en R con una base que contiene las variables `area` (país), `year` (año) y `crop_residues` (emisiones provenientes de residuos de cultivos). Quiero comparar Argentina y Brasil durante el período estudiado. ¿Qué tipos de gráficos serían adecuados? Explicá las ventajas y limitaciones de cada uno y proporcioná ejemplos utilizando `ggplot2`.
+
+**Pregunta 6.1:** ¿Qué gráfico te recomendó la IA? ¿Considerás que es adecuado para las variables que estamos analizando? Justificá tu respuesta.
+
+### Comprender las medidas resumen
+
+**Prompt sugerido:**
+
+> Estoy comparando las emisiones de residuos de cultivos de Argentina y Brasil. Calculé la media, mediana y desvío estándar para cada país. Explicame qué información aporta cada medida y por qué podría ser importante comparar la media con la mediana. No inventes resultados: indicame cómo interpretar las medidas cuando tenga los valores calculados.
+
+**Pregunta 6.2:** ¿Qué aprendiste sobre la interpretación de las medidas estadísticas? ¿La respuesta de la IA coincide con lo estudiado en la teoría?
+
+### Registro del uso de inteligencia artificial
+
+Para documentar el trabajo realizado:
+
+1.  Seleccioná uno de los prompts anteriores o elaborá uno propio.
+2.  Analizá la respuesta obtenida.
+3.  Verificá el código o las explicaciones proporcionadas.
+4.  Guardá el prompt utilizado y una síntesis de la respuesta en un archivo llamado `prompts_practica_3.md`, dentro de la carpeta `prompts` del proyecto.
+
+**Pregunta 6.3:** ¿En qué te resultó útil la IA? ¿Encontraste alguna explicación, recomendación o código que necesitaras corregir o verificar?
+
+::: callout-important
+## Uso responsable de la inteligencia artificial
+
+La IA es una herramienta de apoyo, no reemplaza el razonamiento estadístico.
+
+Antes de aceptar una respuesta, verificá que las funciones existan, que el código se ejecute correctamente y que las interpretaciones sean coherentes con los datos.
+
+No es necesario proporcionar información personal o confidencial para realizar estas consultas.
+:::
+
+## Actividad 7. Preparación de los datos para la próxima práctica
+
+### Seleccionar las observaciones y variables
+
+En la actividad anterior observamos la evolución temporal de las emisiones provenientes de residuos de cultivos en Argentina y Brasil.
+
+Para la próxima práctica, trabajaremos con el período **2009–2020**, en el que los gráficos exploratorios sugieren una tendencia aproximadamente lineal. Esta selección nos permitirá introducir los modelos de regresión lineal simple.
+
+Utilizaremos las funciones `filter()` y `select()` del paquete `dplyr` para seleccionar los países, los años y las variables de interés.
+
+``` r
+#| label: preparar-datos-regresion
+
+agro_regresion <- agro_sudamerica |>
+  filter(area %in% c("Argentina", "Brazil")) |>
+  filter(year > 2008) |>
+  select(area, year, crop_residues) |>
+  arrange(area, year)
+```
+
+La función `filter()` permite seleccionar las observaciones correspondientes a los dos países, mientras que `select()` conserva únicamente las variables necesarias.
+
+Por su parte, `arrange()` ordena los registros por país y año.
+
+### Verificar la nueva base de datos
+
+Antes de guardarla, revisá su estructura y contenido.
+
+``` r
+#| label: verificar-base-regresion
+
+glimpse(agro_regresion)
+
+summary(agro_regresion)
+
+count(agro_regresion, area)
+```
+
+### Guardar la nueva base de datos
+
+Guardaremos la base en formato CSV dentro de la carpeta `datos transformados`.
+
+``` r
+#| label: guardar-base-regresion
+
+write_csv(
+  agro_regresion,
+  "../datos_transformados/agro_regresion.csv"
+)
+```
+
+::: callout-tip
+## Resultado de la práctica
+
+Al finalizar, habrás generado el archivo `agro_regresion.csv`, que contiene las variables `area`, `year` y `crop_residues` para Argentina y Brasil.
+
+En la **Práctica 4** recuperaremos este archivo para estudiar la relación entre el año y las emisiones mediante modelos de regresión lineal.
+:::
+
+## ¿Qué aprendimos en esta práctica?
+
+En esta práctica aprendimos a realizar un **análisis exploratorio de datos (EDA)** utilizando herramientas de R y RStudio. Reconocimos la estructura de una base de datos, exploramos la evolución temporal de las emisiones provenientes de residuos de cultivos y comparamos su comportamiento en Argentina y Brasil. Utilizamos `esquisse` y `ggplot2` para construir gráficos, `ggsave()` para guardarlos con diferentes tamaños y resoluciones, y funciones de `dplyr` para calcular medidas estadísticas descriptivas. También aprendimos a presentar tablas con `flextable` y a utilizar la inteligencia artificial como herramienta de apoyo, evaluando críticamente sus respuestas. Finalmente, seleccionamos y guardamos una nueva base de datos que utilizaremos en la próxima práctica para introducir los **modelos de regresión lineal**.
+
+
+Referencias 
+
+:::{#refs}
+:::
+

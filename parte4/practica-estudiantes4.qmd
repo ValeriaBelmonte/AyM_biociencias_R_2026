@@ -12,7 +12,7 @@ Estudiar si la **precipitación anual** (mm) se relaciona con la **biomasa aére
 
 Creá un proyecto de RStudio (`File > New Project`) y guardá en la misma carpeta esta guía y el archivo `datos_regresion_ecologia.csv`.
 
-```r
+``` r
 #| label: paquetes
 # Instalar una sola vez si hace falta:
 # install.packages(c("ggplot2", "car", "lmtest"))
@@ -24,9 +24,6 @@ library(ggplot2)
 **Pregunta de investigación:** ¿existe relación entre la precipitación y la biomasa aérea?
 
 **Pregunta 1.1:** ¿Cuál es la variable respuesta (Y) y cuál la explicativa (X)? Justificá con una frase.
-
-
-
 
 # Paso 2. Modelo estadístico y supuestos
 
@@ -44,39 +41,37 @@ $$Y_i = \beta_0 + \beta_1 X_i + \varepsilon_i, \qquad \varepsilon_i \sim N(0, \s
 
 **Pregunta 2.2:** Enumerá los cuatro supuestos de la regresión lineal simple.
 
-1.  \_\_\_   
-2. \_\_\_   
-3. \_\_\_  
-4. \_\_\_  
+1.  \_\_\_\
+2.  \_\_\_\
+3.  \_\_\_\
+4.  \_\_\_
 
 **Pregunta 2.3:** El supuesto de **independencia** no se puede verificar con gráficos. ¿De qué depende? Pensá en cómo se eligieron los sitios.
 
-
-
 # Paso 3. Exploración de los datos
 
-```r
+``` r
 #| label: carga
 datos <- read.csv("datos_regresion_ecologia.csv")
 str(datos)
 ```
 
 **Pregunta 3.1:** ¿Cuántas filas y columnas tiene la base? ¿Hay valores faltantes?
-```r
+
+``` r
 #| label: faltantes
 dim(datos)
 colSums(is.na(datos))
 ```
 
-
-```r
+``` r
 #| label: resumen
 summary(datos[, c("Precipitacion_mm", "Biomasa_kg_ha")])
 ```
 
 **Pregunta 3.2:** Anotá la media y el desvío estándar de cada variable.
 
-```r
+``` r
 #| label: desvios
 sapply(datos[, c("Precipitacion_mm", "Biomasa_kg_ha")], sd)
 ```
@@ -85,8 +80,7 @@ sapply(datos[, c("Precipitacion_mm", "Biomasa_kg_ha")], sd)
 
 **Gráfico de dispersión.** Este código dibuja los puntos y la recta de tendencia:
 
-
-```r
+``` r
 #| label: dispersion
 #| fig-width: 7
 #| fig-height: 4.5
@@ -99,18 +93,16 @@ ggplot(datos, aes(x = Precipitacion_mm, y = Biomasa_kg_ha)) +
 
 **Pregunta 3.3:** Mirando el gráfico, respondé:
 
-- ¿La relación parece lineal o curva?   
-- ¿Es positiva o negativa?   
-- ¿La dispersión de los puntos cambia a lo largo del eje X (forma de abanico)?   
-- ¿Ves valores atípicos?    
+- ¿La relación parece lineal o curva?\
+- ¿Es positiva o negativa?\
+- ¿La dispersión de los puntos cambia a lo largo del eje X (forma de abanico)?\
+- ¿Ves valores atípicos?
 
 **Pregunta 3.4:** ¿Qué es el `ID_Sitio`? ¿Tiene sentido usarlo como variable en el modelo? Explicá por qué sí o por qué no.
 
-
-
 **Correlación.** Cuanto más cerca de 1 (en valor absoluto), más fuerte es la asociación lineal:
 
-```r
+``` r
 #| label: correlacion
 cor(datos$Precipitacion_mm, datos$Biomasa_kg_ha)
 ```
@@ -123,14 +115,14 @@ cor(datos$Precipitacion_mm, datos$Biomasa_kg_ha)
 
 Ajustamos el modelo con `lm()`:
 
-```r
+``` r
 #| label: ajuste
 modelo <- lm(Biomasa_kg_ha ~ Precipitacion_mm, data = datos)
 ```
 
 **Pregunta 4.1:** Mirá la salida de `summary(modelo)`. Anotá en la tabla:
 
-```r
+``` r
 #| label: salida
 summary(modelo)
 ```
@@ -144,33 +136,26 @@ summary(modelo)
 
 **Pregunta 4.3:** Interpretá $b_1$ con una frase completa. Usá la expresión "por cada aumento de 1 mm…".
 
-
-
 **Pregunta 4.4:** ¿Tiene sentido interpretar $b_0$? Pensá en qué precipitación corresponde al valor $0$ y si está dentro del rango de los datos.
-
-
 
 **Intervalo de confianza del 95 %:**
 
-```r
+``` r
 #| label: ic
 confint(modelo)
 ```
 
 **Pregunta 4.5:** ¿El IC de $\beta_1$ contiene al 0? ¿Qué te dice eso en relación con la hipótesis nula?
 
-
 **Calidad de ajuste.** En la salida, buscá *Residual standard error*, *Multiple R-squared* y el estadístico F.
 
 **Pregunta 4.6:** Anotá los valores y explicá qué significa el $R^2$ con tus palabras.
-
-
 
 # Paso 5. Validación del modelo
 
 Los errores $\varepsilon_i$ no se observan. Los **residuos** $e_i = y_i - \hat{y}_i$ son su aproximación.
 
-```r
+``` r
 #| label: diagnosticos
 #| fig-width: 8
 #| fig-height: 7
@@ -181,15 +166,17 @@ par(mfrow = c(1, 1))
 
 **Pregunta 5.1:** Completá con lo que observás:
 
-- *Residuals vs Fitted* (linealidad): ¿hay patrón curvo o tendencia?   
-- *Q-Q* (normalidad): ¿los puntos siguen la recta? 
+- *Residuals vs Fitted* (linealidad): ¿hay patrón curvo o tendencia?\
 
-- *Scale-Location* (homocedasticidad): ¿la dispersión es pareja?  
-- *Residuals vs Leverage* (influyentes): ¿hay puntos con distancia de Cook alta?   
+- *Q-Q* (normalidad): ¿los puntos siguen la recta?
+
+- *Scale-Location* (homocedasticidad): ¿la dispersión es pareja?\
+
+- *Residuals vs Leverage* (influyentes): ¿hay puntos con distancia de Cook alta?
 
 **Pruebas formales.** Los gráficos son subjetivos; estas pruebas dan un número:
 
-```r
+``` r
 #| label: pruebas
 shapiro.test(residuals(modelo))              # normalidad
 lmtest::bptest(modelo)                        # homocedasticidad
@@ -201,7 +188,7 @@ lmtest::bptest(modelo)                        # homocedasticidad
 
 **Influyentes.** Un punto influyente puede mover mucho la recta.
 
-```r
+``` r
 #| label: cook
 cd <- cooks.distance(modelo)
 which(cd > 4 / nrow(datos))
@@ -209,17 +196,13 @@ which(cd > 4 / nrow(datos))
 
 **Pregunta 5.3:** ¿Hay observaciones influyentes? Si las hubiera, ¿qué harías? ¿Quitarlas? Justificá.
 
-
-
 **Pregunta 5.4:** Si algún supuesto no se cumpliera, ¿qué cambiarías en el modelo? (Pista: el protocolo es iterativo; volvés al Paso 2.)
-
-
 
 # Paso 6. Interpretación y comunicación
 
 **Pregunta 6.1:** Predicción. ¿Cuál es la biomasa esperada para 500 mm y para 1000 mm de precipitación? Usá la recta y comprobá con R:
 
-```r
+``` r
 #| label: prediccion
 predict(modelo, newdata = data.frame(Precipitacion_mm = c(500, 1000)),
         interval = "confidence")
@@ -235,9 +218,6 @@ predict(modelo, newdata = data.frame(Precipitacion_mm = c(500, 1000)),
 
 **Pregunta 6.3:** Un colega dice: *"la lluvia causa más biomasa"*. ¿Qué le responderías? Pensá en si el estudio fue experimental o observacional.
 
-
-
 # Cierre
 
 Respondé en dos o tres frases: ¿qué aprendiste sobre el modelo, qué parte te costó más y qué harías distinto si tuvieras más variables?
-
