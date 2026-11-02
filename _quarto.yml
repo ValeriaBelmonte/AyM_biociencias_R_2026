@@ -93,7 +93,7 @@ website:
             text: "Práctica para estudiantes 6"
       - section: "Extras"
         contents:
-          - href: extras/index6.qmd
+          - href: extras/Simbolos.qmd
 format:
   html:
     theme: cosmo

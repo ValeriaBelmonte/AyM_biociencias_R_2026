@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Símbolos útiles para R y Quarto – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5d2e30ad26079c1dae90a1fd11eba2b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../estilos.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../extras/Simbolos.html">Extras</a></li><li class="breadcrumb-item"><a href="../extras/Simbolos.html">Símbolos útiles para R y Quarto</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inicio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 0</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte0/index0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte0/instalacion0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Instalación</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/index1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/teoria1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/practica-guiada1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte1/practica-estudiantes1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/index2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/teoria2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/practica-guiada2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte2/practica-estudiantes2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 3</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/index3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/teoria3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/practica-guiada3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte3/practica-estudiantes3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 3</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 4</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/index4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/teoria4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/practica-guiada4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte4/practica-estudiantes4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 4</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 5</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/index5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/teoria5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/practica-guiada5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 5</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte5/practica-estudiantes5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 5</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Parte 6</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/index6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentación</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/teoria6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Teoría 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/practica-guiada6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica guiada 6</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../parte6/practica-estudiantes6.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Práctica para estudiantes 6</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+ <span class="menu-text">Extras</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../extras/Simbolos.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Símbolos útiles para R y Quarto</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#cómo-utilizar-esta-página" id="toc-cómo-utilizar-esta-página" class="nav-link active" data-scroll-target="#cómo-utilizar-esta-página"><span class="header-section-number">1</span> ¿Cómo utilizar esta página?</a></li>
+  <li><a href="#símbolos-frecuentes" id="toc-símbolos-frecuentes" class="nav-link" data-scroll-target="#símbolos-frecuentes"><span class="header-section-number">2</span> Símbolos frecuentes</a></li>
+  <li><a href="#una-distinción-importante" id="toc-una-distinción-importante" class="nav-link" data-scroll-target="#una-distinción-importante"><span class="header-section-number">3</span> Una distinción importante</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../extras/Simbolos.html">Extras</a></li><li class="breadcrumb-item"><a href="../extras/Simbolos.html">Símbolos útiles para R y Quarto</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Símbolos útiles para R y Quarto</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="cómo-utilizar-esta-página" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="cómo-utilizar-esta-página"><span class="header-section-number">1</span> ¿Cómo utilizar esta página?</h2>
+<p>En RStudio y Quarto utilizamos símbolos cuya ubicación cambia según la distribución del teclado. En esta página podés <strong>presionar «Copiar»</strong> junto al símbolo y pegarlo en tu código con <strong>Ctrl + V</strong> (o <strong>Cmd + V</strong> en Mac).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Atención
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los botones funcionan en el <strong>documento HTML renderizado</strong>, no en la vista del código fuente <code>.qmd</code> ni en un archivo Word. Para abrir esta página, elegí <strong>Render</strong> en RStudio. Si el navegador impide copiar automáticamente, seleccioná y copiá el símbolo que aparece en pantalla.</p>
+</div>
+</div>
+</section>
+<section id="símbolos-frecuentes" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="símbolos-frecuentes"><span class="header-section-number">2</span> Símbolos frecuentes</h2>
+<style>
+.simbolos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 0.8rem; margin: 1rem 0 1.5rem; }
+.simbolo-card { border: 1px solid #d3d9df; border-radius: 9px; padding: .85rem; background: #fff; }
+.simbolo-caracter { font-family: Consolas, 'Courier New', monospace; font-size: 2rem; line-height: 1.3; display: block; }
+.simbolo-nombre { font-size: .92rem; min-height: 2.5em; display: block; margin: .4rem 0; }
+.simbolo-btn { background: #185a8d; color: #fff; border: 0; border-radius: 5px; cursor: pointer; padding: .4rem .8rem; font-size: .92rem; }
+.simbolo-btn:focus-visible { outline: 3px solid #e6a23c; outline-offset: 2px; }
+.simbolo-btn:hover { background: #114364; }
+.simbolo-uso { display:block; font-size:.82rem; color:#45515a; margin-top:.55rem; }
+#aviso-copia { min-height: 1.5em; font-weight: 600; }
+</style>
+<div class="simbolos-grid" id="simbolos-grid">
+  <div class="simbolo-card"><span class="simbolo-caracter">\</span><span class="simbolo-nombre">Barra invertida (backslash)</span><button type="button" class="simbolo-btn" data-symbol="\">Copiar</button><span class="simbolo-uso">En R: <code>\n</code>. En LaTeX: <code>\beta</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">^</span><span class="simbolo-nombre">Acento circunflejo</span><button type="button" class="simbolo-btn" data-symbol="^">Copiar</button><span class="simbolo-uso">En R: <code>2^3</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">`</span><span class="simbolo-nombre">Acento grave (backtick)</span><button type="button" class="simbolo-btn" data-symbol="`">Copiar</button><span class="simbolo-uso">Markdown: código en línea o bloques.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">~</span><span class="simbolo-nombre">Virgulilla (tilde)</span><button type="button" class="simbolo-btn" data-symbol="~">Copiar</button><span class="simbolo-uso">Fórmulas en R: <code>y ~ x</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">|</span><span class="simbolo-nombre">Barra vertical</span><button type="button" class="simbolo-btn" data-symbol="|">Copiar</button><span class="simbolo-uso">Operador lógico OR: <code>|</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">%</span><span class="simbolo-nombre">Porcentaje</span><button type="button" class="simbolo-btn" data-symbol="%">Copiar</button><span class="simbolo-uso">Operadores de R: <code>%in%</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">$</span><span class="simbolo-nombre">Signo peso</span><button type="button" class="simbolo-btn" data-symbol="$">Copiar</button><span class="simbolo-uso">En R: <code>datos$variable</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">_</span><span class="simbolo-nombre">Guion bajo</span><button type="button" class="simbolo-btn" data-symbol="_">Copiar</button><span class="simbolo-uso">En R: <code>peso_vivo</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">#</span><span class="simbolo-nombre">Numeral</span><button type="button" class="simbolo-btn" data-symbol="#">Copiar</button><span class="simbolo-uso">En R: comentarios; en Quarto: títulos.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">{ }</span><span class="simbolo-nombre">Llaves</span><button type="button" class="simbolo-btn" data-symbol="{}">Copiar</button><span class="simbolo-uso">Bloques de código: <code>{r}</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">[ ]</span><span class="simbolo-nombre">Corchetes</span><button type="button" class="simbolo-btn" data-symbol="[]">Copiar</button><span class="simbolo-uso">Selección: <code>x[1]</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">/</span><span class="simbolo-nombre">Barra diagonal</span><button type="button" class="simbolo-btn" data-symbol="/">Copiar</button><span class="simbolo-uso">División o rutas de archivos.</span></div>
+</div>
+
+## Símbolos estadísticos
+
+<div class="simbolos-grid">
+  <div class="simbolo-card"><span class="simbolo-caracter">²</span><span class="simbolo-nombre">Superíndice 2</span><button type="button" class="simbolo-btn" data-symbol="²">Copiar</button><span class="simbolo-uso">R²; en R: <code>"R\u00B2"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">₁</span><span class="simbolo-nombre">Subíndice 1</span><button type="button" class="simbolo-btn" data-symbol="₁">Copiar</button><span class="simbolo-uso">β₁; en R: <code>"\u2081"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">β</span><span class="simbolo-nombre">Beta</span><button type="button" class="simbolo-btn" data-symbol="β">Copiar</button><span class="simbolo-uso">En R: <code>"\u03B2"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">α</span><span class="simbolo-nombre">Alfa</span><button type="button" class="simbolo-btn" data-symbol="α">Copiar</button><span class="simbolo-uso">En R: <code>"\u03B1"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">μ</span><span class="simbolo-nombre">Mu</span><button type="button" class="simbolo-btn" data-symbol="μ">Copiar</button><span class="simbolo-uso">En R: <code>"\u03BC"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">σ</span><span class="simbolo-nombre">Sigma</span><button type="button" class="simbolo-btn" data-symbol="σ">Copiar</button><span class="simbolo-uso">En R: <code>"\u03C3"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">±</span><span class="simbolo-nombre">Más/menos</span><button type="button" class="simbolo-btn" data-symbol="±">Copiar</button><span class="simbolo-uso">En R: <code>"\u00B1"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">≤</span><span class="simbolo-nombre">Menor o igual</span><button type="button" class="simbolo-btn" data-symbol="≤">Copiar</button><span class="simbolo-uso">En R, el operador es <code>&lt;=</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">≥</span><span class="simbolo-nombre">Mayor o igual</span><button type="button" class="simbolo-btn" data-symbol="≥">Copiar</button><span class="simbolo-uso">En R, el operador es <code>&gt;=</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">≠</span><span class="simbolo-nombre">Distinto de</span><button type="button" class="simbolo-btn" data-symbol="≠">Copiar</button><span class="simbolo-uso">En R, el operador es <code>!=</code>.</span></div>
+</div>
+<p id="aviso-copia" role="status" aria-live="polite"></p>
+<script>
+(function () {
+  const aviso = document.getElementById('aviso-copia');
+  async function copiar(texto) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(texto);
+      return;
+    }
+    const area = document.createElement('textarea');
+    area.value = texto;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    const ok = document.execCommand('copy');
+    area.remove();
+    if (!ok) throw new Error('No se pudo copiar automáticamente');
+  }
+  document.querySelectorAll('.simbolo-btn').forEach(function (boton) {
+    boton.addEventListener('click', async function () {
+      try {
+        await copiar(boton.dataset.symbol);
+        aviso.textContent = 'Copiado: ' + boton.dataset.symbol + ' · Pegalo con Ctrl + V.';
+      } catch (e) {
+        aviso.textContent = 'El navegador impidió copiar automáticamente. Seleccioná el símbolo y copialo manualmente.';
+      }
+    });
+  });
+})();
+</script>
+</section>
+<section id="una-distinción-importante" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="una-distinción-importante"><span class="header-section-number">3</span> Una distinción importante</h2>
+<p>Los símbolos <strong>≤</strong>, <strong>≥</strong> y <strong>≠</strong> sirven para escribir texto matemático, pero en <strong>código de R</strong> las comparaciones se escriben con <code>&lt;=</code>, <code>&gt;=</code> y <code>!=</code>.</p>
+<p>Del mismo modo, en una fórmula de regresión se escribe <code>y ~ x</code> con la virgulilla real, y <strong>no</strong> con un código Unicode dentro de una cadena.</p>
+<section id="ejemplo-encabezados-de-una-tabla" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="ejemplo-encabezados-de-una-tabla"><span class="header-section-number">3.1</span> Ejemplo: encabezados de una tabla</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(resultados_modelos) <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pendiente =</span> <span class="st">"Pendiente (\u03B2\u2081)"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">r_cuadrado =</span> <span class="st">"R\u00B2"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_p_pendiente =</span> <span class="st">"Valor p"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En un párrafo de Quarto, en cambio, podés escribir las fórmulas con LaTeX: <code>$R^2$</code> o <code>$\beta_1$</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Para la Práctica 6
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Guardá este documento como <code>simbolos_para_copiar.qmd</code> y renderizalo en <strong>HTML</strong>. Podés compartir el HTML resultante con tus compañeros o estudiantes; como tiene los recursos incorporados, no necesita archivos de estilos ni scripts externos para mostrar los botones.</p>
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Símbolos útiles para R y Quarto"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="an">toc-depth:</span><span class="co"> 2</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Cómo utilizar esta página?</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>En RStudio y Quarto utilizamos símbolos cuya ubicación cambia según la distribución del teclado. En esta página podés **presionar «Copiar»** junto al símbolo y pegarlo en tu código con **Ctrl + V** (o **Cmd + V** en Mac).</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Atención</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>Los botones funcionan en el **documento HTML renderizado**, no en la vista del código fuente `.qmd` ni en un archivo Word. Para abrir esta página, elegí **Render** en RStudio. Si el navegador impide copiar automáticamente, seleccioná y copiá el símbolo que aparece en pantalla.</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## Símbolos frecuentes</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;style&gt;</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 0.8rem; margin: 1rem 0 1.5rem; }</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-card { border: 1px solid #d3d9df; border-radius: 9px; padding: .85rem; background: #fff; }</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-caracter { font-family: Consolas, 'Courier New', monospace; font-size: 2rem; line-height: 1.3; display: block; }</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-nombre { font-size: .92rem; min-height: 2.5em; display: block; margin: .4rem 0; }</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-btn { background: #185a8d; color: #fff; border: 0; border-radius: 5px; cursor: pointer; padding: .4rem .8rem; font-size: .92rem; }</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-btn:focus-visible { outline: 3px solid #e6a23c; outline-offset: 2px; }</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-btn:hover { background: #114364; }</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="in">.simbolo-uso { display:block; font-size:.82rem; color:#45515a; margin-top:.55rem; }</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="in">#aviso-copia { min-height: 1.5em; font-weight: 600; }</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/style&gt;</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="simbolos-grid" id="simbolos-grid"&gt;</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;\&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Barra invertida (backslash)&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="\"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;\n&lt;/code&gt;. En LaTeX: &lt;code&gt;\beta&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;^&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Acento circunflejo&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="^"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;2^3&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;`&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Acento grave (backtick)&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="`"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;Markdown: código en línea o bloques.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;~&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Virgulilla (tilde)&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="~"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;Fórmulas en R: &lt;code&gt;y ~ x&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;|&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Barra vertical&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="|"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;Operador lógico OR: &lt;code&gt;|&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;%&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Porcentaje&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="%"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;Operadores de R: &lt;code&gt;%in%&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;$&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Signo peso&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="$"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;datos$variable&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;_&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Guion bajo&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="_"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;peso_vivo&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;#&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Numeral&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="#"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: comentarios; en Quarto: títulos.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;{ }&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Llaves&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="{}"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;Bloques de código: &lt;code&gt;{r}&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;[ ]&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Corchetes&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="[]"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;Selección: &lt;code&gt;x[1]&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;/&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Barra diagonal&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="/"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;División o rutas de archivos.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="in">## Símbolos estadísticos</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;div class="simbolos-grid"&gt;</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;²&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Superíndice 2&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="²"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;R²; en R: &lt;code&gt;"R\u00B2"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;₁&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Subíndice 1&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="₁"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;β₁; en R: &lt;code&gt;"\u2081"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;β&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Beta&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="β"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;"\u03B2"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;α&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Alfa&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="α"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;"\u03B1"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;μ&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Mu&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="μ"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;"\u03BC"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;σ&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Sigma&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="σ"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;"\u03C3"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;±&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Más/menos&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="±"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R: &lt;code&gt;"\u00B1"&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;≤&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Menor o igual&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="≤"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R, el operador es &lt;code&gt;&amp;lt;=&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;≥&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Mayor o igual&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="≥"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R, el operador es &lt;code&gt;&amp;gt;=&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a><span class="in">  &lt;div class="simbolo-card"&gt;&lt;span class="simbolo-caracter"&gt;≠&lt;/span&gt;&lt;span class="simbolo-nombre"&gt;Distinto de&lt;/span&gt;&lt;button type="button" class="simbolo-btn" data-symbol="≠"&gt;Copiar&lt;/button&gt;&lt;span class="simbolo-uso"&gt;En R, el operador es &lt;code&gt;!=&lt;/code&gt;.&lt;/span&gt;&lt;/div&gt;</span></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/div&gt;</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;p id="aviso-copia" role="status" aria-live="polite"&gt;&lt;/p&gt;</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script&gt;</span></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a><span class="in">(function () {</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="in">  const aviso = document.getElementById('aviso-copia');</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">  async function copiar(texto) {</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a><span class="in">    if (navigator.clipboard &amp;&amp; window.isSecureContext) {</span></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a><span class="in">      await navigator.clipboard.writeText(texto);</span></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a><span class="in">      return;</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">    }</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">    const area = document.createElement('textarea');</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="in">    area.value = texto;</span></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="in">    area.setAttribute('readonly', '');</span></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="in">    area.style.position = 'fixed';</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">    area.style.opacity = '0';</span></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a><span class="in">    document.body.appendChild(area);</span></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a><span class="in">    area.select();</span></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a><span class="in">    const ok = document.execCommand('copy');</span></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="in">    area.remove();</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!ok) throw new Error('No se pudo copiar automáticamente');</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">  document.querySelectorAll('.simbolo-btn').forEach(function (boton) {</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="in">    boton.addEventListener('click', async function () {</span></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="in">      try {</span></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">        await copiar(boton.dataset.symbol);</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="in">        aviso.textContent = 'Copiado: ' + boton.dataset.symbol + ' · Pegalo con Ctrl + V.';</span></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="in">      } catch (e) {</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">        aviso.textContent = 'El navegador impidió copiar automáticamente. Seleccioná el símbolo y copialo manualmente.';</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="in">      }</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="in">    });</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a><span class="in">  });</span></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="in">})();</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Una distinción importante</span></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>Los símbolos **≤**, **≥** y **≠** sirven para escribir texto matemático, pero en **código de R** las comparaciones se escriben con <span class="in">`&lt;=`</span>, <span class="in">`&gt;=`</span> y <span class="in">`!=`</span>.</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>Del mismo modo, en una fórmula de regresión se escribe <span class="in">`y ~ x`</span> con la virgulilla real, y **no** con un código Unicode dentro de una cadena.</span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a><span class="fu">### Ejemplo: encabezados de una tabla</span></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(resultados_modelos) <span class="sc">|&gt;</span></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>    <span class="at">pendiente =</span> <span class="st">"Pendiente (\u03B2\u2081)"</span>,</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>    <span class="at">r_cuadrado =</span> <span class="st">"R\u00B2"</span>,</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">valor_p_pendiente =</span> <span class="st">"Valor p"</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>()</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>En un párrafo de Quarto, en cambio, podés escribir las fórmulas con LaTeX: <span class="in">`$R^2$`</span> o <span class="in">`$\beta_1$`</span>.</span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="fu">## Para la Práctica 6</span></span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>Guardá este documento como <span class="in">`simbolos_para_copiar.qmd`</span> y renderizalo en **HTML**. Podés compartir el HTML resultante con tus compañeros o estudiantes; como tiene los recursos incorporados, no necesita archivos de estilos ni scripts externos para mostrar los botones.</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
