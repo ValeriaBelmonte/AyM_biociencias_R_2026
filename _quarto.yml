@@ -91,6 +91,9 @@ website:
             text: "Práctica guiada 6"
           - href: parte6/practica-estudiantes6.qmd
             text: "Práctica para estudiantes 6"
+      - section: "Extras"
+        contents:
+          - href: extras/index6.qmd
 format:
   html:
     theme: cosmo

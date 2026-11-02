@@ -1,0 +1,150 @@
+---
+title: "Untitled"
+---
+
+Me parece muy útil incorporarlo como un recuadro de consulta en la Práctica 6, y también podríamos incluirlo en la teoría sobre Quarto. Como los estudiantes utilizarán computadoras con distintas distribuciones de teclado, conviene explicar qué función cumple cada símbolo y cómo resolverlo cuando no encuentran la tecla.
+
+Te dejo un texto pensado para incorporar directamente en tu material.
+
+## Símbolos especiales en R, RStudio y Quarto
+
+Al escribir código en R y elaborar documentos reproducibles con Quarto, utilizamos algunos símbolos que cumplen funciones específicas. Su ubicación en el teclado puede variar según el idioma y la distribución configurada (español, latinoamericano, inglés, entre otros).
+
+Por eso, es importante reconocer los símbolos y comprender su función, independientemente de la combinación de teclas necesaria para escribirlos.
+
+### Símbolos más utilizados
+
+| Símbolo | Nombre                        | Uso habitual                                                             |                         |
+| ------- | ----------------------------- | ------------------------------------------------------------------------ | ----------------------- |
+| `\`     | Barra invertida (*backslash*) | Secuencias de escape en R y comandos matemáticos de LaTeX                |                         |
+| `/`     | Barra diagonal                | División y rutas de archivos                                             |                         |
+| `^`     | Acento circunflejo            | Potencias en R                                                           |                         |
+| `` ` `` | Acento grave (*backtick*)     | Código en Markdown y nombres especiales de variables en R                |                         |
+| `~`     | Virgulilla (*tilde*)          | Fórmulas estadísticas en R                                               |                         |
+| \`      | \`                            | Barra vertical                                                           | Operador lógico OR en R |
+| `%`     | Porcentaje                    | Operadores especiales de R, como `%in%`                                  |                         |
+| `$`     | Signo peso                    | Acceso a componentes de objetos en R y expresiones matemáticas en Quarto |                         |
+| `_`     | Guion bajo                    | Nombres de variables y subíndices en LaTeX                               |                         |
+| `#`     | Numeral                       | Comentarios en R y encabezados en Markdown                               |                         |
+| `{ }`   | Llaves                        | Bloques de código y expresiones                                          |                         |
+| `[ ]`   | Corchetes                     | Selección de elementos y vectores                                        |                         |
+
+### Algunos ejemplos en R
+
+**Barra invertida (`\`)**
+
+En una cadena de texto, `\n` representa un salto de línea y `\t` una tabulación.
+
+```
+cat("Primera línea\nSegunda línea")
+```
+
+Para representar una barra invertida literal dentro de una cadena de R se escriben dos:
+
+```
+cat("C:\\datos\\archivo.csv")
+```
+
+**Acento circunflejo (`^`)**
+
+Se utiliza para elevar un número a una potencia.
+
+```
+2^3
+```
+
+**Acento grave (`` ` ``)**
+
+Permite utilizar nombres de variables que contienen espacios o caracteres especiales.
+
+```
+datos$`Peso vivo`
+```
+
+En Quarto también se utiliza para delimitar código. Un acento grave permite escribir código dentro de un párrafo, mientras que tres acentos graves se utilizan para abrir y cerrar un bloque de código.
+
+**Virgulilla (`~`)**
+
+Se utiliza para expresar fórmulas estadísticas.
+
+```
+modelo <- lm(crop_residues ~ year, data = datos)
+```
+
+En este ejemplo, `crop_residues` es la variable respuesta y `year` es la variable explicativa.
+
+### Incorporación de símbolos mediante Unicode
+
+Unicode permite representar caracteres especiales utilizando códigos que no dependen de la distribución del teclado.
+
+En R podemos escribir algunos símbolos mediante `\u` seguido de cuatro dígitos hexadecimales.
+
+| Símbolo | Código en R | Aplicación                      |
+| ------- | ----------- | ------------------------------- |
+| ²       | `\u00B2`    | Coeficiente de determinación R² |
+| β       | `\u03B2`    | Coeficientes de regresión       |
+| α       | `\u03B1`    | Nivel de significación          |
+| μ       | `\u03BC`    | Media poblacional               |
+| σ       | `\u03C3`    | Desviación estándar poblacional |
+| ±       | `\u00B1`    | Media ± desvío estándar         |
+| ≤       | `\u2264`    | Menor o igual                   |
+| ≥       | `\u2265`    | Mayor o igual                   |
+
+Ejemplo:
+
+```
+cat("R\u00B2")
+cat("\u03B2")
+cat("Media \u00B1 DE")
+```
+
+**Importante:** estos códigos se interpretan dentro de cadenas de texto de R. No sustituyen los operadores utilizados para escribir instrucciones. Por ejemplo, para ajustar un modelo mediante `lm()` debemos escribir la virgulilla `~` en la fórmula.
+
+### ¿Qué hacer si no encontramos un símbolo en el teclado?
+
+1. Verificar el idioma y la distribución del teclado configurada en Windows.
+2. Copiar el símbolo desde esta tabla y pegarlo en el editor de RStudio.
+3. Utilizar los códigos Unicode cuando necesitemos representar caracteres especiales en textos o encabezados de tablas.
+4. En Windows, consultar la aplicación **Mapa de caracteres** para localizar y copiar símbolos.
+
+En Quarto, también podemos utilizar comandos LaTeX para escribir expresiones matemáticas. Por ejemplo, `$R^2$` representa el coeficiente de determinación, y `$\beta_1$` representa un coeficiente de regresión.
+
+**Recordá:** no es lo mismo escribir una instrucción de R que escribir una expresión matemática en un documento. Cada contexto tiene sus propias reglas.
+
+## Una herramienta adicional para la clase
+
+Te preparé una pequeña referencia interactiva para que los estudiantes puedan copiar los símbolos cuando no los encuentran en sus teclados.
+
+Copiar símbolos
+
+Tocá cualquier símbolo para copiarlo
+
+\Barra invertida
+
+^Circunflejo
+
+\`Acento grave
+
+\~Virgulilla
+
+|Barra vertical
+
+%Porcentaje
+
+$Signo peso
+
+\_Guion bajo
+
+\#Numeral
+
+{Llave abierta
+
+}Llave cerrada
+
+[Corchete abierto
+
+]Corchete cerrado
+
+Mi recomendación didáctica: pondría esta sección como un anexo de consulta al final de la Práctica 6, porque interrumpir la construcción del informe para explicar todos los símbolos podría dispersar la atención.
+
+Además, enseñaría primero la diferencia entre los cuatro símbolos fundamentales: `\`, `^`, `` ` `` y `~`. Son muy distintos entre sí, y reconocerlos evita muchos errores al trabajar con R y Quarto.

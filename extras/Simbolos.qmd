@@ -1,0 +1,118 @@
+---
+title: "Símbolos útiles para R y Quarto"
+toc: true
+toc-depth: 2
+---
+
+## ¿Cómo utilizar esta página?
+
+En RStudio y Quarto utilizamos símbolos cuya ubicación cambia según la distribución del teclado. En esta página podés **presionar «Copiar»** junto al símbolo y pegarlo en tu código con **Ctrl + V** (o **Cmd + V** en Mac).
+
+::: callout-tip
+## Atención
+
+Los botones funcionan en el **documento HTML renderizado**, no en la vista del código fuente `.qmd` ni en un archivo Word. Para abrir esta página, elegí **Render** en RStudio. Si el navegador impide copiar automáticamente, seleccioná y copiá el símbolo que aparece en pantalla.
+:::
+
+## Símbolos frecuentes
+
+```{=html}
+<style>
+.simbolos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 0.8rem; margin: 1rem 0 1.5rem; }
+.simbolo-card { border: 1px solid #d3d9df; border-radius: 9px; padding: .85rem; background: #fff; }
+.simbolo-caracter { font-family: Consolas, 'Courier New', monospace; font-size: 2rem; line-height: 1.3; display: block; }
+.simbolo-nombre { font-size: .92rem; min-height: 2.5em; display: block; margin: .4rem 0; }
+.simbolo-btn { background: #185a8d; color: #fff; border: 0; border-radius: 5px; cursor: pointer; padding: .4rem .8rem; font-size: .92rem; }
+.simbolo-btn:focus-visible { outline: 3px solid #e6a23c; outline-offset: 2px; }
+.simbolo-btn:hover { background: #114364; }
+.simbolo-uso { display:block; font-size:.82rem; color:#45515a; margin-top:.55rem; }
+#aviso-copia { min-height: 1.5em; font-weight: 600; }
+</style>
+<div class="simbolos-grid" id="simbolos-grid">
+  <div class="simbolo-card"><span class="simbolo-caracter">\</span><span class="simbolo-nombre">Barra invertida (backslash)</span><button type="button" class="simbolo-btn" data-symbol="\">Copiar</button><span class="simbolo-uso">En R: <code>\n</code>. En LaTeX: <code>\beta</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">^</span><span class="simbolo-nombre">Acento circunflejo</span><button type="button" class="simbolo-btn" data-symbol="^">Copiar</button><span class="simbolo-uso">En R: <code>2^3</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">`</span><span class="simbolo-nombre">Acento grave (backtick)</span><button type="button" class="simbolo-btn" data-symbol="`">Copiar</button><span class="simbolo-uso">Markdown: código en línea o bloques.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">~</span><span class="simbolo-nombre">Virgulilla (tilde)</span><button type="button" class="simbolo-btn" data-symbol="~">Copiar</button><span class="simbolo-uso">Fórmulas en R: <code>y ~ x</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">|</span><span class="simbolo-nombre">Barra vertical</span><button type="button" class="simbolo-btn" data-symbol="|">Copiar</button><span class="simbolo-uso">Operador lógico OR: <code>|</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">%</span><span class="simbolo-nombre">Porcentaje</span><button type="button" class="simbolo-btn" data-symbol="%">Copiar</button><span class="simbolo-uso">Operadores de R: <code>%in%</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">$</span><span class="simbolo-nombre">Signo peso</span><button type="button" class="simbolo-btn" data-symbol="$">Copiar</button><span class="simbolo-uso">En R: <code>datos$variable</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">_</span><span class="simbolo-nombre">Guion bajo</span><button type="button" class="simbolo-btn" data-symbol="_">Copiar</button><span class="simbolo-uso">En R: <code>peso_vivo</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">#</span><span class="simbolo-nombre">Numeral</span><button type="button" class="simbolo-btn" data-symbol="#">Copiar</button><span class="simbolo-uso">En R: comentarios; en Quarto: títulos.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">{ }</span><span class="simbolo-nombre">Llaves</span><button type="button" class="simbolo-btn" data-symbol="{}">Copiar</button><span class="simbolo-uso">Bloques de código: <code>{r}</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">[ ]</span><span class="simbolo-nombre">Corchetes</span><button type="button" class="simbolo-btn" data-symbol="[]">Copiar</button><span class="simbolo-uso">Selección: <code>x[1]</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">/</span><span class="simbolo-nombre">Barra diagonal</span><button type="button" class="simbolo-btn" data-symbol="/">Copiar</button><span class="simbolo-uso">División o rutas de archivos.</span></div>
+</div>
+
+## Símbolos estadísticos
+
+<div class="simbolos-grid">
+  <div class="simbolo-card"><span class="simbolo-caracter">²</span><span class="simbolo-nombre">Superíndice 2</span><button type="button" class="simbolo-btn" data-symbol="²">Copiar</button><span class="simbolo-uso">R²; en R: <code>"R\u00B2"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">₁</span><span class="simbolo-nombre">Subíndice 1</span><button type="button" class="simbolo-btn" data-symbol="₁">Copiar</button><span class="simbolo-uso">β₁; en R: <code>"\u2081"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">β</span><span class="simbolo-nombre">Beta</span><button type="button" class="simbolo-btn" data-symbol="β">Copiar</button><span class="simbolo-uso">En R: <code>"\u03B2"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">α</span><span class="simbolo-nombre">Alfa</span><button type="button" class="simbolo-btn" data-symbol="α">Copiar</button><span class="simbolo-uso">En R: <code>"\u03B1"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">μ</span><span class="simbolo-nombre">Mu</span><button type="button" class="simbolo-btn" data-symbol="μ">Copiar</button><span class="simbolo-uso">En R: <code>"\u03BC"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">σ</span><span class="simbolo-nombre">Sigma</span><button type="button" class="simbolo-btn" data-symbol="σ">Copiar</button><span class="simbolo-uso">En R: <code>"\u03C3"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">±</span><span class="simbolo-nombre">Más/menos</span><button type="button" class="simbolo-btn" data-symbol="±">Copiar</button><span class="simbolo-uso">En R: <code>"\u00B1"</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">≤</span><span class="simbolo-nombre">Menor o igual</span><button type="button" class="simbolo-btn" data-symbol="≤">Copiar</button><span class="simbolo-uso">En R, el operador es <code>&lt;=</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">≥</span><span class="simbolo-nombre">Mayor o igual</span><button type="button" class="simbolo-btn" data-symbol="≥">Copiar</button><span class="simbolo-uso">En R, el operador es <code>&gt;=</code>.</span></div>
+  <div class="simbolo-card"><span class="simbolo-caracter">≠</span><span class="simbolo-nombre">Distinto de</span><button type="button" class="simbolo-btn" data-symbol="≠">Copiar</button><span class="simbolo-uso">En R, el operador es <code>!=</code>.</span></div>
+</div>
+<p id="aviso-copia" role="status" aria-live="polite"></p>
+<script>
+(function () {
+  const aviso = document.getElementById('aviso-copia');
+  async function copiar(texto) {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(texto);
+      return;
+    }
+    const area = document.createElement('textarea');
+    area.value = texto;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.opacity = '0';
+    document.body.appendChild(area);
+    area.select();
+    const ok = document.execCommand('copy');
+    area.remove();
+    if (!ok) throw new Error('No se pudo copiar automáticamente');
+  }
+  document.querySelectorAll('.simbolo-btn').forEach(function (boton) {
+    boton.addEventListener('click', async function () {
+      try {
+        await copiar(boton.dataset.symbol);
+        aviso.textContent = 'Copiado: ' + boton.dataset.symbol + ' · Pegalo con Ctrl + V.';
+      } catch (e) {
+        aviso.textContent = 'El navegador impidió copiar automáticamente. Seleccioná el símbolo y copialo manualmente.';
+      }
+    });
+  });
+})();
+</script>
+```
+
+## Una distinción importante
+
+Los símbolos **≤**, **≥** y **≠** sirven para escribir texto matemático, pero en **código de R** las comparaciones se escriben con `<=`, `>=` y `!=`.
+
+Del mismo modo, en una fórmula de regresión se escribe `y ~ x` con la virgulilla real, y **no** con un código Unicode dentro de una cadena.
+
+### Ejemplo: encabezados de una tabla
+
+``` r
+flextable(resultados_modelos) |>
+  set_header_labels(
+    pendiente = "Pendiente (\u03B2\u2081)",
+    r_cuadrado = "R\u00B2",
+    valor_p_pendiente = "Valor p"
+  ) |>
+  autofit()
+```
+
+En un párrafo de Quarto, en cambio, podés escribir las fórmulas con LaTeX: `$R^2$` o `$\beta_1$`.
+
+::: callout-note
+## Para la Práctica 6
+
+Guardá este documento como `simbolos_para_copiar.qmd` y renderizalo en **HTML**. Podés compartir el HTML resultante con tus compañeros o estudiantes; como tiene los recursos incorporados, no necesita archivos de estilos ni scripts externos para mostrar los botones.
+:::
