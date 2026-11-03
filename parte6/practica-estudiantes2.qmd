@@ -1,3 +1,315 @@
 ---
-title: "Practica estudiantes"
+title: "Practica estudiantes 2"
 ---
+
+
+## Propósito
+
+En esta práctica trabajarás de manera autónoma con un registro de condiciones de cultivo de lechuga. Vas a organizar un proyecto en RStudio, importar una base de Excel, reconocer su estructura, limpiar los nombres de las variables, revisar las fechas, completar un dato faltante y guardar dos bases para análisis posteriores.
+
+Utilizá como apoyo las teorías y prácticas guiadas anteriores. **Los bloques de código se incluyen para que puedas copiarlos a tu documento Quarto, ejecutarlos, observar los resultados y responder las consignas.** En algunas actividades tendrás que completar o adaptar el código.
+
+##  Crear el proyecto `lechuga`
+
+1. Creá una carpeta llamada `lechuga` en una ubicación fácil de encontrar.
+2. Abrí RStudio y seleccioná **File → New Project → Existing Directory** para crear el proyecto dentro de esa carpeta.
+3. En el panel **Files**, creá las siguientes subcarpetas dentro del proyecto:
+   - `datos_originales`: base recibida, sin modificar.
+   - `datos_transformados`: bases nuevas o corregidas.
+   - `scripts`: archivos `.qmd` y `.R`.
+   - `resultados`: informes y tablas.
+   - `figuras`: gráficos que generes más adelante.
+
+La estructura inicial debe quedar así:
+
+```text
+lechuga/
+├── lechuga.Rproj
+├── datos_originales/
+├── datos_transformados/
+├── scripts/
+├── resultados/
+└── figuras/
+```
+
+::: {.callout-tip}
+## Recordá
+
+Los nombres de las carpetas se escriben **sin espacios**, usando guiones bajos (`_`). Conservá intacta la base original.
+:::
+
+## Descargar y reconocer la base
+
+Descargá [**lechuga.xlsx**](../datos/lechuga.xlsx){download="lechuga.xlsx"} y guardá el archivo, con ese mismo nombre, en `datos_originales`.
+
+Abrí el archivo Excel y observá la información. Antes de trabajar en R, respondé:
+
+1. ¿Qué tipo de archivo es `lechuga.xlsx`?
+2. ¿En qué hoja se encuentran los datos?
+3. ¿Cada fila corresponde a una planta o a una medición de una planta en una fecha determinada?
+4. ¿Por qué esta base puede considerarse longitudinal o de medidas repetidas?
+
+##  Crear el documento Quarto y cargar paquetes
+
+En RStudio, creá un documento mediante **File → New File → Quarto Document** y guardalo en la carpeta `scripts` como `practica_estudiantes_2.qmd`.
+
+Si aún no instalaste los paquetes, ejecutá **una sola vez en la consola**:
+
+```r
+install.packages("tidyverse")
+install.packages("readxl")
+install.packages("janitor")
+```
+
+En tu documento Quarto, copiá este bloque para cargar los paquetes:
+
+```r
+library(tidyverse)
+library(readxl)
+library(janitor)
+```
+
+Limpiá el entorno de trabajo:
+
+```r
+rm(list = ls())
+```
+
+**Pregunta:** ¿Cuál es la diferencia entre instalar un paquete y cargarlo con `library()`?
+
+## Importar e inspeccionar los datos
+
+Importá la hoja `lechuga` del archivo Excel. Como el documento está guardado en `scripts`, la ruta comienza con `../`, que indica subir un nivel dentro del proyecto.
+
+```r
+lechuga <- read_excel(
+  "../datos_originales/lechuga.xlsx",
+  sheet = "lechuga"
+)
+```
+
+Realizá una primera inspección:
+
+```r
+dim(lechuga)
+names(lechuga)
+glimpse(lechuga)
+```
+
+**Respondé:** ¿Cuántas filas y columnas tiene la base? ¿Qué variables son numéricas? ¿Cuál identifica a cada planta?
+
+¿Cuántas plantas distintas se registraron?
+
+```r
+lechuga |>
+  summarise(plantas_distintas = n_distinct(Plant_ID))
+```
+
+¿Cuántos registros tiene cada planta? ¿Todas tienen la misma cantidad?
+
+```r
+lechuga |>
+  count(Plant_ID)
+```
+
+Observá la variable `Date` en el Excel y después de importarla. ¿Las fechas aparecen escritas de la misma manera? ¿Cómo las interpreta R?
+
+##  Limpiar los nombres de las variables
+
+Los nombres originales pueden contener mayúsculas, espacios, paréntesis y símbolos. Normalizalos utilizando `janitor::clean_names()`:
+
+```r
+lechuga <- lechuga |>
+  clean_names()
+
+names(lechuga)
+```
+
+**Respondé:** ¿Qué ventajas tiene trabajar con nombres estandarizados? Revisá especialmente cómo quedaron los nombres de las variables de pH y humedad: en las actividades siguientes deberás utilizar exactamente los nombres que muestre `names(lechuga)`.
+
+##  Crear una fecha con formato uniforme
+
+Creá una nueva variable `fecha` de clase `Date`. El siguiente bloque contempla cadenas con los formatos `año-mes-día` y `mes/día/año`.
+
+```r
+lechuga <- lechuga |>
+  mutate(
+    fecha = coalesce(
+      as.Date(as.character(date), format = "%Y-%m-%d"),
+      as.Date(as.character(date), format = "%m/%d/%Y")
+    )
+  )
+
+class(lechuga$fecha)
+head(lechuga$fecha)
+sum(is.na(lechuga$fecha))
+```
+
+::: {.callout-note}
+## Antes de borrar la fecha original
+
+Verificá que la conversión sea correcta y que no haya generado fechas faltantes. Si `date` se importó como número de Excel o ya como fecha, habrá que adaptar la conversión antes de continuar.
+:::
+
+Cuando hayas comprobado la conversión, eliminá la variable original:
+
+```r
+lechuga <- lechuga |>
+  select(-date)
+```
+
+**Pregunta:** ¿Qué operación realiza `select(-date)`? ¿Por qué conviene comprobar la conversión antes de eliminar la variable original?
+
+## Explorar la estructura y detectar datos faltantes
+
+Obtené un resumen general:
+
+```r
+summary(lechuga)
+```
+
+¿Cuántos valores faltantes hay en la base?
+
+```r
+sum(is.na(lechuga))
+```
+
+Identificá el registro con humedad faltante:
+
+```r
+lechuga |>
+  filter(is.na(humidity_porc))
+```
+
+El dato faltante en la humedad de la **planta 1**, correspondiente al **25 de agosto de 2023**, tiene como valor correcto **52**. Reemplazá únicamente ese valor:
+
+```r
+lechuga <- lechuga |>
+  mutate(
+    humidity_porc = case_when(
+      plant_id == 1 &
+        fecha == as.Date("2023-08-25") &
+        is.na(humidity_porc) ~ 52,
+      TRUE ~ humidity_porc
+    )
+  )
+```
+
+Comprobá que se haya realizado correctamente:
+
+```r
+lechuga |>
+  filter(plant_id == 1, fecha == as.Date("2023-08-25"))
+
+sum(is.na(lechuga))
+```
+
+**Respondé:** ¿Por qué se agrega `is.na(humidity_porc)` en la condición?
+
+##  Consultas breves sobre la base corregida
+
+**a.** ¿Cuál fue la humedad de la planta 3 el 15 de septiembre de 2023?
+
+```r
+humedad_3 <- lechuga |>
+  filter(plant_id == 3, fecha == as.Date("2023-09-15")) |>
+  select(plant_id, fecha, humidity_porc)
+
+humedad_3
+```
+
+**b.** ¿Cuáles fueron la temperatura, el pH y los sólidos disueltos totales de esa misma planta y fecha?
+
+```r
+# Completá el nombre de la variable de pH según names(lechuga).
+# temp_ph_solidos <- lechuga |>
+#   filter(plant_id == 3, fecha == as.Date("2023-09-15")) |>
+#   select(plant_id, fecha, temperature_c, NOMBRE_PH, tds_value_ppm)
+# temp_ph_solidos
+```
+
+**c.** ¿Cuál es la primera fecha registrada cronológicamente?
+
+```r
+primera_fecha <- min(lechuga$fecha, na.rm = TRUE)
+primera_fecha
+```
+
+**d.** ¿Cuántas plantas fueron medidas en la primera fecha?
+
+```r
+cantidad_plantas <- nrow(lechuga |> filter(fecha == primera_fecha))
+cantidad_plantas
+```
+
+**e.** ¿Qué planta registró la mayor humedad en esa fecha?
+
+```r
+planta_mayor_humedad <- lechuga |>
+  filter(fecha == primera_fecha) |>
+  arrange(desc(humidity_porc)) |>
+  select(plant_id, humidity_porc) |>
+  slice(1)
+
+planta_mayor_humedad
+```
+
+## Guardar la base corregida
+
+Guardá la base procesada en `datos_transformados`, sin modificar el archivo original:
+
+```r
+write_csv(
+  lechuga,
+  "../datos_transformados/lechuga_limpia.csv"
+)
+```
+
+**Pregunta:** ¿Por qué esta ruta comienza con `../`?
+
+## Crear una base con las plantas de la primera fecha
+
+Identificá la primera fecha:
+
+```r
+primera_fecha <- min(lechuga$fecha, na.rm = TRUE)
+primera_fecha
+```
+
+Creá una base con los registros de esa fecha:
+
+```r
+lechuga_primera_fecha <- lechuga |>
+  filter(fecha == primera_fecha)
+
+lechuga_primera_fecha
+```
+
+Comprobá la cantidad de registros y guardá el archivo:
+
+```r
+nrow(lechuga_primera_fecha)
+
+write_csv(
+  lechuga_primera_fecha,
+  "../datos_transformados/lechuga_primera_fecha.csv"
+)
+```
+
+## Guardar el trabajo
+
+Verificá que el proyecto contenga `datos_originales/lechuga.xlsx`, `scripts/practica_estudiantes_2.qmd`, `datos_transformados/lechuga_limpia.csv` y `datos_transformados/lechuga_primera_fecha.csv`.
+
+Renderizá tu documento Quarto, revisá el informe y guardá una copia en `resultados`. Antes de entregar, asegurate de que aparezcan el código, los resultados y las respuestas escritas a cada consigna.
+
+## Para pensar
+
+1. ¿Por qué conviene conservar la base original sin modificaciones?
+2. ¿Qué ventaja tiene guardar una versión limpia en `datos_transformados`?
+3. ¿Por qué es importante detectar los datos faltantes antes de iniciar un análisis?
+4. ¿Qué problemas podrían surgir si se trabajara con los nombres originales de las variables?
+5. ¿Qué información adicional necesitaríamos para estudiar el crecimiento de cada planta a lo largo del tiempo?
+
+## ¿Qué aprendimos en esta práctica?
+
+En esta práctica organizaste un proyecto de RStudio y desarrollaste un flujo de preparación reproducible: importaste datos desde Excel, revisaste su estructura, estandarizaste los nombres de variables, trabajaste con fechas y valores faltantes, consultaste registros y guardaste nuevas bases. El documento Quarto permite reunir el procedimiento, los resultados y las interpretaciones para revisarlos o repetirlos posteriormente.

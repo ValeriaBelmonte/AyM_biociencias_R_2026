@@ -1,5 +1,5 @@
 ---
-title: "Teoría"
+title: "Teoría 2"
 ---
 
 # Carga y manipulación de datos

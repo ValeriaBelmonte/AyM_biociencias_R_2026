@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Teoria 3 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Teoría 3 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -318,7 +318,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte3/practica-estudiantes3.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte3/practica-estudiantes3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica para estudiantes 3</span></a>
   </div>
 </li>
@@ -484,7 +484,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte3/index3.html">Parte 3</a></li><li class="breadcrumb-item"><a href="../parte3/teoria3.html">Teoría 3</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Teoria 3</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Teoría 3</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -708,7 +708,7 @@ theme_minimal()</code></pre>
 <colgroup>
 <col style="width: 23%">
 <col style="width: 23%">
-<col style="width: 29%">
+<col style="width: 28%">
 <col style="width: 23%">
 </colgroup>
 <thead>
@@ -753,10 +753,10 @@ theme_minimal()</code></pre>
 <h2 data-number="2.2" class="anchored" data-anchor-id="medidas-de-dispersión"><span class="header-section-number">2.2</span> Medidas de dispersión</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 22%">
-<col style="width: 29%">
-<col style="width: 26%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 27%">
+<col style="width: 25%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -1362,7 +1362,7 @@ Wickham, H. (2016). <em>ggplot2: Elegant graphics for data analysis</em>. Spring
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoria 3"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Teoría 3"</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Análisis exploratorio de datos</span></span>
@@ -1511,7 +1511,7 @@ Wickham, H. (2016). <em>ggplot2: Elegant graphics for data analysis</em>. Spring
 <span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medidas de tendencia central</span></span>
 <span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Medida <span class="pp">|</span> Definición <span class="pp">|</span> Cuándo conviene <span class="pp">|</span> Función en R <span class="pp">|</span></span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="pp">|:----------------|:----------------|:--------------------|:----------------|</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="pp">|:----------------|:----------------|:-------------------|:----------------|</span></span>
 <span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Media <span class="pp">|</span> $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$ <span class="pp">|</span> Variables numéricas simétricas, sin valores extremos <span class="pp">|</span> <span class="in">`mean(x, na.rm = TRUE)`</span> <span class="pp">|</span></span>
 <span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Mediana <span class="pp">|</span> Valor central de los datos ordenados <span class="pp">|</span> Distribuciones asimétricas o con valores atípicos <span class="pp">|</span> <span class="in">`median(x, na.rm = TRUE)`</span> <span class="pp">|</span></span>
 <span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Moda <span class="pp">|</span> Valor más frecuente <span class="pp">|</span> Variables categóricas o numéricas discretas <span class="pp">|</span> <span class="in">`sort(table(x), decreasing = TRUE)`</span><span class="ot">[^1]</span> <span class="pp">|</span></span>
@@ -1529,7 +1529,7 @@ Wickham, H. (2016). <em>ggplot2: Elegant graphics for data analysis</em>. Spring
 <span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## Medidas de dispersión</span></span>
 <span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Medida <span class="pp">|</span> Definición <span class="pp">|</span> Interpretación <span class="pp">|</span> Función en R <span class="pp">|</span></span>
-<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a><span class="pp">|:---------------|:---------------|:--------------------|:------------------|</span></span>
+<span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a><span class="pp">|:----------------|:----------------|:-------------------|:-----------------|</span></span>
 <span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Rango <span class="pp">|</span> $R = x_{\max} - x_{\min}$ <span class="pp">|</span> Amplitud total, sensible a valores extremos <span class="pp">|</span> <span class="in">`diff(range(x, na.rm = TRUE))`</span> <span class="pp">|</span></span>
 <span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Desvío estándar <span class="pp">|</span> $s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}$ <span class="pp">|</span> Dispersión en las mismas unidades de la variable <span class="pp">|</span> <span class="in">`sd(x, na.rm = TRUE)`</span> <span class="pp">|</span></span>
 <span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Rango intercuartílico (IQR) <span class="pp">|</span> $IQR = Q_3 - Q_1$ <span class="pp">|</span> Dispersión del 50 % central, robusta a valores extremos <span class="pp">|</span> <span class="in">`IQR(x, na.rm = TRUE)`</span> <span class="pp">|</span></span>
@@ -1612,42 +1612,43 @@ Wickham, H. (2016). <em>ggplot2: Elegant graphics for data analysis</em>. Spring
 <span id="cb11-249"><a href="#cb11-249" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-250"><a href="#cb11-250" aria-hidden="true" tabindex="-1"></a>El paquete <span class="in">`flextable`</span> <span class="co">[</span><span class="ot">@gohel2026flextable</span><span class="co">]</span> convierte un data frame en una tabla con formato para informes, documentos Word o HTML. Se usa al final del análisis, para presentar los resultados.</span>
 <span id="cb11-251"><a href="#cb11-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>Recordá la primera vez instalar el paquete </span>
+<span id="cb11-252"><a href="#cb11-252" aria-hidden="true" tabindex="-1"></a>Recordá la primera vez instalar el paquete</span>
 <span id="cb11-253"><a href="#cb11-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb11-254"><a href="#cb11-254" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
 <span id="cb11-255"><a href="#cb11-255" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"flextable"</span>)</span>
 <span id="cb11-256"><a href="#cb11-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a>Ahora podemos usarlo:</span>
-<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: flextable-resumen</span></span>
-<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
-<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a>tabla_resumen <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
-<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
-<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> <span class="fu">n</span>(),</span>
-<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">media   =</span> <span class="fu">mean</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a>    <span class="at">desvio  =</span> <span class="fu">sd</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
-<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(tabla_resumen) <span class="sc">|&gt;</span></span>
-<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(<span class="at">area =</span> <span class="st">"Área"</span>, <span class="at">n =</span> <span class="st">"n"</span>, <span class="at">media =</span> <span class="st">"Media"</span>,</span>
-<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mediana =</span> <span class="st">"Mediana"</span>, <span class="at">desvio =</span> <span class="st">"Desvío estándar"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colformat_double</span>(<span class="at">j =</span> <span class="fu">c</span>(<span class="st">"media"</span>, <span class="st">"mediana"</span>, <span class="st">"desvio"</span>), <span class="at">digits =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_booktabs</span>() <span class="sc">|&gt;</span></span>
-<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>()</span>
-<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a>Con <span class="in">`flextable`</span> se pueden agregar encabezados, combinar celdas, cambiar colores y exportar a Word o HTML. Ese desarrollo se verá en la <span class="co">[</span><span class="ot">Teoría 6</span><span class="co">](../parte6/teoria6.qmd)</span></span>
-<span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referencias</span></span>
-<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
-<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb11-257"><a href="#cb11-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-258"><a href="#cb11-258" aria-hidden="true" tabindex="-1"></a>Ahora podemos usarlo:</span>
+<span id="cb11-259"><a href="#cb11-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-260"><a href="#cb11-260" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb11-261"><a href="#cb11-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: flextable-resumen</span></span>
+<span id="cb11-262"><a href="#cb11-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-263"><a href="#cb11-263" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb11-264"><a href="#cb11-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-265"><a href="#cb11-265" aria-hidden="true" tabindex="-1"></a>tabla_resumen <span class="ot">&lt;-</span> agro <span class="sc">|&gt;</span></span>
+<span id="cb11-266"><a href="#cb11-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(area) <span class="sc">|&gt;</span></span>
+<span id="cb11-267"><a href="#cb11-267" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb11-268"><a href="#cb11-268" aria-hidden="true" tabindex="-1"></a>    <span class="at">n       =</span> <span class="fu">n</span>(),</span>
+<span id="cb11-269"><a href="#cb11-269" aria-hidden="true" tabindex="-1"></a>    <span class="at">media   =</span> <span class="fu">mean</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-270"><a href="#cb11-270" aria-hidden="true" tabindex="-1"></a>    <span class="at">mediana =</span> <span class="fu">median</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-271"><a href="#cb11-271" aria-hidden="true" tabindex="-1"></a>    <span class="at">desvio  =</span> <span class="fu">sd</span>(total_emission, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb11-272"><a href="#cb11-272" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">"drop"</span></span>
+<span id="cb11-273"><a href="#cb11-273" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-274"><a href="#cb11-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-275"><a href="#cb11-275" aria-hidden="true" tabindex="-1"></a><span class="fu">flextable</span>(tabla_resumen) <span class="sc">|&gt;</span></span>
+<span id="cb11-276"><a href="#cb11-276" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(<span class="at">area =</span> <span class="st">"Área"</span>, <span class="at">n =</span> <span class="st">"n"</span>, <span class="at">media =</span> <span class="st">"Media"</span>,</span>
+<span id="cb11-277"><a href="#cb11-277" aria-hidden="true" tabindex="-1"></a>                    <span class="at">mediana =</span> <span class="st">"Mediana"</span>, <span class="at">desvio =</span> <span class="st">"Desvío estándar"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-278"><a href="#cb11-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colformat_double</span>(<span class="at">j =</span> <span class="fu">c</span>(<span class="st">"media"</span>, <span class="st">"mediana"</span>, <span class="st">"desvio"</span>), <span class="at">digits =</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-279"><a href="#cb11-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_booktabs</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-280"><a href="#cb11-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>()</span>
+<span id="cb11-281"><a href="#cb11-281" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-282"><a href="#cb11-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-283"><a href="#cb11-283" aria-hidden="true" tabindex="-1"></a>Con <span class="in">`flextable`</span> se pueden agregar encabezados, combinar celdas, cambiar colores y exportar a Word o HTML. Ese desarrollo se verá en la <span class="co">[</span><span class="ot">Teoría 6</span><span class="co">](../parte6/teoria6.qmd)</span></span>
+<span id="cb11-284"><a href="#cb11-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-285"><a href="#cb11-285" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referencias</span></span>
+<span id="cb11-286"><a href="#cb11-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-287"><a href="#cb11-287" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb11-288"><a href="#cb11-288" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

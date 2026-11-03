@@ -191,11 +191,10 @@ Los supuestos se verifican sobre los **residuos**, porque los errores $\varepsil
 
 **Normalidad** se evalúa con dos herramientas complementarias:
 
-- **Gráfico Q-Q:** compara los cuantiles de los residuos con los de una normal teórica. Si los residuos son normales, los puntos caen sobre la recta de referencia. Colas que se separan indican colas más pesadas o livianas; una forma de S indica asimetría. Para ver cómo construirlo e interpretarlo, consultar la página [Cómo hacer e interpretar un gráfico Q-Q](../explicaciones extras/qqplot.qmd).
+- **Gráfico Q-Q:** compara los cuantiles de los residuos con los de una normal teórica. Si los residuos son normales, los puntos caen sobre la recta de referencia. Colas que se separan indican colas más pesadas o livianas; una forma de S indica asimetría. Para ver cómo construirlo e interpretarlo, consultar la página [Cómo hacer e interpretar un gráfico Q-Q](../explicaciones%20extras/qqplot.qmd).
 - **Prueba de Shapiro-Wilk:** $H_0$: los residuos provienen de una distribución normal; $H_1$: no provienen de una distribución normal. Si $p > 0.05$, no hay evidencia para rechazar la normalidad.
 
 Tener en cuenta que con muestras chicas la prueba tiene poca potencia, y con muestras grandes cualquier desvío leve resulta significativo. Por eso conviene mirar el gráfico Q-Q junto con el valor $p$.
-
 
 ### Residuos altos, puntos de palanca y observaciones influyentes
 
@@ -213,12 +212,9 @@ Un punto puede ser atípico sin ser influyente (si está cerca del centro de $x$
 
 **Qué hacer con un punto sospechoso:**
 
-1. Verificar si es un error de carga o de medición.
-2. Ajustar el modelo sin ese punto y comparar los coeficientes.
-3. No eliminarlo sin una justificación. Si se elimina, informarlo en el reporte.
-
-
-
+1.  Verificar si es un error de carga o de medición.
+2.  Ajustar el modelo sin ese punto y comparar los coeficientes.
+3.  No eliminarlo sin una justificación. Si se elimina, informarlo en el reporte.
 
 ## Cuando la relación no es lineal: linealización
 
@@ -268,19 +264,10 @@ $$r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^{n}(x
 
 **Supuestos.** A diferencia de la regresión, en la correlación **las dos variables deben ser aleatorias**: ambas se miden sobre unidades seleccionadas al azar. Para la prueba de hipótesis conviene que la relación sea lineal y que las dos variables sigan aproximadamente una distribución normal conjunta.
 
-
-
 **Prueba de hipótesis:** $H_0: \rho = 0$ vs $H_1: \rho \neq 0$, con $$t = \frac{r\sqrt{n-2}}{\sqrt{1-r^2}} \qquad \text{con } n-2 \text{ grados de libertad}$$
 
-**Ejemplo: peso vivo y perímetro torácico de animales.** Se midieron 18 animales, elegidos dentro de una muestra de la EAC "Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal" (carrera de Ing. Agronómica). En cada animal se midieron el perímetro torácico (cm) y el peso vivo (kg). Ambas variables son aleatorias, porque los animales no fueron fijados por el investigador.
- (Se desarrollará en R en la práctica guiada)
-
+**Ejemplo: peso vivo y perímetro torácico de animales.** Se midieron 18 animales, elegidos dentro de una muestra de la EAC "Observaciones del Animal en Exterior para Estimar Edad, Peso Vivo y Condición Corporal" (carrera de Ing. Agronómica). En cada animal se midieron el perímetro torácico (cm) y el peso vivo (kg). Ambas variables son aleatorias, porque los animales no fueron fijados por el investigador. (Se desarrollará en R en la práctica guiada)
 
 Con $r \approx 0.93$ y $p < 0.001$ se rechaza $H_0: \rho = 0$: existe una asociación lineal positiva fuerte entre el perímetro torácico y el peso vivo.
 
-**Pregunta:** ¿qué pasa con la correlación si cambiamos el orden de las variables? ¿Y con las pendientes?
 
-```{r} #| label: simetria coef(lm(peso_vivo ~ perimetro_toracico, data = animales))["perimetro_toracico"]  # pendiente de peso sobre perímetro coef(lm(perimetro_toracico ~ peso_vivo, data = animales))["peso_vivo"]           # pendiente de perímetro sobre peso cor(animales$perimetro_toracico, animales$peso_vivo)                              # igual en ambos sentidos}
-```
-
-La correlación es simétrica, pero las pendientes no. Por eso la regresión tiene una variable respuesta y una explicativa, y la correlación no.

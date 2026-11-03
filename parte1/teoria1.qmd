@@ -1,5 +1,5 @@
 ---
-title: Clase 1 
+title: "Teoría 1"
 ---
 
 # Introducción al análisis de datos reproducible

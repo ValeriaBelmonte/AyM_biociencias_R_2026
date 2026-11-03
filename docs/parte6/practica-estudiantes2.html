@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Practica estudiantes – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Practica estudiantes 2 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -271,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte3/practica-estudiantes3.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../parte3/practica-estudiantes3.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica para estudiantes 3</span></a>
   </div>
 </li>
@@ -404,15 +404,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#propósito" id="toc-propósito" class="nav-link active" data-scroll-target="#propósito"><span class="header-section-number">1</span> Propósito</a></li>
+  <li><a href="#crear-el-proyecto-lechuga" id="toc-crear-el-proyecto-lechuga" class="nav-link" data-scroll-target="#crear-el-proyecto-lechuga"><span class="header-section-number">2</span> Crear el proyecto <code>lechuga</code></a></li>
+  <li><a href="#descargar-y-reconocer-la-base" id="toc-descargar-y-reconocer-la-base" class="nav-link" data-scroll-target="#descargar-y-reconocer-la-base"><span class="header-section-number">3</span> Descargar y reconocer la base</a></li>
+  <li><a href="#crear-el-documento-quarto-y-cargar-paquetes" id="toc-crear-el-documento-quarto-y-cargar-paquetes" class="nav-link" data-scroll-target="#crear-el-documento-quarto-y-cargar-paquetes"><span class="header-section-number">4</span> Crear el documento Quarto y cargar paquetes</a></li>
+  <li><a href="#importar-e-inspeccionar-los-datos" id="toc-importar-e-inspeccionar-los-datos" class="nav-link" data-scroll-target="#importar-e-inspeccionar-los-datos"><span class="header-section-number">5</span> Importar e inspeccionar los datos</a></li>
+  <li><a href="#limpiar-los-nombres-de-las-variables" id="toc-limpiar-los-nombres-de-las-variables" class="nav-link" data-scroll-target="#limpiar-los-nombres-de-las-variables"><span class="header-section-number">6</span> Limpiar los nombres de las variables</a></li>
+  <li><a href="#crear-una-fecha-con-formato-uniforme" id="toc-crear-una-fecha-con-formato-uniforme" class="nav-link" data-scroll-target="#crear-una-fecha-con-formato-uniforme"><span class="header-section-number">7</span> Crear una fecha con formato uniforme</a></li>
+  <li><a href="#explorar-la-estructura-y-detectar-datos-faltantes" id="toc-explorar-la-estructura-y-detectar-datos-faltantes" class="nav-link" data-scroll-target="#explorar-la-estructura-y-detectar-datos-faltantes"><span class="header-section-number">8</span> Explorar la estructura y detectar datos faltantes</a></li>
+  <li><a href="#consultas-breves-sobre-la-base-corregida" id="toc-consultas-breves-sobre-la-base-corregida" class="nav-link" data-scroll-target="#consultas-breves-sobre-la-base-corregida"><span class="header-section-number">9</span> Consultas breves sobre la base corregida</a></li>
+  <li><a href="#guardar-la-base-corregida" id="toc-guardar-la-base-corregida" class="nav-link" data-scroll-target="#guardar-la-base-corregida"><span class="header-section-number">10</span> Guardar la base corregida</a></li>
+  <li><a href="#crear-una-base-con-las-plantas-de-la-primera-fecha" id="toc-crear-una-base-con-las-plantas-de-la-primera-fecha" class="nav-link" data-scroll-target="#crear-una-base-con-las-plantas-de-la-primera-fecha"><span class="header-section-number">11</span> Crear una base con las plantas de la primera fecha</a></li>
+  <li><a href="#guardar-el-trabajo" id="toc-guardar-el-trabajo" class="nav-link" data-scroll-target="#guardar-el-trabajo"><span class="header-section-number">12</span> Guardar el trabajo</a></li>
+  <li><a href="#para-pensar" id="toc-para-pensar" class="nav-link" data-scroll-target="#para-pensar"><span class="header-section-number">13</span> Para pensar</a></li>
+  <li><a href="#qué-aprendimos-en-esta-práctica" id="toc-qué-aprendimos-en-esta-práctica" class="nav-link" data-scroll-target="#qué-aprendimos-en-esta-práctica"><span class="header-section-number">14</span> ¿Qué aprendimos en esta práctica?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Practica estudiantes</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Practica estudiantes 2</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -429,10 +448,239 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="propósito" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="propósito"><span class="header-section-number">1</span> Propósito</h2>
+<p>En esta práctica trabajarás de manera autónoma con un registro de condiciones de cultivo de lechuga. Vas a organizar un proyecto en RStudio, importar una base de Excel, reconocer su estructura, limpiar los nombres de las variables, revisar las fechas, completar un dato faltante y guardar dos bases para análisis posteriores.</p>
+<p>Utilizá como apoyo las teorías y prácticas guiadas anteriores. <strong>Los bloques de código se incluyen para que puedas copiarlos a tu documento Quarto, ejecutarlos, observar los resultados y responder las consignas.</strong> En algunas actividades tendrás que completar o adaptar el código.</p>
+</section>
+<section id="crear-el-proyecto-lechuga" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="crear-el-proyecto-lechuga"><span class="header-section-number">2</span> Crear el proyecto <code>lechuga</code></h2>
+<ol type="1">
+<li>Creá una carpeta llamada <code>lechuga</code> en una ubicación fácil de encontrar.</li>
+<li>Abrí RStudio y seleccioná <strong>File → New Project → Existing Directory</strong> para crear el proyecto dentro de esa carpeta.</li>
+<li>En el panel <strong>Files</strong>, creá las siguientes subcarpetas dentro del proyecto:
+<ul>
+<li><code>datos_originales</code>: base recibida, sin modificar.</li>
+<li><code>datos_transformados</code>: bases nuevas o corregidas.</li>
+<li><code>scripts</code>: archivos <code>.qmd</code> y <code>.R</code>.</li>
+<li><code>resultados</code>: informes y tablas.</li>
+<li><code>figuras</code>: gráficos que generes más adelante.</li>
+</ul></li>
+</ol>
+<p>La estructura inicial debe quedar así:</p>
+<pre class="text"><code>lechuga/
+├── lechuga.Rproj
+├── datos_originales/
+├── datos_transformados/
+├── scripts/
+├── resultados/
+└── figuras/</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Recordá
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los nombres de las carpetas se escriben <strong>sin espacios</strong>, usando guiones bajos (<code>_</code>). Conservá intacta la base original.</p>
+</div>
+</div>
+</section>
+<section id="descargar-y-reconocer-la-base" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="descargar-y-reconocer-la-base"><span class="header-section-number">3</span> Descargar y reconocer la base</h2>
+<p>Descargá <a href="../datos/lechuga.xlsx" download="lechuga.xlsx"><strong>lechuga.xlsx</strong></a> y guardá el archivo, con ese mismo nombre, en <code>datos_originales</code>.</p>
+<p>Abrí el archivo Excel y observá la información. Antes de trabajar en R, respondé:</p>
+<ol type="1">
+<li>¿Qué tipo de archivo es <code>lechuga.xlsx</code>?</li>
+<li>¿En qué hoja se encuentran los datos?</li>
+<li>¿Cada fila corresponde a una planta o a una medición de una planta en una fecha determinada?</li>
+<li>¿Por qué esta base puede considerarse longitudinal o de medidas repetidas?</li>
+</ol>
+</section>
+<section id="crear-el-documento-quarto-y-cargar-paquetes" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="crear-el-documento-quarto-y-cargar-paquetes"><span class="header-section-number">4</span> Crear el documento Quarto y cargar paquetes</h2>
+<p>En RStudio, creá un documento mediante <strong>File → New File → Quarto Document</strong> y guardalo en la carpeta <code>scripts</code> como <code>practica_estudiantes_2.qmd</code>.</p>
+<p>Si aún no instalaste los paquetes, ejecutá <strong>una sola vez en la consola</strong>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"janitor"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En tu documento Quarto, copiá este bloque para cargar los paquetes:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Limpiá el entorno de trabajo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta:</strong> ¿Cuál es la diferencia entre instalar un paquete y cargarlo con <code>library()</code>?</p>
+</section>
+<section id="importar-e-inspeccionar-los-datos" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="importar-e-inspeccionar-los-datos"><span class="header-section-number">5</span> Importar e inspeccionar los datos</h2>
+<p>Importá la hoja <code>lechuga</code> del archivo Excel. Como el documento está guardado en <code>scripts</code>, la ruta comienza con <code>../</code>, que indica subir un nivel dentro del proyecto.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos_originales/lechuga.xlsx"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"lechuga"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Realizá una primera inspección:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lechuga)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lechuga)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lechuga)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Respondé:</strong> ¿Cuántas filas y columnas tiene la base? ¿Qué variables son numéricas? ¿Cuál identifica a cada planta?</p>
+<p>¿Cuántas plantas distintas se registraron?</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">plantas_distintas =</span> <span class="fu">n_distinct</span>(Plant_ID))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>¿Cuántos registros tiene cada planta? ¿Todas tienen la misma cantidad?</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Plant_ID)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Observá la variable <code>Date</code> en el Excel y después de importarla. ¿Las fechas aparecen escritas de la misma manera? ¿Cómo las interpreta R?</p>
+</section>
+<section id="limpiar-los-nombres-de-las-variables" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="limpiar-los-nombres-de-las-variables"><span class="header-section-number">6</span> Limpiar los nombres de las variables</h2>
+<p>Los nombres originales pueden contener mayúsculas, espacios, paréntesis y símbolos. Normalizalos utilizando <code>janitor::clean_names()</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lechuga)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Respondé:</strong> ¿Qué ventajas tiene trabajar con nombres estandarizados? Revisá especialmente cómo quedaron los nombres de las variables de pH y humedad: en las actividades siguientes deberás utilizar exactamente los nombres que muestre <code>names(lechuga)</code>.</p>
+</section>
+<section id="crear-una-fecha-con-formato-uniforme" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="crear-una-fecha-con-formato-uniforme"><span class="header-section-number">7</span> Crear una fecha con formato uniforme</h2>
+<p>Creá una nueva variable <code>fecha</code> de clase <code>Date</code>. El siguiente bloque contempla cadenas con los formatos <code>año-mes-día</code> y <code>mes/día/año</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fecha =</span> <span class="fu">coalesce</span>(</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.Date</span>(<span class="fu">as.character</span>(date), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.Date</span>(<span class="fu">as.character</span>(date), <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lechuga<span class="sc">$</span>fecha)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lechuga<span class="sc">$</span>fecha)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lechuga<span class="sc">$</span>fecha))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Antes de borrar la fecha original
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Verificá que la conversión sea correcta y que no haya generado fechas faltantes. Si <code>date</code> se importó como número de Excel o ya como fecha, habrá que adaptar la conversión antes de continuar.</p>
+</div>
+</div>
+<p>Cuando hayas comprobado la conversión, eliminá la variable original:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta:</strong> ¿Qué operación realiza <code>select(-date)</code>? ¿Por qué conviene comprobar la conversión antes de eliminar la variable original?</p>
+</section>
+<section id="explorar-la-estructura-y-detectar-datos-faltantes" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="explorar-la-estructura-y-detectar-datos-faltantes"><span class="header-section-number">8</span> Explorar la estructura y detectar datos faltantes</h2>
+<p>Obtené un resumen general:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lechuga)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>¿Cuántos valores faltantes hay en la base?</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lechuga))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Identificá el registro con humedad faltante:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(humidity_porc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El dato faltante en la humedad de la <strong>planta 1</strong>, correspondiente al <strong>25 de agosto de 2023</strong>, tiene como valor correcto <strong>52</strong>. Reemplazá únicamente ese valor:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">humidity_porc =</span> <span class="fu">case_when</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>      plant_id <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        fecha <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2023-08-25"</span>) <span class="sc">&amp;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(humidity_porc) <span class="sc">~</span> <span class="dv">52</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> humidity_porc</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Comprobá que se haya realizado correctamente:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plant_id <span class="sc">==</span> <span class="dv">1</span>, fecha <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2023-08-25"</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lechuga))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Respondé:</strong> ¿Por qué se agrega <code>is.na(humidity_porc)</code> en la condición?</p>
+</section>
+<section id="consultas-breves-sobre-la-base-corregida" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="consultas-breves-sobre-la-base-corregida"><span class="header-section-number">9</span> Consultas breves sobre la base corregida</h2>
+<p><strong>a.</strong> ¿Cuál fue la humedad de la planta 3 el 15 de septiembre de 2023?</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>humedad_3 <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plant_id <span class="sc">==</span> <span class="dv">3</span>, fecha <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2023-09-15"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plant_id, fecha, humidity_porc)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>humedad_3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>b.</strong> ¿Cuáles fueron la temperatura, el pH y los sólidos disueltos totales de esa misma planta y fecha?</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Completá el nombre de la variable de pH según names(lechuga).</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># temp_ph_solidos &lt;- lechuga |&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(plant_id == 3, fecha == as.Date("2023-09-15")) |&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(plant_id, fecha, temperature_c, NOMBRE_PH, tds_value_ppm)</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># temp_ph_solidos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>c.</strong> ¿Cuál es la primera fecha registrada cronológicamente?</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>primera_fecha <span class="ot">&lt;-</span> <span class="fu">min</span>(lechuga<span class="sc">$</span>fecha, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>primera_fecha</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>d.</strong> ¿Cuántas plantas fueron medidas en la primera fecha?</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cantidad_plantas <span class="ot">&lt;-</span> <span class="fu">nrow</span>(lechuga <span class="sc">|&gt;</span> <span class="fu">filter</span>(fecha <span class="sc">==</span> primera_fecha))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cantidad_plantas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>e.</strong> ¿Qué planta registró la mayor humedad en esa fecha?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>planta_mayor_humedad <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fecha <span class="sc">==</span> primera_fecha) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(humidity_porc)) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plant_id, humidity_porc) <span class="sc">|&gt;</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>planta_mayor_humedad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="guardar-la-base-corregida" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="guardar-la-base-corregida"><span class="header-section-number">10</span> Guardar la base corregida</h2>
+<p>Guardá la base procesada en <code>datos_transformados</code>, sin modificar el archivo original:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  lechuga,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos_transformados/lechuga_limpia.csv"</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta:</strong> ¿Por qué esta ruta comienza con <code>../</code>?</p>
+</section>
+<section id="crear-una-base-con-las-plantas-de-la-primera-fecha" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="crear-una-base-con-las-plantas-de-la-primera-fecha"><span class="header-section-number">11</span> Crear una base con las plantas de la primera fecha</h2>
+<p>Identificá la primera fecha:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>primera_fecha <span class="ot">&lt;-</span> <span class="fu">min</span>(lechuga<span class="sc">$</span>fecha, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>primera_fecha</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creá una base con los registros de esa fecha:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lechuga_primera_fecha <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fecha <span class="sc">==</span> primera_fecha)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>lechuga_primera_fecha</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Comprobá la cantidad de registros y guardá el archivo:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lechuga_primera_fecha)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  lechuga_primera_fecha,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos_transformados/lechuga_primera_fecha.csv"</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="guardar-el-trabajo" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="guardar-el-trabajo"><span class="header-section-number">12</span> Guardar el trabajo</h2>
+<p>Verificá que el proyecto contenga <code>datos_originales/lechuga.xlsx</code>, <code>scripts/practica_estudiantes_2.qmd</code>, <code>datos_transformados/lechuga_limpia.csv</code> y <code>datos_transformados/lechuga_primera_fecha.csv</code>.</p>
+<p>Renderizá tu documento Quarto, revisá el informe y guardá una copia en <code>resultados</code>. Antes de entregar, asegurate de que aparezcan el código, los resultados y las respuestas escritas a cada consigna.</p>
+</section>
+<section id="para-pensar" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="para-pensar"><span class="header-section-number">13</span> Para pensar</h2>
+<ol type="1">
+<li>¿Por qué conviene conservar la base original sin modificaciones?</li>
+<li>¿Qué ventaja tiene guardar una versión limpia en <code>datos_transformados</code>?</li>
+<li>¿Por qué es importante detectar los datos faltantes antes de iniciar un análisis?</li>
+<li>¿Qué problemas podrían surgir si se trabajara con los nombres originales de las variables?</li>
+<li>¿Qué información adicional necesitaríamos para estudiar el crecimiento de cada planta a lo largo del tiempo?</li>
+</ol>
+</section>
+<section id="qué-aprendimos-en-esta-práctica" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="qué-aprendimos-en-esta-práctica"><span class="header-section-number">14</span> ¿Qué aprendimos en esta práctica?</h2>
+<p>En esta práctica organizaste un proyecto de RStudio y desarrollaste un flujo de preparación reproducible: importaste datos desde Excel, revisaste su estructura, estandarizaste los nombres de variables, trabajaste con fechas y valores faltantes, consultaste registros y guardaste nuevas bases. El documento Quarto permite reunir el procedimiento, los resultados y las interpretaciones para revisarlos o repetirlos posteriormente.</p>
 
 
 <!-- -->
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -885,9 +1133,321 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes 2"</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Propósito</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>En esta práctica trabajarás de manera autónoma con un registro de condiciones de cultivo de lechuga. Vas a organizar un proyecto en RStudio, importar una base de Excel, reconocer su estructura, limpiar los nombres de las variables, revisar las fechas, completar un dato faltante y guardar dos bases para análisis posteriores.</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>Utilizá como apoyo las teorías y prácticas guiadas anteriores. **Los bloques de código se incluyen para que puedas copiarlos a tu documento Quarto, ejecutarlos, observar los resultados y responder las consignas.** En algunas actividades tendrás que completar o adaptar el código.</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Crear el proyecto `lechuga`</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Creá una carpeta llamada <span class="in">`lechuga`</span> en una ubicación fácil de encontrar.</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Abrí RStudio y seleccioná **File → New Project → Existing Directory** para crear el proyecto dentro de esa carpeta.</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>En el panel **Files**, creá las siguientes subcarpetas dentro del proyecto:</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`datos_originales`</span>: base recibida, sin modificar.</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`datos_transformados`</span>: bases nuevas o corregidas.</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`scripts`</span>: archivos <span class="in">`.qmd`</span> y <span class="in">`.R`</span>.</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`resultados`</span>: informes y tablas.</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="in">`figuras`</span>: gráficos que generes más adelante.</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>La estructura inicial debe quedar así:</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="in">```text</span></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="in">lechuga/</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="in">├── lechuga.Rproj</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_originales/</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="in">├── datos_transformados/</span></span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="in">├── scripts/</span></span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a><span class="in">├── resultados/</span></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="in">└── figuras/</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recordá</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>Los nombres de las carpetas se escriben **sin espacios**, usando guiones bajos (<span class="in">`_`</span>). Conservá intacta la base original.</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descargar y reconocer la base</span></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>Descargá <span class="co">[</span><span class="ot">**lechuga.xlsx**</span><span class="co">](../datos/lechuga.xlsx)</span>{download="lechuga.xlsx"} y guardá el archivo, con ese mismo nombre, en <span class="in">`datos_originales`</span>.</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>Abrí el archivo Excel y observá la información. Antes de trabajar en R, respondé:</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>¿Qué tipo de archivo es <span class="in">`lechuga.xlsx`</span>?</span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>¿En qué hoja se encuentran los datos?</span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>¿Cada fila corresponde a una planta o a una medición de una planta en una fecha determinada?</span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>¿Por qué esta base puede considerarse longitudinal o de medidas repetidas?</span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Crear el documento Quarto y cargar paquetes</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>En RStudio, creá un documento mediante **File → New File → Quarto Document** y guardalo en la carpeta <span class="in">`scripts`</span> como <span class="in">`practica_estudiantes_2.qmd`</span>.</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>Si aún no instalaste los paquetes, ejecutá **una sola vez en la consola**:</span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"janitor"</span>)</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a>En tu documento Quarto, copiá este bloque para cargar los paquetes:</span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a>Limpiá el entorno de trabajo:</span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a>**Pregunta:** ¿Cuál es la diferencia entre instalar un paquete y cargarlo con <span class="in">`library()`</span>?</span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Importar e inspeccionar los datos</span></span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a>Importá la hoja <span class="in">`lechuga`</span> del archivo Excel. Como el documento está guardado en <span class="in">`scripts`</span>, la ruta comienza con <span class="in">`../`</span>, que indica subir un nivel dentro del proyecto.</span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos_originales/lechuga.xlsx"</span>,</span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a>  <span class="at">sheet =</span> <span class="st">"lechuga"</span></span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a>Realizá una primera inspección:</span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-93"><a href="#cb26-93" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-94"><a href="#cb26-94" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(lechuga)</span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lechuga)</span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(lechuga)</span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a>**Respondé:** ¿Cuántas filas y columnas tiene la base? ¿Qué variables son numéricas? ¿Cuál identifica a cada planta?</span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a>¿Cuántas plantas distintas se registraron?</span>
+<span id="cb26-102"><a href="#cb26-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-103"><a href="#cb26-103" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-104"><a href="#cb26-104" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">plantas_distintas =</span> <span class="fu">n_distinct</span>(Plant_ID))</span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a>¿Cuántos registros tiene cada planta? ¿Todas tienen la misma cantidad?</span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Plant_ID)</span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-115"><a href="#cb26-115" aria-hidden="true" tabindex="-1"></a>Observá la variable <span class="in">`Date`</span> en el Excel y después de importarla. ¿Las fechas aparecen escritas de la misma manera? ¿Cómo las interpreta R?</span>
+<span id="cb26-116"><a href="#cb26-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-117"><a href="#cb26-117" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Limpiar los nombres de las variables</span></span>
+<span id="cb26-118"><a href="#cb26-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-119"><a href="#cb26-119" aria-hidden="true" tabindex="-1"></a>Los nombres originales pueden contener mayúsculas, espacios, paréntesis y símbolos. Normalizalos utilizando <span class="in">`janitor::clean_names()`</span>:</span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a>  <span class="fu">clean_names</span>()</span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(lechuga)</span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-127"><a href="#cb26-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-128"><a href="#cb26-128" aria-hidden="true" tabindex="-1"></a>**Respondé:** ¿Qué ventajas tiene trabajar con nombres estandarizados? Revisá especialmente cómo quedaron los nombres de las variables de pH y humedad: en las actividades siguientes deberás utilizar exactamente los nombres que muestre <span class="in">`names(lechuga)`</span>.</span>
+<span id="cb26-129"><a href="#cb26-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-130"><a href="#cb26-130" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Crear una fecha con formato uniforme</span></span>
+<span id="cb26-131"><a href="#cb26-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-132"><a href="#cb26-132" aria-hidden="true" tabindex="-1"></a>Creá una nueva variable <span class="in">`fecha`</span> de clase <span class="in">`Date`</span>. El siguiente bloque contempla cadenas con los formatos <span class="in">`año-mes-día`</span> y <span class="in">`mes/día/año`</span>.</span>
+<span id="cb26-133"><a href="#cb26-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-134"><a href="#cb26-134" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-135"><a href="#cb26-135" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-136"><a href="#cb26-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb26-137"><a href="#cb26-137" aria-hidden="true" tabindex="-1"></a>    <span class="at">fecha =</span> <span class="fu">coalesce</span>(</span>
+<span id="cb26-138"><a href="#cb26-138" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.Date</span>(<span class="fu">as.character</span>(date), <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>),</span>
+<span id="cb26-139"><a href="#cb26-139" aria-hidden="true" tabindex="-1"></a>      <span class="fu">as.Date</span>(<span class="fu">as.character</span>(date), <span class="at">format =</span> <span class="st">"%m/%d/%Y"</span>)</span>
+<span id="cb26-140"><a href="#cb26-140" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-141"><a href="#cb26-141" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-142"><a href="#cb26-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-143"><a href="#cb26-143" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(lechuga<span class="sc">$</span>fecha)</span>
+<span id="cb26-144"><a href="#cb26-144" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(lechuga<span class="sc">$</span>fecha)</span>
+<span id="cb26-145"><a href="#cb26-145" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lechuga<span class="sc">$</span>fecha))</span>
+<span id="cb26-146"><a href="#cb26-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-147"><a href="#cb26-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-148"><a href="#cb26-148" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb26-149"><a href="#cb26-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## Antes de borrar la fecha original</span></span>
+<span id="cb26-150"><a href="#cb26-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-151"><a href="#cb26-151" aria-hidden="true" tabindex="-1"></a>Verificá que la conversión sea correcta y que no haya generado fechas faltantes. Si <span class="in">`date`</span> se importó como número de Excel o ya como fecha, habrá que adaptar la conversión antes de continuar.</span>
+<span id="cb26-152"><a href="#cb26-152" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb26-153"><a href="#cb26-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-154"><a href="#cb26-154" aria-hidden="true" tabindex="-1"></a>Cuando hayas comprobado la conversión, eliminá la variable original:</span>
+<span id="cb26-155"><a href="#cb26-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-156"><a href="#cb26-156" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-157"><a href="#cb26-157" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-158"><a href="#cb26-158" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date)</span>
+<span id="cb26-159"><a href="#cb26-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-160"><a href="#cb26-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-161"><a href="#cb26-161" aria-hidden="true" tabindex="-1"></a>**Pregunta:** ¿Qué operación realiza <span class="in">`select(-date)`</span>? ¿Por qué conviene comprobar la conversión antes de eliminar la variable original?</span>
+<span id="cb26-162"><a href="#cb26-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-163"><a href="#cb26-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Explorar la estructura y detectar datos faltantes</span></span>
+<span id="cb26-164"><a href="#cb26-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-165"><a href="#cb26-165" aria-hidden="true" tabindex="-1"></a>Obtené un resumen general:</span>
+<span id="cb26-166"><a href="#cb26-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-167"><a href="#cb26-167" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-168"><a href="#cb26-168" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lechuga)</span>
+<span id="cb26-169"><a href="#cb26-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-170"><a href="#cb26-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-171"><a href="#cb26-171" aria-hidden="true" tabindex="-1"></a>¿Cuántos valores faltantes hay en la base?</span>
+<span id="cb26-172"><a href="#cb26-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-173"><a href="#cb26-173" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-174"><a href="#cb26-174" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lechuga))</span>
+<span id="cb26-175"><a href="#cb26-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-176"><a href="#cb26-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-177"><a href="#cb26-177" aria-hidden="true" tabindex="-1"></a>Identificá el registro con humedad faltante:</span>
+<span id="cb26-178"><a href="#cb26-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-179"><a href="#cb26-179" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-180"><a href="#cb26-180" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-181"><a href="#cb26-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(humidity_porc))</span>
+<span id="cb26-182"><a href="#cb26-182" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-183"><a href="#cb26-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-184"><a href="#cb26-184" aria-hidden="true" tabindex="-1"></a>El dato faltante en la humedad de la **planta 1**, correspondiente al **25 de agosto de 2023**, tiene como valor correcto **52**. Reemplazá únicamente ese valor:</span>
+<span id="cb26-185"><a href="#cb26-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-186"><a href="#cb26-186" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-187"><a href="#cb26-187" aria-hidden="true" tabindex="-1"></a>lechuga <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-188"><a href="#cb26-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb26-189"><a href="#cb26-189" aria-hidden="true" tabindex="-1"></a>    <span class="at">humidity_porc =</span> <span class="fu">case_when</span>(</span>
+<span id="cb26-190"><a href="#cb26-190" aria-hidden="true" tabindex="-1"></a>      plant_id <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span></span>
+<span id="cb26-191"><a href="#cb26-191" aria-hidden="true" tabindex="-1"></a>        fecha <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2023-08-25"</span>) <span class="sc">&amp;</span></span>
+<span id="cb26-192"><a href="#cb26-192" aria-hidden="true" tabindex="-1"></a>        <span class="fu">is.na</span>(humidity_porc) <span class="sc">~</span> <span class="dv">52</span>,</span>
+<span id="cb26-193"><a href="#cb26-193" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> humidity_porc</span>
+<span id="cb26-194"><a href="#cb26-194" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-195"><a href="#cb26-195" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-196"><a href="#cb26-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-197"><a href="#cb26-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-198"><a href="#cb26-198" aria-hidden="true" tabindex="-1"></a>Comprobá que se haya realizado correctamente:</span>
+<span id="cb26-199"><a href="#cb26-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-200"><a href="#cb26-200" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-201"><a href="#cb26-201" aria-hidden="true" tabindex="-1"></a>lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-202"><a href="#cb26-202" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plant_id <span class="sc">==</span> <span class="dv">1</span>, fecha <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2023-08-25"</span>))</span>
+<span id="cb26-203"><a href="#cb26-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-204"><a href="#cb26-204" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(lechuga))</span>
+<span id="cb26-205"><a href="#cb26-205" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-206"><a href="#cb26-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-207"><a href="#cb26-207" aria-hidden="true" tabindex="-1"></a>**Respondé:** ¿Por qué se agrega <span class="in">`is.na(humidity_porc)`</span> en la condición?</span>
+<span id="cb26-208"><a href="#cb26-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-209"><a href="#cb26-209" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Consultas breves sobre la base corregida</span></span>
+<span id="cb26-210"><a href="#cb26-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-211"><a href="#cb26-211" aria-hidden="true" tabindex="-1"></a>**a.** ¿Cuál fue la humedad de la planta 3 el 15 de septiembre de 2023?</span>
+<span id="cb26-212"><a href="#cb26-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-213"><a href="#cb26-213" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-214"><a href="#cb26-214" aria-hidden="true" tabindex="-1"></a>humedad_3 <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-215"><a href="#cb26-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(plant_id <span class="sc">==</span> <span class="dv">3</span>, fecha <span class="sc">==</span> <span class="fu">as.Date</span>(<span class="st">"2023-09-15"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb26-216"><a href="#cb26-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plant_id, fecha, humidity_porc)</span>
+<span id="cb26-217"><a href="#cb26-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-218"><a href="#cb26-218" aria-hidden="true" tabindex="-1"></a>humedad_3</span>
+<span id="cb26-219"><a href="#cb26-219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-220"><a href="#cb26-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-221"><a href="#cb26-221" aria-hidden="true" tabindex="-1"></a>**b.** ¿Cuáles fueron la temperatura, el pH y los sólidos disueltos totales de esa misma planta y fecha?</span>
+<span id="cb26-222"><a href="#cb26-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-223"><a href="#cb26-223" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-224"><a href="#cb26-224" aria-hidden="true" tabindex="-1"></a><span class="co"># Completá el nombre de la variable de pH según names(lechuga).</span></span>
+<span id="cb26-225"><a href="#cb26-225" aria-hidden="true" tabindex="-1"></a><span class="co"># temp_ph_solidos &lt;- lechuga |&gt;</span></span>
+<span id="cb26-226"><a href="#cb26-226" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(plant_id == 3, fecha == as.Date("2023-09-15")) |&gt;</span></span>
+<span id="cb26-227"><a href="#cb26-227" aria-hidden="true" tabindex="-1"></a><span class="co">#   select(plant_id, fecha, temperature_c, NOMBRE_PH, tds_value_ppm)</span></span>
+<span id="cb26-228"><a href="#cb26-228" aria-hidden="true" tabindex="-1"></a><span class="co"># temp_ph_solidos</span></span>
+<span id="cb26-229"><a href="#cb26-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-230"><a href="#cb26-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-231"><a href="#cb26-231" aria-hidden="true" tabindex="-1"></a>**c.** ¿Cuál es la primera fecha registrada cronológicamente?</span>
+<span id="cb26-232"><a href="#cb26-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-233"><a href="#cb26-233" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-234"><a href="#cb26-234" aria-hidden="true" tabindex="-1"></a>primera_fecha <span class="ot">&lt;-</span> <span class="fu">min</span>(lechuga<span class="sc">$</span>fecha, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-235"><a href="#cb26-235" aria-hidden="true" tabindex="-1"></a>primera_fecha</span>
+<span id="cb26-236"><a href="#cb26-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-237"><a href="#cb26-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-238"><a href="#cb26-238" aria-hidden="true" tabindex="-1"></a>**d.** ¿Cuántas plantas fueron medidas en la primera fecha?</span>
+<span id="cb26-239"><a href="#cb26-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-240"><a href="#cb26-240" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-241"><a href="#cb26-241" aria-hidden="true" tabindex="-1"></a>cantidad_plantas <span class="ot">&lt;-</span> <span class="fu">nrow</span>(lechuga <span class="sc">|&gt;</span> <span class="fu">filter</span>(fecha <span class="sc">==</span> primera_fecha))</span>
+<span id="cb26-242"><a href="#cb26-242" aria-hidden="true" tabindex="-1"></a>cantidad_plantas</span>
+<span id="cb26-243"><a href="#cb26-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-244"><a href="#cb26-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-245"><a href="#cb26-245" aria-hidden="true" tabindex="-1"></a>**e.** ¿Qué planta registró la mayor humedad en esa fecha?</span>
+<span id="cb26-246"><a href="#cb26-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-247"><a href="#cb26-247" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-248"><a href="#cb26-248" aria-hidden="true" tabindex="-1"></a>planta_mayor_humedad <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-249"><a href="#cb26-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fecha <span class="sc">==</span> primera_fecha) <span class="sc">|&gt;</span></span>
+<span id="cb26-250"><a href="#cb26-250" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(humidity_porc)) <span class="sc">|&gt;</span></span>
+<span id="cb26-251"><a href="#cb26-251" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(plant_id, humidity_porc) <span class="sc">|&gt;</span></span>
+<span id="cb26-252"><a href="#cb26-252" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>)</span>
+<span id="cb26-253"><a href="#cb26-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-254"><a href="#cb26-254" aria-hidden="true" tabindex="-1"></a>planta_mayor_humedad</span>
+<span id="cb26-255"><a href="#cb26-255" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-256"><a href="#cb26-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-257"><a href="#cb26-257" aria-hidden="true" tabindex="-1"></a><span class="fu">## Guardar la base corregida</span></span>
+<span id="cb26-258"><a href="#cb26-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-259"><a href="#cb26-259" aria-hidden="true" tabindex="-1"></a>Guardá la base procesada en <span class="in">`datos_transformados`</span>, sin modificar el archivo original:</span>
+<span id="cb26-260"><a href="#cb26-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-261"><a href="#cb26-261" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-262"><a href="#cb26-262" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb26-263"><a href="#cb26-263" aria-hidden="true" tabindex="-1"></a>  lechuga,</span>
+<span id="cb26-264"><a href="#cb26-264" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos_transformados/lechuga_limpia.csv"</span></span>
+<span id="cb26-265"><a href="#cb26-265" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-266"><a href="#cb26-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-267"><a href="#cb26-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-268"><a href="#cb26-268" aria-hidden="true" tabindex="-1"></a>**Pregunta:** ¿Por qué esta ruta comienza con <span class="in">`../`</span>?</span>
+<span id="cb26-269"><a href="#cb26-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-270"><a href="#cb26-270" aria-hidden="true" tabindex="-1"></a><span class="fu">## Crear una base con las plantas de la primera fecha</span></span>
+<span id="cb26-271"><a href="#cb26-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-272"><a href="#cb26-272" aria-hidden="true" tabindex="-1"></a>Identificá la primera fecha:</span>
+<span id="cb26-273"><a href="#cb26-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-274"><a href="#cb26-274" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-275"><a href="#cb26-275" aria-hidden="true" tabindex="-1"></a>primera_fecha <span class="ot">&lt;-</span> <span class="fu">min</span>(lechuga<span class="sc">$</span>fecha, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb26-276"><a href="#cb26-276" aria-hidden="true" tabindex="-1"></a>primera_fecha</span>
+<span id="cb26-277"><a href="#cb26-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-278"><a href="#cb26-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-279"><a href="#cb26-279" aria-hidden="true" tabindex="-1"></a>Creá una base con los registros de esa fecha:</span>
+<span id="cb26-280"><a href="#cb26-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-281"><a href="#cb26-281" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-282"><a href="#cb26-282" aria-hidden="true" tabindex="-1"></a>lechuga_primera_fecha <span class="ot">&lt;-</span> lechuga <span class="sc">|&gt;</span></span>
+<span id="cb26-283"><a href="#cb26-283" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(fecha <span class="sc">==</span> primera_fecha)</span>
+<span id="cb26-284"><a href="#cb26-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-285"><a href="#cb26-285" aria-hidden="true" tabindex="-1"></a>lechuga_primera_fecha</span>
+<span id="cb26-286"><a href="#cb26-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-287"><a href="#cb26-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-288"><a href="#cb26-288" aria-hidden="true" tabindex="-1"></a>Comprobá la cantidad de registros y guardá el archivo:</span>
+<span id="cb26-289"><a href="#cb26-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-290"><a href="#cb26-290" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb26-291"><a href="#cb26-291" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(lechuga_primera_fecha)</span>
+<span id="cb26-292"><a href="#cb26-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-293"><a href="#cb26-293" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb26-294"><a href="#cb26-294" aria-hidden="true" tabindex="-1"></a>  lechuga_primera_fecha,</span>
+<span id="cb26-295"><a href="#cb26-295" aria-hidden="true" tabindex="-1"></a>  <span class="st">"../datos_transformados/lechuga_primera_fecha.csv"</span></span>
+<span id="cb26-296"><a href="#cb26-296" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-297"><a href="#cb26-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-298"><a href="#cb26-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-299"><a href="#cb26-299" aria-hidden="true" tabindex="-1"></a><span class="fu">## Guardar el trabajo</span></span>
+<span id="cb26-300"><a href="#cb26-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-301"><a href="#cb26-301" aria-hidden="true" tabindex="-1"></a>Verificá que el proyecto contenga <span class="in">`datos_originales/lechuga.xlsx`</span>, <span class="in">`scripts/practica_estudiantes_2.qmd`</span>, <span class="in">`datos_transformados/lechuga_limpia.csv`</span> y <span class="in">`datos_transformados/lechuga_primera_fecha.csv`</span>.</span>
+<span id="cb26-302"><a href="#cb26-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-303"><a href="#cb26-303" aria-hidden="true" tabindex="-1"></a>Renderizá tu documento Quarto, revisá el informe y guardá una copia en <span class="in">`resultados`</span>. Antes de entregar, asegurate de que aparezcan el código, los resultados y las respuestas escritas a cada consigna.</span>
+<span id="cb26-304"><a href="#cb26-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-305"><a href="#cb26-305" aria-hidden="true" tabindex="-1"></a><span class="fu">## Para pensar</span></span>
+<span id="cb26-306"><a href="#cb26-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-307"><a href="#cb26-307" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>¿Por qué conviene conservar la base original sin modificaciones?</span>
+<span id="cb26-308"><a href="#cb26-308" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>¿Qué ventaja tiene guardar una versión limpia en <span class="in">`datos_transformados`</span>?</span>
+<span id="cb26-309"><a href="#cb26-309" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>¿Por qué es importante detectar los datos faltantes antes de iniciar un análisis?</span>
+<span id="cb26-310"><a href="#cb26-310" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>¿Qué problemas podrían surgir si se trabajara con los nombres originales de las variables?</span>
+<span id="cb26-311"><a href="#cb26-311" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>¿Qué información adicional necesitaríamos para estudiar el crecimiento de cada planta a lo largo del tiempo?</span>
+<span id="cb26-312"><a href="#cb26-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-313"><a href="#cb26-313" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Qué aprendimos en esta práctica?</span></span>
+<span id="cb26-314"><a href="#cb26-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-315"><a href="#cb26-315" aria-hidden="true" tabindex="-1"></a>En esta práctica organizaste un proyecto de RStudio y desarrollaste un flujo de preparación reproducible: importaste datos desde Excel, revisaste su estructura, estandarizaste los nombres de variables, trabajaste con fechas y valores faltantes, consultaste registros y guardaste nuevas bases. El documento Quarto permite reunir el procedimiento, los resultados y las interpretaciones para revisarlos o repetirlos posteriormente.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

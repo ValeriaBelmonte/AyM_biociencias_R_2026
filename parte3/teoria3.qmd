@@ -1,5 +1,5 @@
 ---
-title: "Teoria 3"
+title: "Teoría 3"
 ---
 
 # Análisis exploratorio de datos
@@ -148,7 +148,7 @@ Las tablas de frecuencias y los gráficos muestran la forma de los datos. Las **
 ## Medidas de tendencia central
 
 | Medida | Definición | Cuándo conviene | Función en R |
-|:----------------|:----------------|:--------------------|:----------------|
+|:----------------|:----------------|:-------------------|:----------------|
 | Media | $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$ | Variables numéricas simétricas, sin valores extremos | `mean(x, na.rm = TRUE)` |
 | Mediana | Valor central de los datos ordenados | Distribuciones asimétricas o con valores atípicos | `median(x, na.rm = TRUE)` |
 | Moda | Valor más frecuente | Variables categóricas o numéricas discretas | `sort(table(x), decreasing = TRUE)`[^1] |
@@ -166,7 +166,7 @@ Las tablas de frecuencias y los gráficos muestran la forma de los datos. Las **
 ## Medidas de dispersión
 
 | Medida | Definición | Interpretación | Función en R |
-|:---------------|:---------------|:--------------------|:------------------|
+|:----------------|:----------------|:-------------------|:-----------------|
 | Rango | $R = x_{\max} - x_{\min}$ | Amplitud total, sensible a valores extremos | `diff(range(x, na.rm = TRUE))` |
 | Desvío estándar | $s = \sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}$ | Dispersión en las mismas unidades de la variable | `sd(x, na.rm = TRUE)` |
 | Rango intercuartílico (IQR) | $IQR = Q_3 - Q_1$ | Dispersión del 50 % central, robusta a valores extremos | `IQR(x, na.rm = TRUE)` |
@@ -249,11 +249,12 @@ aggregate(total_emission ~ area, data = agro,
 
 El paquete `flextable` [@gohel2026flextable] convierte un data frame en una tabla con formato para informes, documentos Word o HTML. Se usa al final del análisis, para presentar los resultados.
 
-Recordá la primera vez instalar el paquete 
+Recordá la primera vez instalar el paquete
 
-```r
+``` r
 install.packages("flextable")
 ```
+
 Ahora podemos usarlo:
 
 ``` r
