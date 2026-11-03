@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Practica estudiantes – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
+<title>Practica estudiantes 3 – Análisis y modelado de datos para investigaciones en biociencias con R y RStudio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -407,10 +407,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#paquete-ggplot" id="toc-paquete-ggplot" class="nav-link active" data-scroll-target="#paquete-ggplot"><span class="header-section-number">1</span> Paquete ggplot</a></li>
-  <li><a href="#tercer-capa" id="toc-tercer-capa" class="nav-link" data-scroll-target="#tercer-capa"><span class="header-section-number">2</span> Tercer capa</a></li>
-  <li><a href="#facetas-facet" id="toc-facetas-facet" class="nav-link" data-scroll-target="#facetas-facet"><span class="header-section-number">3</span> Facetas (facet())</a></li>
-  <li><a href="#temas-themes" id="toc-temas-themes" class="nav-link" data-scroll-target="#temas-themes"><span class="header-section-number">4</span> Temas (themes)</a></li>
+  <li><a href="#propósito" id="toc-propósito" class="nav-link active" data-scroll-target="#propósito"><span class="header-section-number">1</span> Propósito</a></li>
+  <li><a href="#actividad-1.-organización-del-trabajo-e-importación-de-datos" id="toc-actividad-1.-organización-del-trabajo-e-importación-de-datos" class="nav-link" data-scroll-target="#actividad-1.-organización-del-trabajo-e-importación-de-datos"><span class="header-section-number">2</span> Actividad 1. Organización del trabajo e importación de datos</a></li>
+  <li><a href="#actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado" id="toc-actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado" class="nav-link" data-scroll-target="#actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado"><span class="header-section-number">3</span> Actividad 2. Reconocimiento de las áreas y del período estudiado</a></li>
+  <li><a href="#actividad-3.-visualización-de-las-emisiones-con-esquisse" id="toc-actividad-3.-visualización-de-las-emisiones-con-esquisse" class="nav-link" data-scroll-target="#actividad-3.-visualización-de-las-emisiones-con-esquisse"><span class="header-section-number">4</span> Actividad 3. Visualización de las emisiones con <code>esquisse</code></a>
+  <ul class="collapse">
+  <li><a href="#abrir-esquisse-y-explorar-la-base" id="toc-abrir-esquisse-y-explorar-la-base" class="nav-link" data-scroll-target="#abrir-esquisse-y-explorar-la-base"><span class="header-section-number">4.1</span> 3.1. Abrir <code>esquisse</code> y explorar la base</a></li>
+  <li><a href="#comparar-dos-áreas" id="toc-comparar-dos-áreas" class="nav-link" data-scroll-target="#comparar-dos-áreas"><span class="header-section-number">4.2</span> 3.2. Comparar dos áreas</a></li>
+  <li><a href="#personalización-e-interpretación" id="toc-personalización-e-interpretación" class="nav-link" data-scroll-target="#personalización-e-interpretación"><span class="header-section-number">4.3</span> 3.3. Personalización e interpretación</a></li>
+  <li><a href="#recuperar-el-código-y-reproducir-el-gráfico" id="toc-recuperar-el-código-y-reproducir-el-gráfico" class="nav-link" data-scroll-target="#recuperar-el-código-y-reproducir-el-gráfico"><span class="header-section-number">4.4</span> 3.4. Recuperar el código y reproducir el gráfico</a></li>
+  </ul></li>
+  <li><a href="#actividad-4.-medidas-resumen-y-comparación-entre-áreas" id="toc-actividad-4.-medidas-resumen-y-comparación-entre-áreas" class="nav-link" data-scroll-target="#actividad-4.-medidas-resumen-y-comparación-entre-áreas"><span class="header-section-number">5</span> Actividad 4. Medidas resumen y comparación entre áreas</a></li>
+  <li><a href="#actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados" id="toc-actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados" class="nav-link" data-scroll-target="#actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados"><span class="header-section-number">6</span> Actividad 5. Guardar los gráficos y comunicar los resultados</a></li>
+  <li><a href="#actividad-6.-uso-crítico-de-inteligencia-artificial-opcional" id="toc-actividad-6.-uso-crítico-de-inteligencia-artificial-opcional" class="nav-link" data-scroll-target="#actividad-6.-uso-crítico-de-inteligencia-artificial-opcional"><span class="header-section-number">7</span> Actividad 6. Uso crítico de inteligencia artificial (opcional)</a></li>
+  <li><a href="#resultado-de-la-práctica" id="toc-resultado-de-la-práctica" class="nav-link" data-scroll-target="#resultado-de-la-práctica"><span class="header-section-number">8</span> Resultado de la práctica</a></li>
+  <li><a href="#qué-aprendimos-en-esta-práctica" id="toc-qué-aprendimos-en-esta-práctica" class="nav-link" data-scroll-target="#qué-aprendimos-en-esta-práctica"><span class="header-section-number">9</span> ¿Qué aprendimos en esta práctica?</a></li>
   </ul>
 </nav>
     </div>
@@ -419,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../parte3/index3.html">Parte 3</a></li><li class="breadcrumb-item"><a href="../parte3/practica-estudiantes3.html">Práctica para estudiantes 3</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Practica estudiantes</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Practica estudiantes 3</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -436,51 +447,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cargamos los datos</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#recuerden hacerlo desde su carpeta</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>agro<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"../datos_transformados/agro.csv"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#agro &lt;- read_csv("datos transformados/agro.csv")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="paquete-ggplot" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="paquete-ggplot"><span class="header-section-number">1</span> Paquete ggplot</h2>
-<p>Usaremos el paquete ggplot para graficar el cambio de la emisión total (<code>total_emission</code>) en función de los años (<code>year</code>)</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro,                     <span class="co"># bloque 1     </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(year, total_emission) <span class="co">#bloque 2</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>       ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><em>esteticas<code>aes( )</code></em>: una estetica es una propiedad visual de los objetos.<br>
-La estetica incluye características como: el tamaño, la forma el color, de los puntos en estas capas serán fijas en todas las capas del gráfico salvo que se modifiquen el las esteticas de los otros bloques</p>
-<p>Sus argumentos, por lo tanto son son x= eje x, y =eje y, colour= color, size=tamaño, alpha0controla la tranparencia,shape= la forma, fill=color del relleno de las formas solidas de la barras.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>agro<span class="sc">$</span>area<span class="ot">&lt;-</span><span class="fu">as.factor</span>(agro<span class="sc">$</span>area)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro,                     <span class="co"># bloque 1     </span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(year, total_emission,<span class="at">colour=</span>area ) <span class="co">#bloque 2</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       )<span class="sc">+</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co">#bloque 3</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                           </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Sacar luego</strong> ggpplot(datos, #bloque de datos aes( x= variable_x, #indicamos el eje x y= variable_y #indicamos el eje x<br>
-)</p>
+<section id="propósito" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="propósito"><span class="header-section-number">1</span> Propósito</h2>
+<p>En esta práctica vas a realizar <strong>de manera autónoma</strong> un análisis exploratorio de datos (EDA), utilizando la base <code>agro.csv</code> y los conocimientos de la <strong>Teoría 3</strong> y la <strong>Práctica guiada 3</strong>.</p>
+<p>Trabajaremos especialmente con las variables <code>year</code> (año), <code>total_emission</code> (emisiones totales) y <code>area</code> (área o país). El objetivo es conocer la estructura de la base, calcular medidas descriptivas, elaborar tablas y construir gráficos de manera interactiva con <code>esquisse</code> (basado en <code>ggplot2</code>) para explorar cómo cambian las emisiones a lo largo del tiempo y entre áreas.</p>
+<p>A diferencia de la práctica guiada, <strong>deberás seleccionar las funciones, escribir el código e interpretar los resultados</strong>. Las consignas incluyen orientaciones, pero no el procedimiento completo resuelto.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Antes de comenzar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Revisá los ejemplos de la Teoría 3 y de la Práctica guiada 3. Podés consultarlos cada vez que necesites recordar la sintaxis de una función o el procedimiento para guardar un gráfico.</p>
+</div>
+</div>
 </section>
-<section id="tercer-capa" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="tercer-capa"><span class="header-section-number">2</span> Tercer capa</h2>
-<p>geom() indica que hacer con los datos geom_* , reemplazando * por diferentes estilos de gráficos a modo de ejemplo</p>
-<p>geom_histogram() histograma x es la varible continua geom_point()-&gt; grafico de dispersión geom_bar()-&gt; para gráfcos de barras donde x es dsiteta geom_boxplot-&gt; para bos plot</p>
+<section id="actividad-1.-organización-del-trabajo-e-importación-de-datos" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="actividad-1.-organización-del-trabajo-e-importación-de-datos"><span class="header-section-number">2</span> Actividad 1. Organización del trabajo e importación de datos</h2>
+<ol type="1">
+<li>Abrí <strong>RStudio</strong> y el proyecto que utilizaste en la práctica anterior con <code>agro.csv</code>.</li>
+<li>Verificá que en el proyecto existan las carpetas <code>datos_transformados</code>, <code>scripts</code>, <code>figuras</code> y <code>resultados</code>. Si falta alguna, creala.</li>
+<li>Comprobá que el archivo <code>agro.csv</code> se encuentre en <code>datos_transformados</code>.</li>
+<li>Creá un nuevo documento <strong>Quarto</strong> con el título <em>Práctica para estudiantes 3. Análisis exploratorio de datos</em> y guardalo en <code>scripts</code> con el nombre <code>practica_estudiantes3.qmd</code>.</li>
+<li>Limpiá el entorno de trabajo desde la consola utilizando <code>rm(list = ls())</code>.</li>
+<li>Cargá el paquete <code>tidyverse</code> e importá la base en un objeto llamado <code>agro</code>.</li>
+</ol>
+<p>La ruta relativa del archivo, desde el documento guardado en <code>scripts</code>, es:</p>
+<p><code>../datos_transformados/agro.csv</code></p>
+<p><strong>Pregunta 1.1.</strong> ¿Qué función utilizaste para importar el archivo CSV? ¿Cómo comprobaste que la importación se realizó correctamente?</p>
+<p><strong>Pregunta 1.2.</strong> ¿Cuántas filas y columnas tiene <code>agro</code>? ¿Qué representa cada fila?</p>
+<p><strong>Pregunta 1.3.</strong> Identificá el tipo de variable de <code>year</code>, <code>total_emission</code> y <code>area</code>. ¿Hay valores faltantes en alguna de ellas? Mostrá cómo lo verificaste.</p>
 </section>
-<section id="facetas-facet" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="facetas-facet"><span class="header-section-number">3</span> Facetas (facet())</h2>
-<p>Permite realizar sub gráficos que muestran cada uno de los datos, las facetas separan se separan según variables categóricas.</p>
-<p>tres tipos de facetado</p>
-<p>facet_null(): facet_wrap(): frect_grid():</p>
+<section id="actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado"><span class="header-section-number">3</span> Actividad 2. Reconocimiento de las áreas y del período estudiado</h2>
+<ol type="1">
+<li>Identificá los valores diferentes de <code>area</code> y obtené la cantidad de registros por área.</li>
+<li>Determiná el primer y el último año registrado en la base.</li>
+<li>Calculá cuántos registros hay por año.</li>
+<li>Verificá si <code>year</code> se importó como variable numérica y si <code>total_emission</code> permite realizar cálculos.</li>
+</ol>
+<p><strong>Pregunta 2.1.</strong> ¿Todas las áreas tienen la misma cantidad de registros? ¿Cómo lo comprobaste?</p>
+<p><strong>Pregunta 2.2.</strong> ¿Todos los años tienen la misma cantidad de registros? ¿Qué precauciones tomarías si no fuera así?</p>
+<p><strong>Pregunta 2.3.</strong> ¿Por qué es importante revisar estos aspectos antes de comparar emisiones entre países o a lo largo del tiempo?</p>
 </section>
-<section id="temas-themes" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="temas-themes"><span class="header-section-number">4</span> Temas (themes)</h2>
-<p>Permiten modificar los aspectos esteticos del gráfico, no modifican ni tienen relación con los gráficos son ula colección de elementos que mejoran la estetica de los gráficos Sirven para:<br>
-agreagr ejes colocar leyendas colores de fondo tamaño de márgenes</p>
-<p>gg plot usa por defecto theme_grey()</p>
-<p>gg plot tiene temas disponibles temas predeterminados.</p>
-<p>theme_grey()<br>
-theme_gray()<br>
-theme_bw() theme_linedraw() theme_light()<br>
-theme_dark() theme_minimal theme_classic() theme_test()</p>
+<section id="actividad-3.-visualización-de-las-emisiones-con-esquisse" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="actividad-3.-visualización-de-las-emisiones-con-esquisse"><span class="header-section-number">4</span> Actividad 3. Visualización de las emisiones con <code>esquisse</code></h2>
+<p>En esta actividad vas a <strong>construir gráficos de forma autónoma utilizando <code>esquisse</code></strong>, como aprendiste en la Práctica guiada 3. Luego recuperarás el código que genera la herramienta y lo incorporarás a tu documento Quarto.</p>
+<section id="abrir-esquisse-y-explorar-la-base" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="abrir-esquisse-y-explorar-la-base"><span class="header-section-number">4.1</span> 3.1. Abrir <code>esquisse</code> y explorar la base</h3>
+<ol type="1">
+<li>Comprobá que el objeto <code>agro</code> esté disponible en el entorno de RStudio.</li>
+<li>Si todavía no instalaste <code>esquisse</code>, instalalo desde la consola con <code>install.packages("esquisse")</code>.</li>
+<li>Abrí <strong>Addins → esquisse → ggplot2 builder</strong> y seleccioná la base <code>agro</code>.</li>
+<li>Colocá <code>year</code> en el eje horizontal (X) y <code>total_emission</code> en el vertical (Y).</li>
+<li>Elegí un <strong>gráfico de puntos</strong> y observá el resultado.</li>
+</ol>
+<p><strong>Pregunta 3.1.</strong> ¿Qué representa cada punto del gráfico? ¿Qué dificultades aparecen al representar todas las áreas juntas?</p>
+<p><strong>Pregunta 3.2.</strong> ¿Qué información sobre las emisiones y los años podés identificar en este gráfico?</p>
+</section>
+<section id="comparar-dos-áreas" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="comparar-dos-áreas"><span class="header-section-number">4.2</span> 3.2. Comparar dos áreas</h3>
+<ol type="1">
+<li>Elegí <strong>dos áreas</strong> de la base y filtrá sus registros desde las opciones de <code>esquisse</code> (o prepará previamente un subconjunto con <code>filter()</code>).</li>
+<li>Incorporá <code>area</code> en la opción de <strong>color</strong> para distinguirlas.</li>
+<li>Probá un gráfico de puntos y uno de líneas. Antes de unir observaciones con líneas, comprobá si hay más de un registro por área y año.</li>
+<li>Agregá un título y nombres claros para los ejes.</li>
+</ol>
+<p><strong>Pregunta 3.3.</strong> ¿Qué áreas elegiste? ¿Por qué?</p>
+<p><strong>Pregunta 3.4.</strong> ¿Las emisiones parecen aumentar, disminuir o mantenerse relativamente estables a lo largo del tiempo en cada área?</p>
+<p><strong>Pregunta 3.5.</strong> ¿Qué semejanzas y diferencias encontrás entre las dos áreas? ¿Qué representación gráfica te resulta más adecuada y por qué?</p>
+</section>
+<section id="personalización-e-interpretación" class="level3" data-number="4.3">
+<h3 data-number="4.3" class="anchored" data-anchor-id="personalización-e-interpretación"><span class="header-section-number">4.3</span> 3.3. Personalización e interpretación</h3>
+<p>Explorá las opciones de <code>esquisse</code> para cambiar los colores, el tema del gráfico y, si están disponibles en la interfaz, separar las áreas en paneles (<strong>facetas</strong>).</p>
+<p><strong>Pregunta 3.6.</strong> ¿Qué cambios realizaste para facilitar la lectura del gráfico? ¿Cuál de las versiones comunica mejor tus resultados?</p>
+</section>
+<section id="recuperar-el-código-y-reproducir-el-gráfico" class="level3" data-number="4.4">
+<h3 data-number="4.4" class="anchored" data-anchor-id="recuperar-el-código-y-reproducir-el-gráfico"><span class="header-section-number">4.4</span> 3.4. Recuperar el código y reproducir el gráfico</h3>
+<ol type="1">
+<li>Abrí la sección <strong>Code</strong> de <code>esquisse</code>.</li>
+<li>Copiá el código generado y pegalo en un bloque de R de tu documento <code>.qmd</code>.</li>
+<li>Verificá que el código utilice el objeto <code>agro</code> o el subconjunto que creaste, sin depender de filtros que solamente hayan quedado dentro de la interfaz interactiva.</li>
+<li>Ejecutá el bloque y comprobá que el gráfico se reproduce correctamente <strong>sin tener que abrir nuevamente <code>esquisse</code></strong>.</li>
+<li>Guardá el gráfico en un objeto de R para poder exportarlo más adelante con <code>ggsave()</code>.</li>
+</ol>
+<p><strong>Pregunta 3.7.</strong> Observá el código recuperado: ¿qué instrucciones identificás para los ejes, el tipo de gráfico, los colores y los títulos?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Recordá
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>esquisse</code> permite construir gráficos de forma visual, pero genera código de <code>ggplot2</code>. <strong>No es necesario escribir ese código desde cero</strong>: sí es importante revisarlo, comprenderlo y conservarlo en Quarto para que el análisis sea reproducible.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="actividad-4.-medidas-resumen-y-comparación-entre-áreas" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="actividad-4.-medidas-resumen-y-comparación-entre-áreas"><span class="header-section-number">5</span> Actividad 4. Medidas resumen y comparación entre áreas</h2>
+<p>Con las mismas dos áreas seleccionadas en la Actividad 3:</p>
+<ol type="1">
+<li>Calculá para <code>total_emission</code> la cantidad de observaciones, la media, la mediana, el desvío estándar, el mínimo y el máximo <strong>por área</strong>.</li>
+<li>Utilizá <code>group_by()</code> y <code>summarise()</code> para generar la tabla de resultados.</li>
+<li>Considerá si hay valores faltantes y cómo tratarlos en las funciones de resumen.</li>
+<li>Presentá la tabla en un formato adecuado para un informe utilizando <code>flextable</code>.</li>
+<li>Abrí <code>esquisse</code> con el subconjunto de las dos áreas y construí un <strong>diagrama de caja (boxplot)</strong>: ubicá <code>area</code> en X y <code>total_emission</code> en Y. Recuperá el código generado e incorporalo al documento Quarto.</li>
+</ol>
+<p><strong>Pregunta 4.1.</strong> ¿Qué área presenta la mayor emisión media? ¿Ocurre lo mismo con la mediana?</p>
+<p><strong>Pregunta 4.2.</strong> ¿En qué área hay mayor variabilidad según el desvío estándar? ¿Qué aporta el mínimo y el máximo a esta comparación?</p>
+<p><strong>Pregunta 4.3.</strong> ¿Qué diferencias observás entre las cajas, las medianas y los bigotes del gráfico?</p>
+<p><strong>Pregunta 4.4.</strong> ¿Los resultados del diagrama de caja son coherentes con las medidas resumen? Fundamentá.</p>
+<p><strong>Pregunta 4.5.</strong> Si observás valores atípicos, ¿podés afirmar que son errores? ¿Qué necesitarías comprobar antes?</p>
+</section>
+<section id="actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados"><span class="header-section-number">6</span> Actividad 5. Guardar los gráficos y comunicar los resultados</h2>
+<ol type="1">
+<li>Elegí <strong>dos gráficos</strong> de los elaborados en las actividades anteriores.</li>
+<li>Utilizá el código recuperado de <code>esquisse</code> para guardar los gráficos como archivos PNG en <code>figuras</code> mediante <code>ggsave()</code>, con fondo blanco y resolución de 300 dpi.</li>
+<li>Incorporá al documento Quarto la tabla de medidas resumen, los gráficos elegidos y las respuestas a las preguntas.</li>
+<li>Escribí un párrafo breve que sintetice qué aprendiste sobre las emisiones totales en las dos áreas comparadas. Diferenciá observaciones descriptivas de conclusiones que requerirían un análisis estadístico adicional.</li>
+<li>Renderizá el documento y revisá que los textos, las tablas y las figuras se vean correctamente.</li>
+</ol>
+<p><strong>Pregunta 5.1.</strong> ¿Qué ventajas tiene trabajar con rutas relativas y conservar el código, los resultados y las interpretaciones en un mismo documento Quarto?</p>
+</section>
+<section id="actividad-6.-uso-crítico-de-inteligencia-artificial-opcional" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="actividad-6.-uso-crítico-de-inteligencia-artificial-opcional"><span class="header-section-number">7</span> Actividad 6. Uso crítico de inteligencia artificial (opcional)</h2>
+<p>Si utilizás una herramienta de IA para consultar sobre una función, corregir un error o proponer un gráfico, registrá en la carpeta <code>prompts</code> (si la creaste) la consulta realizada, la respuesta obtenida y cómo verificaste su utilidad.</p>
+<p><strong>Pregunta 6.1.</strong> ¿Qué parte de la tarea resolviste con ayuda de IA? ¿Qué decisiones o correcciones realizaste personalmente?</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Recordá
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La IA puede ayudarte a comprender las funciones, pero <strong>no reemplaza tu trabajo de selección, revisión e interpretación</strong>. Comprobá que los nombres de las variables existan en <code>agro</code> y que el código produzca el resultado que buscás.</p>
+</div>
+</div>
+</section>
+<section id="resultado-de-la-práctica" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="resultado-de-la-práctica"><span class="header-section-number">8</span> Resultado de la práctica</h2>
+<p>Al finalizar, deberás contar con el archivo <code>practica_estudiantes3.qmd</code> y su informe renderizado, una tabla de medidas resumen por área y al menos dos gráficos PNG guardados en <code>figuras</code>. El informe debe incluir tus respuestas e interpretaciones, no solamente el código.</p>
+</section>
+<section id="qué-aprendimos-en-esta-práctica" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="qué-aprendimos-en-esta-práctica"><span class="header-section-number">9</span> ¿Qué aprendimos en esta práctica?</h2>
+<p>En esta práctica aplicamos de manera autónoma las herramientas básicas del análisis exploratorio de datos. Reconocimos la estructura de una base, exploramos la evolución temporal de las emisiones totales con <code>esquisse</code>, recuperamos el código <code>ggplot2</code> y comparamos áreas mediante medidas descriptivas y gráficos, y comunicamos los resultados con Quarto. Aprendimos también que <strong>un gráfico o una tabla deben responder a una pregunta y acompañarse de una interpretación fundamentada</strong>.</p>
 
 
 <!-- -->
@@ -938,80 +1060,157 @@ theme_dark() theme_minimal theme_classic() theme_test()</p>
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># cargamos los datos</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#recuerden hacerlo desde su carpeta</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>agro<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"../datos_transformados/agro.csv"</span>)</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#agro &lt;- read_csv("datos transformados/agro.csv")</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paquete ggplot</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>Usaremos el paquete ggplot para graficar el cambio de la emisión total (<span class="in">`total_emission`</span>) en función de los años (<span class="in">`year`</span>)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro,                     <span class="co"># bloque 1     </span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(year, total_emission) <span class="co">#bloque 2</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>       ) </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>*esteticas`aes( )`*: una estetica es una propiedad visual de los objetos.\</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>La estetica incluye características como: el tamaño, la forma el color, de los puntos en estas capas serán fijas en todas las capas del gráfico salvo que se modifiquen el las esteticas de los otros bloques</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>Sus argumentos, por lo tanto son son x= eje x, y =eje y, colour= color, size=tamaño, alpha0controla la tranparencia,shape= la forma, fill=color del relleno de las formas solidas de la barras.</span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>agro<span class="sc">$</span>area<span class="ot">&lt;-</span><span class="fu">as.factor</span>(agro<span class="sc">$</span>area)</span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(agro,                     <span class="co"># bloque 1     </span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(year, total_emission,<span class="at">colour=</span>area ) <span class="co">#bloque 2</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>       )<span class="sc">+</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="co">#bloque 3</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>                           </span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>**Sacar luego** ggpplot(datos, #bloque de datos aes( x= variable_x, #indicamos el eje x y= variable_y #indicamos el eje x\</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Tercer capa</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>geom() indica que hacer con los datos geom<span class="sc">\_\*</span> , reemplazando <span class="sc">\*</span> por diferentes estilos de gráficos a modo de ejemplo</span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>geom_histogram() histograma x es la varible continua geom_point()-<span class="sc">\&gt;</span> grafico de dispersión geom_bar()-<span class="sc">\&gt;</span> para gráfcos de barras donde x es dsiteta geom_boxplot-<span class="sc">\&gt;</span> para bos plot</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Facetas (facet())</span></span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>Permite realizar sub gráficos que muestran cada uno de los datos, las facetas separan se separan según variables categóricas.</span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>tres tipos de facetado</span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>facet_null(): facet_wrap(): frect_grid():</span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## Temas (themes)</span></span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>Permiten modificar los aspectos esteticos del gráfico, no modifican ni tienen relación con los gráficos son ula colección de elementos que mejoran la estetica de los gráficos Sirven para:\</span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>agreagr ejes colocar leyendas colores de fondo tamaño de márgenes</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>gg plot usa por defecto theme_grey()</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>gg plot tiene temas disponibles temas predeterminados.</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>theme_grey()\</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>theme_gray()\</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a>theme_bw() theme_linedraw() theme_light()\</span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>theme_dark() theme_minimal theme_classic() theme_test()</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes 3"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Propósito</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>En esta práctica vas a realizar **de manera autónoma** un análisis exploratorio de datos (EDA), utilizando la base `agro.csv` y los conocimientos de la **Teoría 3** y la **Práctica guiada 3**.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Trabajaremos especialmente con las variables <span class="in">`year`</span> (año), <span class="in">`total_emission`</span> (emisiones totales) y <span class="in">`area`</span> (área o país). El objetivo es conocer la estructura de la base, calcular medidas descriptivas, elaborar tablas y construir gráficos de manera interactiva con <span class="in">`esquisse`</span> (basado en <span class="in">`ggplot2`</span>) para explorar cómo cambian las emisiones a lo largo del tiempo y entre áreas.</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>A diferencia de la práctica guiada, **deberás seleccionar las funciones, escribir el código e interpretar los resultados**. Las consignas incluyen orientaciones, pero no el procedimiento completo resuelto.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Antes de comenzar</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>Revisá los ejemplos de la Teoría 3 y de la Práctica guiada 3. Podés consultarlos cada vez que necesites recordar la sintaxis de una función o el procedimiento para guardar un gráfico.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 1. Organización del trabajo e importación de datos</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrí **RStudio** y el proyecto que utilizaste en la práctica anterior con <span class="in">`agro.csv`</span>.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Verificá que en el proyecto existan las carpetas <span class="in">`datos_transformados`</span>, <span class="in">`scripts`</span>, <span class="in">`figuras`</span> y <span class="in">`resultados`</span>. Si falta alguna, creala.</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Comprobá que el archivo <span class="in">`agro.csv`</span> se encuentre en <span class="in">`datos_transformados`</span>.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Creá un nuevo documento **Quarto** con el título *Práctica para estudiantes 3. Análisis exploratorio de datos* y guardalo en <span class="in">`scripts`</span> con el nombre <span class="in">`practica_estudiantes3.qmd`</span>.</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Limpiá el entorno de trabajo desde la consola utilizando <span class="in">`rm(list = ls())`</span>.</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">6. </span>Cargá el paquete <span class="in">`tidyverse`</span> e importá la base en un objeto llamado <span class="in">`agro`</span>.</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>La ruta relativa del archivo, desde el documento guardado en <span class="in">`scripts`</span>, es:</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="in">`../datos_transformados/agro.csv`</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.1.** ¿Qué función utilizaste para importar el archivo CSV? ¿Cómo comprobaste que la importación se realizó correctamente?</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.2.** ¿Cuántas filas y columnas tiene <span class="in">`agro`</span>? ¿Qué representa cada fila?</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.3.** Identificá el tipo de variable de <span class="in">`year`</span>, <span class="in">`total_emission`</span> y <span class="in">`area`</span>. ¿Hay valores faltantes en alguna de ellas? Mostrá cómo lo verificaste.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 2. Reconocimiento de las áreas y del período estudiado</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Identificá los valores diferentes de <span class="in">`area`</span> y obtené la cantidad de registros por área.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Determiná el primer y el último año registrado en la base.</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Calculá cuántos registros hay por año.</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Verificá si <span class="in">`year`</span> se importó como variable numérica y si <span class="in">`total_emission`</span> permite realizar cálculos.</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.1.** ¿Todas las áreas tienen la misma cantidad de registros? ¿Cómo lo comprobaste?</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.2.** ¿Todos los años tienen la misma cantidad de registros? ¿Qué precauciones tomarías si no fuera así?</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.3.** ¿Por qué es importante revisar estos aspectos antes de comparar emisiones entre países o a lo largo del tiempo?</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 3. Visualización de las emisiones con `esquisse`</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>En esta actividad vas a **construir gráficos de forma autónoma utilizando `esquisse`**, como aprendiste en la Práctica guiada 3. Luego recuperarás el código que genera la herramienta y lo incorporarás a tu documento Quarto.</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.1. Abrir `esquisse` y explorar la base</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Comprobá que el objeto <span class="in">`agro`</span> esté disponible en el entorno de RStudio.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Si todavía no instalaste <span class="in">`esquisse`</span>, instalalo desde la consola con <span class="in">`install.packages("esquisse")`</span>.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Abrí **Addins → esquisse → ggplot2 builder** y seleccioná la base <span class="in">`agro`</span>.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Colocá <span class="in">`year`</span> en el eje horizontal (X) y <span class="in">`total_emission`</span> en el vertical (Y).</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Elegí un **gráfico de puntos** y observá el resultado.</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.1.** ¿Qué representa cada punto del gráfico? ¿Qué dificultades aparecen al representar todas las áreas juntas?</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.2.** ¿Qué información sobre las emisiones y los años podés identificar en este gráfico?</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.2. Comparar dos áreas</span></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Elegí **dos áreas** de la base y filtrá sus registros desde las opciones de <span class="in">`esquisse`</span> (o prepará previamente un subconjunto con <span class="in">`filter()`</span>).</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Incorporá <span class="in">`area`</span> en la opción de **color** para distinguirlas.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Probá un gráfico de puntos y uno de líneas. Antes de unir observaciones con líneas, comprobá si hay más de un registro por área y año.</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Agregá un título y nombres claros para los ejes.</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.3.** ¿Qué áreas elegiste? ¿Por qué?</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.4.** ¿Las emisiones parecen aumentar, disminuir o mantenerse relativamente estables a lo largo del tiempo en cada área?</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.5.** ¿Qué semejanzas y diferencias encontrás entre las dos áreas? ¿Qué representación gráfica te resulta más adecuada y por qué?</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.3. Personalización e interpretación</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>Explorá las opciones de <span class="in">`esquisse`</span> para cambiar los colores, el tema del gráfico y, si están disponibles en la interfaz, separar las áreas en paneles (**facetas**).</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.6.** ¿Qué cambios realizaste para facilitar la lectura del gráfico? ¿Cuál de las versiones comunica mejor tus resultados?</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3.4. Recuperar el código y reproducir el gráfico</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Abrí la sección **Code** de <span class="in">`esquisse`</span>.</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Copiá el código generado y pegalo en un bloque de R de tu documento <span class="in">`.qmd`</span>.</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Verificá que el código utilice el objeto <span class="in">`agro`</span> o el subconjunto que creaste, sin depender de filtros que solamente hayan quedado dentro de la interfaz interactiva.</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Ejecutá el bloque y comprobá que el gráfico se reproduce correctamente **sin tener que abrir nuevamente `esquisse`**.</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Guardá el gráfico en un objeto de R para poder exportarlo más adelante con <span class="in">`ggsave()`</span>.</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.7.** Observá el código recuperado: ¿qué instrucciones identificás para los ejes, el tipo de gráfico, los colores y los títulos?</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>::: {.callout-tip}</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recordá</span></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="in">`esquisse`</span> permite construir gráficos de forma visual, pero genera código de <span class="in">`ggplot2`</span>. **No es necesario escribir ese código desde cero**: sí es importante revisarlo, comprenderlo y conservarlo en Quarto para que el análisis sea reproducible.</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 4. Medidas resumen y comparación entre áreas</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>Con las mismas dos áreas seleccionadas en la Actividad 3:</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Calculá para <span class="in">`total_emission`</span> la cantidad de observaciones, la media, la mediana, el desvío estándar, el mínimo y el máximo **por área**.</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Utilizá <span class="in">`group_by()`</span> y <span class="in">`summarise()`</span> para generar la tabla de resultados.</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Considerá si hay valores faltantes y cómo tratarlos en las funciones de resumen.</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Presentá la tabla en un formato adecuado para un informe utilizando <span class="in">`flextable`</span>.</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Abrí <span class="in">`esquisse`</span> con el subconjunto de las dos áreas y construí un **diagrama de caja (boxplot)**: ubicá <span class="in">`area`</span> en X y <span class="in">`total_emission`</span> en Y. Recuperá el código generado e incorporalo al documento Quarto.</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.1.** ¿Qué área presenta la mayor emisión media? ¿Ocurre lo mismo con la mediana?</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.2.** ¿En qué área hay mayor variabilidad según el desvío estándar? ¿Qué aporta el mínimo y el máximo a esta comparación?</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.3.** ¿Qué diferencias observás entre las cajas, las medianas y los bigotes del gráfico?</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.4.** ¿Los resultados del diagrama de caja son coherentes con las medidas resumen? Fundamentá.</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.5.** Si observás valores atípicos, ¿podés afirmar que son errores? ¿Qué necesitarías comprobar antes?</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 5. Guardar los gráficos y comunicar los resultados</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Elegí **dos gráficos** de los elaborados en las actividades anteriores.</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Utilizá el código recuperado de <span class="in">`esquisse`</span> para guardar los gráficos como archivos PNG en <span class="in">`figuras`</span> mediante <span class="in">`ggsave()`</span>, con fondo blanco y resolución de 300 dpi.</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Incorporá al documento Quarto la tabla de medidas resumen, los gráficos elegidos y las respuestas a las preguntas.</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Escribí un párrafo breve que sintetice qué aprendiste sobre las emisiones totales en las dos áreas comparadas. Diferenciá observaciones descriptivas de conclusiones que requerirían un análisis estadístico adicional.</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Renderizá el documento y revisá que los textos, las tablas y las figuras se vean correctamente.</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.1.** ¿Qué ventajas tiene trabajar con rutas relativas y conservar el código, los resultados y las interpretaciones en un mismo documento Quarto?</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Actividad 6. Uso crítico de inteligencia artificial (opcional)</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>Si utilizás una herramienta de IA para consultar sobre una función, corregir un error o proponer un gráfico, registrá en la carpeta <span class="in">`prompts`</span> (si la creaste) la consulta realizada, la respuesta obtenida y cómo verificaste su utilidad.</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.1.** ¿Qué parte de la tarea resolviste con ayuda de IA? ¿Qué decisiones o correcciones realizaste personalmente?</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>::: {.callout-important}</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## Recordá</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>La IA puede ayudarte a comprender las funciones, pero **no reemplaza tu trabajo de selección, revisión e interpretación**. Comprobá que los nombres de las variables existan en <span class="in">`agro`</span> y que el código produzca el resultado que buscás.</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="fu">## Resultado de la práctica</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>Al finalizar, deberás contar con el archivo <span class="in">`practica_estudiantes3.qmd`</span> y su informe renderizado, una tabla de medidas resumen por área y al menos dos gráficos PNG guardados en <span class="in">`figuras`</span>. El informe debe incluir tus respuestas e interpretaciones, no solamente el código.</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Qué aprendimos en esta práctica?</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>En esta práctica aplicamos de manera autónoma las herramientas básicas del análisis exploratorio de datos. Reconocimos la estructura de una base, exploramos la evolución temporal de las emisiones totales con <span class="in">`esquisse`</span>, recuperamos el código <span class="in">`ggplot2`</span> y comparamos áreas mediante medidas descriptivas y gráficos, y comunicamos los resultados con Quarto. Aprendimos también que **un gráfico o una tabla deben responder a una pregunta y acompañarse de una interpretación fundamentada**.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 

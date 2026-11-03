@@ -1,74 +1,151 @@
 ---
-title: "Practica estudiantes"
+title: "Practica estudiantes 3"
 ---
 
-```r
-rm(list=ls())
-```
 
-```r
-library(tidyverse)
+## Propósito
 
-```
+En esta práctica vas a realizar **de manera autónoma** un análisis exploratorio de datos (EDA), utilizando la base `agro.csv` y los conocimientos de la **Teoría 3** y la **Práctica guiada 3**.
 
-```r
-# cargamos los datos
-#recuerden hacerlo desde su carpeta
-agro<-read.csv("../datos_transformados/agro.csv")
-#agro <- read_csv("datos transformados/agro.csv")
-```
+Trabajaremos especialmente con las variables `year` (año), `total_emission` (emisiones totales) y `area` (área o país). El objetivo es conocer la estructura de la base, calcular medidas descriptivas, elaborar tablas y construir gráficos de manera interactiva con `esquisse` (basado en `ggplot2`) para explorar cómo cambian las emisiones a lo largo del tiempo y entre áreas.
 
-## Paquete ggplot
+A diferencia de la práctica guiada, **deberás seleccionar las funciones, escribir el código e interpretar los resultados**. Las consignas incluyen orientaciones, pero no el procedimiento completo resuelto.
 
-Usaremos el paquete ggplot para graficar el cambio de la emisión total (`total_emission`) en función de los años (`year`)
+::: {.callout-note}
+## Antes de comenzar
 
-```r
-ggplot(agro,                     # bloque 1     
-       aes(year, total_emission) #bloque 2
-       ) 
-```
+Revisá los ejemplos de la Teoría 3 y de la Práctica guiada 3. Podés consultarlos cada vez que necesites recordar la sintaxis de una función o el procedimiento para guardar un gráfico.
+:::
 
-*esteticas`aes( )`*: una estetica es una propiedad visual de los objetos.\
-La estetica incluye características como: el tamaño, la forma el color, de los puntos en estas capas serán fijas en todas las capas del gráfico salvo que se modifiquen el las esteticas de los otros bloques
+## Actividad 1. Organización del trabajo e importación de datos
 
-Sus argumentos, por lo tanto son son x= eje x, y =eje y, colour= color, size=tamaño, alpha0controla la tranparencia,shape= la forma, fill=color del relleno de las formas solidas de la barras.
+1. Abrí **RStudio** y el proyecto que utilizaste en la práctica anterior con `agro.csv`.
+2. Verificá que en el proyecto existan las carpetas `datos_transformados`, `scripts`, `figuras` y `resultados`. Si falta alguna, creala.
+3. Comprobá que el archivo `agro.csv` se encuentre en `datos_transformados`.
+4. Creá un nuevo documento **Quarto** con el título *Práctica para estudiantes 3. Análisis exploratorio de datos* y guardalo en `scripts` con el nombre `practica_estudiantes3.qmd`.
+5. Limpiá el entorno de trabajo desde la consola utilizando `rm(list = ls())`.
+6. Cargá el paquete `tidyverse` e importá la base en un objeto llamado `agro`.
 
-```r
-agro$area<-as.factor(agro$area)
-ggplot(agro,                     # bloque 1     
-       aes(year, total_emission,colour=area ) #bloque 2
-       )+
-  geom_point() #bloque 3
-                           
-```
+La ruta relativa del archivo, desde el documento guardado en `scripts`, es:
 
-**Sacar luego** ggpplot(datos, #bloque de datos aes( x= variable_x, #indicamos el eje x y= variable_y #indicamos el eje x\
-)
+`../datos_transformados/agro.csv`
 
-## Tercer capa
+**Pregunta 1.1.** ¿Qué función utilizaste para importar el archivo CSV? ¿Cómo comprobaste que la importación se realizó correctamente?
 
-geom() indica que hacer con los datos geom\_\* , reemplazando \* por diferentes estilos de gráficos a modo de ejemplo
+**Pregunta 1.2.** ¿Cuántas filas y columnas tiene `agro`? ¿Qué representa cada fila?
 
-geom_histogram() histograma x es la varible continua geom_point()-\> grafico de dispersión geom_bar()-\> para gráfcos de barras donde x es dsiteta geom_boxplot-\> para bos plot
+**Pregunta 1.3.** Identificá el tipo de variable de `year`, `total_emission` y `area`. ¿Hay valores faltantes en alguna de ellas? Mostrá cómo lo verificaste.
 
-## Facetas (facet())
+## Actividad 2. Reconocimiento de las áreas y del período estudiado
 
-Permite realizar sub gráficos que muestran cada uno de los datos, las facetas separan se separan según variables categóricas.
+1. Identificá los valores diferentes de `area` y obtené la cantidad de registros por área.
+2. Determiná el primer y el último año registrado en la base.
+3. Calculá cuántos registros hay por año.
+4. Verificá si `year` se importó como variable numérica y si `total_emission` permite realizar cálculos.
 
-tres tipos de facetado
+**Pregunta 2.1.** ¿Todas las áreas tienen la misma cantidad de registros? ¿Cómo lo comprobaste?
 
-facet_null(): facet_wrap(): frect_grid():
+**Pregunta 2.2.** ¿Todos los años tienen la misma cantidad de registros? ¿Qué precauciones tomarías si no fuera así?
 
-## Temas (themes)
+**Pregunta 2.3.** ¿Por qué es importante revisar estos aspectos antes de comparar emisiones entre países o a lo largo del tiempo?
 
-Permiten modificar los aspectos esteticos del gráfico, no modifican ni tienen relación con los gráficos son ula colección de elementos que mejoran la estetica de los gráficos Sirven para:\
-agreagr ejes colocar leyendas colores de fondo tamaño de márgenes
+## Actividad 3. Visualización de las emisiones con `esquisse`
 
-gg plot usa por defecto theme_grey()
+En esta actividad vas a **construir gráficos de forma autónoma utilizando `esquisse`**, como aprendiste en la Práctica guiada 3. Luego recuperarás el código que genera la herramienta y lo incorporarás a tu documento Quarto.
 
-gg plot tiene temas disponibles temas predeterminados.
+### 3.1. Abrir `esquisse` y explorar la base
 
-theme_grey()\
-theme_gray()\
-theme_bw() theme_linedraw() theme_light()\
-theme_dark() theme_minimal theme_classic() theme_test()
+1. Comprobá que el objeto `agro` esté disponible en el entorno de RStudio.
+2. Si todavía no instalaste `esquisse`, instalalo desde la consola con `install.packages("esquisse")`.
+3. Abrí **Addins → esquisse → ggplot2 builder** y seleccioná la base `agro`.
+4. Colocá `year` en el eje horizontal (X) y `total_emission` en el vertical (Y).
+5. Elegí un **gráfico de puntos** y observá el resultado.
+
+**Pregunta 3.1.** ¿Qué representa cada punto del gráfico? ¿Qué dificultades aparecen al representar todas las áreas juntas?
+
+**Pregunta 3.2.** ¿Qué información sobre las emisiones y los años podés identificar en este gráfico?
+
+### 3.2. Comparar dos áreas
+
+1. Elegí **dos áreas** de la base y filtrá sus registros desde las opciones de `esquisse` (o prepará previamente un subconjunto con `filter()`).
+2. Incorporá `area` en la opción de **color** para distinguirlas.
+3. Probá un gráfico de puntos y uno de líneas. Antes de unir observaciones con líneas, comprobá si hay más de un registro por área y año.
+4. Agregá un título y nombres claros para los ejes.
+
+**Pregunta 3.3.** ¿Qué áreas elegiste? ¿Por qué?
+
+**Pregunta 3.4.** ¿Las emisiones parecen aumentar, disminuir o mantenerse relativamente estables a lo largo del tiempo en cada área?
+
+**Pregunta 3.5.** ¿Qué semejanzas y diferencias encontrás entre las dos áreas? ¿Qué representación gráfica te resulta más adecuada y por qué?
+
+### 3.3. Personalización e interpretación
+
+Explorá las opciones de `esquisse` para cambiar los colores, el tema del gráfico y, si están disponibles en la interfaz, separar las áreas en paneles (**facetas**).
+
+**Pregunta 3.6.** ¿Qué cambios realizaste para facilitar la lectura del gráfico? ¿Cuál de las versiones comunica mejor tus resultados?
+
+### 3.4. Recuperar el código y reproducir el gráfico
+
+1. Abrí la sección **Code** de `esquisse`.
+2. Copiá el código generado y pegalo en un bloque de R de tu documento `.qmd`.
+3. Verificá que el código utilice el objeto `agro` o el subconjunto que creaste, sin depender de filtros que solamente hayan quedado dentro de la interfaz interactiva.
+4. Ejecutá el bloque y comprobá que el gráfico se reproduce correctamente **sin tener que abrir nuevamente `esquisse`**.
+5. Guardá el gráfico en un objeto de R para poder exportarlo más adelante con `ggsave()`.
+
+**Pregunta 3.7.** Observá el código recuperado: ¿qué instrucciones identificás para los ejes, el tipo de gráfico, los colores y los títulos?
+
+::: {.callout-tip}
+## Recordá
+
+`esquisse` permite construir gráficos de forma visual, pero genera código de `ggplot2`. **No es necesario escribir ese código desde cero**: sí es importante revisarlo, comprenderlo y conservarlo en Quarto para que el análisis sea reproducible.
+:::
+
+## Actividad 4. Medidas resumen y comparación entre áreas
+
+Con las mismas dos áreas seleccionadas en la Actividad 3:
+
+1. Calculá para `total_emission` la cantidad de observaciones, la media, la mediana, el desvío estándar, el mínimo y el máximo **por área**.
+2. Utilizá `group_by()` y `summarise()` para generar la tabla de resultados.
+3. Considerá si hay valores faltantes y cómo tratarlos en las funciones de resumen.
+4. Presentá la tabla en un formato adecuado para un informe utilizando `flextable`.
+5. Abrí `esquisse` con el subconjunto de las dos áreas y construí un **diagrama de caja (boxplot)**: ubicá `area` en X y `total_emission` en Y. Recuperá el código generado e incorporalo al documento Quarto.
+
+**Pregunta 4.1.** ¿Qué área presenta la mayor emisión media? ¿Ocurre lo mismo con la mediana?
+
+**Pregunta 4.2.** ¿En qué área hay mayor variabilidad según el desvío estándar? ¿Qué aporta el mínimo y el máximo a esta comparación?
+
+**Pregunta 4.3.** ¿Qué diferencias observás entre las cajas, las medianas y los bigotes del gráfico?
+
+**Pregunta 4.4.** ¿Los resultados del diagrama de caja son coherentes con las medidas resumen? Fundamentá.
+
+**Pregunta 4.5.** Si observás valores atípicos, ¿podés afirmar que son errores? ¿Qué necesitarías comprobar antes?
+
+## Actividad 5. Guardar los gráficos y comunicar los resultados
+
+1. Elegí **dos gráficos** de los elaborados en las actividades anteriores.
+2. Utilizá el código recuperado de `esquisse` para guardar los gráficos como archivos PNG en `figuras` mediante `ggsave()`, con fondo blanco y resolución de 300 dpi.
+3. Incorporá al documento Quarto la tabla de medidas resumen, los gráficos elegidos y las respuestas a las preguntas.
+4. Escribí un párrafo breve que sintetice qué aprendiste sobre las emisiones totales en las dos áreas comparadas. Diferenciá observaciones descriptivas de conclusiones que requerirían un análisis estadístico adicional.
+5. Renderizá el documento y revisá que los textos, las tablas y las figuras se vean correctamente.
+
+**Pregunta 5.1.** ¿Qué ventajas tiene trabajar con rutas relativas y conservar el código, los resultados y las interpretaciones en un mismo documento Quarto?
+
+## Actividad 6. Uso crítico de inteligencia artificial (opcional)
+
+Si utilizás una herramienta de IA para consultar sobre una función, corregir un error o proponer un gráfico, registrá en la carpeta `prompts` (si la creaste) la consulta realizada, la respuesta obtenida y cómo verificaste su utilidad.
+
+**Pregunta 6.1.** ¿Qué parte de la tarea resolviste con ayuda de IA? ¿Qué decisiones o correcciones realizaste personalmente?
+
+::: {.callout-important}
+## Recordá
+
+La IA puede ayudarte a comprender las funciones, pero **no reemplaza tu trabajo de selección, revisión e interpretación**. Comprobá que los nombres de las variables existan en `agro` y que el código produzca el resultado que buscás.
+:::
+
+## Resultado de la práctica
+
+Al finalizar, deberás contar con el archivo `practica_estudiantes3.qmd` y su informe renderizado, una tabla de medidas resumen por área y al menos dos gráficos PNG guardados en `figuras`. El informe debe incluir tus respuestas e interpretaciones, no solamente el código.
+
+## ¿Qué aprendimos en esta práctica?
+
+En esta práctica aplicamos de manera autónoma las herramientas básicas del análisis exploratorio de datos. Reconocimos la estructura de una base, exploramos la evolución temporal de las emisiones totales con `esquisse`, recuperamos el código `ggplot2` y comparamos áreas mediante medidas descriptivas y gráficos, y comunicamos los resultados con Quarto. Aprendimos también que **un gráfico o una tabla deben responder a una pregunta y acompañarse de una interpretación fundamentada**.
