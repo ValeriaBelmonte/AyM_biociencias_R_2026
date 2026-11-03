@@ -2,62 +2,198 @@
 title: "Practica estudiantes"
 ---
 
-## Fertilización y beneficio económico en soja
+## Propósito
 
-Ejercicio extraido de Estadistica y Biometría[@balzarini2013]
+En esta práctica retomaremos herramientas utilizadas en las actividades anteriores: organización de proyectos, importación y limpieza de datos, selección y transformación de variables, estadística descriptiva, gráficos con `ggplot2`, ajuste de modelos e interpretación de resultados. **Esta vez los bloques de código contienen consignas, no soluciones.** Recuperá tus apuntes y prácticas previas antes de consultar otras fuentes.
 
-Una empresa agrícola necesita establecer si le conviene, desde el punto de vista económico, fertilizar sus cultivos de soja. Para este propósito se realizó un ensayo en un lote de 20 hectáreas, dividido en parcelas de una hectárea cada una, en el que se evaluaron cuatro estrategias de fertilización:
+**Pregunta de investigación:** ¿se observan diferencias en los valores medios de la variable `average_temperature_c` entre Argentina, Bolivia, Brasil, Chile, Paraguay y Uruguay durante 2009–2020?
 
-- No fertilizar.
-- Usar el fertilizante A.
-- Usar el fertilizante B.
-- Usar el fertilizante C.
-
-Los tratamientos se asignaron a las parcelas en forma aleatoria. Cada parcela fue intervenida culturalmente con la misma tecnología de siembra directa en cuanto al manejo de plagas, malezas, densidades de siembra, variedades, fecha de siembra y control de humedad en el suelo. La única diferencia entre ellas fue el fertilizante utilizado.
-
-Considerá la siguiente información:
-
-- El precio de la tonelada de soja es de \$1200.
-- Los costos de producción, sin incluir el fertilizante, equivalen a 15 qq/ha.
-- El costo de usar el fertilizante A equivale a 5 qq/ha.
-- El costo de usar el fertilizante B equivale a 3,5 qq/ha.
-- El costo de usar el fertilizante C equivale a 2 qq/ha.
-
-Los rendimientos obtenidos, expresados en qq/ha, fueron:
-
-| Sin fertilizar | Fertilizante A | Fertilizante B | Fertilizante C |
-|---------------:|---------------:|---------------:|---------------:|
-|             19 |             33 |             33 |             28 |
-|             20 |             35 |             31 |             24 |
-|             22 |             29 |             35 |             25 |
-|             23 |             31 |             34 |             26 |
-|             21 |             30 |             32 |             27 |
-
-### Carga de los datos
-
-Cargá los datos de la tabla en R y organizalos en un `data.frame` en formato largo: cada fila debe corresponder a una parcela y las columnas deben identificar el tratamiento y el rendimiento.
-
-**Sugerencia:** podés ayudarte con una herramienta de inteligencia artificial para generar el código de carga. Verificá que los valores coincidan con la tabla y que cada tratamiento tenga cinco observaciones.
-
-### Consignas
-
-a)  Trabajá con la variable **beneficio económico (\$/ha)**, calculada como:
-
-$$\text{Beneficio económico}
-=
-\text{Rendimiento}\times\text{Precio de la producción}
--
-\text{Costos de producción}$$
-
-Expresá el rendimiento en qq/ha, el precio de la producción en \$/qq y los costos de producción en \$/ha. Incluí en estos últimos tanto el costo de producción sin fertilizante como el costo del fertilizante correspondiente. Recordá que una tonelada equivale a 10 quintales.
-
-b)  Realizá una representación gráfica comparativa de los beneficios económicos obtenidos en las parcelas de cada tratamiento.
-
-c)  Realizá un ANOVA para comparar el beneficio económico medio entre los tratamientos. Verificá los supuestos de homogeneidad de varianzas y normalidad de los errores y, si corresponde, aplicá una prueba de comparaciones múltiples.
-
-d)  ¿Cuál de los fertilizantes recomendarías? Justificá tu respuesta a partir del análisis realizado.
-
-## Referencias
-
-::: {#refs}
+::: {.callout-note}
+## Una precaución sobre los datos
+La variable original `Average Temperature °C` representa un indicador de cambio o anomalía de temperatura, no la temperatura media absoluta de cada país. Las observaciones corresponden a años sucesivos de cada país: el ANOVA de un factor se realizará como **ejercicio didáctico**, pero más adelante discutiremos por qué la independencia de las observaciones podría no cumplirse.
 :::
+
+## Paso 1. Preparar el proyecto
+
+Abrí el proyecto de RStudio que utilizaste en las prácticas anteriores. Creá un nuevo archivo Quarto y guardalo en la carpeta `scripts` con un nombre reconocible. Verificá que exista el archivo `Agrofood_co2_emission.csv` dentro de `datos_originales`.
+
+```r
+#| label: preparacion
+# Consigna 1.1: limpiá el entorno de trabajo.
+# Consigna 1.2: cargá los paquetes necesarios para manipular datos,
+# construir gráficos y limpiar los nombres de las columnas.
+# Recordá: instalar un paquete y cargarlo son acciones diferentes.
+```
+
+**Pregunta 1.1.** ¿Qué ventaja tiene usar un proyecto de RStudio y rutas relativas en lugar de rutas absolutas?
+
+## Paso 2. Importar y reconocer la base original
+
+```r
+#| label: importacion
+# Consigna 2.1: importá el archivo CSV desde la carpeta datos_originales.
+# Guardá el conjunto de datos en un objeto llamado agro.
+# Consigna 2.2: explorá su estructura, dimensiones y nombres de variables.
+```
+
+```r
+#| label: limpieza-nombres
+# Consigna 2.3: utilizá una función del paquete janitor para
+# normalizar los nombres de las columnas y volvé a mostrarlos.
+# Identificá cómo se llama ahora la columna original Average Temperature °C.
+```
+
+**Pregunta 2.1.** ¿Por qué conviene conservar sin modificar el archivo original? ¿Qué cambia al ejecutar `clean_names()` y qué permanece igual?
+
+## Paso 3. Seleccionar países, años y variables
+
+Trabajaremos con **Argentina, Bolivia, Brasil, Chile, Paraguay y Uruguay** y únicamente con los años **posteriores a 2008**. La base original usa el nombre `Bolivia (Plurinational State of)` para Bolivia.
+
+```r
+#| label: seleccion
+# Consigna 3.1: creá una base llamada temperatura_limítrofes.
+# Consigna 3.2: filtrá las filas correspondientes a los seis países.
+# Consigna 3.3: conservá los años posteriores a 2008.
+# Consigna 3.4: seleccioná únicamente país, año y average_temperature_c.
+# Consigna 3.5: comprobá si hay valores faltantes y decidí cómo tratarlos.
+# Pista: recuperá lo trabajado con filter(), select() y %in%.
+```
+
+```r
+#| label: verificacion-seleccion
+# Consigna 3.6: verificá cuántas observaciones hay en cada país.
+# Consigna 3.7: corroborá los años mínimo y máximo de la base seleccionada.
+# Consigna 3.8: comprobá que la variable país tenga seis categorías.
+```
+
+**Pregunta 3.1.** ¿Cuál es la unidad observacional? ¿Se trata de seis grupos independientes de observaciones?
+
+## Paso 4. Estadística descriptiva
+
+```r
+#| label: descriptiva
+# Consigna 4.1: agrupá los datos por país.
+# Consigna 4.2: calculá n, media, mediana, desvío estándar,
+# mínimo y máximo de average_temperature_c.
+# Consigna 4.3: guardá el resultado en un objeto y mostralo.
+# Recordá revisar el tratamiento de los valores faltantes.
+```
+
+```r
+#| label: tabla-descriptiva
+# Consigna 4.4: presentá el resumen en una tabla con flextable.
+# Buscá en las prácticas anteriores cómo mejorar títulos y decimales.
+```
+
+**Pregunta 4.1.** ¿Qué país tiene el promedio más alto y cuál el más bajo? ¿Las dispersiones parecen similares? Justificá usando las medidas calculadas.
+
+## Paso 5. Exploración gráfica
+
+```r
+#| label: boxplot
+# Consigna 5.1: elaborá un boxplot de average_temperature_c según país.
+# Consigna 5.2: incorporá un título, nombres claros para los ejes
+# y un tema de ggplot2.
+# Consigna 5.3: si los nombres se superponen, mejorá su presentación.
+```
+
+```r
+#| label: guardar-grafico
+# Consigna 5.4: guardá el boxplot en la carpeta figuras.
+# Elegí nombre de archivo, dimensiones y resolución adecuados.
+# Pista: revisá ggsave() en la práctica de visualización.
+```
+
+**Pregunta 5.1.** ¿Qué indica cada caja? ¿Se observan valores atípicos? ¿Qué diferencias entre países sugeriría el gráfico?
+
+## Paso 6. Formular y ajustar el ANOVA
+
+Escribí antes de ejecutar el modelo las **hipótesis nula y alternativa** para la comparación de medias de los seis países.
+
+**Hipótesis nula:** ...
+
+**Hipótesis alternativa:** ...
+
+```r
+#| label: modelo-anova
+# Consigna 6.1: ajustá un ANOVA de un factor con aov().
+# Variable respuesta: average_temperature_c.
+# Factor: area.
+# Guardá el modelo en un objeto llamado modelo.
+# Consigna 6.2: obtené la tabla de análisis de la varianza.
+```
+
+**Pregunta 6.1.** Identificá los grados de libertad, el estadístico F y el valor p. ¿Qué concluís para un nivel de significación del 5 %? No confundas significación estadística con importancia práctica.
+
+## Paso 7. Diagnóstico del modelo
+
+```r
+#| label: graficos-diagnostico
+# Consigna 7.1: recuperá los gráficos de diagnóstico del modelo.
+# Identificá el gráfico de residuos frente a valores ajustados
+# y el gráfico Q-Q normal.
+# Consigna 7.2: escribí qué observás en cada gráfico.
+```
+
+```r
+#| label: prueba-normalidad
+# Consigna 7.3: aplicá Shapiro-Wilk a los residuos del ANOVA.
+# Escribí H0 y H1 de la prueba e interpretá el valor p.
+```
+
+```r
+#| label: prueba-homogeneidad
+# Consigna 7.4: realizá una prueba de Levene para evaluar
+# la homogeneidad de las varianzas entre los seis países.
+# Buscá qué paquete contiene leveneTest() y cargalo si hace falta.
+# Escribí H0 y H1 e interpretá el valor p.
+```
+
+**Pregunta 7.1.** ¿Los resultados permiten rechazar la normalidad o la igualdad de varianzas? Explicá por qué un valor p mayor que 0,05 **no demuestra** que se cumpla un supuesto.
+
+**Pregunta 7.2.** Aunque los gráficos y pruebas sean favorables, ¿qué supuesto sigue siendo problemático por tener mediciones anuales repetidas para cada país? ¿Cómo podría influir en la interpretación del ANOVA?
+
+## Paso 8. Medias estimadas e intervalos de confianza
+
+```r
+#| label: medias-estimadas
+# Consigna 8.1: utilizá emmeans para obtener las medias
+# estimadas por país a partir del modelo.
+# Consigna 8.2: obtené sus intervalos de confianza del 95 %.
+# Consigna 8.3: convertí el resultado en un data frame para graficar.
+```
+
+```r
+#| label: grafico-medias
+# Consigna 8.4: construí un gráfico de puntos con las medias
+# estimadas y barras para sus intervalos de confianza del 95 %.
+# Pista: revisá geom_point() y geom_errorbar().
+# Adecuá los títulos a temperatura y países: NO uses
+# rótulos de ejercicios anteriores sobre tratamientos o roña.
+```
+
+**Pregunta 8.1.** ¿Qué información agrega este gráfico respecto del boxplot? ¿Se pueden decidir todas las diferencias entre pares de países solo observando el solapamiento de los intervalos individuales?
+
+## Paso 9. Comparaciones múltiples
+
+```r
+#| label: tukey
+# Consigna 9.1: compará todos los pares de países utilizando
+# las medias estimadas y un ajuste de Tukey.
+# Consigna 9.2: identificá los pares con diferencias
+# estadísticamente significativas al 5 %.
+```
+
+**Pregunta 9.1.** ¿Por qué necesitamos ajustar las comparaciones múltiples? ¿Cuáles son los pares de países que presentan diferencias significativas?
+
+## Paso 10. Comunicar y revisar el análisis
+
+Redactá un texto breve (entre 150 y 250 palabras) que presente el objetivo, los datos empleados, las principales diferencias descriptivas, los resultados del ANOVA, la revisión de supuestos y las comparaciones múltiples. Evitá escribir solamente valores p: incluí también una interpretación sustantiva.
+
+**Pregunta 10.1.** ¿Qué cambiarías en el diseño o en el modelo para analizar adecuadamente la evolución temporal de la temperatura entre países? Pensá en incorporar `year` y en la dependencia de las observaciones dentro de cada país.
+
+**Pregunta 10.2.** ¿Cómo asegurarías que otra persona pueda reproducir tu análisis a partir del proyecto, el archivo de datos y el documento Quarto?
+
+## ¿Qué aprendimos en esta práctica?
+
+Completá este apartado con una reflexión personal. Identificá **tres herramientas** que recuperaste de prácticas anteriores, **dos decisiones estadísticas** que tuviste que justificar y **una limitación** del análisis. Finalmente, renderizá el documento Quarto y revisá que se muestren correctamente las tablas, los gráficos y las interpretaciones.

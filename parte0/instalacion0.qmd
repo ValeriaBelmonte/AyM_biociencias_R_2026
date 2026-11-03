@@ -128,7 +128,7 @@ Al comenzar la instalación aparecerá una ventana para seleccionar el idioma.
 1.  Elegir **Español**.
 2.  Hacer clic en **Aceptar**.
 
-![Figura 5: Seleccionar idioma](images/R-20260807T214238Z-1-001/R/Captura de pantalla 2026-08-07 153300.png){width="301"}
+![Figura 5: Seleccionar idioma](images/R-20260807T214238Z-1-001/R/Captura%20de%20pantalla%202026-08-07%20153300.png){width="301"}
 
 ------------------------------------------------------------------------
 
@@ -206,7 +206,6 @@ Luego, hacer clic en **Siguiente**.
 
 ![Figura 10: Crear accesos directos](images/R-20260807T214238Z-1-001/R/8.png){width="298"}
 
-
 ## Finalizar la instalación de R
 
 El programa comenzará a copiar los archivos necesarios.
@@ -246,7 +245,6 @@ Si aparece este resultado, R se instaló correctamente.
 
 ![Figura 12: Comprobación de insalación correcta](images/R-20260807T214238Z-1-001/R/11.png){width="300"}
 
-
 Después de comprobar la instalación, se puede cerrar la ventana de R.
 
 # Parte II. Instalación de RStudio Desktop
@@ -272,18 +270,24 @@ RStudio-2026.xx.x-xxx.exe
 
 El número puede variar según la versión disponible.
 
-![Figura 13 : Página oficial de descarga de RStudio Desktop](images/clipboard-2166122575.png){width="401"}
+![Figura 13 : Página oficial de descarga de RStudio Desktop](images/RS1.png){width="550"}
 
-La descarga oficial para Windows se distribuye mediante un archivo ejecutable `.exe`.
+Para Windows, seleccioná **Descargar instalador**. Se descargará un archivo ejecutable con extensión `.exe`, que deberás abrir para iniciar la instalación
+
+Para Windows, seleccioná **Descargar instalador**. Se descargará un archivo ejecutable con extensión `.exe`, que deberás abrir para iniciar la instalación.
+
+En la parte inferior de la página de descarga también podés encontrar **otras versiones de RStudio**, en caso de que necesites instalar una versión diferente.
+
+**Nota:** Este instructivo se encuentra actualizado al **2 de noviembre de 2026**. La apariencia de la página, las opciones de descarga y los números de versión pueden cambiar con futuras actualizaciones.La descarga oficial para Windows se distribuye mediante un archivo ejecutable `.exe`.
 
 ------------------------------------------------------------------------
 
-##  Ejecutar el instalador de RStudio
+## Ejecutar el instalador de RStudio
 
 1.  Abrir la carpeta **Descargas**.
 2.  Buscar el archivo de instalación de RStudio.
 
-![Figura 14: archivo instalador de RStudio en la carpeta Descargas.](images/Sstudio-20260807T215818Z-1-001/Sstudio/Captura de pantalla 2026-08-07 192026.png)
+![Figura 14: archivo instalador de RStudio en la carpeta Descargas.](images/Sstudio-20260807T215818Z-1-001/Sstudio/Captura%20de%20pantalla%202026-08-07%20192026.png)
 
 3.  Hacer doble clic sobre el archivo.
 
@@ -300,7 +304,13 @@ Aparecerá la ventana del asistente de instalación de RStudio.
 
 ![Figura15: ventana de bienvenida del instalador de RStudio.](images/clipboard-3132480350.png){width="347"}
 
-------------------------------------------------------------------------
+Seguí las instrucciones del asistente de instalación hasta finalizar el proceso.
+
+Si utilizás una computadora personal, podés seleccionar **For me (USUARIO)** y hacer clic en **Siguiente** para continuar.
+
+![Selección de usuarios durante la instalación de RStudio.](images/RS2.png){width="372"}
+
+Puede ser que nuevamente aparezca la ventana Figura 15, en tal caso, aceptar y seguir.
 
 ## Seleccionar la carpeta de instalación
 

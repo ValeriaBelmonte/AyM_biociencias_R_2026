@@ -2,43 +2,38 @@
 title: "Practica estudiantes"
 ---
 
-```{r}
+```r
 rm(list=ls())
 ```
-```{r}
+
+```r
 library(tidyverse)
 
 ```
 
-```{r}
+```r
 # cargamos los datos
 #recuerden hacerlo desde su carpeta
-agro<-read.csv("../datos transformados/agro.csv")
+agro<-read.csv("../datos_transformados/agro.csv")
 #agro <- read_csv("datos transformados/agro.csv")
 ```
 
-
 ## Paquete ggplot
 
+Usaremos el paquete ggplot para graficar el cambio de la emisión total (`total_emission`) en función de los años (`year`)
 
-Usaremos el paquete  ggplot para graficar el cambio de la emisión total (`total_emission`) en función de los años (`year`)
-
-
-
-```{r}
+```r
 ggplot(agro,                     # bloque 1     
        aes(year, total_emission) #bloque 2
        ) 
 ```
 
-*esteticas`aes( )`*: una estetica es una propiedad visual de los objetos.  
-La estetica incluye características como: el tamaño, la forma el color, de los puntos
-en estas capas serán fijas en todas las capas del gráfico salvo que se modifiquen el las esteticas de los otros bloques
+*esteticas`aes( )`*: una estetica es una propiedad visual de los objetos.\
+La estetica incluye características como: el tamaño, la forma el color, de los puntos en estas capas serán fijas en todas las capas del gráfico salvo que se modifiquen el las esteticas de los otros bloques
 
 Sus argumentos, por lo tanto son son x= eje x, y =eje y, colour= color, size=tamaño, alpha0controla la tranparencia,shape= la forma, fill=color del relleno de las formas solidas de la barras.
 
-
-```{r}
+```r
 agro$area<-as.factor(agro$area)
 ggplot(agro,                     # bloque 1     
        aes(year, total_emission,colour=area ) #bloque 2
@@ -49,7 +44,6 @@ ggplot(agro,                     # bloque 1
 
 **Sacar luego** ggpplot(datos, #bloque de datos aes( x= variable_x, #indicamos el eje x y= variable_y #indicamos el eje x\
 )
-
 
 ## Tercer capa
 

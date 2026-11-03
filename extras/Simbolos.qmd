@@ -111,8 +111,3 @@ flextable(resultados_modelos) |>
 
 En un párrafo de Quarto, en cambio, podés escribir las fórmulas con LaTeX: `$R^2$` o `$\beta_1$`.
 
-::: callout-note
-## Para la Práctica 6
-
-Guardá este documento como `simbolos_para_copiar.qmd` y renderizalo en **HTML**. Podés compartir el HTML resultante con tus compañeros o estudiantes; como tiene los recursos incorporados, no necesita archivos de estilos ni scripts externos para mostrar los botones.
-:::

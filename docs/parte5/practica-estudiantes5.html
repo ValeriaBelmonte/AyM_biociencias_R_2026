@@ -55,27 +55,7 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -123,35 +103,6 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -318,7 +269,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../parte3/practica-estudiantes3.html" class="sidebar-item-text sidebar-link">
+  <a href="../parte3/practica-estudiantes3.qmd" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Práctica para estudiantes 3</span></a>
   </div>
 </li>
@@ -456,12 +407,18 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#fertilización-y-beneficio-económico-en-soja" id="toc-fertilización-y-beneficio-económico-en-soja" class="nav-link active" data-scroll-target="#fertilización-y-beneficio-económico-en-soja"><span class="header-section-number">1</span> Fertilización y beneficio económico en soja</a>
-  <ul class="collapse">
-  <li><a href="#carga-de-los-datos" id="toc-carga-de-los-datos" class="nav-link" data-scroll-target="#carga-de-los-datos"><span class="header-section-number">1.1</span> Carga de los datos</a></li>
-  <li><a href="#consignas" id="toc-consignas" class="nav-link" data-scroll-target="#consignas"><span class="header-section-number">1.2</span> Consignas</a></li>
-  </ul></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">2</span> Referencias</a></li>
+  <li><a href="#propósito" id="toc-propósito" class="nav-link active" data-scroll-target="#propósito"><span class="header-section-number">1</span> Propósito</a></li>
+  <li><a href="#paso-1.-preparar-el-proyecto" id="toc-paso-1.-preparar-el-proyecto" class="nav-link" data-scroll-target="#paso-1.-preparar-el-proyecto"><span class="header-section-number">2</span> Paso 1. Preparar el proyecto</a></li>
+  <li><a href="#paso-2.-importar-y-reconocer-la-base-original" id="toc-paso-2.-importar-y-reconocer-la-base-original" class="nav-link" data-scroll-target="#paso-2.-importar-y-reconocer-la-base-original"><span class="header-section-number">3</span> Paso 2. Importar y reconocer la base original</a></li>
+  <li><a href="#paso-3.-seleccionar-países-años-y-variables" id="toc-paso-3.-seleccionar-países-años-y-variables" class="nav-link" data-scroll-target="#paso-3.-seleccionar-países-años-y-variables"><span class="header-section-number">4</span> Paso 3. Seleccionar países, años y variables</a></li>
+  <li><a href="#paso-4.-estadística-descriptiva" id="toc-paso-4.-estadística-descriptiva" class="nav-link" data-scroll-target="#paso-4.-estadística-descriptiva"><span class="header-section-number">5</span> Paso 4. Estadística descriptiva</a></li>
+  <li><a href="#paso-5.-exploración-gráfica" id="toc-paso-5.-exploración-gráfica" class="nav-link" data-scroll-target="#paso-5.-exploración-gráfica"><span class="header-section-number">6</span> Paso 5. Exploración gráfica</a></li>
+  <li><a href="#paso-6.-formular-y-ajustar-el-anova" id="toc-paso-6.-formular-y-ajustar-el-anova" class="nav-link" data-scroll-target="#paso-6.-formular-y-ajustar-el-anova"><span class="header-section-number">7</span> Paso 6. Formular y ajustar el ANOVA</a></li>
+  <li><a href="#paso-7.-diagnóstico-del-modelo" id="toc-paso-7.-diagnóstico-del-modelo" class="nav-link" data-scroll-target="#paso-7.-diagnóstico-del-modelo"><span class="header-section-number">8</span> Paso 7. Diagnóstico del modelo</a></li>
+  <li><a href="#paso-8.-medias-estimadas-e-intervalos-de-confianza" id="toc-paso-8.-medias-estimadas-e-intervalos-de-confianza" class="nav-link" data-scroll-target="#paso-8.-medias-estimadas-e-intervalos-de-confianza"><span class="header-section-number">9</span> Paso 8. Medias estimadas e intervalos de confianza</a></li>
+  <li><a href="#paso-9.-comparaciones-múltiples" id="toc-paso-9.-comparaciones-múltiples" class="nav-link" data-scroll-target="#paso-9.-comparaciones-múltiples"><span class="header-section-number">10</span> Paso 9. Comparaciones múltiples</a></li>
+  <li><a href="#paso-10.-comunicar-y-revisar-el-análisis" id="toc-paso-10.-comunicar-y-revisar-el-análisis" class="nav-link" data-scroll-target="#paso-10.-comunicar-y-revisar-el-análisis"><span class="header-section-number">11</span> Paso 10. Comunicar y revisar el análisis</a></li>
+  <li><a href="#qué-aprendimos-en-esta-práctica" id="toc-qué-aprendimos-en-esta-práctica" class="nav-link" data-scroll-target="#qué-aprendimos-en-esta-práctica"><span class="header-section-number">12</span> ¿Qué aprendimos en esta práctica?</a></li>
   </ul>
 </nav>
     </div>
@@ -487,98 +444,152 @@ window.Quarto = {
 </header>
 
 
-<section id="fertilización-y-beneficio-económico-en-soja" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="fertilización-y-beneficio-económico-en-soja"><span class="header-section-number">1</span> Fertilización y beneficio económico en soja</h2>
-<p>Ejercicio extraido de Estadistica y Biometría<span class="citation" data-cites="balzarini2013">(<a href="#ref-balzarini2013" role="doc-biblioref">Balzarini et al., 2013</a>)</span></p>
-<p>Una empresa agrícola necesita establecer si le conviene, desde el punto de vista económico, fertilizar sus cultivos de soja. Para este propósito se realizó un ensayo en un lote de 20 hectáreas, dividido en parcelas de una hectárea cada una, en el que se evaluaron cuatro estrategias de fertilización:</p>
-<ul>
-<li>No fertilizar.</li>
-<li>Usar el fertilizante A.</li>
-<li>Usar el fertilizante B.</li>
-<li>Usar el fertilizante C.</li>
-</ul>
-<p>Los tratamientos se asignaron a las parcelas en forma aleatoria. Cada parcela fue intervenida culturalmente con la misma tecnología de siembra directa en cuanto al manejo de plagas, malezas, densidades de siembra, variedades, fecha de siembra y control de humedad en el suelo. La única diferencia entre ellas fue el fertilizante utilizado.</p>
-<p>Considerá la siguiente información:</p>
-<ul>
-<li>El precio de la tonelada de soja es de $1200.</li>
-<li>Los costos de producción, sin incluir el fertilizante, equivalen a 15 qq/ha.</li>
-<li>El costo de usar el fertilizante A equivale a 5 qq/ha.</li>
-<li>El costo de usar el fertilizante B equivale a 3,5 qq/ha.</li>
-<li>El costo de usar el fertilizante C equivale a 2 qq/ha.</li>
-</ul>
-<p>Los rendimientos obtenidos, expresados en qq/ha, fueron:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: right;">Sin fertilizar</th>
-<th style="text-align: right;">Fertilizante A</th>
-<th style="text-align: right;">Fertilizante B</th>
-<th style="text-align: right;">Fertilizante C</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">33</td>
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">24</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">35</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">31</td>
-<td style="text-align: right;">34</td>
-<td style="text-align: right;">26</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">32</td>
-<td style="text-align: right;">27</td>
-</tr>
-</tbody>
-</table>
-<section id="carga-de-los-datos" class="level3" data-number="1.1">
-<h3 data-number="1.1" class="anchored" data-anchor-id="carga-de-los-datos"><span class="header-section-number">1.1</span> Carga de los datos</h3>
-<p>Cargá los datos de la tabla en R y organizalos en un <code>data.frame</code> en formato largo: cada fila debe corresponder a una parcela y las columnas deben identificar el tratamiento y el rendimiento.</p>
-<p><strong>Sugerencia:</strong> podés ayudarte con una herramienta de inteligencia artificial para generar el código de carga. Verificá que los valores coincidan con la tabla y que cada tratamiento tenga cinco observaciones.</p>
-</section>
-<section id="consignas" class="level3" data-number="1.2">
-<h3 data-number="1.2" class="anchored" data-anchor-id="consignas"><span class="header-section-number">1.2</span> Consignas</h3>
-<ol type="a">
-<li>Trabajá con la variable <strong>beneficio económico ($/ha)</strong>, calculada como:</li>
-</ol>
-<p><span class="math display">\[\text{Beneficio económico}
-=
-\text{Rendimiento}\times\text{Precio de la producción}
--
-\text{Costos de producción}\]</span></p>
-<p>Expresá el rendimiento en qq/ha, el precio de la producción en $/qq y los costos de producción en $/ha. Incluí en estos últimos tanto el costo de producción sin fertilizante como el costo del fertilizante correspondiente. Recordá que una tonelada equivale a 10 quintales.</p>
-<ol start="2" type="a">
-<li><p>Realizá una representación gráfica comparativa de los beneficios económicos obtenidos en las parcelas de cada tratamiento.</p></li>
-<li><p>Realizá un ANOVA para comparar el beneficio económico medio entre los tratamientos. Verificá los supuestos de homogeneidad de varianzas y normalidad de los errores y, si corresponde, aplicá una prueba de comparaciones múltiples.</p></li>
-<li><p>¿Cuál de los fertilizantes recomendarías? Justificá tu respuesta a partir del análisis realizado.</p></li>
-</ol>
-</section>
-</section>
-<section id="referencias" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="referencias"><span class="header-section-number">2</span> Referencias</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
-<div id="ref-balzarini2013" class="csl-entry" role="listitem">
-Balzarini, M., Di Rienzo, J. A., &amp; Tablada, M. (2013). <em>Introducción a la bioestadística: Aplicaciones con <span>InfoStat</span></em> (1st ed.). Editorial Brujas.
+<section id="propósito" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="propósito"><span class="header-section-number">1</span> Propósito</h2>
+<p>En esta práctica retomaremos herramientas utilizadas en las actividades anteriores: organización de proyectos, importación y limpieza de datos, selección y transformación de variables, estadística descriptiva, gráficos con <code>ggplot2</code>, ajuste de modelos e interpretación de resultados. <strong>Esta vez los bloques de código contienen consignas, no soluciones.</strong> Recuperá tus apuntes y prácticas previas antes de consultar otras fuentes.</p>
+<p><strong>Pregunta de investigación:</strong> ¿se observan diferencias en los valores medios de la variable <code>average_temperature_c</code> entre Argentina, Bolivia, Brasil, Chile, Paraguay y Uruguay durante 2009–2020?</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Una precaución sobre los datos
 </div>
 </div>
+<div class="callout-body-container callout-body">
+<p>La variable original <code>Average Temperature °C</code> representa un indicador de cambio o anomalía de temperatura, no la temperatura media absoluta de cada país. Las observaciones corresponden a años sucesivos de cada país: el ANOVA de un factor se realizará como <strong>ejercicio didáctico</strong>, pero más adelante discutiremos por qué la independencia de las observaciones podría no cumplirse.</p>
+</div>
+</div>
+</section>
+<section id="paso-1.-preparar-el-proyecto" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="paso-1.-preparar-el-proyecto"><span class="header-section-number">2</span> Paso 1. Preparar el proyecto</h2>
+<p>Abrí el proyecto de RStudio que utilizaste en las prácticas anteriores. Creá un nuevo archivo Quarto y guardalo en la carpeta <code>scripts</code> con un nombre reconocible. Verificá que exista el archivo <code>Agrofood_co2_emission.csv</code> dentro de <code>datos_originales</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: preparacion</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 1.1: limpiá el entorno de trabajo.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 1.2: cargá los paquetes necesarios para manipular datos,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># construir gráficos y limpiar los nombres de las columnas.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Recordá: instalar un paquete y cargarlo son acciones diferentes.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 1.1.</strong> ¿Qué ventaja tiene usar un proyecto de RStudio y rutas relativas en lugar de rutas absolutas?</p>
+</section>
+<section id="paso-2.-importar-y-reconocer-la-base-original" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="paso-2.-importar-y-reconocer-la-base-original"><span class="header-section-number">3</span> Paso 2. Importar y reconocer la base original</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: importacion</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 2.1: importá el archivo CSV desde la carpeta datos_originales.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardá el conjunto de datos en un objeto llamado agro.</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 2.2: explorá su estructura, dimensiones y nombres de variables.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: limpieza-nombres</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 2.3: utilizá una función del paquete janitor para</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># normalizar los nombres de las columnas y volvé a mostrarlos.</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificá cómo se llama ahora la columna original Average Temperature °C.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 2.1.</strong> ¿Por qué conviene conservar sin modificar el archivo original? ¿Qué cambia al ejecutar <code>clean_names()</code> y qué permanece igual?</p>
+</section>
+<section id="paso-3.-seleccionar-países-años-y-variables" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="paso-3.-seleccionar-países-años-y-variables"><span class="header-section-number">4</span> Paso 3. Seleccionar países, años y variables</h2>
+<p>Trabajaremos con <strong>Argentina, Bolivia, Brasil, Chile, Paraguay y Uruguay</strong> y únicamente con los años <strong>posteriores a 2008</strong>. La base original usa el nombre <code>Bolivia (Plurinational State of)</code> para Bolivia.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: seleccion</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.1: creá una base llamada temperatura_limítrofes.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.2: filtrá las filas correspondientes a los seis países.</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.3: conservá los años posteriores a 2008.</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.4: seleccioná únicamente país, año y average_temperature_c.</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.5: comprobá si hay valores faltantes y decidí cómo tratarlos.</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pista: recuperá lo trabajado con filter(), select() y %in%.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: verificacion-seleccion</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.6: verificá cuántas observaciones hay en cada país.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.7: corroborá los años mínimo y máximo de la base seleccionada.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.8: comprobá que la variable país tenga seis categorías.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 3.1.</strong> ¿Cuál es la unidad observacional? ¿Se trata de seis grupos independientes de observaciones?</p>
+</section>
+<section id="paso-4.-estadística-descriptiva" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="paso-4.-estadística-descriptiva"><span class="header-section-number">5</span> Paso 4. Estadística descriptiva</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptiva</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.1: agrupá los datos por país.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.2: calculá n, media, mediana, desvío estándar,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># mínimo y máximo de average_temperature_c.</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.3: guardá el resultado en un objeto y mostralo.</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Recordá revisar el tratamiento de los valores faltantes.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tabla-descriptiva</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.4: presentá el resumen en una tabla con flextable.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscá en las prácticas anteriores cómo mejorar títulos y decimales.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 4.1.</strong> ¿Qué país tiene el promedio más alto y cuál el más bajo? ¿Las dispersiones parecen similares? Justificá usando las medidas calculadas.</p>
+</section>
+<section id="paso-5.-exploración-gráfica" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="paso-5.-exploración-gráfica"><span class="header-section-number">6</span> Paso 5. Exploración gráfica</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.1: elaborá un boxplot de average_temperature_c según país.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.2: incorporá un título, nombres claros para los ejes</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># y un tema de ggplot2.</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.3: si los nombres se superponen, mejorá su presentación.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: guardar-grafico</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.4: guardá el boxplot en la carpeta figuras.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Elegí nombre de archivo, dimensiones y resolución adecuados.</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pista: revisá ggsave() en la práctica de visualización.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 5.1.</strong> ¿Qué indica cada caja? ¿Se observan valores atípicos? ¿Qué diferencias entre países sugeriría el gráfico?</p>
+</section>
+<section id="paso-6.-formular-y-ajustar-el-anova" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="paso-6.-formular-y-ajustar-el-anova"><span class="header-section-number">7</span> Paso 6. Formular y ajustar el ANOVA</h2>
+<p>Escribí antes de ejecutar el modelo las <strong>hipótesis nula y alternativa</strong> para la comparación de medias de los seis países.</p>
+<p><strong>Hipótesis nula:</strong> …</p>
+<p><strong>Hipótesis alternativa:</strong> …</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: modelo-anova</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 6.1: ajustá un ANOVA de un factor con aov().</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable respuesta: average_temperature_c.</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Factor: area.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardá el modelo en un objeto llamado modelo.</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 6.2: obtené la tabla de análisis de la varianza.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 6.1.</strong> Identificá los grados de libertad, el estadístico F y el valor p.&nbsp;¿Qué concluís para un nivel de significación del 5 %? No confundas significación estadística con importancia práctica.</p>
+</section>
+<section id="paso-7.-diagnóstico-del-modelo" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="paso-7.-diagnóstico-del-modelo"><span class="header-section-number">8</span> Paso 7. Diagnóstico del modelo</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graficos-diagnostico</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.1: recuperá los gráficos de diagnóstico del modelo.</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificá el gráfico de residuos frente a valores ajustados</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># y el gráfico Q-Q normal.</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.2: escribí qué observás en cada gráfico.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prueba-normalidad</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.3: aplicá Shapiro-Wilk a los residuos del ANOVA.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Escribí H0 y H1 de la prueba e interpretá el valor p.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prueba-homogeneidad</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.4: realizá una prueba de Levene para evaluar</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># la homogeneidad de las varianzas entre los seis países.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscá qué paquete contiene leveneTest() y cargalo si hace falta.</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Escribí H0 y H1 e interpretá el valor p.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 7.1.</strong> ¿Los resultados permiten rechazar la normalidad o la igualdad de varianzas? Explicá por qué un valor p mayor que 0,05 <strong>no demuestra</strong> que se cumpla un supuesto.</p>
+<p><strong>Pregunta 7.2.</strong> Aunque los gráficos y pruebas sean favorables, ¿qué supuesto sigue siendo problemático por tener mediciones anuales repetidas para cada país? ¿Cómo podría influir en la interpretación del ANOVA?</p>
+</section>
+<section id="paso-8.-medias-estimadas-e-intervalos-de-confianza" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="paso-8.-medias-estimadas-e-intervalos-de-confianza"><span class="header-section-number">9</span> Paso 8. Medias estimadas e intervalos de confianza</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medias-estimadas</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.1: utilizá emmeans para obtener las medias</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># estimadas por país a partir del modelo.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.2: obtené sus intervalos de confianza del 95 %.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.3: convertí el resultado en un data frame para graficar.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafico-medias</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.4: construí un gráfico de puntos con las medias</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># estimadas y barras para sus intervalos de confianza del 95 %.</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pista: revisá geom_point() y geom_errorbar().</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Adecuá los títulos a temperatura y países: NO uses</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># rótulos de ejercicios anteriores sobre tratamientos o roña.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 8.1.</strong> ¿Qué información agrega este gráfico respecto del boxplot? ¿Se pueden decidir todas las diferencias entre pares de países solo observando el solapamiento de los intervalos individuales?</p>
+</section>
+<section id="paso-9.-comparaciones-múltiples" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="paso-9.-comparaciones-múltiples"><span class="header-section-number">10</span> Paso 9. Comparaciones múltiples</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tukey</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 9.1: compará todos los pares de países utilizando</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># las medias estimadas y un ajuste de Tukey.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 9.2: identificá los pares con diferencias</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># estadísticamente significativas al 5 %.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Pregunta 9.1.</strong> ¿Por qué necesitamos ajustar las comparaciones múltiples? ¿Cuáles son los pares de países que presentan diferencias significativas?</p>
+</section>
+<section id="paso-10.-comunicar-y-revisar-el-análisis" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="paso-10.-comunicar-y-revisar-el-análisis"><span class="header-section-number">11</span> Paso 10. Comunicar y revisar el análisis</h2>
+<p>Redactá un texto breve (entre 150 y 250 palabras) que presente el objetivo, los datos empleados, las principales diferencias descriptivas, los resultados del ANOVA, la revisión de supuestos y las comparaciones múltiples. Evitá escribir solamente valores p: incluí también una interpretación sustantiva.</p>
+<p><strong>Pregunta 10.1.</strong> ¿Qué cambiarías en el diseño o en el modelo para analizar adecuadamente la evolución temporal de la temperatura entre países? Pensá en incorporar <code>year</code> y en la dependencia de las observaciones dentro de cada país.</p>
+<p><strong>Pregunta 10.2.</strong> ¿Cómo asegurarías que otra persona pueda reproducir tu análisis a partir del proyecto, el archivo de datos y el documento Quarto?</p>
+</section>
+<section id="qué-aprendimos-en-esta-práctica" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="qué-aprendimos-en-esta-práctica"><span class="header-section-number">12</span> ¿Qué aprendimos en esta práctica?</h2>
+<p>Completá este apartado con una reflexión personal. Identificá <strong>tres herramientas</strong> que recuperaste de prácticas anteriores, <strong>dos decisiones estadísticas</strong> que tuviste que justificar y <strong>una limitación</strong> del análisis. Finalmente, renderizá el documento Quarto y revisá que se muestren correctamente las tablas, los gráficos y las interpretaciones.</p>
 
 
 <!-- -->
@@ -1036,69 +1047,205 @@ Balzarini, M., Di Rienzo, J. A., &amp; Tablada, M. (2013). <em>Introducción a l
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Fertilización y beneficio económico en soja</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Ejercicio extraido de Estadistica y Biometría<span class="co">[</span><span class="ot">@balzarini2013</span><span class="co">]</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>Una empresa agrícola necesita establecer si le conviene, desde el punto de vista económico, fertilizar sus cultivos de soja. Para este propósito se realizó un ensayo en un lote de 20 hectáreas, dividido en parcelas de una hectárea cada una, en el que se evaluaron cuatro estrategias de fertilización:</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No fertilizar.</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar el fertilizante A.</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar el fertilizante B.</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Usar el fertilizante C.</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Los tratamientos se asignaron a las parcelas en forma aleatoria. Cada parcela fue intervenida culturalmente con la misma tecnología de siembra directa en cuanto al manejo de plagas, malezas, densidades de siembra, variedades, fecha de siembra y control de humedad en el suelo. La única diferencia entre ellas fue el fertilizante utilizado.</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Considerá la siguiente información:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El precio de la tonelada de soja es de \$1200.</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Los costos de producción, sin incluir el fertilizante, equivalen a 15 qq/ha.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El costo de usar el fertilizante A equivale a 5 qq/ha.</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El costo de usar el fertilizante B equivale a 3,5 qq/ha.</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>El costo de usar el fertilizante C equivale a 2 qq/ha.</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Los rendimientos obtenidos, expresados en qq/ha, fueron:</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Sin fertilizar <span class="pp">|</span> Fertilizante A <span class="pp">|</span> Fertilizante B <span class="pp">|</span> Fertilizante C <span class="pp">|</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------------:|---------------:|---------------:|---------------:|</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             19 <span class="pp">|</span>             33 <span class="pp">|</span>             33 <span class="pp">|</span>             28 <span class="pp">|</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             20 <span class="pp">|</span>             35 <span class="pp">|</span>             31 <span class="pp">|</span>             24 <span class="pp">|</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             22 <span class="pp">|</span>             29 <span class="pp">|</span>             35 <span class="pp">|</span>             25 <span class="pp">|</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             23 <span class="pp">|</span>             31 <span class="pp">|</span>             34 <span class="pp">|</span>             26 <span class="pp">|</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span>             21 <span class="pp">|</span>             30 <span class="pp">|</span>             32 <span class="pp">|</span>             27 <span class="pp">|</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Carga de los datos</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>Cargá los datos de la tabla en R y organizalos en un <span class="in">`data.frame`</span> en formato largo: cada fila debe corresponder a una parcela y las columnas deben identificar el tratamiento y el rendimiento.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>**Sugerencia:** podés ayudarte con una herramienta de inteligencia artificial para generar el código de carga. Verificá que los valores coincidan con la tabla y que cada tratamiento tenga cinco observaciones.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">### Consignas</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>a)  Trabajá con la variable **beneficio económico (\$/ha)**, calculada como:</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>$$\text{Beneficio económico}</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>=</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>\text{Rendimiento}\times\text{Precio de la producción}</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>-</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>\text{Costos de producción}$$</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>Expresá el rendimiento en qq/ha, el precio de la producción en \$/qq y los costos de producción en \$/ha. Incluí en estos últimos tanto el costo de producción sin fertilizante como el costo del fertilizante correspondiente. Recordá que una tonelada equivale a 10 quintales.</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>b)  Realizá una representación gráfica comparativa de los beneficios económicos obtenidos en las parcelas de cada tratamiento.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>c)  Realizá un ANOVA para comparar el beneficio económico medio entre los tratamientos. Verificá los supuestos de homogeneidad de varianzas y normalidad de los errores y, si corresponde, aplicá una prueba de comparaciones múltiples.</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>d)  ¿Cuál de los fertilizantes recomendarías? Justificá tu respuesta a partir del análisis realizado.</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## Referencias</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Practica estudiantes"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Propósito</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>En esta práctica retomaremos herramientas utilizadas en las actividades anteriores: organización de proyectos, importación y limpieza de datos, selección y transformación de variables, estadística descriptiva, gráficos con <span class="in">`ggplot2`</span>, ajuste de modelos e interpretación de resultados. **Esta vez los bloques de código contienen consignas, no soluciones.** Recuperá tus apuntes y prácticas previas antes de consultar otras fuentes.</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>**Pregunta de investigación:** ¿se observan diferencias en los valores medios de la variable <span class="in">`average_temperature_c`</span> entre Argentina, Bolivia, Brasil, Chile, Paraguay y Uruguay durante 2009–2020?</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>::: {.callout-note}</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Una precaución sobre los datos</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>La variable original <span class="in">`Average Temperature °C`</span> representa un indicador de cambio o anomalía de temperatura, no la temperatura media absoluta de cada país. Las observaciones corresponden a años sucesivos de cada país: el ANOVA de un factor se realizará como **ejercicio didáctico**, pero más adelante discutiremos por qué la independencia de las observaciones podría no cumplirse.</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 1. Preparar el proyecto</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>Abrí el proyecto de RStudio que utilizaste en las prácticas anteriores. Creá un nuevo archivo Quarto y guardalo en la carpeta <span class="in">`scripts`</span> con un nombre reconocible. Verificá que exista el archivo <span class="in">`Agrofood_co2_emission.csv`</span> dentro de <span class="in">`datos_originales`</span>.</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: preparacion</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 1.1: limpiá el entorno de trabajo.</span></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 1.2: cargá los paquetes necesarios para manipular datos,</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a><span class="co"># construir gráficos y limpiar los nombres de las columnas.</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Recordá: instalar un paquete y cargarlo son acciones diferentes.</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>**Pregunta 1.1.** ¿Qué ventaja tiene usar un proyecto de RStudio y rutas relativas en lugar de rutas absolutas?</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 2. Importar y reconocer la base original</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: importacion</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 2.1: importá el archivo CSV desde la carpeta datos_originales.</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardá el conjunto de datos en un objeto llamado agro.</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 2.2: explorá su estructura, dimensiones y nombres de variables.</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: limpieza-nombres</span></span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 2.3: utilizá una función del paquete janitor para</span></span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="co"># normalizar los nombres de las columnas y volvé a mostrarlos.</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificá cómo se llama ahora la columna original Average Temperature °C.</span></span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>**Pregunta 2.1.** ¿Por qué conviene conservar sin modificar el archivo original? ¿Qué cambia al ejecutar <span class="in">`clean_names()`</span> y qué permanece igual?</span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 3. Seleccionar países, años y variables</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>Trabajaremos con **Argentina, Bolivia, Brasil, Chile, Paraguay y Uruguay** y únicamente con los años **posteriores a 2008**. La base original usa el nombre <span class="in">`Bolivia (Plurinational State of)`</span> para Bolivia.</span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: seleccion</span></span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.1: creá una base llamada temperatura_limítrofes.</span></span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.2: filtrá las filas correspondientes a los seis países.</span></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.3: conservá los años posteriores a 2008.</span></span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.4: seleccioná únicamente país, año y average_temperature_c.</span></span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.5: comprobá si hay valores faltantes y decidí cómo tratarlos.</span></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Pista: recuperá lo trabajado con filter(), select() y %in%.</span></span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: verificacion-seleccion</span></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.6: verificá cuántas observaciones hay en cada país.</span></span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.7: corroborá los años mínimo y máximo de la base seleccionada.</span></span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 3.8: comprobá que la variable país tenga seis categorías.</span></span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>**Pregunta 3.1.** ¿Cuál es la unidad observacional? ¿Se trata de seis grupos independientes de observaciones?</span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 4. Estadística descriptiva</span></span>
+<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: descriptiva</span></span>
+<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.1: agrupá los datos por país.</span></span>
+<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.2: calculá n, media, mediana, desvío estándar,</span></span>
+<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a><span class="co"># mínimo y máximo de average_temperature_c.</span></span>
+<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.3: guardá el resultado en un objeto y mostralo.</span></span>
+<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Recordá revisar el tratamiento de los valores faltantes.</span></span>
+<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tabla-descriptiva</span></span>
+<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 4.4: presentá el resumen en una tabla con flextable.</span></span>
+<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscá en las prácticas anteriores cómo mejorar títulos y decimales.</span></span>
+<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a>**Pregunta 4.1.** ¿Qué país tiene el promedio más alto y cuál el más bajo? ¿Las dispersiones parecen similares? Justificá usando las medidas calculadas.</span>
+<span id="cb17-89"><a href="#cb17-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-90"><a href="#cb17-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 5. Exploración gráfica</span></span>
+<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: boxplot</span></span>
+<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.1: elaborá un boxplot de average_temperature_c según país.</span></span>
+<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.2: incorporá un título, nombres claros para los ejes</span></span>
+<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a><span class="co"># y un tema de ggplot2.</span></span>
+<span id="cb17-97"><a href="#cb17-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.3: si los nombres se superponen, mejorá su presentación.</span></span>
+<span id="cb17-98"><a href="#cb17-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-99"><a href="#cb17-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: guardar-grafico</span></span>
+<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 5.4: guardá el boxplot en la carpeta figuras.</span></span>
+<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a><span class="co"># Elegí nombre de archivo, dimensiones y resolución adecuados.</span></span>
+<span id="cb17-104"><a href="#cb17-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Pista: revisá ggsave() en la práctica de visualización.</span></span>
+<span id="cb17-105"><a href="#cb17-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-106"><a href="#cb17-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-107"><a href="#cb17-107" aria-hidden="true" tabindex="-1"></a>**Pregunta 5.1.** ¿Qué indica cada caja? ¿Se observan valores atípicos? ¿Qué diferencias entre países sugeriría el gráfico?</span>
+<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-109"><a href="#cb17-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 6. Formular y ajustar el ANOVA</span></span>
+<span id="cb17-110"><a href="#cb17-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a>Escribí antes de ejecutar el modelo las **hipótesis nula y alternativa** para la comparación de medias de los seis países.</span>
+<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a>**Hipótesis nula:** ...</span>
+<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a>**Hipótesis alternativa:** ...</span>
+<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-117"><a href="#cb17-117" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-118"><a href="#cb17-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: modelo-anova</span></span>
+<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 6.1: ajustá un ANOVA de un factor con aov().</span></span>
+<span id="cb17-120"><a href="#cb17-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Variable respuesta: average_temperature_c.</span></span>
+<span id="cb17-121"><a href="#cb17-121" aria-hidden="true" tabindex="-1"></a><span class="co"># Factor: area.</span></span>
+<span id="cb17-122"><a href="#cb17-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardá el modelo en un objeto llamado modelo.</span></span>
+<span id="cb17-123"><a href="#cb17-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 6.2: obtené la tabla de análisis de la varianza.</span></span>
+<span id="cb17-124"><a href="#cb17-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-125"><a href="#cb17-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-126"><a href="#cb17-126" aria-hidden="true" tabindex="-1"></a>**Pregunta 6.1.** Identificá los grados de libertad, el estadístico F y el valor p. ¿Qué concluís para un nivel de significación del 5 %? No confundas significación estadística con importancia práctica.</span>
+<span id="cb17-127"><a href="#cb17-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-128"><a href="#cb17-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 7. Diagnóstico del modelo</span></span>
+<span id="cb17-129"><a href="#cb17-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-130"><a href="#cb17-130" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-131"><a href="#cb17-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: graficos-diagnostico</span></span>
+<span id="cb17-132"><a href="#cb17-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.1: recuperá los gráficos de diagnóstico del modelo.</span></span>
+<span id="cb17-133"><a href="#cb17-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificá el gráfico de residuos frente a valores ajustados</span></span>
+<span id="cb17-134"><a href="#cb17-134" aria-hidden="true" tabindex="-1"></a><span class="co"># y el gráfico Q-Q normal.</span></span>
+<span id="cb17-135"><a href="#cb17-135" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.2: escribí qué observás en cada gráfico.</span></span>
+<span id="cb17-136"><a href="#cb17-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-137"><a href="#cb17-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-138"><a href="#cb17-138" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-139"><a href="#cb17-139" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prueba-normalidad</span></span>
+<span id="cb17-140"><a href="#cb17-140" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.3: aplicá Shapiro-Wilk a los residuos del ANOVA.</span></span>
+<span id="cb17-141"><a href="#cb17-141" aria-hidden="true" tabindex="-1"></a><span class="co"># Escribí H0 y H1 de la prueba e interpretá el valor p.</span></span>
+<span id="cb17-142"><a href="#cb17-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-143"><a href="#cb17-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-144"><a href="#cb17-144" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-145"><a href="#cb17-145" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prueba-homogeneidad</span></span>
+<span id="cb17-146"><a href="#cb17-146" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 7.4: realizá una prueba de Levene para evaluar</span></span>
+<span id="cb17-147"><a href="#cb17-147" aria-hidden="true" tabindex="-1"></a><span class="co"># la homogeneidad de las varianzas entre los seis países.</span></span>
+<span id="cb17-148"><a href="#cb17-148" aria-hidden="true" tabindex="-1"></a><span class="co"># Buscá qué paquete contiene leveneTest() y cargalo si hace falta.</span></span>
+<span id="cb17-149"><a href="#cb17-149" aria-hidden="true" tabindex="-1"></a><span class="co"># Escribí H0 y H1 e interpretá el valor p.</span></span>
+<span id="cb17-150"><a href="#cb17-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-151"><a href="#cb17-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-152"><a href="#cb17-152" aria-hidden="true" tabindex="-1"></a>**Pregunta 7.1.** ¿Los resultados permiten rechazar la normalidad o la igualdad de varianzas? Explicá por qué un valor p mayor que 0,05 **no demuestra** que se cumpla un supuesto.</span>
+<span id="cb17-153"><a href="#cb17-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-154"><a href="#cb17-154" aria-hidden="true" tabindex="-1"></a>**Pregunta 7.2.** Aunque los gráficos y pruebas sean favorables, ¿qué supuesto sigue siendo problemático por tener mediciones anuales repetidas para cada país? ¿Cómo podría influir en la interpretación del ANOVA?</span>
+<span id="cb17-155"><a href="#cb17-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-156"><a href="#cb17-156" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 8. Medias estimadas e intervalos de confianza</span></span>
+<span id="cb17-157"><a href="#cb17-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-158"><a href="#cb17-158" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-159"><a href="#cb17-159" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: medias-estimadas</span></span>
+<span id="cb17-160"><a href="#cb17-160" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.1: utilizá emmeans para obtener las medias</span></span>
+<span id="cb17-161"><a href="#cb17-161" aria-hidden="true" tabindex="-1"></a><span class="co"># estimadas por país a partir del modelo.</span></span>
+<span id="cb17-162"><a href="#cb17-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.2: obtené sus intervalos de confianza del 95 %.</span></span>
+<span id="cb17-163"><a href="#cb17-163" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.3: convertí el resultado en un data frame para graficar.</span></span>
+<span id="cb17-164"><a href="#cb17-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-165"><a href="#cb17-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-166"><a href="#cb17-166" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-167"><a href="#cb17-167" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: grafico-medias</span></span>
+<span id="cb17-168"><a href="#cb17-168" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 8.4: construí un gráfico de puntos con las medias</span></span>
+<span id="cb17-169"><a href="#cb17-169" aria-hidden="true" tabindex="-1"></a><span class="co"># estimadas y barras para sus intervalos de confianza del 95 %.</span></span>
+<span id="cb17-170"><a href="#cb17-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Pista: revisá geom_point() y geom_errorbar().</span></span>
+<span id="cb17-171"><a href="#cb17-171" aria-hidden="true" tabindex="-1"></a><span class="co"># Adecuá los títulos a temperatura y países: NO uses</span></span>
+<span id="cb17-172"><a href="#cb17-172" aria-hidden="true" tabindex="-1"></a><span class="co"># rótulos de ejercicios anteriores sobre tratamientos o roña.</span></span>
+<span id="cb17-173"><a href="#cb17-173" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-174"><a href="#cb17-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-175"><a href="#cb17-175" aria-hidden="true" tabindex="-1"></a>**Pregunta 8.1.** ¿Qué información agrega este gráfico respecto del boxplot? ¿Se pueden decidir todas las diferencias entre pares de países solo observando el solapamiento de los intervalos individuales?</span>
+<span id="cb17-176"><a href="#cb17-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-177"><a href="#cb17-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 9. Comparaciones múltiples</span></span>
+<span id="cb17-178"><a href="#cb17-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-179"><a href="#cb17-179" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb17-180"><a href="#cb17-180" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tukey</span></span>
+<span id="cb17-181"><a href="#cb17-181" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 9.1: compará todos los pares de países utilizando</span></span>
+<span id="cb17-182"><a href="#cb17-182" aria-hidden="true" tabindex="-1"></a><span class="co"># las medias estimadas y un ajuste de Tukey.</span></span>
+<span id="cb17-183"><a href="#cb17-183" aria-hidden="true" tabindex="-1"></a><span class="co"># Consigna 9.2: identificá los pares con diferencias</span></span>
+<span id="cb17-184"><a href="#cb17-184" aria-hidden="true" tabindex="-1"></a><span class="co"># estadísticamente significativas al 5 %.</span></span>
+<span id="cb17-185"><a href="#cb17-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb17-186"><a href="#cb17-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-187"><a href="#cb17-187" aria-hidden="true" tabindex="-1"></a>**Pregunta 9.1.** ¿Por qué necesitamos ajustar las comparaciones múltiples? ¿Cuáles son los pares de países que presentan diferencias significativas?</span>
+<span id="cb17-188"><a href="#cb17-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-189"><a href="#cb17-189" aria-hidden="true" tabindex="-1"></a><span class="fu">## Paso 10. Comunicar y revisar el análisis</span></span>
+<span id="cb17-190"><a href="#cb17-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-191"><a href="#cb17-191" aria-hidden="true" tabindex="-1"></a>Redactá un texto breve (entre 150 y 250 palabras) que presente el objetivo, los datos empleados, las principales diferencias descriptivas, los resultados del ANOVA, la revisión de supuestos y las comparaciones múltiples. Evitá escribir solamente valores p: incluí también una interpretación sustantiva.</span>
+<span id="cb17-192"><a href="#cb17-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-193"><a href="#cb17-193" aria-hidden="true" tabindex="-1"></a>**Pregunta 10.1.** ¿Qué cambiarías en el diseño o en el modelo para analizar adecuadamente la evolución temporal de la temperatura entre países? Pensá en incorporar <span class="in">`year`</span> y en la dependencia de las observaciones dentro de cada país.</span>
+<span id="cb17-194"><a href="#cb17-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-195"><a href="#cb17-195" aria-hidden="true" tabindex="-1"></a>**Pregunta 10.2.** ¿Cómo asegurarías que otra persona pueda reproducir tu análisis a partir del proyecto, el archivo de datos y el documento Quarto?</span>
+<span id="cb17-196"><a href="#cb17-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-197"><a href="#cb17-197" aria-hidden="true" tabindex="-1"></a><span class="fu">## ¿Qué aprendimos en esta práctica?</span></span>
+<span id="cb17-198"><a href="#cb17-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-199"><a href="#cb17-199" aria-hidden="true" tabindex="-1"></a>Completá este apartado con una reflexión personal. Identificá **tres herramientas** que recuperaste de prácticas anteriores, **dos decisiones estadísticas** que tuviste que justificar y **una limitación** del análisis. Finalmente, renderizá el documento Quarto y revisá que se muestren correctamente las tablas, los gráficos y las interpretaciones.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
