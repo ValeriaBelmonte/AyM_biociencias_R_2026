@@ -1,12 +1,48 @@
 ---
 title: "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio"
+title-block-style: none
+number-sections: false
+page-layout: full
+toc: false
 ---
 
-# Bienvendidos
+:::: {.portada-curso}
+
+::: {.portada-imagen}
+![](imagenes/portada-curso.png)
+:::
+
+::: {.portada-contenido}
+
+<div class="logos-portada">
+  <img src="imagenes/logo-agronomia.png"
+       class="logo-agronomia"
+       alt="Facultad de Agronomía">
+
+  <img src="imagenes/logo-catedra.png"
+       class="logo-catedra"
+       alt="Logo Cátedra">
+</div>
+
+# Análisis y modelado de datos para investigaciones en biociencias con R y RStudio
+
+---
+
+**Doctorado en Biociencias**
+
+**Maestría en Producción Agropecuaria en Regiones Semiáridas**
+
+:::
+
+::::
+
+
+
+# Bienvenidos
 
 ## Introducción
 
-El análisis de datos mediante software libre se ha convertido en una competencia esencial para la investigación en el campo de las biociencias.
+El análisis de datos mediante el uso de software libre se ha convertido en una competencia esencial para la investigación en el campo de las biociencias.
 
 R y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental. En particular, se enfatiza el uso de los Modelos Lineales (ML) como herramienta estadística fundamental para el análisis de datos, ya que permiten modelar una variable de respuesta con distribución normal en función de una o más variables explicativas, sean estas cuantitativas, categóricas o de ambos tipos. Las competencias que los participantes adquirirán constituyen el punto de partida para abordar, con mayor profundidad, métodos más avanzados en cursos posteriores.
 

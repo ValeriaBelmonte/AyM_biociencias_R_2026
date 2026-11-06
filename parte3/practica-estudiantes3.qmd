@@ -1,5 +1,5 @@
 ---
-title: "Practica estudiantes 3"
+title: "Práctica estudiantes 3"
 ---
 
 
@@ -53,7 +53,7 @@ La ruta relativa del archivo, desde el documento guardado en `scripts`, es:
 
 En esta actividad vas a **construir gráficos de forma autónoma utilizando `esquisse`**, como aprendiste en la Práctica guiada 3. Luego recuperarás el código que genera la herramienta y lo incorporarás a tu documento Quarto.
 
-### 3.1. Abrir `esquisse` y explorar la base
+#### Abrir esquisse y explorar la base
 
 1. Comprobá que el objeto `agro` esté disponible en el entorno de RStudio.
 2. Si todavía no instalaste `esquisse`, instalalo desde la consola con `install.packages("esquisse")`.
@@ -65,7 +65,7 @@ En esta actividad vas a **construir gráficos de forma autónoma utilizando `esq
 
 **Pregunta 3.2.** ¿Qué información sobre las emisiones y los años podés identificar en este gráfico?
 
-### 3.2. Comparar dos áreas
+#### Comparar dos áreas
 
 1. Elegí **dos áreas** de la base y filtrá sus registros desde las opciones de `esquisse` (o prepará previamente un subconjunto con `filter()`).
 2. Incorporá `area` en la opción de **color** para distinguirlas.
@@ -78,13 +78,13 @@ En esta actividad vas a **construir gráficos de forma autónoma utilizando `esq
 
 **Pregunta 3.5.** ¿Qué semejanzas y diferencias encontrás entre las dos áreas? ¿Qué representación gráfica te resulta más adecuada y por qué?
 
-### 3.3. Personalización e interpretación
+#### Personalización e interpretación
 
 Explorá las opciones de `esquisse` para cambiar los colores, el tema del gráfico y, si están disponibles en la interfaz, separar las áreas en paneles (**facetas**).
 
 **Pregunta 3.6.** ¿Qué cambios realizaste para facilitar la lectura del gráfico? ¿Cuál de las versiones comunica mejor tus resultados?
 
-### 3.4. Recuperar el código y reproducir el gráfico
+#### Recuperar el código y reproducir el gráfico
 
 1. Abrí la sección **Code** de `esquisse`.
 2. Copiá el código generado y pegalo en un bloque de R de tu documento `.qmd`.

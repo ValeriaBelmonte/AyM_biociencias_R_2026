@@ -141,7 +141,7 @@ Se mostrará información sobre la licencia de uso de R.
 
 R es software libre y puede utilizarse gratuitamente.
 
-![Figura 6: Información antes de la inslatación](images/R-20260807T214238Z-1-001/R/3.png){width="317"}
+![Figura 6: Información antes de la instalación](images/R-20260807T214238Z-1-001/R/3.png){width="317"}
 
 ## 9. Elegir la carpeta de instalación
 
@@ -243,7 +243,7 @@ El resultado esperado es:
 
 Si aparece este resultado, R se instaló correctamente.
 
-![Figura 12: Comprobación de insalación correcta](images/R-20260807T214238Z-1-001/R/11.png){width="300"}
+![Figura 12: Comprobación de la instalación correcta](images/R-20260807T214238Z-1-001/R/11.png){width="300"}
 
 Después de comprobar la instalación, se puede cerrar la ventana de R.
 
@@ -270,7 +270,7 @@ RStudio-2026.xx.x-xxx.exe
 
 El número puede variar según la versión disponible.
 
-![Figura 13 : Página oficial de descarga de RStudio Desktop](images/RS1.png){width="550"}
+![Figura 13: Página oficial de descarga de RStudio Desktop](images/RS1.png){width="550"}
 
 Para Windows, seleccioná **Descargar instalador**. Se descargará un archivo ejecutable con extensión `.exe`, que deberás abrir para iniciar la instalación
 
@@ -294,7 +294,7 @@ En la parte inferior de la página de descarga también podés encontrar **otras
 Si Windows pregunta si se permite que la aplicación realice cambios:
 
 4.  Seleccionar **Sí**.
-5.  Se abrira el instalador de RStudio
+5.  Se abrirá el instalador de RStudio
 
 ## Iniciar el asistente de instalación
 
@@ -343,7 +343,7 @@ Cuando aparezca el mensaje indicando que la instalación se completó:
 
 El instalador crea un acceso a RStudio y registra el programa entre las aplicaciones instaladas en Windows.
 
-![Figura17 : Finalización de Instalación](images/Sstudio-20260807T215818Z-1-001/Sstudio/4.png){width="389"}
+![Figura17: Finalización de  la Instalación](images/Sstudio-20260807T215818Z-1-001/Sstudio/4.png){width="389"}
 
 ------------------------------------------------------------------------
 

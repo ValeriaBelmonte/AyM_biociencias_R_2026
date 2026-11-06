@@ -778,7 +778,7 @@
   {
     "objectID": "parte3/practica-estudiantes3.html",
     "href": "parte3/practica-estudiantes3.html",
-    "title": "Practica estudiantes 3",
+    "title": "Práctica estudiantes 3",
     "section": "",
     "text": "En esta práctica vas a realizar de manera autónoma un análisis exploratorio de datos (EDA), utilizando la base agro.csv y los conocimientos de la Teoría 3 y la Práctica guiada 3.\nTrabajaremos especialmente con las variables year (año), total_emission (emisiones totales) y area (área o país). El objetivo es conocer la estructura de la base, calcular medidas descriptivas, elaborar tablas y construir gráficos de manera interactiva con esquisse (basado en ggplot2) para explorar cómo cambian las emisiones a lo largo del tiempo y entre áreas.\nA diferencia de la práctica guiada, deberás seleccionar las funciones, escribir el código e interpretar los resultados. Las consignas incluyen orientaciones, pero no el procedimiento completo resuelto.\n\n\n\n\n\n\nAntes de comenzar\n\n\n\nRevisá los ejemplos de la Teoría 3 y de la Práctica guiada 3. Podés consultarlos cada vez que necesites recordar la sintaxis de una función o el procedimiento para guardar un gráfico.",
     "crumbs": [
@@ -787,44 +787,99 @@
     ]
   },
   {
-    "objectID": "parte3/practica-estudiantes3.html#paquete-ggplot",
-    "href": "parte3/practica-estudiantes3.html#paquete-ggplot",
-    "title": "Practica estudiantes",
-    "section": "1 Paquete ggplot",
-    "text": "1 Paquete ggplot\nUsaremos el paquete ggplot para graficar el cambio de la emisión total (total_emission) en función de los años (year)\nggplot(agro,                     # bloque 1     \n       aes(year, total_emission) #bloque 2\n       ) \nesteticasaes( ): una estetica es una propiedad visual de los objetos.\nLa estetica incluye características como: el tamaño, la forma el color, de los puntos en estas capas serán fijas en todas las capas del gráfico salvo que se modifiquen el las esteticas de los otros bloques\nSus argumentos, por lo tanto son son x= eje x, y =eje y, colour= color, size=tamaño, alpha0controla la tranparencia,shape= la forma, fill=color del relleno de las formas solidas de la barras.\nagro$area&lt;-as.factor(agro$area)\nggplot(agro,                     # bloque 1     \n       aes(year, total_emission,colour=area ) #bloque 2\n       )+\n  geom_point() #bloque 3\n                           \nSacar luego ggpplot(datos, #bloque de datos aes( x= variable_x, #indicamos el eje x y= variable_y #indicamos el eje x\n)",
+    "objectID": "parte3/practica-estudiantes3.html#propósito",
+    "href": "parte3/practica-estudiantes3.html#propósito",
+    "title": "Práctica estudiantes 3",
+    "section": "",
+    "text": "En esta práctica vas a realizar de manera autónoma un análisis exploratorio de datos (EDA), utilizando la base agro.csv y los conocimientos de la Teoría 3 y la Práctica guiada 3.\nTrabajaremos especialmente con las variables year (año), total_emission (emisiones totales) y area (área o país). El objetivo es conocer la estructura de la base, calcular medidas descriptivas, elaborar tablas y construir gráficos de manera interactiva con esquisse (basado en ggplot2) para explorar cómo cambian las emisiones a lo largo del tiempo y entre áreas.\nA diferencia de la práctica guiada, deberás seleccionar las funciones, escribir el código e interpretar los resultados. Las consignas incluyen orientaciones, pero no el procedimiento completo resuelto.\n\n\n\n\n\n\nAntes de comenzar\n\n\n\nRevisá los ejemplos de la Teoría 3 y de la Práctica guiada 3. Podés consultarlos cada vez que necesites recordar la sintaxis de una función o el procedimiento para guardar un gráfico.",
     "crumbs": [
       "Parte 3",
       "Práctica para estudiantes 3"
     ]
   },
   {
-    "objectID": "parte3/practica-estudiantes3.html#tercer-capa",
-    "href": "parte3/practica-estudiantes3.html#tercer-capa",
-    "title": "Practica estudiantes",
-    "section": "2 Tercer capa",
-    "text": "2 Tercer capa\ngeom() indica que hacer con los datos geom_* , reemplazando * por diferentes estilos de gráficos a modo de ejemplo\ngeom_histogram() histograma x es la varible continua geom_point()-&gt; grafico de dispersión geom_bar()-&gt; para gráfcos de barras donde x es dsiteta geom_boxplot-&gt; para bos plot",
+    "objectID": "parte3/practica-estudiantes3.html#actividad-1.-organización-del-trabajo-e-importación-de-datos",
+    "href": "parte3/practica-estudiantes3.html#actividad-1.-organización-del-trabajo-e-importación-de-datos",
+    "title": "Práctica estudiantes 3",
+    "section": "2 Actividad 1. Organización del trabajo e importación de datos",
+    "text": "2 Actividad 1. Organización del trabajo e importación de datos\n\nAbrí RStudio y el proyecto que utilizaste en la práctica anterior con agro.csv.\nVerificá que en el proyecto existan las carpetas datos_transformados, scripts, figuras y resultados. Si falta alguna, creala.\nComprobá que el archivo agro.csv se encuentre en datos_transformados.\nCreá un nuevo documento Quarto con el título Práctica para estudiantes 3. Análisis exploratorio de datos y guardalo en scripts con el nombre practica_estudiantes3.qmd.\nLimpiá el entorno de trabajo desde la consola utilizando rm(list = ls()).\nCargá el paquete tidyverse e importá la base en un objeto llamado agro.\n\nLa ruta relativa del archivo, desde el documento guardado en scripts, es:\n../datos_transformados/agro.csv\nPregunta 1.1. ¿Qué función utilizaste para importar el archivo CSV? ¿Cómo comprobaste que la importación se realizó correctamente?\nPregunta 1.2. ¿Cuántas filas y columnas tiene agro? ¿Qué representa cada fila?\nPregunta 1.3. Identificá el tipo de variable de year, total_emission y area. ¿Hay valores faltantes en alguna de ellas? Mostrá cómo lo verificaste.",
     "crumbs": [
       "Parte 3",
       "Práctica para estudiantes 3"
     ]
   },
   {
-    "objectID": "parte3/practica-estudiantes3.html#facetas-facet",
-    "href": "parte3/practica-estudiantes3.html#facetas-facet",
-    "title": "Practica estudiantes",
-    "section": "3 Facetas (facet())",
-    "text": "3 Facetas (facet())\nPermite realizar sub gráficos que muestran cada uno de los datos, las facetas separan se separan según variables categóricas.\ntres tipos de facetado\nfacet_null(): facet_wrap(): frect_grid():",
+    "objectID": "parte3/practica-estudiantes3.html#actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado",
+    "href": "parte3/practica-estudiantes3.html#actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado",
+    "title": "Práctica estudiantes 3",
+    "section": "3 Actividad 2. Reconocimiento de las áreas y del período estudiado",
+    "text": "3 Actividad 2. Reconocimiento de las áreas y del período estudiado\n\nIdentificá los valores diferentes de area y obtené la cantidad de registros por área.\nDeterminá el primer y el último año registrado en la base.\nCalculá cuántos registros hay por año.\nVerificá si year se importó como variable numérica y si total_emission permite realizar cálculos.\n\nPregunta 2.1. ¿Todas las áreas tienen la misma cantidad de registros? ¿Cómo lo comprobaste?\nPregunta 2.2. ¿Todos los años tienen la misma cantidad de registros? ¿Qué precauciones tomarías si no fuera así?\nPregunta 2.3. ¿Por qué es importante revisar estos aspectos antes de comparar emisiones entre países o a lo largo del tiempo?",
     "crumbs": [
       "Parte 3",
       "Práctica para estudiantes 3"
     ]
   },
   {
-    "objectID": "parte3/practica-estudiantes3.html#temas-themes",
-    "href": "parte3/practica-estudiantes3.html#temas-themes",
-    "title": "Practica estudiantes",
-    "section": "4 Temas (themes)",
-    "text": "4 Temas (themes)\nPermiten modificar los aspectos esteticos del gráfico, no modifican ni tienen relación con los gráficos son ula colección de elementos que mejoran la estetica de los gráficos Sirven para:\nagreagr ejes colocar leyendas colores de fondo tamaño de márgenes\ngg plot usa por defecto theme_grey()\ngg plot tiene temas disponibles temas predeterminados.\ntheme_grey()\ntheme_gray()\ntheme_bw() theme_linedraw() theme_light()\ntheme_dark() theme_minimal theme_classic() theme_test()",
+    "objectID": "parte3/practica-estudiantes3.html#actividad-3.-visualización-de-las-emisiones-con-esquisse",
+    "href": "parte3/practica-estudiantes3.html#actividad-3.-visualización-de-las-emisiones-con-esquisse",
+    "title": "Práctica estudiantes 3",
+    "section": "4 Actividad 3. Visualización de las emisiones con esquisse",
+    "text": "4 Actividad 3. Visualización de las emisiones con esquisse\nEn esta actividad vas a construir gráficos de forma autónoma utilizando esquisse, como aprendiste en la Práctica guiada 3. Luego recuperarás el código que genera la herramienta y lo incorporarás a tu documento Quarto.\n\nAbrir esquisse y explorar la base\n\nComprobá que el objeto agro esté disponible en el entorno de RStudio.\nSi todavía no instalaste esquisse, instalalo desde la consola con install.packages(\"esquisse\").\nAbrí Addins → esquisse → ggplot2 builder y seleccioná la base agro.\nColocá year en el eje horizontal (X) y total_emission en el vertical (Y).\nElegí un gráfico de puntos y observá el resultado.\n\nPregunta 3.1. ¿Qué representa cada punto del gráfico? ¿Qué dificultades aparecen al representar todas las áreas juntas?\nPregunta 3.2. ¿Qué información sobre las emisiones y los años podés identificar en este gráfico?\n\n\nComparar dos áreas\n\nElegí dos áreas de la base y filtrá sus registros desde las opciones de esquisse (o prepará previamente un subconjunto con filter()).\nIncorporá area en la opción de color para distinguirlas.\nProbá un gráfico de puntos y uno de líneas. Antes de unir observaciones con líneas, comprobá si hay más de un registro por área y año.\nAgregá un título y nombres claros para los ejes.\n\nPregunta 3.3. ¿Qué áreas elegiste? ¿Por qué?\nPregunta 3.4. ¿Las emisiones parecen aumentar, disminuir o mantenerse relativamente estables a lo largo del tiempo en cada área?\nPregunta 3.5. ¿Qué semejanzas y diferencias encontrás entre las dos áreas? ¿Qué representación gráfica te resulta más adecuada y por qué?\n\n\nPersonalización e interpretación\nExplorá las opciones de esquisse para cambiar los colores, el tema del gráfico y, si están disponibles en la interfaz, separar las áreas en paneles (facetas).\nPregunta 3.6. ¿Qué cambios realizaste para facilitar la lectura del gráfico? ¿Cuál de las versiones comunica mejor tus resultados?\n\n\nRecuperar el código y reproducir el gráfico\n\nAbrí la sección Code de esquisse.\nCopiá el código generado y pegalo en un bloque de R de tu documento .qmd.\nVerificá que el código utilice el objeto agro o el subconjunto que creaste, sin depender de filtros que solamente hayan quedado dentro de la interfaz interactiva.\nEjecutá el bloque y comprobá que el gráfico se reproduce correctamente sin tener que abrir nuevamente esquisse.\nGuardá el gráfico en un objeto de R para poder exportarlo más adelante con ggsave().\n\nPregunta 3.7. Observá el código recuperado: ¿qué instrucciones identificás para los ejes, el tipo de gráfico, los colores y los títulos?\n\n\n\n\n\n\nRecordá\n\n\n\nesquisse permite construir gráficos de forma visual, pero genera código de ggplot2. No es necesario escribir ese código desde cero: sí es importante revisarlo, comprenderlo y conservarlo en Quarto para que el análisis sea reproducible.",
+    "crumbs": [
+      "Parte 3",
+      "Práctica para estudiantes 3"
+    ]
+  },
+  {
+    "objectID": "parte3/practica-estudiantes3.html#actividad-4.-medidas-resumen-y-comparación-entre-áreas",
+    "href": "parte3/practica-estudiantes3.html#actividad-4.-medidas-resumen-y-comparación-entre-áreas",
+    "title": "Práctica estudiantes 3",
+    "section": "5 Actividad 4. Medidas resumen y comparación entre áreas",
+    "text": "5 Actividad 4. Medidas resumen y comparación entre áreas\nCon las mismas dos áreas seleccionadas en la Actividad 3:\n\nCalculá para total_emission la cantidad de observaciones, la media, la mediana, el desvío estándar, el mínimo y el máximo por área.\nUtilizá group_by() y summarise() para generar la tabla de resultados.\nConsiderá si hay valores faltantes y cómo tratarlos en las funciones de resumen.\nPresentá la tabla en un formato adecuado para un informe utilizando flextable.\nAbrí esquisse con el subconjunto de las dos áreas y construí un diagrama de caja (boxplot): ubicá area en X y total_emission en Y. Recuperá el código generado e incorporalo al documento Quarto.\n\nPregunta 4.1. ¿Qué área presenta la mayor emisión media? ¿Ocurre lo mismo con la mediana?\nPregunta 4.2. ¿En qué área hay mayor variabilidad según el desvío estándar? ¿Qué aporta el mínimo y el máximo a esta comparación?\nPregunta 4.3. ¿Qué diferencias observás entre las cajas, las medianas y los bigotes del gráfico?\nPregunta 4.4. ¿Los resultados del diagrama de caja son coherentes con las medidas resumen? Fundamentá.\nPregunta 4.5. Si observás valores atípicos, ¿podés afirmar que son errores? ¿Qué necesitarías comprobar antes?",
+    "crumbs": [
+      "Parte 3",
+      "Práctica para estudiantes 3"
+    ]
+  },
+  {
+    "objectID": "parte3/practica-estudiantes3.html#actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados",
+    "href": "parte3/practica-estudiantes3.html#actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados",
+    "title": "Práctica estudiantes 3",
+    "section": "6 Actividad 5. Guardar los gráficos y comunicar los resultados",
+    "text": "6 Actividad 5. Guardar los gráficos y comunicar los resultados\n\nElegí dos gráficos de los elaborados en las actividades anteriores.\nUtilizá el código recuperado de esquisse para guardar los gráficos como archivos PNG en figuras mediante ggsave(), con fondo blanco y resolución de 300 dpi.\nIncorporá al documento Quarto la tabla de medidas resumen, los gráficos elegidos y las respuestas a las preguntas.\nEscribí un párrafo breve que sintetice qué aprendiste sobre las emisiones totales en las dos áreas comparadas. Diferenciá observaciones descriptivas de conclusiones que requerirían un análisis estadístico adicional.\nRenderizá el documento y revisá que los textos, las tablas y las figuras se vean correctamente.\n\nPregunta 5.1. ¿Qué ventajas tiene trabajar con rutas relativas y conservar el código, los resultados y las interpretaciones en un mismo documento Quarto?",
+    "crumbs": [
+      "Parte 3",
+      "Práctica para estudiantes 3"
+    ]
+  },
+  {
+    "objectID": "parte3/practica-estudiantes3.html#actividad-6.-uso-crítico-de-inteligencia-artificial-opcional",
+    "href": "parte3/practica-estudiantes3.html#actividad-6.-uso-crítico-de-inteligencia-artificial-opcional",
+    "title": "Práctica estudiantes 3",
+    "section": "7 Actividad 6. Uso crítico de inteligencia artificial (opcional)",
+    "text": "7 Actividad 6. Uso crítico de inteligencia artificial (opcional)\nSi utilizás una herramienta de IA para consultar sobre una función, corregir un error o proponer un gráfico, registrá en la carpeta prompts (si la creaste) la consulta realizada, la respuesta obtenida y cómo verificaste su utilidad.\nPregunta 6.1. ¿Qué parte de la tarea resolviste con ayuda de IA? ¿Qué decisiones o correcciones realizaste personalmente?\n\n\n\n\n\n\nRecordá\n\n\n\nLa IA puede ayudarte a comprender las funciones, pero no reemplaza tu trabajo de selección, revisión e interpretación. Comprobá que los nombres de las variables existan en agro y que el código produzca el resultado que buscás.",
+    "crumbs": [
+      "Parte 3",
+      "Práctica para estudiantes 3"
+    ]
+  },
+  {
+    "objectID": "parte3/practica-estudiantes3.html#resultado-de-la-práctica",
+    "href": "parte3/practica-estudiantes3.html#resultado-de-la-práctica",
+    "title": "Práctica estudiantes 3",
+    "section": "8 Resultado de la práctica",
+    "text": "8 Resultado de la práctica\nAl finalizar, deberás contar con el archivo practica_estudiantes3.qmd y su informe renderizado, una tabla de medidas resumen por área y al menos dos gráficos PNG guardados en figuras. El informe debe incluir tus respuestas e interpretaciones, no solamente el código.",
+    "crumbs": [
+      "Parte 3",
+      "Práctica para estudiantes 3"
+    ]
+  },
+  {
+    "objectID": "parte3/practica-estudiantes3.html#qué-aprendimos-en-esta-práctica",
+    "href": "parte3/practica-estudiantes3.html#qué-aprendimos-en-esta-práctica",
+    "title": "Práctica estudiantes 3",
+    "section": "9 ¿Qué aprendimos en esta práctica?",
+    "text": "9 ¿Qué aprendimos en esta práctica?\nEn esta práctica aplicamos de manera autónoma las herramientas básicas del análisis exploratorio de datos. Reconocimos la estructura de una base, exploramos la evolución temporal de las emisiones totales con esquisse, recuperamos el código ggplot2 y comparamos áreas mediante medidas descriptivas y gráficos, y comunicamos los resultados con Quarto. Aprendimos también que un gráfico o una tabla deben responder a una pregunta y acompañarse de una interpretación fundamentada.",
     "crumbs": [
       "Parte 3",
       "Práctica para estudiantes 3"
@@ -1485,7 +1540,7 @@
     "href": "index.html",
     "title": "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio",
     "section": "",
-    "text": "El análisis de datos mediante software libre se ha convertido en una competencia esencial para la investigación en el campo de las biociencias.\nR y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental. En particular, se enfatiza el uso de los Modelos Lineales (ML) como herramienta estadística fundamental para el análisis de datos, ya que permiten modelar una variable de respuesta con distribución normal en función de una o más variables explicativas, sean estas cuantitativas, categóricas o de ambos tipos. Las competencias que los participantes adquirirán constituyen el punto de partida para abordar, con mayor profundidad, métodos más avanzados en cursos posteriores.\nEn resumen, el curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración y descripción estadística de datos con la aplicación de Modelos Lineales (ML), y poniendo énfasis en la interpretación de los resultados y su comunicación efectiva.",
+    "text": "Code",
     "crumbs": [
       "Inicio"
     ]
@@ -1494,8 +1549,8 @@
     "objectID": "index.html#introducción",
     "href": "index.html#introducción",
     "title": "Análisis y modelado de datos para investigaciones en biociencias con R y RStudio",
-    "section": "",
-    "text": "El análisis de datos mediante software libre se ha convertido en una competencia esencial para la investigación en el campo de las biociencias.\nR y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental. En particular, se enfatiza el uso de los Modelos Lineales (ML) como herramienta estadística fundamental para el análisis de datos, ya que permiten modelar una variable de respuesta con distribución normal en función de una o más variables explicativas, sean estas cuantitativas, categóricas o de ambos tipos. Las competencias que los participantes adquirirán constituyen el punto de partida para abordar, con mayor profundidad, métodos más avanzados en cursos posteriores.\nEn resumen, el curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración y descripción estadística de datos con la aplicación de Modelos Lineales (ML), y poniendo énfasis en la interpretación de los resultados y su comunicación efectiva.",
+    "section": "Introducción",
+    "text": "Introducción\nEl análisis de datos mediante el uso de software libre se ha convertido en una competencia esencial para la investigación en el campo de las biociencias.\nR y RStudio ofrecen un entorno potente y versátil para el análisis estadístico y la generación de gráficos de alta calidad. Este curso busca introducir a los participantes en el uso de estas herramientas, facilitando el procesamiento, análisis e interpretación de datos reales provenientes del sector agroambiental. En particular, se enfatiza el uso de los Modelos Lineales (ML) como herramienta estadística fundamental para el análisis de datos, ya que permiten modelar una variable de respuesta con distribución normal en función de una o más variables explicativas, sean estas cuantitativas, categóricas o de ambos tipos. Las competencias que los participantes adquirirán constituyen el punto de partida para abordar, con mayor profundidad, métodos más avanzados en cursos posteriores.\nEn resumen, el curso propone una formación práctica e introductoria en el uso del software libre R y RStudio para el análisis de datos, combinando la exploración y descripción estadística de datos con la aplicación de Modelos Lineales (ML), y poniendo énfasis en la interpretación de los resultados y su comunicación efectiva.",
     "crumbs": [
       "Inicio"
     ]
@@ -1582,7 +1637,7 @@
     "href": "parte0/instalacion0.html#aceptar-la-información-de-la-licencia",
     "title": "Instalación R y Rstudio",
     "section": "2.5 Aceptar la información de la licencia",
-    "text": "2.5 Aceptar la información de la licencia\nSe mostrará información sobre la licencia de uso de R.\n\nLeer la información.\nHacer clic en Siguiente.\n\nR es software libre y puede utilizarse gratuitamente.\n\n\n\nFigura 6: Información antes de la inslatación",
+    "text": "2.5 Aceptar la información de la licencia\nSe mostrará información sobre la licencia de uso de R.\n\nLeer la información.\nHacer clic en Siguiente.\n\nR es software libre y puede utilizarse gratuitamente.\n\n\n\nFigura 6: Información antes de la instalación",
     "crumbs": [
       "Parte 0",
       "Instalación"
@@ -1648,7 +1703,7 @@
     "href": "parte0/instalacion0.html#comprobar-que-r-funciona-correctamente",
     "title": "Instalación R y Rstudio",
     "section": "2.11 Comprobar que R funciona correctamente",
-    "text": "2.11 Comprobar que R funciona correctamente\n\nAbrir el menú Inicio de Windows.\nBuscar la aplicación R.\nHacer clic para abrirla.\n\nSe mostrará una ventana denominada R Console.\nEn la consola, junto al símbolo &gt;, escribir:\n2 + 2\nPresionar Enter.\nEl resultado esperado es:\n[1] 4\nSi aparece este resultado, R se instaló correctamente.\n\n\n\nFigura 12: Comprobación de insalación correcta\n\n\nDespués de comprobar la instalación, se puede cerrar la ventana de R.",
+    "text": "2.11 Comprobar que R funciona correctamente\n\nAbrir el menú Inicio de Windows.\nBuscar la aplicación R.\nHacer clic para abrirla.\n\nSe mostrará una ventana denominada R Console.\nEn la consola, junto al símbolo &gt;, escribir:\n2 + 2\nPresionar Enter.\nEl resultado esperado es:\n[1] 4\nSi aparece este resultado, R se instaló correctamente.\n\n\n\nFigura 12: Comprobación de la instalación correcta\n\n\nDespués de comprobar la instalación, se puede cerrar la ventana de R.",
     "crumbs": [
       "Parte 0",
       "Instalación"
@@ -1659,7 +1714,7 @@
     "href": "parte0/instalacion0.html#ingresar-al-sitio-oficial-para-descargar-rstudio",
     "title": "Instalación R y Rstudio",
     "section": "3.1 Ingresar al sitio oficial para descargar RStudio",
-    "text": "3.1 Ingresar al sitio oficial para descargar RStudio\n\nAbrir nuevamente el navegador.\nIngresar a:\n\nhttps://posit.co/download/rstudio-desktop/\n\nHacer clic en el botón de descarga para Windows.\n\nEl sitio normalmente detectará automáticamente el sistema operativo y ofrecerá un archivo con un nombre similar a:\nRStudio-2026.xx.x-xxx.exe\nEl número puede variar según la versión disponible.\n\n\n\nFigura 13 : Página oficial de descarga de RStudio Desktop\n\n\nPara Windows, seleccioná Descargar instalador. Se descargará un archivo ejecutable con extensión .exe, que deberás abrir para iniciar la instalación\nPara Windows, seleccioná Descargar instalador. Se descargará un archivo ejecutable con extensión .exe, que deberás abrir para iniciar la instalación.\nEn la parte inferior de la página de descarga también podés encontrar otras versiones de RStudio, en caso de que necesites instalar una versión diferente.\nNota: Este instructivo se encuentra actualizado al 2 de noviembre de 2026. La apariencia de la página, las opciones de descarga y los números de versión pueden cambiar con futuras actualizaciones.La descarga oficial para Windows se distribuye mediante un archivo ejecutable .exe.",
+    "text": "3.1 Ingresar al sitio oficial para descargar RStudio\n\nAbrir nuevamente el navegador.\nIngresar a:\n\nhttps://posit.co/download/rstudio-desktop/\n\nHacer clic en el botón de descarga para Windows.\n\nEl sitio normalmente detectará automáticamente el sistema operativo y ofrecerá un archivo con un nombre similar a:\nRStudio-2026.xx.x-xxx.exe\nEl número puede variar según la versión disponible.\n\n\n\nFigura 13: Página oficial de descarga de RStudio Desktop\n\n\nPara Windows, seleccioná Descargar instalador. Se descargará un archivo ejecutable con extensión .exe, que deberás abrir para iniciar la instalación\nPara Windows, seleccioná Descargar instalador. Se descargará un archivo ejecutable con extensión .exe, que deberás abrir para iniciar la instalación.\nEn la parte inferior de la página de descarga también podés encontrar otras versiones de RStudio, en caso de que necesites instalar una versión diferente.\nNota: Este instructivo se encuentra actualizado al 2 de noviembre de 2026. La apariencia de la página, las opciones de descarga y los números de versión pueden cambiar con futuras actualizaciones.La descarga oficial para Windows se distribuye mediante un archivo ejecutable .exe.",
     "crumbs": [
       "Parte 0",
       "Instalación"
@@ -1670,7 +1725,7 @@
     "href": "parte0/instalacion0.html#ejecutar-el-instalador-de-rstudio",
     "title": "Instalación R y Rstudio",
     "section": "3.2 Ejecutar el instalador de RStudio",
-    "text": "3.2 Ejecutar el instalador de RStudio\n\nAbrir la carpeta Descargas.\nBuscar el archivo de instalación de RStudio.\n\n\n\n\nFigura 14: archivo instalador de RStudio en la carpeta Descargas.\n\n\n\nHacer doble clic sobre el archivo.\n\nSi Windows pregunta si se permite que la aplicación realice cambios:\n\nSeleccionar Sí.\nSe abrira el instalador de RStudio",
+    "text": "3.2 Ejecutar el instalador de RStudio\n\nAbrir la carpeta Descargas.\nBuscar el archivo de instalación de RStudio.\n\n\n\n\nFigura 14: archivo instalador de RStudio en la carpeta Descargas.\n\n\n\nHacer doble clic sobre el archivo.\n\nSi Windows pregunta si se permite que la aplicación realice cambios:\n\nSeleccionar Sí.\nSe abrirá el instalador de RStudio",
     "crumbs": [
       "Parte 0",
       "Instalación"
@@ -1714,7 +1769,7 @@
     "href": "parte0/instalacion0.html#finalizar-la-instalación-de-rstudio",
     "title": "Instalación R y Rstudio",
     "section": "3.6 Finalizar la instalación de RStudio",
-    "text": "3.6 Finalizar la instalación de RStudio\nEsperar mientras se copian los archivos.\nCuando aparezca el mensaje indicando que la instalación se completó:\n\nHacer clic en Terminar.\n\nEl instalador crea un acceso a RStudio y registra el programa entre las aplicaciones instaladas en Windows.\n\n\n\nFigura17 : Finalización de Instalación",
+    "text": "3.6 Finalizar la instalación de RStudio\nEsperar mientras se copian los archivos.\nCuando aparezca el mensaje indicando que la instalación se completó:\n\nHacer clic en Terminar.\n\nEl instalador crea un acceso a RStudio y registra el programa entre las aplicaciones instaladas en Windows.\n\n\n\nFigura17: Finalización de la Instalación",
     "crumbs": [
       "Parte 0",
       "Instalación"
@@ -2522,105 +2577,6 @@
     "crumbs": [
       "Parte 6",
       "Presentación"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#propósito",
-    "href": "parte3/practica-estudiantes3.html#propósito",
-    "title": "Practica estudiantes 3",
-    "section": "",
-    "text": "En esta práctica vas a realizar de manera autónoma un análisis exploratorio de datos (EDA), utilizando la base agro.csv y los conocimientos de la Teoría 3 y la Práctica guiada 3.\nTrabajaremos especialmente con las variables year (año), total_emission (emisiones totales) y area (área o país). El objetivo es conocer la estructura de la base, calcular medidas descriptivas, elaborar tablas y construir gráficos de manera interactiva con esquisse (basado en ggplot2) para explorar cómo cambian las emisiones a lo largo del tiempo y entre áreas.\nA diferencia de la práctica guiada, deberás seleccionar las funciones, escribir el código e interpretar los resultados. Las consignas incluyen orientaciones, pero no el procedimiento completo resuelto.\n\n\n\n\n\n\nAntes de comenzar\n\n\n\nRevisá los ejemplos de la Teoría 3 y de la Práctica guiada 3. Podés consultarlos cada vez que necesites recordar la sintaxis de una función o el procedimiento para guardar un gráfico.",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#actividad-1.-organización-del-trabajo-e-importación-de-datos",
-    "href": "parte3/practica-estudiantes3.html#actividad-1.-organización-del-trabajo-e-importación-de-datos",
-    "title": "Practica estudiantes 3",
-    "section": "2 Actividad 1. Organización del trabajo e importación de datos",
-    "text": "2 Actividad 1. Organización del trabajo e importación de datos\n\nAbrí RStudio y el proyecto que utilizaste en la práctica anterior con agro.csv.\nVerificá que en el proyecto existan las carpetas datos_transformados, scripts, figuras y resultados. Si falta alguna, creala.\nComprobá que el archivo agro.csv se encuentre en datos_transformados.\nCreá un nuevo documento Quarto con el título Práctica para estudiantes 3. Análisis exploratorio de datos y guardalo en scripts con el nombre practica_estudiantes3.qmd.\nLimpiá el entorno de trabajo desde la consola utilizando rm(list = ls()).\nCargá el paquete tidyverse e importá la base en un objeto llamado agro.\n\nLa ruta relativa del archivo, desde el documento guardado en scripts, es:\n../datos_transformados/agro.csv\nPregunta 1.1. ¿Qué función utilizaste para importar el archivo CSV? ¿Cómo comprobaste que la importación se realizó correctamente?\nPregunta 1.2. ¿Cuántas filas y columnas tiene agro? ¿Qué representa cada fila?\nPregunta 1.3. Identificá el tipo de variable de year, total_emission y area. ¿Hay valores faltantes en alguna de ellas? Mostrá cómo lo verificaste.",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado",
-    "href": "parte3/practica-estudiantes3.html#actividad-2.-reconocimiento-de-las-áreas-y-del-período-estudiado",
-    "title": "Practica estudiantes 3",
-    "section": "3 Actividad 2. Reconocimiento de las áreas y del período estudiado",
-    "text": "3 Actividad 2. Reconocimiento de las áreas y del período estudiado\n\nIdentificá los valores diferentes de area y obtené la cantidad de registros por área.\nDeterminá el primer y el último año registrado en la base.\nCalculá cuántos registros hay por año.\nVerificá si year se importó como variable numérica y si total_emission permite realizar cálculos.\n\nPregunta 2.1. ¿Todas las áreas tienen la misma cantidad de registros? ¿Cómo lo comprobaste?\nPregunta 2.2. ¿Todos los años tienen la misma cantidad de registros? ¿Qué precauciones tomarías si no fuera así?\nPregunta 2.3. ¿Por qué es importante revisar estos aspectos antes de comparar emisiones entre países o a lo largo del tiempo?",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#actividad-3.-visualización-de-las-emisiones-con-esquisse",
-    "href": "parte3/practica-estudiantes3.html#actividad-3.-visualización-de-las-emisiones-con-esquisse",
-    "title": "Practica estudiantes 3",
-    "section": "4 Actividad 3. Visualización de las emisiones con esquisse",
-    "text": "4 Actividad 3. Visualización de las emisiones con esquisse\nEn esta actividad vas a construir gráficos de forma autónoma utilizando esquisse, como aprendiste en la Práctica guiada 3. Luego recuperarás el código que genera la herramienta y lo incorporarás a tu documento Quarto.\n\n4.1 3.1. Abrir esquisse y explorar la base\n\nComprobá que el objeto agro esté disponible en el entorno de RStudio.\nSi todavía no instalaste esquisse, instalalo desde la consola con install.packages(\"esquisse\").\nAbrí Addins → esquisse → ggplot2 builder y seleccioná la base agro.\nColocá year en el eje horizontal (X) y total_emission en el vertical (Y).\nElegí un gráfico de puntos y observá el resultado.\n\nPregunta 3.1. ¿Qué representa cada punto del gráfico? ¿Qué dificultades aparecen al representar todas las áreas juntas?\nPregunta 3.2. ¿Qué información sobre las emisiones y los años podés identificar en este gráfico?\n\n\n4.2 3.2. Comparar dos áreas\n\nElegí dos áreas de la base y filtrá sus registros desde las opciones de esquisse (o prepará previamente un subconjunto con filter()).\nIncorporá area en la opción de color para distinguirlas.\nProbá un gráfico de puntos y uno de líneas. Antes de unir observaciones con líneas, comprobá si hay más de un registro por área y año.\nAgregá un título y nombres claros para los ejes.\n\nPregunta 3.3. ¿Qué áreas elegiste? ¿Por qué?\nPregunta 3.4. ¿Las emisiones parecen aumentar, disminuir o mantenerse relativamente estables a lo largo del tiempo en cada área?\nPregunta 3.5. ¿Qué semejanzas y diferencias encontrás entre las dos áreas? ¿Qué representación gráfica te resulta más adecuada y por qué?\n\n\n4.3 3.3. Personalización e interpretación\nExplorá las opciones de esquisse para cambiar los colores, el tema del gráfico y, si están disponibles en la interfaz, separar las áreas en paneles (facetas).\nPregunta 3.6. ¿Qué cambios realizaste para facilitar la lectura del gráfico? ¿Cuál de las versiones comunica mejor tus resultados?\n\n\n4.4 3.4. Recuperar el código y reproducir el gráfico\n\nAbrí la sección Code de esquisse.\nCopiá el código generado y pegalo en un bloque de R de tu documento .qmd.\nVerificá que el código utilice el objeto agro o el subconjunto que creaste, sin depender de filtros que solamente hayan quedado dentro de la interfaz interactiva.\nEjecutá el bloque y comprobá que el gráfico se reproduce correctamente sin tener que abrir nuevamente esquisse.\nGuardá el gráfico en un objeto de R para poder exportarlo más adelante con ggsave().\n\nPregunta 3.7. Observá el código recuperado: ¿qué instrucciones identificás para los ejes, el tipo de gráfico, los colores y los títulos?\n\n\n\n\n\n\nRecordá\n\n\n\nesquisse permite construir gráficos de forma visual, pero genera código de ggplot2. No es necesario escribir ese código desde cero: sí es importante revisarlo, comprenderlo y conservarlo en Quarto para que el análisis sea reproducible.",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#actividad-4.-medidas-resumen-y-comparación-entre-áreas",
-    "href": "parte3/practica-estudiantes3.html#actividad-4.-medidas-resumen-y-comparación-entre-áreas",
-    "title": "Practica estudiantes 3",
-    "section": "5 Actividad 4. Medidas resumen y comparación entre áreas",
-    "text": "5 Actividad 4. Medidas resumen y comparación entre áreas\nCon las mismas dos áreas seleccionadas en la Actividad 3:\n\nCalculá para total_emission la cantidad de observaciones, la media, la mediana, el desvío estándar, el mínimo y el máximo por área.\nUtilizá group_by() y summarise() para generar la tabla de resultados.\nConsiderá si hay valores faltantes y cómo tratarlos en las funciones de resumen.\nPresentá la tabla en un formato adecuado para un informe utilizando flextable.\nAbrí esquisse con el subconjunto de las dos áreas y construí un diagrama de caja (boxplot): ubicá area en X y total_emission en Y. Recuperá el código generado e incorporalo al documento Quarto.\n\nPregunta 4.1. ¿Qué área presenta la mayor emisión media? ¿Ocurre lo mismo con la mediana?\nPregunta 4.2. ¿En qué área hay mayor variabilidad según el desvío estándar? ¿Qué aporta el mínimo y el máximo a esta comparación?\nPregunta 4.3. ¿Qué diferencias observás entre las cajas, las medianas y los bigotes del gráfico?\nPregunta 4.4. ¿Los resultados del diagrama de caja son coherentes con las medidas resumen? Fundamentá.\nPregunta 4.5. Si observás valores atípicos, ¿podés afirmar que son errores? ¿Qué necesitarías comprobar antes?",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados",
-    "href": "parte3/practica-estudiantes3.html#actividad-5.-guardar-los-gráficos-y-comunicar-los-resultados",
-    "title": "Practica estudiantes 3",
-    "section": "6 Actividad 5. Guardar los gráficos y comunicar los resultados",
-    "text": "6 Actividad 5. Guardar los gráficos y comunicar los resultados\n\nElegí dos gráficos de los elaborados en las actividades anteriores.\nUtilizá el código recuperado de esquisse para guardar los gráficos como archivos PNG en figuras mediante ggsave(), con fondo blanco y resolución de 300 dpi.\nIncorporá al documento Quarto la tabla de medidas resumen, los gráficos elegidos y las respuestas a las preguntas.\nEscribí un párrafo breve que sintetice qué aprendiste sobre las emisiones totales en las dos áreas comparadas. Diferenciá observaciones descriptivas de conclusiones que requerirían un análisis estadístico adicional.\nRenderizá el documento y revisá que los textos, las tablas y las figuras se vean correctamente.\n\nPregunta 5.1. ¿Qué ventajas tiene trabajar con rutas relativas y conservar el código, los resultados y las interpretaciones en un mismo documento Quarto?",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#actividad-6.-uso-crítico-de-inteligencia-artificial-opcional",
-    "href": "parte3/practica-estudiantes3.html#actividad-6.-uso-crítico-de-inteligencia-artificial-opcional",
-    "title": "Practica estudiantes 3",
-    "section": "7 Actividad 6. Uso crítico de inteligencia artificial (opcional)",
-    "text": "7 Actividad 6. Uso crítico de inteligencia artificial (opcional)\nSi utilizás una herramienta de IA para consultar sobre una función, corregir un error o proponer un gráfico, registrá en la carpeta prompts (si la creaste) la consulta realizada, la respuesta obtenida y cómo verificaste su utilidad.\nPregunta 6.1. ¿Qué parte de la tarea resolviste con ayuda de IA? ¿Qué decisiones o correcciones realizaste personalmente?\n\n\n\n\n\n\nRecordá\n\n\n\nLa IA puede ayudarte a comprender las funciones, pero no reemplaza tu trabajo de selección, revisión e interpretación. Comprobá que los nombres de las variables existan en agro y que el código produzca el resultado que buscás.",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#resultado-de-la-práctica",
-    "href": "parte3/practica-estudiantes3.html#resultado-de-la-práctica",
-    "title": "Practica estudiantes 3",
-    "section": "8 Resultado de la práctica",
-    "text": "8 Resultado de la práctica\nAl finalizar, deberás contar con el archivo practica_estudiantes3.qmd y su informe renderizado, una tabla de medidas resumen por área y al menos dos gráficos PNG guardados en figuras. El informe debe incluir tus respuestas e interpretaciones, no solamente el código.",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
-    ]
-  },
-  {
-    "objectID": "parte3/practica-estudiantes3.html#qué-aprendimos-en-esta-práctica",
-    "href": "parte3/practica-estudiantes3.html#qué-aprendimos-en-esta-práctica",
-    "title": "Practica estudiantes 3",
-    "section": "9 ¿Qué aprendimos en esta práctica?",
-    "text": "9 ¿Qué aprendimos en esta práctica?\nEn esta práctica aplicamos de manera autónoma las herramientas básicas del análisis exploratorio de datos. Reconocimos la estructura de una base, exploramos la evolución temporal de las emisiones totales con esquisse, recuperamos el código ggplot2 y comparamos áreas mediante medidas descriptivas y gráficos, y comunicamos los resultados con Quarto. Aprendimos también que un gráfico o una tabla deben responder a una pregunta y acompañarse de una interpretación fundamentada.",
-    "crumbs": [
-      "Parte 3",
-      "Práctica para estudiantes 3"
     ]
   }
 ]
