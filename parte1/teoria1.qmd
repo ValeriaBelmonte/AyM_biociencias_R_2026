@@ -447,9 +447,9 @@ A medida que los análisis de datos se vuelven más complejos, surge la necesida
 
 En este contexto cobra importancia el enfoque de la **investigación reproducible**.
 
-Según \@peng2011, la reproducibilidad implica que otras personas puedan obtener los mismos resultados a partir de los datos y el código utilizados en una investigación.
+Según [@peng2011], la reproducibilidad implica que otras personas puedan obtener los mismos resultados a partir de los datos y el código utilizados en una investigación.
 
-Para trabajar bajo este enfoque utilizaremos **Quarto** \[\@quarto2025\], una herramienta que permite elaborar documentos reproducibles integrando:
+Para trabajar bajo este enfoque utilizaremos **Quarto** [@quarto2025], una herramienta que permite elaborar documentos reproducibles integrando:
 
 - Texto explicativo.
 
