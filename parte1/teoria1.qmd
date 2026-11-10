@@ -168,7 +168,7 @@ El panel **Environment** muestra los objetos que se encuentran cargados en la se
 
 También incluye otras pestañas, como **History**, donde se pueden consultar las instrucciones ejecutadas anteriormente.
 
-#### Archivos, gráficos, paquetes y ayuda -3-
+#### Archivos, gráficos, paquetes y ayuda -4-
 
 Este panel reúne varias herramientas:
 
